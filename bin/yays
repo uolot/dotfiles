@@ -1,0 +1,10 @@
+#/usr/bin/env sh
+set -eo pipefail
+
+echo "Searching for '$@'"
+
+yay -Ss $@ \
+| paste - - \
+| column -t -s$'\t' -c $(tput cols) \
+| hl $@ \
+| less

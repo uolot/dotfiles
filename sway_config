@@ -1,0 +1,266 @@
+# vim: ft=i3config
+
+set $mod Mod1
+set $win Mod4
+
+font pango:Ubuntu Medium 11
+
+gaps inner 0
+gaps outer 0
+smart_gaps on
+# hide_edge_borders both
+smart_borders on
+# set borders to 1 pixel
+default_border pixel 3
+# titlebar padding
+titlebar_padding 15 3
+
+
+# outputs
+
+# Lyst Dell
+output "Sharp Corporation 0x148B 0x00000000" {
+    mode 3840x2160
+    scale 2.2
+    pos 0 1440
+}
+# Lyst external monitor
+output "Dell Inc. DELL U2717D J0XYN87S247L" {
+    mode 2560x1440
+    scale 1
+    pos 0 0
+}
+# Thinkpad X1 Carbon 2nd gen
+output "Unknown 0x0419 0x00000000" {
+    mode 2560x1440
+    scale 1.5
+    pos 0 0
+}
+
+# inputs
+
+input * {
+    xkb_layout pl
+    pointer_accel 0
+}
+
+input "Input device: TPPS/2 IBM TrackPoint" {
+    pointer_accel -1
+}
+
+
+# start a terminal
+bindsym $mod+Return exec termite
+
+### # show time and date
+### bindsym $mod+t exec $HOME/Bin/showtime.py
+### for_window [title="^showtime$"] floating enable, border none
+### 
+### # start a webbrowser
+### bindsym $mod+b exec $HOME/Bin/start-webbrowser sway
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+### # TODO: review
+### # bindsym $mod+d exec rofi -show run
+### # bindsym $mod+Shift+d exec "rofi -show run -run-command 'gksudo {cmd}'"
+### # bindsym $mod+Shift+s exec bash $(find ~/.screenlayout/ -type f | rofi -dmenu)
+### 
+### # bindsym $mod+space exec GDK_DPI_SCALE=1.4 termite --name=launcher -e "bash -c 'compgen -c | sort -u | fzf --reverse --no-extended --print-query --border | tail -n1 | xargs -r swaymsg -t command exec'"
+### # for_window [app_id="^launcher$"] floating enable, border none, resize set 30ppt 30ppt
+
+# TODO: replace with wofi
+bindsym $mod+space exec rofi -show run -dpi 1
+bindsym $mod+Shift+space exec "rofi -show run -run-command 'gksudo {cmd}' -dpi 1"
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# move workspaces
+bindsym $win+Shift+k move workspace to output up
+bindsym $win+Shift+j move workspace to output down
+bindsym $win+Shift+h move workspace to output left
+bindsym $win+Shift+l move workspace to output right
+
+# split in horizontal orientation
+bindsym $mod+s split v
+# split in vertical orientation
+bindsym $mod+v split h
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+q layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# focus the parent/child container
+bindsym $mod+x focus child
+bindsym $mod+Shift+x focus parent
+
+# switch to workspace
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
+
+# switch between workspaces
+bindsym $mod+Tab workspace next_on_output
+bindsym $mod+Shift+Tab workspace prev_on_output
+bindsym $mod+Escape workspace back_and_forth
+bindsym $win+Tab workspace next
+bindsym $win+Shift+Tab workspace prev
+workspace_auto_back_and_forth yes
+
+### # rename workspace
+### bindsym $mod+Shift+n exec $HOME/Bin/sway_rename
+
+# floating
+floating_modifier $mod
+bindsym $mod+Shift+f floating toggle
+bindsym $mod+Shift+s sticky toggle
+
+# scratchpad
+bindsym $mod+Shift+Backspace move scratchpad
+bindsym $mod+Backspace scratchpad show
+
+### # screenshots
+### # https://github.com/emersion/grim
+### bindsym $mod+p exec grim $HOME/screenshot__$(date +'%Y-%m-%d__%H-%M-%S').png
+### bindsym $mod+Shift+p exec grim -g "$(slurp)" $HOME/screenshot__$(date +'%Y-%m-%d__%H-%M-%S').png
+
+# reload the config file
+bindsym $mod+Shift+c reload
+# restart sway
+bindsym $mod+Shift+r restart
+# exit sway
+bindsym $mod+Shift+e exec "swaynag -t warning -m 'Exit?' -b 'Yes' 'swaymsg exit'""
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+
+        bindsym Shift+h resize shrink width 25 px or 16 ppt
+        bindsym Shift+j resize grow height 25 px or 16 ppt
+        bindsym Shift+k resize shrink height 25 px or 16 ppt
+        bindsym Shift+l resize grow width 25 px or 16 ppt
+
+        bindsym h resize shrink width 5 px or 4 ppt
+        bindsym j resize grow height 5 px or 4 ppt
+        bindsym k resize shrink height 5 px or 4 ppt
+        bindsym l resize grow width 5 px or 4 ppt
+
+        bindsym 2 resize set width 50 ppt
+        bindsym 3 resize set width 33 ppt
+        bindsym 4 resize set width 25 ppt
+
+        bindsym Shift+2 resize set height 50 ppt
+        bindsym Shift+3 resize set height 33 ppt
+        bindsym Shift+4 resize set height 25 ppt
+
+        bindsym f floating toggle
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# TODO: review
+bar {
+    status_command i3status
+    position bottom
+    workspace_buttons yes
+
+    # tray_output primary
+    # Changed using i3-style: https://github.com/acrisci/i3-style/tree/master/themes
+    colors {
+        # colors:                border  backgr. text    ind.
+        separator #928374
+        background #282828
+        statusline #ebdbb2
+        focused_workspace #965636 #282828 #965636
+        active_workspace #1d2021 #1d2021 #928374
+        inactive_workspace #32302f #32302f #928374
+        urgent_workspace #cc241d #cc241d #ebdbb2
+    }
+}
+
+### # Lock screen
+### bindsym $mod+o exec swaylock-blur
+### bindsym $mod+Shift+o exec python $HOME/.dotfiles/src/swaylock-fancy/lock.py -s 0.5 -l $HOME/.dotfiles/src/swaylock-fancy/lock.png
+
+
+### # background
+### output "*" background $HOME/.dotfiles/wallpapers/alaska.jpg fill
+
+
+### # Start mako for notifications
+### exec mako &
+### 
+### # Start clipboard manager
+### exec wl-paste -t text --watch clipman store
+### # exec wl-paste -p -t text --watch clipman store --histpath="~/.local/share/clipman-primary.json
+### bindsym $mod+c exec clipman pick -t rofi
+### # bindsym $win+c exec clipman pick -t rofi --histpath="~/.local/share/clipman-primary.json
+### 
+### # Flash windows
+### exec_always flashfocus
+### bindsym $mod+n exec --no-startup-id flash_window
+### 
+### 
+### # increase sound volume
+### bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume 0 +2db"
+### # decrease sound volume
+### bindsym XF86AudioLowerVolume exec "pactl set-sink-volume 0 -2db"
+### # mute sound
+### bindsym XF86AudioMute exec "ponymix toggle"
+### 
+### 
+### # Increase screen brightness
+### bindsym XF86MonBrightnessUp exec "brillo -A 5 -q -u 250000"
+### # Decrease screen brightness
+### bindsym XF86MonBrightnessDown exec "brillo -U 5 -q -u 250000""
+### 
+### # XD
+### exec $HOME/Envs/battery-bot/bin/python $HOME/Dev/battery-bot/bot.py
