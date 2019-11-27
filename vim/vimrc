@@ -88,4 +88,3 @@ nnoremap <silent> gb :bn<CR>
 " insert blank lines
 nnoremap gO  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>'[
 nnoremap go  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
-
