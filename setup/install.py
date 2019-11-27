@@ -14,6 +14,7 @@ PACKAGES = [
     # Shell utils
     "community/fd",
     "community/fzf",
+    "community/fzy",
     "extra/tree",
 
     # Python
