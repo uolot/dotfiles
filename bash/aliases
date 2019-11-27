@@ -1,6 +1,6 @@
 # vim: ft=bash
 
-# Bash
+# Shell
 
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -10,6 +10,8 @@ alias ll='ls -lav --ignore=..'   # show long listing of all except ".."
 mkcd() {
     mkdir -p $* && cd $*
 }
+
+alias fzf="fzf --height=16 --layout=reverse --select-1 --bind=ctrl-p:toggle-preview"
 
 
 # Vim
