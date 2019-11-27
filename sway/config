@@ -227,8 +227,7 @@ bar {
 }
 
 ### # Lock screen
-### bindsym $mod+o exec swaylock-blur
-### bindsym $mod+Shift+o exec python $HOME/.dotfiles/src/swaylock-fancy/lock.py -s 0.5 -l $HOME/.dotfiles/src/swaylock-fancy/lock.png
+bindsym $mod+Shift+o exec swaylock --clock --indicator --screenshots --effect-blur 20x2 --effect-vignette 0.5:0.5
 
 
 ### # background
