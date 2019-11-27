@@ -11,4 +11,3 @@ PS1='[\u@\h \W]\$ '
 DOTBASH=$HOME/.dotfiles/bash
 source $DOTBASH/exports
 source $DOTBASH/aliases
-source $DOTBASH/functions
