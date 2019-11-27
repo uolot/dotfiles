@@ -1,0 +1,11 @@
+# vim: ft=bash
+
+alias v="vim"
+
+# vim fuzzy find file with fd
+vf() {
+  local file=$(fd -i -t f | grep -v __pycache__ | fzf --multi -q "$1" --preview='less {}')
+  if [ "$file" != "" ]; then
+    vim ${@:2} $file
+  fi
+}

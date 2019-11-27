@@ -1,0 +1,5 @@
+# vim: ft=bash
+
+export LESS=-FRSX
+
+alias fzf="fzf --height=16 --layout=reverse --select-1 --bind=ctrl-p:toggle-preview"

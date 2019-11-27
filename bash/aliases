@@ -10,18 +10,3 @@ alias ll='ls -lav --ignore=..'   # show long listing of all except ".."
 mkcd() {
     mkdir -p $* && cd $*
 }
-
-alias fzf="fzf --height=16 --layout=reverse --select-1 --bind=ctrl-p:toggle-preview"
-
-
-# Vim
-
-alias v="vim"
-
-# vim fuzzy find file with fd
-vf() {
-  local file=$(fd -i -t f | grep -v __pycache__ | fzf --multi -q "$1" --preview='less {}')
-  if [ "$file" != "" ]; then
-    vim ${@:2} $file
-  fi
-}

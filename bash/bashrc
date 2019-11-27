@@ -5,9 +5,21 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+
 set -o vi
+
+
+export PATH="$HOME/.dotfiles/bin:$HOME/.local/bin:$PATH"
+
+export BROWSER=firefox
+export EDITOR=vim
+
+
 PS1='[\u@\h \W]\$ '
 
+
 DOTBASH=$HOME/.dotfiles/bash
-source $DOTBASH/exports
 source $DOTBASH/aliases
+source $DOTBASH/utils
+source $DOTBASH/vim
+source $DOTBASH/python
