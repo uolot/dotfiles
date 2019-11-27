@@ -4,6 +4,7 @@ from lib import ask
 
 LINKS = {
     'bash/bashrc': '.bashrc',
+    'bash/bash_profile': '.bash_profile',
     'bash/inputrc': '.inputrc',
     'git/config': '.gitconfig',
     'git/ignore': '.gitignore',
