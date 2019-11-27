@@ -18,6 +18,9 @@ PACKAGES = [
     "extra/tree",
     "aur/universal-ctags-git",
 
+    # Dev
+    "community/ccache",
+
     # Python
     "community/pyenv",
 ]
