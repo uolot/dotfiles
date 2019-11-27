@@ -57,6 +57,7 @@ Plug 'romainl/vim-cool'
 Plug 'markonm/traces.vim'
 
 source $HOME/.dotfiles/vim/files.vim
+source $HOME/.dotfiles/vim/dev.vim
 source $HOME/.dotfiles/vim/python.vim
 
 call plug#end()
