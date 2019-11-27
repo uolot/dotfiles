@@ -12,7 +12,7 @@
 
 set -eo pipefail
 
-DIVIDER=$(printf '=%.0s' {1..20})
+DIVIDER="----------"
 
 ORIGIN_URL=$(git remote get-url origin)
 ORIGIN_OWNER=$(echo $ORIGIN_URL | cut -d: -f2 | cut -d/ -f1)
@@ -20,11 +20,13 @@ UPSTREAM_OWNER=${1?"Usage: $0 <UPSTREAM_OWNER>"}
 UPSTREAM_URL=$(echo $ORIGIN_URL | sed -e "s/$ORIGIN_OWNER/$UPSTREAM_OWNER/")
 UPSTREAM_NAME="${2:-upstream}"
 
-echo "$DIVIDER before $DIVIDER"
+echo -e "\n$DIVIDER before $DIVIDER"
 git remote -v
 
 git remote add $UPSTREAM_NAME $UPSTREAM_URL
 git remote set-url --push $UPSTREAM_NAME no_push
 
-echo "$DIVIDER after $DIVIDER"
+echo -e "\n$DIVIDER after $DIVIDER"
 git remote -v
+
+echo
