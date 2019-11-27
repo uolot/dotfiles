@@ -3,10 +3,10 @@ from lib import ask
 
 
 LINKS = {
-    'i3status': '.config/i3status/config',
-    'sway_config': '.config/sway/config',
-    'termite_config': '.config/termite/config',
-    'vimrc': '.vimrc',
+    'sway/i3status': '.config/i3status/config',
+    'sway/config': '.config/sway/config',
+    'termite/config': '.config/termite/config',
+    'vim/vimrc': '.vimrc',
 }
 
 
