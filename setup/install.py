@@ -22,7 +22,12 @@ PACKAGES = [
     "community/ccache",
 
     # Python
+    "community/mypy",
+    "community/pylama",
     "community/pyenv",
+    "community/python-black",
+    "community/python-language-server",
+    "community/python-poetry",
 ]
 
 
