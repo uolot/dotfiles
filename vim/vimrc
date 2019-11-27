@@ -56,7 +56,8 @@ Plug 'romainl/vim-cool'
 " Range, pattern and substitute preview
 Plug 'markonm/traces.vim'
 
-source $HOME/.dotfiles/vim/lang-python.vim
+source $HOME/.dotfiles/vim/files.vim
+source $HOME/.dotfiles/vim/python.vim
 
 call plug#end()
 
