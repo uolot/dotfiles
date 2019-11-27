@@ -1,0 +1,16 @@
+#!/usr/bin/env sh
+
+case "$1" in
+    personal)
+        git config user.name "Tomasz Walotek"
+        git config user.email "tomasz.walotek@gmail.com"
+        ;;
+    lyst)
+        git config user.name "Tomasz Walotek"
+        git config user.email "tomasz.walotek@ly.st"
+        ;;
+    *)
+        echo "Usage: $(basename $0) <personal|lyst>"
+        ;;
+esac
+

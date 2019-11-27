@@ -1,0 +1,54 @@
+# vi: filetype=gitconfig
+
+[color]
+	ui = auto
+[core]
+	autocrlf = input
+	editor = vim
+	excludesfile = ~/.gitignore
+[diff]
+	colorMoved = default
+[help]
+	autocorrect = 0
+[log]
+	decorate = full
+[merge]
+	tool = vimdiff
+	conflictstyle = diff3
+[mergetool]
+	prompt = false
+[push]
+	default = simple
+	followTags = true
+[status]
+	showUntrackedFiles = all
+[fetch]
+	prune = true
+[rerere]
+	enabled = true
+
+[alias]
+	# short aliases
+	a = add
+	ap = add --patch
+
+	b = branch
+	br = branch -ra
+
+	c = commit --verbose
+	ca = commit --amend --verbose
+	cf = commit --fixup
+	cm = commit -m
+	co = checkout
+
+	df = diff
+	dfc = diff --cached
+
+	lgf = log --pretty=format:"%C(green)%h\\ %C(yellow)%ad%C(red)%d\\ %Creset%s%C(blue)\\ %an" --decorate --date=human --topo-order --graph -n 10
+
+	st = status --short --branch
+
+	# extra tools
+	frum = ! git fetch --all && git rebase upstream/master
+	prum = pull --rebase upstream master
+	last = lgf -1

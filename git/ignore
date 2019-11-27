@@ -1,0 +1,17 @@
+# vim
+tags
+*~
+*.swp
+
+# python
+.ipynb_checkpoints/
+.mypy_cache
+.venv
+Untitled.ipynb
+*.pyc
+
+# misc
+.cache
+.envrc
+.cquery_cache
+*.twalotek

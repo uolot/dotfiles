@@ -3,6 +3,8 @@ from lib import ask
 
 
 LINKS = {
+    'git/config': '.gitconfig',
+    'git/ignore': '.gitignore',
     'sway/i3status': '.config/i3status/config',
     'sway/config': '.config/sway/config',
     'termite/config': '.config/termite/config',
