@@ -39,7 +39,9 @@
 	ca = commit --amend --verbose
 	cf = commit --fixup
 	cm = commit -m
+
 	co = checkout
+	cop = checkout --patch
 
 	df = diff
 	dfc = diff --cached
