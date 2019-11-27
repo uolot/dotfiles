@@ -3,6 +3,8 @@ from lib import ask
 
 
 LINKS = {
+    'bash/bashrc': '.bashrc',
+    'bash/inputrc': '.inputrc',
     'git/config': '.gitconfig',
     'git/ignore': '.gitignore',
     'sway/i3status': '.config/i3status/config',
