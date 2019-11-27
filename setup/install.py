@@ -16,6 +16,7 @@ PACKAGES = [
     "community/fzf",
     "community/fzy",
     "extra/tree",
+    "aur/universal-ctags-git",
 
     # Python
     "community/pyenv",
