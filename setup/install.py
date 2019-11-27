@@ -15,6 +15,9 @@ PACKAGES = [
     "community/fd",
     "community/fzf",
     "extra/tree",
+
+    # Python
+    "community/pyenv",
 ]
 
 
