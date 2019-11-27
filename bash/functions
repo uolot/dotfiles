@@ -1,0 +1,7 @@
+# vim: ft=bash
+
+mkcd() {
+    mkdir -p $*
+    cd $*
+}
+

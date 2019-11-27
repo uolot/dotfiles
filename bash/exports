@@ -1,0 +1,7 @@
+# vim: ft=bash
+
+export PATH="$HOME/.dotfiles/bin:$HOME/.local/bin:$PATH"
+export EDITOR=vim
+export BROWSER=firefox
+export LESS=-FRSX
+export PYTHONDONTWRITEBYTECODE=1

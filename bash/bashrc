@@ -6,17 +6,9 @@
 [[ $- != *i* ]] && return
 
 set -o vi
-
-export PATH="$HOME/.dotfiles/bin:$HOME/.local/bin:$PATH"
-export EDITOR=vim
-export BROWSER=firefox
-export LESS=-FRSX
-export PYTHONDONTWRITEBYTECODE=1
-
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ls='ls --color=auto'
-alias ll='ls -lav --ignore=..'   # show long listing of all except ".."
-alias v="vim"
-
 PS1='[\u@\h \W]\$ '
+
+DOTBASH=$HOME/.dotfiles/bash
+source $DOTBASH/exports
+source $DOTBASH/aliases
+source $DOTBASH/functions

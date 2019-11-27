@@ -1,0 +1,7 @@
+# vim: ft=bash
+
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ls='ls --color=auto'
+alias ll='ls -lav --ignore=..'   # show long listing of all except ".."
+alias v="vim"
