@@ -6,6 +6,7 @@ LINKS = {
     "bash/bashrc": ".bashrc",
     "bash/bash_profile": ".bash_profile",
     "bash/inputrc": ".inputrc",
+    "ctags/config.ctags": ".ctags.d/config.ctags",
     "git/config": ".gitconfig",
     "git/ignore": ".gitignore",
     "sway/i3status": ".config/i3status/config",

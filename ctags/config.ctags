@@ -1,0 +1,4 @@
+--python-kinds=-i
+--exclude=*.json
+--exclude=.mypy_cache
+--exclude=.cache
