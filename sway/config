@@ -23,13 +23,14 @@ titlebar_padding 15 3
 # Lyst Dell
 output "Sharp Corporation 0x148B 0x00000000" {
     mode 3840x2160
-    scale 2.5
+    scale 2.4
+    # y = external.height / external.scale
     pos 0 1440
 }
 # Lyst external monitor
 output "Dell Inc. DELL U2717D J0XYN87S247L" {
     mode 2560x1440
-    scale 1.1
+    scale 1
     pos 0 0
 }
 # Thinkpad X1 Carbon 2nd gen
