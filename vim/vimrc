@@ -56,9 +56,14 @@ Plug 'romainl/vim-cool'
 " Range, pattern and substitute preview
 Plug 'markonm/traces.vim'
 
+" Close brackets on enter
+" Config: https://github.com/rstacruz/vim-closer/blob/master/plugin/closer.vim
+Plug 'rstacruz/vim-closer'
+
 source $HOME/.dotfiles/vim/files.vim
 source $HOME/.dotfiles/vim/dev.vim
 source $HOME/.dotfiles/vim/python.vim
+source $HOME/.dotfiles/vim/textobj.vim
 
 call plug#end()
 
