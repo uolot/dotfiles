@@ -21,3 +21,11 @@ Plug 'neomake/neomake'
     " E510 - line too long
     " W605 - invalid escape sequence
     let g:neomake_python_pylama_maker = { 'args': ['--ignore=E501,W605'],  }
+
+Plug 'tpope/vim-commentary'
+
+Plug 'airblade/vim-gitgutter'
+    " let g:gitgutter_highlight_lines = 1
+    let g:gitgutter_map_keys = 0
+    nnoremap ]c :GitGutterNextHunk<CR>
+    nnoremap [c :GitGutterPrevHunk<CR>
