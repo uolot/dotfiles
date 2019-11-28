@@ -14,11 +14,9 @@ export PATH="$HOME/.dotfiles/bin:$HOME/.local/bin:$PATH"
 export BROWSER=firefox
 export EDITOR=vim
 
-
-PS1='[\u@\h \W]\$ '
-
-
 DOTBASH=$HOME/.dotfiles/bash
+source $DOTBASH/colors
+source $DOTBASH/prompt
 source $DOTBASH/aliases
 source $DOTBASH/utils
 source $DOTBASH/vim

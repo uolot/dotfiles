@@ -1,0 +1,44 @@
+# vim: ft=bash
+
+function prompt_command {
+    local userprompt="$USER@$HOSTNAME"
+
+    local workdir
+    if [[ "$PWD" == "$HOME" ]]
+    then
+        workdir=" ~ "
+    else
+        workdir=" $(basename $PWD) "
+    fi
+
+    local venvprompt
+    if [[ "$VIRTUAL_ENV" == "" ]]
+    then
+        venvprompt=""
+    else
+        venvprompt=" ($(basename $VIRTUAL_ENV))"
+    fi
+
+    local gitbranch=$(git rev-parse --abbrev-ref HEAD 2> /dev/null)
+    local gitprompt
+    if [[ "$gitbranch" == "" ]]
+    then
+        gitprompt=""
+    else
+        gitprompt=" <$(echo $gitbranch | cut -c-12)>"
+    fi
+
+    local width=$(tput cols)
+    local width40pct=$(($width * 2 / 5))
+
+    local left="$userprompt$venvprompt$gitprompt$workdir"
+    local right="\$ "
+    if [[ ${#left} -gt $width40pct ]]
+    then
+        PS1="$LYELLOW$left$NOCOLOR\n$right"
+    else
+        PS1="$LYELLOW$left$NOCOLOR$right"
+    fi
+}
+
+export PROMPT_COMMAND=prompt_command
