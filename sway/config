@@ -18,10 +18,12 @@ titlebar_padding 15 3
 
 # outputs
 
+# TODO: automatically change scale
+
 # Lyst Dell
 output "Sharp Corporation 0x148B 0x00000000" {
     mode 3840x2160
-    scale 2.4
+    scale 2.5
     pos 0 1440
 }
 # Lyst external monitor
