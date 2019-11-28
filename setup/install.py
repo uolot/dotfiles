@@ -9,13 +9,15 @@ PACKAGES = [
     # Fonts
     "community/otf-font-awesome",
     "aur/ttf-input",
-    # Shell utils
+    # Shell
     "community/fd",
     "community/fzf",
     "community/fzy",
+    "extra/libqalculate",
     "community/moreutils",
     "extra/tree",
     "aur/universal-ctags-git",
+    "community/wl-clipboard",
     # Dev
     "community/ccache",
     # Python
@@ -25,8 +27,6 @@ PACKAGES = [
     "community/python-black",
     "community/python-language-server",
     "community/python-poetry",
-    # Misc utils
-    "extra/libqalculate",
 ]
 
 
