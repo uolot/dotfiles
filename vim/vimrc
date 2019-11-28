@@ -97,3 +97,6 @@ nnoremap <Leader>s /\<\><left><left>
 " reselect visual block after (un)indent
 vnoremap < <gv
 vnoremap > >gv
+
+" select inserted/pasted text
+nnoremap gV `[v`]
