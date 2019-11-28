@@ -13,6 +13,7 @@ PACKAGES = [
     "community/fd",
     "community/fzf",
     "community/fzy",
+    "community/moreutils",
     "extra/tree",
     "aur/universal-ctags-git",
     # Dev
