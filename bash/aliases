@@ -4,6 +4,9 @@
 
 alias ..='cd ..'
 alias ...='cd ../..'
+
+alias x="exit"
+
 alias ls='ls --color=auto'
 alias ll='ls -lav --ignore=..'   # show long listing of all except ".."
 
