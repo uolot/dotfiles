@@ -24,6 +24,8 @@ PACKAGES = [
     "community/python-black",
     "community/python-language-server",
     "community/python-poetry",
+    # Misc utils
+    "extra/libqalculate",
 ]
 
 
