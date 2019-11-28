@@ -3,24 +3,24 @@ from lib import ask
 
 
 LINKS = {
-    'bash/bashrc': '.bashrc',
-    'bash/bash_profile': '.bash_profile',
-    'bash/inputrc': '.inputrc',
-    'git/config': '.gitconfig',
-    'git/ignore': '.gitignore',
-    'sway/i3status': '.config/i3status/config',
-    'sway/config': '.config/sway/config',
-    'termite/config': '.config/termite/config',
-    'vim/vimrc': '.vimrc',
+    "bash/bashrc": ".bashrc",
+    "bash/bash_profile": ".bash_profile",
+    "bash/inputrc": ".inputrc",
+    "git/config": ".gitconfig",
+    "git/ignore": ".gitignore",
+    "sway/i3status": ".config/i3status/config",
+    "sway/config": ".config/sway/config",
+    "termite/config": ".config/termite/config",
+    "vim/vimrc": ".vimrc",
 }
 
 
 def create_links():
-    if not ask('Create symlinks?'):
+    if not ask("Create symlinks?"):
         return
 
     print("Creating symlinks")
-    print('Dotfiles path:', DOTFILES_DIR)
+    print("Dotfiles path:", DOTFILES_DIR)
 
     for src, dest in LINKS.items():
         src_path = DOTFILES_DIR / src
@@ -28,19 +28,18 @@ def create_links():
 
         dest_dir = dest_path.parent
         if not dest_dir.exists():
-            print(f'Creating {dest_dir}')
+            print(f"Creating {dest_dir}")
             dest_dir.mkdir(parents=True)
 
         print(f"Linking {dest_path} -> {src_path}")
         if dest_path.is_symlink():
             dest_links_to = dest_path.resolve()
-            if (
-                    dest_links_to != src_path
-                    and ask(f'\t{dest_path} is a symlink to {dest_links_to}, overwrite?')
+            if dest_links_to != src_path and ask(
+                f"\t{dest_path} is a symlink to {dest_links_to}, overwrite?"
             ):
                 link(src_path, dest_path, unlink=True)
         elif dest_path.is_file():
-            if ask(f'\t{dest_path} is a regular file, overwrite?'):
+            if ask(f"\t{dest_path} is a regular file, overwrite?"):
                 link(src_path, dest_path, unlink=True)
         else:
             link(src_path, dest_path)
@@ -54,7 +53,7 @@ def link(src_path, dest_path, *, unlink=False):
         print(f"\tlinking {dest_path} -> {src_path}")
         dest_path.symlink_to(src_path)
     except Exception as e:
-        print('\t', e)
+        print("\t", e)
 
 
 if __name__ == "__main__":
