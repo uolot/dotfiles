@@ -48,6 +48,8 @@
 
 	lgf = log --pretty=format:"%C(green)%h\\ %C(yellow)%ad%C(red)%d\\ %Creset%s%C(blue)\\ %an" --decorate --date=human --topo-order --graph -n 10
 
+	p = push
+
 	st = status --short --branch
 
 	# extra tools
