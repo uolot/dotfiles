@@ -3,6 +3,7 @@ from lib import ask
 
 
 LINKS = {
+    "bin": "Bin",
     "bash/bashrc": ".bashrc",
     "bash/bash_profile": ".bash_profile",
     "bash/inputrc": ".inputrc",

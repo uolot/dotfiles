@@ -1,0 +1,18 @@
+#!/usr/bin/env sh
+
+result=$(echo -e "xps:small\nxps:large" | rofi -dmenu)
+
+xps='Sharp Corporation 0x148B 0x00000000'
+
+case "$result" in
+    xps:small)
+        output=$xps
+        scale=2.2
+        ;;
+    xps:large)
+        output=$xps
+        scale=2.4
+        ;;
+esac
+
+sway output \"$output\" scale $scale
