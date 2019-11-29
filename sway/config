@@ -58,9 +58,9 @@ bindsym $mod+Return exec termite
 ### # show time and date
 ### bindsym $mod+t exec $HOME/Bin/showtime.py
 ### for_window [title="^showtime$"] floating enable, border none
-### 
-### # start a webbrowser
-### bindsym $mod+b exec $HOME/Bin/start-webbrowser sway
+
+# start a webbrowser
+bindsym $mod+b exec firefox
 
 # kill focused window
 bindsym $mod+Shift+q kill
