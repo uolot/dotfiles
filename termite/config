@@ -4,7 +4,7 @@
 allow_bold = true
 #audible_bell = false
 clickable_url = false
-#dynamic_title = true
+dynamic_title = false
 # font = RobotoMono Nerd Font Regular 11
 font = Input Mono Condensed 12
 #fullscreen = true
