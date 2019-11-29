@@ -22,11 +22,14 @@ PACKAGES = [
     "community/wl-clipboard",
     # Dev
     "community/ccache",
+    "community/libmemcached",
     # Python
+    "community/ipython",
     "community/mypy",
     "community/pylama",
     "community/pyenv",
     "community/python-black",
+    "extra/python-cffi",
     "community/python-language-server",
     "community/python-poetry",
 ]
