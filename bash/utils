@@ -1,5 +1,8 @@
 # vim: ft=bash
 
 export LESS=-FRSX
+export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
 
+# fzf
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 alias fzf="fzf --height=16 --layout=reverse --select-1 --bind=ctrl-p:toggle-preview"
