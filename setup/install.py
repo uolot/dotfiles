@@ -2,6 +2,8 @@ import os
 
 
 PACKAGES = [
+    # System
+    "aur/openvpn-update-systemd-resolved",
     # Sway
     "community/sway",
     "aur/swaylock-effects-git",
