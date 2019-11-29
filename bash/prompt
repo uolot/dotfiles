@@ -25,7 +25,7 @@ function prompt_command {
     then
         gitprompt=""
     else
-        gitprompt=" <$(echo $gitbranch | cut -c-12)>"
+        gitprompt=" <$(echo $gitbranch | cut -c-16)>"
     fi
 
     local width=$(tput cols)
