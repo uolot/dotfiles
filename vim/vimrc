@@ -7,6 +7,7 @@ filetype on " enables filetype detection
 filetype plugin on " enables filetype specific plugins
 let mapleader=" "
 
+set autoread " reload file after changed by running a !command
 set backspace=indent,eol,start
 set completeopt=menu,preview " show popup menu on completion with extra info
 set completefunc=syntaxcomplete#Complete " set user-mode completions for <C-x><C-u>
@@ -59,6 +60,9 @@ Plug 'markonm/traces.vim'
 " Close brackets on enter
 " Config: https://github.com/rstacruz/vim-closer/blob/master/plugin/closer.vim
 Plug 'rstacruz/vim-closer'
+
+" Asynchronous build and test dispatcher
+Plug 'tpope/vim-dispatch'
 
 source $HOME/.dotfiles/vim/files.vim
 source $HOME/.dotfiles/vim/dev.vim

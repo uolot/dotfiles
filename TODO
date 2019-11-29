@@ -1,7 +1,7 @@
 * shell: add gg
 * sway: add volume and brightness controls
 * rofi: add rofi config file
-* sway: adjust dell's scale depending on presence of second display
+* sway: auto adjust dell's scale depending on presence of second display
 * sway: add screenhosts bindings
 * sway: add workspace renaming
 * sway: add wallpaper
@@ -9,3 +9,5 @@
 * sway: add clipman
 * sway: add flashfocus
 * sway: add battery bot
+* vim: disabling dispatched black
+* vim: remove black.vim config
