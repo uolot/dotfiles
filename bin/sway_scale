@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-result=$(echo -e "xps:small\nxps:regular\ndell:small\ndell:regular\ndell:large" | rofi -dmenu)
+result=$(echo -e "xps:small\nxps:regular\nxps:large\ndell:small\ndell:regular\ndell:large" | rofi -dmenu)
 
 xps='Sharp Corporation 0x148B 0x00000000'
 dell='Dell Inc. DELL U2717D J0XYN87S247L'
@@ -13,6 +13,10 @@ case "$result" in
     xps:regular)
         output=$xps
         scale=2.4
+        ;;
+    xps:large)
+        output=$xps
+        scale=2.5
         ;;
     dell:small)
         output=$dell
