@@ -1,13 +1,15 @@
-* shell: add gg
 * sway: add volume and brightness controls
-* rofi: add rofi config file
-* sway: auto adjust dell's scale depending on presence of second display
+* sway: add clipman
+* shell: add gg
+* vim: add option for diabling running dispatched black
+* sway: rewrite bin/sway_scale to python
+* vim: remove black.vim config
+* sway: add battery bot
+* sway: add flashfocus
 * sway: add screenhosts bindings
 * sway: add workspace renaming
-* sway: add wallpaper
 * sway: add notifications
-* sway: add clipman
-* sway: add flashfocus
-* sway: add battery bot
-* vim: disabling dispatched black
-* vim: remove black.vim config
+* sway: add menu (or rofi) for logout/shutdown/reboot
+* rofi: add rofi config file
+* sway: auto adjust dell's scale depending on presence of second display
+* sway: add wallpaper
