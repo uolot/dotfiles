@@ -29,3 +29,17 @@ Plug 'airblade/vim-gitgutter'
     let g:gitgutter_map_keys = 0
     nnoremap ]c :GitGutterNextHunk<CR>
     nnoremap [c :GitGutterPrevHunk<CR>
+
+Plug 'jpalardy/vim-slime'
+    let g:slime_target = "tmux"
+    let g:slime_python_ipython = 1
+    nmap <C-c><C-l> <Plug>SlimeLineSend
+    nmap <C-c><C-m> <Plug>SlimeMotionSend
+    function! Slime_ipython_toggle()
+        if !exists('g:slime_python_ipython') || g:slime_python_ipython == 0
+            let g:slime_python_ipython = 1
+        else
+            unlet g:slime_python_ipython
+        endif
+    endfunction
+    nmap <C-c><C-i> :silent! call Slime_ipython_toggle()<CR>
