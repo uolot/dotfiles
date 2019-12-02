@@ -22,6 +22,8 @@ PACKAGES = [
     "community/wl-clipboard",
     # Dev
     "community/ccache",
+    "community/docker",
+    "community/docker-compose",
     "community/libmemcached",
     # Python
     "community/ipython",
