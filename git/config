@@ -24,6 +24,8 @@
 	showUntrackedFiles = all
 [fetch]
 	prune = true
+[rebase]
+	autoSquash = true
 [rerere]
 	enabled = true
 
