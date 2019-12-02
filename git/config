@@ -57,3 +57,4 @@
 	frum = ! git fetch --all && git rebase upstream/master
 	prum = pull --rebase upstream master
 	last = lgf -1
+	todos = !"ag '(TODO|XXX|FIXME)' $(git diff --name-only)"
