@@ -1,18 +1,42 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
-result=$(echo -e "xps:small\nxps:large" | rofi -dmenu)
+result=$(echo -e "xps:small\nxps:regular\ndell:small\ndell:regular\ndell:large" | rofi -dmenu)
 
 xps='Sharp Corporation 0x148B 0x00000000'
+dell='Dell Inc. DELL U2717D J0XYN87S247L'
 
 case "$result" in
     xps:small)
         output=$xps
         scale=2.2
         ;;
-    xps:large)
+    xps:regular)
         output=$xps
         scale=2.4
         ;;
+    dell:small)
+        output=$dell
+        scale=0.915
+        output2=$xps
+        ;;
+    dell:regular)
+        output=$dell
+        scale=1
+        output2=$xps
+        ;;
+    dell:large)
+        output=$dell
+        scale=1.1
+        output2=$xps
+        ;;
 esac
 
+set -x
+
 sway output \"$output\" scale $scale
+
+if [ "$output2$pos2" != "" ]
+then
+    pos2="0 $(echo "1440 / $scale" | bc)"
+    sway output \"$output2\" pos $pos2
+fi
