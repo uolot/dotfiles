@@ -17,10 +17,13 @@ PACKAGES = [
     "community/fzy",
     "extra/libqalculate",
     "community/moreutils",
+    "community/tmux",
     "extra/tree",
     "aur/universal-ctags-git",
     "community/wl-clipboard",
     # Dev
+    "community/aws-cli",
+    "aur/awslogs",
     "community/ccache",
     "community/docker",
     "community/docker-compose",
