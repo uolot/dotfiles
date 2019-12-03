@@ -31,13 +31,14 @@ function prompt_command {
     local width=$(tput cols)
     local width40pct=$(($width * 2 / 5))
 
-    local left="$userprompt$venvprompt$gitprompt$workdir"
+    local left_simple="$userprompt$venvprompt$gitprompt$workdir"
+    local left="$userprompt$CYAN$venvprompt$MAGENTA$gitprompt$YELLOW$workdir$NOCOLOR"
     local right="\$ "
-    if [[ ${#left} -gt $width40pct ]]
+    if [[ ${#left_simple} -gt $width40pct ]]
     then
-        PS1="$LYELLOW$left$NOCOLOR\n$right"
+        PS1="$left\n$right"
     else
-        PS1="$LYELLOW$left$NOCOLOR$right"
+        PS1="$left$right"
     fi
 }
 
