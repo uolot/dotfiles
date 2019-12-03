@@ -5,6 +5,8 @@ PACKAGES = [
     # System
     "aur/openvpn-update-systemd-resolved",
     # Sway
+    "aur/brillo",
+    "community/ponymix",
     "community/sway",
     "aur/swaylock-effects-git",
     "community/rofi",

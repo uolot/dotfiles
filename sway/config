@@ -238,29 +238,31 @@ bindsym $mod+Shift+o exec swaylock --clock --indicator --screenshots --effect-bl
 ### # Start mako for notifications
 ### exec mako &
 
+
 ### # Start clipboard manager
 ### exec wl-paste -t text --watch clipman store
 ### # exec wl-paste -p -t text --watch clipman store --histpath="~/.local/share/clipman-primary.json
 ### bindsym $mod+c exec clipman pick -t rofi
 ### # bindsym $win+c exec clipman pick -t rofi --histpath="~/.local/share/clipman-primary.json
 
+
 ### # Flash windows
 ### exec_always flashfocus
 ### bindsym $mod+n exec --no-startup-id flash_window
 
 
-### # increase sound volume
-### bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume 0 +2db"
-### # decrease sound volume
-### bindsym XF86AudioLowerVolume exec "pactl set-sink-volume 0 -2db"
-### # mute sound
-### bindsym XF86AudioMute exec "ponymix toggle"
+# increase sound volume
+bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume 0 +2db"
+# decrease sound volume
+bindsym XF86AudioLowerVolume exec "pactl set-sink-volume 0 -2db"
+# mute sound
+bindsym XF86AudioMute exec "ponymix toggle"
 
 
-### # Increase screen brightness
-### bindsym XF86MonBrightnessUp exec "brillo -A 5 -q -u 250000"
-### # Decrease screen brightness
-### bindsym XF86MonBrightnessDown exec "brillo -U 5 -q -u 250000""
+# Increase screen brightness
+bindsym XF86MonBrightnessUp exec "pkexec /usr/bin/brillo -A 3 -q -u 250000 > /dev/null"
+# Decrease screen brightness
+bindsym XF86MonBrightnessDown exec "pkexec /usr/bin/brillo -U 3 -q -u 250000 > /dev/null"
 
 
 ### # XD
