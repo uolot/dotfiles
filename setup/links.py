@@ -13,6 +13,7 @@ LINKS = {
     "sway/i3status": ".config/i3status/config",
     "sway/config": ".config/sway/config",
     "termite/config": ".config/termite/config",
+    "tmux/tmux.conf": ".tmux.conf",
     "vim/vimrc": ".vimrc",
 }
 
