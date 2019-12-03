@@ -5,6 +5,25 @@ export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu
 
 alias todos="ag '(TODO|XXX|FIXME)'"
 
+
 # fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 alias fzf="fzf --height=16 --layout=reverse --select-1 --bind=ctrl-p:toggle-preview"
+
+
+# terraform
+
+# run terraform with logging
+tf() {
+    mkdir -p /tmp/tf
+    terraform $* |& tee /tmp/tf/$(basename $PWD)__tf-$1__$(date +'%Y%m%d-%H%M%S').log
+}
+
+# print the path of the last created tf.log file
+tf-last() {
+    # '%C@' - ctime in epoch seconds, '%p' - path
+    find /tmp/tf -name '*.log' -printf '%C@ %p\n' \
+    | sort -nr \
+    | head -1 \
+    | cut -d' ' -f2
+}

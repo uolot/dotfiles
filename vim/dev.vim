@@ -43,3 +43,13 @@ Plug 'jpalardy/vim-slime'
         endif
     endfunction
     nmap <C-c><C-i> :silent! call Slime_ipython_toggle()<CR>
+
+" make vim understand ANSI escape sequences
+Plug 'vim-scripts/AnsiEsc.vim'
+    " fix for cecutil plugin (used by AnsiEsc.vim) mapping to <Leader>rwp and
+    " <Leader>swp that break my own leader mappings
+    function! Unmap_cecutil()
+      unmap <Leader>rwp
+      unmap <Leader>swp
+    endfunction
+    autocmd BufEnter * silent! call Unmap_cecutil()

@@ -30,6 +30,7 @@ PACKAGES = [
     "community/docker",
     "community/docker-compose",
     "community/libmemcached",
+    "community/terraform",
     # Python
     "community/ipython",
     "community/mypy",
