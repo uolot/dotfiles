@@ -10,6 +10,8 @@ PACKAGES = [
     "community/sway",
     "aur/swaylock-effects-git",
     "community/rofi",
+    # Apps
+    "aur/chromium-snapshot-bin",
     # Fonts
     "community/otf-font-awesome",
     "aur/ttf-input",
@@ -30,6 +32,7 @@ PACKAGES = [
     "community/docker",
     "community/docker-compose",
     "community/libmemcached",
+    "community/npm",
     "community/terraform",
     # Python
     "community/ipython",
