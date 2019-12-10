@@ -2,8 +2,6 @@ import os
 
 
 PACKAGES = [
-    # System
-    "aur/openvpn-update-systemd-resolved",
     # Sway
     "aur/brillo",
     "community/ponymix",
@@ -12,9 +10,11 @@ PACKAGES = [
     "community/rofi",
     # Apps
     "aur/chromium-snapshot-bin",
-    # Fonts
-    "community/otf-font-awesome",
-    "aur/ttf-input",
+    # Communication
+    "community/blueman",
+    "extra/bluez",
+    "extra/bluez-utils",
+    "aur/openvpn-update-systemd-resolved",
     # Shell
     "community/colordiff",
     "community/fd",
@@ -45,6 +45,9 @@ PACKAGES = [
     "extra/python-cffi",
     "community/python-language-server",
     "community/python-poetry",
+    # Fonts
+    "community/otf-font-awesome",
+    "aur/ttf-input",
 ]
 
 
