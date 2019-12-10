@@ -32,7 +32,7 @@ function prompt_command {
     local width40pct=$(($width * 2 / 5))
 
     local left_simple="$userprompt$venvprompt$gitprompt$workdir"
-    local left="$userprompt$CYAN$venvprompt$MAGENTA$gitprompt$YELLOW$workdir$NOCOLOR"
+    local left="$YELLOW$userprompt$CYAN$venvprompt$MAGENTA$gitprompt$BLUE$workdir$NOCOLOR"
     local right="\$ "
     if [[ ${#left_simple} -gt $width40pct ]]
     then
