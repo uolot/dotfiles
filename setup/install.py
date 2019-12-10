@@ -16,6 +16,7 @@ PACKAGES = [
     "community/otf-font-awesome",
     "aur/ttf-input",
     # Shell
+    "community/colordiff",
     "community/fd",
     "community/fzf",
     "community/fzy",
