@@ -22,6 +22,7 @@ PACKAGES = [
     "community/fzy",
     "extra/libqalculate",
     "community/moreutils",
+    "extra/screen",
     "community/tmux",
     "extra/tree",
     "aur/universal-ctags-git",
