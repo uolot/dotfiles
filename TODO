@@ -5,7 +5,6 @@
 * vim: remove black.vim config
 * sway: add battery bot
 * sway: add flashfocus
-* sway: add screenhosts bindings
 * sway: rewrite bin/sway_scale to python
 * sway: add workspace renaming
 * sway: add notifications

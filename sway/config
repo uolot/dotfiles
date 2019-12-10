@@ -166,10 +166,10 @@ bindsym $mod+Shift+s sticky toggle
 bindsym $mod+Shift+Backspace move scratchpad
 bindsym $mod+Backspace scratchpad show
 
-### # screenshots
-### # https://github.com/emersion/grim
-### bindsym $mod+p exec grim $HOME/screenshot__$(date +'%Y-%m-%d__%H-%M-%S').png
-### bindsym $mod+Shift+p exec grim -g "$(slurp)" $HOME/screenshot__$(date +'%Y-%m-%d__%H-%M-%S').png
+# screenshots
+# https://github.com/emersion/grim
+bindsym $mod+p exec grim $HOME/screenshot__$(date +'%Y-%m-%d__%H-%M-%S').png
+bindsym $mod+Shift+p exec grim -g "$(slurp)" $HOME/screenshot__$(date +'%Y-%m-%d__%H-%M-%S').png
 
 # reload the config file
 bindsym $mod+Shift+c reload

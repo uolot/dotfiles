@@ -4,10 +4,12 @@ import os
 PACKAGES = [
     # Sway
     "aur/brillo",
+    "community/grim
     "community/ponymix",
     "community/sway",
     "aur/swaylock-effects-git",
     "community/rofi",
+    "community/slurp
     # Apps
     "aur/chromium-snapshot-bin",
     # Communication
