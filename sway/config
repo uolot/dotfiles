@@ -260,9 +260,9 @@ bindsym XF86AudioMute exec "ponymix toggle"
 
 
 # Increase screen brightness
-bindsym XF86MonBrightnessUp exec "pkexec /usr/bin/brillo -A 3 -q -u 250000 > /dev/null"
+bindsym XF86MonBrightnessUp exec "brillo -A 3 -q -u 250000"
 # Decrease screen brightness
-bindsym XF86MonBrightnessDown exec "pkexec /usr/bin/brillo -U 3 -q -u 250000 > /dev/null"
+bindsym XF86MonBrightnessDown exec "brillo -U 3 -q -u 250000"
 
 
 ### # XD
