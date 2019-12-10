@@ -26,6 +26,7 @@ order += "disk /home"
 #order += "run_watch DHCP"
 #order += "ipv6"
 #order += "run_watch VPN"
+order += "wireless wlan0"
 order += "wireless wlp2s0"
 order += "wireless wlp3s0"
 order += "wireless wlp4s0"
@@ -35,6 +36,12 @@ order += "ethernet enp57s0u1u4"
 #order += "cpu_usage 0"
 #order += "load"
 order += "tztime local"
+
+wireless wlan0 {
+    format_up = "W: %quality %essid %ip"
+    format_down = ""
+    separator_block_width = 32
+}
 
 wireless wlp2s0 {
     format_up = "W: %quality %essid %ip"
