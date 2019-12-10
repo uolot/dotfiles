@@ -78,14 +78,14 @@ call plug#end()
 filetype plugin indent on
 
 
-" ------ Colors ------
+" ------ Imports ------
 
+" colors
 source $HOME/.dotfiles/vim/uolors.vim
-
-
-" ------ Status line ------
-
+" status line
 source $HOME/.dotfiles/vim/statusline.vim
+" abbrevs
+source $HOME/.dotfiles/vim/abbrev.vim
 
 
 " ------ Mappings ------
