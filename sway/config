@@ -252,11 +252,13 @@ bindsym $mod+Shift+o exec swaylock --clock --indicator --screenshots --effect-bl
 
 
 # increase sound volume
-bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume 0 +2db"
+bindsym XF86AudioRaiseVolume exec "$HOME/Bin/volume up"
 # decrease sound volume
-bindsym XF86AudioLowerVolume exec "pactl set-sink-volume 0 -2db"
+bindsym XF86AudioLowerVolume exec "$HOME/Bin/volume down"
 # mute sound
 bindsym XF86AudioMute exec "ponymix toggle"
+# enable/disable airdots
+bindsym $mod+Shift+b exec "$HOME/Bin/airdots $(echo -e 'on\noff' | rofi -dmenu)"
 
 
 # Increase screen brightness

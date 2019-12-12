@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+active_sink=$(pacmd list-sinks |awk '/* index:/{print $3}')
+
+case $1 in
+    up)
+        pactl set-sink-volume "$active_sink" +2db
+        ;;
+    down)
+        pactl set-sink-volume "$active_sink" -2db
+        ;;
+esac

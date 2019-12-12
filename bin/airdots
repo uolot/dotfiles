@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+set -ex
+
+case $1 in
+    on)
+        bluetoothctl power on
+        bluetoothctl agent on
+        bluetoothctl connect 1C:52:16:9B:C0:E8
+        sleep 2
+        sink=$(pactl list sinks short | awk '$2 ~ /bluez/ {print $2}')
+        pactl set-default-sink "$sink"
+        pactl set-sink-volume "$sink" '40%'
+        sleep 4
+        play -q -n synth 0.1 sin 400 ; play -q -n synth 0.1 sin 600 ; play -q -n synth 0.1 sin 800
+        ;;
+    off)
+        pactl set-default-sink $(pactl list sinks short | head -1 | awk '{print $2}')
+        play -q -n synth 0.1 sin 800 ; play -q -n synth 0.1 sin 600 ; play -q -n synth 0.1 sin 400
+        ;;
+esac

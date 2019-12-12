@@ -146,8 +146,8 @@ disk "/home" {
 }
 
 volume master {
-    format = "V: %volume"
-    format_muted = "V: mut"
+    format = "V: %volume (%devicename)"
+    format_muted = "V: mut (%devicename)"
     device = "default"
     mixer = "Master"
     mixer_idx = 0
