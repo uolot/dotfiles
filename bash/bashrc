@@ -8,6 +8,8 @@
 
 set -o vi
 
+# Enable **/* wildards
+shopt -s globstar
 
 export PATH="$HOME/.dotfiles/bin:$HOME/.local/bin:$PATH"
 
