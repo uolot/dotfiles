@@ -65,12 +65,11 @@ bindsym $mod+b exec firefox
 # kill focused window
 bindsym $mod+Shift+q kill
 
-#bindsym $mod+space exec GDK_DPI_SCALE=1.2 termite --name=launcher -e "bash -c 'compgen -c | sort -u | fzf --reverse --no-extended --print-query --border | tail -n1 | xargs -r swaymsg -t command exec'"
-for_window [app_id="^launcher$"] floating enable, border none, resize set 30ppt 40ppt
 
-bindsym $mod+space exec rofi -show run -modi run -location 0 -width 30 -lines 10 -line-margin 0 -line-padding 1 -separator-style none -font "mono 15" -columns 1 -bw 0 -hide-scrollbar -monitor -4 -color-window "#222222, #222222, #b1b4b3" -color-normal "#222222, #b1b4b3, #222222, #005577, #b1b4b3" -color-active "#222222, #b1b4b3, #222222, #007763, #b1b4b3" -color-urgent "#222222, #b1b4b3, #222222, #77003d, #b1b4b3" -kb-row-select "Tab" -kb-row-tab ""
+# launcher
+bindsym $mod+space exec rofi -show run -modi run -monitor -4
+bindsym $mod+Shift+space exec rofi -show drun -modi drun -monitor -4
 
-bindsym $mod+Shift+space exec "rofi -show run -run-command 'gksudo {cmd}' -dpi 1"
 
 # change focus
 bindsym $mod+h focus left
@@ -258,7 +257,7 @@ bindsym XF86AudioLowerVolume exec "$HOME/Bin/volume down"
 # mute sound
 bindsym XF86AudioMute exec "ponymix toggle"
 # enable/disable airdots
-bindsym $mod+Shift+b exec "$HOME/Bin/airdots $(echo -e 'on\noff' | rofi -dmenu)"
+bindsym $mod+Shift+b exec "$HOME/Bin/airdots $(echo -e 'on\noff' | rofi -dmenu -p airdots)"
 
 
 # Increase screen brightness

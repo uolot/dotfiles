@@ -10,6 +10,7 @@ LINKS = {
     "ctags/config.ctags": ".ctags.d/config.ctags",
     "git/config": ".gitconfig",
     "git/ignore": ".gitignore",
+    "rofi/config.rasi": ".config/rofi/config.rasi",
     "sway/i3status": ".config/i3status/config",
     "sway/config": ".config/sway/config",
     "termite/config": ".config/termite/config",

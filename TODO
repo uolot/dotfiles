@@ -9,6 +9,5 @@
 * sway: add workspace renaming
 * sway: add notifications
 * sway: add menu (or rofi) for logout/shutdown/reboot
-* rofi: add rofi config file
 * sway: auto adjust dell's scale depending on presence of second display
 * sway: add wallpaper
