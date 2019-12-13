@@ -22,6 +22,12 @@ Plug 'neomake/neomake'
     " W605 - invalid escape sequence
     let g:neomake_python_pylama_maker = { 'args': ['--ignore=E501,W605'],  }
 
+Plug 'sheerun/vim-polyglot'
+    " TODO: Remove plugins duplicated by polyglot:
+    " https://github.com/sheerun/vim-polyglot#language-packs
+    let g:polyglot_disabled = ['python']
+    let g:terraform_fmt_on_save = 1
+
 Plug 'tpope/vim-commentary'
 
 Plug 'airblade/vim-gitgutter'
