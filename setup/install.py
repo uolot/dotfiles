@@ -10,6 +10,7 @@ PACKAGES = [
     "aur/swaylock-effects-git",
     "community/rofi",
     "community/slurp
+    "community/wl-clipboard",
     # Apps
     "aur/chromium-snapshot-bin",
     # Communication
@@ -18,6 +19,7 @@ PACKAGES = [
     "extra/bluez-utils",
     "aur/openvpn-update-systemd-resolved",
     # Shell
+    "extra/bash-completion",
     "community/colordiff",
     "community/fd",
     "community/fzf",
@@ -28,7 +30,6 @@ PACKAGES = [
     "community/tmux",
     "extra/tree",
     "aur/universal-ctags-git",
-    "community/wl-clipboard",
     # Dev
     "community/aws-cli",
     "aur/awslogs",
