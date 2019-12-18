@@ -1,46 +1,68 @@
-#!/usr/bin/env bash
+#!/usr/bin/env python3
 
-result=$(echo -e "xps:small\nxps:regular\nxps:large\ndell:small\ndell:regular\ndell:large" | rofi -dmenu)
+from dataclasses import dataclass
+import subprocess
 
-xps='Sharp Corporation 0x148B 0x00000000'
-dell='Dell Inc. DELL U2717D J0XYN87S247L'
 
-case "$result" in
-    xps:small)
-        output=$xps
-        scale=2.2
-        ;;
-    xps:regular)
-        output=$xps
-        scale=2.4
-        ;;
-    xps:large)
-        output=$xps
-        scale=2.5
-        ;;
-    dell:small)
-        output=$dell
-        scale=0.915
-        output2=$xps
-        ;;
-    dell:regular)
-        output=$dell
-        scale=1
-        output2=$xps
-        ;;
-    dell:large)
-        output=$dell
-        scale=1.1
-        output2=$xps
-        ;;
-esac
+@dataclass
+class ChangeScale:
+    output: str
+    scale: float
 
-set -x
 
-sway output \"$output\" scale $scale
+@dataclass
+class AdjustPosition:
+    output: str
+    scale: float
 
-if [ "$output2$pos2" != "" ]
-then
-    pos2="0 $(echo "1440 / $scale" | bc)"
-    sway output \"$output2\" pos $pos2
-fi
+
+XPS = "Sharp Corporation 0x148B 0x00000000"
+DELL = "Dell Inc. DELL U2717D J0XYN87S247L"
+# TODO: read this from sway -m get_outputs
+DELL_HEIGHT = 1440
+
+OPTIONS = {
+    "xps:small": [ChangeScale(XPS, 2.2)],
+    "xps:regular": [ChangeScale(XPS, 2.4)],
+    "xps:large": [ChangeScale(XPS, 2.5)],
+    "dell:small": [ChangeScale(DELL, 0.915), AdjustPosition(XPS, 0.915)],
+    "dell:regular": [ChangeScale(DELL, 1), AdjustPosition(XPS, 1)],
+    "dell:large": [ChangeScale(DELL, 1.1), AdjustPosition(XPS, 1.1)],
+}
+
+
+def read():
+    options = "\n".join(OPTIONS.keys())
+    r = subprocess.run(
+        ["rofi", "-dmenu"], input=options, text=True, capture_output=True
+    )
+    return r.stdout.strip()
+
+
+def apply(actions):
+    for action in actions:
+        print(action)
+        args = []  # type: ignore
+        if isinstance(action, ChangeScale):
+            args = [f'"{action.output}"', "scale", f"{action.scale}"]
+        elif isinstance(action, AdjustPosition):
+            args = [
+                f'"{action.output}"',
+                "pos",
+                "0",
+                str(int(DELL_HEIGHT / action.scale)),
+            ]
+        if args:
+            args = ["sway", "output"] + args
+            print(args)
+            subprocess.run(args)
+
+
+def main():
+    selection = read()
+    if selection in OPTIONS:
+        apply(OPTIONS[selection])
+
+
+if __name__ == "__main__":
+    main()

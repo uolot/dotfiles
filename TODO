@@ -1,11 +1,10 @@
 * sway: add clipman
 * shell: add gg
-* vim: add option for diabling running dispatched black
+* vim: add option for disabling running dispatched black
 * shell: dynamic git branch color in prompt
 * vim: remove black.vim config
 * sway: add battery bot
 * sway: add flashfocus
-* sway: rewrite bin/sway_scale to python
 * sway: add workspace renaming
 * sway: add notifications
 * sway: add menu (or rofi) for logout/shutdown/reboot
