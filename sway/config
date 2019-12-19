@@ -54,6 +54,7 @@ input "Input device: TPPS/2 IBM TrackPoint" {
 
 # start a terminal
 bindsym $mod+Return exec termite
+bindsym $mod+Shift+Return exec termite -d $(cat /tmp/workdir 2>/dev/null || pwd)
 
 ### # show time and date
 ### bindsym $mod+t exec $HOME/Bin/showtime.py

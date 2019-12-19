@@ -11,6 +11,8 @@ function prompt_command {
         workdir=" $(basename $PWD) "
     fi
 
+    echo $PWD > /tmp/workdir
+
     local venvprompt
     if [[ "$VIRTUAL_ENV" == "" ]]
     then
