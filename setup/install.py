@@ -13,6 +13,7 @@ PACKAGES = [
     "community/wl-clipboard",
     # Apps
     "aur/chromium-snapshot-bin",
+    "community/termite",
     # Communication
     "community/blueman",
     "extra/bluez",
@@ -59,6 +60,8 @@ PACKAGES = [
     "community/picocom",
     "community/python-pyudev",
     "aur/rshell",
+    # Misc
+    "community/sox",
 ]
 
 
