@@ -4,12 +4,12 @@ import os
 PACKAGES = [
     # Sway
     "aur/brillo",
-    "community/grim
+    "community/grim",
     "community/ponymix",
     "community/sway",
     "aur/swaylock-effects-git",
     "community/rofi",
-    "community/slurp
+    "community/slurp",
     "community/wl-clipboard",
     # Apps
     "aur/chromium-snapshot-bin",
@@ -51,6 +51,14 @@ PACKAGES = [
     # Fonts
     "community/otf-font-awesome",
     "aur/ttf-input",
+    # EE
+    "aur/adafruit-ampy",
+    "community/arduino",
+    "aur/esp-idf",
+    "community/esptool",
+    "community/picocom",
+    "community/python-pyudev",
+    "aur/rshell",
 ]
 
 
