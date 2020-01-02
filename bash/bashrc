@@ -23,3 +23,5 @@ source $DOTBASH/aliases
 source $DOTBASH/utils
 source $DOTBASH/vim
 source $DOTBASH/python
+
+[[ -f ~/.bashrc.local ]] && source ~/.bashrc.local
