@@ -154,8 +154,8 @@ bindsym $win+Tab workspace next
 bindsym $win+Shift+Tab workspace prev
 workspace_auto_back_and_forth yes
 
-### # rename workspace
-### bindsym $mod+Shift+n exec $HOME/Bin/sway_rename
+# rename workspace
+bindsym $mod+Shift+n exec $HOME/Bin/sway_rename_workspace
 
 # floating
 floating_modifier $mod
