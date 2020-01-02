@@ -8,6 +8,9 @@ GROUPS = [
     "input",
     "lp",  # bluetooth
     "video",  # brightness
+    "dialout",  # MCUs
+    "uucp",  # MCUs
+    "lock",  # MCUs
 ]
 USERNAME = getpass.getuser()
 
