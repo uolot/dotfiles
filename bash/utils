@@ -44,3 +44,34 @@ tf-last() {
     | head -1 \
     | cut -d' ' -f2
 }
+
+
+# aws
+
+aws_creds() {
+  case "$1" in
+    print)
+      cat ~/.aws/credentials \
+      | grep ^aws \
+      | sed -e 's/^\([a-z_]\+\)/export \U\1/' -e 's/ = \(.\+\)/="\1"/'
+      ;;
+    load)
+        source <(aws_creds print)
+      ;;
+    unset)
+      for ENVAR in $(
+        cat ~/.aws/credentials \
+        | grep ^aws \
+        | sed -e 's/^\([a-z_]\+\).*/\U\1/'
+      ); do
+        read -p "Unset $ENVAR? [y/n] "
+        if [ "$REPLY" == "y" ]; then
+          unset $ENVAR
+        fi
+      done
+      ;;
+    *)
+      echo "Usage: $0 (print | load | unset)"
+      ;;
+  esac
+}
