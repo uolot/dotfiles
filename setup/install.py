@@ -61,6 +61,7 @@ PACKAGES = [
     "community/python-pyudev",
     "aur/rshell",
     # Misc
+    "extra/snappy",
     "community/sox",
 ]
 
