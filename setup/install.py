@@ -13,6 +13,9 @@ PACKAGES = [
     "community/wl-clipboard",
     # Apps
     "aur/chromium-snapshot-bin",
+    "community/filezilla",
+    "extra/firefox",
+    "extra/gvim",
     "community/termite",
     # Communication
     "community/blueman",
@@ -49,6 +52,9 @@ PACKAGES = [
     "extra/python-cffi",
     "community/python-language-server",
     "community/python-poetry",
+    # Java
+    "extra/jdk-openjdk",
+    "community/maven",
     # Fonts
     "community/otf-font-awesome",
     "aur/ttf-input",
@@ -60,9 +66,13 @@ PACKAGES = [
     "community/picocom",
     "community/python-pyudev",
     "aur/rshell",
+    # Android
+    "community/android-tools",
+    "aur/scrcpy",
     # Misc
     "extra/snappy",
     "community/sox",
+    "community/tldr",
 ]
 
 
