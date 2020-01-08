@@ -24,7 +24,7 @@ DELL_HEIGHT = 1440
 OPTIONS = {
     "xps:small": [ChangeScale(XPS, 2.2)],
     "xps:regular": [ChangeScale(XPS, 2.4)],
-    "xps:large": [ChangeScale(XPS, 2.5)],
+    "xps:large": [ChangeScale(XPS, 2.6)],
     "dell:small": [ChangeScale(DELL, 0.915), AdjustPosition(XPS, 0.915)],
     "dell:regular": [ChangeScale(DELL, 1), AdjustPosition(XPS, 1)],
     "dell:large": [ChangeScale(DELL, 1.1), AdjustPosition(XPS, 1.1)],
