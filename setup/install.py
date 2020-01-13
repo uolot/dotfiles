@@ -51,7 +51,10 @@ PACKAGES = [
     "community/python-black",
     "extra/python-cffi",
     "community/python-language-server",
+    "extra/python-pip",
     "community/python-poetry",
+    "extra/python-setuptools",
+    "extra/python-virtualenv",
     # Java
     "extra/jdk-openjdk",
     "community/maven",
