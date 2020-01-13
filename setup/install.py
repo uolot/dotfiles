@@ -73,6 +73,7 @@ PACKAGES = [
     "community/android-tools",
     "aur/scrcpy",
     # Misc
+    "community/jq",
     "extra/snappy",
     "community/sox",
     "community/tldr",
