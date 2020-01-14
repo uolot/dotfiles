@@ -3,7 +3,6 @@
 * vim: add option for disabling running dispatched black
 * shell: dynamic git branch color in prompt
 * vim: remove black.vim config
-* sway: add battery bot
 * sway: add flashfocus
 * sway: add workspace renaming
 * sway: add notifications
