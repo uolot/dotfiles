@@ -59,3 +59,5 @@ Plug 'vim-scripts/AnsiEsc.vim'
       unmap <Leader>swp
     endfunction
     autocmd BufEnter * silent! call Unmap_cecutil()
+
+Plug 'tpope/vim-fugitive'
