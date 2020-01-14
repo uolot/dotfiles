@@ -56,9 +56,12 @@ input "Input device: TPPS/2 IBM TrackPoint" {
 bindsym $mod+Return exec termite
 bindsym $mod+Shift+Return exec termite -d $(cat /tmp/workdir 2>/dev/null || pwd)
 
-### # show time and date
-### bindsym $mod+t exec $HOME/Bin/showtime.py
-### for_window [title="^showtime$"] floating enable, border none
+# show time and date
+bindsym $mod+t exec $HOME/Bin/showtime.py
+for_window [title="^showtime$"] floating enable, border none
+
+bindsym $mod+Shift+t exec $HOME/Bin/timer.py $(echo -e "5:00\n25:00" | rofi -dmenu)
+for_window [title="^timer$"] floating enable, border none
 
 # start a webbrowser
 bindsym $mod+b exec firefox

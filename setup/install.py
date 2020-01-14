@@ -76,6 +76,7 @@ PACKAGES = [
     "community/jq",
     "extra/snappy",
     "community/sox",
+    "extra/tk",
     "community/tldr",
 ]
 
