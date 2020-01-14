@@ -9,6 +9,10 @@ gdiff() {
     diff -u $@ | colordiff
 }
 
+randint() {
+  python -c "import random; print(random.randint(1, $1))"
+}
+
 
 # git
 
