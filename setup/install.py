@@ -43,6 +43,7 @@ PACKAGES = [
     "community/docker-compose",
     "community/libmemcached",
     "community/npm",
+    "extra/strace",
     "community/terraform",
     # Python
     "community/ipython",
