@@ -5,17 +5,25 @@ export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu
 
 alias todos="ag '(TODO|XXX|FIXME)'"
 
+# Git-style diff
 gdiff() {
     diff -u $@ | colordiff
 }
 
+# Generate random integet from 1 to arg
 randint() {
   python -c "import random; print(random.randint(1, $1))"
+}
+
+# Change to last used working dir
+cwd() {
+    cd $(cat /tmp/workdir)
 }
 
 
 # git
 
+# Change to git root dir
 cdgr() {
     pushd .
     cd $(git rev-parse --show-toplevel)
