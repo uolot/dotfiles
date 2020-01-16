@@ -15,6 +15,7 @@ PACKAGES = [
     "aur/chromium-snapshot-bin",
     "community/filezilla",
     "extra/firefox",
+    "extra/gnome-font-viewer",
     "extra/gvim",
     "community/termite",
     # Communication
