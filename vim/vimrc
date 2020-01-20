@@ -73,6 +73,10 @@ Plug 'tpope/vim-dispatch'
 " isolate part of a file to create a 'safe edit environment'
 Plug 'ferranpm/vim-isolate'
 
+" Adds :Tabularize
+Plug 'godlygeek/tabular'
+
+
 source $HOME/.dotfiles/vim/files.vim
 source $HOME/.dotfiles/vim/dev.vim
 source $HOME/.dotfiles/vim/python.vim
