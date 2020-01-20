@@ -60,9 +60,6 @@ PACKAGES = [
     # Java
     "extra/jdk-openjdk",
     "community/maven",
-    # Fonts
-    "community/otf-font-awesome",
-    "aur/ttf-input",
     # EE
     "aur/adafruit-ampy",
     "community/arduino",
@@ -74,12 +71,16 @@ PACKAGES = [
     # Android
     "community/android-tools",
     "aur/scrcpy",
-    # Misc
+    # Misc and utils
+    "community/imv",
     "community/jq",
     "extra/snappy",
     "community/sox",
     "extra/tk",
     "community/tldr",
+    # Fonts
+    "community/otf-font-awesome",
+    "aur/ttf-input",
 ]
 
 
