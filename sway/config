@@ -54,7 +54,14 @@ input "Input device: TPPS/2 IBM TrackPoint" {
 
 # start a terminal
 bindsym $mod+Return exec termite
+# start a terminal in last working dir
 bindsym $mod+Shift+Return exec termite -d $(cat /tmp/workdir 2>/dev/null || pwd)
+# start a floating terminal
+bindsym $mod+Ctrl+Return exec termite -t termite-floating
+for_window [title="^termite-floating$"] floating enable
+# floating ipython
+bindsym $mod+Ctrl+i exec termite -e "tmux new ipython" -t ipython-floating
+for_window [title="^ipython-floating$"] floating enable
 
 # show time and date
 bindsym $mod+t exec $HOME/Bin/showtime.py
