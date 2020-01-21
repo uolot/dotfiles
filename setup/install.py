@@ -54,7 +54,9 @@ PACKAGES = [
     "extra/python-cffi",
     "community/python-language-server",
     "extra/python-pip",
+    "aur/python-pipx",
     "community/python-poetry",
+    "community/python-pudb",
     "extra/python-setuptools",
     "extra/python-virtualenv",
     # Java
