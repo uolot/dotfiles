@@ -5,3 +5,5 @@ iabbrev improt import
 iabbrev tiem time
 iabbrev tje the
 iabbrev uplaod upload
+
+iabbrev sbenv #!/usr/bin/env bash
