@@ -27,6 +27,7 @@ Plug 'sheerun/vim-polyglot'
     " https://github.com/sheerun/vim-polyglot#language-packs
     let g:polyglot_disabled = ['python']
     let g:terraform_fmt_on_save = 1
+    let g:terraform_align = 1
 
 Plug 'tpope/vim-commentary'
 
@@ -61,3 +62,6 @@ Plug 'vim-scripts/AnsiEsc.vim'
     autocmd BufEnter * silent! call Unmap_cecutil()
 
 Plug 'tpope/vim-fugitive'
+
+" Fix Terraform plan diff output by moving diff marks to the start of line
+command TerraformDiff :%s/^\(\s\+\)\(+\|-\|\~\)/\2\1/
