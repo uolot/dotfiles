@@ -13,6 +13,7 @@ Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
       \ 'source': globpath('~/.dotfiles', '**/*', 0, 1),
       \ 'sink': 'e',
       \ }
+  let g:clap_theme = 'material_design_dark'
   nnoremap <Leader><Space><Space> :Clap<CR>
   nnoremap <Leader><Space>b :Clap buffers<CR>
   nnoremap <Leader><Space>c :Clap command<CR>
