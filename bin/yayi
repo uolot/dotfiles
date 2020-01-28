@@ -1,13 +1,7 @@
 #/usr/bin/env sh
-set -eo pipefail
+set -euo pipefail
 
-echo -n "Package name to install [default: $1]: "
-read pkg_name
-
-if [ "$pkg_name" == "" ]; then
-    pkg_name="$1"
-fi
+pkg_name="$1"
 echo "Installing $pkg_name"
-
 yay -S "$pkg_name"
 echo $(echo "$pkg_name") >> ~/.dotfiles/new_packages.txt
