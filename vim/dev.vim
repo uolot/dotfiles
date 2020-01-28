@@ -65,3 +65,6 @@ Plug 'tpope/vim-fugitive'
 
 " Fix Terraform plan diff output by moving diff marks to the start of line
 command TerraformDiff :%s/^\(\s\+\)\(+\|-\|\~\)/\2\1/
+
+" Arduino/PlatformIO
+Plug 'vim-scripts/Arduino-syntax-file'
