@@ -68,7 +68,7 @@ bindsym $mod+t exec $HOME/Bin/showtime.py
 for_window [title="^showtime$"] floating enable, border none
 
 bindsym $mod+Shift+t exec $HOME/Bin/timer.py $(echo -e "5:00\n25:00" | rofi -dmenu)
-for_window [title="^timer$"] floating enable, sticky enable, border none
+for_window [title="^timer$"] floating enable, sticky enable, border none, move position pointer
 
 # start a webbrowser
 bindsym $mod+b exec firefox
