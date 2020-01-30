@@ -187,6 +187,8 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit sway
 bindsym $mod+Shift+e exec "swaynag -t warning -m 'Exit?' -b 'Yes' 'swaymsg exit'""
+# power menu
+bindsym $mod+Shift+Escape exec "$HOME/Bin/powermenu.sh"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
