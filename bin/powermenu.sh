@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 
-option=$(echo -e "Hibernate\nShutdown\nReboot" | rofi -dmenu)
+option=$(echo -e "Suspend+Hibernate\nHibernate\nShutdown\nReboot" | rofi -dmenu)
 
 case "$option" in
-    "Hibernate") systemctl suspend-then-hibernate ;;
+    "Suspend+Hibernate") systemctl suspend-then-hibernate ;;
+    "Hibernate") systemctl hibernate ;;
     "Shutdown") shutdown -h now ;;
     "Reboot") systemctl reboot ;;
 esac
