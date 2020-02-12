@@ -2,7 +2,9 @@
 
 export PYTHONDONTWRITEBYTECODE=1
 
-alias ipython="tmux new ipython"
+alias activate="source $HOME/Bin/activate.sh"
+alias ipython="tmux new bash -c 'source $HOME/Bin/activate.sh && ipython'"
+
 
 # Pyenv
 
