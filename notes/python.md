@@ -80,3 +80,12 @@ def lambda_handler(event, context):
 
     return {"records": output}
 ```
+
+
+# Dynamic module import
+
+```python
+import importlib
+
+foo = importlib.import_module("src.foo")
+```
