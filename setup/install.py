@@ -17,7 +17,10 @@ PACKAGES = [
     "extra/firefox",
     "extra/gnome-font-viewer",
     "extra/gvim",
+    "community/mupdf",
     "community/termite",
+    "community/zathura",
+    "community/zathura-pdf-mupdf",
     # Communication
     "community/blueman",
     "extra/bluez",
