@@ -67,7 +67,8 @@ for_window [title="^ipython-floating$"] floating enable
 bindsym $mod+t exec $HOME/Bin/showtime.py
 for_window [title="^showtime$"] floating enable, border none
 
-bindsym $mod+Shift+t exec $HOME/Bin/timer.py $(echo -e "5:00\n25:00" | rofi -dmenu)
+bindsym $mod+Shift+t exec $HOME/Bin/timer-visible $(echo -e "5:00\n25:00" | rofi -dmenu)
+bindsym $mod+Ctrl+Shift+t exec $HOME/Bin/timer-hidden $(echo -e "5:00/5\n25:00/5" | rofi -dmenu)
 for_window [title="^timer$"] floating enable, sticky enable, border none, move position pointer
 
 # start a webbrowser

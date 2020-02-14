@@ -103,6 +103,7 @@ class Window(tkinter.Frame):
     def update(self):
         self.time_label["text"] = str(self.timer)
         left = self.timer.left
+        print(left, flush=True)
         if left <= 10:
             self.time_label.config(bg="black" if left & 1 else "red")
 

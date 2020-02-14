@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+rm -f /tmp/timer.out
+
+time=$(echo $1 | cut -d/ -f1)
+show_at=$(echo $1 | cut -d/ -f2)
+
+echo Starting
+nohup $HOME/Bin/timer-visible $time >/tmp/timer.out 2>&1 &
+sleep 1
+swaymsg '[title="^timer$"]' sticky disable
+
+tail -f /tmp/timer.out | while read -r line; do
+    if [ "$line" == "$show_at" ]; then
+        swaymsg '[title="^timer$"]' sticky enable
+        echo Done
+        exit
+    fi
+done
