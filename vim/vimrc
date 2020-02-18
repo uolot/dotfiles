@@ -60,8 +60,6 @@ call plug#end()
 
 filetype plugin indent on
 
-source $HOME/.dotfiles/vim/quickui.vim
-
 " ------ Imports ------
 
 " colors

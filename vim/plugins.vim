@@ -28,9 +28,6 @@ Plug 'ferranpm/vim-isolate'
 " Adds :Tabularize
 Plug 'godlygeek/tabular'
 
-" The missing UI extensions for Vim
-Plug 'skywind3000/vim-quickui'
-
 " search local vimrc files (".lvimrc") in the tree  and load them
 Plug 'embear/vim-localvimrc'
     let g:localvimrc_persistent = 2
