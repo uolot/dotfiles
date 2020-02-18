@@ -51,7 +51,6 @@ call plug#begin('~/.vim/plugged')
 source $HOME/.dotfiles/vim/plugins.vim
 source $HOME/.dotfiles/vim/files.vim
 source $HOME/.dotfiles/vim/files-fzf.vim
-source $HOME/.dotfiles/vim/files-clap.vim
 source $HOME/.dotfiles/vim/dev.vim
 source $HOME/.dotfiles/vim/python.vim
 source $HOME/.dotfiles/vim/textobj.vim
