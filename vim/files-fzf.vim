@@ -1,4 +1,4 @@
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
     nnoremap <Leader>pf :GFiles<CR>
     nnoremap <Leader>pF :Files<CR>
@@ -6,6 +6,7 @@ Plug 'junegunn/fzf.vim'
     nnoremap <Leader>pL :Lines<CR>
     nnoremap <Leader>pt :Tags<CR>
     nnoremap <Leader>pb :Buffers<CR>
+    " let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 
 function! FzyCommand(choice_command, vim_command)
   try
