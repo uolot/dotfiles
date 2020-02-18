@@ -32,3 +32,9 @@ Plug 'godlygeek/tabular'
 Plug 'embear/vim-localvimrc'
     let g:localvimrc_persistent = 2
     let g:localvimrc_sandbox = 0
+
+" Open URI in browser
+Plug 'tyru/open-browser.vim'
+    let g:netrw_nogx = 1 " disable netrw's gx mapping.
+    nmap gx <Plug>(openbrowser-smart-search)
+    vmap gx <Plug>(openbrowser-smart-search)
