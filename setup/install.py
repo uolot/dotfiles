@@ -29,6 +29,7 @@ PACKAGES = [
     # Shell
     "extra/bash-completion",
     "community/colordiff",
+    "aur/direnv",
     "community/fd",
     "community/fzf",
     "community/fzy",
