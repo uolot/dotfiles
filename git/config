@@ -64,3 +64,4 @@
 	prum = pull --rebase upstream master
 	last = lgf -1
 	todos = !"ag '(TODO|XXX|FIXME)' $(git diff --name-only)"
+	rebase-since-last-merge = ! git rebase -i $(git log --merges -1 --format="%h")
