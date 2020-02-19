@@ -10,6 +10,8 @@ LINKS = {
     "ctags/config.ctags": ".ctags.d/config.ctags",
     "git/config": ".gitconfig",
     "git/ignore": ".gitignore",
+    "ipython/ipython_config.py": ".ipython/profile_default/ipython_config.py",
+    "ipython/startup/vim.py": ".ipython/profile_default/startup/vim.py",
     "rofi/config.rasi": ".config/rofi/config.rasi",
     "sway/i3status": ".config/i3status/config",
     "sway/config": ".config/sway/config",

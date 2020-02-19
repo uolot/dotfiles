@@ -68,3 +68,6 @@ command TerraformDiff :%s/^\(\s\+\)\(+\|-\|\~\)/\2\1/
 
 " Arduino/PlatformIO
 Plug 'vim-scripts/Arduino-syntax-file'
+
+" Allow sending commands to vim via rpc
+Plug 'roxma/vim-hug-neovim-rpc'
