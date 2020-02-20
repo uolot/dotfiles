@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 
-option=$(echo -e "Suspend+Hibernate\nHibernate\nShutdown\nReboot" | rofi -dmenu)
+option=$(echo -e "suspend+hibernate\nhibernate\nshutdown\nreboot" | rofi -dmenu)
 
 lock=true
 powercmd=true
 
 case "$option" in
-    "Suspend+Hibernate") powercmd="systemctl suspend-then-hibernate" ;;
-    "Hibernate") powercmd="systemctl hibernate" ;;
-    "Shutdown") powercmd="shutdown -h now" ;;
-    "Reboot") powercmd="systemctl reboot" ;;
+    "suspend+hibernate") powercmd="systemctl suspend-then-hibernate" ;;
+    "hibernate") powercmd="systemctl hibernate" ;;
+    "shutdown") powercmd="shutdown -h now" ;;
+    "reboot") powercmd="systemctl reboot" ;;
     *) lock=false ;;
 esac
 
