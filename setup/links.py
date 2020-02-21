@@ -15,6 +15,7 @@ LINKS = {
     "rofi/config.rasi": ".config/rofi/config.rasi",
     "sway/i3status": ".config/i3status/config",
     "sway/config": ".config/sway/config",
+    "TabNine.toml": ".config/TabNine/TabNine.yml",
     "termite/config": ".config/termite/config",
     "tmux/tmux.conf": ".tmux.conf",
     "vim/vimrc": ".vimrc",

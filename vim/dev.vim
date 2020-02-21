@@ -71,3 +71,6 @@ Plug 'vim-scripts/Arduino-syntax-file'
 
 " Allow sending commands to vim via rpc
 Plug 'roxma/vim-hug-neovim-rpc'
+
+" TabNine
+Plug 'zxqfl/tabnine-vim', { 'on': 'TN' }
