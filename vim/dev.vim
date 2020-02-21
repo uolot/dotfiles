@@ -74,3 +74,9 @@ Plug 'roxma/vim-hug-neovim-rpc'
 
 " TabNine
 Plug 'zxqfl/tabnine-vim', { 'on': 'TN' }
+
+" Parinfer mode
+Plug 'eraserhd/parinfer-rust', {
+        \ 'for': 'clojure',
+        \ 'do': 'cargo build --release'
+        \ }
