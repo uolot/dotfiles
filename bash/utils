@@ -100,3 +100,8 @@ _direnv_hook() {
 if ! [[ "${PROMPT_COMMAND:-}" =~ _direnv_hook ]]; then
   PROMPT_COMMAND="_direnv_hook${PROMPT_COMMAND:+;$PROMPT_COMMAND}"
 fi
+
+
+# docker
+
+alias dockerip="docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}'"
