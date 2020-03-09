@@ -64,6 +64,7 @@ PACKAGES = [
     "aur/python-pipx",
     "community/python-poetry",
     "community/python-pudb",
+    "community/python-pygame",
     "extra/python-setuptools",
     "extra/python-virtualenv",
     # Java
