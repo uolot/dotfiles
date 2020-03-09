@@ -65,6 +65,7 @@ PACKAGES = [
     "community/python-poetry",
     "community/python-pudb",
     "community/python-pygame",
+    "community/python-pynvim",
     "extra/python-setuptools",
     "extra/python-virtualenv",
     # Java
