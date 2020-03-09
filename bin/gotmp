@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+proj=$1
+today=$(date +%Y-%m-%d)
+dir="$HOME/Tmp/$today-$proj"
+
+mkdir -p $dir
+cd $dir
+exec bash
