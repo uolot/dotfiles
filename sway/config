@@ -283,3 +283,6 @@ bindsym XF86MonBrightnessDown exec "brillo -U 3 -q -u 250000"
 
 # Battery monitor bot
 exec "sleep 60 ; $HOME/Build/batbottg/bin/batbottg -c $HOME/.batbottg.ini"
+
+# Notifications
+for_window [title="^xfce4-notifyd$"] floating enable, sticky enable, border none, move position 20 20

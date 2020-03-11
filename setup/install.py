@@ -11,6 +11,7 @@ PACKAGES = [
     "community/rofi",
     "community/slurp",
     "community/wl-clipboard",
+    "extra/xfce4-notifyd",
     # Apps
     "aur/chromium-snapshot-bin",
     "community/filezilla",
