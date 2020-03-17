@@ -273,7 +273,12 @@ bindsym XF86AudioLowerVolume exec "$HOME/Bin/volume down"
 bindsym XF86AudioMute exec "ponymix toggle"
 # enable/disable airdots
 bindsym $mod+Shift+b exec "$HOME/Bin/airdots $(echo -e 'on\noff' | rofi -dmenu -p airdots)"
-
+# toggle microphone capture
+bindsym $mod+XF86AudioMute exec "amixer set Capture toggle"
+# mute microphone
+bindsym $mod+XF86AudioLowerVolume exec "amixer set Capture nocap"
+# unmute microphone
+bindsym $mod+XF86AudioRaiseVolume exec "amixer set Capture cap"
 
 # Increase screen brightness
 bindsym XF86MonBrightnessUp exec "brillo -A 3 -q -u 250000"
