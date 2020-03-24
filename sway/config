@@ -3,7 +3,7 @@
 set $mod Mod1
 set $win Mod4
 
-font pango:Ubuntu Medium 11
+font pango:Ubuntu Medium 9
 
 gaps inner 0
 gaps outer 0
@@ -23,7 +23,7 @@ titlebar_padding 15 3
 # Lyst Dell
 output "Sharp Corporation 0x148B 0x00000000" {
     mode 3840x2160
-    scale 2.4
+    scale 2.5
     # y = external.height / external.scale
     pos 0 1440
 }
