@@ -18,6 +18,7 @@ class AdjustPosition:
 
 XPS = "Sharp Corporation 0x148B 0x00000000"
 DELL = "Dell Inc. DELL U2717D J0XYN87S247L"
+ASUS = "Ancor Communications Inc ASUS VS247 G7LMTF045350"
 # TODO: read this from sway -m get_outputs
 DELL_HEIGHT = 1440
 
@@ -28,6 +29,9 @@ OPTIONS = {
     "dell:small": [ChangeScale(DELL, 0.95), AdjustPosition(XPS, 0.95)],
     "dell:regular": [ChangeScale(DELL, 1), AdjustPosition(XPS, 1)],
     "dell:large": [ChangeScale(DELL, 1.1), AdjustPosition(XPS, 1.1)],
+    "asus:small": [ChangeScale(ASUS, 0.8)],
+    "asus:regular": [ChangeScale(ASUS, 0.9)],
+    "asus:large": [ChangeScale(ASUS, 1)],
 }
 
 
