@@ -26,3 +26,5 @@ nnoremap <Leader>wT :VimwikiTOC<CR>
 let g:vimwiki_hl_cb_checked = 0
 
 autocmd FileType vimwiki setlocal nowrap
+
+nnoremap <Leader>wq :VimwikiGoto Scratchpad<CR>
