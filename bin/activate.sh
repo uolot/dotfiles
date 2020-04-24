@@ -6,7 +6,7 @@ if [ -f "$1/bin/activate" ]; then
 fi
 
 # FOUND=$(find . | grep 'bin/activate$')
-FOUND=$(fd --hidden --no-ignore --max-depth 3 --full-path --type f --glob '*/bin/activate')
+FOUND=$(fd --hidden --no-ignore --max-depth 3 --full-path --type f | grep 'bin/activate$')
 for f in $FOUND; do
   if grep --quiet VIRTUAL_ENV $f; then
     echo $FOUND
