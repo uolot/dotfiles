@@ -14,3 +14,13 @@ alias ll='ls -lav --ignore=..'   # show long listing of all except ".."
 mkcd() {
     mkdir -p $* && cd $*
 }
+
+# rm pwd after cd one level up
+rmup() {
+    pwd=$(pwd)
+    cd ..
+    read -p "Remove ${pwd} ? " choice
+    case "$choice" in
+        y|Y) echo "removing ${pwd}"; rm -rf "$pwd" ;;
+    esac
+}
