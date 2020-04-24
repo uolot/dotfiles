@@ -40,8 +40,10 @@ Plug 'airblade/vim-gitgutter'
 Plug 'jpalardy/vim-slime'
     let g:slime_target = "tmux"
     let g:slime_python_ipython = 1
+    let g:slime_cell_delimiter = "#"
     nmap <C-c><C-l> <Plug>SlimeLineSend
     nmap <C-c><C-m> <Plug>SlimeMotionSend
+    nmap <C-c><C-e> <Plug>SlimeMotionSend
     function! Slime_ipython_toggle()
         if !exists('g:slime_python_ipython') || g:slime_python_ipython == 0
             let g:slime_python_ipython = 1
