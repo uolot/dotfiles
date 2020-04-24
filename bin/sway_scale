@@ -23,15 +23,15 @@ ASUS = "Ancor Communications Inc ASUS VS247 G7LMTF045350"
 DELL_HEIGHT = 1440
 
 OPTIONS = {
-    "xps:small": [ChangeScale(XPS, 2.2)],
-    "xps:regular": [ChangeScale(XPS, 2.4)],
-    "xps:large": [ChangeScale(XPS, 2.7)],
-    "dell:small": [ChangeScale(DELL, 0.95), AdjustPosition(XPS, 0.95)],
-    "dell:regular": [ChangeScale(DELL, 1), AdjustPosition(XPS, 1)],
-    "dell:large": [ChangeScale(DELL, 1.1), AdjustPosition(XPS, 1.1)],
-    "asus:small": [ChangeScale(ASUS, 0.8)],
-    "asus:regular": [ChangeScale(ASUS, 0.9)],
-    "asus:large": [ChangeScale(ASUS, 1)],
+    "xps:small": [ChangeScale(XPS, 2)],
+    "xps:regular": [ChangeScale(XPS, 2.5)],
+    "xps:large": [ChangeScale(XPS, 3)],
+    # "dell:small": [ChangeScale(DELL, 0.95), AdjustPosition(XPS, 0.95)],
+    # "dell:regular": [ChangeScale(DELL, 1), AdjustPosition(XPS, 1)],
+    # "dell:large": [ChangeScale(DELL, 1.1), AdjustPosition(XPS, 1.1)],
+    # "asus:small": [ChangeScale(ASUS, 0.8)],
+    "asus:regular": [ChangeScale(ASUS, 1)],
+    # "asus:large": [ChangeScale(ASUS, 1)],
 }
 
 

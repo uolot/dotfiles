@@ -20,14 +20,17 @@ titlebar_padding 15 3
 
 # TODO: automatically change scale
 
-# Lyst Dell
+# Lyst laptop Dell XPS
 output "Sharp Corporation 0x148B 0x00000000" {
     mode 3840x2160
     scale 2.5
     # y = external.height / external.scale
-    pos 0 1440
+    # external Dell -> 1440 / 1
+    # pos 0 1440
+    # external Asus -> 1080 / 1
+    pos 0 1080
 }
-# Lyst external monitor
+# Lyst external Dell monitor
 output "Dell Inc. DELL U2717D J0XYN87S247L" {
     mode 2560x1440
     scale 1
@@ -43,7 +46,7 @@ output "Unknown 0x0419 0x00000000" {
 output "Ancor Communications Inc ASUS VS247 G7LMTF045350" {
     mode 1920x1080
     scale 1
-    # pos 0 0
+    pos 1000 0
 }
 
 # inputs
