@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-option=$(echo -e "suspend+hibernate\nhibernate\nshutdown\nreboot" | rofi -dmenu)
+option=$(echo -e "suspend+hibernate\nhibernate\nshutdown\nreboot" | rofi -dmenu -monitor 0)
 
 lock=true
 powercmd=true

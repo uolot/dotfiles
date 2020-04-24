@@ -88,8 +88,8 @@ bindsym $mod+Shift+q kill
 
 
 # launcher
-bindsym $mod+space exec rofi -show run -modi run -monitor -4
-bindsym $mod+Shift+space exec rofi -show drun -modi drun -monitor -4
+bindsym $mod+space exec rofi -show run -modi run -monitor 0
+bindsym $mod+Shift+space exec rofi -show drun -modi drun -monitor 0
 
 
 # change focus
