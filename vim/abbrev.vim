@@ -7,4 +7,5 @@ iabbrev tiem time
 iabbrev tje the
 iabbrev uplaod upload
 
-iabbrev sbenv #!/usr/bin/env bash
+set iskeyword+=!
+iabbrev !bash #!/usr/bin/env bash
