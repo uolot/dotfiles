@@ -113,3 +113,8 @@ iabbrev <expr> YMDD strftime("%Y-%m-%d %a")
 command DATE :%s/DATE/\=strftime("%Y-%m-%d")/gc
 command TODAY :%s/TODAY/\=strftime("%Y-%m-%d")/gc
 command DAYOFWEEK :%s/DAYOFWEEK/\=strftime("%a")/gc
+
+
+" enable/disable wrap
+nnoremap <Leader>w1 :set wrap<CR>
+nnoremap <Leader>w0 :set nowrap<CR>
