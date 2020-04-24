@@ -6,11 +6,11 @@ set background=dark
 " template
 "highlight Normal ctermfg=x ctermbg=x cterm=x
 
-highlight Normal ctermfg=248 ctermbg=236 cterm=NONE
+highlight Normal ctermfg=250 ctermbg=236 cterm=NONE
 highlight StatusLine ctermfg=236 ctermbg=248 cterm=NONE
 highlight StatusLineNC ctermfg=236 ctermbg=240 cterm=NONE
 
-highlight Comment ctermfg=242 ctermbg=NONE cterm=italic
+highlight Comment ctermfg=244 ctermbg=NONE cterm=italic
 highlight Todo ctermfg=210 ctermbg=NONE cterm=underline
 
 highlight CursorLine ctermfg=NONE ctermbg=237 cterm=NONE
