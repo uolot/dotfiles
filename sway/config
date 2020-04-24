@@ -1,7 +1,8 @@
 # vim: ft=i3config
 
-set $mod Mod1
-set $win Mod4
+# set $mod Mod1
+set $mod Mod4
+# set $win Mod4
 
 font pango:Ubuntu Medium 9
 
@@ -117,11 +118,11 @@ bindsym $mod+Shift+Up resize shrink height 25 px or 16 ppt
 bindsym $mod+Shift+Down resize grow height 25 px or 16 ppt
 
 
-# move workspaces
-bindsym $win+Shift+k move workspace to output up
-bindsym $win+Shift+j move workspace to output down
-bindsym $win+Shift+h move workspace to output left
-bindsym $win+Shift+l move workspace to output right
+# # move workspaces
+# bindsym $win+Shift+k move workspace to output up
+# bindsym $win+Shift+j move workspace to output down
+# bindsym $win+Shift+h move workspace to output left
+# bindsym $win+Shift+l move workspace to output right
 
 # split in horizontal orientation
 bindsym $mod+s split v
@@ -171,8 +172,8 @@ bindsym $mod+Shift+0 move container to workspace number 10
 bindsym $mod+Tab workspace next_on_output
 bindsym $mod+Shift+Tab workspace prev_on_output
 bindsym $mod+Escape workspace back_and_forth
-bindsym $win+Tab workspace next
-bindsym $win+Shift+Tab workspace prev
+# bindsym $win+Tab workspace next
+# bindsym $win+Shift+Tab workspace prev
 workspace_auto_back_and_forth yes
 
 # rename workspace
