@@ -2,3 +2,4 @@
 --exclude=*.json
 --exclude=.mypy_cache
 --exclude=.cache
+--extra=+f
