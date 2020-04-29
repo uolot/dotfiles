@@ -1,6 +1,6 @@
 Plug 'vimwiki/vimwiki'
 let g:vimwiki_list = [
-    \ {'path': '~/.vimwiki/', 'auto_tags': 1, 'auto_diary_index': 1, 'auto_export': 1, 'auto_toc': 1},
+    \ {'path': '~/.vimwiki/', 'auto_tags': 1, 'auto_diary_index': 1, 'auto_export': 1, 'auto_toc': 1, 'maxhi': 1},
     \ {'path': '~/Build/vimwikiwiki/wiki', 'path_html': '~/Build/vimwikiwiki/docs', 'auto_toc': 1},
     \ ]
 
@@ -24,6 +24,11 @@ vnoremap glt :'<,'>norm I- [ ] <CR>
 nnoremap <Leader>wT :VimwikiTOC<CR>
 
 let g:vimwiki_hl_cb_checked = 0
+let g:vimwiki_hl_headers = 1
+let g:vimwiki_listsyms = ' .x'
+let g:vimwiki_listsym_rejected = '-'
+let g:vimwiki_list_ignore_newline = 1
+let g:vimwiki_list_ignore_newline = 0
 
 autocmd FileType vimwiki setlocal nowrap
 
