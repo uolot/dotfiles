@@ -83,3 +83,8 @@ Plug 'eraserhd/parinfer-rust', {
         \ 'for': 'clojure',
         \ 'do': 'cargo build --release'
         \ }
+
+" jump between terraform sections
+let tf_sections = '^\(resource\|module\|data\|locals\|variable\|output\)'
+autocmd FileType terraform nnoremap <silent> ]] :silent! call search(tf_sections, '')<cr>
+autocmd FileType terraform nnoremap <silent> [[ :silent! call search(tf_sections, 'b')<cr>
