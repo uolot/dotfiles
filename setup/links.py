@@ -3,6 +3,7 @@ from lib import ask
 
 
 LINKS = {
+    "alacritty/alacritty.yml": ".config/alacritty/alacritty.yml",
     "bin": "Bin",
     "bash/bashrc": ".bashrc",
     "bash/bash_profile": ".bash_profile",

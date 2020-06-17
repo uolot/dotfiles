@@ -27,3 +27,5 @@ source $DOTBASH/python
 source $DOTBASH/java
 
 [[ -f ~/.bashrc.local ]] && source ~/.bashrc.local
+
+[[ -f $HOME/.dotfiles/alacritty/alacritty.bash ]] && source $HOME/.dotfiles/alacritty/alacritty.bash

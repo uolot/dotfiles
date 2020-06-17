@@ -15,7 +15,7 @@ configuration {
 	location: 0;
 	modi: "run,window,ssh";
 	separator-style: "none";
-	terminal: "termite";
+	terminal: "alacritty";
 	width: 30;
 /*	padding: 5;*/
 /*	yoffset: 0;*/
