@@ -5,6 +5,12 @@ export PYTHONDONTWRITEBYTECODE=1
 alias activate="source $HOME/Bin/activate.sh"
 alias ipython="tmux new bash -c 'source $HOME/Bin/activate.sh && ipython'"
 
+pyclean() {
+    find . -type f -name "*.py[co]" -delete
+    find . -type d -name "__pycache__" -delete
+    find . -type d -name ".mypy_cache" -delete
+}
+
 
 # Pyenv
 
