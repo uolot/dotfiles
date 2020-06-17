@@ -28,6 +28,7 @@ Plug 'sheerun/vim-polyglot'
     let g:polyglot_disabled = ['python']
     let g:terraform_fmt_on_save = 1
     let g:terraform_align = 1
+    let g:vim_markdown_conceal_code_blocks = 0
 
 Plug 'tpope/vim-commentary'
 
