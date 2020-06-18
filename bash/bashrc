@@ -25,6 +25,7 @@ source $DOTBASH/utils
 source $DOTBASH/vim
 source $DOTBASH/python
 source $DOTBASH/java
+source $DOTBASH/platformio
 
 [[ -f ~/.bashrc.local ]] && source ~/.bashrc.local
 
