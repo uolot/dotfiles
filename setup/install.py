@@ -13,7 +13,7 @@ PACKAGES = [
     "community/wl-clipboard",
     "extra/xfce4-notifyd",
     # Apps
-    "community/alacritty",
+    "aur/alacritty-ligatures",
     "aur/chromium-snapshot-bin",
     "community/filezilla",
     "extra/firefox",
