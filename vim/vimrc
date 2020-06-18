@@ -110,3 +110,11 @@ autocmd BufEnter *.png,*.jpg,*.gif exec "!imv ".expand("%") | :bw
 " enable/disable wrap
 nnoremap <Leader>w1 :set wrap<CR>
 nnoremap <Leader>w0 :set nowrap<CR>
+
+
+" Use wl-clipboard for copy/paste
+" Src: https://www.reddit.com/r/Fedora/comments/ax9p9t/vim_and_system_clipboard_under_wayland/
+xnoremap "+y y:call system("wl-copy", @")<cr>
+nnoremap "+p :let @"=substitute(system("wl-paste --no-newline"), '<C-v><C-m>', '', 'g')<cr>p
+nnoremap "*p :let @"=substitute(system("wl-paste --no-newline --primary"), '<C-v><C-m>', '', 'g')<cr>p
+nnoremap <Leader>yy :call system("wl-copy ", getline("."))<CR>
