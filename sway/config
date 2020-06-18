@@ -25,29 +25,36 @@ titlebar_padding 15 3
 output "Sharp Corporation 0x148B 0x00000000" {
     mode 3840x2160
     scale 2.5
-    # y = external.height / external.scale
-    # external Dell -> 1440 / 1
-    # pos 0 1440
-    # external Asus -> 1080 / 1
-    pos 0 1080
+    pos 512 1760
 }
-# Lyst external Dell monitor
+# Dell External
 output "Dell Inc. DELL U2717D J0XYN87S247L" {
     mode 2560x1440
     scale 1
-    pos 0 0
+    scale_filter linear
+    pos 0 320
 }
+# ASUS
+output "Ancor Communications Inc ASUS VS247 G7LMTF045350" {
+    enable
+    mode 1920x1080
+    scale 1
+    pos 2560 0
+    transform 270
+}
+
+# # Lyst external Dell monitor
+# output "Dell Inc. DELL U2717D J0XYN87S247L" {
+#     mode 2560x1440
+#     scale 1
+#     pos 0 0
+# }
+
 # Thinkpad X1 Carbon 2nd gen
 output "Unknown 0x0419 0x00000000" {
     mode 2560x1440
     scale 1.3
     pos 0 0
-}
-# ASUS
-output "Ancor Communications Inc ASUS VS247 G7LMTF045350" {
-    mode 1920x1080
-    scale 1
-    pos 1000 0
 }
 
 # inputs
