@@ -90,7 +90,12 @@ PACKAGES = [
     "community/sox",
     "extra/tk",
     # Fonts
+    "aur/ttf-anka-coder",
+    "aur/ttf-anka-coder-condensed",
+    "aur/font-victor-mono",
     "community/otf-font-awesome",
+    "community/ttf-cascadia-code",
+    "community/ttf-fira-code",
     "aur/ttf-input",
 ]
 

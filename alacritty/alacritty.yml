@@ -90,7 +90,7 @@ window:
 # Font configuration
 font:
   # Point size
-  size: 10.0
+  size: 11.0
 
   # Normal (roman) font face
   normal:
@@ -101,8 +101,10 @@ font:
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
     # family: Anka/Coder Condensed
-    family: JetBrains Mono
+    # family: JetBrains Mono
     # family: Cascadia Code
+    # family: Fira Code Retina
+    family: Victor Mono
 
     # The `style` can be specified to pick a specific face.
     #style: Regular
