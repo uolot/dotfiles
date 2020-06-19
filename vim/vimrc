@@ -69,6 +69,10 @@ source $HOME/.dotfiles/vim/statusline.vim
 " abbrevs
 source $HOME/.dotfiles/vim/abbrev.vim
 
+" ------ Neomake ------
+call neomake#configure#automake({
+            \ 'BufWritePost': {},
+            \ }, 1000)
 
 " ------ Mappings ------
 

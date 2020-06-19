@@ -13,8 +13,9 @@ Plug 'ludovicchabant/vim-gutentags'
 
 Plug 'neomake/neomake'
     let g:neomake_open_list = 2
-    " This should work, but it doesn't: call neomake#configure#automake('w')
-    autocmd! BufWritePost * Neomake
+    " call neomake#configure#automake('w') -> Moved to vimrc, after calling
+    " `plug#end()`
+    " autocmd! BufWritePost * Neomake
     noremap <Leader>e :Neomake<CR>
     let g:neomake_python_enabled_makers = ['pylama', 'mypy']
 
