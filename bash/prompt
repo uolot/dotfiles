@@ -1,7 +1,19 @@
 # vim: ft=bash
 
 function prompt_command {
+    local EXIT_CODE="$?"
     local userprompt="$USER@$HOSTNAME"
+
+    local exitcode
+    local exitcolor
+    if [[ $EXIT_CODE -gt 0 ]]
+    then
+        exitcolor=$RED
+        exitcode="X_X "
+    else
+        exitcolor=$GREEN
+        exitcode="^_^ "
+    fi
 
     local workdir
     if [[ "$PWD" == "$HOME" ]]
@@ -40,8 +52,8 @@ function prompt_command {
     local width=$(tput cols)
     local width40pct=$(($width * 2 / 5))
 
-    local left_simple="$userprompt$venvprompt$gitprompt$workdir"
-    local left="$YELLOW$userprompt$CYAN$venvprompt$MAGENTA$gitprompt$BLUE$workdir$NOCOLOR"
+    local left_simple="$exitcode$userprompt$venvprompt$gitprompt$workdir"
+    local left="$exitcolor$exitcode$YELLOW$userprompt$CYAN$venvprompt$MAGENTA$gitprompt$BLUE$workdir$NOCOLOR"
     local right="\$ "
     if [[ ${#left_simple} -gt $width40pct ]]
     then

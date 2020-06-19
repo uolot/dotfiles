@@ -46,6 +46,6 @@ set show-all-if-ambiguous on
 set show-all-if-unmodified on
 set show-mode-in-prompt on
 set skip-completed-text on
-set vi-ins-mode-string +
-set vi-cmd-mode-string :
+set vi-ins-mode-string 
+set vi-cmd-mode-string "(cmd) "
 set visible-stats on
