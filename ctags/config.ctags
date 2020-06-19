@@ -1,5 +1,7 @@
 --python-kinds=-i
 --exclude=*.json
---exclude=.mypy_cache
 --exclude=.cache
+--exclude=.mypy_cache
+--exclude=.pytest_cache
+--exclude=.tox
 --extra=+f
