@@ -54,3 +54,5 @@ Plug 'davidhalter/jedi-vim', {'for': 'python'}
 autocmd BufWritePre *.py Dispatch! black %
 
 autocmd FileType python iabbrev ifmain if __name__ == "__main__"
+autocmd FileType python iabbrev adef async def
+autocmd FileType python iabbrev awith async with
