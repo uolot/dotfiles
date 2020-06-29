@@ -47,11 +47,12 @@ nmap glt I- [ ] <Esc>
 vnoremap glt :'<,'>norm I- [ ] <CR>
 
 nnoremap <Leader>wg :VimwikiGoto 
+nnoremap <Leader>wf :Files ~/.vimwiki/<CR>
+nnoremap <Leader>w/ :VimwikiSearch 
 nnoremap <Leader>wT :VimwikiTOC<CR>
 nnoremap <Leader>wq :VimwikiGoto Scratchpad<CR>
 nmap <Leader>ws <Plug>VimwikiSplitLink
 nmap <Leader>wv <Plug>VimwikiVSplitLink
-nnoremap <Leader>wf :Files ~/.vimwiki/<CR>
 nnoremap <Leader>wl :VimwikiRenumberList<CR>
 
 autocmd FileType vimwiki setlocal nowrap
