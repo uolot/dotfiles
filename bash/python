@@ -11,6 +11,11 @@ pyclean() {
     find . -type d -name ".mypy_cache" -delete
 }
 
+venv() {
+  DIR=${1:-venv}
+  python -m venv "$DIR"
+  source $HOME/Bin/activate.sh
+}
 
 # Pyenv
 
