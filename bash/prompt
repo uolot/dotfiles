@@ -2,6 +2,9 @@
 
 function prompt_command {
     local EXIT_CODE="$?"
+
+    history -a
+
     local userprompt="$USER@$HOSTNAME"
 
     local exitcode
