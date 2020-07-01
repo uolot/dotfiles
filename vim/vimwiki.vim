@@ -15,6 +15,7 @@ let wiki1.auto_toc = 1
 
 let g:vimwiki_list = [wiki1]
 
+let g:vimwiki_auto_chdir = 1
 let g:vimwiki_auto_header = 1
 " let g:vimwiki_conceal_pre = 1
 let g:vimwiki_hl_cb_checked = 0
