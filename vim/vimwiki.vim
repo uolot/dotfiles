@@ -3,6 +3,8 @@ Plug 'vimwiki/vimwiki'
 " TODO: test auto_generate_links and auto_generate_tags
 "  see: https://github.com/vimwiki/vimwiki/pull/635
 
+" Vimwiki wikis
+
 let wiki1 = {}
 let wiki1.path = '~/.vimwiki'
 let wiki1.maxhi = 1
@@ -14,6 +16,8 @@ let wiki1.auto_tags = 1
 let wiki1.auto_toc = 1
 
 let g:vimwiki_list = [wiki1]
+
+" Vimwiki config
 
 let g:vimwiki_auto_chdir = 1
 let g:vimwiki_auto_header = 1
@@ -37,9 +41,7 @@ function! VimwikiFindAllIncompleteTasks()
   lopen
 endfunction
 
-" See `:h vimwiki-local-mappings` for more details on remapping
-
-" https://vimwiki.github.io/vimwikiwiki/Tips%20and%20Snips.html#Tips%20and%20Snips-Task%20Management-Find%20Incomplete%20Tasks
+" Vimwiki mappings
 
 nnoremap <Leader>wa :call VimwikiFindAllIncompleteTasks()<CR>
 nnoremap <Leader>wx :call VimwikiFindIncompleteTasks()<CR>
@@ -56,4 +58,4 @@ nmap <Leader>ws <Plug>VimwikiSplitLink
 nmap <Leader>wv <Plug>VimwikiVSplitLink
 nnoremap <Leader>wl :VimwikiRenumberList<CR>
 
-autocmd FileType vimwiki setlocal nowrap
+autocmd FileType vimwiki setlocal textwidth=120 nowrap linebreak nolist wrapmargin=0
