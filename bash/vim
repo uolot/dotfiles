@@ -1,6 +1,7 @@
 # vim: ft=bash
 
-alias v="vim"
+alias today="vim -c VimwikiMakeDiaryNote"
+alias vimwiki="vim -c VimwikiIndex"
 
 # vim fuzzy find file with fd
 vf() {
