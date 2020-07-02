@@ -3,7 +3,12 @@ Plug 'vimwiki/vimwiki'
 " TODO: test auto_generate_links and auto_generate_tags
 "  see: https://github.com/vimwiki/vimwiki/pull/635
 
-" Vimwiki wikis
+" Contents
+" 01 Vimwiki wikis
+" 02 Vimwiki config
+" 03 Vimwiki mappings
+
+" 01 Vimwiki wikis
 
 let wiki1 = {}
 let wiki1.path = '~/.vimwiki'
@@ -17,7 +22,7 @@ let wiki1.auto_toc = 1
 
 let g:vimwiki_list = [wiki1]
 
-" Vimwiki config
+" 02 Vimwiki config
 
 let g:vimwiki_auto_chdir = 1
 let g:vimwiki_auto_header = 1
@@ -30,6 +35,7 @@ let g:vimwiki_listsyms = ' .x'
 let g:vimwiki_markdown_link_ext = 1
 let g:vimwiki_table_auto_fmt = 0
 let g:vimwiki_text_ignore_newline = 0
+let g:vimwiki_url_maxsave = 50
 
 function! VimwikiFindIncompleteTasks()
   lvimgrep /- \[ \]/ %:p
@@ -41,7 +47,7 @@ function! VimwikiFindAllIncompleteTasks()
   lopen
 endfunction
 
-" Vimwiki mappings
+" 03 Vimwiki mappings
 
 nnoremap <Leader>wa :call VimwikiFindAllIncompleteTasks()<CR>
 nnoremap <Leader>wx :call VimwikiFindIncompleteTasks()<CR>
