@@ -44,3 +44,6 @@ Plug 'lfv89/vim-interestingwords'
 
 " Toggle, display and navigate marks
 Plug 'kshenoy/vim-signature'
+
+" Wakatime
+Plug 'wakatime/vim-wakatime'

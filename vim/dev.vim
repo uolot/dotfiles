@@ -90,3 +90,11 @@ Plug 'eraserhd/parinfer-rust', {
 let tf_sections = '^\(resource\|module\|data\|locals\|variable\|output\)'
 autocmd FileType terraform nnoremap <silent> ]] :silent! call search(tf_sections, '')<cr>
 autocmd FileType terraform nnoremap <silent> [[ :silent! call search(tf_sections, 'b')<cr>
+
+" generate table of contents in markdown files
+" commands: :GenTocGFM / :UpdateToc / :RemoveToc
+Plug 'mzlogin/vim-markdown-toc'
+    let g:vmt_auto_update_on_save = 1
+    let g:vmt_fence_text = 'TOC'
+    let g:vmt_fence_closing_text = '/TOC'
+    let g:vmt_fence_hidden_markdown_style = 'GFM'
