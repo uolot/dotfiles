@@ -19,7 +19,10 @@ titlebar_padding 15 3
 
 # outputs
 
-# TODO: automatically change scale
+# HOME OFFICE - DELL XPS + DELL MONITOR + ASUS MONITOR VERTICAL
+
+# XXX: display rotation is ignored when including a config file
+# include "./homeoffice-xps+dell+asusv"
 
 # Lyst laptop Dell XPS
 output "Sharp Corporation 0x148B 0x00000000" {
@@ -43,6 +46,9 @@ output "Ancor Communications Inc ASUS VS247 G7LMTF045350" {
     transform 270
 }
 
+# LAPTOP - THINKPAD X1CARBON GEN2
+include "./thinkpad-x1c-gen2"
+
 # # Lyst external Dell monitor
 # output "Dell Inc. DELL U2717D J0XYN87S247L" {
 #     mode 2560x1440
@@ -50,12 +56,6 @@ output "Ancor Communications Inc ASUS VS247 G7LMTF045350" {
 #     pos 0 0
 # }
 
-# Thinkpad X1 Carbon 2nd gen
-output "Unknown 0x0419 0x00000000" {
-    mode 2560x1440
-    scale 1.3
-    pos 0 0
-}
 
 # inputs
 
