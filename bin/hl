@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+# TODO: Fix `KeyError` when highlighting uppercase words
+
 import itertools
 import re
 import sys
