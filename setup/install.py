@@ -1,8 +1,7 @@
 import os
 
 
-PACKAGES = [
-    # Sway
+SWAY_PKGS = [
     "aur/brillo",
     "community/grim",
     "community/ponymix",
@@ -12,7 +11,9 @@ PACKAGES = [
     "community/slurp",
     "community/wl-clipboard",
     "extra/xfce4-notifyd",
-    # Apps
+]
+
+APPS_PKGS = [
     "aur/alacritty-ligatures",
     "aur/chromium-snapshot-bin",
     "community/filezilla",
@@ -23,12 +24,16 @@ PACKAGES = [
     "community/termite",
     "community/zathura",
     "community/zathura-pdf-mupdf",
-    # Communication
+]
+
+COMMS_AND_NETWORKING_PKGS = [
     "community/blueman",
     "extra/bluez",
     "extra/bluez-utils",
     "aur/openvpn-update-systemd-resolved",
-    # Shell
+]
+
+SHELL_PKGS = [
     "extra/bash-completion",
     "community/colordiff",
     "aur/direnv",
@@ -44,7 +49,9 @@ PACKAGES = [
     "community/tmux",
     "extra/tree",
     "aur/universal-ctags-git",
-    # Dev
+]
+
+DEVELOPMENT_PKGS = [
     "community/aws-cli",
     "aur/awslogs",
     "community/ccache",
@@ -54,7 +61,9 @@ PACKAGES = [
     "community/npm",
     "extra/strace",
     "community/terraform",
-    # Python
+]
+
+PYTHON_PKGS = [
     "community/ipython",
     "community/mypy",
     "community/pylama",
@@ -70,10 +79,15 @@ PACKAGES = [
     "community/python-pynvim",
     "extra/python-setuptools",
     "extra/python-virtualenv",
-    # Java
+]
+
+JAVA_PKGS = [
     "extra/jdk-openjdk",
     "community/maven",
-    # EE
+]
+
+
+ELECTRONICS_PKGS = [
     "aur/adafruit-ampy",
     "community/arduino",
     "aur/esp-idf",
@@ -81,15 +95,21 @@ PACKAGES = [
     "community/picocom",
     "community/python-pyudev",
     "aur/rshell",
-    # Android
+]
+
+ANDROID_PKGS = [
     "community/android-tools",
     "aur/scrcpy",
-    # Misc and utils
+]
+
+MISC_PKGS = [
     "community/imv",
     "extra/snappy",
     "community/sox",
     "extra/tk",
-    # Fonts
+]
+
+FONT_PKGS = [
     "aur/ttf-anka-coder",
     "aur/ttf-anka-coder-condensed",
     "aur/font-victor-mono",
@@ -98,6 +118,20 @@ PACKAGES = [
     "community/ttf-fira-code",
     "aur/ttf-input",
 ]
+
+PACKAGES = (
+    SWAY_PKGS
+    + APPS_PKGS
+    + COMMS_AND_NETWORKING_PKGS
+    + SHELL_PKGS
+    + DEVELOPMENT_PKGS
+    + PYTHON_PKGS
+    + JAVA_PKGS
+    + ELECTRONICS_PKGS
+    + ANDROID_PKGS
+    + MISC_PKGS
+    + FONT_PKGS
+)
 
 
 def install(packages):
