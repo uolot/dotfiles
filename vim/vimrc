@@ -13,12 +13,15 @@ set completeopt=menu,preview " show popup menu on completion with extra info
 set completefunc=syntaxcomplete#Complete " set user-mode completions for <C-x><C-u>
 set cursorline " highlight cursor line
 set expandtab " convert tabs to spaces
-set formatoptions=cq1tj " formatting
+set formatoptions=cq1tj " formatting - :help fo-table
+set formatoptions+=ln   " new options to test
+set formatoptions-=r    " unsetting, for test
 set hidden " hide abandoned buffers
 set hlsearch " highlight search results
 set incsearch " go to first match when typing
 set laststatus=2 " show statusline for single buffer
 set lazyredraw " do not redraw screen until needed
+set linebreak " do not wrap in the middle of a word
 set list " display special chars
 set listchars=tab:→\ ,trail:∎ " special chars for list mode
 set nomodelineexpr  " disable modelinexpr, see: https://github.com/numirias/security/blob/master/doc/2019-06-04_ace-vim-neovim.md
@@ -27,7 +30,7 @@ set number " display line numbers
 set omnifunc=syntaxcomplete#Complete " enable omnicompletion
 set scrolloff=6 " keep 6 lines above/below cursor line
 set shiftwidth=0 " use tabstop number of tabs to indent
-set showbreak=↪ " mark wrapped lines
+" set showbreak=↪ " mark wrapped lines
 set showcmd " show last command on bottom
 set showmatch " highlight matching bracket
 set splitbelow " open new horizontal splits below
