@@ -1,4 +1,4 @@
-Plug 'vimwiki/vimwiki'
+Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
 
 " TODO: test auto_generate_links and auto_generate_tags
 "  see: https://github.com/vimwiki/vimwiki/pull/635
