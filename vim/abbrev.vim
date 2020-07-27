@@ -2,6 +2,8 @@
 iabbrev affilaite affiliate
 iabbrev aroung around
 iabbrev datetiem datetime
+iabbrev desing design
+iabbrev Fireshoe Firehose
 iabbrev improt import
 iabbrev istnall install
 iabbrev Lust Lyst
