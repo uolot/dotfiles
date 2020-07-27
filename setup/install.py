@@ -1,6 +1,12 @@
 import os
 
 
+SYSTEM_AND_LIBS_PKGS = [
+    "aur/libffi6",
+    "core/linux-lts",
+    "core/linux-lts-headers",
+]
+
 SWAY_PKGS = [
     "aur/brillo",
     "community/grim",
@@ -9,32 +15,51 @@ SWAY_PKGS = [
     "aur/swaylock-effects-git",
     "community/rofi",
     "community/slurp",
+    "community/waybar",
+    "aur/wdisplays",
+    "aur/wev",
     "community/wl-clipboard",
+    "aur/wofi",
     "extra/xfce4-notifyd",
 ]
 
 APPS_PKGS = [
     "aur/alacritty-ligatures",
+    "community/anki",
     "aur/chromium-snapshot-bin",
     "community/filezilla",
     "extra/firefox",
+    "extra/gedit",
     "extra/gnome-font-viewer",
     "extra/gvim",
+    "community/kicad",
+    "community/kicad-library",
+    "aur/sparkfun-kicad-lib-git",
     "community/mupdf",
     "community/termite",
+    "extra/vlc",
     "community/zathura",
     "community/zathura-pdf-mupdf",
+    "aur/zoom",
 ]
 
 COMMS_AND_NETWORKING_PKGS = [
     "community/blueman",
     "extra/bluez",
     "extra/bluez-utils",
+    "community/httpie",
+    "extra/libmicrodns",
+    "extra/mtr",
+    "aur/networkmanager-dispatcher-timesyncd",
+    "aur/ngrok",
     "aur/openvpn-update-systemd-resolved",
+    "core/traceroute",
 ]
 
 SHELL_PKGS = [
     "extra/bash-completion",
+    "community/bat",
+    "aur/cht.sh",
     "community/colordiff",
     "aur/direnv",
     "community/fd",
@@ -55,12 +80,16 @@ DEVELOPMENT_PKGS = [
     "community/aws-cli",
     "aur/awslogs",
     "community/ccache",
+    "aur/ccls",
+    "community/cloc",
     "community/docker",
     "community/docker-compose",
+    "aur/gopls",
     "community/libmemcached",
     "community/npm",
     "extra/strace",
     "community/terraform",
+    "aur/tflint-bin",
 ]
 
 PYTHON_PKGS = [
@@ -86,15 +115,22 @@ JAVA_PKGS = [
     "community/maven",
 ]
 
-
 ELECTRONICS_PKGS = [
     "aur/adafruit-ampy",
     "community/arduino",
+    "community/arduino-cli",
     "aur/esp-idf",
     "community/esptool",
     "community/picocom",
     "community/python-pyudev",
     "aur/rshell",
+]
+
+DOCUMENTS_AND_MEDIA_PKGS = [
+    "extra/graphviz",
+    "community/pandoc",
+    "aur/python-grip",
+    "community/youtube-dl",
 ]
 
 ANDROID_PKGS = [
@@ -120,10 +156,12 @@ FONT_PKGS = [
 ]
 
 PACKAGES = (
-    SWAY_PKGS
+    SYSTEM_AND_LIBS_PKGS
+    + SWAY_PKGS
+    + SHELL_PKGS
     + APPS_PKGS
     + COMMS_AND_NETWORKING_PKGS
-    + SHELL_PKGS
+    + DOCUMENTS_AND_MEDIA_PKGS
     + DEVELOPMENT_PKGS
     + PYTHON_PKGS
     + JAVA_PKGS
