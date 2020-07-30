@@ -38,6 +38,7 @@ set splitright " open new vertical splits on the right
 set tabstop=4 " tab key inserts 4 spaces
 set wildmenu " enable filename completion
 set wildmode=list:longest,full
+set nowrapscan " do not wrap to beginning of the file when searching
 
 
 " ------ Plugins ------
