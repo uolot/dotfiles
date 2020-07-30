@@ -85,6 +85,7 @@ DEVELOPMENT_PKGS = [
     "community/docker",
     "community/docker-compose",
     "aur/gopls",
+    "community/leiningen",
     "community/libmemcached",
     "community/npm",
     "extra/strace",
