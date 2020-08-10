@@ -27,6 +27,7 @@ let g:vimwiki_list = [wiki1]
 let g:vimwiki_auto_chdir = 1
 let g:vimwiki_auto_header = 1
 " let g:vimwiki_conceal_pre = 1
+let g:vimwiki_emoji_enable = 0
 let g:vimwiki_hl_cb_checked = 0
 let g:vimwiki_hl_headers = 1
 let g:vimwiki_list_ignore_newline = 1
