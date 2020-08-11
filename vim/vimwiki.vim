@@ -34,7 +34,7 @@ let g:vimwiki_list_ignore_newline = 1
 let g:vimwiki_listsym_rejected = '-'
 let g:vimwiki_listsyms = ' .x'
 let g:vimwiki_markdown_link_ext = 1
-let g:vimwiki_table_auto_fmt = 0
+let g:vimwiki_table_auto_fmt = 1
 let g:vimwiki_text_ignore_newline = 0
 let g:vimwiki_url_maxsave = 50
 
