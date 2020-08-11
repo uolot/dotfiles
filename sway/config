@@ -20,42 +20,27 @@ titlebar_padding 15 3
 # outputs
 
 # HOME OFFICE - DELL XPS + DELL MONITOR + ASUS MONITOR VERTICAL
-
+# include "./outputs/homeoffice-xps+dell+asusv"
 # XXX: display rotation is ignored when including a config file
-# include "./homeoffice-xps+dell+asusv"
 
+# LAPTOP - THINKPAD X1CARBON GEN2
+# include "./outputs/thinkpad-x1c-gen2"
+
+# HOME OFFICE SUCHA GORnA - DELL XPS + ASUS MONITOR
+# include "./outputs/homeoffice-suchagorna-xps+asus"
 # Lyst laptop Dell XPS
 output "Sharp Corporation 0x148B 0x00000000" {
     mode 3840x2160
     scale 2.5
-    pos 512 1760
-}
-# Dell External
-output "Dell Inc. DELL U2717D J0XYN87S247L" {
-    mode 2560x1440
-    scale 1
-    scale_filter linear
-    pos 0 320
+    pos 192 1080
 }
 # ASUS
 output "Ancor Communications Inc ASUS VS247 G7LMTF045350" {
     enable
     mode 1920x1080
     scale 1
-    pos 2560 0
-    transform 270
+    pos 0 0
 }
-
-# LAPTOP - THINKPAD X1CARBON GEN2
-include "./thinkpad-x1c-gen2"
-
-# # Lyst external Dell monitor
-# output "Dell Inc. DELL U2717D J0XYN87S247L" {
-#     mode 2560x1440
-#     scale 1
-#     pos 0 0
-# }
-
 
 # inputs
 
