@@ -1,8 +1,5 @@
 Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
 
-" TODO: test auto_generate_links and auto_generate_tags
-"  see: https://github.com/vimwiki/vimwiki/pull/635
-
 " Contents
 " 01 Vimwiki wikis
 " 02 Vimwiki config
@@ -36,6 +33,7 @@ let g:vimwiki_listsyms = ' .x'
 let g:vimwiki_markdown_link_ext = 1
 let g:vimwiki_table_auto_fmt = 1
 let g:vimwiki_text_ignore_newline = 0
+let g:vimwiki_toc_link_format = 1
 let g:vimwiki_url_maxsave = 50
 
 function! VimwikiFindIncompleteTasks()
