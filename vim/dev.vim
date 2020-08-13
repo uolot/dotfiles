@@ -30,6 +30,9 @@ Plug 'sheerun/vim-polyglot'
     let g:terraform_fmt_on_save = 1
     let g:terraform_align = 1
     let g:vim_markdown_conceal_code_blocks = 0
+    let g:vim_markdown_follow_anchor = 1  " follow named anchors
+    let g:vim_markdown_no_extensions_in_markdown = 1
+    let g:vim_markdown_strikethrough = 1  " ~~scratch this~~
 
 Plug 'tpope/vim-commentary'
 
