@@ -94,6 +94,7 @@ bindsym $mod+b exec firefox
 
 # kill focused window
 bindsym $mod+Shift+q kill
+bindsym $mod+Ctrl+q exec pkill $(rofi -p pkill -dmenu -lines 0)
 
 
 # launcher
