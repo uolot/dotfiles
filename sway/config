@@ -26,20 +26,36 @@ titlebar_padding 15 3
 # LAPTOP - THINKPAD X1CARBON GEN2
 # include "./outputs/thinkpad-x1c-gen2"
 
-# HOME OFFICE SUCHA GORnA - DELL XPS + ASUS MONITOR
+# HOME OFFICE SUCHA GORNA - DELL XPS + ASUS MONITOR
 # include "./outputs/homeoffice-suchagorna-xps+asus"
-# Lyst laptop Dell XPS
-output "Sharp Corporation 0x148B 0x00000000" {
-    mode 3840x2160
-    scale 2.5
-    pos 192 1080
+
+# HOME OFFICE SUCHA GORNA - DELL XPS + BENQ MMONITOR + ASUS MONITOR
+# include "./outputs/homeoffice-suchagorna-xps+benq+asus"
+
+# BENQ
+output "BenQ Corporation BenQ EL2870U 26L03402SL0" {
+    enable
+    # mode 3840x2160
+    # scale 1.5
+    mode 2560x1440
+    scale 1
+    pos 0 256
 }
+
 # ASUS
 output "Ancor Communications Inc ASUS VS247 G7LMTF045350" {
     enable
     mode 1920x1080
     scale 1
-    pos 0 0
+    pos 2560 0
+    transform 270
+}
+
+# Lyst laptop Dell XPS
+output "Sharp Corporation 0x148B 0x00000000" {
+    mode 3840x2160
+    scale 2.5
+    pos 512 1696
 }
 
 # inputs
