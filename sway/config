@@ -100,6 +100,7 @@ bindsym $mod+Ctrl+q exec pkill $(rofi -p pkill -dmenu -lines 0)
 # launcher
 bindsym $mod+space exec rofi -show run -modi run -monitor 0
 bindsym $mod+Shift+space exec rofi -show drun -modi drun -monitor 0
+bindsym $mod+Ctrl+space exec alacritty -t terminal-floating -e $(rofi -dmenu -p run -lines 0)
 
 
 # change focus
