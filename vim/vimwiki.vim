@@ -8,7 +8,11 @@ Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
 " 01 Vimwiki wikis
 
 let wiki1 = {}
-let wiki1.path = '~/.vimwiki'
+let wiki1.path = '~/Vimwiki/wiki/'
+let wiki1.path_html = '~/Vimwiki/html/'
+let wiki1.template_path = '~/Vimwiki/templates/'
+let wiki1.template_default = 'def_template'
+let wiki1.template_ext = '.html'
 let wiki1.maxhi = 1
 let wiki1.auto_diary_index = 1
 let wiki1.auto_export = 1
@@ -16,6 +20,7 @@ let wiki1.auto_generate_links = 1
 let wiki1.auto_generate_tags = 1
 let wiki1.auto_tags = 1
 let wiki1.auto_toc = 1
+let wiki1.diary_frequency = "daily"
 
 let g:vimwiki_list = [wiki1]
 
@@ -23,14 +28,14 @@ let g:vimwiki_list = [wiki1]
 
 let g:vimwiki_auto_chdir = 1
 let g:vimwiki_auto_header = 1
-" let g:vimwiki_conceal_pre = 1
 let g:vimwiki_emoji_enable = 0
+let g:vimwiki_global_ext = 0
 let g:vimwiki_hl_cb_checked = 0
 let g:vimwiki_hl_headers = 1
 let g:vimwiki_list_ignore_newline = 1
 let g:vimwiki_listsym_rejected = '-'
 let g:vimwiki_listsyms = ' .x'
-let g:vimwiki_markdown_link_ext = 1
+let g:vimwiki_markdown_link_ext = 0
 let g:vimwiki_table_auto_fmt = 1
 let g:vimwiki_text_ignore_newline = 0
 let g:vimwiki_toc_link_format = 1
@@ -55,12 +60,14 @@ nmap glt I- [ ] <Esc>
 vnoremap glt :'<,'>norm I- [ ] <CR>
 
 nnoremap <Leader>wg :VimwikiGoto 
-nnoremap <Leader>wf :Files ~/.vimwiki/<CR>
+nnoremap <Leader>wf :Files ~/Vimwiki/wiki/<CR>
 nnoremap <Leader>w/ :VimwikiSearch 
 nnoremap <Leader>wT :VimwikiTOC<CR>
 nnoremap <Leader>wq :VimwikiGoto Scratchpad<CR>
 nmap <Leader>ws <Plug>VimwikiSplitLink
 nmap <Leader>wv <Plug>VimwikiVSplitLink
 nnoremap <Leader>wl :VimwikiRenumberList<CR>
+" causes segfault - revisit later
+" nnoremap <silent> <Leader>wu :call vimwiki#base#linkify()<CR>
 
-autocmd FileType vimwiki setlocal textwidth=120 nowrap linebreak nolist wrapmargin=0
+autocmd FileType vimwiki setlocal textwidth=100 nowrap linebreak nolist wrapmargin=0
