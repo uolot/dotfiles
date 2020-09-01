@@ -14,9 +14,11 @@ configuration {
 	lines: 10;
 	location: 0;
 	modi: "run,window,ssh";
+	parse-known-hosts: false;
 	separator-style: "none";
 	terminal: "alacritty";
-	width: 30;
+	width: -30; // >0 means perc cents, <0 means characters
+
 /*	padding: 5;*/
 /*	yoffset: 0;*/
 /*	xoffset: 0;*/
