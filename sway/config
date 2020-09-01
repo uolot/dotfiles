@@ -6,16 +6,15 @@ set $mod Mod4
 
 font pango:Ubuntu Medium 10
 
-gaps inner 0
+gaps inner 8
 gaps outer 0
-smart_gaps on
-# hide_edge_borders both
-smart_borders on
-# set borders to 1 pixel
+smart_gaps off
+smart_borders gaps
 default_border pixel 3
-# titlebar padding
 titlebar_padding 15 3
 
+# set terminal opacit
+for_window [app_id="Alacritty"] opacity set 0.96
 
 # outputs
 
@@ -252,10 +251,12 @@ bar {
     # Changed using i3-style: https://github.com/acrisci/i3-style/tree/master/themes
     colors {
         # colors:                border  backgr. text    ind.
-        separator #928374
+        # separator #928374
+        separator #1d425b
         background #282828
         statusline #ebdbb2
-        focused_workspace #f76922 #282828 #b8b8b8
+        # focused_workspace #f76922 #282828 #b8b8b8
+        focused_workspace #3a86b7 #282828 #b8b8b8
         active_workspace #1d2021 #1d2021 #928374
         inactive_workspace #32302f #32302f #928374
         urgent_workspace #cc241d #cc241d #ebdbb2
@@ -312,3 +313,28 @@ exec "sleep 60 ; $HOME/Build/batbottg/bin/batbottg -c $HOME/.batbottg.ini"
 
 # Notifications
 for_window [title="^xfce4-notifyd$"] floating enable, sticky enable, border none, move position 20 20
+
+
+# colors
+
+# classes:
+# client.focused:           The window that has focus.
+# client.focused_inactive:  The most recently focused view within a container which is not focused.
+# client.placeholder:       Ignored (present for i3 compatibility).
+# client.unfocused:         A view that does not have focus.
+# client.urgent:            A view with an urgency hint.
+#
+# colors:
+# border:        The border around the title bar.
+# background:    The background of the title bar.
+# text:          The text color of the title bar.
+# indicator:     The color used to indicate where a new view will open. In a tiled container, this would paint the right border of the current view if a new view would be
+# child_border:  The border around the view itself.
+
+#class                   border     background  text       indicator  child_border
+# client.focused           #3a86b7ff  #1d425baa   #ffffff    #ffffff77
+client.focused           #1d425b #3a86b799 #ffffff #3a86b7ff
+# client.focused_inactive  #1d425baa  #00699488   #ffffff
+client.focused_inactive  #1d425b #1d425b99 #aaaaaa
+# client.unfocused         #55555588  #55555588   #aaaaaa88
+client.unfocused         #222222  #22222299  #aaaaaa
