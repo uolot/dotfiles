@@ -85,8 +85,8 @@ for_window [title="^ipython-floating$"] floating enable
 bindsym $mod+t exec $HOME/Bin/showtime.py
 for_window [title="^showtime$"] floating enable, border none
 
-bindsym $mod+Shift+t exec $HOME/Bin/timer-visible $(echo -e "5:00\n25:00" | rofi -dmenu)
-bindsym $mod+Ctrl+Shift+t exec $HOME/Bin/timer-hidden $(echo -e "5:00/5\n25:00/5" | rofi -dmenu)
+bindsym $mod+Shift+t exec $HOME/Bin/timer-visible $(echo -e "5:00\n25:00" | $HOME/Bin/rofi-sway -dmenu)
+bindsym $mod+Ctrl+Shift+t exec $HOME/Bin/timer-hidden $(echo -e "5:00/5\n25:00/5" | $HOME/Bin/rofi-sway -dmenu)
 for_window [title="^timer$"] floating enable, sticky enable, border none, move position pointer
 
 # start a webbrowser
@@ -94,13 +94,14 @@ bindsym $mod+b exec firefox
 
 # kill focused window
 bindsym $mod+Shift+q kill
-bindsym $mod+Ctrl+q exec pkill $(rofi -p pkill -dmenu -lines 0)
+bindsym $mod+Ctrl+q exec pkill $($HOME/Bin/rofi-sway -p pkill -dmenu -lines 0)
 
 
 # launcher
-bindsym $mod+space exec rofi -show run -modi run -monitor 0
-bindsym $mod+Shift+space exec rofi -show drun -modi drun -monitor 0
-bindsym $mod+Ctrl+space exec alacritty -t terminal-floating -e $(rofi -dmenu -p run -lines 0)
+bindsym $mod+space exec $HOME/Bin/rofi-sway -show run -modi run
+bindsym $mod+Shift+space exec $HOME/Bin/rofi-sway -show drun -modi drun -monitor 0
+bindsym $mod+Ctrl+space exec alacritty -t terminal-floating -e $($HOME/Bin/rofi-sway -dmenu -p run -lines 0)
+# for_window [title="^terminal-floating$"] floating enable
 
 
 # change focus
@@ -292,7 +293,7 @@ bindsym XF86AudioLowerVolume exec "$HOME/Bin/volume down"
 # mute sound
 bindsym XF86AudioMute exec "ponymix toggle"
 # enable/disable airdots
-bindsym $mod+Shift+b exec "$HOME/Bin/airdots $(echo -e 'on\noff' | rofi -dmenu -p airdots)"
+bindsym $mod+Shift+b exec "$HOME/Bin/airdots $(echo -e 'on\noff' | $HOME/Bin/rofi-sway -dmenu -p airdots)"
 # toggle microphone capture
 bindsym $mod+XF86AudioMute exec "amixer set Capture toggle"
 # mute microphone
