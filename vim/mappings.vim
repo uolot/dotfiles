@@ -23,12 +23,6 @@ vnoremap > >gv
 nnoremap gV `[v`]
 
 
-" change cursor color in insert/normal mode
-let &t_SI = "\<Esc>]12;orange\x7"
-let &t_EI = "\<Esc>]12;lightblue\x7"
-autocmd VimLeave * silent !echo -ne "\033]112\007"
-
-
 " open images with imv
 autocmd BufEnter *.png,*.jpg,*.gif exec "!imv ".expand("%") | :bw
 
