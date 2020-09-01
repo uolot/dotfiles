@@ -15,7 +15,6 @@ SWAY_PKGS = [
     "aur/swaylock-effects-git",
     "community/rofi",
     "community/slurp",
-    "community/waybar",
     "aur/wdisplays",
     "aur/wev",
     "community/wl-clipboard",
