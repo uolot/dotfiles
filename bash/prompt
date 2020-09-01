@@ -29,7 +29,7 @@ function prompt_command {
         then
             promptpath_path="/$promptpath_path"
         fi
-        promptpath_dir=$(basename `echo $mypwd`)
+        promptpath_dir=$(basename "`echo $mypwd`")
         workdir=" $(echo "$promptpath_path/$promptpath_dir" | tr -s /) "
     fi
 
