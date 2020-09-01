@@ -1,3 +1,6 @@
+# Reference:
+# https://github.com/codota/TabNine/blob/master/TabNine.toml
+
 [language.rust]
 command = "rls"
 install = [
@@ -41,9 +44,9 @@ command = "hie"
 args = ["--lsp"]
 
 [language.go]
-command = "go-langserver"
-args = ["-mode", "stdio", "-gocodecompletion"]
-install = [["go", "get", "-u", "github.com/sourcegraph/go-langserver"]]
+command = "gopls"
+args = ["serve"]
+install = [["go", "get", "-u", "golang.org/x/tools/gopls"]]
 
 [language.bash]
 command = "bash-language-server"
