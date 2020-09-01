@@ -1,6 +1,7 @@
 " typos
 iabbrev affilaite affiliate
 iabbrev aroung around
+iabbrev bukcet bucket
 iabbrev datetiem datetime
 iabbrev desing design
 iabbrev Fireshoe Firehose
