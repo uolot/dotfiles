@@ -102,3 +102,6 @@ Plug 'mzlogin/vim-markdown-toc'
     let g:vmt_fence_text = 'TOC'
     let g:vmt_fence_closing_text = '/TOC'
     let g:vmt_fence_hidden_markdown_style = 'GFM'
+
+" find TODO notes in current buffer
+command! Todos /\(TODO\|XXX\|FIXME\)
