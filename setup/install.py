@@ -163,6 +163,16 @@ FONT_PKGS = [
     "aur/ttf-input",
 ]
 
+GAMING_PKGS = [
+    "multilib/lib32-mesa",
+    "vulkan-mesa-layers",
+    "aur/proton",
+    "multilib/steam",
+    "aur/vkd3d-valve",
+    "extra/vulkan-intel",
+    "multilib/wine",
+]
+
 PACKAGES = (
     SYSTEM_AND_LIBS_PKGS
     + SWAY_PKGS
@@ -177,6 +187,7 @@ PACKAGES = (
     + ANDROID_PKGS
     + MISC_PKGS
     + FONT_PKGS
+    + GAMING_PKGS
 )
 
 
