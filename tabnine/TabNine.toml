@@ -53,5 +53,6 @@ command = "bash-language-server"
 args = ["start"]
 
 [language.dart]
-command = "dart_language_server"
-install = [["pub", "global", "activate", "dart_language_server"]]
+# command = "dart_language_server"
+command = "/home/tomasz/.pub-cache/bin/dart_language_server"
+install = [["flutter", "pub", "global", "activate", "dart_language_server"]]

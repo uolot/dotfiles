@@ -1,6 +1,7 @@
 # vim: ft=bash
 
 export PATH=/opt/apache-maven-3.6.0/bin:$PATH
-export JAVA_HOME=/usr/lib/jvm/default-runtime
+# export JAVA_HOME=/usr/lib/jvm/default-runtime
+export JAVA_HOME=$HOME/Build/android-studio/jre
 export SPARK_HOME=/opt/spark-2.4.3-bin-spark-2.4.3-bin-hadoop2.8
 

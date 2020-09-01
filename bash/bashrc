@@ -11,7 +11,7 @@ set -o vi
 # Enable **/* wildards
 shopt -s globstar
 
-export PATH="$HOME/.dotfiles/bin:$HOME/.local/bin:$PATH"
+export PATH="$HOME/.dotfiles/bin:$HOME/.local/bin:$PATH:$HOME/Build/flutter/bin:$HOME/.pub-cache/bin"
 
 export BROWSER=firefox
 export EDITOR=vim

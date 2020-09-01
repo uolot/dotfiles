@@ -105,3 +105,7 @@ Plug 'mzlogin/vim-markdown-toc'
 
 " find TODO notes in current buffer
 command! Todos /\(TODO\|XXX\|FIXME\)
+
+" dart+flutter
+Plug 'dart-lang/dart-vim-plugin'
+Plug 'thosakwe/vim-flutter'

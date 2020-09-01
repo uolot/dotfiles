@@ -136,6 +136,7 @@ DOCUMENTS_AND_MEDIA_PKGS = [
 
 ANDROID_PKGS = [
     "community/android-tools",
+    "aur/flutter",
     "aur/scrcpy",
 ]
 
