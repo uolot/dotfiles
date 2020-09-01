@@ -33,6 +33,7 @@ Plug 'sheerun/vim-polyglot'
     let g:vim_markdown_follow_anchor = 1  " follow named anchors
     let g:vim_markdown_no_extensions_in_markdown = 1
     let g:vim_markdown_strikethrough = 1  " ~~scratch this~~
+    autocmd FileType markdown setlocal tw=0 wrap
 
 Plug 'tpope/vim-commentary'
 
