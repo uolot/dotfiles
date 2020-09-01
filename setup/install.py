@@ -36,6 +36,7 @@ APPS_PKGS = [
     "aur/sparkfun-kicad-lib-git",
     "community/mupdf",
     "community/termite",
+    "aur/visual-studio-code-bin",
     "extra/vlc",
     "community/zathura",
     "community/zathura-pdf-mupdf",
