@@ -83,6 +83,7 @@ DEVELOPMENT_PKGS = [
     "community/cloc",
     "community/docker",
     "community/docker-compose",
+    "aur/flow-bin",
     "aur/gopls",
     "community/leiningen",
     "community/libmemcached",
@@ -90,6 +91,7 @@ DEVELOPMENT_PKGS = [
     "extra/strace",
     "community/terraform",
     "aur/tflint-bin",
+    "aur/vscode-html-languageserver-bin",
 ]
 
 PYTHON_PKGS = [
