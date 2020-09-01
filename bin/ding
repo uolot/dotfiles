@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+exec play -q $HOME/.dotfiles/bin/ding.mp3
