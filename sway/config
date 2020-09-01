@@ -16,6 +16,9 @@ titlebar_padding 15 3
 # set terminal opacit
 for_window [app_id="Alacritty"] opacity set 0.96
 
+# set wallpaper
+output "*" background $HOME/.dotfiles/wallpapers/AdobeStock_208568531.jpeg fill
+
 # outputs
 
 # HOME OFFICE - DELL XPS + DELL MONITOR + ASUS MONITOR VERTICAL
