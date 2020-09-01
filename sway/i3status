@@ -1,5 +1,3 @@
-## TODO: replace with waybar
-
 ###############################################################################
 # ceerious i3 status config
 # see "man i3status" for documentation.
@@ -32,6 +30,7 @@ order += "wireless wlp3s0"
 order += "wireless wlp4s0"
 order += "ethernet enp5s0"
 order += "ethernet enp57s0u1u4"
+order += "ethernet enp57s0u2u4"
 #order += "cpu_temperature 0"
 #order += "cpu_usage 0"
 #order += "load"
@@ -70,6 +69,13 @@ ethernet enp5s0 {
 }
 
 ethernet enp57s0u1u4 {
+    # if you use %speed, i3status requires root privileges
+    format_up = "E: %ip (%speed)"
+    format_down = ""
+    separator_block_width = 32
+}
+
+ethernet enp57s0u2u4 {
     # if you use %speed, i3status requires root privileges
     format_up = "E: %ip (%speed)"
     format_down = ""
