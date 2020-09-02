@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-option=$(echo -e "suspend+hibernate\nhibernate\nshutdown\nreboot" | $HOME/Bin/rofi-sway -dmenu -monitor 0)
+option=$(echo -e "suspend+hibernate\nhibernate\nshutdown\nreboot" | $HOME/Bin/rofi-sway -dmenu -monitor 0 -p power)
 
 lock=true
 powercmd=true
