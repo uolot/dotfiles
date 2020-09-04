@@ -162,6 +162,7 @@ ANDROID_PKGS = [
 ]
 
 MISC_PKGS = [
+    "aur/imgur.sh",
     "community/imv",
     "extra/snappy",
     "community/sox",
