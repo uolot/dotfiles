@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+DIV="========================="
+
+echo
+
+echo -e "$DIV Status $DIV"
+echo
+git st
+echo
+
+echo "$DIV Branches $DIV"
+echo
+git br
+echo
+
+echo "$DIV Stash $DIV"
+echo
+git stash list
+echo
+
+echo "$DIV Log $DIV"
+echo
+git lgf -6
+echo
