@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-option=$(echo -e "suspend+hibernate\nhibernate\nshutdown\nreboot" | $HOME/Bin/rofi-sway -dmenu -monitor 0 -p power)
+option=$(echo -e "suspend+hibernate\nshutdown\nlogout\nreboot\nhibernate" | $HOME/Bin/rofi-sway -dmenu -monitor 0 -p power)
 
 lock=true
 powercmd=true
@@ -10,6 +10,7 @@ case "$option" in
     "hibernate") powercmd="systemctl hibernate" ;;
     "shutdown") powercmd="shutdown -h now" ;;
     "reboot") powercmd="systemctl reboot" ;;
+    "logout") powercmd="swaymsg exit" ;;
     *) lock=false ;;
 esac
 
