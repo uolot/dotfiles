@@ -2,9 +2,10 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
     nnoremap <Leader>pf :GFiles<CR>
     nnoremap <Leader>pF :Files<CR>
-    nnoremap <Leader>pl :BLines<CR>
-    nnoremap <Leader>pL :Lines<CR>
+    nnoremap <Leader>pl :Lines<CR>
+    nnoremap <Leader>bl :BLines<CR>
     nnoremap <Leader>pt :Tags<CR>
+    nnoremap <Leader>bt :BTags<CR>
     nnoremap <Leader>pb :Buffers<CR>
     " let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 
