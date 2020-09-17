@@ -51,3 +51,7 @@ Plug 'wakatime/vim-wakatime'
 " Vim plugin that displays tags in a window, ordered by scope
 Plug 'majutsushi/tagbar'
     nmap <Leader>tb :TagbarOpenAutoClose<CR>
+
+
+" Distraction-free writing in Vim
+Plug 'junegunn/goyo.vim'
