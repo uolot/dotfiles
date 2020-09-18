@@ -174,7 +174,6 @@ FONT_PKGS = [
     "aur/ttf-anka-coder-condensed",
     "aur/font-victor-mono",
     "community/otf-font-awesome",
-    "community/ttf-cascadia-code",
     "community/ttf-fira-code",
     "aur/ttf-input",
 ]
