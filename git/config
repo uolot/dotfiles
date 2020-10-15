@@ -2,6 +2,9 @@
 
 [color]
 	ui = auto
+[color "diff"]
+	meta = white reverse
+	frag = cyan reverse
 [commit]
 	verbose = true
 [core]
