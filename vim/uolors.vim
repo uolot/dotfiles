@@ -10,8 +10,10 @@ highlight Normal ctermfg=250 ctermbg=236 cterm=NONE
 highlight StatusLine ctermfg=236 ctermbg=248 cterm=NONE
 highlight StatusLineNC ctermfg=236 ctermbg=240 cterm=NONE
 
-highlight Comment ctermfg=244 ctermbg=NONE cterm=italic
-highlight Todo ctermfg=202 ctermbg=NONE cterm=underline
+highlight Comment ctermfg=245 ctermbg=NONE cterm=italic
+highlight Todo ctermfg=202 ctermbg=NONE cterm=NONE
+highlight Underlined ctermfg=81 term=NONE cterm=NONE
+
 
 highlight CursorLine ctermfg=NONE ctermbg=237 cterm=NONE
 highlight CursorColumn ctermfg=NONE ctermbg=237 cterm=NONE
@@ -81,5 +83,5 @@ highlight CursorWord1 term=none cterm=none gui=none
 au FileType python syntax keyword pythonDefOrClass def class nextgroup=pythonFunctionDef skipwhite
 au FileType python syntax match pythonDefOrClass /\<async def\>/ nextgroup=pythonFunctionDef skipwhite
 
-highlight! Note ctermfg=155 ctermbg=NONE cterm=underline
+highlight! Note ctermfg=155 ctermbg=NONE cterm=NONE
 au FileType vimwiki :call matchadd('Note', '\<NEXT\>')
