@@ -25,6 +25,7 @@ SYSTEM_AND_LIBS_PKGS = [
 SWAY_PKGS = [
     "aur/brillo",
     "community/grim",
+    "community/playerctl",
     "community/ponymix",
     "community/sway",
     "aur/swaylock-effects-git",
