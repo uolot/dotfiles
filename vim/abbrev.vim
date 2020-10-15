@@ -23,10 +23,3 @@ iabbrev <expr> YMD strftime("%Y-%m-%d")
 iabbrev <expr> YMDD strftime("%Y-%m-%d %a")
 iabbrev <expr> HM strftime("%H:%M")
 iabbrev <expr> HMS strftime("%H:%M:%S")
-command DATE :%s/DATE/\=strftime("%Y-%m-%d")/gc
-command TODAY :%s/TODAY/\=strftime("%Y-%m-%d")/gc
-command DAYOFWEEK :%s/DAYOFWEEK/\=strftime("%a")/gc
-
-
-" expand abbreviation
-nnoremap <C-X><C-X> diw:exe "normal i".@"<CR>
