@@ -29,5 +29,11 @@ if command -v pyenv 1>/dev/null 2>&1; then
 fi
 
 
+# Poetry
+export POETRY_VIRTUALENVS_IN_PROJECT=1
+
+# Pip
+# export PIP_REQUIRE_VIRTUALENV=true
+
 # Pip extended
 source $HOME/.dotfiles/pip-extended.sh
