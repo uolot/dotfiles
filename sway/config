@@ -57,6 +57,10 @@ output "Ancor Communications Inc ASUS VS247 G7LMTF045350" {
     transform 270
 }
 
+# assign workspaces to specific outputs
+workspace 1 output eDP-1
+workspace 2 output DP-1
+workspace 8 output DP-2
 
 # inputs
 
