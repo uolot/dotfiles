@@ -148,9 +148,6 @@ bindsym $mod+v split h
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
-# change output scale
-bindsym $mod+d exec $HOME/Bin/sway_scale
-
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+q layout stacking
 bindsym $mod+w layout tabbed
