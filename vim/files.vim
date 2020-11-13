@@ -3,6 +3,3 @@ Plug 'kopischke/vim-fetch'
 
 " guess file indentation style
 Plug 'conormcd/matchindent.vim'
-
-" File explorer
-Plug 'justinmk/vim-dirvish'
