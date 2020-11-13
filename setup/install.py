@@ -151,7 +151,7 @@ ELECTRONICS_PKGS = [
 
 DOCUMENTS_AND_MEDIA_PKGS = [
     "extra/graphviz",
-    "community/pandoc",
+    "aur/pandoc-bin",
     "aur/python-grip",
     "community/youtube-dl",
 ]
