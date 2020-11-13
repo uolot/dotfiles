@@ -11,6 +11,7 @@ GROUPS = [
     "dialout",  # MCUs
     "uucp",  # MCUs
     "lock",  # MCUs
+    "plugdev",
 ]
 USERNAME = getpass.getuser()
 
