@@ -56,8 +56,17 @@ endfunction
 nnoremap <Leader>wa :call VimwikiFindAllIncompleteTasks()<CR>
 nnoremap <Leader>wx :call VimwikiFindIncompleteTasks()<CR>
 
-nmap glt I- [ ] <Esc>
-vnoremap glt :'<,'>norm I- [ ] <CR>
+" convert list item to a task
+nnoremap gtt m`0^a [ ]<Esc>``
+
+" delete task box
+nnoremap gtu m`0f[Xd%``
+
+" mark task done
+nnoremap gt<Space> m`0f[lrxf]a DONE :YMD<C-]>:<Esc><C-Space>``
+
+" mark task cancelled
+nnoremap gtc m`0f[lrxf]a CANCELLED :YMD<C-]>:<Esc>glx``
 
 nnoremap <Leader>wg :VimwikiGoto 
 nnoremap <Leader>wf :Files ~/Vimwiki/wiki/<CR>
