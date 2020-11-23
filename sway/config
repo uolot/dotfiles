@@ -81,9 +81,6 @@ bindsym $mod+Shift+Return exec alacritty --working-directory $(cat /tmp/workdir 
 # start a floating terminal
 bindsym $mod+Ctrl+Return exec alacritty -t terminal-floating
 for_window [title="^terminal-floating$"] floating enable
-# floating ipython
-bindsym $mod+Ctrl+i exec alacritty -t ipython-floating -e tmux new ipython
-for_window [title="^ipython-floating$"] floating enable
 
 # show time and date
 bindsym $mod+t exec $HOME/Bin/showtime.py
