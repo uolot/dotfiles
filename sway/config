@@ -192,9 +192,12 @@ bindsym $mod+Shift+Backspace move scratchpad
 bindsym $mod+Backspace scratchpad show
 
 # screenshots
-# https://github.com/emersion/grim
-bindsym $mod+p exec grim $($HOME/Bin/make-screenshot-path)
-bindsym $mod+Shift+p exec grim -g "$(slurp)" $($HOME/Bin/make-screenshot-path)
+# current output
+bindsym $mod+p exec grim -o $(swaymsg --pretty -t get_outputs | awk '/focused/ {print $2}') $($HOME/Bin/make-screenshot-path)
+# selected part of the screen
+bindsym $mod+Ctrl+p exec grim -g "$(slurp)" $($HOME/Bin/make-screenshot-path)
+# all outputs
+bindsym $mod+Shift+p exec grim $($HOME/Bin/make-screenshot-path)
 
 # reload the config file
 bindsym $mod+Shift+c reload
