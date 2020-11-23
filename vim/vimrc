@@ -28,7 +28,7 @@ set nomodelineexpr  " disable modelinexpr, see: https://github.com/numirias/secu
 set mouse= " disable mouse
 set number " display line numbers
 set omnifunc=syntaxcomplete#Complete " enable omnicompletion
-set scrolloff=6 " keep 6 lines above/below cursor line
+set scrolloff=3 " keep lines above/below cursor line
 set shiftwidth=0 " use tabstop number of tabs to indent
 " set showbreak=↪ " mark wrapped lines
 set showcmd " show last command on bottom
