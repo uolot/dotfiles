@@ -31,29 +31,29 @@ output "*" background $HOME/.dotfiles/wallpapers/AdobeStock_208568531.jpeg fill
 # HOME OFFICE SUCHA GORNA - DELL XPS + BENQ MMONITOR + ASUS MONITOR - HORIZONTAL ARRANGEMENT
 # include "./outputs/homeoffice-suchagorna-xps+benq+asus-horizontal"
 
-# Lyst laptop Dell XPS
+# eDP-1: Lyst laptop Dell XPS
 output "Sharp Corporation 0x148B 0x00000000" {
     mode 3840x2160
-    scale 2.5
-    pos 0 1024
+    scale 3
+    pos 0 1152
 }
 
-# BENQ
+# DP-1: BENQ
 output "BenQ Corporation BenQ EL2870U 26L03402SL0" {
     enable
     # mode 3840x2160
     # scale 1.5
     mode 2560x1440
     scale 1
-    pos 1536 320
+    pos 1280 320
 }
 
-# ASUS
+# DP-2: ASUS
 output "Ancor Communications Inc ASUS VS247 G7LMTF045350" {
     enable
     mode 1920x1080
     scale 1
-    pos 4096 0
+    pos 3840 0
     transform 270
 }
 
