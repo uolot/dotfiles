@@ -70,6 +70,7 @@ nnoremap <Leader>wf :Files ~/Vimwiki/wiki/<CR>
 nnoremap <Leader>w/ :VimwikiSearch 
 nnoremap <Leader>wT :VimwikiTOC<CR>
 nnoremap <Leader>wq :VimwikiGoto Scratchpad<CR>
+nnoremap <Leader>wj :VimwikiGoto AE\ JIRA\ Template<CR>
 nmap <Leader>ws <Plug>VimwikiSplitLink
 nmap <Leader>wv <Plug>VimwikiVSplitLink
 nnoremap <Leader>wl :VimwikiRenumberList<CR>
