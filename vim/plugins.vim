@@ -55,3 +55,9 @@ Plug 'majutsushi/tagbar'
 
 " Distraction-free writing in Vim
 Plug 'junegunn/goyo.vim'
+
+
+" Show keybindings in popup
+" https://github.com/liuchengxu/vim-which-key
+Plug 'liuchengxu/vim-which-key'
+nnoremap <silent> <Leader> :WhichKey '<Space>'<CR>
