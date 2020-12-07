@@ -1,23 +1,18 @@
 # vim: ft=i3config
 
-# eDP-1: Lyst laptop Dell XPS
 output "Sharp Corporation 0x148B 0x00000000" {
     mode 3840x2160
     scale 3
     pos 0 1152
 }
 
-# DP-1: BENQ
 output "BenQ Corporation BenQ EL2870U 26L03402SL0" {
     enable
-    # mode 3840x2160
-    # scale 1.5
     mode 2560x1440
     scale 1
     pos 1280 320
 }
 
-# DP-2: ASUS
 output "Ancor Communications Inc ASUS VS247 G7LMTF045350" {
     enable
     mode 1920x1080
@@ -26,6 +21,7 @@ output "Ancor Communications Inc ASUS VS247 G7LMTF045350" {
     transform 270
 }
 
-workspace 1 output eDP-1
-workspace 2 output DP-1
-workspace 8 output DP-2
+# assign workspaces to specific outputs
+workspace 1 output "Sharp Corporation 0x148B 0x00000000"
+workspace 2 output "BenQ Corporation BenQ EL2870U 26L03402SL0"
+workspace 8 output "Ancor Communications Inc ASUS VS247 G7LMTF045350"

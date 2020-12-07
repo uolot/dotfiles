@@ -14,10 +14,7 @@ titlebar_padding 15 3
 output "*" background $HOME/.dotfiles/wallpapers/AdobeStock_208568531.jpeg fill
 
 # outputs
-
-# HOME OFFICE - DELL XPS + DELL MONITOR + ASUS MONITOR VERTICAL
-# include "./outputs/homeoffice-xps+dell+asusv"
-# XXX: display rotation is ignored when including a config file
+# inline contents of outputs config file, because display rotation is ignored when including
 
 # LAPTOP - THINKPAD X1CARBON GEN2
 # include "./outputs/thinkpad-x1c-gen2"
@@ -31,24 +28,19 @@ output "*" background $HOME/.dotfiles/wallpapers/AdobeStock_208568531.jpeg fill
 # HOME OFFICE SUCHA GORNA - DELL XPS + BENQ MMONITOR + ASUS MONITOR - HORIZONTAL ARRANGEMENT
 # include "./outputs/homeoffice-suchagorna-xps+benq+asus-horizontal"
 
-# eDP-1: Lyst laptop Dell XPS
 output "Sharp Corporation 0x148B 0x00000000" {
     mode 3840x2160
     scale 3
     pos 0 1152
 }
 
-# DP-1: BENQ
 output "BenQ Corporation BenQ EL2870U 26L03402SL0" {
     enable
-    # mode 3840x2160
-    # scale 1.5
     mode 2560x1440
     scale 1
     pos 1280 320
 }
 
-# DP-2: ASUS
 output "Ancor Communications Inc ASUS VS247 G7LMTF045350" {
     enable
     mode 1920x1080
@@ -58,9 +50,9 @@ output "Ancor Communications Inc ASUS VS247 G7LMTF045350" {
 }
 
 # assign workspaces to specific outputs
-workspace 1 output eDP-1
-workspace 2 output DP-1
-workspace 8 output DP-2
+workspace 1 output "Sharp Corporation 0x148B 0x00000000"
+workspace 2 output "BenQ Corporation BenQ EL2870U 26L03402SL0"
+workspace 8 output "Ancor Communications Inc ASUS VS247 G7LMTF045350"
 
 # inputs
 
