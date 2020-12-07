@@ -104,10 +104,10 @@ bindsym $mod+k focus up
 bindsym $mod+l focus right
 
 # move focused window
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
+bindsym $mod+Shift+h move left 80 px
+bindsym $mod+Shift+j move down 80 px
+bindsym $mod+Shift+k move up 80 px
+bindsym $mod+Shift+l move right 80 px
 
 # resize windows
 bindsym $mod+Ctrl+h resize shrink width 25 px or 16 ppt
