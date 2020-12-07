@@ -83,5 +83,11 @@ highlight CursorWord1 term=none cterm=none gui=none
 au FileType python syntax keyword pythonDefOrClass def class nextgroup=pythonFunctionDef skipwhite
 au FileType python syntax match pythonDefOrClass /\<async def\>/ nextgroup=pythonFunctionDef skipwhite
 
-highlight! Note ctermfg=155 ctermbg=NONE cterm=NONE
-au FileType vimwiki :call matchadd('Note', '\<NEXT\>')
+highlight! TaskNext ctermfg=155 ctermbg=NONE cterm=NONE
+au FileType vimwiki :call matchadd('TaskNext', '\C\<\%(NEXT\|QUICK\)\>')
+
+highlight! TaskCancelled ctermfg=245 ctermbg=NONE cterm=NONE
+au FileType vimwiki :call matchadd('TaskCancelled', '\<CANCELLED\>')
+
+highlight! TaskDoing ctermfg=79 ctermbg=NONE cterm=NONE
+au FileType vimwiki :call matchadd('TaskDoing', '\<DOING\>')

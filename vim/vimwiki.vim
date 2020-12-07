@@ -21,6 +21,8 @@ let wiki1.auto_generate_tags = 1
 let wiki1.auto_tags = 1
 let wiki1.auto_toc = 1
 let wiki1.diary_frequency = "daily"
+let wiki1.rx_todo = '\C\<\%(TODO\|NEXT\|DOING\|DONE\|CANCELLED\|REPEAT\|XXX\|QUICK\)\>'
+
 
 let g:vimwiki_list = [wiki1]
 
@@ -29,10 +31,12 @@ let g:vimwiki_list = [wiki1]
 let g:vimwiki_auto_chdir = 1
 let g:vimwiki_auto_header = 1
 let g:vimwiki_emoji_enable = 0
+" let g:vimwiki_folding = 'list'
 let g:vimwiki_global_ext = 0
 let g:vimwiki_hl_cb_checked = 0
 let g:vimwiki_hl_headers = 1
 let g:vimwiki_list_ignore_newline = 1
+let g:vimwiki_listsym_propagate = 0
 let g:vimwiki_listsym_rejected = '-'
 let g:vimwiki_listsyms = ' .x'
 let g:vimwiki_markdown_link_ext = 0
