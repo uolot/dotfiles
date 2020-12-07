@@ -1,17 +1,27 @@
 #!/usr/bin/env bash
 
-option=$(echo -e "reload-config\nsuspend+hibernate\nshutdown\nlogout\nreboot\nhibernate" | $HOME/Bin/rofi-sway -dmenu -monitor 0 -p power)
+options="\
+reload-config
+lock-screen
+logout
+shutdown
+reboot
+suspend+hibernate
+hibernate"
+
+option=$(echo "$options" | $HOME/Bin/rofi-sway -dmenu -monitor 0 -p power)
 
 lock=true
 powercmd=true
 
 case "$option" in
     "reload-config") lock=false ; powercmd="swaymsg reload" ;;
-    "suspend+hibernate") powercmd="systemctl suspend-then-hibernate" ;;
-    "hibernate") powercmd="systemctl hibernate" ;;
+    "lock-screen") ;;
+    "logout") powercmd="swaymsg exit" ;;
     "shutdown") powercmd="shutdown -h now" ;;
     "reboot") powercmd="systemctl reboot" ;;
-    "logout") powercmd="swaymsg exit" ;;
+    "suspend+hibernate") powercmd="systemctl suspend-then-hibernate" ;;
+    "hibernate") powercmd="systemctl hibernate" ;;
     *) lock=false ;;
 esac
 
