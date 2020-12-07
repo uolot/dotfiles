@@ -25,5 +25,5 @@ case "$option" in
     *) lock=false ;;
 esac
 
-$($lock) && swaylock --daemonize --clock --indicator --screenshots --effect-blur 20x2 --effect-vignette 0.5:0.5
+$($lock) && $HOME/Bin/sway_lock_screen
 $($powercmd)
