@@ -213,15 +213,15 @@ mode "resize" {
         bindsym k resize shrink height 5 px or 4 ppt
         bindsym l resize grow width 5 px or 4 ppt
 
-        bindsym 2 resize set width 50 ppt
-        bindsym 3 resize set width 33 ppt
-        bindsym 4 resize set width 25 ppt
-        bindsym 5 resize set width 20 ppt
+        bindsym 2 resize set width 50 ppt ; mode "default"
+        bindsym 3 resize set width 33 ppt ; mode "default"
+        bindsym 4 resize set width 25 ppt ; mode "default"
+        bindsym 5 resize set width 20 ppt ; mode "default"
 
-        bindsym Shift+2 resize set height 50 ppt
-        bindsym Shift+3 resize set height 33 ppt
-        bindsym Shift+4 resize set height 25 ppt
-        bindsym Shift+5 resize set height 20 ppt
+        bindsym Shift+2 resize set height 50 ppt ; mode "default"
+        bindsym Shift+3 resize set height 33 ppt ; mode "default"
+        bindsym Shift+4 resize set height 25 ppt ; mode "default"
+        bindsym Shift+5 resize set height 20 ppt ; mode "default"
 
         bindsym f floating toggle
 
