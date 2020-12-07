@@ -176,6 +176,7 @@ FONT_PKGS = [
     "aur/font-victor-mono",
     "community/otf-font-awesome",
     "community/ttf-fira-code",
+    "aur/ttf-go-mono-git",
     "aur/ttf-input",
 ]
 

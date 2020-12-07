@@ -93,7 +93,7 @@ scrolling:
 # Font configuration
 font:
   # Point size
-  size: 12.0
+  size: 13.0
 
   # Normal (roman) font face
   normal:
@@ -106,7 +106,8 @@ font:
     # family: Anka/Coder Condensed
     # family: JetBrains Mono
     # family: Fira Code Retina
-    family: Victor Mono
+    # family: Victor Mono
+    family: GoMono
 
     # The `style` can be specified to pick a specific face.
     #style: Regular
