@@ -1,4 +1,5 @@
 import os
+from lib import ask
 
 # Index:
 # - ANDROID_PKGS
@@ -31,9 +32,9 @@ SWAY_PKGS = [
     "community/playerctl",
     "community/ponymix",
     "community/python-i3ipc",
+    "community/rofi",
     "community/sway",
     "aur/swaylock-effects-git",
-    "community/rofi",
     "community/slurp",
     "aur/wdisplays",
     "aur/wev",
@@ -218,29 +219,37 @@ KEYBOARD_PKGS = [
     "aur/zsa-wally-cli",
 ]
 
-PACKAGES = (
-    SYSTEM_AND_LIBS_PKGS
-    + SWAY_PKGS
-    + SHELL_PKGS
-    + APPS_PKGS
-    + COMMS_AND_NETWORKING_PKGS
-    + DOCUMENTS_AND_MEDIA_PKGS
-    + DEVELOPMENT_PKGS
-    + PYTHON_PKGS
-    + JAVA_PKGS
-    + ELECTRONICS_PKGS
-    + ANDROID_PKGS
-    + MISC_PKGS
-    + FONT_PKGS
-    + GAMING_PKGS
-    + SDR_PKGS
-    + KEYBOARD_PKGS
-)
+PACKAGES = {
+    "system and libs": SYSTEM_AND_LIBS_PKGS,
+    "sway": SWAY_PKGS,
+    "shell": SHELL_PKGS,
+    "apps": APPS_PKGS,
+    "comms and networking": COMMS_AND_NETWORKING_PKGS,
+    "documents and media": DOCUMENTS_AND_MEDIA_PKGS,
+    "development": DEVELOPMENT_PKGS,
+    "python": PYTHON_PKGS,
+    "java": JAVA_PKGS,
+    "electronics": ELECTRONICS_PKGS,
+    "android": ANDROID_PKGS,
+    "misc": MISC_PKGS,
+    "font": FONT_PKGS,
+    "gaming": GAMING_PKGS,
+    "sdr": SDR_PKGS,
+    "keyboard": KEYBOARD_PKGS,
+}
 
 
-def install(packages):
-    pkgs = " ".join(packages)
-    os.system(f"yay -S --needed {pkgs}")
+def install(groups):
+    for group_name, packages in groups.items():
+        print(f"{group_name} packages:")
+        for pkg in packages:
+            p = pkg.split("/")[1]
+            print(f"\t- {p}")
+        if ask(f"Install {group_name} packages?"):
+            yay_packages = " ".join(packages)
+            print(f"yay -S --needed {yay_packages}")
+            os.system(f"yay -S --needed {yay_packages}")
+        print()
 
 
 if __name__ == "__main__":
