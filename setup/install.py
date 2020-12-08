@@ -10,8 +10,10 @@ import os
 # - FONT_PKGS
 # - GAMING_PKGS
 # - JAVA_PKGS
+# - KEYBOARD_PKGS
 # - MISC_PKGS
 # - PYTHON_PKGS
+# - SDR_PKGS
 # - SHELL_PKGS
 # - SWAY_PKGS
 # - SYSTEM_AND_LIBS_PKGS
@@ -25,8 +27,10 @@ SYSTEM_AND_LIBS_PKGS = [
 SWAY_PKGS = [
     "aur/brillo",
     "community/grim",
+    "extra/libpipewire02",
     "community/playerctl",
     "community/ponymix",
+    "community/python-i3ipc",
     "community/sway",
     "aur/swaylock-effects-git",
     "community/rofi",
@@ -36,15 +40,18 @@ SWAY_PKGS = [
     "community/wl-clipboard",
     "aur/wofi",
     "extra/xfce4-notifyd",
+    "aur/ydotool-git",
 ]
 
 APPS_PKGS = [
     "aur/alacritty-ligatures",
     "community/anki",
+    "community/audacity",
     "aur/chromium-snapshot-bin",
     "community/filezilla",
     "extra/firefox",
     "extra/gedit",
+    "extra/gimp",
     "extra/gnome-font-viewer",
     "extra/gvim",
     "community/kicad",
@@ -83,6 +90,8 @@ SHELL_PKGS = [
     "community/fd",
     "community/fzf",
     "community/fzy",
+    "aur/glow-bin",
+    "community/inotify-tools",
     "community/jq",
     "extra/libqalculate",
     "community/moreutils",
@@ -113,6 +122,7 @@ DEVELOPMENT_PKGS = [
     "community/terraform",
     "aur/tflint-bin",
     "aur/vscode-html-languageserver-bin",
+    "community/zig",
 ]
 
 PYTHON_PKGS = [
@@ -120,6 +130,7 @@ PYTHON_PKGS = [
     "community/mypy",
     "community/pylama",
     "community/pyenv",
+    "aur/pyenv-virtualenv",
     "community/python-black",
     "extra/python-cffi",
     "community/python-language-server",
@@ -150,6 +161,7 @@ ELECTRONICS_PKGS = [
 ]
 
 DOCUMENTS_AND_MEDIA_PKGS = [
+    "extra/graphicsmagick",
     "extra/graphviz",
     "aur/pandoc-bin",
     "aur/python-grip",
@@ -168,6 +180,7 @@ MISC_PKGS = [
     "extra/snappy",
     "community/sox",
     "extra/tk",
+    "community/webfs",
 ]
 
 FONT_PKGS = [
@@ -190,6 +203,21 @@ GAMING_PKGS = [
     "multilib/wine",
 ]
 
+SDR_PKGS = [
+    "aur/gnss-sdr-git",
+    "community/gqrx",
+    "community/inspectrum",
+    "aur/sdrsharp",
+]
+
+KEYBOARD_PKGS = [
+    "aur/interception-caps2esc-nocaps-git",
+    "aur/interception-dual-function-keys",
+    "community/qmk",
+    "aur/zsa-wally",
+    "aur/zsa-wally-cli",
+]
+
 PACKAGES = (
     SYSTEM_AND_LIBS_PKGS
     + SWAY_PKGS
@@ -205,6 +233,8 @@ PACKAGES = (
     + MISC_PKGS
     + FONT_PKGS
     + GAMING_PKGS
+    + SDR_PKGS
+    + KEYBOARD_PKGS
 )
 
 
