@@ -101,10 +101,8 @@ bindsym $mod+Ctrl+q exec pkill $($HOME/Bin/rofi-sway -p pkill -dmenu -lines 0)
 
 
 # launcher
-bindsym $mod+space exec $HOME/Bin/rofi-sway -show run -modi run
+bindsym $mod+Ctrl+space exec $HOME/Bin/rofi-sway -show run -modi run
 bindsym $mod+Shift+space exec $HOME/Bin/rofi-sway -show drun -modi drun -monitor 0
-bindsym $mod+Ctrl+space exec alacritty -t terminal-floating -e $($HOME/Bin/rofi-sway -dmenu -p run -lines 0)
-# for_window [title="^terminal-floating$"] floating enable
 
 
 # change focus
