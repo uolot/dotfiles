@@ -59,6 +59,8 @@ workspace 8 output "Ancor Communications Inc ASUS VS247 G7LMTF045350"
 input * {
     xkb_layout pl
     pointer_accel 0
+    # Full list: http://sprunge.us/cUZO
+    xkb_options shift:both_capslock,compose:paus
 }
 
 input "Input device: TPPS/2 IBM TrackPoint" {
