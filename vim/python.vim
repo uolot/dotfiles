@@ -3,7 +3,8 @@ Plug 'hdima/python-syntax', {'for': 'python'}
 Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
 
 Plug 'davidhalter/jedi-vim', {'for': 'python'}
-    let g:jedi#popup_on_dot = 1
+    let g:jedi#popup_on_dot = 0
+    let g:jedi#show_call_signatures = 0
 
     let g:jedi#goto_command = '<leader>jg'
     let g:jedi#goto_assignments_command = '<leader>ja'
