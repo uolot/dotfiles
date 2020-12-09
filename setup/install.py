@@ -157,6 +157,7 @@ ELECTRONICS_PKGS = [
     "aur/esp-idf",
     "community/esptool",
     "community/picocom",
+    "aur/platformio",
     "community/python-pyudev",
     "aur/rshell",
 ]
