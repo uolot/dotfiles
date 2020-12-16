@@ -285,6 +285,8 @@ bindsym $mod+Shift+o exec $HOME/Bin/sway_lock_screen
 ### exec_always flashfocus
 ### bindsym $mod+n exec --no-startup-id flash_window
 
+# set volume to 30% on start
+exec "sleep 5; $HOME/Bin/volume set 30"
 
 # increase sound volume
 bindsym XF86AudioRaiseVolume exec "$HOME/Bin/volume up"
