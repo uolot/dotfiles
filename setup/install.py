@@ -53,6 +53,7 @@ APPS_PKGS = [
     "extra/gedit",
     "extra/gimp",
     "extra/gnome-font-viewer",
+    "aur/google-chrome",
     "extra/gvim",
     "community/kicad",
     "community/kicad-library",
@@ -75,6 +76,7 @@ COMMS_AND_NETWORKING_PKGS = [
     "extra/mtr",
     "aur/networkmanager-dispatcher-timesyncd",
     "aur/ngrok",
+    "aur/ookla-speedtest-bin",
     "aur/openvpn-update-systemd-resolved",
     "core/traceroute",
 ]
