@@ -9,4 +9,10 @@ case $1 in
     down)
         pactl set-sink-volume "$active_sink" -2db
         ;;
+    set)
+        pactl set-sink-volume "$active_sink" $(echo $2 | tr -d %)%
+        ;;
+    toggle)
+        pactl set-sink-mute "$active_sink" toggle
+        ;;
 esac

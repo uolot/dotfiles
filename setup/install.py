@@ -30,7 +30,6 @@ SWAY_PKGS = [
     "community/grim",
     "extra/libpipewire02",
     "community/playerctl",
-    "community/ponymix",
     "community/python-i3ipc",
     "community/rofi",
     "community/sway",
