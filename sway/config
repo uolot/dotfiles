@@ -136,7 +136,7 @@ bindsym $mod+s split v
 bindsym $mod+v split h
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+bindsym $mod+Shift+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+q layout stacking
@@ -185,8 +185,9 @@ bindsym $mod+Shift+n exec $HOME/Bin/sway_rename_workspace
 
 # floating
 floating_modifier $mod
-bindsym $mod+Shift+f floating toggle
+bindsym $mod+f floating toggle
 bindsym $mod+Shift+s sticky toggle
+
 
 # scratchpad
 bindsym $mod+Shift+Backspace move scratchpad
