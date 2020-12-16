@@ -21,7 +21,7 @@ let wiki1.auto_generate_tags = 1
 let wiki1.auto_tags = 1
 let wiki1.auto_toc = 1
 let wiki1.diary_frequency = "daily"
-let wiki1.rx_todo = '\C\<\%(TODO\|NEXT\|DOING\|DONE\|CANCELLED\|REPEAT\|XXX\|QUICK\)\>'
+let wiki1.rx_todo = '\C\<\%(TODO\|NEW\|NEXT\|DOING\|DID\|DONE\|CANCELLED\|REPEAT\|XXX\|QUICK\)\>'
 
 
 let g:vimwiki_list = [wiki1]
