@@ -10,7 +10,10 @@ fi
 # activate poetry if available
 if [ -f "pyproject.toml" ]; then
   echo Activating poetry shell
-  poetry shell && return 0
+  grep 'tool\.poetry\.dependencies' pyproject.toml \
+    && poetry shell \
+    && return 0 \
+    || echo "failed"
 fi
 
 # find venv

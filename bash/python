@@ -17,7 +17,7 @@ pyclean() {
 venv() {
   DIR=${1:-venv}
   python -m venv "$DIR"
-  source $HOME/Bin/activate.sh
+  source $HOME/Bin/activate.sh $DIR
 }
 
 # Pyenv
