@@ -147,7 +147,9 @@ PYTHON_PKGS = [
 ]
 
 JAVA_PKGS = [
+    "aur/jdk-adoptopenjdk",
     "extra/jdk-openjdk",
+    "aur/jdk11-adoptopenjdk",
     "community/maven",
 ]
 
