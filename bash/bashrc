@@ -31,3 +31,4 @@ source $DOTBASH/platformio
 [[ -f ~/.bashrc.local ]] && source ~/.bashrc.local
 
 [[ -f $HOME/.dotfiles/alacritty/alacritty.bash ]] && source $HOME/.dotfiles/alacritty/alacritty.bash
+export GOOGLE_APPLICATION_CREDENTIALS=~/.config/gcloud/platform-admin.json
