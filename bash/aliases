@@ -9,16 +9,22 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ,,='cd ..'
 
+# jumps
+alias dtf="cd $HOME/.dotfiles"
+alias m5="cd $HOME/Dev/M5"
+alias eh="cd $HOME/Dev/EH/"
+
 alias x="exit"
 
 alias ls='ls --color=auto'
 alias ll='ls -lav --ignore=..'   # show long listing of all except ".."
 
+# make a new dir and cd to it
 mkcd() {
     mkdir -p $* && cd $*
 }
 
-# rm pwd after cd one level up
+# cd one level up and rm previous dir
 rmup() {
     pwd=$(pwd)
     cd ..
@@ -27,3 +33,14 @@ rmup() {
         y|Y) echo "removing ${pwd}"; rm -rf "$pwd" ;;
     esac
 }
+
+# print horizontal divider
+hr() {
+    echo -n $(seq -s= $(echo `tput cols` "-19" | bc) | tr -d '[:digit:]')
+    echo -n " "
+    echo $(date +'%Y-%m-%d %H:%M:%S')
+}
+alias hrr='printf "\n\n\n\n\n" ; hr ; printf "\n\n\n\n\n"'
+
+# start HTTP server in current dir
+alias serve="pyhon3 -m http.server"
