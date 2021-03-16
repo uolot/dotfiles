@@ -3,6 +3,16 @@
 # Source:
 # https://www.reddit.com/r/swaywm/comments/c5ufux/rofi_multi_monitor_script/
 
+# one output only
+
+NUM_OUTPUTS=$(swaymsg -t get_outputs | grep '"id"' | wc -l)
+if [ "$NUM_OUTPUTS" == "1" ]; then
+	rofi $@ </dev/stdin
+	exit $?
+fi
+
+# multiple outputs
+
 SCREEN_POS=$(swaymsg -t get_outputs \
 	| jq -r \
 	'.[] | select(.focused).rect | "\(.width)x\(.height)\\+\(.x)\\+\(.y)"')
