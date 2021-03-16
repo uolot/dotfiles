@@ -64,7 +64,9 @@
 
 	# extra tools
 	frum = ! git fetch --all && git rebase upstream/master
+	from = ! git fetch --all && git rebase origin/master
 	prum = pull --rebase upstream master
+	prom = pull --rebase origin master
 	last = lgf -1
 	todos = !"ag '(TODO|XXX|FIXME)' $(git diff --name-only)"
 	rebase-since-last-merge = ! git rebase -i $(git log --merges -1 --format="%h")
