@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+pacmd set-source-port 1 analog-input-headset-mic
+pacmd set-source-volume 1 65650  # ~100%
