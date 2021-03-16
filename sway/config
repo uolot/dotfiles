@@ -1,5 +1,7 @@
 # vim: ft=i3config
 set $mod Mod4
+# set $rofi rofi
+set $rofi $HOME/Bin/rofi-sway
 
 font pango:Ubuntu Medium 10
 
@@ -96,12 +98,12 @@ bindsym $mod+b exec firefox
 
 # kill focused window
 bindsym $mod+Shift+q kill
-bindsym $mod+Ctrl+q exec pkill $($HOME/Bin/rofi-sway -p pkill -dmenu -lines 0)
+bindsym $mod+Ctrl+q exec pkill $($rofi -p pkill -dmenu -lines 0)
 
 
 # launcher
-bindsym $mod+Ctrl+space exec $HOME/Bin/rofi-sway -show run -modi run
-bindsym $mod+Shift+space exec $HOME/Bin/rofi-sway -show drun -modi drun -monitor 0
+bindsym $mod+Ctrl+space exec $rofi -show run -modi run
+bindsym $mod+Shift+space exec $rofi -show drun -modi drun -monitor 0
 
 
 # change focus
@@ -295,7 +297,7 @@ bindsym XF86AudioLowerVolume exec "$HOME/Bin/volume down"
 # mute sound
 bindsym XF86AudioMute exec "$HOME/Bin/volume toggle"
 # enable/disable airdots
-bindsym $mod+Shift+b exec "$HOME/Bin/airdots $(echo -e 'on\noff' | $HOME/Bin/rofi-sway -dmenu -p airdots)"
+bindsym $mod+Shift+b exec "$HOME/Bin/airdots $(echo -e 'on\noff' | $rofi -dmenu -p airdots)"
 # toggle microphone capture
 bindsym $mod+XF86AudioMute exec "amixer set Capture toggle"
 # mute microphone
@@ -319,7 +321,7 @@ exec "sleep 60 ; $HOME/Build/batbottg/bin/batbottg -c $HOME/.batbottg.ini"
 # Update wifi networks list
 exec "sleep 10 ; $HOME/Bin/networks.sh update"
 # Connect to a listed network
-bindsym $mod+n exec "$HOME/Bin/networks.sh list | $HOME/Bin/rofi-sway -dmenu -p wifi | xargs $HOME/Bin/networks.sh connect"
+bindsym $mod+n exec "$HOME/Bin/networks.sh list | $rofi -dmenu -p wifi | xargs $HOME/Bin/networks.sh connect"
 
 # Notifications
 for_window [title="^xfce4-notifyd$"] floating enable, sticky enable, border none, move position 20 20
