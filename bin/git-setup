@@ -5,12 +5,12 @@ case "$1" in
         git config user.name "Tomasz Walotek"
         git config user.email "tomasz.walotek@gmail.com"
         ;;
-    lyst)
+    eh)
         git config user.name "Tomasz Walotek"
-        git config user.email "tomasz.walotek@ly.st"
+        git config user.email "tomasz.walotek@elementhuman.com"
         ;;
     *)
-        echo "Usage: $(basename $0) <personal|lyst>"
+        echo "Usage: $(basename $0) <personal|eh>"
         ;;
 esac
 
