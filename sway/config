@@ -3,6 +3,8 @@ set $mod Mod4
 # set $rofi rofi
 set $rofi $HOME/Bin/rofi-sway
 
+xwayland enable
+
 font pango:Ubuntu Medium 10
 
 gaps inner 8
