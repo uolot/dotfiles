@@ -20,7 +20,10 @@ output "*" background $HOME/.dotfiles/wallpapers/AdobeStock_208568531.jpeg fill
 # outputs
 # inline contents of outputs config file, because display rotation is ignored when including
 
-# LAPTOP - THINKPAD X1CARBON GEN2
+# LAPTOP ONLY - DELL XPS
+# include "./outputs/dell-xps-only"
+
+# LAPTOP ONLY - THINKPAD X1CARBON GEN2
 # include "./outputs/thinkpad-x1c-gen2"
 
 # HOME OFFICE SUCHA GORNA - DELL XPS + ASUS MONITOR
@@ -32,31 +35,30 @@ output "*" background $HOME/.dotfiles/wallpapers/AdobeStock_208568531.jpeg fill
 # HOME OFFICE SUCHA GORNA - DELL XPS + BENQ MMONITOR + ASUS MONITOR - HORIZONTAL ARRANGEMENT
 # include "./outputs/homeoffice-suchagorna-xps+benq+asus-horizontal"
 
-output "Sharp Corporation 0x148B 0x00000000" {
-    mode 3840x2160
-    scale 3
-    pos 0 1152
-}
+# HOME OFFICE CPH - DELL XPS + BENQ MONITOR - VERTICAL ARRANGEMENT
+# include "./outputs/homeoffice-cph-xps+benq-vertical"
 
+# BENQ
 output "BenQ Corporation BenQ EL2870U 26L03402SL0" {
     enable
-    mode 2560x1440
+    mode 3840x2160
+    # scale 1.5
+    # mode 2560x1440
     scale 1
-    pos 1280 320
+    pos 0 0
 }
 
-output "Ancor Communications Inc ASUS VS247 G7LMTF045350" {
-    enable
-    mode 1920x1080
-    scale 1
-    pos 3840 0
-    transform 270
+# Lyst laptop Dell XPS
+output "Sharp Corporation 0x148B 0x00000000" {
+    mode 3840x2160
+    scale 2
+    pos 960 2160
 }
 
 # assign workspaces to specific outputs
 workspace 1 output "Sharp Corporation 0x148B 0x00000000"
-workspace 2 output "BenQ Corporation BenQ EL2870U 26L03402SL0"
-workspace 8 output "Ancor Communications Inc ASUS VS247 G7LMTF045350"
+workspace 4 output "BenQ Corporation BenQ EL2870U 26L03402SL0"
+
 
 # inputs
 
@@ -190,6 +192,8 @@ bindsym $mod+Shift+n exec $HOME/Bin/sway_rename_workspace
 floating_modifier $mod
 bindsym $mod+f floating toggle
 bindsym $mod+Shift+s sticky toggle
+
+for_window [app_id="firefox" title="Firefox - Sharing Indicator"] floating enable
 
 
 # scratchpad
