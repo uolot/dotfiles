@@ -40,7 +40,20 @@ Plug 'tyru/open-browser.vim'
     vmap gx <Plug>(openbrowser-smart-search)
 
 " Highlight and navigate multiple words
+" https://github.com/lfv89/vim-interestingwords
 Plug 'lfv89/vim-interestingwords'
+    let g:interestingWordsDefaultMappings = 0
+    nnoremap <silent> <leader>k :call InterestingWords('n')<cr>
+    vnoremap <silent> <leader>k :call InterestingWords('v')<cr>
+    nnoremap <silent> <leader>K :call UncolorAllWords()<cr>
+    " let g:interestingWordsTermColors = ['154', '121', '211', '137', '214', '222']
+    let g:interestingWordsTermColors = [
+                \ '1', '2', '3', '4', '5', '6', '9', '10', '12', '13', '14', '63', '75', '81', '85', '87',
+                \ '89', '99', '108', '109', '115', '121', '125', '126', '137', '141', '142', '147', '154',
+                \ '159', '165', '167', '175', '190', '202', '207', '208', '211', '214', '215', '219', '222',
+                \ '223', '226', '228', '234'
+                \ ]
+    let g:interestingWordsRandomiseColors = 1
 
 " Toggle, display and navigate marks
 Plug 'kshenoy/vim-signature'
