@@ -69,10 +69,10 @@ class Window(tkinter.Frame):
 
     def keyup(self, e):
         key = e.keysym.lower()
-        if key in ["q", "escape", "space"]:
+        if key in {"q", "escape"}:
             print("Quit!")
             self.client_exit()
-        elif key == "n":
+        elif key in {"n", "space"}:
             self.current_timer = next(self.timers)
             self.current_timer.start()
         elif key == "r":
