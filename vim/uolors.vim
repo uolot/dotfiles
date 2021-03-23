@@ -48,7 +48,7 @@ highlight ColorColumn ctermfg=238 ctermbg=NONE cterm=underline
 highlight Search ctermfg=232 ctermbg=220 cterm=NONE
 highlight MatchParen ctermfg=178 ctermbg=239 cterm=NONE
 
-highlight Folded ctermfg=NONE ctermbg=NONE cterm=italic
+highlight Folded ctermfg=242 ctermbg=NONE cterm=italic
 
 highlight Error ctermfg=196 ctermbg=NONE cterm=NONE
 
