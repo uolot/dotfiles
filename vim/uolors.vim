@@ -83,14 +83,17 @@ highlight CursorWord1 term=none cterm=none gui=none
 au FileType python syntax keyword pythonDefOrClass def class nextgroup=pythonFunctionDef skipwhite
 au FileType python syntax match pythonDefOrClass /\<async def\>/ nextgroup=pythonFunctionDef skipwhite
 
+highlight! TaskRed ctermfg=202 ctermbg=NONE cterm=NONE
+au FileType vimwiki :call matchadd('TaskRed', '\C\<\%(QUESTION\|FEEDBACK\)\>')
+
+highlight! TaskBlue ctermfg=79 ctermbg=NONE cterm=NONE
+au FileType vimwiki :call matchadd('TaskBlue', '\C\<\%(DONE\|DID\|PROGRESS\|FINISHED\)\>')
+
+highlight! TaskOrange ctermfg=215 ctermbg=NONE cterm=NONE
+au FileType vimwiki :call matchadd('TaskOrange', '\C\<\%(STARTED\|DOING\|REPEAT\|LATER\)\>')
+
 highlight! TaskGreen ctermfg=155 ctermbg=NONE cterm=NONE
-au FileType vimwiki :call matchadd('TaskGreen', '\C\<\%(NEW\|NEXT\|QUICK\)\>')
+au FileType vimwiki :call matchadd('TaskGreen', '\C\<\%(NEW\|NEXT\|QUICK\|UNPLANNED\)\>')
 
 highlight! TaskGray ctermfg=245 ctermbg=NONE cterm=NONE
 au FileType vimwiki :call matchadd('TaskGray', '\<CANCELLED\>')
-
-highlight! TaskBlue ctermfg=79 ctermbg=NONE cterm=NONE
-au FileType vimwiki :call matchadd('TaskBlue', '\C\<\%(DONE\|DID\)\>')
-
-highlight! TaskOrange ctermfg=215 ctermbg=NONE cterm=NONE
-au FileType vimwiki :call matchadd('TaskOrange', '\C\<\%(DOING\|REPEAT\)\>')
