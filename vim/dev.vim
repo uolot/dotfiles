@@ -18,6 +18,7 @@ Plug 'neomake/neomake'
     " autocmd! BufWritePost * Neomake
     noremap <Leader>e :Neomake<CR>
     let g:neomake_python_enabled_makers = ['flake8', 'pylama', 'mypy']
+    let g:neomake_cpp_enabled_makers = []
 
     " E510 - line too long
     " W605 - invalid escape sequence
