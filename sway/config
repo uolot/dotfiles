@@ -355,8 +355,8 @@ for_window [app_id="^zoom$"] floating enable
 
 #class                   border     background  text       indicator  child_border
 # client.focused           #3a86b7ff  #1d425baa   #ffffff    #ffffff77
-client.focused           #1d425b #3a86b799 #ffffff #3a86b7ff
+client.focused           #1d425b #3a86b7aa #ffffff #3a86b7ff
 # client.focused_inactive  #1d425baa  #00699488   #ffffff
-client.focused_inactive  #1d425b #1d425b99 #aaaaaa
+client.focused_inactive  #1d425b #1d425aab #aaaaaa
 # client.unfocused         #55555588  #55555588   #aaaaaa88
-client.unfocused         #222222  #22222299  #aaaaaa
+client.unfocused         #222222  #222222aa  #aaaaaa
