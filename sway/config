@@ -15,7 +15,7 @@ default_border pixel 3
 titlebar_padding 15 3
 
 # set wallpaper
-output "*" background $HOME/.dotfiles/wallpapers/AdobeStock_208568531.jpeg fill
+output "*" background $(fd . $HOME/Pictures/Wallpapers/ -e jpg -e jpeg -e png | shuf -n 1) fill
 
 # outputs
 # inline contents of outputs config file, because display rotation is ignored when including
