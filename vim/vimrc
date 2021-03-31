@@ -26,6 +26,7 @@ set list " display special chars
 set listchars=tab:→\ ,trail:∎ " special chars for list mode
 set nomodelineexpr  " disable modelinexpr, see: https://github.com/numirias/security/blob/master/doc/2019-06-04_ace-vim-neovim.md
 set mouse= " disable mouse
+set nrformats-=octal  " for C-a/C-x treat octal numbers (starting with 0) as decimal numbers
 set number " display line numbers
 set omnifunc=syntaxcomplete#Complete " enable omnicompletion
 set scrolloff=3 " keep lines above/below cursor line
