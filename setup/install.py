@@ -12,7 +12,9 @@ from lib import ask
 # - GAMING_PKGS
 # - JAVA_PKGS
 # - KEYBOARD_PKGS
+# - KUBERNETES_PKGS
 # - MISC_PKGS
+# - PRINTER_PKGS
 # - PYTHON_PKGS
 # - SDR_PKGS
 # - SHELL_PKGS
@@ -223,6 +225,23 @@ KEYBOARD_PKGS = [
     "aur/zsa-wally-cli-bin",
 ]
 
+KUBERNETES_PKGS = [
+    "kubernetes-tools",
+    #
+    "aur/kind-bin",
+    "aur/minikube-bin",
+]
+
+PRINTER_PKGS = [
+    "extra/cups-pdf",
+    "extra/cups-pk-helper",
+    "extra/foomatic-db",
+    "extra/foomatic-db-nonfree-ppds",
+    "extra/foomatic-db-nonfree",
+    "extra/foomatic-db-ppds",
+    "extra/system-config-printer",
+]
+
 PACKAGES = {
     "system and libs": SYSTEM_AND_LIBS_PKGS,
     "sway": SWAY_PKGS,
@@ -240,6 +259,8 @@ PACKAGES = {
     "gaming": GAMING_PKGS,
     "sdr": SDR_PKGS,
     "keyboard": KEYBOARD_PKGS,
+    "kubernetes": KUBERNETES_PKGS,
+    "printer": PRINTER_PKGS,
 }
 
 
