@@ -219,8 +219,8 @@ KEYBOARD_PKGS = [
     "aur/interception-caps2esc-nocaps-git",
     "aur/interception-dual-function-keys",
     "community/qmk",
-    "aur/zsa-wally",
-    "aur/zsa-wally-cli",
+    "aur/zsa-wally-bin",
+    "aur/zsa-wally-cli-bin",
 ]
 
 PACKAGES = {
