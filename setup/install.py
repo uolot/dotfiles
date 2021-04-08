@@ -37,36 +37,33 @@ SWAY_PKGS = [
     "community/sway",
     "aur/swaylock-effects-git",
     "community/slurp",
-    "aur/wdisplays",
-    "aur/wev",
+    # "aur/wdisplays",
+    # "aur/wev",
+    "aur/wev-git",
     "community/wl-clipboard",
     "aur/wofi",
-    "extra/xfce4-notifyd",
+    "extra/xfce4-notifyd",  # TODO: remove
     "aur/ydotool-git",
 ]
 
 APPS_PKGS = [
     "aur/alacritty-ligatures",
-    "community/anki",
     "community/audacity",
     "aur/chromium-snapshot-bin",
-    "community/filezilla",
     "extra/firefox",
-    "extra/gedit",
     "extra/gimp",
     "extra/gnome-font-viewer",
     "aur/google-chrome",
     "extra/gvim",
-    "community/kicad",
+    "community/kicad",  # TODO: remove
     "community/kicad-library",
     "aur/sparkfun-kicad-lib-git",
     "community/mupdf",
-    "community/termite",
+    "community/termite",  # TODO: remove
     "aur/visual-studio-code-bin",
     "extra/vlc",
     "community/zathura",
     "community/zathura-pdf-mupdf",
-    "aur/zoom",
 ]
 
 COMMS_AND_NETWORKING_PKGS = [
