@@ -36,6 +36,7 @@ set showcmd " show last command on bottom
 set showmatch " highlight matching bracket
 set splitbelow " open new horizontal splits below
 set splitright " open new vertical splits on the right
+set shiftround " round the indent spacing to the next multiple of shiftwidth
 set tabstop=4 " tab key inserts 4 spaces
 set wildmenu " enable filename completion
 set wildmode=list:longest,full
