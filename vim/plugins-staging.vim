@@ -27,3 +27,7 @@ nnoremap <leader>nn :NERDTreeFocus<CR>
 " https://github.com/Xuyuanp/nerdtree-git-plugin
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
+
+" See the contents of the registers
+" https://github.com/junegunn/vim-peekaboo
+Plug 'junegunn/vim-peekaboo'
