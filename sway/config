@@ -101,8 +101,8 @@ for_window [title="^timer$"] floating enable, sticky enable, border none, move p
 bindsym $mod+b exec firefox
 
 # kill focused window
-bindsym $mod+Shift+q kill
-bindsym $mod+Ctrl+q exec pkill $($rofi -p pkill -dmenu -lines 0)
+bindsym $mod+Ctrl+q kill
+bindsym $mod+Shift+q exec pkill $($rofi -p pkill -dmenu -lines 0)
 
 
 # launcher
