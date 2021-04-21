@@ -58,6 +58,7 @@ call plug#begin('~/.vim/plugged')
 
 source $HOME/.dotfiles/vim/plugins.vim
 source $HOME/.dotfiles/vim/plugins-staging.vim
+source $HOME/.dotfiles/vim/plugins-goodbye.vim
 source $HOME/.dotfiles/vim/files.vim
 source $HOME/.dotfiles/vim/files-fzf.vim
 source $HOME/.dotfiles/vim/functions.vim

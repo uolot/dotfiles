@@ -28,11 +28,6 @@ Plug 'ferranpm/vim-isolate'
 " Adds :Tabularize
 Plug 'godlygeek/tabular'
 
-" search local vimrc files (".lvimrc") in the tree  and load them
-Plug 'embear/vim-localvimrc'
-    let g:localvimrc_persistent = 2
-    let g:localvimrc_sandbox = 0
-
 " Open URI in browser
 Plug 'tyru/open-browser.vim'
     let g:netrw_nogx = 1 " disable netrw's gx mapping.
@@ -54,21 +49,6 @@ Plug 'lfv89/vim-interestingwords'
                 \ '226', '228'
                 \ ]
     let g:interestingWordsRandomiseColors = 1
-
-" Toggle, display and navigate marks
-Plug 'kshenoy/vim-signature'
-
-" Wakatime
-Plug 'wakatime/vim-wakatime'
-
-" Vim plugin that displays tags in a window, ordered by scope
-Plug 'majutsushi/tagbar'
-    nmap <Leader>tb :TagbarOpenAutoClose<CR>
-
-
-" Distraction-free writing in Vim
-Plug 'junegunn/goyo.vim'
-
 
 " Show keybindings in popup
 " https://github.com/liuchengxu/vim-which-key
