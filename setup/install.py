@@ -2,24 +2,24 @@ import os
 from lib import ask
 
 # Index:
-# - ANDROID_PKGS
-# - APPS_PKGS
-# - COMMS_AND_NETWORKING_PKGS
-# - DEVELOPMENT_PKGS
-# - DOCUMENTS_AND_MEDIA_PKGS
-# - ELECTRONICS_PKGS
-# - FONT_PKGS
-# - GAMING_PKGS
-# - JAVA_PKGS
-# - KEYBOARD_PKGS
-# - KUBERNETES_PKGS
-# - MISC_PKGS
-# - PRINTER_PKGS
-# - PYTHON_PKGS
-# - SDR_PKGS
-# - SHELL_PKGS
-# - SWAY_PKGS
-# - SYSTEM_AND_LIBS_PKGS
+# 1. ANDROID_PKGS
+# 2. APPS_PKGS
+# 3. COMMS_AND_NETWORKING_PKGS
+# 4. DEVELOPMENT_PKGS
+# 5. DOCUMENTS_AND_MEDIA_PKGS
+# 6. ELECTRONICS_PKGS
+# 7. FONT_PKGS
+# 8. GAMING_PKGS
+# 9. JAVA_PKGS
+# 10. KEYBOARD_PKGS
+# 11. KUBERNETES_PKGS
+# 12. MISC_PKGS
+# 13. PRINTER_PKGS
+# 14. PYTHON_PKGS
+# 15. SDR_PKGS
+# 16. SHELL_PKGS
+# 17. SWAY_PKGS
+# 18. SYSTEM_AND_LIBS_PKGS
 
 SYSTEM_AND_LIBS_PKGS = [
     "aur/libffi6",
@@ -60,7 +60,6 @@ APPS_PKGS = [
     "aur/sparkfun-kicad-lib-git",
     "community/mupdf",
     "community/termite",  # TODO: remove
-    "aur/visual-studio-code-bin",
     "extra/vlc",
     "community/zathura",
     "community/zathura-pdf-mupdf",
@@ -143,9 +142,7 @@ PYTHON_PKGS = [
     "extra/python-cffi",
     "community/python-language-server",
     "extra/python-pip",
-    "aur/python-pipx",
     "community/python-poetry",
-    "community/python-pudb",
     "community/python-pygame",
     "community/python-pynvim",
     "extra/python-setuptools",
@@ -162,7 +159,6 @@ JAVA_PKGS = [
 ELECTRONICS_PKGS = [
     "aur/adafruit-ampy",
     "community/arduino",
-    "community/arduino-cli",
     "aur/esp-idf",
     "community/esptool",
     "community/picocom",
