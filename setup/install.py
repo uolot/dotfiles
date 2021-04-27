@@ -49,6 +49,7 @@ SWAY_PKGS = [
 APPS_PKGS = [
     "aur/alacritty-ligatures",
     "community/audacity",
+    "aur/chrome-remote-desktop",
     "aur/chromium-snapshot-bin",
     "aur/etcher-bin",
     "extra/firefox",
