@@ -12,6 +12,9 @@ set -o vi
 shopt -s globstar
 
 export PATH="$HOME/.dotfiles/bin:$HOME/.local/bin:$PATH:$HOME/Build/flutter/bin:$HOME/.pub-cache/bin"
+export CDPATH=".:~:~/Dev/Personal:~/Dev/EH:~/Dev/M5:~/.dotfiles"
+shopt -s cdspell  # fix small typos
+complete -d cd
 
 export BROWSER=firefox
 export EDITOR=vim
@@ -22,6 +25,7 @@ export HISTCONTROL=ignoredups:erasedups
 export HISTSIZE=100000
 export HISTFILESIZE=100000
 shopt -s histappend
+
 
 DOTBASH=$HOME/.dotfiles/bash
 source $DOTBASH/colors
