@@ -56,9 +56,9 @@ APPS_PKGS = [
     "extra/gnome-font-viewer",
     "aur/google-chrome",
     "extra/gvim",
-    "community/kicad",  # TODO: remove
-    "community/kicad-library",
-    "aur/sparkfun-kicad-lib-git",
+    # "community/kicad",
+    # "community/kicad-library",
+    # "aur/sparkfun-kicad-lib-git",
     "community/mupdf",
     "community/termite",  # TODO: remove
     "extra/vlc",
@@ -129,7 +129,7 @@ DEVELOPMENT_PKGS = [
     "community/redis",
     "extra/strace",
     "community/terraform",
-    "aur/tflint-bin",
+    # "aur/tflint-bin",
     "aur/vscode-html-languageserver-bin",
     "community/zig",
 ]
@@ -213,15 +213,15 @@ GAMING_PKGS = [
 ]
 
 SDR_PKGS = [
-    "aur/gnss-sdr-git",
-    "community/gqrx",
-    "community/inspectrum",
-    "aur/sdrsharp",
+    # "aur/gnss-sdr-git",
+    # "community/gqrx",
+    # "community/inspectrum",
+    # "aur/sdrsharp",
 ]
 
 KEYBOARD_PKGS = [
-    "aur/interception-caps2esc-nocaps-git",
-    "aur/interception-dual-function-keys",
+    # "aur/interception-caps2esc-nocaps-git",
+    # "aur/interception-dual-function-keys",
     "community/qmk",
     "aur/zsa-wally-bin",
     "aur/zsa-wally-cli-bin",
