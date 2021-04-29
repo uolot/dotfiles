@@ -3,6 +3,7 @@
 # activate venv from args
 if [ -f "$1/bin/activate" ]; then
   echo Activating "$1/bin/activate"
+  [[ $VIRTUAL_ENV ]] && deactivate
   source "$1/bin/activate"
   return 0
 fi
@@ -21,6 +22,7 @@ FOUND=$(fd --hidden --no-ignore --max-depth 3 --full-path --type f | grep 'bin/a
 for f in $FOUND; do
   if grep --quiet VIRTUAL_ENV $f; then
     echo Activating "$f"
+    [[ $VIRTUAL_ENV ]] && deactivate
     source $f
     break
   fi
