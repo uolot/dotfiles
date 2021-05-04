@@ -85,7 +85,7 @@ Plug 'vim-scripts/Arduino-syntax-file'
 Plug 'roxma/vim-hug-neovim-rpc'
 
 " TabNine
-Plug 'zxqfl/tabnine-vim', { 'on': 'TN' }
+Plug 'codota/tabnine-vim', { 'on': 'TN' }
 nnoremap <Leader>tn :silent! TN<CR>
 
 " Parinfer mode
