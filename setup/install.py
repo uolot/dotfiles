@@ -61,6 +61,7 @@ APPS_PKGS = [
     # "community/kicad-library",
     # "aur/sparkfun-kicad-lib-git",
     "community/mupdf",
+    "extra/nautilus",
     "community/termite",  # TODO: remove
     "extra/vlc",
     "community/zathura",
@@ -101,6 +102,7 @@ SHELL_PKGS = [
     "community/python-html2text",
     "community/ripgrep",
     "extra/screen",
+    "aur/shellcheck-bin",
     "community/sl",
     "community/tldr",
     "community/tmux",
