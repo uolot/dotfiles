@@ -66,6 +66,7 @@ source $HOME/.dotfiles/vim/dev.vim
 source $HOME/.dotfiles/vim/python.vim
 source $HOME/.dotfiles/vim/textobj.vim
 source $HOME/.dotfiles/vim/vimwiki.vim
+source $HOME/.dotfiles/vim/markdown.vim
 source $HOME/.dotfiles/vim/git.vim
 
 call plug#end()

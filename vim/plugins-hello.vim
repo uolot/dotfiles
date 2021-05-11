@@ -31,3 +31,8 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 " See the contents of the registers
 " https://github.com/junegunn/vim-peekaboo
 Plug 'junegunn/vim-peekaboo'
+
+
+" Markdown live preview
+" https://github.com/iamcco/markdown-preview.nvim
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
