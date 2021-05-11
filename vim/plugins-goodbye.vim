@@ -25,3 +25,9 @@ Plug 'junegunn/goyo.vim'
 " uninstall in June 2021
 Plug 'kshenoy/vim-signature'
 
+
+" The interactive scratchpad for hackers
+" https://github.com/metakirby5/codi.vim
+" uninstall in July 2021
+Plug 'metakirby5/codi.vim'
+

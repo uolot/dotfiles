@@ -1,7 +1,3 @@
-" The interactive scratchpad for hackers
-" https://github.com/metakirby5/codi.vim
-Plug 'metakirby5/codi.vim'
-
 " One second to read GitHub code with vim
 " https://github.com/drzel/vim-repo-edit
 Plug 'drzel/vim-repo-edit'
