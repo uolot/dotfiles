@@ -121,6 +121,7 @@ DEVELOPMENT_PKGS = [
     "aur/flow-bin",  # type checker for JS
     "aur/google-cloud-sdk",
     "aur/gopls",  # Go language server
+    "aur/javascript-typescript-langserver",
     "community/leiningen",
     "community/libmemcached",
     "community/nim",
