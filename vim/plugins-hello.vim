@@ -20,6 +20,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 " See the contents of the registers
 " https://github.com/junegunn/vim-peekaboo
 Plug 'junegunn/vim-peekaboo'
+let g:peekaboo_delay = 1000
 
 
 " Markdown live preview
