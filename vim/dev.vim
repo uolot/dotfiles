@@ -89,3 +89,11 @@ command! Todos /\(TODO\|XXX\|FIXME\)
 " dart+flutter
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'thosakwe/vim-flutter'
+
+" https://github.com/junegunn/rainbow_parentheses.vim
+Plug 'junegunn/rainbow_parentheses.vim'
+augroup rainbow_lisp
+  autocmd!
+  autocmd FileType lisp,clojure,scheme,racket RainbowParentheses
+augroup END
+
