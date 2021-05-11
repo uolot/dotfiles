@@ -38,6 +38,7 @@ set splitbelow " open new horizontal splits below
 set splitright " open new vertical splits on the right
 set shiftround " round the indent spacing to the next multiple of shiftwidth
 set tabstop=4 " tab key inserts 4 spaces
+set updatetime=100
 set wildmenu " enable filename completion
 set wildmode=list:longest,full
 set nowrapscan " do not wrap to beginning of the file when searching
