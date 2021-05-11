@@ -20,6 +20,7 @@ LINKS = {
     "TabNine.toml": ".config/TabNine/TabNine.yml",
     "termite/config": ".config/termite/config",
     "tmux/tmux.conf": ".tmux.conf",
+    "vim/ftplugin": ".vim/ftplugin",
     "vim/vimrc": ".vimrc",
 }
 

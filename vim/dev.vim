@@ -75,9 +75,6 @@ Plug 'vim-scripts/AnsiEsc.vim'
 
 Plug 'tpope/vim-fugitive'
 
-" Fix Terraform plan diff output by moving diff marks to the start of line
-command TerraformDiff :%s/^\(\s\+\)\(+\|-\|\~\)/\2\1/
-
 " Arduino/PlatformIO
 Plug 'vim-scripts/Arduino-syntax-file'
 
@@ -93,11 +90,6 @@ Plug 'eraserhd/parinfer-rust', {
         \ 'for': 'clojure',
         \ 'do': 'cargo build --release'
         \ }
-
-" jump between terraform sections
-let tf_sections = '^\(resource\|module\|data\|locals\|variable\|output\)'
-autocmd FileType terraform nnoremap <silent> ]] :silent! call search(tf_sections, '')<cr>
-autocmd FileType terraform nnoremap <silent> [[ :silent! call search(tf_sections, 'b')<cr>
 
 " generate table of contents in markdown files
 " commands: :GenTocGFM / :UpdateToc / :RemoveToc
