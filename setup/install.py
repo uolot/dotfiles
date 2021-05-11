@@ -118,9 +118,9 @@ DEVELOPMENT_PKGS = [
     "community/cloc",
     "community/docker",
     "community/docker-compose",
-    "aur/flow-bin",
+    "aur/flow-bin",  # type checker for JS
     "aur/google-cloud-sdk",
-    "aur/gopls",
+    "aur/gopls",  # Go language server
     "community/leiningen",
     "community/libmemcached",
     "community/nim",
@@ -132,7 +132,7 @@ DEVELOPMENT_PKGS = [
     "community/redis",
     "extra/strace",
     "community/terraform",
-    # "aur/tflint-bin",
+    "aur/tflint-bin",
     "aur/vscode-html-languageserver-bin",
     "community/zig",
 ]
@@ -182,7 +182,6 @@ DOCUMENTS_AND_MEDIA_PKGS = [
 
 ANDROID_PKGS = [
     "community/android-tools",
-    "aur/flutter",
     "aur/scrcpy",
 ]
 
