@@ -4,6 +4,7 @@ set $mod Mod4
 set $rofi $HOME/Bin/rofi-sway
 
 xwayland enable
+for_window [shell="xwayland"] title_format "%title [XWayland]"
 
 font pango:Ubuntu Medium 10
 
