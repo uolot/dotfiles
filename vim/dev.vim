@@ -41,12 +41,6 @@ Plug 'sheerun/vim-polyglot'
 
 Plug 'tpope/vim-commentary'
 
-Plug 'airblade/vim-gitgutter'
-    " let g:gitgutter_highlight_lines = 1
-    let g:gitgutter_map_keys = 0
-    nnoremap ]c :GitGutterNextHunk<CR>
-    nnoremap [c :GitGutterPrevHunk<CR>
-
 Plug 'jpalardy/vim-slime'
     let g:slime_target = "tmux"
     let g:slime_python_ipython = 1
@@ -72,8 +66,6 @@ Plug 'vim-scripts/AnsiEsc.vim'
       unmap <Leader>swp
     endfunction
     autocmd BufEnter * silent! call Unmap_cecutil()
-
-Plug 'tpope/vim-fugitive'
 
 " Arduino/PlatformIO
 Plug 'vim-scripts/Arduino-syntax-file'
