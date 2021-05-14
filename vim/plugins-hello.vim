@@ -21,8 +21,3 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 " https://github.com/junegunn/vim-peekaboo
 Plug 'junegunn/vim-peekaboo'
 let g:peekaboo_delay = 1000
-
-
-" Markdown live preview
-" https://github.com/iamcco/markdown-preview.nvim
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
