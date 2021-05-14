@@ -103,10 +103,6 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    # family: Anka/Coder Condensed
-    # family: JetBrains Mono
-    # family: Fira Code Retina
-    # family: Victor Mono
     family: GoMono
 
     # The `style` can be specified to pick a specific face.
