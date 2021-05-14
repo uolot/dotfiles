@@ -21,3 +21,10 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 " https://github.com/junegunn/vim-peekaboo
 Plug 'junegunn/vim-peekaboo'
 let g:peekaboo_delay = 1000
+
+
+" Undo tree visualizer
+" https://github.com/simnalamburt/vim-mundo
+" https://simnalamburt.github.io/vim-mundo/
+Plug 'simnalamburt/vim-mundo'
+nnoremap <Leader>mt :MundoToggle<CR>
