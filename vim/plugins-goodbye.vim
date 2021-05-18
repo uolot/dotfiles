@@ -16,11 +16,6 @@ Plug 'majutsushi/tagbar'
     nmap <Leader>tb :TagbarOpenAutoClose<CR>
 
 
-" Distraction-free writing in Vim
-" uninstall in June 2021
-Plug 'junegunn/goyo.vim'
-
-
 " Toggle, display and navigate marks
 " uninstall in June 2021
 Plug 'kshenoy/vim-signature'

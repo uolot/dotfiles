@@ -54,3 +54,8 @@ Plug 'lfv89/vim-interestingwords'
 " https://github.com/liuchengxu/vim-which-key
 Plug 'liuchengxu/vim-which-key'
 nnoremap <silent> <Leader> :WhichKey '<Space>'<CR>
+
+
+" Distraction-free writing in Vim
+" uninstall in June 2021
+Plug 'junegunn/goyo.vim'
