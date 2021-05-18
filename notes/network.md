@@ -1,38 +1,3 @@
-DNS
-===
-
-## IPv4
-
-Cloudflare
-* 1.1.1.1
-* 1.0.0.1
-
-Google
-* 8.8.8.8
-* 8.8.4.4
-
-## IPv6
-
-Cloudflare
-* 2606:4700:4700::1111
-* 2606:4700:4700::1001
-
-Google
-* 2001:4860:4860::8888
-* 2001:4860:4860::8844
-
-SSH
-===
-
-
-## Disable IPv6 for specific host
-
-```
-Host example.com
-    AddressFamily inet
-```
-
-
 Network Manager
 ===============
 
