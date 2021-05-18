@@ -37,3 +37,8 @@ nmap <Leader>pn <Plug>PeculiarN
 nmap <Leader>pr <Plug>PeculiarR
 nmap <Leader>pg <Plug>PeculiarG
 nmap <Leader>pv <Plug>PeculiarV
+
+
+" Add extra window movements with <C-w> g [hjkl]
+" https://github.com/andymass/vim-tradewinds
+Plug 'andymass/vim-tradewinds'
