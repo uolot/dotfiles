@@ -88,6 +88,7 @@ SHELL_PKGS = [
     "aur/cht.sh",
     "community/colordiff",
     "aur/direnv",
+    "aur/dollar",
     "endeavouros/downgrade",
     "aur/downgrader-git",
     "community/fd",
