@@ -62,7 +62,6 @@ APPS_PKGS = [
     # "aur/sparkfun-kicad-lib-git",
     "community/mupdf",
     "extra/nautilus",
-    "community/termite",  # TODO: remove
     "extra/vlc",
     "community/zathura",
     "community/zathura-pdf-mupdf",
