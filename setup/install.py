@@ -113,7 +113,7 @@ SHELL_PKGS = [
 DEVELOPMENT_PKGS = [
     "community/aws-cli",
     "aur/awslogs",
-    "community/ccache",
+    # "community/ccache",
     "aur/ccls",
     "community/cloc",
     "community/docker",
@@ -203,11 +203,11 @@ FONT_PKGS = [
 
 GAMING_PKGS = [
     "multilib/lib32-mesa",
-    "vulkan-mesa-layers",
-    "aur/proton",
-    "multilib/steam",
-    "aur/vkd3d-valve",
-    "extra/vulkan-intel",
+    # "vulkan-mesa-layers",
+    # "aur/proton",
+    # "multilib/steam",
+    # "aur/vkd3d-valve",
+    # "extra/vulkan-intel",
     "multilib/wine",
 ]
 
