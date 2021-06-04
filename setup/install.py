@@ -37,7 +37,7 @@ SWAY_PKGS = [
     "community/sway",
     "aur/swaylock-effects-git",
     "community/slurp",
-    # "aur/wdisplays",
+    "aur/wdisplays-git",
     # "aur/wev",
     "aur/wev-git",
     "community/wl-clipboard",
