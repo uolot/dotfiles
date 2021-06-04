@@ -44,42 +44,11 @@ let g:vimwiki_text_ignore_newline = 0
 let g:vimwiki_toc_link_format = 1
 let g:vimwiki_url_maxsave = 50
 
-function! VimwikiFindIncompleteTasks()
-  lvimgrep /- \[ \]/ %:p
-  lopen
-endfunction
-
-function! VimwikiFindAllIncompleteTasks()
-  VimwikiSearch /- \[ \]/
-  lopen
-endfunction
-
 " 03 Vimwiki mappings
 
-nnoremap <Leader>wa :call VimwikiFindAllIncompleteTasks()<CR>
-nnoremap <Leader>wx :call VimwikiFindIncompleteTasks()<CR>
-
-" mark task done
-nnoremap <Leader>t<Space> m`0f[lrxf]a DONE :YMD<C-]>:<Esc><C-Space>``
-" mark task complete
-nmap <Leader>tt <Plug>VimwikiToggleListItem
-" mark task cancelled
-nnoremap <Leader>tc m`0f[lrxf]a CANCELLED :YMD<C-]>:<Esc>glx``
-" convert list item to a task
-nnoremap <Leader>tm m`0^a [ ]<Esc>``
-" delete task box
-nnoremap <Leader>tu m`0f[Xd%``
-
-nnoremap <Leader>wg :VimwikiGoto 
 nnoremap <Leader>wf :Files ~/Vimwiki/wiki/<CR>
-nnoremap <Leader>w/ :VimwikiSearch 
-nnoremap <Leader>wT :VimwikiTOC<CR>
-nnoremap <Leader>wq :VimwikiGoto Scratchpad<CR>
-nnoremap <Leader>wj :VimwikiGoto AE\ JIRA\ Template<CR>
+nnoremap <Leader>wg :VimwikiGoto 
 nmap <Leader>ws <Plug>VimwikiSplitLink
 nmap <Leader>wv <Plug>VimwikiVSplitLink
-nnoremap <Leader>wl :VimwikiRenumberList<CR>
-" causes segfault - revisit later
-" nnoremap <silent> <Leader>wu :call vimwiki#base#linkify()<CR>
 
 autocmd FileType vimwiki setlocal textwidth=100 nowrap linebreak nolist wrapmargin=0
