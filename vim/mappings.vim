@@ -25,6 +25,8 @@ nnoremap gV `[v`]
 
 " open images with imv
 autocmd BufEnter *.png,*.jpg,*.gif exec "!imv ".expand("%") | :bw
+" open PDFs with zathura
+autocmd BufEnter *.pdf exec "!zathura ".expand("%") | :bw
 
 
 " enable/disable wrap
