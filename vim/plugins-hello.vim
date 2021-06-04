@@ -17,28 +17,6 @@ nnoremap <leader>nn :NERDTreeFocus<CR>
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
 
-" See the contents of the registers
-" https://github.com/junegunn/vim-peekaboo
-Plug 'junegunn/vim-peekaboo'
-let g:peekaboo_delay = 1000
-
-
-" Undo tree visualizer
-" https://github.com/simnalamburt/vim-mundo
-" https://simnalamburt.github.io/vim-mundo/
-Plug 'simnalamburt/vim-mundo'
-nnoremap <Leader>mt :MundoToggle<CR>
-
-
-" Run normal commands over text objects
-" https://github.com/JRasmusBm/vim-peculiar
-Plug 'JRasmusBm/vim-peculiar'
-nmap <Leader>pn <Plug>PeculiarN
-nmap <Leader>pr <Plug>PeculiarR
-nmap <Leader>pg <Plug>PeculiarG
-nmap <Leader>pv <Plug>PeculiarV
-
-
 " Add extra window movements with <C-w> g [hjkl]
 " https://github.com/andymass/vim-tradewinds
 Plug 'andymass/vim-tradewinds'
