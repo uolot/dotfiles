@@ -1,0 +1,1 @@
+/home/tomasz/Dev/Personal/currency-cli/app.py

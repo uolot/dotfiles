@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+"$HOME/Bin/currency.py" --api-key "$(cat "$HOME/.secrets/FREECURRENCY_API_KEY")" "$@"
