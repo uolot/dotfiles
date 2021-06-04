@@ -44,3 +44,14 @@ alias hrr='printf "\n\n\n\n\n" ; hr ; printf "\n\n\n\n\n"'
 
 # start HTTP server in current dir
 alias serve="pyhon3 -m http.server"
+
+
+# git delta
+gitd() {
+    GIT_PAGER=delta git -c interactive.diffFilter="delta --color-only" $@
+}
+
+# git delta side-by-side
+gits() {
+    GIT_PAGER="delta --side-by-side" git -c interactive.diffFilter="delta --color-only" $@
+}

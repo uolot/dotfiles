@@ -119,6 +119,7 @@ DEVELOPMENT_PKGS = [
     "community/docker",
     "community/docker-compose",
     "aur/flow-bin",  # type checker for JS
+    "aur/git-delta",
     "aur/google-cloud-sdk",
     "aur/gopls",  # Go language server
     "aur/javascript-typescript-langserver",
