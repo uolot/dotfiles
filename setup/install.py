@@ -35,6 +35,7 @@ SWAY_PKGS = [
     "community/python-i3ipc",
     "community/rofi",
     "community/sway",
+    "community/swayidle",
     "aur/swaylock-effects-git",
     "community/slurp",
     "aur/wdisplays-git",

@@ -286,6 +286,13 @@ bar {
 # Lock screen
 bindsym $mod+Shift+o exec $HOME/Bin/sway_lock_screen
 
+# # Start idle manager
+# exec swayidle -w \
+#     timeout 300 '$HOME/Bin/sway_lock_screen' \
+#         resume 'swaymsg "output * dpms on"' \
+#     timeout 600 'swaymsg "output * dpms off"' \
+#         resume 'swaymsg "output * dpms on"' \
+#     before-sleep '$HOME/Bin/sway_lock_screen'
 
 ### # background
 ### output "*" background $HOME/.dotfiles/wallpapers/alaska.jpg fill
