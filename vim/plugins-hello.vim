@@ -20,3 +20,9 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 " Add extra window movements with <C-w> g [hjkl]
 " https://github.com/andymass/vim-tradewinds
 Plug 'andymass/vim-tradewinds'
+
+
+" highlight Python source code lines that lack test coverage
+" https://github.com/mgedmin/coverage-highlight.vim
+Plug 'mgedmin/coverage-highlight.vim'
+" :HighlightCoverage
