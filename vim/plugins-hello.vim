@@ -26,3 +26,8 @@ Plug 'andymass/vim-tradewinds'
 " https://github.com/mgedmin/coverage-highlight.vim
 Plug 'mgedmin/coverage-highlight.vim'
 " :HighlightCoverage
+
+
+" pairs of handy bracket mappings
+" https://github.com/tpope/vim-unimpaired
+Plug 'tpope/vim-unimpaired'
