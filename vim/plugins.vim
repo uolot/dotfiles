@@ -14,6 +14,7 @@ Plug 'romainl/vim-cool'
 
 " Range, pattern and substitute preview
 Plug 'markonm/traces.vim'
+let g:traces_normal_preview = 1
 
 " Close brackets on enter
 " Config: https://github.com/rstacruz/vim-closer/blob/master/plugin/closer.vim
