@@ -109,6 +109,7 @@ SHELL_PKGS = [
     "community/tldr",
     "community/tmux",
     "extra/tree",
+    "aur/ttyd",
     "aur/universal-ctags-git",
 ]
 
