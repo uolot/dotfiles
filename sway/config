@@ -1,7 +1,8 @@
-# vim: ft=i3config
+# vim: ft=sway
 set $mod Mod4
-# set $rofi rofi
-set $rofi $HOME/Bin/rofi-sway
+#set $rofi rofi
+#set $rofi $HOME/Bin/rofi-sway
+set $rofi wofi
 
 xwayland enable
 for_window [shell="xwayland"] title_format "%title [XWayland]"
@@ -103,7 +104,7 @@ for_window [title="^terminal-floating$"] floating enable, resize set width 40 pp
 bindsym $mod+t exec $HOME/Bin/showtime.py
 for_window [title="^showtime$"] floating enable, border none
 
-bindsym $mod+Shift+t exec $HOME/Bin/timer $(echo -e "5\n20\n30\n25,5" | $rofi -dmenu)
+bindsym $mod+Shift+t exec $HOME/Bin/timer $(echo -e "5\n20\n30\n25,5" | $rofi --dmenu)
 for_window [title="^timer$"] floating enable, sticky enable, border none, move position pointer
 
 # start a webbrowser
@@ -115,12 +116,12 @@ bindsym $mod+Ctrl+Shift+b exec google-chrome-beta --profile-directory="Profile 1
 
 # kill focused window
 bindsym $mod+Ctrl+q kill
-bindsym $mod+Shift+q exec pkill $($rofi -p pkill -dmenu -lines 0)
+bindsym $mod+Shift+q exec pkill $($rofi -p pkill --dmenu --lines 0)
 
 
 # launcher
-bindsym $mod+Ctrl+space exec $rofi -show run -modi run
-bindsym $mod+Shift+space exec $rofi -show drun -modi drun -monitor 0
+bindsym $mod+Ctrl+space exec $rofi --show run --modi run
+bindsym $mod+Shift+space exec $rofi --show drun --modi drun
 
 
 # change focus
@@ -349,7 +350,7 @@ exec "sleep 60 ; $HOME/Build/batbottg/bin/batbottg -c $HOME/.batbottg.ini"
 # Update wifi networks list
 exec "sleep 10 ; $HOME/Bin/networks.sh update"
 # Connect to a listed network
-bindsym $mod+n exec "$HOME/Bin/networks.sh list | $rofi -dmenu -p wifi | xargs $HOME/Bin/networks.sh connect"
+bindsym $mod+n exec "$HOME/Bin/networks.sh list | $rofi --dmenu -p wifi | xargs $HOME/Bin/networks.sh connect"
 
 # Notifications
 for_window [title="^xfce4-notifyd$"] floating enable, sticky enable, border none, move position 20 20

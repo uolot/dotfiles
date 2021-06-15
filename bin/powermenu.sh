@@ -9,7 +9,7 @@ reboot
 suspend+hibernate
 hibernate"
 
-option=$(echo "$options" | $HOME/Bin/rofi-sway -dmenu -monitor 0 -p power)
+option=$(echo "$options" | wofi --dmenu --prompt=power)
 
 lock=true
 powercmd=true

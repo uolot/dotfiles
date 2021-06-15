@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-name=$($HOME/Bin/rofi-sway -dmenu -input /dev/null -p "Name")
+name=$(wofi --dmenu --input=/dev/null --prompt="Name")
 ~/Bin/rename_workspace "$name" --force

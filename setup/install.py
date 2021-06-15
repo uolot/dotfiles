@@ -33,7 +33,7 @@ SWAY_PKGS = [
     "extra/libpipewire02",
     "community/playerctl",
     "community/python-i3ipc",
-    "community/rofi",
+    "community/rofi",  # remove
     "community/sway",
     "community/swayidle",
     "aur/swaylock-effects-git",

@@ -21,6 +21,7 @@ LINKS = {
     "tmux/tmux.conf": ".tmux.conf",
     "vim/ftplugin": ".vim/ftplugin",
     "vim/vimrc": ".vimrc",
+    "wofi/style.css": ".config/wofi/style.css",
 }
 
 
