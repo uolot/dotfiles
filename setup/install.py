@@ -132,6 +132,7 @@ DEVELOPMENT_PKGS = [
     "community/nim",
     "community/npm",
     "community/pgadmin4",
+    "aur/pgcli",
     "extra/postgresql",
     "aur/postman6-bin",
     "community/redis",
