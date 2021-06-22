@@ -100,6 +100,7 @@ SHELL_PKGS = [
     "community/inotify-tools",
     "community/jq",
     "extra/libqalculate",
+    "extra/lsof",
     "community/moreutils",
     "extra/p7zip",
     "community/python-html2text",
