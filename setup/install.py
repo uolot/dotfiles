@@ -149,7 +149,6 @@ PYTHON_PKGS = [
     "community/mypy",
     "community/pylama",
     "community/pyenv",
-    "aur/pyenv-virtualenv",
     "community/python-black",
     "aur/python38",
     "extra/python-cffi",
