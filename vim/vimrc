@@ -86,6 +86,6 @@ source $HOME/.dotfiles/vim/abbrev.vim
 source $HOME/.dotfiles/vim/mappings.vim
 
 " ------ Neomake ------
-call neomake#configure#automake({
-            \ 'BufWritePost': {},
-            \ }, 1000)
+" call neomake#configure#automake({
+"             \ 'BufWritePost': {},
+"             \ }, 1000)

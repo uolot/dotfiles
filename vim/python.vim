@@ -15,11 +15,11 @@ Plug 'davidhalter/jedi-vim', {'for': 'python'}
 
     autocmd FileType python setlocal completeopt-=preview
 
-autocmd FileType python set autoread
-autocmd FileType python let b:dispatch = 'isort % ; black %'
-autocmd BufWritePost *.py Dispatch!
-autocmd CursorHold * if getcmdwintype() == '' | checktime | endif
-autocmd BufWritePost *.py checktime
+" autocmd FileType python set autoread
+" autocmd FileType python let b:dispatch = 'isort % ; black %'
+" autocmd BufWritePost *.py Dispatch!
+" autocmd CursorHold * if getcmdwintype() == '' | checktime | endif
+" autocmd BufWritePost *.py checktime
 
 autocmd FileType python iabbrev ifmain if __name__ == "__main__"
 autocmd FileType python iabbrev adef async def
