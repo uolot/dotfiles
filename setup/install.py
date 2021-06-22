@@ -30,6 +30,7 @@ SYSTEM_AND_LIBS_PKGS = [
 SWAY_PKGS = [
     "aur/brillo",
     "community/grim",
+    "community/i3status-rust",
     "extra/libpipewire02",
     "community/playerctl",
     "community/python-i3ipc",
@@ -203,6 +204,7 @@ MISC_PKGS = [
 
 FONT_PKGS = [
     "community/otf-font-awesome",
+    "community/ttf-font-awesome",
     "aur/ttf-go-mono-git",
     "aur/ttf-input",
 ]

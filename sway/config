@@ -264,7 +264,8 @@ bindsym $mod+r mode "resize"
 
 # TODO: review
 bar {
-    status_command i3status
+    status_command i3status-rs
+    font pango:Ubuntu Medium 15, Font Awesome 5 Free
     position bottom
     workspace_buttons yes
 
