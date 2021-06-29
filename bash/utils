@@ -3,7 +3,9 @@
 export LESS=-FRSX
 export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
 
-alias todos="ag '(TODO|XXX|FIXME)'"
+# Misc
+
+alias todos="ag '(TODO|XXX|FIXME)' $@"
 
 # Git-style diff
 gdiff() {
