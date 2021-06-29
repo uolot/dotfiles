@@ -1,5 +1,8 @@
 # vim: ft=bash
 
+[[ -f /usr/share/git/completion/git-prompt.sh ]] && source /usr/share/git/completion/git-prompt.sh
+export GIT_PS1_SHOWDIRTYSTATE=1
+
 function prompt_command {
     local EXIT_CODE="$?"
 
@@ -43,14 +46,7 @@ function prompt_command {
         venvprompt=" ($(basename $VIRTUAL_ENV))"
     fi
 
-    local gitbranch=$(git rev-parse --abbrev-ref HEAD 2> /dev/null)
-    local gitprompt
-    if [[ "$gitbranch" == "" ]]
-    then
-        gitprompt=""
-    else
-        gitprompt=" <$(echo $gitbranch | cut -c-16)>"
-    fi
+    local gitprompt="$(__git_ps1 " (%s) ")"
 
     local width=$(tput cols)
     local width40pct=$(($width * 2 / 5))
