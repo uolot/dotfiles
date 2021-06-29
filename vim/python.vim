@@ -6,12 +6,12 @@ Plug 'davidhalter/jedi-vim', {'for': 'python'}
     let g:jedi#popup_on_dot = 0
     let g:jedi#show_call_signatures = 0
 
-    let g:jedi#goto_command = '<leader>jg'
-    let g:jedi#goto_assignments_command = '<leader>ja'
-    let g:jedi#goto_definitions_command = '<leader>jd'
-    let g:jedi#rename_command = '<leader>jr'
-    let g:jedi#usages_command = '<leader>ju'
-    let g:jedi#goto_stubs_command = '<leader>js'
+    let g:jedi#goto_command = '<leader>gg'
+    let g:jedi#goto_assignments_command = '<leader>ga'
+    let g:jedi#goto_definitions_command = '<leader>gd'
+    let g:jedi#goto_stubs_command = '<leader>gs'
+    let g:jedi#usages_command = '<leader>gu'
+    let g:jedi#rename_command = '<leader>gr'
 
     autocmd FileType python setlocal completeopt-=preview
 
