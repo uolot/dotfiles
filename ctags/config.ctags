@@ -4,4 +4,5 @@
 --exclude=.mypy_cache
 --exclude=.pytest_cache
 --exclude=.tox
+--exclude=.git
 --extra=+f
