@@ -28,7 +28,7 @@ cwd() {
 # git
 
 # Change to git root dir
-cdgr() {
+cd-git-root() {
     pushd .
     cd $(git rev-parse --show-toplevel)
 }
