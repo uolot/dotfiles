@@ -34,8 +34,22 @@ Plug 'tpope/vim-unimpaired'
 
 
 Plug 'dense-analysis/ale'
-let g:ale_linters = {'python': ['mypy', 'flake8']}
-let g:ale_fixers = {'python': ['black', 'isort']}
+let g:ale_linters = {
+            \ 'python': ['mypy', 'flake8']
+            \}
+let g:ale_fixers = {
+            \'python': ['black', 'isort']
+            \}
 let g:ale_fix_on_save = 1
 nnoremap ]} :ALENext<CR>
 nnoremap [{ :ALEPrevious<CR>
+let g:ale_set_balloons = 1
+let g:ale_completion_enabled = 1
+set omnifunc=ale#completion#OmniFunc
+if executable('pyls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'pyls',
+        \ 'cmd': {server_info->['pyls']},
+        \ 'whitelist': ['python'],
+        \ })
+endif
