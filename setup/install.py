@@ -116,8 +116,8 @@ SHELL_PKGS = [
 ]
 
 DEVELOPMENT_PKGS = [
-    "community/aws-cli",
-    "aur/awslogs",
+    # "community/aws-cli",
+    # "aur/awslogs",
     # "community/ccache",
     "aur/ccls",
     "community/cloc",
@@ -130,7 +130,7 @@ DEVELOPMENT_PKGS = [
     "aur/javascript-typescript-langserver",
     "community/leiningen",
     "community/libmemcached",
-    "community/nim",
+    # "community/nim",
     "community/npm",
     "community/pgadmin4",
     "aur/pgcli",
@@ -142,7 +142,7 @@ DEVELOPMENT_PKGS = [
     "community/terraform",
     "aur/tflint-bin",
     "aur/vscode-html-languageserver-bin",
-    "community/zig",
+    # "community/zig",
 ]
 
 PYTHON_PKGS = [
