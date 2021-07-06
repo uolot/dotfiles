@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-active_sink=$(pacmd list-sinks |awk '/* index:/{print $3}')
+# active_sink=$(pacmd list-sinks |awk '/* index:/{print $3}')
+active_sink=0
 
 case $1 in
     up)
