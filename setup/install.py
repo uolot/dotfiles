@@ -77,6 +77,7 @@ COMMS_AND_NETWORKING_PKGS = [
     "aur/ookla-speedtest-bin",
     "aur/openvpn-update-systemd-resolved",
     "core/traceroute",
+    "community/webfs",
 ]
 
 SHELL_PKGS = [
@@ -197,7 +198,6 @@ ANDROID_PKGS = [
 MISC_PKGS = [
     "extra/snappy",
     "extra/tk",
-    "community/webfs",
 ]
 
 FONT_PKGS = [
