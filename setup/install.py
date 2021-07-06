@@ -34,6 +34,8 @@ SWAY_PKGS = [
     "community/grim",
     "community/i3status-rust",
     "extra/libpipewire02",
+    "extra/pipewire-docs",
+    "extra/pipewire-pulse",
     "community/playerctl",
     "community/python-i3ipc",
     "community/rofi",  # remove
@@ -46,6 +48,8 @@ SWAY_PKGS = [
     "aur/wev-git",
     "community/wl-clipboard",
     "aur/wofi",
+    "extra/xdg-desktop-portal",
+    "community/xdg-desktop-portal-wlr",
     "extra/xfce4-notifyd",  # TODO: remove
     "aur/ydotool-git",
 ]
