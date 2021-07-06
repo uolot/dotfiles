@@ -5,21 +5,22 @@ from lib import ask
 # 1. ANDROID_PKGS
 # 2. APPS_PKGS
 # 3. COMMS_AND_NETWORKING_PKGS
-# 4. DEVELOPMENT_PKGS
-# 5. DOCUMENTS_AND_MEDIA_PKGS
-# 6. ELECTRONICS_PKGS
-# 7. FONT_PKGS
-# 8. GAMING_PKGS
-# 9. JAVA_PKGS
-# 10. KEYBOARD_PKGS
-# 11. KUBERNETES_PKGS
-# 12. MISC_PKGS
-# 13. PRINTER_PKGS
-# 14. PYTHON_PKGS
-# 15. SDR_PKGS
-# 16. SHELL_PKGS
-# 17. SWAY_PKGS
-# 18. SYSTEM_AND_LIBS_PKGS
+# 4. DATABASE_PKGS
+# 5. DEVELOPMENT_PKGS
+# 7. DOCUMENTS_AND_MEDIA_PKGS
+# 9. ELECTRONICS_PKGS
+# 11. FONT_PKGS
+# 13. GAMING_PKGS
+# 15. JAVA_PKGS
+# 17. KEYBOARD_PKGS
+# 19. KUBERNETES_PKGS
+# 21. MISC_PKGS
+# 23. PRINTER_PKGS
+# 25. PYTHON_PKGS
+# 27. SDR_PKGS
+# 29. SHELL_PKGS
+# 31. SWAY_PKGS
+# 33. SYSTEM_AND_LIBS_PKGS
 
 SYSTEM_AND_LIBS_PKGS = [
     "aur/libffi6",
@@ -132,12 +133,7 @@ DEVELOPMENT_PKGS = [
     "community/libmemcached",
     # "community/nim",
     "community/npm",
-    "community/pgadmin4",
-    "aur/pgcli",
-    "extra/postgresql",
     "aur/postman6-bin",
-    "community/redis",
-    "aur/sqlfluff",
     "extra/strace",
     "community/terraform",
     "aur/tflint-bin",
@@ -252,6 +248,14 @@ PRINTER_PKGS = [
     "extra/system-config-printer",
 ]
 
+DATABASE_PKGS = [
+    "aur/pgadmin4-last",
+    "aur/pgcli",
+    "extra/postgresql",
+    "community/redis",
+    "aur/sqlfluff",
+]
+
 PACKAGES = {
     "system and libs": SYSTEM_AND_LIBS_PKGS,
     "sway": SWAY_PKGS,
@@ -271,6 +275,7 @@ PACKAGES = {
     "keyboard": KEYBOARD_PKGS,
     "kubernetes": KUBERNETES_PKGS,
     "printer": PRINTER_PKGS,
+    "database": DATABASE_PKGS,
 }
 
 
