@@ -249,6 +249,7 @@ PRINTER_PKGS = [
 ]
 
 DATABASE_PKGS = [
+    "community/dbeaver",
     "aur/pgadmin4-last",
     "aur/pgcli",
     "extra/postgresql",
