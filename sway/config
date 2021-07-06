@@ -116,7 +116,7 @@ bindsym $mod+Ctrl+Shift+b exec google-chrome-beta --profile-directory="Profile 1
 
 # kill focused window
 bindsym $mod+Ctrl+q kill
-bindsym $mod+Shift+q exec pkill $($rofi -p pkill --dmenu --lines 0)
+bindsym $mod+Shift+q exec pkill $($rofi -p pkill --dmenu --lines 1)
 
 
 # launcher
