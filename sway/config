@@ -359,6 +359,10 @@ for_window [title="^xfce4-notifyd$"] floating enable, sticky enable, border none
 for_window [app_id="^zoom$"] floating enable
 
 
+# Add marvin task
+# TODO: move the script to ./bin/
+bindsym $mod+a exec /home/tomasz/Dev/Personal/marvin-client/venv/bin/python /home/tomasz/Dev/Personal/marvin-client/add_task.py $(wofi --show dmenu --prompt "Task:" --lines 1)
+
 # colors
 
 # classes:
