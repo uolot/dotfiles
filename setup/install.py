@@ -117,6 +117,7 @@ SHELL_PKGS = [
 ]
 
 DEVELOPMENT_PKGS = [
+    "aur/adr-tools",
     # "community/aws-cli",
     # "aur/awslogs",
     # "community/ccache",
@@ -184,6 +185,7 @@ DOCUMENTS_AND_MEDIA_PKGS = [
     "extra/graphviz",
     "aur/imgur.sh",
     "community/imv",
+    "community/mediainfo",
     "community/mupdf",
     "aur/pandoc-bin",
     "aur/python-grip",
