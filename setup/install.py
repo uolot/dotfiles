@@ -2,25 +2,26 @@ import os
 from lib import ask
 
 # Index:
-# 1. ANDROID_PKGS
-# 2. APPS_PKGS
-# 3. COMMS_AND_NETWORKING_PKGS
-# 4. DATABASE_PKGS
-# 5. DEVELOPMENT_PKGS
-# 7. DOCUMENTS_AND_MEDIA_PKGS
-# 9. ELECTRONICS_PKGS
-# 11. FONT_PKGS
-# 13. GAMING_PKGS
-# 15. JAVA_PKGS
-# 17. KEYBOARD_PKGS
-# 19. KUBERNETES_PKGS
-# 21. MISC_PKGS
-# 23. PRINTER_PKGS
-# 25. PYTHON_PKGS
-# 27. SDR_PKGS
-# 29. SHELL_PKGS
-# 31. SWAY_PKGS
-# 33. SYSTEM_AND_LIBS_PKGS
+#  1. ANDROID_PKGS
+#  2. APPS_PKGS
+#  3. COMMS_AND_NETWORKING_PKGS
+#  4. DATABASE_PKGS
+#  5. DEVELOPMENT_PKGS
+#  6. DOCUMENTS_AND_MEDIA_PKGS
+#  7. ELECTRONICS_PKGS
+#  8. FONT_PKGS
+#  9. GAMING_PKGS
+# 10. JAVA_PKGS
+# 11. KEYBOARD_PKGS
+# 12. KUBERNETES_PKGS
+# 13. MEDIA_PKGS
+# 14. MISC_PKGS
+# 15. PRINTER_PKGS
+# 16. PYTHON_PKGS
+# 17. SDR_PKGS
+# 18. SHELL_PKGS
+# 19. SWAY_PKGS
+# 20. SYSTEM_AND_LIBS_PKGS
 
 SYSTEM_AND_LIBS_PKGS = [
     "aur/libffi6",
@@ -51,23 +52,17 @@ SWAY_PKGS = [
 
 APPS_PKGS = [
     "aur/alacritty-ligatures",
-    "community/audacity",
     "aur/chrome-remote-desktop",
     "aur/chromium-snapshot-bin",
     "aur/etcher-bin",
     "extra/firefox",
-    "extra/gimp",
     "extra/gnome-font-viewer",
     "aur/google-chrome",
     "extra/gvim",
     # "community/kicad",
     # "community/kicad-library",
     # "aur/sparkfun-kicad-lib-git",
-    "community/mupdf",
     "extra/nautilus",
-    "extra/vlc",
-    "community/zathura",
-    "community/zathura-pdf-mupdf",
 ]
 
 COMMS_AND_NETWORKING_PKGS = [
@@ -178,11 +173,20 @@ ELECTRONICS_PKGS = [
 ]
 
 DOCUMENTS_AND_MEDIA_PKGS = [
+    "community/audacity",
+    "extra/gimp",
     "extra/graphicsmagick",
     "extra/graphviz",
+    "aur/imgur.sh",
+    "community/imv",
+    "community/mupdf",
     "aur/pandoc-bin",
     "aur/python-grip",
+    "community/sox",
+    "extra/vlc",
     "community/youtube-dl",
+    "community/zathura",
+    "community/zathura-pdf-mupdf",
 ]
 
 ANDROID_PKGS = [
@@ -191,10 +195,7 @@ ANDROID_PKGS = [
 ]
 
 MISC_PKGS = [
-    "aur/imgur.sh",
-    "community/imv",
     "extra/snappy",
-    "community/sox",
     "extra/tk",
     "community/webfs",
 ]
@@ -233,7 +234,6 @@ KEYBOARD_PKGS = [
 
 KUBERNETES_PKGS = [
     "kubernetes-tools",
-    #
     "aur/kind-bin",
     "aur/minikube-bin",
 ]
@@ -256,6 +256,9 @@ DATABASE_PKGS = [
     "community/redis",
     "aur/sqlfluff",
 ]
+
+MEDIA_PACKAGES = ""  # see: DOCUMENTS_AND_MEDIA_PKGS
+
 
 PACKAGES = {
     "system and libs": SYSTEM_AND_LIBS_PKGS,
