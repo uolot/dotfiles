@@ -41,3 +41,5 @@ source $DOTBASH/platformio
 
 [[ -f $HOME/.dotfiles/alacritty/alacritty.bash ]] && source $HOME/.dotfiles/alacritty/alacritty.bash
 export GOOGLE_APPLICATION_CREDENTIALS=~/.config/gcloud/platform-admin.json
+
+eval "$(zoxide init bash)"

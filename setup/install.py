@@ -114,6 +114,7 @@ SHELL_PKGS = [
     "extra/tree",
     "aur/ttyd",
     "aur/universal-ctags-git",
+    "aur/zoxide-bin",
 ]
 
 DEVELOPMENT_PKGS = [
