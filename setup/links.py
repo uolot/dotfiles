@@ -14,7 +14,6 @@ LINKS = {
     "ipython/ipython_config.py": ".ipython/profile_default/ipython_config.py",
     "ipython/startup/vim.py": ".ipython/profile_default/startup/vim.py",
     "pam/pam_environment": ".pam_environment",
-    "rofi/config.rasi": ".config/rofi/config.rasi",
     "sway/i3status": ".config/i3status/config",
     "sway/i3status-rust.toml": ".config/i3status-rust/config.toml",
     "sway/config": ".config/sway/config",
