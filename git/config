@@ -48,7 +48,7 @@
 	a = add
 	ap = add --patch
 
-	b = branch
+	b = branch --verbose
 	br = branch -ra
 
 	c = commit --verbose

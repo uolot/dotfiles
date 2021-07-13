@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+args="$*"
+fzf_args=""
+
+if [[ $args != "" ]]
+then
+	fzf_args="-q $args"
+fi
+
+git checkout "$(git branch --format='%(refname:short)' | fzf --preview 'git lgf {}' $fzf_args)"
