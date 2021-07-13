@@ -130,6 +130,7 @@ DEVELOPMENT_PKGS = [
     "aur/git-delta",
     "aur/google-cloud-sdk",
     "aur/gopls",  # Go language server
+    "aur/hadolint-bin",  # Dockerfile linter
     "aur/javascript-typescript-langserver",
     "community/leiningen",
     "community/libmemcached",
