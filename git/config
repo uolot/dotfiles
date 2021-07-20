@@ -49,6 +49,8 @@
 	ap = add --patch
 
 	b = branch --verbose
+	# same as cb
+	bc = checkout -b
 	br = branch -ra
 
 	c = commit --verbose
@@ -56,6 +58,7 @@
 	cf = commit --fixup
 	cm = commit -m
 
+	# same as bc
 	cb = checkout -b
 	co = checkout
 	cop = checkout --patch

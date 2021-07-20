@@ -8,4 +8,12 @@ then
 	fzf_args="-q $args"
 fi
 
-git checkout "$(git branch --format='%(refname:short)' | fzf --preview 'git lgf {}' $fzf_args)"
+branch=$(git branch --format='%(refname:short)' | fzf --preview 'git lgf {}' $fzf_args)
+exit_code=$?
+
+if [[ "$exit_code" != "0" ]]
+then
+	exit $exit_code
+fi
+
+git checkout "$branch"
