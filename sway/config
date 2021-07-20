@@ -28,15 +28,6 @@ output "*" background $(fd . $HOME/Pictures/Wallpapers/ -e jpg -e jpeg -e png | 
 # LAPTOP ONLY - THINKPAD X1CARBON GEN2
 # include "./outputs/thinkpad-x1c-gen2"
 
-# HOME OFFICE SUCHA GORNA - DELL XPS + ASUS MONITOR
-# include "./outputs/homeoffice-suchagorna-xps+asus"
-
-# HOME OFFICE SUCHA GORNA - DELL XPS + BENQ MMONITOR + ASUS MONITOR
-# include "./outputs/homeoffice-suchagorna-xps+benq+asus"
-
-# HOME OFFICE SUCHA GORNA - DELL XPS + BENQ MMONITOR + ASUS MONITOR - HORIZONTAL ARRANGEMENT
-# include "./outputs/homeoffice-suchagorna-xps+benq+asus-horizontal"
-
 # HOME OFFICE CPH - DELL XPS + BENQ MONITOR - VERTICAL ARRANGEMENT
 # include "./outputs/homeoffice-cph-xps+benq-vertical"
 
