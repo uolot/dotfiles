@@ -24,3 +24,4 @@ Plug 'davidhalter/jedi-vim', {'for': 'python'}
 autocmd FileType python iabbrev ifmain if __name__ == "__main__"
 autocmd FileType python iabbrev adef async def
 autocmd FileType python iabbrev awith async with
+autocmd FileType python iabbrev bp breakpoint()

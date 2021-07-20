@@ -17,6 +17,7 @@ iabbrev uplaod upload
 " bash shebang
 set iskeyword+=!
 iabbrev !bash #!/usr/bin/env bash
+iabbrev !py3 #!/usr/bin/env python3
 
 " insert current date
 iabbrev <expr> YMD strftime("%Y-%m-%d")
