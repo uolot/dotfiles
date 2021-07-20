@@ -31,6 +31,7 @@ SYSTEM_AND_LIBS_PKGS = [
 
 SWAY_PKGS = [
     "aur/brillo",
+    "aur/flashfocus-git",
     "community/grim",
     "community/i3status-rust",
     "extra/libpipewire02",

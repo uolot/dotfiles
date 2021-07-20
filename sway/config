@@ -355,9 +355,12 @@ bindsym $mod+n exec "$HOME/Bin/networks.sh list | $rofi --dmenu -p wifi | xargs 
 
 # Notifications
 for_window [title="^xfce4-notifyd$"] floating enable, sticky enable, border none, move position 20 20
+
 # Zoom
 for_window [app_id="^zoom$"] floating enable
 
+# Start flashfocus
+exec flashfocus
 
 # Add marvin task
 # TODO: move the script to ./bin/
