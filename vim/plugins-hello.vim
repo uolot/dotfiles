@@ -33,14 +33,16 @@ Plug 'mgedmin/coverage-highlight.vim'
 Plug 'tpope/vim-unimpaired'
 
 
+" https://github.com/dense-analysis/ale
 Plug 'dense-analysis/ale'
 let g:ale_linters = {
-            \ 'python': ['mypy', 'flake8']
+            \ 'python': ['mypy', 'flake8', 'pylint']
             \}
 let g:ale_fixers = {
             \'python': ['black', 'isort']
             \}
 let g:ale_fix_on_save = 1
+let g:ale_python_pylint_use_global = 0
 nnoremap ]} :ALENext<CR>
 nnoremap [{ :ALEPrevious<CR>
 let g:ale_set_balloons = 1
