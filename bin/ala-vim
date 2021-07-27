@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+FILE="$1"
+DIR=$(dirname "$FILE")
+LINE="$2"
+ID="floating-$(echo $RANDOM | md5sum | head -c 5)"
+
+alacritty --working-directory "$DIR" -t "$ID" -d 100 30 -e vim "$FILE:$LINE" &
+swaymsg "for_window [title=$ID] floating enable"
+sleep 0.2
+swaymsg "[title=$ID] floating disable"
+sleep 0.1
+swaymsg "[title=$ID] floating enable"
+
+# https://github.com/Synthetica9/sway-floating/blob/master/floating
+# swaymsg -t subscribe -m '[ "window" ]' | jq --unbuffered
