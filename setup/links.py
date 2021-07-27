@@ -18,6 +18,7 @@ LINKS = {
     "sway/i3status": ".config/i3status/config",
     "sway/i3status-rust.toml": ".config/i3status-rust/config.toml",
     "sway/config": ".config/sway/config",
+    "sway/swayr-config.toml": ".config/swayr/config.toml",
     "TabNine.toml": ".config/TabNine/TabNine.yml",
     "tmux/tmux.conf": ".tmux.conf",
     "vim/ftplugin": ".vim/ftplugin",
