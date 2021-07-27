@@ -47,6 +47,11 @@ let g:ale_fix_on_save = 1
 let g:ale_python_pylint_use_global = 0
 nnoremap ]} :ALENext<CR>
 nnoremap [{ :ALEPrevious<CR>
+nnoremap <Leader>at :ALEToggleBuffer<CR>
+nnoremap <Leader>aT :ALEToggle<CR>
+nnoremap <Leader>al :ALELint<CR>
+nnoremap <Leader>af :ALEFix<CR>
+nnoremap <Leader>aa :lopen<CR>
 let g:ale_set_balloons = 1
 let g:ale_completion_enabled = 1
 set omnifunc=ale#completion#OmniFunc
