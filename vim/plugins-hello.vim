@@ -76,6 +76,20 @@ Plug 'shumphrey/fugitive-gitlab.vim'
 " https://github.com/tommcdo/vim-fubitive
 Plug 'tommcdo/vim-fubitive'
 
+
+" Generate Python docstring to your Python source code
+" https://github.com/heavenshell/vim-pydocstring
+" Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python' }
+Plug 'heavenshell/vim-pydocstring', { 'for': 'python' }
+let g:pydocstring_enable_mapping = 0
+let g:pydocstring_formatter = 'google'
+let g:pydocstring_doq_path = '/home/tomasz/.local/bin/doq'
+let g:pydocstring_templates_path = '/home/tomasz/.dotfiles/doq'
+nnoremap <Leader>pd :Pydocstring<CR>
+xnoremap <Leader>pd :Pydocstring<CR>
+nnoremap <Leader>pD :PydocstringFormat<CR>
+
+
 " A git commit browser in Vim
 " https://github.com/junegunn/gv.vim
 Plug 'junegunn/gv.vim'
