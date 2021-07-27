@@ -1,3 +1,8 @@
 #!/usr/bin/env bash
 
-"$HOME/Bin/currency.py" --api-key "$(cat "$HOME/.secrets/FREECURRENCY_API_KEY")" "$@"
+FREECURRENCY_API_KEY="$(cat "$HOME/.secrets/FREECURRENCY_API_KEY")"
+EXCHANGERATE_API_KEY="$(cat "$HOME/.secrets/EXCHANGERATE_API_KEY")"
+
+FREECURRENCY_API_KEY="$FREECURRENCY_API_KEY" \
+  EXCHANGERATE_API_KEY="$EXCHANGERATE_API_KEY" \
+  "$HOME/Bin/currency.py" "$@"
