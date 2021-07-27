@@ -216,10 +216,6 @@ bindsym $mod+Ctrl+p exec grim -g "$(slurp)" $($HOME/Bin/make-screenshot-path)
 # all outputs
 bindsym $mod+Shift+p exec grim $($HOME/Bin/make-screenshot-path)
 
-# reload the config file
-bindsym $mod+Shift+c reload
-# restart sway
-bindsym $mod+Shift+r restart
 # exit sway
 bindsym $mod+Shift+e exec "swaynag -t warning -m 'Exit?' -b 'Yes' 'swaymsg exit'""
 # power menu
