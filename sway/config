@@ -200,7 +200,8 @@ floating_modifier $mod
 bindsym $mod+f floating toggle
 bindsym $mod+Shift+s sticky toggle
 
-for_window [app_id="firefox" title="Firefox - Sharing Indicator"] floating enable
+for_window [title="Firefox - Sharing Indicator"] floating enable
+for_window [title="Firefox - Sharing Indicator"] no_focus
 
 
 # scratchpad
