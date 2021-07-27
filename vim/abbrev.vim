@@ -10,6 +10,7 @@ iabbrev istnall install
 iabbrev Lust Lyst
 iabbrev lust lyst
 iabbrev paylaod payload
+iabbrev suvery survey
 iabbrev tiem time
 iabbrev tje the
 iabbrev uplaod upload
