@@ -28,7 +28,7 @@ set statusline +=%y
 "paste status
 set statusline +=%{PasteForStatusline()}
 "fugitive
-set statusline +=%{FugitiveStatusline()}
+" set statusline +=%{FugitiveStatusline()}
 "wrap status
 set statusline +=%{WrapForStatusline()}
 "zoom status
