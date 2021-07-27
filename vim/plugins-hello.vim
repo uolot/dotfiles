@@ -93,3 +93,8 @@ nnoremap <Leader>pD :PydocstringFormat<CR>
 " A git commit browser in Vim
 " https://github.com/junegunn/gv.vim
 Plug 'junegunn/gv.vim'
+
+
+" more pleasant editing on commit messages
+" https://github.com/rhysd/committia.vim
+Plug 'rhysd/committia.vim'
