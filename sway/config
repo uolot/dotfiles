@@ -91,6 +91,8 @@ bindsym $mod+Shift+Return exec alacritty --working-directory $(cat /tmp/workdir 
 bindsym $mod+Ctrl+Return exec alacritty -t terminal-floating
 for_window [title="^terminal-floating$"] floating enable, resize set width 42 ppt, resize set height 50 ppt, floating enable
 
+for_window [title="^floating$"] floating disable, floating enable
+
 # show time and date
 bindsym $mod+t exec $HOME/Bin/showtime.py
 for_window [title="^showtime$"] floating enable, border none
