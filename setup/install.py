@@ -107,6 +107,7 @@ SHELL_PKGS = [
     "community/ripgrep",
     "extra/screen",
     "aur/shellcheck-bin",
+    "community/shfmt",
     "community/sl",
     "community/tldr",
     "community/tmux",
