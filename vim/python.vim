@@ -25,3 +25,11 @@ autocmd FileType python iabbrev ifmain if __name__ == "__main__"
 autocmd FileType python iabbrev adef async def
 autocmd FileType python iabbrev awith async with
 autocmd FileType python iabbrev bp breakpoint()
+
+" Poor man's snippets
+autocmd FileType python nnoremap <Leader><Space>bp obreakpoint()<CR><Esc>
+autocmd FileType python nnoremap <Leader><Space>doc o"""<CR>"""<Esc>kA
+autocmd FileType python nnoremap <Leader><Space>nq A  # noqa<Esc>
+autocmd FileType python nnoremap <Leader><Space>pd A  # pylint: disable=
+autocmd FileType python nnoremap <Leader><Space>ti A  # type: ignore<Esc>
+autocmd FileType python nnoremap <Leader><Space>todo O# TODO: 
