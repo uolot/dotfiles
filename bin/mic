@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
 
-pacmd set-source-port 1 analog-input-headset-mic
-pacmd set-source-volume 1 65650  # ~100%
+SOURCE=48  # FIXME
+
+pactl set-source-port $SOURCE analog-input-headset-mic
+pactl set-source-volume $SOURCE 65650 # ~100%
+pactl set-source-mute $SOURCE 0
