@@ -343,7 +343,7 @@ bindsym XF86AudioNext exec "playerctl next"
 bindsym XF86AudioStop exec "playerctl stop"
 
 # Battery monitor bot
-exec "sleep 60 ; $HOME/Build/batbottg/bin/batbottg -c $HOME/.batbottg.ini"
+exec "sleep 60 ; $HOME/Build/batbottg/bin/batbottg -c $HOME/.batbottg.ini >/tmp/batbottg.log"
 
 # Update wifi networks list
 exec "sleep 10 ; $HOME/Bin/networks.sh update"
