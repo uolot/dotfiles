@@ -1,7 +1,6 @@
 # vim: ft=sway
 set $mod Mod4
-#set $rofi rofi
-#set $rofi $HOME/Bin/rofi-sway
+set $mod2 Alt
 set $rofi wofi
 
 xwayland enable
@@ -188,9 +187,19 @@ bindsym $mod+Shift+0 move container to workspace number 10
 bindsym $mod+Tab workspace next_on_output
 bindsym $mod+Shift+Tab workspace prev_on_output
 bindsym $mod+Escape workspace back_and_forth
-# bindsym $win+Tab workspace next
-# bindsym $win+Shift+Tab workspace prev
 workspace_auto_back_and_forth yes
+
+# Swayr
+exec env RUST_BACKTRACE=1 swayrd > /tmp/swayrd.log 2>&1
+bindsym $mod2+Tab exec env RUST_BACKTRACE=1 \
+    swayr next-window >> /tmp/swayr.log 2>&2
+bindsym $mod2+Shift+Tab exec env RUST_BACKTRACE=1 \
+    swayr prev-window >> /tmp/swayr.log 2>&2
+bindsym $mod2+Escape exec env RUST_BACKTRACE=1 \
+    swayr switch-to-urgent-or-lru-window >> /tmp/swayr.log 2>&1
+bindsym $mod+Space exec env RUST_BACKTRACE=1 \
+    swayr switch-window >> /tmp/swayr.log 2>&1
+
 
 # rename workspace
 bindsym $mod+Shift+n exec $HOME/Bin/sway_rename_workspace
@@ -353,18 +362,6 @@ exec flashfocus
 # Add marvin task
 # TODO: move the script to ./bin/
 bindsym $mod+a exec /home/tomasz/Dev/Personal/marvin-client/venv/bin/python /home/tomasz/Dev/Personal/marvin-client/add_task.py $(wofi --show dmenu --prompt "Task:" --lines 1)
-
-# Swayr
-exec env RUST_BACKTRACE=1 swayrd > /tmp/swayrd.log 2>&1
-bindsym $mod+Period exec env RUST_BACKTRACE=1 \
-    swayr next-window >> /tmp/swayr.log 2>&2
-bindsym $mod+Comma exec env RUST_BACKTRACE=1 \
-    swayr prev-window >> /tmp/swayr.log 2>&2
-bindsym $mod+Slash exec env RUST_BACKTRACE=1 \
-    swayr switch-to-urgent-or-lru-window >> /tmp/swayr.log 2>&1
-bindsym $mod+Space exec env RUST_BACKTRACE=1 \
-    swayr switch-window >> /tmp/swayr.log 2>&1
-
 
 # colors
 
