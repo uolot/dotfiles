@@ -44,3 +44,16 @@ nnoremap <Leader>yy :call system("wl-copy ", getline("."))<CR>
 
 " save as root
 cmap w!! w !sudo tee > /dev/null %
+
+
+" make n/N always go in the same direction
+" nnoremap <expr> n 'Nn'[v:searchforward] . "zv"
+" nnoremap <expr> N 'nN'[v:searchforward] . "zv"
+
+" make n/N always go in the same direction and center line
+noremap <expr> <SID>(search-forward) 'Nn'[v:searchforward]
+noremap <expr> <SID>(search-backward) 'nN'[v:searchforward]
+nmap n <SID>(search-forward)zzzv
+xmap n <SID>(search-forward)zzzv
+nmap N <SID>(search-backward)zzzv
+xmap N <SID>(search-backward)zzzv
