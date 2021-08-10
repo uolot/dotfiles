@@ -1,8 +1,3 @@
-" One second to read GitHub code with vim
-" https://github.com/drzel/vim-repo-edit
-Plug 'drzel/vim-repo-edit'
-
-
 " An ack.vim alternative mimics Ctrl-Shift-F on Sublime Text 2
 " https://github.com/dyng/ctrlsf.vim
 Plug 'dyng/ctrlsf.vim'
@@ -80,19 +75,6 @@ if executable('pyls')
 endif
 
 
-" GitHub extension for fugitive.vim
-" https://github.com/tpope/vim-rhubarb
-Plug 'tpope/vim-rhubarb'
-
-" extension to fugitive.vim for gitlab support
-" https://github.com/shumphrey/fugitive-gitlab.vim
-Plug 'shumphrey/fugitive-gitlab.vim'
-
-" Add Bitbucket URL support to fugitive.vim's :Gbrowse command
-" https://github.com/tommcdo/vim-fubitive
-Plug 'tommcdo/vim-fubitive'
-
-
 " Generate Python docstring to your Python source code
 " https://github.com/heavenshell/vim-pydocstring
 " Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python' }
@@ -104,13 +86,3 @@ let g:pydocstring_templates_path = '/home/tomasz/.dotfiles/doq'
 nnoremap <Leader>pd :Pydocstring<CR>
 xnoremap <Leader>pd :Pydocstring<CR>
 nnoremap <Leader>pD :PydocstringFormat<CR>
-
-
-" A git commit browser in Vim
-" https://github.com/junegunn/gv.vim
-Plug 'junegunn/gv.vim'
-
-
-" more pleasant editing on commit messages
-" https://github.com/rhysd/committia.vim
-Plug 'rhysd/committia.vim'
