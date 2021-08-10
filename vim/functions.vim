@@ -147,3 +147,10 @@ endfunction
 
 nnoremap <Leader>po :call PopOut(0)<CR>
 nnoremap <Leader>pO :call PopOut(1)<CR>
+
+
+augroup AutoSearchHighlighting
+    autocmd!
+    autocmd CmdlineEnter /,\? set hlsearch
+    autocmd CmdlineLeave /,\? set nohlsearch
+augroup END

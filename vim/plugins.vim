@@ -10,7 +10,7 @@ Plug 'itchyny/vim-cursorword'
 Plug 'tpope/vim-rsi'
 
 " disables search highlighting when you are done searching and re-enables it when you search again
-Plug 'romainl/vim-cool'
+" Plug 'romainl/vim-cool'
 
 " Range, pattern and substitute preview
 Plug 'markonm/traces.vim'
