@@ -129,6 +129,7 @@ DEVELOPMENT_PKGS = [
     "community/docker-compose",
     "aur/flow-bin",  # type checker for JS
     "aur/git-delta",
+    "aur/gitlab-glab-bin",
     "aur/google-cloud-sdk",
     "aur/gopls",  # Go language server
     "aur/hadolint-bin",  # Dockerfile linter

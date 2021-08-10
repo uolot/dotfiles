@@ -82,3 +82,6 @@
 	rebase-since-last-merge = ! git rebase -i $(git log --merges -1 --format="%h")
 [pull]
 	ff = only
+[credential "https://gitlab.com"]
+	helper = 
+	helper = !/usr/bin/glab auth git-credential
