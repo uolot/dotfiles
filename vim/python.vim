@@ -15,11 +15,22 @@ Plug 'davidhalter/jedi-vim', {'for': 'python'}
 
     autocmd FileType python setlocal completeopt-=preview
 
-" autocmd FileType python set autoread
-" autocmd FileType python let b:dispatch = 'isort % ; black %'
-" autocmd BufWritePost *.py Dispatch!
-" autocmd CursorHold * if getcmdwintype() == '' | checktime | endif
-" autocmd BufWritePost *.py checktime
+" Generate Python docstring to your Python source code
+" https://github.com/heavenshell/vim-pydocstring
+Plug 'heavenshell/vim-pydocstring', { 'for': 'python' }
+let g:pydocstring_enable_mapping = 0
+let g:pydocstring_formatter = 'google'
+let g:pydocstring_doq_path = '/home/tomasz/.local/bin/doq'
+let g:pydocstring_templates_path = '/home/tomasz/.dotfiles/doq'
+nnoremap <Leader>pd :Pydocstring<CR>
+xnoremap <Leader>pd :Pydocstring<CR>
+nnoremap <Leader>pD :PydocstringFormat<CR>
+
+" highlight Python source code lines that lack test coverage
+" https://github.com/mgedmin/coverage-highlight.vim
+Plug 'mgedmin/coverage-highlight.vim'
+" :HighlightCoverage
+
 
 autocmd FileType python iabbrev ifmain if __name__ == "__main__"
 autocmd FileType python iabbrev adef async def
@@ -31,3 +42,4 @@ autocmd FileType python iabbrev ffia from __future__ import annotations
 autocmd FileType python nnoremap <Leader><Space>nq A  # noqa<Esc>
 autocmd FileType python nnoremap <Leader><Space>pd A  # pylint: disable=
 autocmd FileType python nnoremap <Leader><Space>ti A  # type: ignore<Esc>
+

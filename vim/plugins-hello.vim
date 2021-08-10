@@ -17,25 +17,6 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'andymass/vim-tradewinds'
 
 
-" highlight Python source code lines that lack test coverage
-" https://github.com/mgedmin/coverage-highlight.vim
-Plug 'mgedmin/coverage-highlight.vim'
-" :HighlightCoverage
-
-
 " pairs of handy bracket mappings
 " https://github.com/tpope/vim-unimpaired
 Plug 'tpope/vim-unimpaired'
-
-
-" Generate Python docstring to your Python source code
-" https://github.com/heavenshell/vim-pydocstring
-" Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python' }
-Plug 'heavenshell/vim-pydocstring', { 'for': 'python' }
-let g:pydocstring_enable_mapping = 0
-let g:pydocstring_formatter = 'google'
-let g:pydocstring_doq_path = '/home/tomasz/.local/bin/doq'
-let g:pydocstring_templates_path = '/home/tomasz/.dotfiles/doq'
-nnoremap <Leader>pd :Pydocstring<CR>
-xnoremap <Leader>pd :Pydocstring<CR>
-nnoremap <Leader>pD :PydocstringFormat<CR>
