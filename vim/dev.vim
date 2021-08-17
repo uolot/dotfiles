@@ -80,4 +80,5 @@ augroup rainbow_lisp
   autocmd!
   autocmd FileType lisp,clojure,scheme,racket RainbowParentheses
 augroup END
+nmap <Leader>rb :RainbowParentheses<CR>
 
