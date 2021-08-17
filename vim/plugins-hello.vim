@@ -20,3 +20,19 @@ Plug 'andymass/vim-tradewinds'
 " pairs of handy bracket mappings
 " https://github.com/tpope/vim-unimpaired
 Plug 'tpope/vim-unimpaired'
+
+" use CTRL-A/CTRL-X to increment dates, times, and more
+" https://github.com/llrt/vim-speeddating
+Plug 'tpope/vim-speeddating'
+
+
+" perform diffs on blocks of code
+" https://github.com/AndrewRadev/linediff.vim
+" :Linediff
+" :LinediffReset
+Plug 'AndrewRadev/linediff.vim'
+
+
+" toggle zoom in / out individual windows (splits)
+" https://github.com/dhruvasagar/vim-zoom
+Plug 'dhruvasagar/vim-zoom'

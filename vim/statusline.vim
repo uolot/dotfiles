@@ -32,8 +32,7 @@ set statusline +=%{PasteForStatusline()}
 "wrap status
 set statusline +=%{WrapForStatusline()}
 "zoom status
-"TODO
-"set statusline +=%{zoom#statusline()}
+set statusline +=%{zoom#statusline()}
 "truncate if needed
 set statusline +=%<
 " left/right separator
