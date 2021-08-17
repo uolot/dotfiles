@@ -96,8 +96,8 @@ SHELL_PKGS = [
     "community/fd",
     "community/fzf",
     "community/fzy",
-    "aur/glow-bin",
-    "aur/gotty-bin",
+    "aur/glow-bin",  # CLI markdown renderer
+    "aur/gotty-bin",  # share terminal as web app
     "community/inotify-tools",
     "community/jq",
     "extra/libqalculate",
@@ -108,6 +108,7 @@ SHELL_PKGS = [
     "community/ripgrep",
     "extra/screen",
     "aur/shellcheck-bin",
+    "aur/slackcat",
     "community/shfmt",
     "community/sl",
     "community/tldr",
@@ -115,6 +116,7 @@ SHELL_PKGS = [
     "extra/tree",
     "aur/ttyd",
     "aur/universal-ctags-git",
+    "aur/up",
     "aur/zoxide-bin",
 ]
 
