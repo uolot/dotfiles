@@ -57,3 +57,14 @@ nmap n <SID>(search-forward)zzzv
 xmap n <SID>(search-forward)zzzv
 nmap N <SID>(search-backward)zzzv
 xmap N <SID>(search-backward)zzzv
+
+" visual mode search
+" src: http://got-ravings.blogspot.com/2008/07/vim-pr0n-visual-search-mappings.html
+function! s:VSetSearch()
+  let temp = @@
+  norm! gvy
+  let @/ = '\V' . substitute(escape(@@, '\'), '\n', '\\n', 'g')
+  let @@ = temp
+endfunction
+vnoremap * :<C-u>call <SID>VSetSearch()<CR>//<CR>
+vnoremap # :<C-u>call <SID>VSetSearch()<CR>??<CR>
