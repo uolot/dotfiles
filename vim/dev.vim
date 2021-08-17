@@ -11,22 +11,6 @@ Plug 'ludovicchabant/vim-gutentags'
         \'setup.py',
     \]
 
-" Plug 'neomake/neomake'
-"     let g:neomake_open_list = 2
-"     " call neomake#configure#automake('w') -> Moved to vimrc, after calling
-"     " `plug#end()`
-"     " autocmd! BufWritePost * Neomake
-"     noremap <Leader>e :Neomake<CR>
-"     let g:neomake_python_enabled_makers = ['flake8', 'pylama', 'mypy']
-"     let g:neomake_cpp_enabled_makers = []
-
-"     " E510 - line too long
-"     " W503 - line break before binary operator
-"     " W605 - invalid escape sequence
-"     let g:neomake_python_pylama_maker = { 'args': ['--ignore=E501,W503,W605'],  }
-"     let g:neomake_python_flake8_maker = { 'args': ['--ignore=E501,W503,W605'],  }
-
-
 Plug 'sheerun/vim-polyglot'
     " TODO: Remove plugins duplicated by polyglot:
     " https://github.com/sheerun/vim-polyglot#language-packs
