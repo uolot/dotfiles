@@ -2,6 +2,7 @@
 Plug 'machakann/vim-highlightedyank'
 
 " underline word under cursor
+" https://github.com/itchyny/vim-cursorword
 Plug 'itchyny/vim-cursorword'
     let g:cursorword_highlight = 0
     " NOTE: colors for CursorWord0 and CursorWord1 are defined in uolors.vim

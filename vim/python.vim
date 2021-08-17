@@ -18,13 +18,13 @@ Plug 'davidhalter/jedi-vim', {'for': 'python'}
 " Generate Python docstring to your Python source code
 " https://github.com/heavenshell/vim-pydocstring
 Plug 'heavenshell/vim-pydocstring', { 'for': 'python' }
-let g:pydocstring_enable_mapping = 0
-let g:pydocstring_formatter = 'google'
-let g:pydocstring_doq_path = '/home/tomasz/.local/bin/doq'
-let g:pydocstring_templates_path = '/home/tomasz/.dotfiles/doq'
-nnoremap <Leader>pd :Pydocstring<CR>
-xnoremap <Leader>pd :Pydocstring<CR>
-nnoremap <Leader>pD :PydocstringFormat<CR>
+    let g:pydocstring_enable_mapping = 0
+    let g:pydocstring_formatter = 'google'
+    let g:pydocstring_doq_path = '/home/tomasz/.local/bin/doq'
+    let g:pydocstring_templates_path = '/home/tomasz/.dotfiles/doq'
+    nnoremap <Leader>pd :Pydocstring<CR>
+    xnoremap <Leader>pd :Pydocstring<CR>
+    nnoremap <Leader>pD :PydocstringFormat<CR>
 
 " highlight Python source code lines that lack test coverage
 " https://github.com/mgedmin/coverage-highlight.vim
