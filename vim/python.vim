@@ -40,6 +40,7 @@ autocmd FileType python iabbrev ffia from __future__ import annotations
 
 " Poor man's snippets
 autocmd FileType python nnoremap <Leader><Space>nq A  # noqa<Esc>
+autocmd FileType python nnoremap <Leader><Space>ns A  # nosec<Esc>
 autocmd FileType python nnoremap <Leader><Space>pd A  # pylint: disable=
 autocmd FileType python nnoremap <Leader><Space>ti A  # type: ignore<Esc>
 
