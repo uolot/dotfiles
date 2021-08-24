@@ -5,15 +5,14 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-
 set -o vi
 
 # Enable **/* wildards
 shopt -s globstar
 
-export PATH="$HOME/.dotfiles/bin:$HOME/.local/bin:$HOME/.cargo/bin:$PATH:$HOME/Build/flutter/bin:$HOME/.pub-cache/bin"
+export PATH="$HOME/.dotfiles/bin:$HOME/.local/bin:$HOME/.go/bin:$HOME/.cargo/bin:$PATH:$HOME/Build/flutter/bin:$HOME/.pub-cache/bin"
 export CDPATH=".:~:~/Dev/Personal:~/Dev/EH:~/Dev/M5:~/.dotfiles"
-shopt -s cdspell  # fix small typos
+shopt -s cdspell # fix small typos
 complete -d cd
 
 export BROWSER=firefox
