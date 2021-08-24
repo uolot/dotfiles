@@ -27,3 +27,16 @@ Plug 'AndrewRadev/linediff.vim'
 " toggle zoom in / out individual windows (splits)
 " https://github.com/dhruvasagar/vim-zoom
 Plug 'dhruvasagar/vim-zoom'
+
+
+" Lightning fast left-right movement in Vim
+" https://github.com/unblevable/quick-scope
+Plug 'unblevable/quick-scope'
+    let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+    highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
+    highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
+
+
+" Change an HTML(ish) opening tag and take the closing one along as well
+" https://github.com/AndrewRadev/tagalong.vim
+Plug 'AndrewRadev/tagalong.vim'
