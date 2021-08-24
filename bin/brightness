@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+get_brightness() {
+    printf "%.0f\n" "$(brillo -G)"
+}
+
+case $1 in
+up)
+    brillo -A 3 -q -u 250000
+    get_brightness
+    ;;
+down)
+    brillo -U 3 -q -u 250000
+    get_brightness
+    ;;
+esac

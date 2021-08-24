@@ -314,15 +314,21 @@ bindsym $mod+Shift+o exec $HOME/Bin/sway_lock_screen
 ### exec_always flashfocus
 ### bindsym $mod+n exec --no-startup-id flash_window
 
+set $volpipe /tmp/volume.pipe
+exec mkfifo $volpipe && tail -f $volpipe | wob
+
+set $bripipe /tmp/brightness.pipe
+exec mkfifo $bripipe && tail -f $bripipe | wob
+
 # set volume to 30% on start
 exec "sleep 5; $HOME/Bin/volume set 30"
 
 # increase sound volume
-bindsym XF86AudioRaiseVolume exec "$HOME/Bin/volume up"
+bindsym XF86AudioRaiseVolume exec "$HOME/Bin/volume up >/tmp/volume.pipe"
 # decrease sound volume
-bindsym XF86AudioLowerVolume exec "$HOME/Bin/volume down"
+bindsym XF86AudioLowerVolume exec "$HOME/Bin/volume down >/tmp/volume.pipe"
 # mute sound
-bindsym XF86AudioMute exec "$HOME/Bin/volume toggle"
+bindsym XF86AudioMute exec "$HOME/Bin/volume toggle >/tmp/volume.pipe"
 # toggle microphone capture
 bindsym $mod+XF86AudioMute exec "amixer set Capture toggle"
 # mute microphone
@@ -333,9 +339,9 @@ bindsym $mod+XF86AudioRaiseVolume exec "amixer set Capture cap"
 bindsym $mod+m exec "$HOME/Bin/mic"
 
 # Increase screen brightness
-bindsym XF86MonBrightnessUp exec "brillo -A 3 -q -u 250000"
+bindsym XF86MonBrightnessUp exec "$HOME/Bin/brightness up >/tmp/brightness.pipe"
 # Decrease screen brightness
-bindsym XF86MonBrightnessDown exec "brillo -U 3 -q -u 250000"
+bindsym XF86MonBrightnessDown exec "$HOME/Bin/brightness down >/tmp/brightness.pipe"
 
 # Control audio playback
 bindsym XF86AudioPlay exec "playerctl play-pause"
