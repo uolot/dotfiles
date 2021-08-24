@@ -25,7 +25,6 @@ export HISTSIZE=100000
 export HISTFILESIZE=100000
 shopt -s histappend
 
-
 DOTBASH=$HOME/.dotfiles/bash
 source $DOTBASH/colors
 source $DOTBASH/prompt
@@ -41,4 +40,4 @@ source $DOTBASH/platformio
 [[ -f $HOME/.dotfiles/alacritty/alacritty.bash ]] && source $HOME/.dotfiles/alacritty/alacritty.bash
 export GOOGLE_APPLICATION_CREDENTIALS=~/.config/gcloud/platform-admin.json
 
-eval "$(zoxide init bash)"
+eval "$(zoxide init bash --cmd cd)"
