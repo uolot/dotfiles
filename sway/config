@@ -6,7 +6,7 @@ set $rofi wofi
 xwayland enable
 for_window [shell="xwayland"] title_format "%title [XWayland]"
 
-font pango:Ubuntu Medium 10
+font pango:Ubuntu Medium 12
 
 gaps inner 8
 gaps outer 0
@@ -264,7 +264,7 @@ bindsym $mod+r mode "resize"
 # TODO: review
 bar {
     status_command i3status-rs
-    font pango:Ubuntu Medium 15, Font Awesome 5 Free
+    font pango:Ubuntu Medium 13
     position bottom
     workspace_buttons yes
 
