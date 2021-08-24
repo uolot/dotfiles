@@ -41,3 +41,5 @@ source $DOTBASH/platformio
 export GOOGLE_APPLICATION_CREDENTIALS=~/.config/gcloud/platform-admin.json
 
 eval "$(zoxide init bash --cmd cd)"
+
+source <(kubectl completion bash)
