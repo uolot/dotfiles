@@ -19,6 +19,7 @@ Plug 'davidhalter/jedi-vim', {'for': 'python'}
 " https://github.com/heavenshell/vim-pydocstring
 Plug 'heavenshell/vim-pydocstring', { 'for': 'python' }
     let g:pydocstring_enable_mapping = 0
+    let g:pydocstring_ignore_init = 1
     let g:pydocstring_formatter = 'google'
     let g:pydocstring_doq_path = '/home/tomasz/.local/bin/doq'
     let g:pydocstring_templates_path = '/home/tomasz/.dotfiles/doq'
