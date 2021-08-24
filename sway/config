@@ -128,6 +128,12 @@ bindsym $mod+Shift+j move down 80 px
 bindsym $mod+Shift+k move up 80 px
 bindsym $mod+Shift+l move right 80 px
 
+# advanced move
+bindsym $mod+Alt+h exec $HOME/Bin/advancedmove.sh left
+bindsym $mod+Alt+j exec $HOME/Bin/advancedmove.sh down
+bindsym $mod+Alt+k exec $HOME/Bin/advancedmove.sh up
+bindsym $mod+Alt+l exec $HOME/Bin/advancedmove.sh right
+
 # resize windows
 bindsym $mod+Ctrl+h resize shrink width 25 px or 16 ppt
 bindsym $mod+Ctrl+j resize grow height 25 px or 16 ppt
