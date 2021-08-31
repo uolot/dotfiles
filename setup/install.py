@@ -159,6 +159,7 @@ PYTHON_PKGS = [
     "community/python-black",
     "aur/python38",
     "extra/python-cffi",
+    "aur/python-launcher",
     "community/python-pre-commit",
     "community/python-language-server",
     "extra/python-pip",
