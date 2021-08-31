@@ -23,6 +23,7 @@ from lib import ask
 # 18. SHELL_PKGS
 # 19. SWAY_PKGS
 # 20. SYSTEM_AND_LIBS_PKGS
+# 21. JS_PACKAGES
 
 SYSTEM_AND_LIBS_PKGS = [
     "aur/libffi6",
@@ -132,17 +133,14 @@ DEVELOPMENT_PKGS = [
     "community/cloc",
     "community/docker",
     "community/docker-compose",
-    "aur/flow-bin",  # type checker for JS
     "aur/git-delta",
     "aur/gitlab-glab-bin",
     "aur/google-cloud-sdk",
     "aur/gopls",  # Go language server
     "aur/hadolint-bin",  # Dockerfile linter
-    "aur/javascript-typescript-langserver",
     "community/leiningen",
     "community/libmemcached",
     # "community/nim",
-    "community/npm",
     "aur/postman6-bin",
     "extra/strace",
     "community/terraform",
@@ -275,6 +273,12 @@ DATABASE_PKGS = [
 
 MEDIA_PACKAGES = ""  # see: DOCUMENTS_AND_MEDIA_PKGS
 
+JS_PACKAGES = [
+    "community/deno",
+    "aur/flow-bin",  # type checker for JS
+    "aur/javascript-typescript-langserver",
+    "community/npm",
+]
 
 PACKAGES = {
     "system and libs": SYSTEM_AND_LIBS_PKGS,
@@ -296,6 +300,7 @@ PACKAGES = {
     "kubernetes": KUBERNETES_PKGS,
     "printer": PRINTER_PKGS,
     "database": DATABASE_PKGS,
+    "js": JS_PACKAGES,
 }
 
 
