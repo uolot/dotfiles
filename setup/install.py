@@ -50,6 +50,7 @@ SWAY_PKGS = [
     # "aur/wev",
     "aur/wev-git",
     "community/wl-clipboard",
+    "community/wmname",
     "aur/wob",
     "aur/wofi",
     "extra/xdg-desktop-portal",
