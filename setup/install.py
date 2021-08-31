@@ -124,6 +124,7 @@ SHELL_PKGS = [
 
 DEVELOPMENT_PKGS = [
     "aur/adr-tools",
+    "aur/asdf-vm",
     # "community/aws-cli",
     # "aur/awslogs",
     # "community/ccache",

@@ -16,3 +16,4 @@ Untitled.ipynb
 .envrc
 .cquery_cache
 *.twalotek
+.tool-versions
