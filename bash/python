@@ -3,15 +3,16 @@
 export PYTHONDONTWRITEBYTECODE=1
 
 alias activate="source $HOME/Bin/activate.sh"
+alias a="source $HOME/Bin/activate.sh"
 
 ipython() {
   tmux new bash -c 'source $HOME/Bin/activate.sh '${VIRTUAL_ENV}' && ipython'
 }
 
 pyclean() {
-    find . -type f -name "*.py[co]" -delete
-    find . -type d -name "__pycache__" -delete
-    find . -type d -name ".mypy_cache" -delete
+  find . -type f -name "*.py[co]" -delete
+  find . -type d -name "__pycache__" -delete
+  find . -type d -name ".mypy_cache" -delete
 }
 
 venv() {
@@ -28,7 +29,6 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init --path)"
   eval "$(pyenv init -)"
 fi
-
 
 # Poetry
 export POETRY_VIRTUALENVS_IN_PROJECT=1
