@@ -6,9 +6,11 @@ let g:ale_linters = {
             \}
 let g:ale_fixers = {
             \'bash': ['shfmt'],
-            \'python': ['black', 'isort'],
+            \'python': ['autoimport', 'isort', 'black'],
             \'sh': ['shfmt'],
             \}
+            " \'javascript': ['eslint'],
+            " \'typescript': ['eslint'],
 let g:ale_fix_on_save = 1
 let g:ale_python_pylint_use_global = 0
 let g:ale_python_auto_poetry = 1
