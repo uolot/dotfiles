@@ -23,6 +23,6 @@ set)
 toggle)
     pactl set-sink-mute "$active_sink" toggle
     vol=$(get_volume)
-    pactl get-sink-mute 0 | awk '{print ($2 == "yes") ? '"$vol"' : -1}'
+    pactl get-sink-mute 0 | awk '{print ($2 == "yes") ? -1 : '"$vol"'}'
     ;;
 esac
