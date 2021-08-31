@@ -21,6 +21,16 @@ venv() {
   source $HOME/Bin/activate.sh $DIR
 }
 
+venv-dev() {
+  pip install -U pip
+  pip require mypy
+  pip require isort
+  pip require black
+  pip require autoimport
+  pip require flake8
+  pip require ipython
+}
+
 # Pyenv
 
 export PYENV_ROOT="$HOME/.pyenv"
