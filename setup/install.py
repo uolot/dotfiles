@@ -1,4 +1,5 @@
 import os
+
 from lib import ask
 
 # Index:
@@ -263,7 +264,7 @@ PRINTER_PKGS = [
 
 DATABASE_PKGS = [
     "community/dbeaver",
-    "aur/pgadmin4-last",
+    # "aur/pgadmin4-last",
     "aur/pgcli",
     "extra/postgresql",
     "community/redis",
