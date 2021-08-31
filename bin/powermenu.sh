@@ -2,6 +2,7 @@
 
 options="\
 🗘 reload-config
+🖼 change-wallpaper
  lock-screen
 ⇠ logout
  shutdown
@@ -18,6 +19,10 @@ case "$option" in
 "reload-config")
     lock=false
     powercmd="swaymsg reload"
+    ;;
+"change-wallpaper")
+    lock=false
+    powercmd="bash $HOME/Bin/sway_change_wallpaper"
     ;;
 "lock-screen") ;;
 "logout")
