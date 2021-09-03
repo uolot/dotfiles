@@ -42,11 +42,14 @@ pip-info() {
 }
 
 pip-require() {
-  full_name="$1"
-  # strip version details: eg foo==0.1 becomes just foo
-  package=$(echo $full_name | sed 's/\(^[-_a-zA-Z0-9]\+\).*/\1/')
-  pip install "$full_name" &&
-    pip freeze | grep -i "\b$package\b" >>${2:-requirements.txt}
+  local packages="$*"
+  local package
+  for full_name in $packages; do
+    # strip version details: eg foo==0.1 becomes just foo
+    package=$(echo "$full_name" | sed 's/\(^[-_a-zA-Z0-9]\+\).*/\1/')
+    pip install "$full_name" &&
+      pip freeze | grep -i "^$package=" >>new_requirements.txt
+  done
 }
 
 pip-pypi() {
