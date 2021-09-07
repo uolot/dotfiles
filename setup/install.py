@@ -34,6 +34,8 @@ SYSTEM_AND_LIBS_PKGS = [
 SWAY_PKGS = [
     "aur/brillo",
     "aur/flashfocus-git",
+    "aur/ruby-fusuma",
+    "aur/ruby-fusuma-plugin-sendkey",
     "community/grim",
     "community/i3status-rust",
     "extra/libpipewire02",

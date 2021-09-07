@@ -1,7 +1,6 @@
 from config import DOTFILES_DIR, HOME_DIR
 from lib import ask
 
-
 LINKS = {
     "alacritty/alacritty.yml": ".config/alacritty/alacritty.yml",
     "bin": "Bin",
@@ -9,6 +8,7 @@ LINKS = {
     "bash/bash_profile": ".bash_profile",
     "bash/inputrc": ".inputrc",
     "ctags/config.ctags": ".ctags.d/config.ctags",
+    "fusuma/config.yml": ".config/fusuma/config.yml",
     "git/config": ".gitconfig",
     "git/ignore": ".gitignore",
     "ipython/ipython_config.py": ".ipython/profile_default/ipython_config.py",

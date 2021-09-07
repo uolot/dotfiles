@@ -1,0 +1,53 @@
+swipe:
+  3:
+    left:
+      sendkey: 'LEFTMETA+H'
+    right:
+      sendkey: 'LEFTMETA+L'
+    up:
+      sendkey: 'LEFTCTRL+LEFTSHIFT+TAB'
+    down:
+      sendkey: 'RIGHTCTRL+TAB'
+  4:
+    left:
+      command: 'swaymsg focus output left'
+    right:
+      command: 'swaymsg focus output right'
+    up:
+      command: 'swaymsg focus output up'
+    down:
+      command: 'swaymsg focus output down'
+
+pinch:
+  # 2:
+  #   in:
+  #     sendkey: 'LEFTCTRL+EQUAL'
+  #   out:
+  #     sendkey: 'LEFTCTRL+MINUS'
+  3:
+    in:
+      sendkey: 'LEFTALT+RIGHT'
+    out:
+      sendkey: 'LEFTALT+LEFT'
+#  4:
+
+rotate:
+  2:
+    clockwise:
+      sendkey: 'LEFTCTRL+LEFTALT+T'
+    counterclockwise:
+      sendkey: 'LEFTCTRL+W'
+  3:
+    clockwise:
+      sendkey: 'LEFTCTRL+N'
+    counterclockwise:
+      sendkey: 'LEFTCTRL+LEFTSHIFT+T'
+
+
+threshold:
+  swipe: 0.6
+  # pinch: 0.2
+
+interval:
+#   swipe: 0.5
+  # pinch: 0.2

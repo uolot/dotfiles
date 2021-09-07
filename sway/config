@@ -450,6 +450,10 @@ for_window [app_id="^zoom$"] floating enable
 # Start flashfocus
 exec flashfocus
 
+# Touchpad extra gestures
+exec fusuma
+
+
 # Add marvin task
 # TODO: move the script to ./bin/
 bindsym $mod+a exec /home/tomasz/Dev/Personal/marvin-client/venv/bin/python /home/tomasz/Dev/Personal/marvin-client/add_task.py $(wofi --show dmenu --prompt "Task:" --lines 1)
