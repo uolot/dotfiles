@@ -10,3 +10,8 @@ vf() {
     vim ${@:2} $file
   fi
 }
+
+# open random file
+vim-random() {
+  vim $(fd . -t f | shuf | head -1)
+}
