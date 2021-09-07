@@ -15,7 +15,7 @@ highlight Todo ctermfg=202 ctermbg=NONE cterm=NONE
 highlight Underlined ctermfg=81 term=NONE cterm=NONE
 
 
-highlight CursorLine ctermfg=NONE ctermbg=237 cterm=NONE
+highlight CursorLine ctermfg=NONE ctermbg=238 cterm=NONE
 highlight CursorColumn ctermfg=NONE ctermbg=237 cterm=NONE
 
 highlight LineNr ctermfg=239 ctermbg=NONE cterm=NONE
