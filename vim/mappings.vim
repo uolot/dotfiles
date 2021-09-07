@@ -53,10 +53,10 @@ cmap w!! w !sudo tee > /dev/null %
 " make n/N always go in the same direction and center line
 noremap <expr> <SID>(search-forward) 'Nn'[v:searchforward]
 noremap <expr> <SID>(search-backward) 'nN'[v:searchforward]
-nmap n <SID>(search-forward)zzzv
-xmap n <SID>(search-forward)zzzv
-nmap N <SID>(search-backward)zzzv
-xmap N <SID>(search-backward)zzzv
+nmap n <SID>(search-forward)
+xmap n <SID>(search-forward)
+nmap N <SID>(search-backward)
+xmap N <SID>(search-backward)
 
 " visual mode search
 " src: http://got-ravings.blogspot.com/2008/07/vim-pr0n-visual-search-mappings.html
