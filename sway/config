@@ -456,7 +456,7 @@ exec fusuma
 
 # Add marvin task
 # TODO: move the script to ./bin/
-bindsym $mod+a exec /home/tomasz/Dev/Personal/marvin-client/venv/bin/python /home/tomasz/Dev/Personal/marvin-client/add_task.py $(wofi --show dmenu --prompt "Task:" --lines 1)
+bindsym $mod+a exec /home/tomasz/Dev/Personal/marvin-client/venv/bin/python /home/tomasz/Dev/Personal/marvin-client/add_task.py "$(wofi --show dmenu --prompt "Task:" --lines 1)"
 
 # colors
 
