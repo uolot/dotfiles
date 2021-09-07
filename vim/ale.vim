@@ -6,7 +6,7 @@ let g:ale_linters = {
             \}
 let g:ale_fixers = {
             \'bash': ['shfmt'],
-            \'python': ['autoimport', 'isort', 'black'],
+            \'python': ['isort', 'black'],
             \'sh': ['shfmt'],
             \}
             " \'javascript': ['eslint'],
