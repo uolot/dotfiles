@@ -8,8 +8,8 @@ Plug 'junegunn/fzf.vim'
     nnoremap <Leader>bt :BTags<CR>
     nnoremap <Leader>pb :Buffers<CR>
     " let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
-    nnoremap <Leader>* :Ag <C-r><C-w><CR>
-    nnoremap <Leader>g* :Ag <C-r><C-a><CR>
+    " nnoremap <Leader>* :Ag <C-r><C-w><CR>
+    " nnoremap <Leader>g* :Ag <C-r><C-a><CR>
 
 function! FzyCommand(choice_command, vim_command)
   try

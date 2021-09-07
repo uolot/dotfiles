@@ -40,3 +40,10 @@ Plug 'unblevable/quick-scope'
 " Change an HTML(ish) opening tag and take the closing one along as well
 " https://github.com/AndrewRadev/tagalong.vim
 Plug 'AndrewRadev/tagalong.vim'
+
+
+Plug 'jesseleite/vim-agriculture'
+nmap <Leader>/ <Plug>AgRawSearch
+vmap <Leader>/ <Plug>AgRawVisualSelection
+nmap <Leader>* <Plug>AgRawWordUnderCurso
+nnoremap <Leader>g* :AgRaw <C-r><C-a><CR>
