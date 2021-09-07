@@ -78,6 +78,7 @@ call plug#end()
 
 filetype plugin indent on
 
+
 " ------ Imports ------
 
 " colors
@@ -89,7 +90,15 @@ source $HOME/.dotfiles/vim/abbrev.vim
 " mappings
 source $HOME/.dotfiles/vim/mappings.vim
 
-" ------ Neomake ------
-" call neomake#configure#automake({
-"             \ 'BufWritePost': {},
-"             \ }, 1000)
+
+call deoplete#custom#option({
+    \ 'auto_complete': v:false,
+    \ })
+let g:deoplete#enable_at_startup = 1
+
+function! DeopleteToggle() abort
+    let current = g:deoplete#custom#option('auto_complete')
+    call deoplete#custom#option('auto_complete', current ? v:false : v:true)
+endfunction
+
+nnoremap <Leader>tn :silent call DeopleteToggle()<CR>

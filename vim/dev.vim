@@ -58,8 +58,12 @@ Plug 'vim-scripts/Arduino-syntax-file'
 Plug 'roxma/vim-hug-neovim-rpc'
 
 " TabNine
-Plug 'codota/tabnine-vim', { 'on': 'TN' }
-nnoremap <Leader>tn :silent! TN<CR>
+" Plug 'codota/tabnine-vim', { 'on': 'TN' }
+" nnoremap <Leader>tn :silent! TN<CR>
+Plug 'Shougo/deoplete.nvim'
+Plug 'roxma/nvim-yarp'
+" Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 
 " Parinfer mode
 Plug 'eraserhd/parinfer-rust', {
