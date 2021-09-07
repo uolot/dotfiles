@@ -44,11 +44,19 @@ pip-info() {
 pip-require() {
   local packages="$*"
   local package
+  local installed
   for full_name in $packages; do
     # strip version details: eg foo==0.1 becomes just foo
     package=$(echo "$full_name" | sed 's/\(^[-_a-zA-Z0-9]\+\).*/\1/')
-    pip install "$full_name" &&
-      pip freeze | grep -i "^$package=" >>new_requirements.txt
+    installed=$(pip freeze | grep -c "^$package=")
+    if [[ "$installed" == "0" ]]; then
+      pip install -qq "$full_name" &&
+        pip freeze | grep -i "^$package=" >>new_requirements.txt
+      echo "$package installed"
+    else
+      echo "$package already installed"
+    fi
+
   done
 }
 
@@ -59,22 +67,22 @@ pip-pypi() {
 pip() {
   case $1 in
   info)
-    pip-info ${@:2}
+    pip-info "${@:2}"
     ;;
   require)
-    pip-require ${@:2}
+    pip-require "${@:2}"
     ;;
   pypi)
-    pip-pypi $2
+    pip-pypi "$2"
     ;;
   old)
-    pip-old ${@:2}
+    pip-old "${@:2}"
     ;;
   isntall) # common typo
-    pip install ${@:2}
+    pip install "${@:2}"
     ;;
   *)
-    command pip $@
+    command pip "$@"
     ;;
   esac
 }
