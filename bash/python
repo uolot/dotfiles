@@ -23,12 +23,8 @@ venv() {
 
 venv-dev() {
   pip install -U pip
-  pip require mypy
-  pip require isort
-  pip require black
-  pip require autoimport
-  pip require flake8
-  pip require ipython
+  pip require mypy isort black flake8
+  pip install ipython pynvim autoimport
 }
 
 # Pyenv
