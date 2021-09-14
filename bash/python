@@ -11,8 +11,8 @@ ipython() {
 
 pyclean() {
   find . -type f -name "*.py[co]" -delete
-  find . -type d -name "__pycache__" -delete
-  find . -type d -name ".mypy_cache" -delete
+  find . -type d -name "__pycache__" -prune -exec rm -rf {} \;
+  find . -type d -name ".mypy_cache" -prune -exec rm -rf {} \;
 }
 
 venv() {
