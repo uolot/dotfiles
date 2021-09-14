@@ -55,6 +55,7 @@
 
 	c = commit --verbose
 	ca = commit --amend --verbose
+	cam = commit --amend --reuse-message=HEAD
 	cf = commit --fixup
 	cm = commit -m
 
