@@ -18,30 +18,30 @@ swipe:
     down:
       command: 'swaymsg focus output down'
 
-pinch:
-  # 2:
-  #   in:
-  #     sendkey: 'LEFTCTRL+EQUAL'
-  #   out:
-  #     sendkey: 'LEFTCTRL+MINUS'
-  3:
-    in:
-      sendkey: 'LEFTALT+RIGHT'
-    out:
-      sendkey: 'LEFTALT+LEFT'
-#  4:
-
 rotate:
   2:
+    clockwise:
+      sendkey: 'LEFTMETA+TAB'
+    counterclockwise:
+      sendkey: 'LEFTMETA+ESC'
+  3:
     clockwise:
       sendkey: 'LEFTCTRL+LEFTALT+T'
     counterclockwise:
       sendkey: 'LEFTCTRL+W'
-  3:
-    clockwise:
-      sendkey: 'LEFTCTRL+N'
-    counterclockwise:
-      sendkey: 'LEFTCTRL+LEFTSHIFT+T'
+
+pinch:
+  # 3:
+  #   in:
+  #     sendkey: 'LEFTCTRL+EQUAL'
+  #   out:
+  #     sendkey: 'LEFTCTRL+MINUS'
+  # 3:
+  #   in:
+  #     sendkey: 'LEFTALT+RIGHT'
+  #   out:
+  #     sendkey: 'LEFTALT+LEFT'
+  # 4:
 
 
 threshold:
