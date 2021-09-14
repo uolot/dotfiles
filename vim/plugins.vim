@@ -67,3 +67,25 @@ Plug 'junegunn/goyo.vim'
 Plug 'embear/vim-localvimrc'
     let g:localvimrc_persistent = 2
     let g:localvimrc_sandbox = 0
+
+
+" Add extra window movements with <C-w> g [hjkl]
+" https://github.com/andymass/vim-tradewinds
+Plug 'andymass/vim-tradewinds'
+
+
+" pairs of handy bracket mappings
+" https://github.com/tpope/vim-unimpaired
+Plug 'tpope/vim-unimpaired'
+
+
+" use CTRL-A/CTRL-X to increment dates, times, and more
+" https://github.com/llrt/vim-speeddating
+Plug 'tpope/vim-speeddating'
+
+
+" toggle zoom in / out individual windows (splits)
+" https://github.com/dhruvasagar/vim-zoom
+Plug 'dhruvasagar/vim-zoom'
+
+
