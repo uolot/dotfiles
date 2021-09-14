@@ -73,6 +73,7 @@ source $HOME/.dotfiles/vim/markdown.vim
 source $HOME/.dotfiles/vim/git.vim
 source $HOME/.dotfiles/vim/ale.vim
 source $HOME/.dotfiles/vim/html.vim
+source $HOME/.dotfiles/vim/terraform.vim
 
 call plug#end()
 

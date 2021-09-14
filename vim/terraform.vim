@@ -5,5 +5,3 @@ command TerraformDiff :%s/^\(\s\+\)\(+\|-\|\~\)/\2\1/
 let tf_sections = '^\(resource\|module\|data\|locals\|variable\|output\)'
 autocmd FileType terraform nnoremap <silent> ]] :silent! call search(tf_sections, '')<cr>
 autocmd FileType terraform nnoremap <silent> [[ :silent! call search(tf_sections, 'b')<cr>
-
-
