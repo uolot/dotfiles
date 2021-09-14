@@ -28,3 +28,10 @@ nmap <Leader>/ <Plug>AgRawSearch
 vmap <Leader>/ <Plug>AgRawVisualSelection
 nmap <Leader>* <Plug>AgRawWordUnderCurso
 nnoremap <Leader>g* :AgRaw <C-r><C-a><CR>
+
+
+" Whenever cursor jumps some distance or moves between windows, it will flash so you can see where it is
+" https://github.com/DanilaMihailov/beacon.nvim
+Plug 'danilamihailov/beacon.nvim'
+let g:beacon_shrink = 0
+let g:beacon_timeout = 200
