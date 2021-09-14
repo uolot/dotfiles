@@ -8,7 +8,14 @@ export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu
 alias todos="ag '(TODO|XXX|FIXME)' $@"
 alias scratchpad="vim ~/scratchpad"
 alias scratchpad-copy="cat ~/scratchpad | wl-copy"
-alias screenshare="/usr/lib/xdg-desktop-portal-wlr &"
+
+# Start screensharing service
+screenshare() {
+  killall xdg-desktop-portal
+  sleep 1 && /usr/lib/xdg-desktop-portal &
+  sleep 2 && /usr/lib/xdg-desktop-portal-wlr &
+  sleep 2
+}
 
 # Git-style diff
 gdiff() {
