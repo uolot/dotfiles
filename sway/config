@@ -181,9 +181,9 @@ for_window [title="^timer$"] floating enable, sticky enable, border none, move p
 # start a webbrowser
 bindsym $mod+b exec firefox
 # chrome - personal
-bindsym $mod+Shift+b exec google-chrome-stable --profile-directory="Profile 1"
+bindsym $mod+Shift+b exec google-chrome-stable --profile-directory="Profile 1" --enable-features=UseOzonePlatform --ozone-platform=wayland
 # chrome - work
-bindsym $mod+Ctrl+Shift+b exec google-chrome-stable --profile-directory="Profile 2"
+bindsym $mod+Ctrl+Shift+b exec google-chrome-stable --profile-directory="Profile 2" --enable-features=UseOzonePlatform --ozone-platform=wayland
 
 # kill focused window
 bindsym $mod+Ctrl+q kill

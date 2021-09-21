@@ -15,7 +15,7 @@ export CDPATH=".:~:~/Dev/Personal:~/Dev/EH:~/Dev/M5:~/.dotfiles"
 shopt -s cdspell # fix small typos
 complete -d cd
 
-export BROWSER=firefox
+export BROWSER=google-chrome-stable
 export EDITOR=vim
 export TERM=xterm-256color
 
