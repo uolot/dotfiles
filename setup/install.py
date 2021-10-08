@@ -220,6 +220,7 @@ MISC_PKGS = [
 ]
 
 FONT_PKGS = [
+    "aur/nerd-fonts-go-mono",
     "community/otf-font-awesome",
     "community/ttf-font-awesome",
     "aur/ttf-go-mono-git",
