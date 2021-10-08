@@ -145,6 +145,7 @@ DEVELOPMENT_PKGS = [
     "community/leiningen",
     "community/libmemcached",
     # "community/nim",
+    "community/neovim",
     "aur/postman6-bin",
     "extra/strace",
     "community/terraform",

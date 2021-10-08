@@ -13,6 +13,7 @@ LINKS = {
     "git/ignore": ".gitignore",
     "ipython/ipython_config.py": ".ipython/profile_default/ipython_config.py",
     "ipython/startup/vim.py": ".ipython/profile_default/startup/vim.py",
+    "neovim/init.vim": ".config/nvim/init.vim",
     "pam/pam_environment": ".pam_environment",
     "sway/flashfocus.yml": ".config/flashfocus/flashfocus.yml",
     "sway/i3status": ".config/i3status/config",

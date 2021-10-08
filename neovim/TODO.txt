@@ -1,0 +1,77 @@
+read:
+[ ] https://www.reddit.com/r/neovim/comments/pqnymo/the_lspsaga_hover_doc_command_not_working/
+[ ] https://www.reddit.com/r/neovim/comments/pvwk8l/do_you_use_a_completion_plugin_or_use_your_own/hed2ikq/?context=3
+[ ] https://mark-story.com/posts/view/switching-to-neovim-native-lsp
+[ ] https://github.com/mattn/efm-langserver/issues/132
+
+dotfiles:
+[ ] https://github.com/ibhagwan/nvim-lua
+[ ] https://github.com/David-Kunz/vim/blob/master/init.lua
+[ ] https://github.com/nicknisi/dotfiles
+[ ] https://www.reddit.com/r/neovim/comments/plqzw4/my_functional_and_minimal_neovim_rice/
+[ ] https://github.com/danielnehrig/nvim
+[ ] https://toroid.org/modern-neovim
+[ ] https://idie.ru/posts/vim-modern-cpp
+
+plugins:
+[ ] https://github.com/ray-x/lsp_signature.nvim
+[ ] https://github.com/rmagatti/goto-preview
+[ ] https://github.com/ElPiloto/telescope-vimwiki.nvim
+[ ] https://github.com/LionC/nest.nvim
+[ ] https://github.com/NTBBloodbath/rest.nvim
+[ ] https://github.com/Pocco81/HighStr.nvim
+[ ] https://github.com/ThePrimeagen/git-worktree.nvim
+[ ] https://github.com/b3nj5m1n/kommentary
+[ ] https://github.com/haringsrob/nvim_context_vt
+[ ] https://github.com/ibhagwan/fzf-lua
+[ ] https://github.com/kdheepak/lazygit.nvim
+[ ] https://github.com/jose-elias-alvarez/null-ls.nvim
+[ ] https://github.com/kevinhwang91/nvim-bqf
+[ ] https://github.com/lazytanuki/nvim-mapper
+[ ] https://github.com/lukas-reineke/headlines.nvim
+[ ] https://github.com/nanotee/nvim-lua-guide
+[ ] https://github.com/rktjmp/lush.nvim
+[ ] https://github.com/sakhnik/nvim-gdb
+[ ] https://github.com/simrat39/symbols-outline.nvim
+[ ] https://github.com/sindrets/diffview.nvim
+[ ] https://github.com/sudormrfbin/cheatsheet.nvim
+[ ] https://github.com/weilbith/nvim-floating-tag-preview
+[ ] https://github.com/weilbith/nvim-code-action-menu
+[ ] https://github.com/lewis6991/impatient.nvim
+[ ] https://www.reddit.com/r/neovim/comments/pm6e6p/focusnvim_has_been_recently_updated_to_add_even/
+[ ] https://github.com/LionC/nest.nvim
+[ ] https://github.com/chrisbra/unicode.vim
+[ ] https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+[ ] https://github.com/mfussenegger/nvim-ts-hint-textobject
+[ ] https://github.com/huawenyu/vimgdb
+
+[x] https://github.com/nvim-treesitter/nvim-treesitter-refactor
+[x] https://github.com/David-Kunz/treesitter-unit/
+[x] https://github.com/nvim-telescope/telescope-fzf-native.nvim
+[x] https://github.com/lukas-reineke/indent-blankline.nvim
+[x] https://github.com/IndianBoy42/hop.nvim
+[x] https://github.com/miyakogi/conoline.vim
+[x] https://github.com/Darazaki/indent-o-matic
+[x] https://github.com/SmiteshP/nvim-gps
+[x] https://github.com/folke/which-key.nvim
+[x] https://github.com/mizlan/iswap.nvim/
+[x] https://github.com/gelguy/wilder.nvim
+
+plugin collections:
+[ ] https://github.com/rockerBOO/awesome-neovim
+[ ] https://neovimcraft.com/
+[ ] https://www.youtube.com/watch?v=P9jB7mz2Ax4
+[ ] https://www.reddit.com/r/neovim/comments/po9g1y/github_rmagattigotopreview_a_small_neovim_plugin/
+
+colorschemes:
+[ ] https://github.com/thiagopnts/jellybeans
+[x] https://github.com/embark-theme/vim
+[x] https://github.com/haishanh/night-owl.vim
+[x] https://github.com/projekt0n/github-nvim-theme
+[x] https://github.com/wuelnerdotexe/vim-enfocado
+
+efm-langserver:
+[ ] https://github.com/mattn/efm-langserver
+[ ] https://github.com/mattn/efm-langserver/issues/132
+[ ] https://www.reddit.com/r/neovim/comments/kpkc7o/how_to_leverage_neovims_vimlspbufformatting/
+

@@ -16,7 +16,7 @@ shopt -s cdspell # fix small typos
 complete -d cd
 
 export BROWSER=google-chrome-stable
-export EDITOR=vim
+export EDITOR=nvim
 export TERM=xterm-256color
 
 # history
