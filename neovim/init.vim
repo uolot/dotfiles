@@ -66,9 +66,6 @@ end
 
 --require('lspconfig').setup()
 
--- lspsaga
-require('lspsaga').init_lsp_saga()
-
 -- RishabhRD/nvim-lsputils
 if vim.fn.has('nvim-0.5.1') == 1 then
     vim.lsp.handlers['textDocument/codeAction'] = require'lsputil.codeAction'.code_action_handler
@@ -210,6 +207,9 @@ require'lspinstall'.post_install_hook = function ()
     setup_servers()
     vim.cmd("bufdo e")
 end
+
+-- rmagatti/goto-preview
+require('goto-preview').setup {}
 
 -- onsails/lspkind-nvim
 local lspkind = require('lspkind')

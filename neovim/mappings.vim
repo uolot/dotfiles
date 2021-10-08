@@ -6,33 +6,22 @@
     nnoremap <Leader>xa :ALEToggle<CR>
 
 " lsp
-    " diagnostic
-    nnoremap <silent> <C-f> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>
-    nnoremap <silent> <C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>
-    nnoremap <silent> ]l :Lspsaga diagnostic_jump_next<CR>
-    nnoremap <silent> [. :Lspsaga diagnostic_jump_prev<CR>
 
     inoremap <silent> <C-k> <Cmd>lua vim.lsp.buf.signature_help()<CR>
-    " inoremap <silent> <C-k> <Cmd>Lspsaga signature_help<CR>
-
-    " nnoremap <silent> <Leader>ga :Lspsaga code_action<CR>
     nnoremap <silent> <Leader>ga :lua vim.lsp.buf.code_action()<CR>
-    " vnoremap <silent> <Leader>ga :<C-u>Lspsaga range_code_action<CR>
     vnoremap <silent> <Leader>ga :<C-u>lua vim.lsp.buf.range_code_action()<CR>
-    nnoremap <silent> <Leader>ge :Lspsaga show_line_diagnostics<CR>
+    nnoremap <silent> <Leader>ge :vim.lsp.diagnostic.show_line_diagnostics()<CR>
     nnoremap <silent> <Leader>gd :lua vim.lsp.buf.definition()<CR>
     nnoremap <silent> <Leader>gD :lua vim.lsp.buf.declaration()<CR>
-    " nnoremap <silent> <Leader>gf :Lspsaga lsp_finder<CR>
     nnoremap <silent> <Leader>gf :Telescope lsp_references<CR>
     nnoremap <silent> <Leader>gF :lua vim.lsp.buf.formatting()<CR>
     nnoremap <silent> <Leader>gh :lua vim.lsp.buf.hover()<CR>
-    " nnoremap <silent> <Leader>gh :Lspsaga hover_doc<CR>
     nnoremap <silent> <Leader>gi :lua vim.lsp.buf.implementation()<CR>
-    nnoremap <silent> <Leader>gp :Lspsaga preview_definition<CR>
-    nnoremap <silent> <Leader>gR :Lspsaga rename<CR>
-    " nnoremap <silent> <Leader>gR :lua vim.lsp.buf.rename()<CR>
+    nnoremap <silent> <Leader>gp <cmd>lua require('goto-preview').goto_preview_definition()<CR>
+    nnoremap <silent> <Leader>gP <cmd>lua require('goto-preview').goto_preview_implementation()<CR>
+    nnoremap <silent> <Leader>gq <cmd>lua require('goto-preview').close_all_win()<CR>
+    nnoremap <silent> <Leader>gR :lua vim.lsp.buf.rename()<CR>
     nnoremap <silent> <Leader>gs :lua vim.lsp.buf.signature_help()<CR>
-    " nnoremap <silent> <Leader>gs :Lspsaga signature_help<CR>
     nnoremap <silent> <Leader>gt :lua vim.lsp.buf.type_definition()<CR>
     nnoremap <silent> <Leader>gu :lua vim.lsp.buf.references()<CR>
     nnoremap <silent> <Leader>gx :LspTroubleDocumentToggle<CR>

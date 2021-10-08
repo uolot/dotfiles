@@ -11,10 +11,9 @@ call plug#begin(stdpath('data') . '/plugged')
 Plug 'neovim/nvim-lspconfig'
 Plug 'kabouzeid/nvim-lspinstall'
 
-" https://github.com/glepnir/lspsaga.nvim
-" Plug 'glepnir/lspsaga.nvim'
-" https://github.com/tami5/lspsaga.nvim
-Plug 'tami5/lspsaga.nvim'
+" A small Neovim plugin for previewing definitions using floating windows
+" https://github.com/rmagatti/goto-preview
+Plug 'rmagatti/goto-preview'
 
 Plug 'RishabhRD/popfix'
 " https://github.com/RishabhRD/nvim-lsputils
