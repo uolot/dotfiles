@@ -10,24 +10,24 @@ ipython() {
 }
 
 pyclean() {
-  find . -type f -name "*.py[co]" -delete
-  find . -type d -name "__pycache__" -prune -exec rm -rf {} \;
-  find . -type d -name ".mypy_cache" -prune -exec rm -rf {} \;
+    find . -type f -name "*.py[co]" -delete
+    find . -type d -name "__pycache__" -prune -exec rm -rf {} \;
+    find . -type d -name ".mypy_cache" -prune -exec rm -rf {} \;
 }
 
 venv() {
-  DIR=${1:-venv}
-  python -m venv "$DIR"
-  source $HOME/Bin/activate.sh $DIR
+    DIR=${1:-venv}
+    python -m venv "$DIR"
+    source $HOME/Bin/activate.sh $DIR
 }
 
 venv-dev() {
-  pip install -qq -U pip && echo "pip upgraded"
-  pip require mypy isort black flake8
-  pip install -qq ipython pynvim autoimport
-  echo "ipython installed"
-  echo "pynvim installed"
-  echo "autoimport installed"
+    pip install -qq -U pip && echo "pip upgraded"
+    pip require mypy isort black flake8
+    pip install -qq ipython pynvim autoimport
+    echo "ipython installed"
+    echo "pynvim installed"
+    echo "autoimport installed"
 }
 
 # Pyenv
@@ -35,8 +35,8 @@ venv-dev() {
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init --path)"
-  eval "$(pyenv init -)"
+    eval "$(pyenv init --path)"
+    eval "$(pyenv init -)"
 fi
 
 # Poetry
