@@ -48,7 +48,6 @@ SWAY_PKGS = [
     "community/swayidle",
     "aur/swaylock-effects-git",
     "community/slurp",
-    "aur/swayr",
     "aur/wdisplays-git",
     # "aur/wev",
     "aur/wev-git",
