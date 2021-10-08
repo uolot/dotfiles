@@ -3,6 +3,9 @@
 syntax reset
 set background=dark
 
+" highlight clear
+" syntax on
+
 " template
 "highlight Normal ctermfg=x ctermbg=x cterm=x
 

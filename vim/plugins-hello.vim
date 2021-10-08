@@ -31,7 +31,7 @@ nnoremap <Leader>g* :AgRaw <C-r><C-a><CR>
 
 
 " https://github.com/sainnhe/everforest
-Plug 'sainnhe/everforest'
+"Plug 'sainnhe/everforest'
 
 " Whenever cursor jumps some distance or moves between windows, it will flash so you can see where it is
 " https://github.com/DanilaMihailov/beacon.nvim

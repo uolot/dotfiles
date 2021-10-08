@@ -2,7 +2,7 @@
 " let g:ale_set_balloons = 1
 Plug 'dense-analysis/ale'
 let g:ale_linters = {
-            \ 'python': ['mypy', 'flake8', 'pylint']
+            \ 'python': ['mypy', 'flake8']
             \}
 let g:ale_fixers = {
             \'bash': ['shfmt'],
