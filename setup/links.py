@@ -1,3 +1,4 @@
+from pathlib import Path
 from config import DOTFILES_DIR, HOME_DIR
 from lib import ask
 
@@ -72,5 +73,5 @@ def link(src_path, dest_path, *, unlink=False):
 if __name__ == "__main__":
     create_links()
     print("Add contents of ~/.pam_environment to /etc/environment")
-    with open("~/.pam_environment") as f:
+    with open(Path("~/.pam_environment").expanduser()) as f:
         print(f.read())
