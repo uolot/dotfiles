@@ -20,10 +20,14 @@ venv() {
 venv-dev() {
     pip install -qq -U pip && echo "pip upgraded"
     pip require mypy isort black flake8
-    pip install -qq ipython pynvim autoimport
+    pip install -qq ipython
     echo "ipython installed"
+    pip install -qq pynvim
     echo "pynvim installed"
+    pip install -qq autoimport
     echo "autoimport installed"
+    pip install -qq pdbpp
+    echo "pdbpp installed"
 }
 
 # Pyenv
