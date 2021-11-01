@@ -541,7 +541,7 @@ require("which-key").setup {
 -- https://github.com/kyazdani42/nvim-tree.lua#setup
 tree_cb = require('nvim-tree.config').nvim_tree_callback
 require('nvim-tree').setup {
-    disable_netrw = true,
+    disable_netrw = false,
     hijack_netrw = true,
     open_on_setup = false,
     ignore_ft_on_setup = {},
@@ -553,7 +553,9 @@ require('nvim-tree').setup {
     },
     hijack_cursor = true,
     update_cwd = false,
-    lsp_diagnostics = false,
+    diagnostics = {
+        enable = false,
+    },
     update_focused_file = {
         enable = false,
         update_cwd = false,
