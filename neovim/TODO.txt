@@ -12,11 +12,12 @@ dotfiles:
 [ ] https://github.com/danielnehrig/nvim
 [ ] https://toroid.org/modern-neovim
 [ ] https://idie.ru/posts/vim-modern-cpp
+[ ] https://gitlab.com/LongerHV/.dotfiles/-/tree/master/.config/nvim
+[ ] https://gist.github.com/benfrain/97f2b91087121b2d4ba0dcc4202d252f
 
 plugins:
 [ ] https://github.com/ray-x/lsp_signature.nvim
-[ ] https://github.com/rmagatti/goto-preview
-[ ] https://github.com/ElPiloto/telescope-vimwiki.nvim
+[ ] https://github.com/jose-elias-alvarez/null-ls.nvim
 [ ] https://github.com/LionC/nest.nvim
 [ ] https://github.com/NTBBloodbath/rest.nvim
 [ ] https://github.com/Pocco81/HighStr.nvim
@@ -24,8 +25,9 @@ plugins:
 [ ] https://github.com/b3nj5m1n/kommentary
 [ ] https://github.com/haringsrob/nvim_context_vt
 [ ] https://github.com/ibhagwan/fzf-lua
+[ ] https://github.com/fatih/vim-go
+[ ] https://github.com/TimUntersberger/neogit
 [ ] https://github.com/kdheepak/lazygit.nvim
-[ ] https://github.com/jose-elias-alvarez/null-ls.nvim
 [ ] https://github.com/kevinhwang91/nvim-bqf
 [ ] https://github.com/lazytanuki/nvim-mapper
 [ ] https://github.com/lukas-reineke/headlines.nvim
@@ -44,7 +46,15 @@ plugins:
 [ ] https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 [ ] https://github.com/mfussenegger/nvim-ts-hint-textobject
 [ ] https://github.com/huawenyu/vimgdb
+[ ] https://github.com/ray-x/navigator.lua
+[ ] https://github.com/windwp/windline.nvim
+[ ] https://github.com/ThePrimeagen/refactoring.nvim
+[ ] https://github.com/tpope/vim-sensible
+[ ] https://github.com/pianocomposer321/yabs.nvim
+[ ] https://github.com/arkav/lualine-lsp-progress
 
+[x] https://github.com/ElPiloto/telescope-vimwiki.nvim
+[x] https://github.com/rmagatti/goto-preview
 [x] https://github.com/nvim-treesitter/nvim-treesitter-refactor
 [x] https://github.com/David-Kunz/treesitter-unit/
 [x] https://github.com/nvim-telescope/telescope-fzf-native.nvim
