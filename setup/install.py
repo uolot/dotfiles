@@ -3,15 +3,15 @@ import os
 from lib import ask
 
 # Index:
-#  1. ANDROID_PKGS
-#  2. APPS_PKGS
-#  3. COMMS_AND_NETWORKING_PKGS
-#  4. DATABASE_PKGS
-#  5. DEVELOPMENT_PKGS
-#  6. DOCUMENTS_AND_MEDIA_PKGS
-#  7. ELECTRONICS_PKGS
-#  8. FONT_PKGS
-#  9. GAMING_PKGS
+# 01. ANDROID_PKGS
+# 02. APPS_PKGS
+# 03. COMMS_AND_NETWORKING_PKGS
+# 04. DATABASE_PKGS
+# 05. DEVELOPMENT_PKGS
+# 06. DOCUMENTS_AND_MEDIA_PKGS
+# 07. ELECTRONICS_PKGS
+# 08. FONT_PKGS
+# 09. GAMING_PKGS
 # 10. JAVA_PKGS
 # 11. KEYBOARD_PKGS
 # 12. KUBERNETES_PKGS
@@ -27,6 +27,7 @@ from lib import ask
 
 SYSTEM_AND_LIBS_PKGS = [
     "aur/libffi6",
+    "aur/libffi7",
     "core/linux-lts",
     "core/linux-lts-headers",
 ]
@@ -109,6 +110,7 @@ SHELL_PKGS = [
     "extra/libqalculate",
     "extra/lsof",
     "community/moreutils",
+    "community/ncdu",
     "extra/p7zip",
     "community/python-html2text",
     "community/ripgrep",
@@ -161,7 +163,7 @@ PYTHON_PKGS = [
     "community/python-black",
     "aur/python38",
     "extra/python-cffi",
-    "aur/python-launcher",
+    # "aur/python-launcher",
     "community/python-pre-commit",
     "community/python-language-server",
     "extra/python-pip",
@@ -220,6 +222,7 @@ MISC_PKGS = [
 
 FONT_PKGS = [
     "aur/nerd-fonts-go-mono",
+    "extra/noto-fonts-emoji",
     "community/otf-font-awesome",
     "community/ttf-font-awesome",
     "aur/ttf-go-mono-git",
