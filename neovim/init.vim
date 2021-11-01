@@ -411,6 +411,7 @@ require('telescope').setup {
     --},
 }
 -- require('telescope').load_extension('fzf')
+require('telescope').load_extension('vimwiki')
 
 -- lualine
 local gps = require("nvim-gps")
@@ -621,8 +622,11 @@ set background=dark
 
 "filetype plugin indent on
 
+source $HOME/.dotfiles/neovim/vimwiki.vim
+
 " maps
 source $HOME/.dotfiles/neovim/mappings.vim
+
 
 highlight CursorWord0 ctermbg=239
 highlight CursorWord1 term=none cterm=none gui=none

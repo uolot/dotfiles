@@ -331,5 +331,10 @@ Plug 'folke/todo-comments.nvim'
 " https://github.com/nacro90/numb.nvim
 Plug 'nacro90/numb.nvim'
 
+" -- Vimwiki --
+
+Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
+" https://github.com/ElPiloto/telescope-vimwiki.nvim
+Plug 'ElPiloto/telescope-vimwiki.nvim'
 
 call plug#end()
