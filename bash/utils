@@ -11,33 +11,33 @@ alias scratchpad-copy="cat ~/scratchpad | wl-copy"
 
 # Start screensharing service
 screenshare() {
-  killall xdg-desktop-portal
-  sleep 1 && /usr/lib/xdg-desktop-portal &
-  sleep 2 && /usr/lib/xdg-desktop-portal-wlr &
-  sleep 2
+    killall xdg-desktop-portal
+    sleep 1 && /usr/lib/xdg-desktop-portal &
+    sleep 2 && /usr/lib/xdg-desktop-portal-wlr &
+    sleep 2
 }
 
 # Git-style diff
 gdiff() {
-  diff -u $@ | colordiff
+    diff -u $@ | colordiff
 }
 
 # Generate random integet from 1 to arg
 randint() {
-  python -c "import random; print(random.randint(1, $1))"
+    python -c "import random; print(random.randint(1, $1))"
 }
 
 # Change to last used working dir
 cwd() {
-  cd $(cat /tmp/workdir)
+    cd $(cat /tmp/workdir)
 }
 
 # git
 
 # Change to git root dir
 cd-git-root() {
-  pushd .
-  cd $(git rev-parse --show-toplevel)
+    pushd .
+    cd $(git rev-parse --show-toplevel)
 }
 
 # fzf
@@ -50,13 +50,13 @@ export FZF_ALT_C_COMMAND='fd --type d --hidden'
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 
 fzf-branch-select() {
-  echo $(git branch --format='%(refname:short)' | fzf --preview 'git lgf {}')
+    echo $(git branch --format='%(refname:short)' | fzf --preview 'git lgf {}')
 }
 
 fzf-branch-widget() {
-  local selected="$(fzf-branch-select)"
-  READLINE_LINE="${READLINE_LINE:0:$READLINE_POINT}$selected${READLINE_LINE:$READLINE_POINT}"
-  READLINE_POINT=$((READLINE_POINT + ${#selected}))
+    local selected="$(fzf-branch-select)"
+    READLINE_LINE="${READLINE_LINE:0:$READLINE_POINT}$selected${READLINE_LINE:$READLINE_POINT}"
+    READLINE_POINT=$((READLINE_POINT + ${#selected}))
 }
 
 bind -x '"\C-g": fzf-branch-widget'
@@ -65,60 +65,60 @@ bind -x '"\C-g": fzf-branch-widget'
 
 # run terraform with logging
 tf() {
-  mkdir -p /tmp/tf
-  terraform $* |& tee /tmp/tf/$(basename $PWD)__tf-$1__$(date +'%Y%m%d-%H%M%S').log
+    mkdir -p /tmp/tf
+    terraform $* |& tee /tmp/tf/$(basename $PWD)__tf-$1__$(date +'%Y%m%d-%H%M%S').log
 }
 
 # print the path of the last created tf.log file
 tf-last() {
-  # '%C@' - ctime in epoch seconds, '%p' - path
-  find /tmp/tf -name '*.log' -printf '%C@ %p\n' |
-    sort -nr |
-    head -1 |
-    cut -d' ' -f2
+    # '%C@' - ctime in epoch seconds, '%p' - path
+    find /tmp/tf -name '*.log' -printf '%C@ %p\n' |
+        sort -nr |
+        head -1 |
+        cut -d' ' -f2
 }
 
 # aws
 
 aws_creds() {
-  case "$1" in
-  print)
-    cat ~/.aws/credentials |
-      grep ^aws |
-      sed -e 's/^\([a-z_]\+\)/export \U\1/' -e 's/ = \(.\+\)/="\1"/'
-    ;;
-  load)
-    source <(aws_creds print)
-    ;;
-  unset)
-    for ENVAR in $(
-      cat ~/.aws/credentials |
-        grep ^aws |
-        sed -e 's/^\([a-z_]\+\).*/\U\1/'
-    ); do
-      read -p "Unset $ENVAR? [y/n] "
-      if [ "$REPLY" == "y" ]; then
-        unset $ENVAR
-      fi
-    done
-    ;;
-  *)
-    echo "Usage: $0 (print | load | unset)"
-    ;;
-  esac
+    case "$1" in
+    print)
+        cat ~/.aws/credentials |
+            grep ^aws |
+            sed -e 's/^\([a-z_]\+\)/export \U\1/' -e 's/ = \(.\+\)/="\1"/'
+        ;;
+    load)
+        source <(aws_creds print)
+        ;;
+    unset)
+        for ENVAR in $(
+            cat ~/.aws/credentials |
+                grep ^aws |
+                sed -e 's/^\([a-z_]\+\).*/\U\1/'
+        ); do
+            read -p "Unset $ENVAR? [y/n] "
+            if [ "$REPLY" == "y" ]; then
+                unset $ENVAR
+            fi
+        done
+        ;;
+    *)
+        echo "Usage: $0 (print | load | unset)"
+        ;;
+    esac
 }
 
 # direnv
 
 _direnv_hook() {
-  local previous_exit_status=$?
-  trap -- '' SIGINT
-  eval "$("/usr/bin/direnv" export bash)"
-  trap - SIGINT
-  return $previous_exit_status
+    local previous_exit_status=$?
+    trap -- '' SIGINT
+    eval "$("/usr/bin/direnv" export bash)"
+    trap - SIGINT
+    return $previous_exit_status
 }
 if ! [[ "${PROMPT_COMMAND:-}" =~ _direnv_hook ]]; then
-  PROMPT_COMMAND="_direnv_hook${PROMPT_COMMAND:+;$PROMPT_COMMAND}"
+    PROMPT_COMMAND="_direnv_hook${PROMPT_COMMAND:+;$PROMPT_COMMAND}"
 fi
 
 # docker
