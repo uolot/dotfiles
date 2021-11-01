@@ -323,9 +323,34 @@ Plug 'kyazdani42/nvim-tree.lua'
 
 " -- Git --
 
+Plug 'tpope/vim-fugitive'
+
 " more pleasant editing on commit messages
 " https://github.com/rhysd/committia.vim
 Plug 'rhysd/committia.vim'
+
+" https://github.com/junegunn/gv.vim
+" A git commit browser in Vim
+Plug 'junegunn/gv.vim'
+
+" GitHub extension for fugitive.vim
+" https://github.com/tpope/vim-rhubarb
+Plug 'tpope/vim-rhubarb'
+
+" extension to fugitive.vim for gitlab support
+" https://github.com/shumphrey/fugitive-gitlab.vim
+Plug 'shumphrey/fugitive-gitlab.vim'
+
+" Add Bitbucket URL support to fugitive.vim's :Gbrowse command
+" https://github.com/tommcdo/vim-fubitive
+Plug 'tommcdo/vim-fubitive'
+
+" One second to read GitHub code with vim
+" https://github.com/drzel/vim-repo-edit
+Plug 'drzel/vim-repo-edit'
+
+
+" -- Misc -
 
 " Highlight, list and search todo comments in your projects
 " https://github.com/folke/todo-comments.nvim
