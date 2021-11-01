@@ -32,6 +32,11 @@ Plug 'folke/lsp-colors.nvim'
 
 Plug 'folke/trouble.nvim'
 
+" Pop-up menu for code actions to show meta-information and diff preview
+"     Provides ":CodeActionMenu"
+" https://github.com/weilbith/nvim-code-action-menu
+Plug 'weilbith/nvim-code-action-menu'
+
 " -- Completion --
 
 " nvim-cmp

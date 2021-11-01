@@ -8,8 +8,10 @@
 " lsp
 
     inoremap <silent> <C-k> <Cmd>lua vim.lsp.buf.signature_help()<CR>
-    nnoremap <silent> <Leader>ga :lua vim.lsp.buf.code_action()<CR>
-    vnoremap <silent> <Leader>ga :<C-u>lua vim.lsp.buf.range_code_action()<CR>
+    " nnoremap <silent> <Leader>ga :lua vim.lsp.buf.code_action()<CR>
+    nnoremap <silent> <Leader>ga :CodeActionMenu<CR>
+    " vnoremap <silent> <Leader>ga :<C-u>lua vim.lsp.buf.range_code_action()<CR>
+    vnoremap <silent> <Leader>ga :CodeActionMenu<CR>
     nnoremap <silent> <Leader>ge :vim.lsp.diagnostic.show_line_diagnostics()<CR>
     nnoremap <silent> <Leader>gd :lua vim.lsp.buf.definition()<CR>
     nnoremap <silent> <Leader>gD :lua vim.lsp.buf.declaration()<CR>
