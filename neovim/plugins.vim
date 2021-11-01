@@ -298,9 +298,8 @@ Plug 'folke/which-key.nvim'
 " NOTE: python3/pynvim/msgpack issues in venv
 "Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
 
-" Plug 'hoob3rt/lualine.nvim' " unmaintained
-" https://github.com/shadmansaleh/lualine.nvim
-Plug 'shadmansaleh/lualine.nvim'
+" https://github.com/nvim-lualine/lualine.nvim
+Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 
 " A file explorer tree for neovim written in lua

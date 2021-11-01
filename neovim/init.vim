@@ -417,8 +417,8 @@ require('telescope').load_extension('vimwiki')
 local gps = require("nvim-gps")
 require('lualine').setup {
     options = {
-        -- theme = 'github',
-        theme = 'auto',
+        theme = 'github',
+        -- theme = 'auto',
         --section_separators = '',
         --component_separators = '',
     },
@@ -426,17 +426,18 @@ require('lualine').setup {
         -- left
         lualine_a = { 'mode' },
         lualine_b = {
-            'branch',
-            {'diagnostics', sources={'nvim_lsp'}, sections={"error", "warn"} }
+            -- {'diagnostics', sources={'nvim_lsp'}, sections={"error", "warn"} },
+            { 'filename', path = 1 },
         },
         lualine_c = {
-            { 'filename', path = 1 },
             { gps.get_location, cond = gps.is_available }
         },
         -- right
-        lualine_x = {},  -- { 'filetype' },
+        lualine_x = {
+            'branch',
+            'diff',
+        },
         lualine_y = {
-            -- { 'diff', diff_color = {added=nil, modified=nil, removed=nil} },
             'filetype',
         },
         lualine_z = { 'location', 'progress'  },
