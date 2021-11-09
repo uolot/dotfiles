@@ -64,7 +64,7 @@ SWAY_PKGS = [
 
 APPS_PKGS = [
     "aur/alacritty-ligatures",
-    "aur/chromium-snapshot-bin",
+    # "aur/chromium-snapshot-bin",
     "aur/etcher-bin",
     "extra/firefox",
     "extra/gnome-font-viewer",
