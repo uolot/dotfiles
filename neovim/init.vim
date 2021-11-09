@@ -34,7 +34,7 @@ set omnifunc=syntaxcomplete#Complete " enable omnicompletion
 set scrolloff=3 " keep lines above/below cursor line
 set shiftround " round the indent spacing to the next multiple of shiftwidth
 set shiftwidth=0 " use tabstop number of tabs to indent
-set showbreak=↪ " mark wrapped lines
+set showbreak=↳\  " mark wrapped lines
 set showcmd " show last command on bottom
 set showmatch " highlight matching bracket
 set splitbelow " open new horizontal splits below
