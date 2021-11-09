@@ -720,3 +720,10 @@ hi! link ALEVirtualTextInfo LspDiagnosticsVirtualTextInformation
 hi! link ALEVirtualTextStyleError LspDiagnosticsVirtualTextError
 hi! link ALEVirtualTextStyleWarning LspDiagnosticsVirtualTextWarning
 hi! link ALEVirtualTextWarning LspDiagnosticsVirtualTextWarning
+
+" open images with imv
+autocmd BufEnter *.png,*.jpg,*.gif exec "!imv ".expand("%") | :bw
+" open PDFs with zathura
+autocmd BufEnter *.pdf exec "!zathura ".expand("%") | :bw
+
+
