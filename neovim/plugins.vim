@@ -360,6 +360,10 @@ Plug 'folke/todo-comments.nvim'
 " https://github.com/nacro90/numb.nvim
 Plug 'nacro90/numb.nvim'
 
+" A better user experience for interacting with and manipulating Vim marks
+" https://github.com/chentau/marks.nvim
+Plug 'chentau/marks.nvim'
+
 " -- Vimwiki --
 
 Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
