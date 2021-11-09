@@ -167,6 +167,15 @@ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
 )
 
 
+-- lsp_signature
+require("lsp_signature").setup({
+    bind = true,
+    handler_opts = {
+        border = "rounded",
+    },
+    hint_enable = false,
+})
+
 -- lspinstall
 local function setup_servers()
     require'lspinstall'.setup()

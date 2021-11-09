@@ -37,6 +37,10 @@ Plug 'folke/trouble.nvim'
 " https://github.com/weilbith/nvim-code-action-menu
 Plug 'weilbith/nvim-code-action-menu'
 
+" LSP signature hint as you type
+" https://github.com/ray-x/lsp_signature.nvim
+Plug 'ray-x/lsp_signature.nvim'
+
 " -- Completion --
 
 " nvim-cmp
