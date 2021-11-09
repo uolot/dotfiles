@@ -366,4 +366,8 @@ Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
 " https://github.com/ElPiloto/telescope-vimwiki.nvim
 Plug 'ElPiloto/telescope-vimwiki.nvim'
 
+" Markdown live preview
+" https://github.com/iamcco/markdown-preview.nvim
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+
 call plug#end()
