@@ -22,7 +22,8 @@ case "$option" in
     ;;
 "change-wallpaper")
     lock=false
-    powercmd="bash $HOME/Bin/sway_change_wallpaper"
+    # powercmd="bash $HOME/Bin/sway_change_wallpaper"
+    powercmd="bash $HOME/Bin/sway_wallpaper_from_api.sh"
     ;;
 "lock-screen") ;;
 "logout")
