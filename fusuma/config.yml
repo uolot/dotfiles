@@ -68,11 +68,11 @@ pinch:
 
 threshold:
   swipe: 0.6
-  pinch: 0.5
+  pinch: 2.0
 
 interval:
   # swipe: 0.5
-  pinch: 0.4
+  pinch: 0.8
 
 plugin:
   inputs:
