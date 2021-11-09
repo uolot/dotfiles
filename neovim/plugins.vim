@@ -43,19 +43,21 @@ Plug 'ray-x/lsp_signature.nvim'
 
 " -- Completion --
 
-" nvim-cmp
 Plug 'hrsh7th/cmp-nvim-lsp'
+
 Plug 'hrsh7th/cmp-buffer'
-" https://github.com/quangnguyen30192/cmp-nvim-tags
-Plug 'quangnguyen30192/cmp-nvim-tags'
+
 " https://github.com/hrsh7th/cmp-path
 Plug 'hrsh7th/cmp-path'
+
 " https://github.com/tzachar/cmp-tabnine
 " Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
-" https://github.com/ray-x/cmp-treesitter
-Plug 'ray-x/cmp-treesitter'
-" https://github.com/hrsh7th/cmp-omni
-Plug 'hrsh7th/cmp-omni'
+
+" A snippet plugin is required by nvim-cmp
+" https://github.com/hrsh7th/vim-vsnip
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
+
 Plug 'hrsh7th/nvim-cmp'
 
 " -- Treesitter --
