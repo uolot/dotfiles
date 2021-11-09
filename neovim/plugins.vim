@@ -311,13 +311,7 @@ Plug 'kyazdani42/nvim-web-devicons'
 " A file explorer tree for neovim written in lua
 " https://github.com/kyazdani42/nvim-tree.lua
 Plug 'kyazdani42/nvim-tree.lua'
-    let g:nvim_tree_ignore = [
-        \ '.git',
-        \ 'node_modules',
-        \ '.cache',
-        \ '.mypy_cache',
-        \ 'tags'
-        \ ]
+    let g:nvim_tree_gitignore = 1
     let g:nvim_tree_highlight_opened_files = 1
     let g:nvim_tree_add_trailing = 1
     let g:nvim_tree_special_files = {
