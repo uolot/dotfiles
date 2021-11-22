@@ -15,7 +15,7 @@ from lib import ask
 # 10. JAVA_PKGS
 # 11. KEYBOARD_PKGS
 # 12. KUBERNETES_PKGS
-# 13. MEDIA_PKGS
+# 13. MEDIA_PKGS -> DOCUMENTS_AND_MEDIA_PKGS
 # 14. MISC_PKGS
 # 15. PRINTER_PKGS
 # 16. PYTHON_PKGS
@@ -28,8 +28,11 @@ from lib import ask
 SYSTEM_AND_LIBS_PKGS = [
     "aur/libffi6",
     "aur/libffi7",
+    "extra/libpipewire02",
     "core/linux-lts",
     "core/linux-lts-headers",
+    "extra/pipewire-docs",
+    "extra/pipewire-pulse",
 ]
 
 SWAY_PKGS = [
@@ -40,9 +43,6 @@ SWAY_PKGS = [
     "aur/ruby-fusuma-plugin-sendkey",
     "community/grim",
     "community/i3status-rust",
-    "extra/libpipewire02",
-    "extra/pipewire-docs",
-    "extra/pipewire-pulse",
     "community/playerctl",
     "community/python-i3ipc",
     "community/sway",
@@ -118,7 +118,7 @@ SHELL_PKGS = [
     "aur/shellcheck-bin",
     "aur/slackcat",
     "community/shfmt",
-    "community/sl",
+    # "community/sl",
     "community/tldr",
     "community/tmux",
     "extra/tree",
@@ -182,18 +182,18 @@ JAVA_PKGS = [
 ]
 
 ELECTRONICS_PKGS = [
-    "aur/adafruit-ampy",
+    # "aur/adafruit-ampy",
     "community/arduino",
     "aur/esp-idf",
     "community/esptool",
-    "community/picocom",
+    # "community/picocom",
     "aur/platformio",
     "community/python-pyudev",
-    "aur/rshell",
+    # "aur/rshell",
 ]
 
 DOCUMENTS_AND_MEDIA_PKGS = [
-    "community/audacity",
+    # "community/audacity",
     "extra/gimp",
     "extra/graphicsmagick",
     "extra/graphviz",
@@ -202,7 +202,6 @@ DOCUMENTS_AND_MEDIA_PKGS = [
     "community/mediainfo",
     "community/mupdf",
     "aur/pandoc-bin",
-    "aur/python-grip",
     "community/sox",
     "extra/vlc",
     "community/youtube-dl",
