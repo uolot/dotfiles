@@ -1,4 +1,5 @@
 from pathlib import Path
+
 from config import DOTFILES_DIR, HOME_DIR
 from lib import ask
 
@@ -16,10 +17,11 @@ LINKS = {
     "ipython/startup/vim.py": ".ipython/profile_default/startup/vim.py",
     "neovim/init.vim": ".config/nvim/init.vim",
     "pam/pam_environment": ".pam_environment",
+    "sway/config": ".config/sway/config",
     "sway/flashfocus.yml": ".config/flashfocus/flashfocus.yml",
     "sway/i3status": ".config/i3status/config",
     "sway/i3status-rust.toml": ".config/i3status-rust/config.toml",
-    "sway/config": ".config/sway/config",
+    "sway/swaync-config.json": ".config/swaync/config.json",
     "TabNine.toml": ".config/TabNine/TabNine.yml",
     "tmux/tmux.conf": ".tmux.conf",
     "vim/ftplugin": ".vim/ftplugin",

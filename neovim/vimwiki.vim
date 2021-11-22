@@ -6,6 +6,7 @@
 " 01 Vimwiki wikis
 
 let wiki1 = {}
+let wiki1.name = 'Main'
 let wiki1.path = '~/Vimwiki/wiki/'
 let wiki1.path_html = '~/Vimwiki/html/'
 let wiki1.template_path = '~/Vimwiki/templates/'
@@ -15,13 +16,41 @@ let wiki1.maxhi = 1
 let wiki1.auto_diary_index = 1
 let wiki1.auto_export = 1
 let wiki1.auto_generate_links = 1
-let wiki1.auto_generate_tags = 1
 let wiki1.auto_tags = 1
 let wiki1.auto_toc = 1
 let wiki1.diary_frequency = "daily"
 
+let wiki2 = {}
+let wiki2.name = 'Lyst'
+let wiki2.path = '~/Vimwiki/lyst/wiki/'
+let wiki2.path_html = '~/Vimwiki/lyst/html/'
+let wiki2.template_path = '~/Vimwiki/templates/'
+let wiki2.template_default = 'def_template'
+let wiki2.template_ext = '.html'
+let wiki2.maxhi = 1
+let wiki2.auto_export = 1
+let wiki2.auto_generate_links = 1
+let wiki2.auto_tags = 1
+let wiki2.auto_toc = 1
+let wiki2.diary_frequency = "daily"
 
-let g:vimwiki_list = [wiki1]
+let wiki3 = {}
+let wiki3.name = 'EH'
+let wiki3.path = '~/Vimwiki/eh/wiki/'
+let wiki3.path_html = '~/Vimwiki/eh/html/'
+let wiki3.template_path = '~/Vimwiki/templates/'
+let wiki3.template_default = 'def_template'
+let wiki3.template_ext = '.html'
+let wiki3.maxhi = 1
+let wiki3.auto_export = 1
+let wiki3.auto_generate_links = 1
+let wiki3.auto_tags = 1
+let wiki3.auto_toc = 1
+let wiki3.diary_frequency = "daily"
+
+
+
+let g:vimwiki_list = [wiki1, wiki2, wiki3]
 
 " 02 Vimwiki config
 

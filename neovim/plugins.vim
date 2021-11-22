@@ -9,7 +9,9 @@ call plug#begin(stdpath('data') . '/plugged')
 " -- LSP --
 
 Plug 'neovim/nvim-lspconfig'
+" TODO: move from nvim-lspinstall to nvim-lsp-installer
 Plug 'kabouzeid/nvim-lspinstall'
+" Plug 'williamboman/nvim-lsp-installer'
 
 " A small Neovim plugin for previewing definitions using floating windows
 " https://github.com/rmagatti/goto-preview
@@ -41,6 +43,10 @@ Plug 'weilbith/nvim-code-action-menu'
 " https://github.com/ray-x/lsp_signature.nvim
 Plug 'ray-x/lsp_signature.nvim'
 
+" https://github.com/jose-elias-alvarez/null-ls.nvim
+Plug 'jose-elias-alvarez/null-ls.nvim'
+
+
 " -- Completion --
 
 Plug 'hrsh7th/cmp-nvim-lsp'
@@ -51,12 +57,15 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 
 " https://github.com/tzachar/cmp-tabnine
-" Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
+Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
 
 " A snippet plugin is required by nvim-cmp
 " https://github.com/hrsh7th/vim-vsnip
 Plug 'hrsh7th/vim-vsnip'
+" https://github.com/hrsh7th/vim-vsnip-integ
 Plug 'hrsh7th/vim-vsnip-integ'
+" https://github.com/hrsh7th/cmp-vsnip
+Plug 'hrsh7th/cmp-vsnip'
 
 Plug 'hrsh7th/nvim-cmp'
 
@@ -87,17 +96,19 @@ Plug 'michaeljsmith/vim-indent-object'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 " Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+" https://github.com/xiyaowong/telescope-emoji.nvim
+Plug 'xiyaowong/telescope-emoji.nvim'
 
 
 " -- Colorschemes --
-" Plug 'sainnhe/everforest'
-" Plug 'embark-theme/vim', { 'as': 'embark' }
-" Plug 'haishanh/night-owl.vim'
-" Plug 'wuelnerdotexe/vim-enfocado', { 'branch' : 'development' }
+
+" grep: github-colors github-theme
 " https://github.com/projekt0n/github-nvim-theme
-Plug 'projekt0n/github-nvim-theme'
-" https://github.com/fxn/vim-monochrome
-"Plug 'fxn/vim-monochrome'
+" Plug 'projekt0n/github-nvim-theme'
+
+" https://github.com/srcery-colors/srcery-vim
+Plug 'srcery-colors/srcery-vim'
+
 
 
 " Highlights the line of the cursor only in the current window
@@ -200,19 +211,25 @@ Plug 'heavenshell/vim-pydocstring', { 'for': 'python' }
 
 " Highlight and navigate multiple words
 " https://github.com/lfv89/vim-interestingwords
-Plug 'lfv89/vim-interestingwords'
-    let g:interestingWordsDefaultMappings = 0
-    nnoremap <silent> <leader>k :call InterestingWords('n')<cr>
-    vnoremap <silent> <leader>k :call InterestingWords('v')<cr>
-    nnoremap <silent> <leader>K :call UncolorAllWords()<cr>
-    " let g:interestingWordsTermColors = ['154', '121', '211', '137', '214', '222']
-    let g:interestingWordsTermColors = [
-                \ '1', '2', '3', '4', '5', '6', '9', '63', '75', '81', '85', '87',
-                \ '99', '108', '115', '125', '137', '141', '142', '154',
-                \ '159', '165', '167', '175', '202', '207', '208', '211', '214', '219',
-                \ '226', '228'
-                \ ]
-    let g:interestingWordsRandomiseColors = 1
+" Plug 'lfv89/vim-interestingwords'
+"     let g:interestingWordsDefaultMappings = 0
+"     nnoremap <silent> <leader>k :call InterestingWords('n')<cr>
+"     vnoremap <silent> <leader>k :call InterestingWords('v')<cr>
+"     nnoremap <silent> <leader>K :call UncolorAllWords()<cr>
+"     " let g:interestingWordsTermColors = ['154', '121', '211', '137', '214', '222']
+"     let g:interestingWordsTermColors = [
+"                 \ '1', '2', '3', '4', '5', '6', '9', '63', '75', '81', '85', '87',
+"                 \ '99', '108', '115', '125', '137', '141', '142', '154',
+"                 \ '159', '165', '167', '175', '202', '207', '208', '211', '214', '219',
+"                 \ '226', '228'
+"                 \ ]
+"     let g:interestingWordsRandomiseColors = 1
+
+" highlighting visual selections
+" https://github.com/Pocco81/HighStr.nvim
+Plug 'Pocco81/HighStr.nvim'
+
+
 
 " https://github.com/dense-analysis/ale
 " let g:ale_set_balloons = 1
@@ -370,8 +387,22 @@ Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
 " https://github.com/ElPiloto/telescope-vimwiki.nvim
 Plug 'ElPiloto/telescope-vimwiki.nvim'
 
+"
 " Markdown live preview
 " https://github.com/iamcco/markdown-preview.nvim
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+    let g:mkdp_auto_close = 0
+
+" https://github.com/github/copilot.vim
+Plug 'github/copilot.vim'
+    imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
+    let g:copilot_no_tab_map = v:true
+    let g:copilot_filetypes = {
+        \ 'TelescopePrompt': v:false
+        \ }
+
+" Add extra window movements with <C-w> g [hjkl]
+" https://github.com/andymass/vim-tradewinds
+Plug 'andymass/vim-tradewinds'
 
 call plug#end()

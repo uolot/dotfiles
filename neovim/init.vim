@@ -2,7 +2,7 @@
 
 syntax on
 filetype on " enables filetype detection
-filetype plugin on " enables filetype specific plugins
+filetype plugin indent on " enables filetype specific plugins
 let mapleader=" "
 
 " No need to set, already a default in NeoVim:
@@ -15,6 +15,8 @@ let mapleader=" "
 " set laststatus=2 " show statusline for single buffer
 " set wildmenu " enable filename completion
 
+" set breakindent
+" set breakindentopt=shift:2
 set completeopt=menu,preview " show popup menu on completion with extra info
 set completefunc=syntaxcomplete#Complete " set user-mode completions for <C-x><C-u>
 set cursorline " highlight cursor line
@@ -176,6 +178,11 @@ require("lsp_signature").setup({
     hint_enable = false,
 })
 
+-- jose-elias-alvarez/null-ls.nvim
+-- https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/CONFIG.md
+-- https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md
+-- require("null-ls").setup({})
+
 -- lspinstall
 local function setup_servers()
     require'lspinstall'.setup()
@@ -183,7 +190,7 @@ local function setup_servers()
     local lsp_server_opts = {
             on_attach = on_lsp_attach,
             flags = {
-                debounce_text_changes = 150,
+                debounce_text_changes = 1000,
             },
             capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
         }
@@ -219,43 +226,6 @@ end
 
 -- rmagatti/goto-preview
 require('goto-preview').setup {}
-
--- onsails/lspkind-nvim
-local lspkind = require('lspkind')
-lspkind.init({
-    with_text = true,
-    preset = "default",
-})
---    symbol_map = {
---
---  "  (text)",
---  "  (method)",
---  "  (fun)",
---  "  (constructor)",
---  "ﰠ  (field)",
---  " (var)",
---  "ﴯ  (class)",
---  "  (interface)",
---  "  (module)",
---  "ﰠ  (property)",
---  "塞 (unit)",
---  "  (value)",
---  "  (enum)",
---  "  (keyword)",
---  "  (snippet)",
---  "  (color)",
---  "  (file)",
---  "  (reference)",
---  "  (folder)",
---  "  (enum-member)",
---  "  (constant)",
---  "פּ  (struct)",
---  "  (event)",
---  "  (operator)",
---  "   (type-param)"
---
---    }
---})
 
 -- Treesitter --
 -- nvim-treesitter
@@ -338,7 +308,7 @@ require('nvim-treesitter.configs').setup {
 
 -- Completion --
 
--- tzachar/cmp-tabnine
+-- -- tzachar/cmp-tabnine
 -- local tabnine = require('cmp_tabnine.config')
 -- tabnine:setup(
 -- {
@@ -347,6 +317,9 @@ require('nvim-treesitter.configs').setup {
 --     sort = true,
 --     run_on_every_keystroke = true,
 -- })
+
+-- onsails/lspkind-nvim
+local lspkind = require('lspkind')
 
 -- nvim-cmp
 local source_mapping = {
@@ -357,22 +330,78 @@ local source_mapping = {
     tags = "[Tag]",
 }
 
-local cmp = require'cmp'
+local kind_icons = {
+  Text = "",
+  Method = "",
+  Function = "",
+  Constructor = "",
+  Field = "",
+  Variable = "",
+  Class = "",
+  Interface = "",
+  Module = "",
+  Property = "ﰠ",
+  Unit = "",
+  Value = "",
+  Enum = "",
+  Keyword = "",
+  Snippet = "",
+  Color = "",
+  File = "",
+  Reference = "",
+  Folder = "",
+  EnumMember = "",
+  Constant = "",
+  Struct = "",
+  Event = "",
+  Operator = "",
+  TypeParameter = ""
+}
+
+--  "  (text)",
+--  "  (method)",
+--  "  (fun)",
+--  "  (constructor)",
+--  "ﰠ  (field)",
+--  " (var)",
+--  "ﴯ  (class)",
+--  "  (interface)",
+--  "  (module)",
+--  "ﰠ  (property)",
+--  "塞 (unit)",
+--  "  (value)",
+--  "  (enum)",
+--  "  (keyword)",
+--  "  (snippet)",
+--  "  (color)",
+--  "  (file)",
+--  "  (reference)",
+--  "  (folder)",
+--  "  (enum-member)",
+--  "  (constant)",
+--  "פּ  (struct)",
+--  "  (event)",
+--  "  (operator)",
+--  "   (type-param)"
+
+local cmp = require('cmp')
 cmp.setup({
     sources = {
         { name = 'nvim_lsp' },
-        -- { name = 'cmp_tabnine' },
         { name = 'buffer' },
         { name = 'path' },
+        { name = 'vsnip' },
+        -- { name = 'cmp_tabnine' },
     },
     mapping = {
       ['<C-Space>'] = cmp.mapping.complete(),
       ['<Tab>'] = cmp.mapping.confirm({ select = true }),
+      ['<CR>'] = cmp.mapping.confirm({ select = false }),
       ['<C-n>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
       ['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
       ['<Down>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
       ['<Up>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
-      ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
       ['<C-f>'] = cmp.mapping.scroll_docs(4),
       ['<C-e>'] = cmp.mapping.close(),
       ['<C-c>'] = function(fallback)
@@ -381,27 +410,23 @@ cmp.setup({
       end,
     },
 	formatting = {
-		format = function(entry, vim_item)
-			vim_item.kind = lspkind.presets.default[vim_item.kind] .. " " .. vim_item.kind
-			local menu = source_mapping[entry.source.name]
-			if entry.source.name == 'cmp_tabnine' then
-				if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
-                    vim_item.kind = '' .. " " .. entry.completion_item.data.detail
-					--menu = entry.completion_item.data.detail .. ' ' .. menu
-				end
-				--vim_item.kind = ''
-			end
-			vim_item.menu = menu
-			return vim_item
-		end
+        format = lspkind.cmp_format({
+            with_text = true,
+            -- preset = "default",
+            menu = ({
+                buffer = "[Buffer]",
+                nvim_lsp = "[LSP]",
+                path = "[Path]",
+                tags = "[Tag]",
+                vsnip = "[Snippet]",
+            }),
+            symbol_map = kind_icons,
+        }),
 	},
     snippet = {
         -- REQUIRED - you must specify a snippet engine
         expand = function(args)
             vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-            -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-            -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-            -- require'snippy'.expand_snippet(args.body) -- For `snippy` users.
         end,
     },
     experimental = {
@@ -436,13 +461,14 @@ require('telescope').setup {
 }
 -- require('telescope').load_extension('fzf')
 require('telescope').load_extension('vimwiki')
+require('telescope').load_extension('emoji')
 
 -- lualine
 local gps = require("nvim-gps")
 require('lualine').setup {
     options = {
-        theme = 'github',
-        -- theme = 'auto',
+        -- theme = 'github',
+        theme = 'auto',
         --section_separators = '',
         --component_separators = '',
     },
@@ -468,22 +494,22 @@ require('lualine').setup {
     }
 }
 
--- github colorscheme
--- https://github.com/projekt0n/github-nvim-theme#configuration
-require('github-theme').setup {
-    theme_style = "dimmed",
-    hide_inactive_statusline = false,
-    hide_end_of_buffer = false,
-    dark_sidebar = true,
-    dark_float = true,
-    comment_style = "italic",
-    colors = {
-        bg_search = "yellow",
-        fg_search = "black",
-        hint = "#707070",
-        -- bg_statusline = "#00ff00",  -- test
-    },
-}
+-- -- github colorscheme
+-- -- https://github.com/projekt0n/github-nvim-theme#configuration
+-- require('github-theme').setup {
+--     theme_style = "dimmed",
+--     hide_inactive_statusline = false,
+--     hide_end_of_buffer = false,
+--     dark_sidebar = true,
+--     dark_float = true,
+--     comment_style = "italic",
+--     colors = {
+--         bg_search = "yellow",
+--         fg_search = "black",
+--         hint = "#707070",
+--         -- bg_statusline = "#00ff00",  -- test
+--     },
+-- }
 
 -- gitsigns
 require('gitsigns').setup {
@@ -591,6 +617,8 @@ require('nvim-tree').setup {
     },
     view = {
         width = 30,
+        -- height = 30,
+        hide_root_folder = false,
         side = 'left',
         auto_resize = false,
         mappings = {
@@ -695,8 +723,8 @@ endif
 " For dark version.
 set background=dark
 
-"let g:monochrome_italic_comments = 1
-"colorscheme monochrome
+let g:srcery_italic = 1
+colorscheme srcery
 " source $HOME/.dotfiles/vim/uolors.vim
 
 "filetype plugin indent on
@@ -726,4 +754,5 @@ autocmd BufEnter *.png,*.jpg,*.gif exec "!imv ".expand("%") | :bw
 " open PDFs with zathura
 autocmd BufEnter *.pdf exec "!zathura ".expand("%") | :bw
 
-
+" DiffOrig
+command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis | wincmd p | diffthis

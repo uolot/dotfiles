@@ -3,6 +3,7 @@ read:
 [ ] https://www.reddit.com/r/neovim/comments/pvwk8l/do_you_use_a_completion_plugin_or_use_your_own/hed2ikq/?context=3
 [ ] https://mark-story.com/posts/view/switching-to-neovim-native-lsp
 [ ] https://github.com/mattn/efm-langserver/issues/132
+[ ] https://github.com/nanotee/nvim-lua-guide
 
 dotfiles:
 [ ] https://github.com/ibhagwan/nvim-lua
@@ -16,11 +17,16 @@ dotfiles:
 [ ] https://gist.github.com/benfrain/97f2b91087121b2d4ba0dcc4202d252f
 
 plugins:
-[ ] https://github.com/ray-x/lsp_signature.nvim
+[ ] https://github.com/nathom/filetype.nvim
+[ ] https://github.com/dstein64/vim-startuptime
+[ ] https://github.com/lewis6991/impatient.nvim
+[ ] https://github.com/wbthomason/packer.nvim / https://github.com/Allaman/nvim/commit/47a08f5b3d67d02441e0f2307d4877eab009e1fb
+
+[ ] https://github.com/ray-x/navigator.lua / https://www.youtube.com/watch?v=b4s9MhasGn4
 [ ] https://github.com/jose-elias-alvarez/null-ls.nvim
 [ ] https://github.com/LionC/nest.nvim
+[ ] https://gitlab.com/yorickpeterse/nvim-dd
 [ ] https://github.com/NTBBloodbath/rest.nvim
-[ ] https://github.com/Pocco81/HighStr.nvim
 [ ] https://github.com/ThePrimeagen/git-worktree.nvim
 [ ] https://github.com/b3nj5m1n/kommentary
 [ ] https://github.com/haringsrob/nvim_context_vt
@@ -29,6 +35,7 @@ plugins:
 [ ] https://github.com/TimUntersberger/neogit
 [ ] https://github.com/kdheepak/lazygit.nvim
 [ ] https://github.com/kevinhwang91/nvim-bqf
+[ ] https://github.com/ldelossa/calltree.nvim
 [ ] https://github.com/lazytanuki/nvim-mapper
 [ ] https://github.com/lukas-reineke/headlines.nvim
 [ ] https://github.com/nanotee/nvim-lua-guide
@@ -46,13 +53,14 @@ plugins:
 [ ] https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 [ ] https://github.com/mfussenegger/nvim-ts-hint-textobject
 [ ] https://github.com/huawenyu/vimgdb
-[ ] https://github.com/ray-x/navigator.lua
 [ ] https://github.com/windwp/windline.nvim
 [ ] https://github.com/ThePrimeagen/refactoring.nvim
 [ ] https://github.com/tpope/vim-sensible
 [ ] https://github.com/pianocomposer321/yabs.nvim
 [ ] https://github.com/arkav/lualine-lsp-progress
 
+[x] https://github.com/Pocco81/HighStr.nvim
+[x] https://github.com/ray-x/lsp_signature.nvim
 [x] https://github.com/ElPiloto/telescope-vimwiki.nvim
 [x] https://github.com/rmagatti/goto-preview
 [x] https://github.com/nvim-treesitter/nvim-treesitter-refactor

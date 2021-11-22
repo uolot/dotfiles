@@ -52,6 +52,7 @@
 " more telescope
     nnoremap <silent> <Leader>tc :Telescope git_bcommits<CR>
     nnoremap <silent> <Leader>td :TodoTelescope<CR>
+    nnoremap <silent> <Leader>te :Telescope emoji<CR>
     nnoremap <silent> <Leader>tf :Telescope current_buffer_fuzzy_find<CR>
     nnoremap <silent> <Leader>tr :Telescope lsp_references<CR>
     nnoremap <silent> <Leader>ts :Telescope lsp_dynamic_workspace_symbols<CR>
@@ -67,6 +68,36 @@
     nnoremap <silent> <Leader>nn :NvimTreeToggle<CR>
     nnoremap <silent> <Leader>nr :NvimTreeRefresh<CR>
     nnoremap <silent> <Leader>nt :NvimTreeFocus<CR>
+
+" colour
+    " visual
+    vnoremap <silent> <Leader>k1 :<c-u>HSHighlight 1<CR>
+    vnoremap <silent> <Leader>k2 :<c-u>HSHighlight 2<CR>
+    vnoremap <silent> <Leader>k3 :<c-u>HSHighlight 3<CR>
+    vnoremap <silent> <Leader>k4 :<c-u>HSHighlight 4<CR>
+    vnoremap <silent> <Leader>k5 :<c-u>HSHighlight 5<CR>
+    vnoremap <silent> <Leader>k6 :<c-u>HSHighlight 6<CR>
+    vnoremap <silent> <Leader>k7 :<c-u>HSHighlight 7<CR>
+    vnoremap <silent> <Leader>k8 :<c-u>HSHighlight 8<CR>
+    vnoremap <silent> <Leader>k9 :<c-u>HSHighlight 9<CR>
+    " normal
+    nnoremap <silent> <Leader>k1 V:<c-u>HSHighlight 1<CR>
+    nnoremap <silent> <Leader>k2 V:<c-u>HSHighlight 2<CR>
+    nnoremap <silent> <Leader>k3 V:<c-u>HSHighlight 3<CR>
+    nnoremap <silent> <Leader>k4 V:<c-u>HSHighlight 4<CR>
+    nnoremap <silent> <Leader>k5 V:<c-u>HSHighlight 5<CR>
+    nnoremap <silent> <Leader>k6 V:<c-u>HSHighlight 6<CR>
+    nnoremap <silent> <Leader>k7 V:<c-u>HSHighlight 7<CR>
+    nnoremap <silent> <Leader>k8 V:<c-u>HSHighlight 8<CR>
+    nnoremap <silent> <Leader>k9 V:<c-u>HSHighlight 9<CR>
+    " clear selection
+    vnoremap <silent> <Leader>kk :<c-u>HSRmHighlight<CR>
+    nnoremap <silent> <Leader>kk V:<c-u>HSRmHighlight<CR>
+    " colour word/Word
+    nnoremap <silent> <Leader>kw viw:<c-u>HSHighlight 1<CR>
+    nnoremap <silent> <Leader>kW viW:<c-u>HSHighlight 1<CR>
+    " clear all
+    nnoremap <silent> <Leader>kx :<c-u>HSRmHighlight rm_all<CR>
 
 " jump between splits
 nnoremap <C-h> <C-w>h
@@ -105,3 +136,7 @@ xmap N <SID>(search-backward)
     xnoremap au :lua require"treesitter-unit".select(true)<CR>
     onoremap iu :<c-u>lua require"treesitter-unit".select()<CR>
     onoremap au :<c-u>lua require"treesitter-unit".select(true)<CR>
+
+" fast buffer switching
+nnoremap <Backspace> <C-^>
+

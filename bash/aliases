@@ -37,6 +37,10 @@ rmup() {
     esac
 }
 
+random-file() {
+    echo "$(fd -t f . | shuf -n 1)"
+}
+
 # print horizontal divider
 hr() {
     echo -n $(seq -s= $(echo $(tput cols) "-19" | bc) | tr -d '[:digit:]')
