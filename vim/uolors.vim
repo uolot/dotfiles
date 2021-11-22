@@ -1,5 +1,7 @@
 " :so $VIMRUNTIME/syntax/hitest.vim
 
+" xterm-256 colors: https://en.wikipedia.org/wiki/Xterm#/media/File:Xterm_256color_chart.svg
+
 syntax reset
 set background=dark
 
