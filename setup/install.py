@@ -152,6 +152,7 @@ DEVELOPMENT_PKGS = [
     "extra/strace",
     "community/terraform",
     "aur/tflint-bin",
+    "community/tig",
     "aur/vscode-html-languageserver-bin",
     # "community/zig",
 ]
@@ -256,6 +257,7 @@ KEYBOARD_PKGS = [
 
 KUBERNETES_PKGS = [
     "kubernetes-tools",
+    "community/k9s",
     "aur/kind-bin",
     "aur/minikube-bin",
 ]
