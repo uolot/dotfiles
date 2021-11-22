@@ -21,7 +21,7 @@
 [diff]
 	colorMoved = default
 [help]
-	autocorrect = 0
+	autoCorrect = prompt
 [log]
 	decorate = full
 [merge]
