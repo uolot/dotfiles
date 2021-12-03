@@ -9,8 +9,14 @@ case "$1" in
         git config user.name "Tomasz Walotek"
         git config user.email "tomasz.walotek@elementhuman.com"
         ;;
+    lego)
+        git config user.name "Tomasz Walotek"
+        git config user.email "tomasz.walotek@lego.com"
+        git config user.gpgsign true
+        git config user.signingkey 2D55E293CF
+        ;;
     *)
-        echo "Usage: $(basename $0) <personal|eh>"
+        echo "Usage: $(basename $0) <personal|lego|eh>"
         ;;
 esac
 

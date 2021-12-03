@@ -1,0 +1,147 @@
+tap "cormacrelf/tap"
+tap "felixkratz/formulae"
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/cask-drivers"
+tap "homebrew/cask-versions"
+tap "homebrew/core"
+tap "homebrew/services"
+tap "koekeishiya/formulae"
+tap "mhanberg/zk"
+tap "osx-cross/arm"
+tap "osx-cross/avr"
+tap "qmk/qmk"
+# Extendable version manager with support for Ruby, Node.js, Erlang & more
+brew "asdf"
+# Library for USB device access
+brew "libusb"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.10"
+# Official Amazon AWS command-line interface
+brew "awscli"
+# Simple command-line tool to read AWS CloudWatch logs
+brew "awslogs"
+# Bourne-Again SHell, a UNIX command interpreter
+brew "bash"
+# Clone of cat(1) with syntax highlighting and Git integration
+brew "bat"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.9"
+# Core application library for C
+brew "glib"
+# Statistics utility to count lines of code
+brew "cloc"
+# Color-highlighted diff(1) output
+brew "colordiff"
+# Load/unload environment variables based on $PWD
+brew "direnv"
+# Simple, fast and user-friendly alternative to find
+brew "fd"
+# GNU Transport Layer Security (TLS) Library
+brew "gnutls"
+# Generate introspection data for GObject libraries
+brew "gobject-introspection"
+# OpenType text shaping engine
+brew "harfbuzz"
+# Play, record, convert, and stream audio and video
+brew "ffmpeg"
+# Command-line fuzzy finder written in Go
+brew "fzf"
+# Distributed revision control system
+brew "git"
+# Syntax-highlighting pager for git and diff output
+brew "git-delta"
+# GNU Pretty Good Privacy (PGP) package
+brew "gnupg"
+# Make JSON greppable
+brew "gron"
+# Improved top (interactive process viewer)
+brew "htop"
+# User-friendly cURL replacement (command-line HTTP client)
+brew "httpie"
+# Tools and libraries to manipulate images in many formats
+brew "imagemagick"
+# JSON output from a shell
+brew "jo"
+# Lightweight and flexible command-line JSON processor
+brew "jq"
+# Network authentication protocol
+brew "krb5"
+# Language Server for the Lua language
+brew "lua-language-server"
+# Powerful, lightweight programming language (v5.1.5)
+brew "lua@5.1"
+# Package manager for the Lua programming language
+brew "luarocks"
+# Collection of tools that nobody wrote when UNIX was young
+brew "moreutils"
+# NCurses Disk Usage
+brew "ncdu"
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
+# Command-line collection runner for Postman
+brew "newman"
+# Professional collaborative platform for embedded development
+brew "platformio"
+# Object-relational database system
+brew "postgresql"
+# Python interface to Tcl/Tk
+brew "python-tk@3.9"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
+# Readline wrapper: adds readline support to tools that lack it
+brew "rlwrap"
+# Safe, concurrent, practical language
+brew "rust"
+# Login and retrieve AWS temporary credentials using a SAML IDP
+brew "saml2aws"
+# Display and control your Android device
+brew "scrcpy"
+# AWS SQS Message mover
+brew "sqsmover"
+# Cross-shell prompt for astronauts
+brew "starship"
+# Code-search similar to ack
+brew "the_silver_searcher"
+# Text interface for Git repositories
+brew "tig"
+# Display directories as trees (with optional color/HTML output)
+brew "tree"
+# Maintained ctags implementation
+brew "universal-ctags"
+# Tool for writing command-line pipes with instant live preview
+brew "up"
+# Watch files and take action when they change
+brew "watchman"
+# Internet file retriever
+brew "wget"
+# A tiling window manager for macOS based on binary space partitioning.
+brew "koekeishiya/formulae/yabai"
+# Plain text note-taking assistant
+brew "mhanberg/zk/zk"
+# Quantum Mechanical Keyboard (QMK) Firmware
+brew "qmk/qmk/qmk"
+# Android SDK component
+cask "android-platform-tools"
+# Desktop automation application
+cask "hammerspoon"
+# Java IDE by JetBrains
+cask "intellij-idea"
+# Terminal emulator as alternative to Apple's Terminal app
+cask "iterm2-beta"
+# Keyboard customizer
+cask "karabiner-elements"
+# Open-source Markdown editor
+cask "macdown"
+# Online collaborative whiteboard platform
+cask "miro"
+# Collaboration platform for API development
+cask "postman"
+# Toolbox companion for QMK Firmware
+cask "qmk-toolbox"
+# Instant messaging application focusing on security
+cask "signal"
+# Team communication and collaboration software
+cask "slack"
+# Open-source code editor
+cask "visual-studio-code"

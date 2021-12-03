@@ -6,17 +6,14 @@ endif
 
 call plug#begin(stdpath('data') . '/plugged')
 
+Plug 'nvim-lua/plenary.nvim'
+
 " -- LSP --
 
+Plug 'williamboman/nvim-lsp-installer'
 Plug 'neovim/nvim-lspconfig'
-" TODO: move from nvim-lspinstall to nvim-lsp-installer
-Plug 'kabouzeid/nvim-lspinstall'
-" Plug 'williamboman/nvim-lsp-installer'
 
-" A small Neovim plugin for previewing definitions using floating windows
-" https://github.com/rmagatti/goto-preview
-Plug 'rmagatti/goto-preview'
-
+" https://github.com/RishabhRD/popfix
 Plug 'RishabhRD/popfix'
 " https://github.com/RishabhRD/nvim-lsputils
 Plug 'RishabhRD/nvim-lsputils'
@@ -24,12 +21,11 @@ Plug 'RishabhRD/nvim-lsputils'
 " https://github.com/onsails/lspkind-nvim
 Plug 'onsails/lspkind-nvim'
 
-" Display Neovim LSP diagnostics in ALE
-" https://github.com/nathanmsmith/nvim-ale-diagnostic
-Plug 'nathanmsmith/nvim-ale-diagnostic'
-
+" https://github.com/kosayoda/nvim-lightbulb
 Plug 'kosayoda/nvim-lightbulb'
 
+" Creates missing LSP diagnostics highlight groups
+" https://github.com/folke/lsp-colors.nvim
 Plug 'folke/lsp-colors.nvim'
 
 Plug 'folke/trouble.nvim'
@@ -46,18 +42,31 @@ Plug 'ray-x/lsp_signature.nvim'
 " https://github.com/jose-elias-alvarez/null-ls.nvim
 Plug 'jose-elias-alvarez/null-ls.nvim'
 
+" Incremental LSP rename command based on Neovim's command-preview feature
+" https://github.com/smjonas/inc-rename.nvim
+Plug 'smjonas/inc-rename.nvim'
 
 " -- Completion --
 
 Plug 'hrsh7th/cmp-nvim-lsp'
 
 Plug 'hrsh7th/cmp-buffer'
-
 " https://github.com/hrsh7th/cmp-path
 Plug 'hrsh7th/cmp-path'
-
-" https://github.com/tzachar/cmp-tabnine
-Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
+" https://github.com/hrsh7th/cmp-cmdline
+Plug 'hrsh7th/cmp-cmdline'
+" https://github.com/hrsh7th/cmp-nvim-lsp-document-symbol
+Plug 'hrsh7th/cmp-nvim-lsp-document-symbol'
+" https://github.com/hrsh7th/cmp-calc
+Plug 'hrsh7th/cmp-calc'
+" https://github.com/uga-rosa/cmp-dictionary
+Plug 'uga-rosa/cmp-dictionary'
+" https://github.com/hrsh7th/cmp-omni
+Plug 'hrsh7th/cmp-omni'
+" https://github.com/quangnguyen30192/cmp-nvim-tags
+Plug 'quangnguyen30192/cmp-nvim-tags'
+" https://github.com/hrsh7th/cmp-emoji
+Plug 'hrsh7th/cmp-emoji'
 
 " A snippet plugin is required by nvim-cmp
 " https://github.com/hrsh7th/vim-vsnip
@@ -72,79 +81,47 @@ Plug 'hrsh7th/nvim-cmp'
 " -- Treesitter --
 
 Plug 'JoosepAlviste/nvim-ts-context-commentstring'
+" Use treesitter to auto close and auto rename html tags
+" https://github.com/windwp/nvim-ts-autotag
 Plug 'windwp/nvim-ts-autotag'
+
 " Plug 'lukas-reineke/indent-blankline.nvim'
 
-Plug 'nvim-treesitter/playground'
-Plug 'nvim-treesitter/nvim-treesitter', {'branch' : '0.5-compat','do': ':TSUpdate'}
-Plug 'nvim-treesitter/nvim-treesitter-textobjects', {'branch' : '0.5-compat'}
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'nvim-treesitter/nvim-treesitter-refactor'
-" https://github.com/David-Kunz/treesitter-unit/
-Plug 'David-Kunz/treesitter-unit/'
-
-
-
-Plug 'michaeljsmith/vim-indent-object'
-
-" TODO: revisit in future
-" https://github.com/Jason-M-Chan/ts-textobjects
-"Plug 'Jason-M-Chan/ts-textobjects'
+" Rainbow parentheses for neovim using treesitter
+" https://sr.ht/~p00f/nvim-ts-rainbow/
+Plug 'p00f/nvim-ts-rainbow'
 
 
 " -- Telescope --
 
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-" Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' }
 " https://github.com/xiyaowong/telescope-emoji.nvim
 Plug 'xiyaowong/telescope-emoji.nvim'
 
 
 " -- Colorschemes --
 
+" https://github.com/nvim-lualine/lualine.nvim
+Plug 'nvim-lualine/lualine.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
+
 " grep: github-colors github-theme
 " https://github.com/projekt0n/github-nvim-theme
-" Plug 'projekt0n/github-nvim-theme'
+Plug 'projekt0n/github-nvim-theme'
 
-" https://github.com/srcery-colors/srcery-vim
-Plug 'srcery-colors/srcery-vim'
+" -- Misc --
 
-
-
-" Highlights the line of the cursor only in the current window
-" https://github.com/miyakogi/conoline.vim
-" Plug 'miyakogi/conoline.vim'
-"     let g:conoline_auto_enable = 1
-"     let g:conoline_use_colorscheme_default_normal=1
-"     let g:conoline_use_colorscheme_default_insert=1
-
+" Vim plugin that defines a new text object representing lines of code at the
+" same indent level. Useful for python/vim scripts, etc.
+" https://github.com/michaeljsmith/vim-indent-object
+Plug 'michaeljsmith/vim-indent-object'
 
 Plug 'lewis6991/gitsigns.nvim'
 
-" global statusline on floating window
-" https://github.com/windwp/floatline.nvim
-" NOTE: check later, doesn't work very well as of 2021-09-30
-" Plug 'windwp/floatline.nvim'
-
 Plug 'karb94/neoscroll.nvim'
-
-" highlight yanked region
-" Plug 'machakann/vim-highlightedyank'
-" TODO: replace with:
-" augroup highlight_yank
-"     autocmd!
-"     au TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=200 }
-" augroup END
-
-" underline word under cursor
-" https://github.com/itchyny/vim-cursorword
-" Plug 'itchyny/vim-cursorword'
-"     let g:cursorword_highlight = 1
-
-" Semantic highlight
-" https://github.com/jaxbot/semantic-highlight.vim
-Plug 'jaxbot/semantic-highlight.vim'
-    " autocmd BufEnter * SemanticHighlight
 
 " Readline style insertion
 Plug 'tpope/vim-rsi'
@@ -152,145 +129,38 @@ Plug 'tpope/vim-rsi'
 " disables search highlighting when you are done searching and re-enables it when you search again
 Plug 'romainl/vim-cool'
 
-" Range, pattern and substitute preview
-Plug 'markonm/traces.vim'
-    let g:traces_normal_preview = 1
-
-" Close brackets on enter
-" Config: https://github.com/rstacruz/vim-closer/blob/master/plugin/closer.vim
-"Plug 'rstacruz/vim-closer'
-
 " handle line and column numbers in file names, eg: file.txt:10 or file.txt:10:5
 Plug 'kopischke/vim-fetch'
-
-" guess file indentation style
-" XXX: causes red indent highlights :shrug:
-" Plug 'conormcd/matchindent.vim'
 
 " auto-generate ctags file
 Plug 'ludovicchabant/vim-gutentags'
     let g:gutentags_project_root = [
-        \'docker-compose.yml',
-        \'Makefile',
-        \'pyproject.toml',
-        \'.python-version',
-        \'README',
-        \'README.md'
-        \'requirements.txt',
-        \'setup.py',
-    \]
+            \'package.json',
+            \'docker-compose.yml',
+            \'Makefile',
+            \'pyproject.toml',
+            \'.python-version',
+            \'README',
+            \'README.md'
+            \'requirements.txt',
+            \'setup.py',
+            \]
 
-Plug 'tpope/vim-commentary'
+" https://github.com/numToStr/Comment.nvim
+Plug 'numToStr/Comment.nvim'
 
 Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
-
-Plug 'davidhalter/jedi-vim', {'for': 'python'}
-    let g:jedi#popup_on_dot = 0
-    let g:jedi#show_call_signatures = 0
-
-    let g:jedi#goto_command = '<leader>jg'
-    let g:jedi#goto_assignments_command = '<leader>ja'
-    let g:jedi#goto_definitions_command = '<leader>jd'
-    let g:jedi#goto_stubs_command = '<leader>js'
-    let g:jedi#usages_command = '<leader>ju'
-    let g:jedi#rename_command = '<leader>jr'
-
-    " autocmd FileType python setlocal completeopt-=preview
-
-" Generate Python docstring to your Python source code
-" https://github.com/heavenshell/vim-pydocstring
-Plug 'heavenshell/vim-pydocstring', { 'for': 'python' }
-    let g:pydocstring_enable_mapping = 0
-    let g:pydocstring_ignore_init = 1
-    let g:pydocstring_formatter = 'google'
-    let g:pydocstring_doq_path = '/home/tomasz/.local/bin/doq'
-    let g:pydocstring_templates_path = '/home/tomasz/.dotfiles/doq'
-    nnoremap <Leader>pd :Pydocstring<CR>
-    xnoremap <Leader>pd :Pydocstring<CR>
-    nnoremap <Leader>pD :PydocstringFormat<CR>
-
-" Highlight and navigate multiple words
-" https://github.com/lfv89/vim-interestingwords
-" Plug 'lfv89/vim-interestingwords'
-"     let g:interestingWordsDefaultMappings = 0
-"     nnoremap <silent> <leader>k :call InterestingWords('n')<cr>
-"     vnoremap <silent> <leader>k :call InterestingWords('v')<cr>
-"     nnoremap <silent> <leader>K :call UncolorAllWords()<cr>
-"     " let g:interestingWordsTermColors = ['154', '121', '211', '137', '214', '222']
-"     let g:interestingWordsTermColors = [
-"                 \ '1', '2', '3', '4', '5', '6', '9', '63', '75', '81', '85', '87',
-"                 \ '99', '108', '115', '125', '137', '141', '142', '154',
-"                 \ '159', '165', '167', '175', '202', '207', '208', '211', '214', '219',
-"                 \ '226', '228'
-"                 \ ]
-"     let g:interestingWordsRandomiseColors = 1
 
 " highlighting visual selections
 " https://github.com/Pocco81/HighStr.nvim
 Plug 'Pocco81/HighStr.nvim'
 
+" Highlight several words in different colors simultaneously
+" https://github.com/inkarkat/vim-mark
+let g:mw_no_mappings = 1
+Plug 'inkarkat/vim-ingo-library'
+Plug 'inkarkat/vim-mark'
 
-
-" https://github.com/dense-analysis/ale
-" let g:ale_set_balloons = 1
-Plug 'dense-analysis/ale'
-    let g:ale_linters = {
-                \ 'python': ['mypy', 'flake8'],
-                \}
-                "\'javascript': ['eslint', 'deno'],
-                " \'javascript': [],
-                " \'vue': [],
-    let g:ale_fixers = {
-                \'bash': ['shfmt'],
-                \'python': ['isort', 'black'],
-                \'sh': ['shfmt'],
-                \}
-                " \'javascript': ['eslint'],
-                " \'typescript': ['eslint'],
-    let g:ale_fix_on_save = 1
-    let g:ale_lint_on_text_chaned = 1
-    let g:ale_lint_on_enter = 1
-    let g:ale_virtualenv_dir_names = ['venv', '.venv']
-    let g:ale_python_pylint_use_global = 0
-    let g:ale_python_auto_poetry = 1
-    let g:ale_python_flake8_options = '--max-line-length 88'
-    let g:ale_python_pydocstyle_options = '--convention=google'
-    " let g:ale_completion_enabled = 1
-    let g:ale_echo_msg_format = '[%linter% %severity%] %code: %%s'
-    let g:ale_virtualtext_cursor = 1
-    let g:ale_virtualtext_prefix = '  ■ '
-    " let g:ale_cursor_detail = 1
-    " let g:ale_close_preview_on_insert = 1
-    " let g:ale_hover_to_preview = 1
-     let g:ale_floating_preview = 1
-    " let g:ale_hover_to_floating_preview = 1
-    let g:ale_detail_to_floating_preview = 1
-    let g:ale_lsp_suggestions = 0
-    " set omnifunc=ale#completion#OmniFunc
-    " if executable('pyls')
-    "     au User lsp_setup call lsp#register_server({
-    "         \ 'name': 'pyls',
-    "         \ 'cmd': {server_info->['pyls']},
-    "         \ 'whitelist': ['python'],
-    "         \ })
-    " endif
-
-	" TOP_LEFT = '┌',
-	" TOP_RIGHT = '┐',
-	" MID_HORIZONTAL = '─',
-	" MID_VERTICAL = '│',
-	" BOTTOM_LEFT = '└',
-	" BOTTOM_RIGHT = '┘',
-    " the horizontal, top, top-left, top-right, bottom-right and bottom-left
-    let g:ale_floating_window_border = ['│', '─', '╭', '╮', '╯', '╰']
-    let g:ale_sign_error = ''
-    let g:ale_sign_warning = ''
-    let g:ale_sign_info = '🗩'
-    let g:ale_sign_style_error = ''
-    let g:ale_sign_style_warning = ''
-
-
-Plug 'mizlan/iswap.nvim'
 
 " Whenever cursor jumps some distance or moves between windows, it will flash so you can see where it is
 " https://github.com/DanilaMihailov/beacon.nvim
@@ -298,44 +168,21 @@ Plug 'danilamihailov/beacon.nvim'
     let g:beacon_shrink = 0
     let g:beacon_timeout = 200
 
-Plug 'blueyed/vim-diminactive'
-    let g:diminactive_use_colorcolumn = 1
-    let g:diminactive_use_syntax = 0
+" " https://github.com/blueyed/vim-diminactive
+" Plug 'blueyed/vim-diminactive'
+"     let g:diminactive_use_colorcolumn = 1
+"     let g:diminactive_use_syntax = 0
 
-" Plug 'TaDaa/vimade'
-"     let g:vimade = {}
-"     let g:vimade.fadelevel = 0.7
-"     let g:vimade.enablesigns = 1
-"     let g:vimade.enabletreesitter = 1
-
-" Simple statusline component that shows what scope you are working inside
-" https://github.com/SmiteshP/nvim-gps
-Plug 'SmiteshP/nvim-gps'
+" https://github.com/sunjon/Shade.nvim
+Plug 'sunjon/Shade.nvim'
 
 " displays a popup with possible keybindings of the command you started typing
 " https://github.com/folke/which-key.nvim
 Plug 'folke/which-key.nvim'
 
-" A more adventurous wildmenu
-" https://github.com/gelguy/wilder.nvim
-" NOTE: python3/pynvim/msgpack issues in venv
-"Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
-
-" https://github.com/nvim-lualine/lualine.nvim
-Plug 'nvim-lualine/lualine.nvim'
-Plug 'kyazdani42/nvim-web-devicons'
-
 " A file explorer tree for neovim written in lua
 " https://github.com/kyazdani42/nvim-tree.lua
 Plug 'kyazdani42/nvim-tree.lua'
-    let g:nvim_tree_gitignore = 1
-    let g:nvim_tree_highlight_opened_files = 1
-    let g:nvim_tree_add_trailing = 1
-    let g:nvim_tree_special_files = {
-            \ 'README.md': 1,
-            \ 'TODO.txt': 1,
-            \ 'TODO.md': 1
-            \ }
 
 
 " -- Git --
@@ -379,7 +226,24 @@ Plug 'nacro90/numb.nvim'
 
 " A better user experience for interacting with and manipulating Vim marks
 " https://github.com/chentau/marks.nvim
-Plug 'chentau/marks.nvim'
+" mx              Set mark x
+" m,              Set the next available alphabetical (lowercase) mark
+" m;              Toggle the next available mark at the current line
+" dmx             Delete mark x
+" dm-             Delete all marks on the current line
+" dm<space>       Delete all marks in the current buffer
+" m]              Move to next mark
+" m[              Move to previous mark
+" m:              Preview mark. This will prompt you for a specific mark to
+"                 preview; press <cr> to preview the next mark.
+" m[0-9]          Add a bookmark from bookmark group[0-9].
+" dm[0-9]         Delete all bookmarks from bookmark group[0-9].
+" m}              Move to the next bookmark having the same type as the bookmark under
+"                 the cursor. Works across buffers.
+" m{              Move to the previous bookmark having the same type as the bookmark under
+"                 the cursor. Works across buffers.
+" dm=             Delete the bookmark under the cursor.
+Plug 'chentoast/marks.nvim'
 
 " -- Vimwiki --
 
@@ -387,22 +251,80 @@ Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
 " https://github.com/ElPiloto/telescope-vimwiki.nvim
 Plug 'ElPiloto/telescope-vimwiki.nvim'
 
-"
 " Markdown live preview
 " https://github.com/iamcco/markdown-preview.nvim
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
     let g:mkdp_auto_close = 0
 
-" https://github.com/github/copilot.vim
-Plug 'github/copilot.vim'
-    imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
-    let g:copilot_no_tab_map = v:true
-    let g:copilot_filetypes = {
-        \ 'TelescopePrompt': v:false
-        \ }
+" " https://github.com/github/copilot.vim
+" Plug 'github/copilot.vim'
+"     imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
+"     let g:copilot_no_tab_map = v:true
+"     let g:copilot_filetypes = {
+"         \ 'TelescopePrompt': v:false
+"         \ }
 
 " Add extra window movements with <C-w> g [hjkl]
 " https://github.com/andymass/vim-tradewinds
 Plug 'andymass/vim-tradewinds'
+
+" Neovim extension for zk
+" https://github.com/mickael-menu/zk-nvim
+Plug 'mickael-menu/zk-nvim'
+
+" Run Async Shell Commands
+" https://github.com/skywind3000/asyncrun.vim
+Plug 'skywind3000/asyncrun.vim'
+" https://github.com/skywind3000/asynctasks.vim
+" Plug 'skywind3000/asynctasks.vim'
+
+" Set of operators and textobjects to search/select/edit sandwiched texts
+" https://github.com/machakann/vim-sandwich
+Plug 'machakann/vim-sandwich'
+
+" Additional text objects
+" Provides:
+" iX aX IX AX where X = () [] {} <> t ' " ` , . ; : + - = ~ _ * # / | \ & $
+" inX anX AnX InX for next object
+" ilX alX AlX IlX for previous (last) object
+" ia aa Ia Aa for arguments; works with nX/lX as well
+" " https://github.com/wellle/targets.vim
+Plug 'wellle/targets.vim'
+
+" Standalone UI for nvim-lsp progress
+" https://github.com/j-hui/fidget.nvim
+Plug 'j-hui/fidget.nvim'
+
+" https://github.com/nvim-telescope/telescope-fzf-native.nvim
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+
+" https://github.com/godlygeek/tabular
+Plug 'godlygeek/tabular'
+
+" https://github.com/preservim/vim-markdown
+Plug 'preservim/vim-markdown'
+    let g:vim_markdown_folding_disabled = 1
+    let g:vim_markdown_no_default_key_mappings = 1
+    let g:vim_markdown_toc_autofit = 1
+    let g:vim_markdown_conceal_code_blocks = 0
+    let g:vim_markdown_strikethrough = 1
+
+
+" Heuristically set buffer options
+" https://github.com/tpope/vim-sleuth
+Plug 'tpope/vim-sleuth'
+
+" Incremental fuzzy search motion plugin for Neovim
+" https://github.com/rlane/pounce.nvim
+Plug 'rlane/pounce.nvim'
+
+" Fix CursorHold Performance (recommended for nvim-lightbulb)
+" https://github.com/antoinemadec/FixCursorHold.nvim
+Plug 'antoinemadec/FixCursorHold.nvim'
+    let g:cursorhold_updatetime = 100
+
+" Single tabpage interface for easily cycling through diffs for all modified files for any git rev
+" https://github.com/sindrets/diffview.nvim
+Plug 'sindrets/diffview.nvim'
 
 call plug#end()

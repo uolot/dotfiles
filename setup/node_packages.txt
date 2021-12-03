@@ -1,0 +1,4 @@
+ts-node
+typescript-language-server
+eslint
+prettier

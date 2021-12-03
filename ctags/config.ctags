@@ -16,8 +16,6 @@
 --exclude=**/jquery*
 --exclude=venv/**/*test*
 
---exclude=**/node_modules/**/*
-
 --exclude=**/*.css
 --exclude=**/*.scss
 

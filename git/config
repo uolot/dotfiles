@@ -11,9 +11,12 @@
 	autocrlf = input
 	editor = nvim
 	excludesfile = ~/.gitignore
+	pager = delta
 [delta]
 	features = line-numbers decorations
 	inspect-raw-lines = false
+	navigate = true
+	side-by-side = true
 [delta "decorations"]
 	commit-decoration-style = bold yellow box ul
 	file-style = bold yellow ul
@@ -22,6 +25,8 @@
 	colorMoved = default
 [help]
 	autoCorrect = prompt
+[interactive]
+	; diffFilter = delta --color-only
 [log]
 	decorate = full
 [merge]
@@ -49,17 +54,14 @@
 	ap = add --patch
 
 	b = branch --verbose
-	# same as cb
-	bc = checkout -b
 	br = branch -ra
 
 	c = commit --verbose
 	ca = commit --amend --verbose
-	cam = commit --amend --reuse-message=HEAD
+	can = commit --amend --no-edit
 	cf = commit --fixup
 	cm = commit -m
 
-	# same as bc
 	cb = checkout -b
 	co = checkout
 	cop = checkout --patch
@@ -74,15 +76,10 @@
 	st = status --short --branch
 
 	# extra tools
-	frum = ! git fetch --all && git rebase upstream/master
-	from = ! git fetch --all && git rebase origin/master
-	prum = pull --rebase upstream master
-	prom = pull --rebase origin master
 	last = lgf -1
 	todos = !"ag '(TODO|XXX|FIXME)' $(git diff --name-only)"
 	rebase-since-last-merge = ! git rebase -i $(git log --merges -1 --format="%h")
 [pull]
 	ff = only
 [credential "https://gitlab.com"]
-	helper = 
 	helper = !/usr/bin/glab auth git-credential

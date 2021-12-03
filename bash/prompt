@@ -1,6 +1,8 @@
 # vim: ft=bash
 
 [[ -f /usr/share/git/completion/git-prompt.sh ]] && source /usr/share/git/completion/git-prompt.sh
+[[ -f /usr/local/etc/bash_completion.d/git-prompt.bash ]] && source /usr/local/etc/bash_completion.d/git-prompt.bash
+
 export GIT_PS1_SHOWDIRTYSTATE=1
 
 function prompt_command {
@@ -26,14 +28,16 @@ function prompt_command {
     then
         workdir=" ~ "
     else
-        local mypwd=$(pwd | sed "s#$HOME#/~#")
-        local promptpath_path=$(echo $mypwd | cut -c2- | tr '/' '\n' | head -n -1 | cut -c-3 | paste -sd / -)
-        if [[ "$promptpath_path" != ~* ]]
-        then
-            promptpath_path="/$promptpath_path"
-        fi
-        promptpath_dir=$(basename "`echo $mypwd`")
-        workdir=" $(echo "$promptpath_path/$promptpath_dir" | tr -s /) "
+        local mypwd=$(pwd | sed "s#$HOME#~#")
+        # local promptpath_path=$(echo $mypwd | cut -c2- | tr '/' '\n' | head -n -1 | cut -c-3 | paste -sd / -)
+        # local promptpath_path=$(echo $mypwd | cut -c2- | tr '/' '\n' | tail -n 1 | cut -c-3 | paste -sd / -)
+        # if [[ "$promptpath_path" != ~* ]]
+        # then
+        #     promptpath_path="/$promptpath_path"
+        # fi
+        # promptpath_dir=$(basename "`echo $mypwd`")
+        # workdir=" $(echo "$promptpath_path/$promptpath_dir" | tr -s /) "
+        workdir=" $mypwd "
     fi
 
     echo $PWD > /tmp/workdir
@@ -46,7 +50,9 @@ function prompt_command {
         venvprompt=" ($(basename $VIRTUAL_ENV))"
     fi
 
-    local gitprompt="$(__git_ps1 " (%s) ")"
+    # FIXME:
+    #local gitprompt="$(__git_ps1 " (%s) ")"
+    local gitprompt=""
 
     local width=$(tput cols)
     local width40pct=$(($width * 2 / 5))

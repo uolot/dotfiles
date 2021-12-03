@@ -43,7 +43,7 @@ random-file() {
 
 # print horizontal divider
 hr() {
-    echo -n $(seq -s= $(echo $(tput cols) "-19" | bc) | tr -d '[:digit:]')
+    echo -n $(seq -s= $(echo $(tput cols) "-20" | bc) | tr -d '[:digit:]')
     echo -n " "
     echo $(date +'%Y-%m-%d %H:%M:%S')
 }
@@ -65,3 +65,11 @@ gits() {
 # weather report
 alias weather="curl wttr.in/?0"
 alias weather-full="curl wttr.in/"
+
+# find to-dos
+alias todos="ag '(TODO|XXX|FIXME)' $@"
+
+# scratchpad
+alias scratchpad="nvim ~/Documents/ZK/scratchpad_0ixi_2022-03-30.md"
+alias scratchpad-copy="cat ~/scratchpad | pbcopy"
+
