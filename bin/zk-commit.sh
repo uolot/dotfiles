@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
-FILE="$1"
-DIR="$(dirname "$FILE")"
-NAME="$(basename "$FILE")"
+ROOT=$HOME/Documents/ZK/
+DOC=$1
+FILE=${DOC/#$ROOT}
 
-cd "$DIR"
+cd "$ROOT"
 
 git rev-parse --git-dir $FILE > /dev/null 2>&1 || { echo "error"; exit 1; }
 
-MESSAGE="$(date +'%Y-%m-%d') $NAME"
+MESSAGE="$(date +'%Y-%m-%d') $FILE"
 echo $MESSAGE
 
 git add .

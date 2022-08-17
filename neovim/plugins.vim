@@ -60,11 +60,11 @@ Plug 'hrsh7th/cmp-nvim-lsp-document-symbol'
 " https://github.com/hrsh7th/cmp-calc
 Plug 'hrsh7th/cmp-calc'
 " https://github.com/uga-rosa/cmp-dictionary
-Plug 'uga-rosa/cmp-dictionary'
+" Plug 'uga-rosa/cmp-dictionary'
 " https://github.com/hrsh7th/cmp-omni
 Plug 'hrsh7th/cmp-omni'
 " https://github.com/quangnguyen30192/cmp-nvim-tags
-Plug 'quangnguyen30192/cmp-nvim-tags'
+" Plug 'quangnguyen30192/cmp-nvim-tags'
 " https://github.com/hrsh7th/cmp-emoji
 Plug 'hrsh7th/cmp-emoji'
 

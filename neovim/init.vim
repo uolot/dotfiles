@@ -32,7 +32,7 @@ set linebreak " do not wrap in the middle of a word
 set list " display special chars
 set listchars=tab:→\ ,trail:∎  " special chars for list mode
 set nomodelineexpr  " disable modelinexpr, see: https://github.com/numirias/security/blob/master/doc/2019-06-04_ace-vim-neovim.md
-set mouse= " disable mouse
+set mouse=a " enable mouse
 set nrformats-=octal  " for C-a/C-x treat octal numbers (starting with 0) as decimal numbers
 set number " display line numbers
 set omnifunc=syntaxcomplete#Complete " enable omnicompletion
@@ -524,9 +524,9 @@ cmp.setup({
         { name = 'buffer' },
         { name = 'path', option = { trailing_slash = false } },
         { name = 'omni' },
-        { name = 'tags' },
+        -- { name = 'tags' },
         { name = 'vsnip' },
-        { name = 'dictionary', keyword_length = 3 },
+        -- { name = 'dictionary', keyword_length = 3 },
         { name = 'emoji', insert = true },
         { name = 'calc' },
     },
@@ -539,12 +539,12 @@ cmp.setup({
             menu = ({
                 buffer = "[Buf]",
                 calc = "[Calc]",
-                dictionary = "[Dict]",
+                -- dictionary = "[Dict]",
                 emoji = "[Emoji]",
                 nvim_lsp = "[LSP]",
                 omni = "[Omni]",
                 path = "[Path]",
-                tags = "[Tag]",
+                -- tags = "[Tag]",
                 vsnip = "[Snip]",
             }),
             symbol_map = kind_icons,
@@ -576,14 +576,14 @@ cmp.setup.cmdline('/', {
     }
 })
 
-require('cmp_dictionary').setup({
-    dic = {
-        ['*'] = { '/usr/share/dict/words' },
-    },
-    exact = 2,
-    first_case_insensitive = true,
-    capacity = 5,
-})
+-- require('cmp_dictionary').setup({
+--     dic = {
+--         ['*'] = { '/usr/share/dict/words' },
+--     },
+--     exact = 2,
+--     first_case_insensitive = true,
+--     capacity = 5,
+-- })
 
 -- ZK
 require("zk").setup({

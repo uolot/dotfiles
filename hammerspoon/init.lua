@@ -131,7 +131,7 @@ local meh = {"alt", "ctrl", "shift"}
 -- mapped keys
 -- . . . R . Y U . . .
 -- . . . . . . . . . ;
--- . . C V B N . x x /
+-- . . C V B . . x x /
 
 -- Apps
 -- hs.hotkey.bind(hyper, "p", toggleTeamsMute)
@@ -153,10 +153,11 @@ hs.hotkey.bind(hyper, "j", function () yabai({'-m', 'window', '--focus', 'south'
 hs.hotkey.bind(hyper, "k", function () yabai({'-m', 'window', '--focus', 'north'}) end)
 hs.hotkey.bind(hyper, "l", function () yabai({'-m', 'window', '--focus', 'east'}) end)
 
--- hs.hotkey.bind(hyper, "i", moveWindowToPreviousScreen) -- collides with iTerm trigger
-hs.hotkey.bind(hyper, "o", moveWindowToNextScreen)
--- hs.hotkey.bind(hyper, "z", jumpToPrevScreen)
-hs.hotkey.bind(hyper, "p", jumpToNextScreen)
+hs.hotkey.bind(hyper, "n", moveWindowToNextScreen)
+hs.hotkey.bind(hyper, "p", moveWindowToPreviousScreen)
+
+hs.hotkey.bind(hyper, "right", function () yabai({'-m', 'display', '--focus', 'next'}) end)
+hs.hotkey.bind(hyper, "left", function () yabai({'-m', 'display', '--focus', 'prev'}) end)
 
 -- hs.hotkey.bind(hyper, "b", toggleWindowBorder)
 
@@ -197,8 +198,8 @@ hs.hotkey.bind(hyper, "m", mouseHighlight)
 -- MEH
 
 -- mapped keys
--- Q W E R T . U I O .
--- A S D F . G . . . ;
+-- Q W E . T . U I O .
+-- A . D F . G . . . ;
 -- Z . C V . . M x x /
 
 hs.hotkey.bind(meh, "h", function () yabai({'-m', 'window', '--swap', 'west'}) end)
@@ -209,6 +210,10 @@ hs.hotkey.bind(meh, "l", function () yabai({'-m', 'window', '--swap', 'east'}) e
 hs.hotkey.bind(meh, "space", function () yabai({'-m', 'window', '--toggle', 'float'}) end)
 
 hs.hotkey.bind(meh, "b", function () yabai({'-m', 'space', '--balance'}) end)
+hs.hotkey.bind(meh, "r", function () yabai({'-m', 'space', '--rotate', '270'}) end)
+hs.hotkey.bind(meh, "x", function () yabai({'-m', 'space', '--mirror', 'x-axis'}) end)
+hs.hotkey.bind(meh, "y", function () yabai({'-m', 'space', '--mirror', 'y-axis'}) end)
+hs.hotkey.bind(meh, "s", function () yabai({'-m', 'window', '--toggle', 'split'}) end)
 
 hs.hotkey.bind(meh, "n", function () yabai({'-m', 'window', '--space', 'next'}) end)
 hs.hotkey.bind(meh, "p", function () yabai({'-m', 'window', '--space', 'prev'}) end)
@@ -217,6 +222,3 @@ hs.hotkey.bind(meh, "p", function () yabai({'-m', 'window', '--space', 'prev'}) 
 -- hs.hotkey.bind(meh, "s", function () yabai({'-m', 'window', '--resize', 'left:-100:0'}) end)
 -- hs.hotkey.bind(meh, "d", function () yabai({'-m', 'window', '--resize', 'bottom:0:100'}) end)
 -- hs.hotkey.bind(meh, "f", function () yabai({'-m', 'window', '--resize', 'right:100:0'}) end)
-
-hs.hotkey.bind(meh, "x", function () yabai({'-m', 'space', '--mirror', 'x-axis'}) end)
-hs.hotkey.bind(meh, "y", function () yabai({'-m', 'space', '--mirror', 'y-axis'}) end)
