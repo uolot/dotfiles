@@ -173,9 +173,6 @@ Plug 'danilamihailov/beacon.nvim'
 "     let g:diminactive_use_colorcolumn = 1
 "     let g:diminactive_use_syntax = 0
 
-" https://github.com/sunjon/Shade.nvim
-Plug 'sunjon/Shade.nvim'
-
 " displays a popup with possible keybindings of the command you started typing
 " https://github.com/folke/which-key.nvim
 Plug 'folke/which-key.nvim'
@@ -293,7 +290,7 @@ Plug 'wellle/targets.vim'
 
 " Standalone UI for nvim-lsp progress
 " https://github.com/j-hui/fidget.nvim
-Plug 'j-hui/fidget.nvim'
+" Plug 'j-hui/fidget.nvim'
 
 " https://github.com/nvim-telescope/telescope-fzf-native.nvim
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
@@ -326,5 +323,19 @@ Plug 'antoinemadec/FixCursorHold.nvim'
 " Single tabpage interface for easily cycling through diffs for all modified files for any git rev
 " https://github.com/sindrets/diffview.nvim
 Plug 'sindrets/diffview.nvim'
+
+" Terminal manager
+" https://github.com/voldikss/vim-floaterm
+Plug 'voldikss/vim-floaterm'
+    " let g:floaterm_wintype = 'vsplit'
+    let g:floaterm_height = 0.5
+    let g:floaterm_width = 0.5
+    let g:floaterm_position = 'bottomright'
+
+Plug 'andythigpen/nvim-coverage'
+
+Plug 'https://github.com/jbyuki/venn.nvim'
+
+Plug 'https://github.com/levouh/tint.nvim'
 
 call plug#end()

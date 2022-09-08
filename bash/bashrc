@@ -59,7 +59,7 @@ source /usr/local/etc/bash_completion.d/asdf.bash
 source /usr/local/etc/bash_completion.d/aws_bash_completer
 source /usr/local/etc/bash_completion.d/brew
 source /usr/local/etc/bash_completion.d/brew-services
-source /usr/local/etc/bash_completion.d/cargo.bashcomp.sh
+# source /usr/local/etc/bash_completion.d/cargo.bashcomp.sh
 source /usr/local/etc/bash_completion.d/delta
 source /usr/local/etc/bash_completion.d/fd.bash
 source /usr/local/etc/bash_completion.d/git-completion.bash
@@ -80,3 +80,4 @@ test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shel
 command -v saml2aws >/dev/null 2>&1 && eval "$(saml2aws --completion-script-bash)"
 
 export ZK_NOTEBOOK_DIR=$HOME/Documents/ZK
+. "$HOME/.cargo/env"

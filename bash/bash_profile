@@ -9,3 +9,4 @@ export NODE_AUTH_TOKEN="$(cat "$HOME/.secrets/LEGO_GH_TOKEN")"
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash" || true
+. "$HOME/.cargo/env"

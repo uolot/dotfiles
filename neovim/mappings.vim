@@ -5,6 +5,7 @@
     nnoremap <Leader>xd1 :lua vim.diagnostic.show()<CR>
     nnoremap <Leader>xd0 :lua vim.diagnostic.hide()<CR>
     nnoremap <Leader>xw :set wrap!<CR>
+    nnoremap <Leader>xx :set relativenumber!<CR>
 
 " lsp
     nnoremap <silent> ]d :lua vim.diagnostic.goto_next({ wrap = false })<CR>
@@ -53,6 +54,38 @@
     nnoremap <silent> <Leader>fgs :Telescope git_status<CR>
     nnoremap <silent> <Leader>fgS :Telescope git_stash<CR>
     nnoremap <silent> <Leader>fo :Telescope oldfiles<CR>
+" floatteam
+    nnoremap <silent> <Leader>ft <Cmd>FloatermToggle<CR>
+    nnoremap <silent> <Leader>fi <Cmd>FloatermNew --width=0.9 --height=0.9 --position=center<CR>
+    " top
+    nnoremap <silent> <Leader>fkk <Cmd>FloatermNew --width=0.99 --height=0.4 --position=top<CR>
+    " bottom
+    nnoremap <silent> <Leader>fll <Cmd>FloatermNew --width=0.4 --height=0.99 --position=right<CR>
+    " left
+    nnoremap <silent> <Leader>fhh <Cmd>FloatermNew --width=0.4 --height=0.99 --position=left<CR>
+    " right
+    nnoremap <silent> <Leader>fjj <Cmd>FloatermNew --width=0.99 --height=0.4 --position=bottom<CR>
+    " top-left
+    nnoremap <silent> <Leader>fhk <Cmd>FloatermNew --width=0.5 --height=0.5 --position=topleft<CR>
+    nnoremap <silent> <Leader>fkh <Cmd>FloatermNew --width=0.5 --height=0.5 --position=topleft<CR>
+    " bottom-left
+    nnoremap <silent> <Leader>fhj <Cmd>FloatermNew --width=0.5 --height=0.5 --position=bottomleft<CR>
+    nnoremap <silent> <Leader>fjh <Cmd>FloatermNew --width=0.5 --height=0.5 --position=bottomleft<CR>
+    " top-right
+    nnoremap <silent> <Leader>fkl <Cmd>FloatermNew --width=0.5 --height=0.5 --position=topright<CR>
+    nnoremap <silent> <Leader>flk <Cmd>FloatermNew --width=0.5 --height=0.5 --position=topright<CR>
+    " bottom- right
+    nnoremap <silent> <Leader>fjl <Cmd>FloatermNew --width=0.5 --height=0.5 --position=bottomright<CR>
+    nnoremap <silent> <Leader>flj <Cmd>FloatermNew --width=0.5 --height=0.5 --position=bottomright<CR>
+    " vsplit
+    nnoremap <silent> <Leader>fv <Cmd>FloatermNew --wintype=vsplit --position=right<CR>
+    " split
+    nnoremap <silent> <Leader>fs <Cmd>FloatermNew --wintype=split --position=bottom<CR>
+    " terminal mappings
+    tnoremap <silent> <C-S-t> <Cmd>FloatermToggle<CR>
+    tnoremap <silent> <C-S-a> <C-\><C-n>
+    " send current
+    nnoremap <silent> <Leader>fs <Cmd>FloatermSend<CR>
 
 " more telescope
     nnoremap <silent> <Leader>tb :Telescope buffers<CR>
@@ -121,10 +154,10 @@
 
 " search
     " pounce
-    nnoremap <Leader>jj <cmd>Pounce<CR>
-    nnoremap <Leader>jn <cmd>PounceRepeat<CR>
-    vnoremap <Leader>jj <cmd>Pounce<CR>
-    onoremap <Leader>jj <cmd>Pounce<CR>
+    nnoremap <Leader>j <cmd>Pounce<CR>
+    " nnoremap <Leader>jn <cmd>PounceRepeat<CR>
+    vnoremap <Leader>j <cmd>Pounce<CR>
+    onoremap <Leader>j <cmd>Pounce<CR>
     " case-insensitive search
     nnoremap <Leader>/ /\c
     " search for word (like grep -w)
@@ -150,6 +183,10 @@ nnoremap <silent> gb :bn<CR>
 " quickfix navigation
 nnoremap <silent> ]q :cnext<CR>
 nnoremap <silent> [q :cprev<CR>
+
+" todo navigation
+nnoremap <silent> ]t <Cmd>lua require("todo-comments").jump_next()<CR>
+nnoremap <silent> [t <Cmd>lua require("todo-comments").jump_prev()<CR>
 
 " insert blank lines
 nnoremap gO  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>'[

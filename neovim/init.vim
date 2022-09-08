@@ -32,10 +32,11 @@ set linebreak " do not wrap in the middle of a word
 set list " display special chars
 set listchars=tab:→\ ,trail:∎  " special chars for list mode
 set nomodelineexpr  " disable modelinexpr, see: https://github.com/numirias/security/blob/master/doc/2019-06-04_ace-vim-neovim.md
-set mouse=a " enable mouse
+" set mouse=a " enable mouse
 set nrformats-=octal  " for C-a/C-x treat octal numbers (starting with 0) as decimal numbers
 set number " display line numbers
 set omnifunc=syntaxcomplete#Complete " enable omnicompletion
+set relativenumber
 set scrolloff=3 " keep lines above/below cursor line
 set shiftround " round the indent spacing to the next multiple of shiftwidth
 set shiftwidth=0 " use tabstop number of tabs to indent
@@ -79,19 +80,20 @@ local on_lsp_attach = function(client, buffer)
     --buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
     -- TODO: update capabilities with `require('cmp_nvim_lsp').update_capabilities
-    if client.resolved_capabilities.document_formatting then
-    -- if client.server_capabilities.documentFormatting then
+    -- if client.resolved_capabilities.document_formatting then
+    if client.server_capabilities.documentFormattingProvider then
         -- vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
         -- fix for a timeout error
         vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 2000)")
+        -- vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format()")
     end
 end
 
 local on_tsserver_attach = function(client, buffer)
-    client.resolved_capabilities.document_formatting = false
-    client.resolved_capabilities.document_range_formatting = false
-    -- client.server_capabilities.documentFormatting = false
-    -- client.server_capabilities.documentRangeFormatting = false
+    -- client.resolved_capabilities.document_formatting = false
+    -- client.resolved_capabilities.document_range_formatting = false
+    client.server_capabilities.documentFormattingProvider = false
+    client.server_capabilities.documentRangeFormattingProvider = false
     on_lsp_attach(client, buffer)
 end
 
@@ -316,11 +318,10 @@ end)
 -- require('goto-preview').setup {}
 
 -- j-hui/fidget.nvim
-require('fidget').setup {}
+--require('fidget').setup {}
 
--- TODO: uncomment after upgrading to 0.8
 -- smjonas/inc-rename.nvim
---require('inc_rename').setup()
+require('inc_rename').setup()
 
 -- Treesitter --
 -- nvim-treesitter
@@ -662,7 +663,7 @@ require('lualine').setup {
     options = {
         -- theme = 'github',
         theme = 'auto',
-        globalstatus = true,
+        globalstatus = false,
     },
     sections = {
         -- left
@@ -882,17 +883,13 @@ require'marks'.setup {
 
 require('diffview').setup()
 
--- FIXME: causes wrong window ID errors when opening new tabs or floats
+require('coverage').setup()
 
--- require('shade').setup({
---     overlay_opacity = 70,
---     opacity_step = 5,
---     keys = {
---         brightness_up = '<Leader>xbu',
---         brightness_down = '<Leader>xbd',
---         toggle = '<Leader>xbb',
---     }
--- })
+-- https://github.com/levouh/tint.nvim#gear-setup
+require("tint").setup({
+    tint = 15,
+    tint_background_colors = true,
+})
 
 EOF
 
