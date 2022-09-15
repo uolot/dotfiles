@@ -7,6 +7,7 @@ endif
 call plug#begin(stdpath('data') . '/plugged')
 
 Plug 'nvim-lua/plenary.nvim'
+Plug 'kevinhwang91/promise-async'
 
 " -- LSP --
 
@@ -339,5 +340,8 @@ Plug 'https://github.com/jbyuki/venn.nvim'
 Plug 'https://github.com/levouh/tint.nvim'
 
 Plug 'https://github.com/sindrets/winshift.nvim'
+
+" ultra fold
+Plug 'https://github.com/kevinhwang91/nvim-ufo'
 
 call plug#end()

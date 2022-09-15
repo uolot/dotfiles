@@ -23,6 +23,14 @@ set conceallevel=2
 set cursorline " highlight cursor line
 set expandtab " convert tabs to spaces
 set exrc " load local .nvimrc/.exrc files
+" ufo
+lua vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+set foldcolumn=1
+set foldlevel=99
+set foldlevelstart=99
+" set foldnestmax=2
+set foldenable
+" ufo end
 set formatoptions=cq1tj " formatting - :help fo-table
 set formatoptions+=ln   " new options to test
 set formatoptions-=r    " unsetting, for test
@@ -78,6 +86,15 @@ local on_lsp_attach = function(client, buffer)
     --local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
     --local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
     --buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+    -- ufo
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities.textDocument.foldingRange = {
+        dynamicRegistration = false,
+        lineFoldingOnly = true,
+    }
+    client.capabilities = capabilities
+    -- ufo end
 
     -- TODO: update capabilities with `require('cmp_nvim_lsp').update_capabilities
     -- if client.resolved_capabilities.document_formatting then
@@ -928,6 +945,8 @@ require("winshift").setup({
     highlight_moving_win = false,
 });
 
+require('ufo').setup()
+
 EOF
 
 " kosayoda/nvim-lightbulb
@@ -972,6 +991,8 @@ augroup end
 
 " hi! Function gui=underline
 hi! ColorColumn guifg=#adbac7 guibg=#2d3239
+" ufo:
+" hi! Folded guibg=#22272e
 
 
 " hi! link ALEVirtualTextError LspDiagnosticsVirtualTextError

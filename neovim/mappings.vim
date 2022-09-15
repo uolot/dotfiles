@@ -226,6 +226,9 @@ xnoremap Q :'<,'>:normal @q<CR>
 " nnoremap / /\v
 " nnoremap ? ?\v
 
+nnoremap zR <Cmd>lua require('ufo').openAllFolds()<CR>
+nnoremap zM <Cmd>lua require('ufo').closeAllFolds()<CR>
+
 
 augroup markdown_mappings
     autocmd FileType markdown nmap ]] <Plug>Markdown_MoveToNextSiblingHeader
