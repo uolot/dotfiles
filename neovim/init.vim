@@ -275,6 +275,7 @@ end
 
 local function filterDTS(value)
     return string.match(value.uri, '%.d.ts') == nil
+    -- return string.match(value.targetUri, '%.d.ts') == nil
 end
 
 local lsp_installer = require("nvim-lsp-installer")
@@ -320,8 +321,14 @@ end)
 -- j-hui/fidget.nvim
 --require('fidget').setup {}
 
+-- https://github.com/stevearc/dressing.nvim#configuration
+require('dressing').setup()
+
 -- smjonas/inc-rename.nvim
-require('inc_rename').setup()
+require('inc_rename').setup({
+  -- input_buffer_type = "dressing",
+})
+
 
 -- Treesitter --
 -- nvim-treesitter
@@ -890,6 +897,36 @@ require("tint").setup({
     tint = 15,
     tint_background_colors = true,
 })
+
+-- diagrams
+-- require('./lua/venn-mappings.lua')
+-- venn.nvim: enable or disable keymappings
+function _G.Toggle_venn()
+    local venn_enabled = vim.inspect(vim.b.venn_enabled)
+    if venn_enabled == "nil" then
+        vim.b.venn_enabled = true
+        vim.cmd[[setlocal ve=all]]
+        -- draw a line on HJKL keystokes
+        vim.api.nvim_buf_set_keymap(0, "n", "J", "<C-v>j:VBox<CR>", {noremap = true})
+        vim.api.nvim_buf_set_keymap(0, "n", "K", "<C-v>k:VBox<CR>", {noremap = true})
+        vim.api.nvim_buf_set_keymap(0, "n", "L", "<C-v>l:VBox<CR>", {noremap = true})
+        vim.api.nvim_buf_set_keymap(0, "n", "H", "<C-v>h:VBox<CR>", {noremap = true})
+        -- draw a box by pressing "f" with visual selection
+        vim.api.nvim_buf_set_keymap(0, "v", "f", ":VBox<CR>", {noremap = true})
+        vim.api.nvim_buf_set_keymap(0, "v", "d", ":VBoxD<CR>", {noremap = true})
+    else
+        vim.cmd[[setlocal ve=]]
+        vim.cmd[[mapclear <buffer>]]
+        vim.b.venn_enabled = nil
+    end
+end
+-- toggle keymappings for venn using <leader>v
+vim.api.nvim_set_keymap('n', '<leader>vv', ":lua Toggle_venn()<CR>", { noremap = true})
+
+-- https://github.com/sindrets/winshift.nvim#configuration
+require("winshift").setup({
+    highlight_moving_win = false,
+});
 
 EOF
 

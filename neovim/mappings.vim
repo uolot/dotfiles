@@ -1,7 +1,7 @@
 " toggles
     " nnoremap <Leader>xa :ALEToggle<CR>
-    nnoremap <Leader>xcl :set background=light \| colorscheme github_light<CR>
-    nnoremap <Leader>xcd :set background=dark \| colorscheme github_dimmed<CR>
+    nnoremap <Leader>xbl :set background=light \| colorscheme github_light<CR>
+    nnoremap <Leader>xbd :set background=dark \| colorscheme github_dimmed<CR>
     nnoremap <Leader>xd1 :lua vim.diagnostic.show()<CR>
     nnoremap <Leader>xd0 :lua vim.diagnostic.hide()<CR>
     nnoremap <Leader>xw :set wrap!<CR>
@@ -22,8 +22,9 @@
     nnoremap <silent> <Leader>gF :lua vim.lsp.buf.formatting()<CR>
     nnoremap <silent> <Leader>gh :lua vim.lsp.buf.hover()<CR>
     nnoremap <silent> <Leader>gi :lua vim.lsp.buf.implementation()<CR>
-    nnoremap <silent> <Leader>gr :Telescope lsp_references<CR>
-    nnoremap <silent> <Leader>gR :lua vim.lsp.buf.rename()<CR>
+    " nnoremap <silent> <Leader>gr :Telescope lsp_references<CR>
+    " nnoremap <silent> <Leader>gR :lua vim.lsp.buf.rename()<CR>
+    nnoremap <Leader>gr :IncRename <C-r><C-w>
     nnoremap <silent> <Leader>gs :Telescope lsp_document_symbols<CR>
     nnoremap <silent> <Leader>gS :Telescope lsp_dynamic_workspace_symbols<CR>
     nnoremap <silent> <Leader>gt :lua vim.lsp.buf.type_definition()<CR>
@@ -169,6 +170,20 @@
     xmap n <SID>(search-forward)
     nmap N <SID>(search-backward)
     xmap N <SID>(search-backward)
+
+" winshift
+    nnoremap <C-W><C-M> <Cmd>WinShift<CR>
+    nnoremap <C-W>m <Cmd>WinShift<CR>
+    nnoremap <C-W>x <Cmd>WinShift swap<CR>
+    nnoremap <C-w>gh <Cmd>WinShift left<CR>
+    nnoremap <C-w>gj <Cmd>WinShift down<CR>
+    nnoremap <C-w>gk <Cmd>WinShift up<CR>
+    nnoremap <C-w>gl <Cmd>WinShift right<CR>
+
+" diffview
+    nnoremap <Leader>df <Cmd>DiffviewFileHistory %<CR>
+    nnoremap <Leader>dc <Cmd>DiffviewClose<CR>
+    nnoremap <Leader>do <Cmd>DiffviewOpen<CR>
 
 " jump between splits
 nnoremap <C-h> <C-w>h

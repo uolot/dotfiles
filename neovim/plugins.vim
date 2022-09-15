@@ -42,9 +42,10 @@ Plug 'ray-x/lsp_signature.nvim'
 " https://github.com/jose-elias-alvarez/null-ls.nvim
 Plug 'jose-elias-alvarez/null-ls.nvim'
 
+Plug 'https://github.com/stevearc/dressing.nvim'
+
 " Incremental LSP rename command based on Neovim's command-preview feature
-" https://github.com/smjonas/inc-rename.nvim
-Plug 'smjonas/inc-rename.nvim'
+Plug 'https://github.com/smjonas/inc-rename.nvim'
 
 " -- Completion --
 
@@ -262,8 +263,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 "         \ }
 
 " Add extra window movements with <C-w> g [hjkl]
-" https://github.com/andymass/vim-tradewinds
-Plug 'andymass/vim-tradewinds'
+" Plug 'https://github.com/andymass/vim-tradewinds'
 
 " Neovim extension for zk
 " https://github.com/mickael-menu/zk-nvim
@@ -337,5 +337,7 @@ Plug 'andythigpen/nvim-coverage'
 Plug 'https://github.com/jbyuki/venn.nvim'
 
 Plug 'https://github.com/levouh/tint.nvim'
+
+Plug 'https://github.com/sindrets/winshift.nvim'
 
 call plug#end()
