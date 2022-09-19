@@ -43,10 +43,14 @@ Plug 'ray-x/lsp_signature.nvim'
 " https://github.com/jose-elias-alvarez/null-ls.nvim
 Plug 'jose-elias-alvarez/null-ls.nvim'
 
+Plug 'https://github.com/rcarriga/nvim-notify'
 Plug 'https://github.com/stevearc/dressing.nvim'
 
 " Incremental LSP rename command based on Neovim's command-preview feature
 Plug 'https://github.com/smjonas/inc-rename.nvim'
+
+" render diagnostics using virtual lines on top of the real line of code.
+Plug 'https://github.com/Maan2003/lsp_lines.nvim'
 
 " -- Completion --
 
@@ -340,8 +344,11 @@ Plug 'https://github.com/jbyuki/venn.nvim'
 Plug 'https://github.com/levouh/tint.nvim'
 
 Plug 'https://github.com/sindrets/winshift.nvim'
+Plug 'https://github.com/gbrlsnchs/winpick.nvim'
 
 " ultra fold
 Plug 'https://github.com/kevinhwang91/nvim-ufo'
+
+Plug 'https://github.com/lukas-reineke/indent-blankline.nvim'
 
 call plug#end()

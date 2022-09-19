@@ -239,17 +239,6 @@ vim.g.lsp_utils_codeaction_opts = {
     }
 }
 
--- -- nathanmsmith/nvim-ale-diagnostic
--- require('nvim-ale-diagnostic')
--- vim.lsp.handlers["text/publishDiagnostics"] = vim.lsp.with(
---     vim.lsp.diagnostic.on_publish_diagnostics, {
---         underline = false,
---         virtual_text = false,
---         signs = true,
---         update_in_insert = false,
---     }
--- )
-
 -- LSP borders
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
     vim.lsp.handlers.signature_help, {
@@ -338,8 +327,19 @@ end)
 -- j-hui/fidget.nvim
 --require('fidget').setup {}
 
+require('lsp_lines').setup()
+vim.diagnostic.config({
+    virtual_text = false,
+    virtual_lines = { only_current_line = true },
+})
+
 -- https://github.com/stevearc/dressing.nvim#configuration
 require('dressing').setup()
+-- https://github.com/rcarriga/nvim-notify#configuration
+require('notify').setup({
+    -- render = 'minimal',
+    stages = 'slide',
+})
 
 -- smjonas/inc-rename.nvim
 require('inc_rename').setup({
@@ -945,7 +945,30 @@ require("winshift").setup({
     highlight_moving_win = false,
 });
 
+-- https://github.com/gbrlsnchs/winpick.nvim#setup
+require('winpick').setup({
+    border = 'rounded',
+})
+
+vim.keymap.set('n', '<C-w>p', function ()
+    local winid = require('winpick').select()
+    if winid then
+        vim.api.nvim_set_current_win(winid)
+    end
+end);
+
 require('ufo').setup()
+
+vim.cmd [[highlight IndentBlanklineIndent1 guifg=#333333 gui=nocombine]]
+vim.cmd [[highlight IndentBlanklineContextChar guifg=#666666 gui=nocombine]]
+
+require('indent_blankline').setup({
+    show_current_context = true,
+    -- show_current_context_start = true,
+    char_highlight_list = {
+        "IndentBlanklineIndent1",
+    },
+})
 
 EOF
 
