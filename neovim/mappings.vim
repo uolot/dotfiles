@@ -29,22 +29,12 @@
     nnoremap <silent> <Leader>gS :Telescope lsp_dynamic_workspace_symbols<CR>
     nnoremap <silent> <Leader>gt :lua vim.lsp.buf.type_definition()<CR>
     nnoremap <silent> <Leader>gu :lua vim.lsp.buf.references()<CR>
+    nnoremap <silent> <Leader>gv :lua require('lsp_lines').toggle()<CR>
     nnoremap <silent> <Leader>gwa :lua vim.lsp.buf.add_workspace_folder()<CR>
     nnoremap <silent> <Leader>gwr :lua vim.lsp.buf.remove_workspace_folder()<CR>
     nnoremap <silent> <Leader>gwl :lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>
     nnoremap <silent> <Leader>gx :TroubleToggle document_diagnostics<CR>
     nnoremap <silent> <Leader>gX :TroubleToggle workspace_diagnostics<CR>
-
-" " ale
-    " nnoremap ]} :ALENext<CR>
-    " nnoremap [{ :ALEPrevious<CR>
-    " nnoremap <Leader>ae :ALEDetail<CR>
-    " nnoremap <Leader>af :ALEFix<CR>
-    " nnoremap <Leader>ah :ALEHover<CR>
-    " nnoremap <Leader>al :ALELint<CR>
-    " nnoremap <Leader>at :ALEToggleBuffer<CR>
-    " " nnoremap <Leader>aa :lopen<CR>
-    " " nnoremap <Leader>aD :let g:ale_cursor_detail = g:ale_cursor_detail * -1 + 1<CR>
 
 " telescope
     nnoremap <silent> <Leader>ff :Telescope find_files<CR>
@@ -55,6 +45,7 @@
     nnoremap <silent> <Leader>fgs :Telescope git_status<CR>
     nnoremap <silent> <Leader>fgS :Telescope git_stash<CR>
     nnoremap <silent> <Leader>fo :Telescope oldfiles<CR>
+
 " floatteam
     nnoremap <silent> <Leader>ft <Cmd>FloatermToggle<CR>
     nnoremap <silent> <Leader>fi <Cmd>FloatermNew --width=0.9 --height=0.9 --position=center<CR>
@@ -89,11 +80,13 @@
     nnoremap <silent> <Leader>fs <Cmd>FloatermSend<CR>
 
 " more telescope
+    nnoremap <Leader>ta :Ag 
     nnoremap <silent> <Leader>tb :Telescope buffers<CR>
     nnoremap <silent> <Leader>td :TodoTelescope<CR>
     nnoremap <silent> <Leader>te :Telescope emoji<CR>
     nnoremap <silent> <Leader>tf :Telescope current_buffer_fuzzy_find<CR>
-    nnoremap <silent> <Leader>tg :Telescope grep_string<CR>
+    nnoremap <silent> <Leader>tg <Cmd>lua require('telescope.builtin').grep_string({search = vim.fn.input('Search> ')})<CR>
+    nnoremap <silent> <Leader>tG :Telescope grep_string<CR>
     nnoremap <silent> <Leader>tl :Telescope live_grep<CR>
     nnoremap <silent> <Leader>tt :Telescope current_buffer_tags<CR>
     nnoremap <silent> <Leader>tT :Telescope tags<CR>

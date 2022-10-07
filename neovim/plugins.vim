@@ -50,7 +50,7 @@ Plug 'https://github.com/stevearc/dressing.nvim'
 Plug 'https://github.com/smjonas/inc-rename.nvim'
 
 " render diagnostics using virtual lines on top of the real line of code.
-Plug 'https://github.com/Maan2003/lsp_lines.nvim'
+" Plug 'https://github.com/Maan2003/lsp_lines.nvim'
 
 " -- Completion --
 
@@ -106,6 +106,7 @@ Plug 'p00f/nvim-ts-rainbow'
 Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' }
 " https://github.com/xiyaowong/telescope-emoji.nvim
 Plug 'xiyaowong/telescope-emoji.nvim'
+Plug 'https://github.com/kelly-lin/telescope-ag'
 
 
 " -- Colorschemes --

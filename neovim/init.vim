@@ -294,6 +294,12 @@ lsp_installer.on_server_ready(function(server)
         },
     }
 
+    local signs = { Hint = "", Info = "", Warn = "", Error = "" }
+    for type, icon in pairs(signs) do
+        local hl = "DiagnosticSign" .. type
+        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+    end
+
     if server.name == "tsserver" then
         opts.on_attach = on_tsserver_attach
         opts.handlers = {
@@ -327,10 +333,24 @@ end)
 -- j-hui/fidget.nvim
 --require('fidget').setup {}
 
-require('lsp_lines').setup()
+-- require('lsp_lines').setup()
+
+-- https://neovim.io/doc/user/diagnostic.html#vim.diagnostic.config()
 vim.diagnostic.config({
-    virtual_text = false,
-    virtual_lines = { only_current_line = true },
+    virtual_text = {
+        source = false,
+        prefix = '●',
+        spacing = 1,
+    },
+    update_in_insert = false,
+    severity_sort = true,
+    float = {
+        source = true,
+    },
+    signs = true,
+    -- virtual_lines = {
+    --     only_current_line = true
+    -- },
 })
 
 -- https://github.com/stevearc/dressing.nvim#configuration
@@ -414,7 +434,7 @@ require('nvim-treesitter.configs').setup {
             },
             selection_modes = {
                 ['@function.outer'] = 'V',
-                ['@function.inner'] = 'V',
+                ['@function.inner'] = 'v',
                 ['@class.outer'] = 'V',
                 ['@class.inner'] = 'V',
                 ['@block.outer'] = 'V',
@@ -693,21 +713,36 @@ require('lualine').setup {
         -- left
         lualine_a = { 'mode' },
         lualine_b = {
-            -- {'diagnostics', sources={'nvim_lsp'}, sections={"error", "warn"} },
-            { 'filename', path = 1 },
+            { 'filename', path = 1, shorting_target = 40 },
         },
         lualine_c = {
-            {}
+            {'diagnostics', sections={"error", "warn"} },
         },
         -- right
         lualine_x = {
+            'overseer',
             'branch',
-            'diff',
         },
         lualine_y = {
             'filetype',
         },
         lualine_z = { 'location', 'progress'  },
+    },
+    inactive_sections = {
+        -- left
+        lualine_a = {},
+        lualine_b = {
+            { 'filename', path = 1, shorting_target = 40 },
+        },
+        lualine_c = {
+            {'diagnostics', sections={"error", "warn"} },
+        },
+        -- right
+        lualine_x = {
+        },
+        lualine_y = {
+        },
+        lualine_z = {},
     }
 }
 
@@ -805,7 +840,9 @@ require('nvim-tree').setup {
     hijack_cursor = true,
     update_cwd = false,
     diagnostics = {
-        enable = false,
+        enable = true,
+        show_on_dirs = true,
+        debounce_delay = 100,
     },
     update_focused_file = {
         enable = false,
@@ -1017,12 +1054,6 @@ hi! ColorColumn guifg=#adbac7 guibg=#2d3239
 " ufo:
 " hi! Folded guibg=#22272e
 
-
-" hi! link ALEVirtualTextError LspDiagnosticsVirtualTextError
-" hi! link ALEVirtualTextInfo LspDiagnosticsVirtualTextInformation
-" hi! link ALEVirtualTextStyleError LspDiagnosticsVirtualTextError
-" hi! link ALEVirtualTextStyleWarning LspDiagnosticsVirtualTextWarning
-" hi! link ALEVirtualTextWarning LspDiagnosticsVirtualTextWarning
 
 " open images with imv
 autocmd BufEnter *.png,*.jpg,*.gif exec "!imv ".expand("%") | :bw
