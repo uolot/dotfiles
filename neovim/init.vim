@@ -89,6 +89,7 @@ local on_lsp_attach = function(client, buffer)
 
     -- ufo
     local capabilities = vim.lsp.protocol.make_client_capabilities()
+    -- local capabilities = requite('cmp_nvim_lsp').default_capabilities()
     capabilities.textDocument.foldingRange = {
         dynamicRegistration = false,
         lineFoldingOnly = true,
@@ -353,18 +354,8 @@ vim.diagnostic.config({
     -- },
 })
 
--- https://github.com/stevearc/dressing.nvim#configuration
-require('dressing').setup()
--- https://github.com/rcarriga/nvim-notify#configuration
-require('notify').setup({
-    -- render = 'minimal',
-    stages = 'slide',
-})
-
 -- smjonas/inc-rename.nvim
-require('inc_rename').setup({
-  -- input_buffer_type = "dressing",
-})
+require('inc_rename').setup()
 
 
 -- Treesitter --
@@ -682,6 +673,7 @@ require('telescope').load_extension('vimwiki')
 require('telescope').load_extension('emoji')
 require('telescope').load_extension('zk')
 require('telescope').load_extension('fzf')
+require('telescope').load_extension('ag')
 
 -- github colorscheme
 -- https://github.com/projekt0n/github-nvim-theme#configuration
@@ -720,7 +712,6 @@ require('lualine').setup {
         },
         -- right
         lualine_x = {
-            'overseer',
             'branch',
         },
         lualine_y = {
@@ -793,12 +784,6 @@ require('gitsigns').setup {
 -- windwp/floatline.nvim
 -- https://github.com/windwp/floatline.nvim
 --require('floatline').setup()
-
--- indent_blankline
--- require("indent_blankline").setup {
---     buftype_exclude = {"terminal", "nofile"},
---     filetype_exclude = {'floatline'},
--- }
 
 -- neoscroll
 require('neoscroll').setup()
@@ -885,10 +870,6 @@ require("todo-comments").setup({
     },
 })
 
--- nacro90/numb.nvim
--- https://github.com/nacro90/numb.nvim
-require('numb').setup()
-
 -- 'chentau/marks.nvim'
 -- https://github.com/chentau/marks.nvim#setup
 require'marks'.setup {
@@ -944,8 +925,6 @@ require'marks'.setup {
 
 require('diffview').setup()
 
-require('coverage').setup()
-
 -- https://github.com/levouh/tint.nvim#gear-setup
 require("tint").setup({
     tint = 15,
@@ -1000,12 +979,22 @@ vim.cmd [[highlight IndentBlanklineIndent1 guifg=#333333 gui=nocombine]]
 vim.cmd [[highlight IndentBlanklineContextChar guifg=#666666 gui=nocombine]]
 
 require('indent_blankline').setup({
+    use_treesitter = false,
+    space_char_blankline = " ",
+    char_list = {'│', '¦'},
+    show_first_indent_level = false,
     show_current_context = true,
     -- show_current_context_start = true,
     char_highlight_list = {
         "IndentBlanklineIndent1",
     },
+    buftype_exclude = {"terminal", "nofile"},
+    -- filetype_exclude = {},
+-- }
+
 })
+
+require('nvim-autopairs').setup({})
 
 EOF
 

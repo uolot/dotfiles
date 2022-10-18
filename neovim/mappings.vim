@@ -19,7 +19,8 @@
     nnoremap <silent> <Leader>gd :lua vim.lsp.buf.definition()<CR>
     nnoremap <silent> <Leader>gD :lua vim.lsp.buf.declaration()<CR>
     nnoremap <silent> <Leader>gf :Telescope lsp_references<CR>
-    nnoremap <silent> <Leader>gF :lua vim.lsp.buf.formatting()<CR>
+    " vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+    nnoremap <silent> <Leader>gF :lua function() vim.lsp.buf.format({ async = true }) end<CR>
     nnoremap <silent> <Leader>gh :lua vim.lsp.buf.hover()<CR>
     nnoremap <silent> <Leader>gi :lua vim.lsp.buf.implementation()<CR>
     " nnoremap <silent> <Leader>gr :Telescope lsp_references<CR>
@@ -46,7 +47,7 @@
     nnoremap <silent> <Leader>fgS :Telescope git_stash<CR>
     nnoremap <silent> <Leader>fo :Telescope oldfiles<CR>
 
-" floatteam
+" floaterm
     nnoremap <silent> <Leader>ft <Cmd>FloatermToggle<CR>
     nnoremap <silent> <Leader>fi <Cmd>FloatermNew --width=0.9 --height=0.9 --position=center<CR>
     " top
@@ -183,6 +184,9 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
+" reversed J
+nmap <silent> K :lua require('trevj').format_at_cursor()<CR>
 
 " switch between buffers
 nnoremap <silent> gB :bp<CR>

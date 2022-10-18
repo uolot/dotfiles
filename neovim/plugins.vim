@@ -43,9 +43,6 @@ Plug 'ray-x/lsp_signature.nvim'
 " https://github.com/jose-elias-alvarez/null-ls.nvim
 Plug 'jose-elias-alvarez/null-ls.nvim'
 
-Plug 'https://github.com/rcarriga/nvim-notify'
-Plug 'https://github.com/stevearc/dressing.nvim'
-
 " Incremental LSP rename command based on Neovim's command-preview feature
 Plug 'https://github.com/smjonas/inc-rename.nvim'
 
@@ -99,6 +96,7 @@ Plug 'nvim-treesitter/nvim-treesitter-refactor'
 " Rainbow parentheses for neovim using treesitter
 " https://sr.ht/~p00f/nvim-ts-rainbow/
 Plug 'p00f/nvim-ts-rainbow'
+Plug 'https://github.com/nvim-treesitter/nvim-treesitter-context'
 
 
 " -- Telescope --
@@ -224,10 +222,6 @@ Plug 'drzel/vim-repo-edit'
 " https://github.com/folke/todo-comments.nvim
 Plug 'folke/todo-comments.nvim'
 
-" Peek lines just when you intend
-" https://github.com/nacro90/numb.nvim
-Plug 'nacro90/numb.nvim'
-
 " A better user experience for interacting with and manipulating Vim marks
 " https://github.com/chentau/marks.nvim
 " mx              Set mark x
@@ -277,9 +271,7 @@ Plug 'mickael-menu/zk-nvim'
 
 " Run Async Shell Commands
 " https://github.com/skywind3000/asyncrun.vim
-Plug 'skywind3000/asyncrun.vim'
-" https://github.com/skywind3000/asynctasks.vim
-" Plug 'skywind3000/asynctasks.vim'
+" Plug 'skywind3000/asyncrun.vim'
 
 " Set of operators and textobjects to search/select/edit sandwiched texts
 " https://github.com/machakann/vim-sandwich
@@ -321,11 +313,6 @@ Plug 'tpope/vim-sleuth'
 " https://github.com/rlane/pounce.nvim
 Plug 'rlane/pounce.nvim'
 
-" Fix CursorHold Performance (recommended for nvim-lightbulb)
-" https://github.com/antoinemadec/FixCursorHold.nvim
-Plug 'antoinemadec/FixCursorHold.nvim'
-    let g:cursorhold_updatetime = 100
-
 " Single tabpage interface for easily cycling through diffs for all modified files for any git rev
 " https://github.com/sindrets/diffview.nvim
 Plug 'sindrets/diffview.nvim'
@@ -338,8 +325,6 @@ Plug 'voldikss/vim-floaterm'
     let g:floaterm_width = 0.5
     let g:floaterm_position = 'bottomright'
 
-Plug 'andythigpen/nvim-coverage'
-
 Plug 'https://github.com/jbyuki/venn.nvim'
 
 Plug 'https://github.com/levouh/tint.nvim'
@@ -351,5 +336,9 @@ Plug 'https://github.com/gbrlsnchs/winpick.nvim'
 Plug 'https://github.com/kevinhwang91/nvim-ufo'
 
 Plug 'https://github.com/lukas-reineke/indent-blankline.nvim'
+
+Plug 'https://github.com/windwp/nvim-autopairs'
+
+Plug 'https://github.com/AckslD/nvim-trevJ.lua/'
 
 call plug#end()
