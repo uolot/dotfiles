@@ -19,7 +19,8 @@ let mapleader=" "
 " set breakindentopt=shift:2
 set completeopt=menu,preview " show popup menu on completion with extra info
 set completefunc=syntaxcomplete#Complete " set user-mode completions for <C-x><C-u>
-set conceallevel=2
+" set conceallevel=2
+set conceallevel=0
 set cursorline " highlight cursor line
 set expandtab " convert tabs to spaces
 set exrc " load local .nvimrc/.exrc files
@@ -99,14 +100,28 @@ local on_lsp_attach = function(client, buffer)
 
     -- TODO: update capabilities with `require('cmp_nvim_lsp').update_capabilities
     -- if client.resolved_capabilities.document_formatting then
-    if client.server_capabilities.documentFormattingProvider then
-        -- vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
-        -- fix for a timeout error
-        vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 2000)")
-        -- vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format()")
+    -- if client.server_capabilities.documentFormattingProvider then
+    if client.supports_method('textDocument/formatting') then
+        -- vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 2000)")
+        -- vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format({timeout_ms = 2000})")
+
+        local augroup = vim.api.nvim_create_augroup('format_file', {clear=true})
+        vim.api.nvim_create_autocmd('BufWritePre', {
+            group = augroup,
+            buffer = buffer,
+            desc = 'Format',
+            callback = function()
+                vim.lsp.buf.format({
+                    -- async = true,
+                    timeout_ms = 3000,
+                    filter = function(client) return client.name ~= 'tsserver' end,
+                })
+            end
+        })
     end
 end
 
+-- TODO: remove
 local on_tsserver_attach = function(client, buffer)
     -- client.resolved_capabilities.document_formatting = false
     -- client.resolved_capabilities.document_range_formatting = false
@@ -246,6 +261,7 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
         border = 'rounded'
     }
 )
+
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
     vim.lsp.handlers.hover,
     {
@@ -302,7 +318,8 @@ lsp_installer.on_server_ready(function(server)
     end
 
     if server.name == "tsserver" then
-        opts.on_attach = on_tsserver_attach
+        -- opts.on_attach = on_tsserver_attach
+        opts.on_attach = on_lsp_attach
         opts.handlers = {
             ["textDocument/definition"] = function (error, result, method, ...)
                 -- vim.notify(vim.inspect(result))
@@ -666,6 +683,9 @@ require('telescope').setup {
     --        override_file_sorter = true,
     --        case_mode = "smart_case",
     --    },
+        ['ui-select'] = {
+            require('telescope.themes').get_dropdown { }
+        },
     },
 }
 -- require('telescope').load_extension('fzf')
@@ -674,6 +694,7 @@ require('telescope').load_extension('emoji')
 require('telescope').load_extension('zk')
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('ag')
+require('telescope').load_extension('ui-select')
 
 -- github colorscheme
 -- https://github.com/projekt0n/github-nvim-theme#configuration
@@ -684,6 +705,8 @@ require('github-theme').setup {
     dark_sidebar = true,
     dark_float = true,
     comment_style = "italic",
+    keyword_style = "NONE",
+    function_style = "NONE",
     colors = {
         -- TODO: find better colour for bg_search
         -- bg_search = "yellow",
@@ -708,6 +731,7 @@ require('lualine').setup {
             { 'filename', path = 1, shorting_target = 40 },
         },
         lualine_c = {
+            'searchcount',
             {'diagnostics', sections={"error", "warn"} },
         },
         -- right
@@ -761,17 +785,20 @@ require('gitsigns').setup {
         map('n', '[c', "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'", {expr=true})
 
         -- Actions
+        -- normal
         map('n', '<leader>hb', '<cmd>lua require"gitsigns".blame_line{full=true}<CR>')
         map('n', '<leader>hd', '<cmd>Gitsigns diffthis<CR>')
         map('n', '<leader>hD', '<cmd>lua require"gitsigns".diffthis("~")<CR>')
+        map('n', '<leader>hi', '<cmd>Gitsigns preview_hunk_inline<CR>')
         map('n', '<leader>hp', '<cmd>Gitsigns preview_hunk<CR>')
-        map('n', '<leader>hR', '<cmd>Gitsigns reset_buffer<CR>')
         map('n', '<leader>hr', '<cmd>Gitsigns reset_hunk<CR>')
-        map('n', '<leader>hS', '<cmd>Gitsigns stage_buffer<CR>')
+        map('n', '<leader>hR', '<cmd>Gitsigns reset_buffer<CR>')
         map('n', '<leader>hs', '<cmd>Gitsigns stage_hunk<CR>')
+        map('n', '<leader>hS', '<cmd>Gitsigns stage_buffer<CR>')
         map('n', '<leader>htb', '<cmd>Gitsigns toggle_current_line_blame<CR>')
         map('n', '<leader>htd', '<cmd>Gitsigns toggle_deleted<CR>')
         map('n', '<leader>hu', '<cmd>Gitsigns undo_stage_hunk<CR>')
+        -- visual
         map('v', '<leader>hr', '<cmd>Gitsigns reset_hunk<CR>')
         map('v', '<leader>hs', '<cmd>Gitsigns stage_hunk<CR>')
 
@@ -996,6 +1023,29 @@ require('indent_blankline').setup({
 
 require('nvim-autopairs').setup({})
 
+require('s3edit').setup({
+    -- exclude = { ".git", ".hoodie", ".parquet", ".zip" },
+    autocommand_events = { "BufWritePost" },
+})
+
+local function close_floating()
+  for _, win in ipairs(vim.api.nvim_list_wins()) do
+    local config = vim.api.nvim_win_get_config(win)
+    -- if config.relative == 'win' then
+    if config.relative ~= "" then
+      vim.api.nvim_win_close(win, false)
+    end
+  end
+end
+
+require('which-key').register(
+  {
+    -- ["<C-w>f"] = { close_floating, "Close all floating windows"},
+    ["<Esc>"] = { close_floating, "Close all floating windows"},
+  },
+  { mode = 'n' }
+)
+
 EOF
 
 " kosayoda/nvim-lightbulb
@@ -1061,6 +1111,9 @@ autocmd BufWritePost $ZK_NOTEBOOK_DIR/**/*.md call AutoCommit()
 
 " reverse lines order
 command -range Reverse <line1>,<line2>!tac
+
+" vsnip snippets dir
+let g:vsnip_snippet_dir = "$HOME/.dotfiles/neovim/vsnip/"
 
 " For VS Code:
 " exists('g:vscode')

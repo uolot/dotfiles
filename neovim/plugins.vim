@@ -105,6 +105,8 @@ Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' }
 " https://github.com/xiyaowong/telescope-emoji.nvim
 Plug 'xiyaowong/telescope-emoji.nvim'
 Plug 'https://github.com/kelly-lin/telescope-ag'
+Plug 'https://github.com/nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+Plug 'https://github.com/nvim-telescope/telescope-ui-select.nvim'
 
 
 " -- Colorschemes --
@@ -270,8 +272,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 Plug 'mickael-menu/zk-nvim'
 
 " Run Async Shell Commands
-" https://github.com/skywind3000/asyncrun.vim
-" Plug 'skywind3000/asyncrun.vim'
+Plug 'https://github.com/skywind3000/asyncrun.vim'
 
 " Set of operators and textobjects to search/select/edit sandwiched texts
 " https://github.com/machakann/vim-sandwich
@@ -289,9 +290,6 @@ Plug 'wellle/targets.vim'
 " Standalone UI for nvim-lsp progress
 " https://github.com/j-hui/fidget.nvim
 " Plug 'j-hui/fidget.nvim'
-
-" https://github.com/nvim-telescope/telescope-fzf-native.nvim
-Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
 " https://github.com/godlygeek/tabular
 Plug 'godlygeek/tabular'
@@ -340,5 +338,7 @@ Plug 'https://github.com/lukas-reineke/indent-blankline.nvim'
 Plug 'https://github.com/windwp/nvim-autopairs'
 
 Plug 'https://github.com/AckslD/nvim-trevJ.lua/'
+
+Plug 'https://github.com/kiran94/s3edit.nvim'
 
 call plug#end()
