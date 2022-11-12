@@ -322,6 +322,7 @@ Plug 'voldikss/vim-floaterm'
     let g:floaterm_height = 0.5
     let g:floaterm_width = 0.5
     let g:floaterm_position = 'bottomright'
+    let g:floaterm_giteditor = 0
 
 Plug 'https://github.com/jbyuki/venn.nvim'
 
@@ -340,5 +341,11 @@ Plug 'https://github.com/windwp/nvim-autopairs'
 Plug 'https://github.com/AckslD/nvim-trevJ.lua/'
 
 Plug 'https://github.com/kiran94/s3edit.nvim'
+
+" Broken, revisit when updated
+" Plug 'https://github.com/nvim-zh/colorful-winsep.nvim'
+
+" Broken, revisit when updated
+Plug 'https://github.com/ThePrimeagen/refactoring.nvim'
 
 call plug#end()
