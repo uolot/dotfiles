@@ -21,11 +21,11 @@ hs.window.animationDuration = 0
 -- debug print:
 -- hs.console.printStyledtext(hs.inspect.inspect(obj))
 
-function focused()
+local function focused()
     return hs.window.focusedWindow()
 end
 
-function toggleTeamsMute()
+local function toggleTeamsMute()
     local teams = hs.application.find(teamsID)
     -- hs.application.findWindow(titlePattern)
     if not (teams == null) then
@@ -33,7 +33,7 @@ function toggleTeamsMute()
     end
 end
 
-function startIterm()
+local function startIterm()
     -- XXX: try hs.application.launchOrFocus(itermID)
     local iterm = hs.application.find(itermID)
     if not (iterm == null) then
@@ -41,7 +41,7 @@ function startIterm()
     end
 end
 
-function moveWindowToPreviousScreen()
+local function moveWindowToPreviousScreen()
     local window = focused()
     local screen = window:screen():previous()
     if not (screen == nil) then
@@ -49,7 +49,7 @@ function moveWindowToPreviousScreen()
     end
 end
 
-function moveWindowToNextScreen()
+local function moveWindowToNextScreen()
     local window = focused()
     local screen = window:screen():next()
     if not (screen == nil) then
@@ -60,7 +60,7 @@ end
 local mouseCircle = nil
 local mouseCircleTimer = nil
 
-function mouseHighlight()
+local function mouseHighlight()
     -- Delete an existing highlight if it exists
     if mouseCircle then
         mouseCircle:delete()
@@ -84,8 +84,15 @@ function mouseHighlight()
     mouseCircleTimer = hs.timer.doAfter(mouseCircleConfig.duration, function() mouseCircle:delete(); mouseCircle = nil end)
 end
 
-function yabai(args)
+local function yabai(args)
     hs.task.new("/usr/local/bin/yabai", nil, function (...)
+        print("stream", hs.inspect(table.pack(...)))
+        return true
+    end, args):start()
+end
+
+local function warpd(args)
+    hs.task.new("/usr/local/bin/warpd", nil, function (...)
         print("stream", hs.inspect(table.pack(...)))
         return true
     end, args):start()
@@ -99,7 +106,7 @@ local meh = {"alt", "ctrl", "shift"}
 -- mapped keys
 -- Q W . R T Y U . . .
 -- A . . . G . . . . ;
--- Z X C V B . . x x /
+-- . . . V B . . x x /
 
 -- Apps
 -- hs.hotkey.bind(hyper, "p", toggleTeamsMute)
@@ -120,6 +127,10 @@ hs.hotkey.bind(hyper, "p", moveWindowToPreviousScreen)
 
 hs.hotkey.bind(hyper, "right", function () yabai({'-m', 'display', '--focus', 'next'}) end)
 hs.hotkey.bind(hyper, "left", function () yabai({'-m', 'display', '--focus', 'prev'}) end)
+
+hs.hotkey.bind(hyper, "z", function () warpd({'--hint'}) end)
+hs.hotkey.bind(hyper, "x", function () warpd({'--grid'}) end)
+hs.hotkey.bind(hyper, "c", function () warpd({'--normal'}) end)
 
 -- grow
 hs.hotkey.bind(hyper, "e", function () yabai({'-m', 'window', '--resize', 'top:0:-200'}) end)

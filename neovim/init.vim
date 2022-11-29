@@ -39,7 +39,7 @@ set inccommand=split  " breview `:s` replace results
 set lazyredraw " do not redraw screen until needed
 set linebreak " do not wrap in the middle of a word
 set list " display special chars
-set listchars=tab:→\ ,trail:∎  " special chars for list mode
+set listchars=tab:›\ ,trail:•
 set nomodelineexpr  " disable modelinexpr, see: https://github.com/numirias/security/blob/master/doc/2019-06-04_ace-vim-neovim.md
 " set mouse=a " enable mouse
 set nrformats-=octal  " for C-a/C-x treat octal numbers (starting with 0) as decimal numbers
@@ -114,7 +114,7 @@ local on_lsp_attach = function(client, buffer)
             callback = function()
                 vim.lsp.buf.format({
                     -- async = true,
-                    timeout_ms = 3000,
+                    timeout_ms = 5000,
                     filter = function(client) return client.name ~= 'tsserver' end,
                 })
             end
@@ -168,7 +168,7 @@ null_ls.setup({
         null_ls.builtins.diagnostics.flake8,
         -- misc
         -- null_ls.builtins.code_actions.refactoring,
-        null_ls.builtins.diagnostics.trail_space.with({ disabled_filetypes = {'git', 'gitcommit', 'NvimTree'} }),
+        -- null_ls.builtins.diagnostics.trail_space.with({ disabled_filetypes = {'git', 'gitcommit', 'NvimTree'} }),
         -- null_ls.builtins.diagnostics.cfn_lint.with({
         --     condition = function(utils)
         --         return null_ls_helpers.args['$FILENAME'] ~= 'serverless.yml'
@@ -271,18 +271,24 @@ lsp_installer.on_server_ready(function(server)
     end
 
     if server.name == "tsserver" then
-        -- opts.on_attach = on_tsserver_attach
-        opts.on_attach = on_lsp_attach
+        opts.on_attach = on_tsserver_attach
+        -- opts.on_attach = on_lsp_attach
         opts.handlers = {
             ["textDocument/definition"] = function (error, result, method, ...)
+                -- if not vim.tbl_islist(result) or type(result) ~= "table" then
+                --     return vim.lsp.handlers["textDocument/definition"](err, result, method, ...)
+                -- end
+                --
+                -- return vim.lsp.handlers["textDocument/definition"](err, { result[1] }, method, ...)
+
                 -- vim.notify(vim.inspect(result))
-                if vim.tbl_islist(result) and #result > 1 then
+                if (vim.tbl_islist(result) or type(result) == "table") and #result > 1 then
                     local filtered_result = filter(result, filterDTS)
                     -- vim.notify(vim.inspect(filtered_result))
                     return vim.lsp.handlers["textDocument/definition"](err, filtered_result, method, ...)
                 end
 
-                vim.lsp.handlers["textDocument/definition"](err, result, method, ...)
+                return vim.lsp.handlers["textDocument/definition"](err, result, method, ...)
             end
         }
     end
@@ -499,31 +505,19 @@ local kind_icons = {
 
 local cmp = require('cmp')
 
--- local cmp_mapping_insert = {
---     ['<C-Space>'] = cmp.mapping.complete(),
---     ['<Tab>'] = cmp.mapping.confirm({ select = true }),
---     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
---     ['<C-f>'] = cmp.mapping.scroll_docs(4),
--- }
--- local cmp_mapping_cmdline = {
---     ['<C-Space>'] = cmp.mapping.complete(),
---     ['<Tab>'] = cmp.mapping.confirm({ select = true }),
---     ['<Up>'] = cmp.select_prev_item({ behavior = types.cmp.SelectBehavior.Select }),
---     ['<Down>'] = cmp.select_next_item({ behavior = types.cmp.SelectBehavior.Select }),
--- }
 cmp.setup({
     -- preselect = cmp.PreselectMode.None,
     -- https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources
     sources = {
-        { name = 'nvim_lsp' },
         { name = 'buffer' },
-        { name = 'path', option = { trailing_slash = false } },
-        { name = 'omni' },
-        -- { name = 'tags' },
+        { name = 'nvim_lsp' },
         { name = 'vsnip' },
+        { name = 'omni' },
+        { name = 'path', option = { trailing_slash = false } },
+        -- { name = 'tags' },
         -- { name = 'dictionary', keyword_length = 3 },
-        { name = 'emoji', insert = true },
         { name = 'calc' },
+        { name = 'emoji', insert = true },
     },
     mapping = cmp.mapping.preset.insert(),
     formatting = {
@@ -534,12 +528,10 @@ cmp.setup({
             menu = ({
                 buffer = "[Buf]",
                 calc = "[Calc]",
-                -- dictionary = "[Dict]",
                 emoji = "[Emoji]",
                 nvim_lsp = "[LSP]",
                 omni = "[Omni]",
                 path = "[Path]",
-                -- tags = "[Tag]",
                 vsnip = "[Snip]",
             }),
             symbol_map = kind_icons,
@@ -570,15 +562,6 @@ cmp.setup.cmdline('/', {
         { name = 'buffer' },
     }
 })
-
--- require('cmp_dictionary').setup({
---     dic = {
---         ['*'] = { '/usr/share/dict/words' },
---     },
---     exact = 2,
---     first_case_insensitive = true,
---     capacity = 5,
--- })
 
 -- ZK
 require("zk").setup({
@@ -671,6 +654,15 @@ require('lualine').setup {
         lualine_a = { 'mode' },
         lualine_b = {
             { 'filename', path = 1, shorting_target = 40 },
+            {
+                'fileformat',
+                icons_enabled = true,
+                symbols = {
+                    unix = '',
+                    dos = ' CRLF ',
+                    mac = ' CR ',
+                },
+            },
         },
         lualine_c = {
             'searchcount',
@@ -678,7 +670,7 @@ require('lualine').setup {
         },
         -- right
         lualine_x = {
-            'branch',
+            -- 'branch',
         },
         lualine_y = {
             'filetype',
@@ -755,7 +747,7 @@ require('gitsigns').setup {
 --require('floatline').setup()
 
 -- neoscroll
-require('neoscroll').setup()
+-- require('neoscroll').setup()
 
 -- trouble
 require('trouble').setup {
@@ -963,7 +955,7 @@ require('indent_blankline').setup({
 
 })
 
-require('nvim-autopairs').setup({})
+-- require('nvim-autopairs').setup({})
 
 require('s3edit').setup({
     -- exclude = { ".git", ".hoodie", ".parquet", ".zip" },

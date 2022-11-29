@@ -128,7 +128,7 @@ Plug 'michaeljsmith/vim-indent-object'
 
 Plug 'lewis6991/gitsigns.nvim'
 
-Plug 'karb94/neoscroll.nvim'
+" Plug 'karb94/neoscroll.nvim'
 
 " Readline style insertion
 Plug 'tpope/vim-rsi'
@@ -292,7 +292,7 @@ Plug 'wellle/targets.vim'
 " Plug 'j-hui/fidget.nvim'
 
 " https://github.com/godlygeek/tabular
-Plug 'godlygeek/tabular'
+Plug 'godlygeek/tabular', { 'on': 'Tabularize' }
 
 " https://github.com/preservim/vim-markdown
 Plug 'preservim/vim-markdown'
@@ -336,8 +336,9 @@ Plug 'https://github.com/kevinhwang91/nvim-ufo'
 
 Plug 'https://github.com/lukas-reineke/indent-blankline.nvim'
 
-Plug 'https://github.com/windwp/nvim-autopairs'
+" Plug 'https://github.com/windwp/nvim-autopairs'
 
+" Inversed J
 Plug 'https://github.com/AckslD/nvim-trevJ.lua/'
 
 Plug 'https://github.com/kiran94/s3edit.nvim'
@@ -347,5 +348,7 @@ Plug 'https://github.com/kiran94/s3edit.nvim'
 
 " Broken, revisit when updated
 Plug 'https://github.com/ThePrimeagen/refactoring.nvim'
+
+Plug 'https://github.com/tweekmonster/startuptime.vim'
 
 call plug#end()

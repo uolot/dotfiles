@@ -6,19 +6,19 @@ local windowBorderConfig = {
 local globalBorderEnabled = true
 local globalBorder = nil
 
-function deleteWindowBorder()
+local function deleteWindowBorder()
     if globalBorder ~= nil then
         globalBorder:delete()
         globalBorder = nil
     end
 end
 
-function drawWindowBorder()
+local function drawWindowBorder()
     if not globalBorderEnabled then
         return
     end
 
-    local window = focused()
+    local window = Focused()
     if window ~= nil then
         local topLeft = window:topLeft()
         local size = window:size()
@@ -35,7 +35,7 @@ function drawWindowBorder()
     end
 end
 
-function toggleWindowBorder()
+local function toggleWindowBorder()
     if globalBorderEnabled then
         globalBorderEnabled = false
         deleteWindowBorder()
@@ -47,8 +47,8 @@ end
 
 drawWindowBorder()
 
-Events: http://www.hammerspoon.org/docs/hs.window.filter.html
-allWindows = hs.window.filter.new(nil)
+-- Events: http://www.hammerspoon.org/docs/hs.window.filter.html
+local allWindows = hs.window.filter.new(nil)
 allWindows:subscribe(hs.window.filter.windowCreated, drawWindowBorder)
 allWindows:subscribe(hs.window.filter.windowDestroyed, drawWindowBorder)
 allWindows:subscribe(hs.window.filter.windowFocused, drawWindowBorder)
