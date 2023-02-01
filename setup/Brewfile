@@ -15,20 +15,20 @@ tap "qmk/qmk"
 brew "asdf"
 # Library for USB device access
 brew "libusb"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.10"
 # Official Amazon AWS command-line interface
 brew "awscli"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.10"
 # Simple command-line tool to read AWS CloudWatch logs
 brew "awslogs"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.9"
 # Core application library for C
 brew "glib"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.9"
 # Statistics utility to count lines of code
 brew "cloc"
 # Color-highlighted diff(1) output
@@ -39,10 +39,10 @@ brew "direnv"
 brew "fd"
 # GNU Transport Layer Security (TLS) Library
 brew "gnutls"
-# Generate introspection data for GObject libraries
-brew "gobject-introspection"
 # OpenType text shaping engine
 brew "harfbuzz"
+# Generate introspection data for GObject libraries
+brew "gobject-introspection"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
 # Command-line fuzzy finder written in Go
@@ -59,8 +59,12 @@ brew "gron"
 brew "htop"
 # User-friendly cURL replacement (command-line HTTP client)
 brew "httpie"
+# ISO/IEC 23008-12:2017 HEIF file format decoder and encoder
+brew "libheif"
 # Tools and libraries to manipulate images in many formats
 brew "imagemagick"
+# Command-line pager for JSON data
+brew "jless"
 # JSON output from a shell
 brew "jo"
 # Lightweight and flexible command-line JSON processor
@@ -84,15 +88,13 @@ brew "newman"
 # Professional collaborative platform for embedded development
 brew "platformio"
 # Object-relational database system
-brew "postgresql"
+brew "postgresql@14"
 # Python interface to Tcl/Tk
 brew "python-tk@3.9"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Readline wrapper: adds readline support to tools that lack it
 brew "rlwrap"
-# Safe, concurrent, practical language
-brew "rust"
 # Login and retrieve AWS temporary credentials using a SAML IDP
 brew "saml2aws"
 # Display and control your Android device
@@ -101,6 +103,8 @@ brew "scrcpy"
 brew "sqsmover"
 # Cross-shell prompt for astronauts
 brew "starship"
+# User interface to the TELNET protocol
+brew "telnet"
 # Code-search similar to ack
 brew "the_silver_searcher"
 # Text interface for Git repositories
@@ -116,13 +120,15 @@ brew "watchman"
 # Internet file retriever
 brew "wget"
 # A tiling window manager for macOS based on binary space partitioning.
-brew "koekeishiya/formulae/yabai"
+brew "koekeishiya/formulae/yabai", args: ["HEAD"]
 # Plain text note-taking assistant
 brew "mhanberg/zk/zk"
 # Quantum Mechanical Keyboard (QMK) Firmware
 brew "qmk/qmk/qmk"
 # Android SDK component
 cask "android-platform-tools"
+# Open-source KVM software
+cask "barrier"
 # Desktop automation application
 cask "hammerspoon"
 # Java IDE by JetBrains
@@ -139,6 +145,8 @@ cask "miro"
 cask "postman"
 # Toolbox companion for QMK Firmware
 cask "qmk-toolbox"
+# Plugin for AWS CLI to start and end sessions that connect to managed instances
+cask "session-manager-plugin"
 # Instant messaging application focusing on security
 cask "signal"
 # Team communication and collaboration software

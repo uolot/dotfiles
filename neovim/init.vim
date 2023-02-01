@@ -103,32 +103,33 @@ local on_lsp_attach = function(client, buffer)
     -- if client.resolved_capabilities.document_formatting then
     -- if client.server_capabilities.documentFormattingProvider then
     if client.supports_method('textDocument/formatting') then
-        -- vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 2000)")
+        vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 2000)")
         -- vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format({timeout_ms = 2000})")
 
-        local augroup = vim.api.nvim_create_augroup('format_file', {clear=true})
-        vim.api.nvim_create_autocmd('BufWritePre', {
-            group = augroup,
-            buffer = buffer,
-            desc = 'Format',
-            callback = function()
-                vim.lsp.buf.format({
-                    -- async = true,
-                    timeout_ms = 5000,
-                    filter = function(client) return client.name ~= 'tsserver' end,
-                })
-            end
-        })
+        -- local augroup = vim.api.nvim_create_augroup('format_file', {clear=true})
+        -- vim.api.nvim_create_autocmd('BufWritePre', {
+        --     group = augroup,
+        --     buffer = buffer,
+        --     desc = 'Format',
+        --     callback = function()
+        --         vim.lsp.buf.format({
+        --             -- async = true,
+        --             timeout_ms = 5000,
+        --             filter = function(client) return client.name ~= 'tsserver' end,
+        --         })
+        --     end
+        -- })
     end
 end
 
 -- TODO: remove
-local on_tsserver_attach = function(client, buffer)
+local on_tsserver_attach = function(client, bufnr)
+    require("twoslash-queries").attach(client, bufnr)
     -- client.resolved_capabilities.document_formatting = false
     -- client.resolved_capabilities.document_range_formatting = false
     client.server_capabilities.documentFormattingProvider = false
     client.server_capabilities.documentRangeFormattingProvider = false
-    on_lsp_attach(client, buffer)
+    on_lsp_attach(client, bufnr)
 end
 
 -- jose-elias-alvarez/null-ls.nvim
@@ -366,14 +367,14 @@ require('nvim-treesitter.configs').setup {
             },
         },
     },
-    rainbow = {
-        enable = true,
-        -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
-        extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-        max_file_lines = nil, -- Do not enable for files with more than n lines, int
-        -- colors = {}, -- table of hex strings
-        -- termcolors = {} -- table of colour name strings
-    },
+    -- rainbow = {
+    --     enable = true,
+    --     -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
+    --     extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+    --     max_file_lines = nil, -- Do not enable for files with more than n lines, int
+    --     -- colors = {}, -- table of hex strings
+    --     -- termcolors = {} -- table of colour name strings
+    -- },
     textobjects = {
         select = {
             enable = true,
@@ -596,30 +597,16 @@ require('telescope').setup {
         },
     },
     extensions = {
-        emoji = {
-            action = function(emoji)
-                -- insert
-                vim.api.nvim_put({ emoji.value }, 'c', false, true);
-            end,
-        },
-    --    fzf = {
-    --        fuzzy = true,
-    --        override_generic_sorter = true,
-    --        override_file_sorter = true,
-    --        case_mode = "smart_case",
-    --    },
-        ['ui-select'] = {
-            require('telescope.themes').get_dropdown { }
-        },
+        -- ['ui-select'] = {
+        --     require('telescope.themes').get_dropdown { }
+        -- },
     },
 }
 -- require('telescope').load_extension('fzf')
 require('telescope').load_extension('vimwiki')
-require('telescope').load_extension('emoji')
 require('telescope').load_extension('zk')
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('ag')
-require('telescope').load_extension('ui-select')
 
 -- github colorscheme
 -- https://github.com/projekt0n/github-nvim-theme#configuration
@@ -746,9 +733,6 @@ require('gitsigns').setup {
 -- https://github.com/windwp/floatline.nvim
 --require('floatline').setup()
 
--- neoscroll
--- require('neoscroll').setup()
-
 -- trouble
 require('trouble').setup {
     icons = false,
@@ -832,7 +816,7 @@ require("todo-comments").setup({
 })
 
 -- 'chentau/marks.nvim'
--- https://github.com/chentau/marks.nvim#setup
+-- https://github.com/chentoast/marks.nvim#setup
 require'marks'.setup {
   -- whether to map keybinds or not. default true
   default_mappings = true,
@@ -853,34 +837,6 @@ require'marks'.setup {
   -- the priority applies to all marks.
   -- default 10.
   sign_priority = { lower=10, upper=15, builtin=8, bookmark=20 },
-  -- marks.nvim allows you to configure up to 10 bookmark groups, each with its own
-  -- sign/virttext. Bookmarks can be used to group together positions and quickly move
-  -- across multiple buffers. default sign is '!@#$%^&*()' (from 0 to 9), and
-  -- default virt_text is "".
-  bookmark_0 = {
-    sign = "⚑",
-    virt_text = "<--- 0",
-  },
-  bookmark_1 = {
-    sign = "⚑",
-    virt_text = "<--- 1"
-  },
-  bookmark_2 = {
-    sign = "⚑",
-    virt_text = "<--- 2"
-  },
-  bookmark_3 = {
-    sign = "⚑",
-    virt_text = "<--- 3"
-  },
-  bookmark_4 = {
-    sign = "⚑",
-    virt_text = "<--- 4"
-  },
-  bookmark_5 = {
-    sign = "⚑",
-    virt_text = "<--- 5"
-  },
   mappings = {}
 }
 
@@ -936,23 +892,24 @@ end);
 
 require('ufo').setup()
 
-vim.cmd [[highlight IndentBlanklineIndent1 guifg=#333333 gui=nocombine]]
-vim.cmd [[highlight IndentBlanklineContextChar guifg=#666666 gui=nocombine]]
+vim.cmd [[highlight IndentBlanklineIndent1 guifg=#444444 gui=nocombine]]
+-- vim.cmd [[highlight IndentBlanklineContextChar guifg=#666666 gui=nocombine]]
+vim.cmd [[highlight IndentBlanklineContextChar guifg=#DDDDDD gui=nocombine]]
+vim.cmd [[highlight IndentBlanklineContextStart guisp=#DDDDDD gui=underline]]
 
 require('indent_blankline').setup({
-    use_treesitter = false,
+    use_treesitter = true,
     space_char_blankline = " ",
-    char_list = {'│', '¦'},
-    show_first_indent_level = false,
+    -- char_list = {'│', '¦'},
+    char = '│',
+    show_first_indent_level = true,
     show_current_context = true,
-    -- show_current_context_start = true,
+    show_current_context_start = false,
     char_highlight_list = {
         "IndentBlanklineIndent1",
     },
     buftype_exclude = {"terminal", "nofile"},
     -- filetype_exclude = {},
--- }
-
 })
 
 -- require('nvim-autopairs').setup({})
@@ -981,9 +938,71 @@ require('which-key').register(
 )
 
 -- Broken, revisit when updated
--- require('colorful-winsep').setup()
+-- require('colorful-winsep').setup({
+--     no_exec_files = { "packer", "TelescopePrompt", "mason", "CompetiTest", "NvimTree", "TodoTelescope", "Committia" },
+-- })
+
+require('paint').setup({
+    highlights = {
+        {
+            filter = { filetype = "markdown" },
+            pattern = "^(%s*#%s+.+)",
+            hl = "markdownH1",
+        },
+        {
+            filter = { filetype = "markdown" },
+            pattern = "^(%s*##%s+.+)",
+            hl = "markdownH2",
+        },
+        {
+            filter = { filetype = "markdown" },
+            pattern = "^(%s*###%s+.+)",
+            hl = "markdownH3",
+        },
+        {
+            filter = { filetype = "markdown" },
+            pattern = "^(%s*####%s+.+)",
+            hl = "markdownH4",
+        },
+        {
+            filter = { filetype = "markdown" },
+            pattern = "^(%s*#####%s+.+)",
+            hl = "markdownH5",
+        },
+    },
+})
+
+require('oil').setup()
+
+require("twoslash-queries").setup({
+    multi_line = false, -- to print types in multi line mode
+    is_enabled = true, -- to keep disabled at startup and enable it on request with the EnableTwoslashQueries 
+})
 
 EOF
+
+" firenvim
+    let g:firenvim_config = { 
+        \ 'globalSettings': {
+            \ 'alt': 'all',
+        \  },
+        \ 'localSettings': {
+            \ '.*': {
+                \ 'cmdline': 'neovim',
+                \ 'content': 'text',
+                \ 'priority': 0,
+                \ 'selector': 'textarea',
+                \ 'takeover': 'never',
+            \ },
+        \ }
+    \ }
+
+    if exists('g:started_by_firenvim')
+        colorscheme github_light
+    endif
+
+    " set guifont=Monaco:h20
+    set guifont=BlexMono\ Nerd\ Font\ Mono:h12
 
 " kosayoda/nvim-lightbulb
 autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb({})
@@ -1012,13 +1031,15 @@ source $HOME/.dotfiles/neovim/mappings.vim
 source $HOME/.dotfiles/neovim/abbrev.vim
 
 augroup markdown_highlights
-    au FileType markdown highlight htmlH1 guifg=Yellow
-    au FileType markdown highlight htmlH2 guifg=Orange
-    au FileType markdown highlight htmlH3 guifg=LightGreen
-    au FileType markdown highlight htmlH4 guifg=Cyan
-    au FileType markdown highlight htmlH5 guifg=Pink
+    highlight markdownH1 guifg=Yellow
+    highlight markdownH2 guifg=Orange
+    highlight markdownH3 guifg=LightGreen
+    highlight markdownH4 guifg=Cyan
+    highlight markdownH5 guifg=Pink
 augroup end
 
+" bg for hl_match_area
+highlight MatchArea guibg=#303030
 
 augroup highlight_yank
     autocmd!

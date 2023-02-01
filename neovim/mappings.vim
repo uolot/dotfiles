@@ -17,15 +17,14 @@
     vnoremap <silent> <Leader>ga <Cmd>CodeActionMenu<CR>
     nnoremap <silent> <Leader>ge :lua vim.diagnostic.open_float()<CR>
     nnoremap <silent> <Leader>gd :lua vim.lsp.buf.definition()<CR>
-    nnoremap <silent> <Leader>gD :lua vim.lsp.buf.declaration()<CR>
+    " nnoremap <silent> <Leader>gD :lua vim.lsp.buf.declaration()<CR>
     nnoremap <silent> <Leader>gf :Telescope lsp_references<CR>
-    " vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
-    nnoremap <silent> <Leader>gF :lua function() vim.lsp.buf.format({ async = true }) end<CR>
     nnoremap <silent> <Leader>gh :lua vim.lsp.buf.hover()<CR>
     nnoremap <silent> <Leader>gi :lua vim.lsp.buf.implementation()<CR>
-    " nnoremap <silent> <Leader>gr :Telescope lsp_references<CR>
-    " nnoremap <silent> <Leader>gR :lua vim.lsp.buf.rename()<CR>
+    " nnoremap <silent> <Leader>gr :lua vim.lsp.buf.rename()<CR>
     nnoremap <Leader>gr :IncRename <C-r><C-w>
+    nnoremap <silent> <Leader>gR :lua require('refactoring').select_refactor()<CR>
+    vnoremap <silent> <Leader>gR :lua require('refactoring').select_refactor()<CR>
     nnoremap <silent> <Leader>gs :Telescope lsp_document_symbols<CR>
     nnoremap <silent> <Leader>gS :Telescope lsp_dynamic_workspace_symbols<CR>
     nnoremap <silent> <Leader>gt :lua vim.lsp.buf.type_definition()<CR>
@@ -85,10 +84,9 @@
     nnoremap <silent> <Leader>tb :Telescope buffers<CR>
     nnoremap <silent> <Leader>td :TodoTelescope<CR>
     nnoremap <silent> <Leader>te :Telescope emoji<CR>
-    nnoremap <silent> <Leader>tf :Telescope current_buffer_fuzzy_find<CR>
-    nnoremap <silent> <Leader>tg <Cmd>lua require('telescope.builtin').grep_string({search = vim.fn.input('Search> ')})<CR>
-    nnoremap <silent> <Leader>tG :Telescope grep_string<CR>
-    nnoremap <silent> <Leader>tl :Telescope live_grep<CR>
+    nnoremap <silent> <Leader>tg :Telescope grep_string<CR>
+    nnoremap <silent> <Leader>tG :Telescope live_grep<CR>
+    nnoremap <silent> <Leader>tl :Telescope current_buffer_fuzzy_find<CR>
     nnoremap <silent> <Leader>tt :Telescope current_buffer_tags<CR>
     nnoremap <silent> <Leader>tT :Telescope tags<CR>
 
@@ -98,6 +96,8 @@
     nnoremap <silent> <Leader>nn :NvimTreeToggle<CR>
     nnoremap <silent> <Leader>nr :NvimTreeRefresh<CR>
     nnoremap <silent> <Leader>nt :NvimTreeFocus<CR>
+" oil
+    nnoremap <silent> <Leader>n- <Cmd>lua require("oil").open()<CR>
 
 " colour - HSHighlight / vim-mark
     " visual
@@ -178,6 +178,7 @@
     nnoremap <Leader>df <Cmd>DiffviewFileHistory %<CR>
     nnoremap <Leader>dc <Cmd>DiffviewClose<CR>
     nnoremap <Leader>do <Cmd>DiffviewOpen<CR>
+
 
 " jump between splits
 nnoremap <C-h> <C-w>h
