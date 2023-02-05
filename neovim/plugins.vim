@@ -254,6 +254,8 @@ Plug 'https://github.com/levouh/tint.nvim'
 Plug 'https://github.com/sindrets/winshift.nvim'
 Plug 'https://github.com/gbrlsnchs/winpick.nvim'
 
+" hide gutter numbers for folds
+Plug 'https://github.com/luukvbaal/statuscol.nvim'
 " ultra fold
 Plug 'https://github.com/kevinhwang91/nvim-ufo'
 

@@ -26,6 +26,7 @@ set expandtab " convert tabs to spaces
 set exrc " load local .nvimrc/.exrc files
 " ufo
 lua vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+" lua vim.o.fillchars = [[eob: ,fold: ,foldopen:▼,foldsep: ,foldclose:⏵]]
 set foldcolumn=1
 set foldlevel=99
 set foldlevelstart=99
@@ -889,6 +890,13 @@ vim.keymap.set('n', '<C-w>p', function ()
         vim.api.nvim_set_current_win(winid)
     end
 end);
+
+-- vim.o.statuscolumn = "%@v:lua.ScFa@%C%T%@v:lua.ScLa@%s%T@v:lua.ScNa@%=%{v:lua.ScLn()}%T"
+
+require("statuscol").setup({
+  foldfunc = "builtin",
+  setopt = true,
+})
 
 require('ufo').setup()
 
