@@ -6,6 +6,9 @@ endif
 
 call plug#begin(stdpath('data') . '/plugged')
 
+" cache plugins
+Plug 'https://github.com/lewis6991/impatient.nvim'
+
 Plug 'nvim-lua/plenary.nvim'
 Plug 'kevinhwang91/promise-async'
 
@@ -32,7 +35,7 @@ Plug 'folke/trouble.nvim'
 Plug 'https://github.com/weilbith/nvim-code-action-menu'
 
 " LSP signature hint as you type
-Plug 'https://github.com/ray-x/lsp_signature.nvim'
+" Plug 'https://github.com/ray-x/lsp_signature.nvim'
 
 Plug 'https://github.com/jose-elias-alvarez/null-ls.nvim'
 
@@ -53,6 +56,8 @@ Plug 'https://github.com/hrsh7th/cmp-nvim-lsp-document-symbol'
 Plug 'https://github.com/hrsh7th/cmp-calc'
 Plug 'https://github.com/hrsh7th/cmp-omni'
 Plug 'https://github.com/hrsh7th/cmp-emoji'
+" Plug 'https://github.com/tzachar/cmp-tabnine', { 'do': './install.sh' }
+Plug 'https://github.com/hrsh7th/cmp-nvim-lsp-signature-help'
 
 " A snippet plugin is required by nvim-cmp
 Plug 'https://github.com/hrsh7th/vim-vsnip'
@@ -61,6 +66,8 @@ Plug 'https://github.com/hrsh7th/cmp-vsnip'
 
 " Completion plugin
 Plug 'https://github.com/hrsh7th/nvim-cmp'
+
+" Plug 'https://github.com/codota/tabnine-nvim', { 'do': './dl_binaries.sh' }
 
 " -- Treesitter --
 
@@ -81,13 +88,14 @@ Plug 'https://github.com/windwp/nvim-ts-autotag'
 Plug 'https://github.com/nvim-telescope/telescope.nvim', { 'branch': '0.1.x' }
 Plug 'https://github.com/kelly-lin/telescope-ag'
 Plug 'https://github.com/nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
-" Plug 'https://github.com/nvim-telescope/telescope-ui-select.nvim'
+Plug 'https://github.com/nvim-telescope/telescope-ui-select.nvim'
 
 
 " -- Colorschemes --
 
 Plug 'https://github.com/nvim-lualine/lualine.nvim'
-Plug 'https://github.com/kyazdani42/nvim-web-devicons'
+" Plug 'https://github.com/kyazdani42/nvim-web-devicons'
+Plug 'https://github.com/nvim-tree/nvim-web-devicons'
 
 " grep: github-colors github-theme
 Plug 'https://github.com/projekt0n/github-nvim-theme'
@@ -196,7 +204,7 @@ Plug 'https://github.com/chentoast/marks.nvim'
 
 " -- Vimwiki & Markdown --
 
-Plug 'https://github.com/vimwiki/vimwiki', { 'branch': 'dev' }
+Plug 'https://github.com/vimwiki/vimwiki'
 Plug 'https://github.com/ElPiloto/telescope-vimwiki.nvim'
 
 " Markdown live preview
@@ -213,6 +221,8 @@ Plug 'https://github.com/preservim/vim-markdown'
     let g:vim_markdown_conceal_code_blocks = 0
     let g:vim_markdown_strikethrough = 1
 
+" Additional highlights for markdown
+Plug 'https://github.com/lukas-reineke/headlines.nvim'
 
 " -- Misc --
 
@@ -282,5 +292,13 @@ Plug 'https://github.com/glacambre/firenvim', { 'do': { _ -> firenvim#install(0)
 
 " Nvim lua plugin which adds support for twoslash queries into typescript projects
 Plug 'https://github.com/marilari88/twoslash-queries.nvim'
+
+Plug 'https://github.com/gen740/SmoothCursor.nvim'
+
+Plug 'https://github.com/stevearc/overseer.nvim'
+
+Plug 'https://github.com/rcarriga/nvim-notify'
+
+Plug 'https://github.com/vinnymeller/swagger-preview.nvim'
 
 call plug#end()

@@ -91,22 +91,22 @@ local function yabai(args)
     end, args):start()
 end
 
-local function warpd(args)
-    hs.task.new("/usr/local/bin/warpd", nil, function (...)
-        print("stream", hs.inspect(table.pack(...)))
-        return true
-    end, args):start()
-end
-
+-- local function warpd(args)
+--     hs.task.new("/usr/local/bin/warpd", nil, function (...)
+--         print("stream", hs.inspect(table.pack(...)))
+--         return true
+--     end, args):start()
+-- end
+--
 local hyper = {"cmd", "alt", "ctrl", "shift"}
 local meh = {"alt", "ctrl", "shift"}
 
 -- HYPER
 
 -- mapped keys
--- Q W . R T Y U . . .
--- A . . . G . . . . ;
--- . . . V B . . x x /
+-- Q W E R T Y U . . .
+-- A S D F G . . . . ;
+-- Z X C V B . . x x /
 
 -- Apps
 -- hs.hotkey.bind(hyper, "p", toggleTeamsMute)
@@ -115,7 +115,7 @@ hs.hotkey.bind(hyper, "i", startIterm)
 -- Window navigation
 -- hs.hotkey.bind(hyper, ";", hs.hints.windowHints)
 hs.hotkey.bind(hyper, "return", function () yabai({'-m', 'window', '--toggle', 'zoom-fullscreen'}) end)
-hs.hotkey.bind(hyper, "space", function () yabai({'-m', 'window', '--toggle', 'float', '--grid', '6:4:1:1:2:4'}) end)
+hs.hotkey.bind(hyper, "space", function () yabai({'-m', 'window', '--toggle', 'float'}) end)
 
 hs.hotkey.bind(hyper, "h", function () yabai({'-m', 'window', '--focus', 'west'}) end)
 hs.hotkey.bind(hyper, "j", function () yabai({'-m', 'window', '--focus', 'south'}) end)
@@ -128,15 +128,15 @@ hs.hotkey.bind(hyper, "p", moveWindowToPreviousScreen)
 hs.hotkey.bind(hyper, "right", function () yabai({'-m', 'display', '--focus', 'next'}) end)
 hs.hotkey.bind(hyper, "left", function () yabai({'-m', 'display', '--focus', 'prev'}) end)
 
-hs.hotkey.bind(hyper, "z", function () warpd({'--hint'}) end)
-hs.hotkey.bind(hyper, "x", function () warpd({'--grid'}) end)
-hs.hotkey.bind(hyper, "c", function () warpd({'--normal'}) end)
+-- hs.hotkey.bind(hyper, "z", function () warpd({'--hint'}) end)
+-- hs.hotkey.bind(hyper, "x", function () warpd({'--grid'}) end)
+-- hs.hotkey.bind(hyper, "c", function () warpd({'--normal'}) end)
 
 -- grow
-hs.hotkey.bind(hyper, "e", function () yabai({'-m', 'window', '--resize', 'top:0:-200'}) end)
-hs.hotkey.bind(hyper, "s", function () yabai({'-m', 'window', '--resize', 'left:-200:0'}) end)
-hs.hotkey.bind(hyper, "d", function () yabai({'-m', 'window', '--resize', 'bottom:0:200'}) end)
-hs.hotkey.bind(hyper, "f", function () yabai({'-m', 'window', '--resize', 'right:200:0'}) end)
+-- hs.hotkey.bind(hyper, "e", function () yabai({'-m', 'window', '--resize', 'top:0:-200'}) end)
+-- hs.hotkey.bind(hyper, "s", function () yabai({'-m', 'window', '--resize', 'left:-200:0'}) end)
+-- hs.hotkey.bind(hyper, "d", function () yabai({'-m', 'window', '--resize', 'bottom:0:200'}) end)
+-- hs.hotkey.bind(hyper, "f", function () yabai({'-m', 'window', '--resize', 'right:200:0'}) end)
 
 -- Mouse
 -- TODO:
@@ -146,8 +146,8 @@ hs.hotkey.bind(hyper, "m", mouseHighlight)
 -- MEH
 
 -- mapped keys
--- Q W . . T . U I O .
--- A . . . . G . . . ;
+-- Q W E . T . U I O .
+-- A . D F . G . . . ;
 -- Z . C V . . M x x /
 
 hs.hotkey.bind(meh, "h", function () yabai({'-m', 'window', '--swap', 'west'}) end)
@@ -155,7 +155,8 @@ hs.hotkey.bind(meh, "j", function () yabai({'-m', 'window', '--swap', 'south'}) 
 hs.hotkey.bind(meh, "k", function () yabai({'-m', 'window', '--swap', 'north'}) end)
 hs.hotkey.bind(meh, "l", function () yabai({'-m', 'window', '--swap', 'east'}) end)
 
-hs.hotkey.bind(meh, "space", function () yabai({'-m', 'window', '--toggle', 'float'}) end)
+hs.hotkey.bind(meh, "space", function () yabai({'-m', 'window', '--toggle', 'float', '--grid', '6:4:1:1:2:4'}) end)
+hs.hotkey.bind(meh, "s", function () yabai({'-m', 'window', '--toggle', 'sticky'}) end)
 
 hs.hotkey.bind(meh, "b", function () yabai({'-m', 'space', '--balance'}) end)
 hs.hotkey.bind(meh, "r", function () yabai({'-m', 'space', '--rotate', '270'}) end)
@@ -166,7 +167,7 @@ hs.hotkey.bind(meh, "n", function () yabai({'-m', 'window', '--space', 'next'}) 
 hs.hotkey.bind(meh, "p", function () yabai({'-m', 'window', '--space', 'prev'}) end)
 
 -- shrink
-hs.hotkey.bind(meh, "e", function () yabai({'-m', 'window', '--resize', 'top:0:200'}) end)
-hs.hotkey.bind(meh, "s", function () yabai({'-m', 'window', '--resize', 'left:200:0'}) end)
-hs.hotkey.bind(meh, "d", function () yabai({'-m', 'window', '--resize', 'bottom:0:-200'}) end)
-hs.hotkey.bind(meh, "f", function () yabai({'-m', 'window', '--resize', 'right:-200:0'}) end)
+-- hs.hotkey.bind(meh, "e", function () yabai({'-m', 'window', '--resize', 'top:0:200'}) end)
+-- hs.hotkey.bind(meh, "s", function () yabai({'-m', 'window', '--resize', 'left:200:0'}) end)
+-- hs.hotkey.bind(meh, "d", function () yabai({'-m', 'window', '--resize', 'bottom:0:-200'}) end)
+-- hs.hotkey.bind(meh, "f", function () yabai({'-m', 'window', '--resize', 'right:-200:0'}) end)

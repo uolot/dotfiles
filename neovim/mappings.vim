@@ -179,6 +179,10 @@
     nnoremap <Leader>dc <Cmd>DiffviewClose<CR>
     nnoremap <Leader>do <Cmd>DiffviewOpen<CR>
 
+" overseer
+    nnoremap <silent> <Leader>oo <Cmd>OverseerToggle<CR>
+    nnoremap <Leader>oc :OverseerRunCmd 
+    nnoremap <Leader>or :OverseerRun 
 
 " jump between splits
 nnoremap <C-h> <C-w>h
@@ -227,6 +231,8 @@ xnoremap Q :'<,'>:normal @q<CR>
 nnoremap zR <Cmd>lua require('ufo').openAllFolds()<CR>
 nnoremap zM <Cmd>lua require('ufo').closeAllFolds()<CR>
 
+inoremap <C-Tab> <C-n>
+inoremap <C-S-Tab> <C-p>
 
 augroup markdown_mappings
     autocmd FileType markdown nmap ]] <Plug>Markdown_MoveToNextSiblingHeader

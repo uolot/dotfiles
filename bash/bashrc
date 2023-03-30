@@ -42,7 +42,7 @@ eval "$(starship init bash)"
 [[ -f $HOME/.dotfiles/alacritty/alacritty.bash ]] && source $HOME/.dotfiles/alacritty/alacritty.bash
 export GOOGLE_APPLICATION_CREDENTIALS=~/.config/gcloud/platform-admin.json
 
-# eval "$(zoxide init bash --cmd cd)"
+eval "$(zoxide init bash)"
 
 # source <(kubectl completion bash)
 
@@ -69,6 +69,8 @@ source /usr/local/etc/bash_completion.d/starship
 source /usr/local/etc/bash_completion.d/tig-completion.bash
 
 eval "$(direnv hook bash)"
+
+eval "$(gh completion -s bash)"
 
 # TODO: remove, already exists in bash_profile
 export NPM_TOKEN="$(cat "$HOME/.secrets/LEGO_GH_TOKEN")"

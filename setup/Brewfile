@@ -1,3 +1,4 @@
+tap "1password/tap"
 tap "cormacrelf/tap"
 tap "felixkratz/formulae"
 tap "homebrew/bundle"
@@ -41,8 +42,6 @@ brew "fd"
 brew "gnutls"
 # OpenType text shaping engine
 brew "harfbuzz"
-# Generate introspection data for GObject libraries
-brew "gobject-introspection"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
 # Command-line fuzzy finder written in Go
@@ -53,6 +52,8 @@ brew "git"
 brew "git-delta"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
+# Generate introspection data for GObject libraries
+brew "gobject-introspection"
 # Make JSON greppable
 brew "gron"
 # Improved top (interactive process viewer)
@@ -63,6 +64,8 @@ brew "httpie"
 brew "libheif"
 # Tools and libraries to manipulate images in many formats
 brew "imagemagick"
+# Serializes the output of command-line tools to structured JSON output
+brew "jc"
 # Command-line pager for JSON data
 brew "jless"
 # JSON output from a shell
@@ -97,6 +100,8 @@ brew "ripgrep"
 brew "rlwrap"
 # Login and retrieve AWS temporary credentials using a SAML IDP
 brew "saml2aws"
+# Fast and accurate code counter with complexity and COCOMO estimates
+brew "scc"
 # Display and control your Android device
 brew "scrcpy"
 # AWS SQS Message mover
@@ -125,6 +130,8 @@ brew "koekeishiya/formulae/yabai", args: ["HEAD"]
 brew "mhanberg/zk/zk"
 # Quantum Mechanical Keyboard (QMK) Firmware
 brew "qmk/qmk/qmk"
+# Command-line helper for the 1Password password manager
+cask "1password-cli"
 # Android SDK component
 cask "android-platform-tools"
 # Open-source KVM software
@@ -145,10 +152,10 @@ cask "miro"
 cask "postman"
 # Toolbox companion for QMK Firmware
 cask "qmk-toolbox"
+# Control your tools with a few keystrokes
+cask "raycast"
 # Plugin for AWS CLI to start and end sessions that connect to managed instances
 cask "session-manager-plugin"
-# Instant messaging application focusing on security
-cask "signal"
 # Team communication and collaboration software
 cask "slack"
 # Open-source code editor
