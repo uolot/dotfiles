@@ -66,7 +66,6 @@ source /usr/local/etc/bash_completion.d/git-completion.bash
 source /usr/local/etc/bash_completion.d/jo.bash
 source /usr/local/etc/bash_completion.d/rg.bash
 source /usr/local/etc/bash_completion.d/starship
-source /usr/local/etc/bash_completion.d/tig-completion.bash
 
 eval "$(direnv hook bash)"
 

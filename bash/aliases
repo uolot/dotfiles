@@ -73,3 +73,5 @@ alias todos="ag '(TODO|XXX|FIXME)' $@"
 alias scratchpad="nvim ~/Documents/ZK/scratchpad_0ixi_2022-03-30.md"
 alias scratchpad-copy="cat ~/scratchpad | pbcopy"
 
+# duh
+alias killeslint="ps aux | grep eslint | grep -v grep | awk '{print $2}' | xargs kill"

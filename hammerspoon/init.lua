@@ -160,8 +160,8 @@ hs.hotkey.bind(meh, "s", function () yabai({'-m', 'window', '--toggle', 'sticky'
 
 hs.hotkey.bind(meh, "b", function () yabai({'-m', 'space', '--balance'}) end)
 hs.hotkey.bind(meh, "r", function () yabai({'-m', 'space', '--rotate', '270'}) end)
-hs.hotkey.bind(meh, "x", function () yabai({'-m', 'space', '--mirror', 'x-axis'}) end)
-hs.hotkey.bind(meh, "y", function () yabai({'-m', 'space', '--mirror', 'y-axis'}) end)
+hs.hotkey.bind(meh, "x", function () yabai({'-m', 'space', '--mirror', 'x-axis'}); yabai({'-m', 'space', '--balance'}) end)
+hs.hotkey.bind(meh, "y", function () yabai({'-m', 'space', '--mirror', 'y-axis'}); yabai({'-m', 'space', '--balance'}) end)
 
 hs.hotkey.bind(meh, "n", function () yabai({'-m', 'window', '--space', 'next'}) end)
 hs.hotkey.bind(meh, "p", function () yabai({'-m', 'window', '--space', 'prev'}) end)

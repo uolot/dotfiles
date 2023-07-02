@@ -11,31 +11,36 @@ tap "koekeishiya/formulae"
 tap "mhanberg/zk"
 tap "osx-cross/arm"
 tap "osx-cross/avr"
-tap "qmk/qmk"
 # Extendable version manager with support for Ruby, Node.js, Erlang & more
 brew "asdf"
 # Library for USB device access
 brew "libusb"
 # Official Amazon AWS command-line interface
 brew "awscli"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.10"
 # Simple command-line tool to read AWS CloudWatch logs
 brew "awslogs"
+# Microsoft Azure CLI 2.0
+brew "azure-cli"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # Core application library for C
 brew "glib"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.9"
 # Statistics utility to count lines of code
 brew "cloc"
 # Color-highlighted diff(1) output
 brew "colordiff"
+# SQL-like query language for csv
+brew "csvq"
+# JSON, YAML, TOML, XML, and CSV query and modification tool
+brew "dasel"
 # Load/unload environment variables based on $PWD
 brew "direnv"
+# Convert text between DOS, UNIX, and Mac formats
+brew "dos2unix"
+# Run arbitrary commands when files change
+brew "entr"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 # GNU Transport Layer Security (TLS) Library
@@ -46,6 +51,8 @@ brew "harfbuzz"
 brew "ffmpeg"
 # Command-line fuzzy finder written in Go
 brew "fzf"
+# GitHub command-line tool
+brew "gh"
 # Distributed revision control system
 brew "git"
 # Syntax-highlighting pager for git and diff output
@@ -85,15 +92,11 @@ brew "moreutils"
 # NCurses Disk Usage
 brew "ncdu"
 # Ambitious Vim-fork focused on extensibility and agility
-brew "neovim"
-# Command-line collection runner for Postman
-brew "newman"
+brew "neovim", args: ["HEAD"]
 # Professional collaborative platform for embedded development
 brew "platformio"
 # Object-relational database system
 brew "postgresql@14"
-# Python interface to Tcl/Tk
-brew "python-tk@3.9"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Readline wrapper: adds readline support to tools that lack it
@@ -112,8 +115,6 @@ brew "starship"
 brew "telnet"
 # Code-search similar to ack
 brew "the_silver_searcher"
-# Text interface for Git repositories
-brew "tig"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
 # Maintained ctags implementation
@@ -124,16 +125,16 @@ brew "up"
 brew "watchman"
 # Internet file retriever
 brew "wget"
+# Shell extension to navigate your filesystem faster
+brew "zoxide"
 # A tiling window manager for macOS based on binary space partitioning.
 brew "koekeishiya/formulae/yabai", args: ["HEAD"]
 # Plain text note-taking assistant
 brew "mhanberg/zk/zk"
-# Quantum Mechanical Keyboard (QMK) Firmware
-brew "qmk/qmk/qmk"
 # Command-line helper for the 1Password password manager
 cask "1password-cli"
-# Android SDK component
-cask "android-platform-tools"
+# Multi-track audio editor and recorder
+cask "audacity"
 # Open-source KVM software
 cask "barrier"
 # Desktop automation application
@@ -144,14 +145,10 @@ cask "intellij-idea"
 cask "iterm2-beta"
 # Keyboard customizer
 cask "karabiner-elements"
-# Open-source Markdown editor
-cask "macdown"
 # Online collaborative whiteboard platform
 cask "miro"
 # Collaboration platform for API development
 cask "postman"
-# Toolbox companion for QMK Firmware
-cask "qmk-toolbox"
 # Control your tools with a few keystrokes
 cask "raycast"
 # Plugin for AWS CLI to start and end sessions that connect to managed instances

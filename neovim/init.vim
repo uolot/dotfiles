@@ -81,6 +81,7 @@ source $HOME/.dotfiles/neovim/plugins.vim
 lua << EOF
 
 require('impatient')
+vim.loader.enable()
 
 -- LSP --
 
@@ -94,13 +95,13 @@ local on_lsp_attach = function(client, buffer)
     --buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
     -- ufo
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    -- local capabilities = requite('cmp_nvim_lsp').default_capabilities()
-    capabilities.textDocument.foldingRange = {
-        dynamicRegistration = false,
-        lineFoldingOnly = true,
-    }
-    client.capabilities = capabilities
+    -- local capabilities = vim.lsp.protocol.make_client_capabilities()
+    -- -- local capabilities = requite('cmp_nvim_lsp').default_capabilities()
+    -- capabilities.textDocument.foldingRange = {
+    --     dynamicRegistration = false,
+    --     lineFoldingOnly = true,
+    -- }
+    -- client.capabilities = capabilities
     -- ufo end
 
     -- TODO: update capabilities with `require('cmp_nvim_lsp').update_capabilities
@@ -109,58 +110,83 @@ local on_lsp_attach = function(client, buffer)
     if client.supports_method('textDocument/formatting') then
         -- vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 2000)")
 
-        vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format({timeout_ms = 5000})")
+        -- vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format({timeout_ms = 5000})")
 
-        -- local augroup = vim.api.nvim_create_augroup('format_file', {clear=true})
-        -- vim.api.nvim_create_autocmd('BufWritePre', {
-        --     group = augroup,
-        --     buffer = buffer,
-        --     desc = 'Format',
-        --     callback = function()
-        --         vim.lsp.buf.format({
-        --             async = true,
-        --             timeout_ms = 5000,
-        --             filter = function(client) return client.name ~= 'tsserver' end,
-        --         })
-        --     end
-        -- })
+        local augroup = vim.api.nvim_create_augroup('format_file', {clear=true})
+        vim.api.nvim_create_autocmd('BufWritePre', {
+            group = augroup,
+            buffer = buffer,
+            desc = 'Format',
+            callback = function()
+                vim.lsp.buf.format({
+                    async = true,
+                    timeout_ms = 5000,
+                    filter = function(client) return client.name ~= 'tsserver' end,
+                })
+            end
+        })
     end
+
+    -- if client.server_capabilities.inlayHintProvider then
+    --     vim.lsp.buf.inlay_hint(bufnr, true)
+    -- end
 end
 
 -- TODO: remove
 local on_tsserver_attach = function(client, bufnr)
     require("twoslash-queries").attach(client, bufnr)
-    -- client.resolved_capabilities.document_formatting = false
-    -- client.resolved_capabilities.document_range_formatting = false
     client.server_capabilities.documentFormattingProvider = false
     client.server_capabilities.documentRangeFormattingProvider = false
-    on_lsp_attach(client, bufnr)
+
+    if client.server_capabilities.inlayHintProvider then
+        vim.lsp.buf.inlay_hint(bufnr, true)
+    end
+    -- vim.lsp.buf.inlay_hint(bufnr, true)
+
+    -- on_lsp_attach(client, bufnr)
 end
 
 -- jose-elias-alvarez/null-ls.nvim
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/CONFIG.md
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md
+
+require('lsp-lens').setup({
+    enable = true,
+    include_declaration = true,
+    sections = {
+        definition = true,
+        references = true,
+        implementation = true,
+    },
+})
+
 local null_ls = require("null-ls")
 local null_ls_helpers = require("null-ls.helpers")
 null_ls.setup({
     sources = {
+        -- null_ls.builtins.code_actions.eslint,
+        null_ls.builtins.code_actions.eslint_d,
+        null_ls.builtins.diagnostics.eslint_d,
+        -- null_ls.builtins.formatting.eslint_d,
+        -- null_ls.builtins.formatting.prettier_eslint,
+        null_ls.builtins.formatting.prettierd,
         -- null_ls.builtins.formatting.eslint.with({
-        --     prefer_local = "node_modules/.bin"
-        -- }),
-        -- null_ls.builtins.diagnostics.eslint.with({
         --     prefer_local = "node_modules/.bin"
         -- }),
         -- null_ls.builtins.code_actions.eslint.with({
         --     prefer_local = "node_modules/.bin"
         -- }),
-        null_ls.builtins.formatting.prettier.with({
-            prefer_local = "node_modules/.bin",
-            condition = function(utils)
-                return utils.root_has_file("node_modules/.bin/prettier")
-            end,
-            disabled_filetypes = {"json"},
-            -- command = "node_modules/.bin/prettier",
-        }),
+        -- null_ls.builtins.diagnostics.eslint.with({
+        --     prefer_local = "node_modules/.bin"
+        -- }),
+        -- null_ls.builtins.formatting.prettier.with({
+        --     prefer_local = "node_modules/.bin",
+        --     condition = function(utils)
+        --         return utils.root_has_file("node_modules/.bin/prettier")
+        --     end,
+        --     disabled_filetypes = {"json"},
+        --     -- command = "node_modules/.bin/prettier",
+        -- }),
         -- null_ls.builtins.diagnostics.tsc.with({
         --     prefer_local = "node_modules/.bin",
         --     condition = function(utils)
@@ -260,69 +286,175 @@ local function filterDTS(value)
     -- return string.match(value.targetUri, '%.d.ts') == nil
 end
 
-local lsp_installer = require("nvim-lsp-installer")
-lsp_installer.on_server_ready(function(server)
-    local opts = {
-        on_attach = on_lsp_attach,
-        flags = {
-            -- This will be the default in neovim 0.7+
-            debounce_text_changes = 150,
-        },
-    }
+-- local lsp_installer = require("nvim-lsp-installer")
+-- lsp_installer.on_server_ready(function(server)
+--     local opts = {
+--         on_attach = on_lsp_attach,
+--         flags = {
+--             -- This will be the default in neovim 0.7+
+--             debounce_text_changes = 150,
+--         },
+--     }
+--
+--     local signs = { Hint = "", Info = "", Warn = "", Error = "" }
+--     for type, icon in pairs(signs) do
+--         local hl = "DiagnosticSign" .. type
+--         vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+--     end
+--
+--     if server.name == "tsserver" then
+--         opts.on_attach = on_tsserver_attach
+--         -- opts.on_attach = on_lsp_attach
+--         -- opts.handlers = {
+--         --     ["textDocument/definition"] = function (error, result, method, ...)
+--         --         -- if not vim.tbl_islist(result) or type(result) ~= "table" then
+--         --         --     return vim.lsp.handlers["textDocument/definition"](err, result, method, ...)
+--         --         -- end
+--         --         --
+--         --         -- return vim.lsp.handlers["textDocument/definition"](err, { result[1] }, method, ...)
+--         --
+--         --         -- vim.notify(vim.inspect(result))
+--         --         if (vim.tbl_islist(result) or type(result) == "table") and #result > 1 then
+--         --             local filtered_result = filter(result, filterDTS)
+--         --             -- vim.notify(vim.inspect(filtered_result))
+--         --             return vim.lsp.handlers["textDocument/definition"](err, filtered_result, method, ...)
+--         --         end
+--         --
+--         --         return vim.lsp.handlers["textDocument/definition"](err, result, method, ...)
+--         --     end
+--         -- }
+--     end
+--
+--     server:setup(opts)
+-- end)
 
-    local signs = { Hint = "", Info = "", Warn = "", Error = "" }
-    for type, icon in pairs(signs) do
-        local hl = "DiagnosticSign" .. type
-        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-    end
-
-    if server.name == "tsserver" then
-        opts.on_attach = on_tsserver_attach
-        -- opts.on_attach = on_lsp_attach
-        opts.handlers = {
-            ["textDocument/definition"] = function (error, result, method, ...)
-                -- if not vim.tbl_islist(result) or type(result) ~= "table" then
-                --     return vim.lsp.handlers["textDocument/definition"](err, result, method, ...)
-                -- end
-                --
-                -- return vim.lsp.handlers["textDocument/definition"](err, { result[1] }, method, ...)
-
-                -- vim.notify(vim.inspect(result))
-                if (vim.tbl_islist(result) or type(result) == "table") and #result > 1 then
-                    local filtered_result = filter(result, filterDTS)
-                    -- vim.notify(vim.inspect(filtered_result))
-                    return vim.lsp.handlers["textDocument/definition"](err, filtered_result, method, ...)
-                end
-
-                return vim.lsp.handlers["textDocument/definition"](err, result, method, ...)
-            end
-        }
-    end
-
-    server:setup(opts)
-end)
-
+-- local lspconfig = require('lspconfig')
 -- lspconfig.tsserver.setup { on_attach = on_attach }
+--
+require("null-ls").setup()
+require("mason-null-ls").setup({
+--     -- ensure_installed = {"prettier", "eslint-lsp"},
+    automatic_installation = true,
+--     automatic_setup = true,
+})
 
+require("mason").setup()
+
+require("mason-lspconfig").setup({
+    -- ensure_installed = {
+    --     'tsserver',
+    --     'eslint',
+    --     -- 'prettier',
+    -- }
+})
+
+local lsp = require('lsp-zero')
+-- lsp.set_sign_icons()
+lsp.extend_lspconfig({
+    set_lsp_keymaps = false,
+    on_attach = on_lsp_attach,
+    capabilities = {
+        textDocument = {
+            foldingRange = { -- ufo
+                dynamicRegistration = false,
+                lineFoldingOnly = true,
+            }
+        }
+    }
+})
+-- local lsp = require('lsp-zero').preset({})
+-- lsp.on_attach(function(client, bufnr)
+--   -- lsp.default_keymaps({buffer = bufnr})
+-- end)
+-- lsp.setup()
+
+require("mason-lspconfig").setup_handlers {
+    -- The first entry (without a key) will be the default handler
+    -- and will be called for each installed server that doesn't have
+    -- a dedicated handler.
+    function (server_name) -- default handler (optional)
+        require("lspconfig")[server_name].setup({
+            -- on_attach = on_lsp_attach
+        })
+    end,
+    ['tsserver'] = function()
+        lspconfig.tsserver.setup({
+            on_attach = on_tsserver_attach,
+            settings = {
+                completions = {
+                    -- completeFunctionCalls = true
+                },
+                typescript = {
+                    inlayHints = {
+                        includeInlayParameterNameHints = 'all',
+                        includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+                        includeInlayFunctionParameterTypeHints = true,
+                        includeInlayVariableTypeHints = true,
+                        includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+                        includeInlayPropertyDeclarationTypeHints = true,
+                        includeInlayFunctionLikeReturnTypeHints = true,
+                        includeInlayEnumMemberValueHints = true,
+                    }
+                },
+                javascript = {
+                    inlayHints = {
+                        includeInlayParameterNameHints = 'all',
+                        includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+                        includeInlayFunctionParameterTypeHints = true,
+                        includeInlayVariableTypeHints = true,
+                        includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+                        includeInlayPropertyDeclarationTypeHints = true,
+                        includeInlayFunctionLikeReturnTypeHints = true,
+                        includeInlayEnumMemberValueHints = true,
+                    }
+                }
+            }
+        })
+    end
+    -- Next, you can provide a dedicated handler for specific servers.
+    -- For example, a handler override for the `rust_analyzer`:
+    -- ["rust_analyzer"] = function ()
+    --     require("rust-tools").setup {}
+    -- end
+}
 
 -- require('lsp_lines').setup()
 
+-- require('e-kaput').setup({
+--     enable = true,
+--     transparency = 0,
+--     borders = true,
+-- })
+
+-- adjust virtual text severity
+vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
+    vim.lsp.diagnostic.on_publish_diagnostics, {
+        -- signs = {
+        --     severity_limit = 'Warning',
+        -- },
+        virtual_text = {
+            severity_limit = 'Warning',
+        },
+    }
+)
+
 -- https://neovim.io/doc/user/diagnostic.html#vim.diagnostic.config()
 vim.diagnostic.config({
+    -- virtual_text = false,
     virtual_text = {
         source = false,
         prefix = '●',
         spacing = 1,
     },
+    underline = true,
     update_in_insert = false,
     severity_sort = true,
     float = {
         source = true,
+        -- source = false,
     },
     signs = true,
-    -- virtual_lines = {
-    --     only_current_line = true
-    -- },
+    -- virtual_lines = false,
 })
 
 -- smjonas/inc-rename.nvim
@@ -489,42 +621,52 @@ local lspkind = require('lspkind')
 
 -- nvim-cmp
 
-local kind_icons = {
-  Text = "",
-  Method = "",
-  Function = "",
-  Constructor = "",
-  Field = "",
-  Variable = "",
-  Class = "",
-  Interface = "",
-  Module = "",
-  Property = "ﰠ",
-  Unit = "",
-  Value = "",
-  Enum = "",
-  Keyword = "",
-  Snippet = "",
-  Color = "",
-  File = "",
-  Reference = "",
-  Folder = "",
-  EnumMember = "",
-  Constant = "",
-  Struct = "",
-  Event = "",
-  Operator = "",
-  TypeParameter = ""
-}
+-- local kind_icons = {
+--   Text = "",
+--   Method = "",
+--   Function = "",
+--   Constructor = "",
+--   Field = "",
+--   Variable = "",
+--   Class = "",
+--   Interface = "",
+--   Module = "",
+--   Property = "ﰠ",
+--   Unit = "",
+--   Value = "",
+--   Enum = "",
+--   Keyword = "",
+--   Snippet = "",
+--   Color = "",
+--   File = "",
+--   Reference = "",
+--   Folder = "",
+--   EnumMember = "",
+--   Constant = "",
+--   Struct = "",
+--   Event = "",
+--   Operator = "",
+--   TypeParameter = ""
+-- }
 
 local cmp = require('cmp')
+
+require('copilot').setup({
+    -- suggestion = { enabled = true, auto_trigger = true },
+    -- panel = { enabled = true, auto_refresh = true },
+    suggestion = { enabled = false },
+    panel = { enabled = false },
+})
+
+require('copilot_cmp').setup()
 
 cmp.setup({
     -- preselect = cmp.PreselectMode.None,
     -- https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources
     sources = {
-        { name = 'nvim_lsp', max_item_count = 5, priority = 10 },
-        { name = 'buffer', max_item_count = 5, keyword_length = 3, priority = 9  },
+        { name = 'nvim_lsp', max_item_count = 12, priority = 10 },
+        { name = 'buffer', max_item_count = 10, keyword_length = 3, priority = 9  },
+        { name = 'copilot', max_item_count = 10, keyword_length = 1, priority = 8  },
         -- { name = 'cmp_tabnine', max_item_count = 3, priority = 8 },
         { name = 'nvim_lsp_signature_help', priority = 7 },
         { name = 'vsnip', max_item_count = 3, keyword_length = 2, priority = 5 },
@@ -533,15 +675,20 @@ cmp.setup({
         { name = 'calc', max_item_count = 3, priority = 2 },
         { name = 'emoji', max_item_count = 3, priority = 2, option = {insert = true} },
     },
+    performance = {
+        max_view_options = 20,
+    },
     mapping = cmp.mapping.preset.insert({
-        ['<C-b>'] = function(fallback)
+        -- ['<C-b>'] = function(fallback)
+        ['<C-k>'] = function(fallback)
             if cmp.visible() then
                 cmp.mapping.scroll_docs(-1)
             else
                 fallback()
             end
         end,
-        ['<C-f>'] = function(fallback)
+        -- ['<C-f>'] = function(fallback)
+        ['<C-j>'] = function(fallback)
             if cmp.visible() then
                 cmp.mapping.scroll_docs(1)
             else
@@ -551,7 +698,7 @@ cmp.setup({
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<C-e>'] = cmp.mapping.abort(),
         ['<C-y>'] = cmp.mapping.abort(),
-        ['<C-CR>'] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items
+        ['<C-CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items
         ['<Tab>'] = function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
@@ -565,12 +712,6 @@ cmp.setup({
             else
                 fallback()
             end
-        end,
-        ['<C-l>'] = function(fallback)
-            if cmp.visible() then
-                return cmp.mapping.scroll_docs(1)
-            end
-            fallback()
         end,
     }),
     window = {
@@ -586,6 +727,7 @@ cmp.setup({
                 buffer = "[Buf]",
                 calc = "[Calc]",
                 -- cmp_tabnine = "[TN]",
+                copilot = "[Copilot]",
                 emoji = "[Emoji]",
                 nvim_lsp = "[LSP]",
                 nvim_lsp_document_symbol = "[DocSym]",
@@ -594,7 +736,7 @@ cmp.setup({
                 path = "[Path]",
                 vsnip = "[VSnip]",
             }),
-            symbol_map = kind_icons,
+            -- symbol_map = kind_icons,
         }),
     },
     snippet = {
@@ -679,7 +821,9 @@ require('telescope').setup {
                 only_sort_text = true,
             },
             lsp_references = {
+                -- fname_width = 50,
                 include_current_line = true,
+                include_declaration = true,
             },
             tags = {
                 max_results = 1000,
@@ -701,30 +845,32 @@ require('telescope').load_extension('ui-select')
 
 -- github colorscheme
 -- https://github.com/projekt0n/github-nvim-theme#configuration
-require('github-theme').setup {
-    theme_style = "dimmed",  -- dark/dark_default/dimmed/light/light_default
-    hide_inactive_statusline = false,
-    hide_end_of_buffer = false,
-    dark_sidebar = true,
-    dark_float = true,
-    comment_style = "italic",
-    keyword_style = "NONE",
-    function_style = "NONE",
-    colors = {
-        -- TODO: find better colour for bg_search
-        -- bg_search = "yellow",
-        -- fg_search = "black",
-        hint = "#707070",
-        -- bg_statusline = "#00ff00",  -- test
-    },
-}
+-- require('github-theme').setup {
+--     options = {
+--         hide_end_of_buffer = false,
+--         hide_nc_statusline = false,
+--         module_default = true,
+--         style = {
+--             comments = 'italic',
+--             functions = 'NONE',
+--             keywords = 'NONE',
+--         },
+--         darken = {
+--             floats = true,
+--             sidebar = true,
+--         },
+--     },
+-- }
+
 
 -- lualine
 -- https://github.com/nvim-lualine/lualine.nvim#usage-and-customization
 require('lualine').setup {
     options = {
         -- theme = 'github',
-        theme = 'auto',
+        -- theme = 'auto',
+        -- theme = 'nordic',
+        theme = 'kanagawa',
         globalstatus = false,
     },
     sections = {
@@ -775,6 +921,7 @@ require('lualine').setup {
 
 -- gitsigns
 require('gitsigns').setup {
+    -- _inline2 = true,
     signcolumn = true,
     numhl = true,
     linehl = false,
@@ -827,9 +974,11 @@ require('gitsigns').setup {
         map('n', '<leader>hi', gs.preview_hunk_inline)
         map('n', '<leader>hl', gs.setloclist)
         map('n', '<leader>hp', gs.preview_hunk)
-        map({'n', 'v'}, '<leader>hr', ':Gitsigns reset_hunk<CR>')
+        map('n', '<leader>hr', gs.reset_hunk)
+        map('v', '<leader>hr', function() gs.reset_hunk({vim.fn.line("."), vim.fn.line("v")}) end)
         map('n', '<leader>hR', gs.reset_buffer)
-        map({'n', 'v'}, '<leader>hs', ':Gitsigns stage_hunk<CR>')
+        map('n', '<leader>hs', gs.stage_hunk)
+        map('v', '<leader>hs', function() gs.stage_hunk({vim.fn.line("."), vim.fn.line("v")}) end)
         map('n', '<leader>hS', gs.stage_buffer)
         map('n', '<leader>hq', gs.setqflist)
         map('n', '<leader>htb', gs.toggle_current_line_blame)
@@ -854,6 +1003,7 @@ require('gitsigns').setup {
 -- trouble
 require('trouble').setup {
     icons = false,
+    severity = vim.diagnostic.severity.INFO,
 }
 
 -- folke/which-key.nvim
@@ -882,8 +1032,8 @@ tree_cb = require('nvim-tree.config').nvim_tree_callback
 require('nvim-tree').setup {
     disable_netrw = false,
     hijack_netrw = true,
-    open_on_setup = false,
-    ignore_ft_on_setup = {},
+    -- open_on_setup = false,
+    -- ignore_ft_on_setup = {},
     open_on_tab = false,
     hijack_cursor = true,
     update_cwd = false,
@@ -1031,9 +1181,9 @@ require("statuscol").setup({
 require('ufo').setup()
 
 vim.cmd [[highlight IndentBlanklineIndent1 guifg=#444444 gui=nocombine]]
--- vim.cmd [[highlight IndentBlanklineContextChar guifg=#666666 gui=nocombine]]
+-- -- vim.cmd [[highlight IndentBlanklineContextChar guifg=#666666 gui=nocombine]]
 vim.cmd [[highlight IndentBlanklineContextChar guifg=#909090 gui=nocombine]]
-vim.cmd [[highlight IndentBlanklineContextStart guisp=#909090 gui=underline]]
+-- vim.cmd [[highlight IndentBlanklineContextStart guisp=#909090 gui=underline]]
 
 require('indent_blankline').setup({
     use_treesitter = true,
@@ -1119,7 +1269,8 @@ require("twoslash-queries").setup({
 
 require('headlines').setup({
     markdown = {
-        query = vim.treesitter.parse_query(
+        -- query = vim.treesitter.parse_query(
+        query = vim.treesitter.query.parse(
             "markdown",
             [[
                 (atx_heading [
@@ -1146,7 +1297,7 @@ require('headlines').setup({
             "Headline4",
             "Headline5",
         },
-        codeblock_highlight = "CodeBlock",
+        codeblock_highlight = "",
         dash_highlight = "Dash",
         dash_string = "─",
         quote_highlight = "Quote",
@@ -1178,10 +1329,10 @@ require('smoothcursor').setup({
         head = { cursor = "▷", texthl = "SmoothCursor", linehl = nil },
         -- head = { cursor = "", texthl = "SmoothCursor", linehl = nil },
         body = {
-            { cursor = "", texthl = "SmoothCursorRed" },
-            { cursor = "", texthl = "SmoothCursorOrange" },
+            { cursor = "●", texthl = "SmoothCursorRed" },
+            { cursor = "●", texthl = "SmoothCursorOrange" },
             { cursor = "●", texthl = "SmoothCursorYellow" },
-            { cursor = "●", texthl = "SmoothCursorGreen" },
+            { cursor = "•", texthl = "SmoothCursorGreen" },
             { cursor = "•", texthl = "SmoothCursorAqua" },
             { cursor = ".", texthl = "SmoothCursorBlue" },
             { cursor = ".", texthl = "SmoothCursorPurple" },
@@ -1199,14 +1350,35 @@ require('smoothcursor').setup({
     disabled_filetypes = nil,  -- this option will be skipped if enabled_filetypes is set. example: { "TelescopePrompt", "NvimTree" }
 })
 
-require('overseer').setup()
-
-vim.notify = require("notify")
-
-require("swagger-preview").setup({
-    port = 8444,
-    host = "localhost",
+require('overseer').setup({
+    bindings = {
+        ["<C-h>"] = false,
+        ["<C-l>"] = false,
+        ["h"] = "DecreaseDetail",
+        ["l"] = "IncreaseDetail",
+    }
 })
+
+-- vim.notify = require("notify")
+
+require('kanagawa').setup({
+    theme = 'dragon',
+    background = {
+        dark = 'dragon',
+        light = 'lotus',
+    },
+    dimInactive = false,
+    keywordStyle = { italic = false, bold = false },
+    statementStyle = { italic = false, bold = true },
+})
+
+require('bufjump').setup({
+    forward = '<C-n>',
+    backward = '<C-p>',
+    on_success = nil
+})
+
+require('highlight-undo').setup()
 
 EOF
 
@@ -1227,19 +1399,26 @@ EOF
     \ }
 
     if exists('g:started_by_firenvim')
-        colorscheme github_light
+        " colorscheme github_light
+        " colorscheme nordic
+        " colorscheme kanagawa-lotus
+        set background=light
     endif
 
     " set guifont=Monaco:h20
     set guifont=BlexMono\ Nerd\ Font\ Mono:h12
 
-" kosayoda/nvim-lightbulb
-autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb({})
+" " kosayoda/nvim-lightbulb
+" autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb({})
 
 " Important!!
 if has('termguicolors')
     set termguicolors
 endif
+
+" colorscheme github_dark_dimmed
+" colorscheme nordic
+colorscheme kanagawa
 
 " " For dark version.
 " set background=dark

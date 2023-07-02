@@ -12,52 +12,19 @@ Plug 'https://github.com/lewis6991/impatient.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'kevinhwang91/promise-async'
 
-" -- LSP --
-
-Plug 'williamboman/nvim-lsp-installer'
-Plug 'neovim/nvim-lspconfig'
-
-Plug 'https://github.com/RishabhRD/popfix'
-Plug 'https://github.com/RishabhRD/nvim-lsputils'
-
-Plug 'https://github.com/onsails/lspkind-nvim'
-
-Plug 'https://github.com/kosayoda/nvim-lightbulb'
-
-" Creates missing LSP diagnostics highlight groups
-" TODO: is this still needed in neovim 0.8?
-" Plug 'https://github.com/folke/lsp-colors.nvim'
-
-Plug 'folke/trouble.nvim'
-
-" Pop-up menu for code actions to show meta-information and diff preview
-"     Provides ":CodeActionMenu"
-Plug 'https://github.com/weilbith/nvim-code-action-menu'
-
-" LSP signature hint as you type
-" Plug 'https://github.com/ray-x/lsp_signature.nvim'
-
-Plug 'https://github.com/jose-elias-alvarez/null-ls.nvim'
-
-" Incremental LSP rename command based on Neovim's command-preview feature
-Plug 'https://github.com/smjonas/inc-rename.nvim'
-
-" render diagnostics using virtual lines on top of the real line of code.
-" Plug 'https://github.com/Maan2003/lsp_lines.nvim'
-
 " -- Completion --
 
 " Extra completions
-Plug 'https://github.com/hrsh7th/cmp-nvim-lsp'
 Plug 'https://github.com/hrsh7th/cmp-buffer'
-Plug 'https://github.com/hrsh7th/cmp-path'
-Plug 'https://github.com/hrsh7th/cmp-cmdline'
-Plug 'https://github.com/hrsh7th/cmp-nvim-lsp-document-symbol'
 Plug 'https://github.com/hrsh7th/cmp-calc'
-Plug 'https://github.com/hrsh7th/cmp-omni'
+Plug 'https://github.com/hrsh7th/cmp-cmdline'
 Plug 'https://github.com/hrsh7th/cmp-emoji'
-" Plug 'https://github.com/tzachar/cmp-tabnine', { 'do': './install.sh' }
+Plug 'https://github.com/hrsh7th/cmp-nvim-lsp'
+Plug 'https://github.com/hrsh7th/cmp-nvim-lsp-document-symbol'
 Plug 'https://github.com/hrsh7th/cmp-nvim-lsp-signature-help'
+" Plug 'https://github.com/hrsh7th/cmp-omni'
+Plug 'https://github.com/hrsh7th/cmp-path'
+" Plug 'https://github.com/tzachar/cmp-tabnine', { 'do': './install.sh' }
 
 " A snippet plugin is required by nvim-cmp
 Plug 'https://github.com/hrsh7th/vim-vsnip'
@@ -69,6 +36,40 @@ Plug 'https://github.com/hrsh7th/nvim-cmp'
 
 " Plug 'https://github.com/codota/tabnine-nvim', { 'do': './dl_binaries.sh' }
 
+" -- LSP --
+
+" Plug 'williamboman/nvim-lsp-installer'
+Plug 'neovim/nvim-lspconfig'
+Plug 'williamboman/mason.nvim', { 'do': ':MasonUpdate' }
+Plug 'williamboman/mason-lspconfig.nvim'
+Plug 'VonHeikemen/lsp-zero.nvim', {'branch': 'v2.x'}
+Plug 'https://github.com/jose-elias-alvarez/null-ls.nvim'
+Plug 'jay-babu/mason-null-ls.nvim'
+
+
+Plug 'https://github.com/RishabhRD/popfix'
+Plug 'https://github.com/RishabhRD/nvim-lsputils'
+
+Plug 'https://github.com/onsails/lspkind-nvim'
+
+" Plug 'https://github.com/kosayoda/nvim-lightbulb'
+
+Plug 'folke/trouble.nvim'
+
+" Pop-up menu for code actions to show meta-information and diff preview
+"     Provides ":CodeActionMenu"
+Plug 'https://github.com/weilbith/nvim-code-action-menu'
+
+" LSP signature hint as you type
+" Plug 'https://github.com/ray-x/lsp_signature.nvim'
+
+" Incremental LSP rename command based on Neovim's command-preview feature
+Plug 'https://github.com/smjonas/inc-rename.nvim'
+
+" render diagnostics using virtual lines on top of the real line of code.
+" Plug 'https://github.com/Maan2003/lsp_lines.nvim'
+" Plug 'https://git.sr.ht/~whynothugo/lsp_lines.nvim'
+
 " -- Treesitter --
 
 Plug 'https://github.com/nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -79,7 +80,7 @@ Plug 'https://github.com/JoosepAlviste/nvim-ts-context-commentstring'
 " Use treesitter to auto close and auto rename html tags
 Plug 'https://github.com/windwp/nvim-ts-autotag'
 " Rainbow parentheses for neovim using treesitter
-" TODO: no longer maintained, find a replacement
+" TODO: no longer maintained, migrate to nvim-ts-rainbow2
 " Plug 'p00f/nvim-ts-rainbow'
 
 
@@ -94,11 +95,15 @@ Plug 'https://github.com/nvim-telescope/telescope-ui-select.nvim'
 " -- Colorschemes --
 
 Plug 'https://github.com/nvim-lualine/lualine.nvim'
-" Plug 'https://github.com/kyazdani42/nvim-web-devicons'
 Plug 'https://github.com/nvim-tree/nvim-web-devicons'
 
 " grep: github-colors github-theme
+"Plug 'https://github.com/projekt0n/github-nvim-theme', { 'branch': '0.0.x' }
 Plug 'https://github.com/projekt0n/github-nvim-theme'
+
+Plug 'AlexvZyl/nordic.nvim', { 'branch': 'main' }
+
+Plug 'https://github.com/rebelot/kanagawa.nvim'
 
 " -- Misc --
 
@@ -299,6 +304,15 @@ Plug 'https://github.com/stevearc/overseer.nvim'
 
 Plug 'https://github.com/rcarriga/nvim-notify'
 
-Plug 'https://github.com/vinnymeller/swagger-preview.nvim'
+Plug 'https://github.com/kwkarlwang/bufjump.nvim'
+
+" Plug 'https://github.com/github/copilot.vim'
+
+Plug 'https://github.com/zbirenbaum/copilot.lua'
+Plug 'https://github.com/zbirenbaum/copilot-cmp'
+
+Plug 'https://github.com/tzachar/highlight-undo.nvim'
+
+Plug 'https://github.com/VidocqH/lsp-lens.nvim'
 
 call plug#end()
