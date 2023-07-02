@@ -1,43 +1,25 @@
-" toggles
-    " nnoremap <Leader>xa :ALEToggle<CR>
-    " nnoremap <Leader>xbl :set background=light \| colorscheme github_light<CR>
-    " nnoremap <Leader>xbd :set background=dark \| colorscheme github_dimmed<CR>
-    nnoremap <Leader>xbl :set background=light<CR>
-    nnoremap <Leader>xbd :set background=dark<CR>
-    nnoremap <Leader>xd1 :lua vim.diagnostic.show()<CR>
-    nnoremap <Leader>xd0 :lua vim.diagnostic.hide()<CR>
-    nnoremap <Leader>xi :lua vim.lsp.buf.inlay_hint(0)<CR>
-    nnoremap <Leader>xw :set wrap!<CR>
-    nnoremap <Leader>xx :set relativenumber!<CR>
-
-" lsp
-    nnoremap <silent> ]d :lua vim.diagnostic.goto_next({ wrap = false })<CR>
-    nnoremap <silent> [d :lua vim.diagnostic.goto_prev({ wrap = false })<CR>
-    inoremap <silent> <C-s> <Cmd>lua vim.lsp.buf.signature_help()<CR>
-    " nnoremap <silent> <Leader>ga :lua vim.lsp.buf.code_action()<CR>
-    nnoremap <silent> <Leader>ga <Cmd>CodeActionMenu<CR>
-    " vnoremap <silent> <Leader>ga :<C-u>lua vim.lsp.buf.range_code_action()<CR>
-    vnoremap <silent> <Leader>ga <Cmd>CodeActionMenu<CR>
-    nnoremap <silent> <Leader>ge :lua vim.diagnostic.open_float()<CR>
-    nnoremap <silent> <Leader>gd :lua vim.lsp.buf.definition()<CR>
-    nnoremap <silent> <Leader>gD :lua vim.lsp.buf.declaration()<CR>
-    " nnoremap <silent> <Leader>gf :Telescope lsp_references<CR>
-    nnoremap <silent> <Leader>gf :lua require('telescope.builtin').lsp_references({fname_width=50})<CR>
-    nnoremap <silent> <Leader>gh :lua vim.lsp.buf.hover()<CR>
-    nnoremap <silent> <Leader>gI :lua vim.lsp.buf.implementation()<CR>
-    nnoremap <silent> <Leader>gi :Telescope lsp_incoming_calls<CR>
-    nnoremap <silent> <Leader>go :Telescope lsp_outgoing_calls<CR>
-    " nnoremap <silent> <Leader>gr :lua vim.lsp.buf.rename()<CR>
-    nnoremap <Leader>gr :IncRename <C-r><C-w>
-    nnoremap <silent> <Leader>gs :Telescope lsp_document_symbols<CR>
-    nnoremap <silent> <Leader>gS :Telescope lsp_dynamic_workspace_symbols<CR>
-    nnoremap <silent> <Leader>gt :lua vim.lsp.buf.type_definition()<CR>
-    nnoremap <silent> <Leader>gu :lua vim.lsp.buf.references()<CR>
-    nnoremap <silent> <Leader>gwa :lua vim.lsp.buf.add_workspace_folder()<CR>
-    nnoremap <silent> <Leader>gwr :lua vim.lsp.buf.remove_workspace_folder()<CR>
-    nnoremap <silent> <Leader>gwl :lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>
-    nnoremap <silent> <Leader>gx :TroubleToggle document_diagnostics<CR>
-    nnoremap <silent> <Leader>gX :TroubleToggle workspace_diagnostics<CR>
+" " lsp
+"     nnoremap <silent> <Leader>ga <Cmd>CodeActionMenu<CR>
+"     vnoremap <silent> <Leader>ga <Cmd>CodeActionMenu<CR>
+"     nnoremap <silent> <Leader>ge :lua vim.diagnostic.open_float()<CR>
+"     nnoremap <silent> <Leader>gd :lua vim.lsp.buf.definition()<CR>
+"     nnoremap <silent> <Leader>gD :lua vim.lsp.buf.declaration()<CR>
+"     nnoremap <silent> <Leader>gf :lua require('telescope.builtin').lsp_references({fname_width=50})<CR>
+"     nnoremap <silent> <Leader>gh :lua vim.lsp.buf.hover()<CR>
+"     nnoremap <silent> <Leader>gI :lua vim.lsp.buf.implementation()<CR>
+"     nnoremap <silent> <Leader>gi :Telescope lsp_incoming_calls<CR>
+"     nnoremap <silent> <Leader>go :Telescope lsp_outgoing_calls<CR>
+"     " nnoremap <silent> <Leader>gr :lua vim.lsp.buf.rename()<CR>
+"     nnoremap <Leader>gr :IncRename <C-r><C-w>
+"     nnoremap <silent> <Leader>gs :Telescope lsp_document_symbols<CR>
+"     nnoremap <silent> <Leader>gS :Telescope lsp_dynamic_workspace_symbols<CR>
+"     nnoremap <silent> <Leader>gt :lua vim.lsp.buf.type_definition()<CR>
+"     nnoremap <silent> <Leader>gu :lua vim.lsp.buf.references()<CR>
+"     nnoremap <silent> <Leader>gwa :lua vim.lsp.buf.add_workspace_folder()<CR>
+"     nnoremap <silent> <Leader>gwr :lua vim.lsp.buf.remove_workspace_folder()<CR>
+"     nnoremap <silent> <Leader>gwl :lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>
+"     nnoremap <silent> <Leader>gx :TroubleToggle document_diagnostics<CR>
+"     nnoremap <silent> <Leader>gX :TroubleToggle workspace_diagnostics<CR>
 
 " telescope
     nnoremap <silent> <Leader>ff :Telescope find_files<CR>
