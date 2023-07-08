@@ -1,80 +1,3 @@
-" " lsp
-"     nnoremap <silent> <Leader>ga <Cmd>CodeActionMenu<CR>
-"     vnoremap <silent> <Leader>ga <Cmd>CodeActionMenu<CR>
-"     nnoremap <silent> <Leader>ge :lua vim.diagnostic.open_float()<CR>
-"     nnoremap <silent> <Leader>gd :lua vim.lsp.buf.definition()<CR>
-"     nnoremap <silent> <Leader>gD :lua vim.lsp.buf.declaration()<CR>
-"     nnoremap <silent> <Leader>gf :lua require('telescope.builtin').lsp_references({fname_width=50})<CR>
-"     nnoremap <silent> <Leader>gh :lua vim.lsp.buf.hover()<CR>
-"     nnoremap <silent> <Leader>gI :lua vim.lsp.buf.implementation()<CR>
-"     nnoremap <silent> <Leader>gi :Telescope lsp_incoming_calls<CR>
-"     nnoremap <silent> <Leader>go :Telescope lsp_outgoing_calls<CR>
-"     " nnoremap <silent> <Leader>gr :lua vim.lsp.buf.rename()<CR>
-"     nnoremap <Leader>gr :IncRename <C-r><C-w>
-"     nnoremap <silent> <Leader>gs :Telescope lsp_document_symbols<CR>
-"     nnoremap <silent> <Leader>gS :Telescope lsp_dynamic_workspace_symbols<CR>
-"     nnoremap <silent> <Leader>gt :lua vim.lsp.buf.type_definition()<CR>
-"     nnoremap <silent> <Leader>gu :lua vim.lsp.buf.references()<CR>
-"     nnoremap <silent> <Leader>gwa :lua vim.lsp.buf.add_workspace_folder()<CR>
-"     nnoremap <silent> <Leader>gwr :lua vim.lsp.buf.remove_workspace_folder()<CR>
-"     nnoremap <silent> <Leader>gwl :lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>
-"     nnoremap <silent> <Leader>gx :TroubleToggle document_diagnostics<CR>
-"     nnoremap <silent> <Leader>gX :TroubleToggle workspace_diagnostics<CR>
-
-" telescope
-    nnoremap <silent> <Leader>ff :Telescope find_files<CR>
-    nnoremap <silent> <Leader>fgb :Telescope git_branches<CR>
-    nnoremap <silent> <Leader>fgc :Telescope git_bcommits<CR>
-    nnoremap <silent> <Leader>fgC :Telescope git_commits<CR>
-    nnoremap <silent> <Leader>fgf :Telescope git_files<CR>
-    nnoremap <silent> <Leader>fgs :Telescope git_status<CR>
-    nnoremap <silent> <Leader>fgS :Telescope git_stash<CR>
-    nnoremap <silent> <Leader>fo :Telescope oldfiles<CR>
-
-" floaterm
-    nnoremap <silent> <Leader>ft <Cmd>FloatermToggle<CR>
-    nnoremap <silent> <Leader>fi <Cmd>FloatermNew --width=0.9 --height=0.9 --position=center<CR>
-    " top
-    nnoremap <silent> <Leader>fkk <Cmd>FloatermNew --width=0.99 --height=0.4 --position=top<CR>
-    " bottom
-    nnoremap <silent> <Leader>fll <Cmd>FloatermNew --width=0.4 --height=0.99 --position=right<CR>
-    " left
-    nnoremap <silent> <Leader>fhh <Cmd>FloatermNew --width=0.4 --height=0.99 --position=left<CR>
-    " right
-    nnoremap <silent> <Leader>fjj <Cmd>FloatermNew --width=0.99 --height=0.4 --position=bottom<CR>
-    " top-left
-    nnoremap <silent> <Leader>fhk <Cmd>FloatermNew --width=0.5 --height=0.5 --position=topleft<CR>
-    nnoremap <silent> <Leader>fkh <Cmd>FloatermNew --width=0.5 --height=0.5 --position=topleft<CR>
-    " bottom-left
-    nnoremap <silent> <Leader>fhj <Cmd>FloatermNew --width=0.5 --height=0.5 --position=bottomleft<CR>
-    nnoremap <silent> <Leader>fjh <Cmd>FloatermNew --width=0.5 --height=0.5 --position=bottomleft<CR>
-    " top-right
-    nnoremap <silent> <Leader>fkl <Cmd>FloatermNew --width=0.5 --height=0.5 --position=topright<CR>
-    nnoremap <silent> <Leader>flk <Cmd>FloatermNew --width=0.5 --height=0.5 --position=topright<CR>
-    " bottom- right
-    nnoremap <silent> <Leader>fjl <Cmd>FloatermNew --width=0.5 --height=0.5 --position=bottomright<CR>
-    nnoremap <silent> <Leader>flj <Cmd>FloatermNew --width=0.5 --height=0.5 --position=bottomright<CR>
-    " vsplit
-    nnoremap <silent> <Leader>fv <Cmd>FloatermNew --wintype=vsplit --position=right<CR>
-    " split
-    nnoremap <silent> <Leader>fs <Cmd>FloatermNew --wintype=split --position=bottom<CR>
-    " terminal mappings
-    tnoremap <silent> <C-S-t> <Cmd>FloatermToggle<CR>
-    tnoremap <silent> <C-S-a> <C-\><C-n>
-    " send current
-    nnoremap <silent> <Leader>fs <Cmd>FloatermSend<CR>
-
-" more telescope
-    nnoremap <Leader>ta :Ag 
-    nnoremap <silent> <Leader>tb :Telescope buffers<CR>
-    nnoremap <silent> <Leader>td :TodoTelescope<CR>
-    nnoremap <silent> <Leader>te :Telescope emoji<CR>
-    nnoremap <silent> <Leader>tg :Telescope grep_string<CR>
-    nnoremap <silent> <Leader>tG :Telescope live_grep<CR>
-    nnoremap <silent> <Leader>tl :Telescope current_buffer_fuzzy_find<CR>
-    nnoremap <silent> <Leader>tt :Telescope current_buffer_tags<CR>
-    nnoremap <silent> <Leader>tT :Telescope tags<CR>
-
 " nvim-tree
     nnoremap <silent> <Leader>nc :NvimTreeClose<CR>
     nnoremap <silent> <Leader>nf :NvimTreeFindFile<CR>
@@ -83,37 +6,6 @@
     nnoremap <silent> <Leader>nt :NvimTreeFocus<CR>
 " oil
     nnoremap <silent> <Leader>n- <Cmd>lua require("oil").open()<CR>
-
-" colour - HSHighlight / vim-mark
-    " visual
-    vnoremap <silent> <Leader>k1 :<c-u>HSHighlight 1<CR>
-    vnoremap <silent> <Leader>k2 :<c-u>HSHighlight 2<CR>
-    vnoremap <silent> <Leader>k3 :<c-u>HSHighlight 3<CR>
-    vnoremap <silent> <Leader>k4 :<c-u>HSHighlight 4<CR>
-    vnoremap <silent> <Leader>k5 :<c-u>HSHighlight 5<CR>
-    vnoremap <silent> <Leader>k6 :<c-u>HSHighlight 6<CR>
-    vnoremap <silent> <Leader>k7 :<c-u>HSHighlight 7<CR>
-    vnoremap <silent> <Leader>k8 :<c-u>HSHighlight 8<CR>
-    vnoremap <silent> <Leader>k9 :<c-u>HSHighlight 9<CR>
-    " normal
-    nnoremap <silent> <Leader>k1 V:<c-u>HSHighlight 1<CR>
-    nnoremap <silent> <Leader>k2 V:<c-u>HSHighlight 2<CR>
-    nnoremap <silent> <Leader>k3 V:<c-u>HSHighlight 3<CR>
-    nnoremap <silent> <Leader>k4 V:<c-u>HSHighlight 4<CR>
-    nnoremap <silent> <Leader>k5 V:<c-u>HSHighlight 5<CR>
-    nnoremap <silent> <Leader>k6 V:<c-u>HSHighlight 6<CR>
-    nnoremap <silent> <Leader>k7 V:<c-u>HSHighlight 7<CR>
-    nnoremap <silent> <Leader>k8 V:<c-u>HSHighlight 8<CR>
-    nnoremap <silent> <Leader>k9 V:<c-u>HSHighlight 9<CR>
-    " word
-    nmap <Leader>kk <Plug>MarkSet
-    xmap <Leader>kk <Plug>MarkSet
-    nmap <Leader>kK <Plug>MarkClear
-    nmap <Leader>km <Plug>MarkToggle
-    " clear selection
-    vnoremap <silent> <Leader>kx :<c-u>HSRmHighlight<CR>
-    nnoremap <silent> <Leader>kx V:<c-u>HSRmHighlight<CR>
-    nnoremap <silent> <Leader>kX :<c-u>HSRmHighlight rm_all<CR>
 
 " zk
     " normal
@@ -131,33 +23,6 @@
     " TODO: Ask for title when creating content from selection
     " xnoremap <Leader>zC :ZkNewFromContentSelection<CR>
     xnoremap <Leader>zm :ZkMatch<CR>
-
-" search
-    " pounce
-    nnoremap <Leader>j <cmd>Pounce<CR>
-    " nnoremap <Leader>jn <cmd>PounceRepeat<CR>
-    vnoremap <Leader>j <cmd>Pounce<CR>
-    onoremap <Leader>j <cmd>Pounce<CR>
-    " case-insensitive search
-    nnoremap <Leader>/ /\c
-    " search for word (like grep -w)
-    nnoremap <Leader>s /\<\><left><left>
-    " make n/N always go in the same direction
-    noremap <expr> <SID>(search-forward) 'Nn'[v:searchforward]
-    noremap <expr> <SID>(search-backward) 'nN'[v:searchforward]
-    nmap n <SID>(search-forward)
-    xmap n <SID>(search-forward)
-    nmap N <SID>(search-backward)
-    xmap N <SID>(search-backward)
-
-" winshift
-    nnoremap <C-W><C-M> <Cmd>WinShift<CR>
-    nnoremap <C-W>m <Cmd>WinShift<CR>
-    nnoremap <C-W>x <Cmd>WinShift swap<CR>
-    nnoremap <C-w>gh <Cmd>WinShift left<CR>
-    nnoremap <C-w>gj <Cmd>WinShift down<CR>
-    nnoremap <C-w>gk <Cmd>WinShift up<CR>
-    nnoremap <C-w>gl <Cmd>WinShift right<CR>
 
 " diffview
     nnoremap <Leader>df <Cmd>DiffviewFileHistory %<CR>

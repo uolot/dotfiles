@@ -251,17 +251,6 @@ Plug 'https://github.com/godlygeek/tabular', { 'on': 'Tabularize' }
 " Heuristically set buffer options
 Plug 'https://github.com/tpope/vim-sleuth'
 
-" Incremental fuzzy search motion plugin for Neovim
-Plug 'https://github.com/rlane/pounce.nvim', { 'on': 'Pounce' }
-
-" Terminal manager
-Plug 'https://github.com/voldikss/vim-floaterm'
-    " let g:floaterm_wintype = 'vsplit'
-    let g:floaterm_height = 0.5
-    let g:floaterm_width = 0.5
-    let g:floaterm_position = 'bottomright'
-    let g:floaterm_giteditor = 0
-
 Plug 'https://github.com/jbyuki/venn.nvim'
 
 Plug 'https://github.com/levouh/tint.nvim'
@@ -314,5 +303,7 @@ Plug 'https://github.com/zbirenbaum/copilot-cmp'
 Plug 'https://github.com/tzachar/highlight-undo.nvim'
 
 Plug 'https://github.com/VidocqH/lsp-lens.nvim'
+
+Plug 'https://github.com/folke/neodev.nvim'
 
 call plug#end()
