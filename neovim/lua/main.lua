@@ -1,6 +1,9 @@
 require('impatient')
 vim.loader.enable()
 
+-- needs setup before LSP
+require('neodev').setup({})
+
 -- LSP --
 
 -- neovim/nvim-lspconfig
@@ -30,7 +33,7 @@ local on_lsp_attach = function(client, buffer)
 
         -- vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format({timeout_ms = 5000})")
 
-        local augroup = vim.api.nvim_create_augroup('format_file', {clear=true})
+        local augroup = vim.api.nvim_create_augroup('format_file', { clear = true })
         vim.api.nvim_create_autocmd('BufWritePre', {
             group = augroup,
             buffer = buffer,
@@ -118,7 +121,8 @@ null_ls.setup({
         null_ls.builtins.diagnostics.flake8,
         -- misc
         -- null_ls.builtins.code_actions.refactoring,
-        null_ls.builtins.diagnostics.trail_space.with({ disabled_filetypes = {'git', 'gitcommit', 'NvimTree', 'markdown'} }),
+        null_ls.builtins.diagnostics.trail_space.with({
+            disabled_filetypes = { 'git', 'gitcommit', 'NvimTree', 'markdown' } }),
         -- null_ls.builtins.diagnostics.cfn_lint.with({
         --     condition = function(utils)
         --         return null_ls_helpers.args['$FILENAME'] ~= 'serverless.yml'
@@ -129,12 +133,12 @@ null_ls.setup({
 })
 
 local lsputils_border_chars = {
-	TOP_LEFT = '┌',
-	TOP_RIGHT = '┐',
-	MID_HORIZONTAL = '─',
-	MID_VERTICAL = '│',
-	BOTTOM_LEFT = '└',
-	BOTTOM_RIGHT = '┘',
+    TOP_LEFT = '┌',
+    TOP_RIGHT = '┐',
+    MID_HORIZONTAL = '─',
+    MID_VERTICAL = '│',
+    BOTTOM_LEFT = '└',
+    BOTTOM_RIGHT = '┘',
 }
 
 vim.g.lsp_utils_location_opts = {
@@ -251,9 +255,9 @@ end
 --
 require("null-ls").setup()
 require("mason-null-ls").setup({
---     -- ensure_installed = {"prettier", "eslint-lsp"},
+    --     -- ensure_installed = {"prettier", "eslint-lsp"},
     automatic_installation = true,
---     automatic_setup = true,
+    --     automatic_setup = true,
 })
 
 require("mason").setup()
@@ -290,7 +294,7 @@ require("mason-lspconfig").setup_handlers {
     -- The first entry (without a key) will be the default handler
     -- and will be called for each installed server that doesn't have
     -- a dedicated handler.
-    function (server_name) -- default handler (optional)
+    function(server_name) -- default handler (optional)
         require("lspconfig")[server_name].setup({
             -- on_attach = on_lsp_attach
         })
@@ -389,7 +393,7 @@ require('nvim-treesitter.configs').setup {
     ignore_install = {}, -- List of parsers to ignore installing
     sync_install = false,
     highlight = {
-        enable = true,              -- false will disable the whole extension
+        enable = true, -- false will disable the whole extension
         disable = { "markdown" },
         -- disable = { "c", "rust" },  -- list of language that will be disabled
         -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
@@ -401,7 +405,7 @@ require('nvim-treesitter.configs').setup {
     },
     indent = {
         enable = true,
-        disable = {"python"},
+        disable = { "python" },
     },
     context_commentstring = {
         enable = true
@@ -467,25 +471,25 @@ require('nvim-treesitter.configs').setup {
             goto_next_start = {
                 -- ["]c"] = "@class.outer",
                 -- ["]m"] = "@function.outer",
-                ["]]"] = {"@class.outer", "@function.outer"},
-                ["]m"] = {"@class.outer", "@function.outer"},
+                ["]]"] = { "@class.outer", "@function.outer" },
+                ["]m"] = { "@class.outer", "@function.outer" },
                 -- ["]b"] = "@block.outer",
             },
             goto_previous_start = {
                 -- ["[c"] = "@class.outer",
                 -- ["[m"] = "@function.outer",
-                ["[["] = {"@class.outer", "@function.outer"},
-                ["[m"] = {"@class.outer", "@function.outer"},
+                ["[["] = { "@class.outer", "@function.outer" },
+                ["[m"] = { "@class.outer", "@function.outer" },
                 -- ["[b"] = "@block.outer",
             },
         },
         swap = {
             enable = true,
             swap_next = {
-                ["]a"] = {"@parameter.inner"},
+                ["]a"] = { "@parameter.inner" },
             },
             swap_previous = {
-                ["[a"] = {"@parameter.inner"},
+                ["[a"] = { "@parameter.inner" },
             },
         },
     },
@@ -501,7 +505,7 @@ require('nvim-treesitter.configs').setup {
     playground = {
         enable = true,
         disable = {},
-        updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+        updatetime = 25,         -- Debounced time for highlighting nodes in the playground from source code
         persist_queries = false, -- Whether the query persists across vim sessions
         keybindings = {
             toggle_query_editor = 'o',
@@ -582,16 +586,16 @@ cmp.setup({
     -- preselect = cmp.PreselectMode.None,
     -- https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources
     sources = {
-        { name = 'nvim_lsp', max_item_count = 12, priority = 10 },
-        { name = 'buffer', max_item_count = 10, keyword_length = 3, priority = 9  },
-        { name = 'copilot', max_item_count = 10, keyword_length = 1, priority = 8  },
+        { name = 'nvim_lsp',                max_item_count = 12, priority = 10 },
+        { name = 'buffer',                  max_item_count = 10, keyword_length = 3, priority = 9 },
+        { name = 'copilot',                 max_item_count = 10, keyword_length = 1, priority = 8 },
         -- { name = 'cmp_tabnine', max_item_count = 3, priority = 8 },
         { name = 'nvim_lsp_signature_help', priority = 7 },
-        { name = 'vsnip', max_item_count = 3, keyword_length = 2, priority = 5 },
-        { name = 'path', max_item_count = 3, priority = 5, option = { trailing_slash = false } },
+        { name = 'vsnip',                   max_item_count = 3,  keyword_length = 2, priority = 5 },
+        { name = 'path',                    max_item_count = 3,  priority = 5,       option = { trailing_slash = false } },
         -- { name = 'omni', max_item_count = 5, priority = 4 },
-        { name = 'calc', max_item_count = 3, priority = 2 },
-        { name = 'emoji', max_item_count = 3, priority = 2, option = {insert = true} },
+        { name = 'calc',                    max_item_count = 3,  priority = 2 },
+        { name = 'emoji',                   max_item_count = 3,  priority = 2,       option = { insert = true } },
     },
     performance = {
         max_view_options = 20,
@@ -679,11 +683,11 @@ cmp.setup.cmdline(':', {
 cmp.setup.cmdline('/', {
     mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources({
-        { name = 'nvim_lsp_document_symbol' },
-    },
-    {
-        { name = 'buffer' },
-    })
+            { name = 'nvim_lsp_document_symbol' },
+        },
+        {
+            { name = 'buffer' },
+        })
 })
 cmp.setup.cmdline('?', {
     mapping = cmp.mapping.preset.cmdline(),
@@ -730,7 +734,7 @@ require('telescope').setup {
                 ["<C-a>"] = actions.smart_add_to_qflist + actions.open_qflist,
             },
         },
-        file_ignore_patterns = {"tags*"},
+        file_ignore_patterns = { "tags*" },
         pickers = {
             find_files = {
                 theme = "ivy",
@@ -750,7 +754,7 @@ require('telescope').setup {
     },
     extensions = {
         ['ui-select'] = {
-            require('telescope.themes').get_dropdown { }
+            require('telescope.themes').get_dropdown {}
         },
     },
 }
@@ -808,7 +812,7 @@ require('lualine').setup {
         },
         lualine_c = {
             'searchcount',
-            {'diagnostics', sections={"error", "warn"} },
+            { 'diagnostics', sections = { "error", "warn" } },
         },
         -- right
         lualine_x = {
@@ -817,7 +821,7 @@ require('lualine').setup {
         lualine_y = {
             'filetype',
         },
-        lualine_z = { 'location', 'progress'  },
+        lualine_z = { 'location', 'progress' },
     },
     inactive_sections = {
         -- left
@@ -826,7 +830,7 @@ require('lualine').setup {
             { 'filename', path = 1, shorting_target = 40 },
         },
         lualine_c = {
-            {'diagnostics', sections={"error", "warn"} },
+            { 'diagnostics', sections = { "error", "warn" } },
         },
         -- right
         lualine_x = {
@@ -875,28 +879,28 @@ require('gitsigns').setup {
             if vim.wo.diff then return ']c' end
             vim.schedule(function() gs.next_hunk() end)
             return '<Ignore>'
-        end, {expr=true})
+        end, { expr = true })
 
         map('n', '[c', function()
             if vim.wo.diff then return '[c' end
             vim.schedule(function() gs.prev_hunk() end)
             return '<Ignore>'
-        end, {expr=true})
+        end, { expr = true })
 
         -- Actions
         -- normal
         -- map('n', '<leader>hb', '<cmd>lua require"gitsigns".blame_line{full=false}<CR>')
-        map('n', '<leader>hb', function() gs.blame_line({full=false}) end)
-        map('n', '<leader>hB', function() gs.blame_line({full=true}) end)
+        map('n', '<leader>hb', function() gs.blame_line({ full = false }) end)
+        map('n', '<leader>hB', function() gs.blame_line({ full = true }) end)
         -- map('n', '<leader>hi', '<cmd>Gitsigns preview_hunk_inline<CR>')
         map('n', '<leader>hi', gs.preview_hunk_inline)
         map('n', '<leader>hl', gs.setloclist)
         map('n', '<leader>hp', gs.preview_hunk)
         map('n', '<leader>hr', gs.reset_hunk)
-        map('v', '<leader>hr', function() gs.reset_hunk({vim.fn.line("."), vim.fn.line("v")}) end)
+        map('v', '<leader>hr', function() gs.reset_hunk({ vim.fn.line("."), vim.fn.line("v") }) end)
         map('n', '<leader>hR', gs.reset_buffer)
         map('n', '<leader>hs', gs.stage_hunk)
-        map('v', '<leader>hs', function() gs.stage_hunk({vim.fn.line("."), vim.fn.line("v")}) end)
+        map('v', '<leader>hs', function() gs.stage_hunk({ vim.fn.line("."), vim.fn.line("v") }) end)
         map('n', '<leader>hS', gs.stage_buffer)
         map('n', '<leader>hq', gs.setqflist)
         map('n', '<leader>htb', gs.toggle_current_line_blame)
@@ -1009,27 +1013,27 @@ require("todo-comments").setup({
 
 -- 'chentau/marks.nvim'
 -- https://github.com/chentoast/marks.nvim#setup
-require'marks'.setup {
-  -- whether to map keybinds or not. default true
-  default_mappings = true,
-  -- which builtin marks to show. default {}
-  -- builtin_marks = { ".", "<", ">", "^" },
-  builtin_marks = {},
-  -- whether movements cycle back to the beginning/end of buffer. default true
-  cyclic = true,
-  -- whether the shada file is updated after modifying uppercase marks. default false
-  force_write_shada = false,
-  -- how often (in ms) to redraw signs/recompute mark positions.
-  -- higher values will have better performance but may cause visual lag,
-  -- while lower values may cause performance penalties. default 150.
-  refresh_interval = 250,
-  -- sign priorities for each type of mark - builtin marks, uppercase marks, lowercase
-  -- marks, and bookmarks.
-  -- can be either a table with all/none of the keys, or a single number, in which case
-  -- the priority applies to all marks.
-  -- default 10.
-  sign_priority = { lower=10, upper=15, builtin=8, bookmark=20 },
-  mappings = {}
+require 'marks'.setup {
+    -- whether to map keybinds or not. default true
+    default_mappings = true,
+    -- which builtin marks to show. default {}
+    -- builtin_marks = { ".", "<", ">", "^" },
+    builtin_marks = {},
+    -- whether movements cycle back to the beginning/end of buffer. default true
+    cyclic = true,
+    -- whether the shada file is updated after modifying uppercase marks. default false
+    force_write_shada = false,
+    -- how often (in ms) to redraw signs/recompute mark positions.
+    -- higher values will have better performance but may cause visual lag,
+    -- while lower values may cause performance penalties. default 150.
+    refresh_interval = 250,
+    -- sign priorities for each type of mark - builtin marks, uppercase marks, lowercase
+    -- marks, and bookmarks.
+    -- can be either a table with all/none of the keys, or a single number, in which case
+    -- the priority applies to all marks.
+    -- default 10.
+    sign_priority = { lower = 10, upper = 15, builtin = 8, bookmark = 20 },
+    mappings = {}
 }
 
 require('diffview').setup()
@@ -1047,27 +1051,28 @@ function _G.Toggle_venn()
     local venn_enabled = vim.inspect(vim.b.venn_enabled)
     if venn_enabled == "nil" then
         vim.b.venn_enabled = true
-        vim.cmd[[setlocal ve=all]]
+        vim.cmd [[setlocal ve=all]]
         -- draw a line on HJKL keystokes
-        vim.api.nvim_buf_set_keymap(0, "n", "J", "<C-v>j:VBox<CR>", {noremap = true})
-        vim.api.nvim_buf_set_keymap(0, "n", "K", "<C-v>k:VBox<CR>", {noremap = true})
-        vim.api.nvim_buf_set_keymap(0, "n", "L", "<C-v>l:VBox<CR>", {noremap = true})
-        vim.api.nvim_buf_set_keymap(0, "n", "H", "<C-v>h:VBox<CR>", {noremap = true})
+        vim.api.nvim_buf_set_keymap(0, "n", "J", "<C-v>j:VBox<CR>", { noremap = true })
+        vim.api.nvim_buf_set_keymap(0, "n", "K", "<C-v>k:VBox<CR>", { noremap = true })
+        vim.api.nvim_buf_set_keymap(0, "n", "L", "<C-v>l:VBox<CR>", { noremap = true })
+        vim.api.nvim_buf_set_keymap(0, "n", "H", "<C-v>h:VBox<CR>", { noremap = true })
         -- draw a box by pressing "f" with visual selection
-        vim.api.nvim_buf_set_keymap(0, "v", "f", ":VBox<CR>", {noremap = true})
-        vim.api.nvim_buf_set_keymap(0, "v", "d", ":VBoxD<CR>", {noremap = true})
+        vim.api.nvim_buf_set_keymap(0, "v", "f", ":VBox<CR>", { noremap = true })
+        vim.api.nvim_buf_set_keymap(0, "v", "d", ":VBoxD<CR>", { noremap = true })
     else
-        vim.cmd[[setlocal ve=]]
-        vim.cmd[[mapclear <buffer>]]
+        vim.cmd [[setlocal ve=]]
+        vim.cmd [[mapclear <buffer>]]
         vim.b.venn_enabled = nil
     end
 end
+
 -- toggle keymappings for venn using <leader>v
-vim.api.nvim_set_keymap('n', '<leader>vv', ":lua Toggle_venn()<CR>", { noremap = true})
+vim.api.nvim_set_keymap('n', '<leader>vv', ":lua Toggle_venn()<CR>", { noremap = true })
 
 -- https://github.com/sindrets/winshift.nvim#configuration
 require("winshift").setup({
-    highlight_moving_win = false,
+    highlight_moving_win = true,
 });
 
 -- https://github.com/gbrlsnchs/winpick.nvim#setup
@@ -1075,7 +1080,7 @@ require('winpick').setup({
     border = 'rounded',
 })
 
-vim.keymap.set('n', '<C-w>p', function ()
+vim.keymap.set('n', '<C-w>p', function()
     local winid = require('winpick').select()
     if winid then
         vim.api.nvim_set_current_win(winid)
@@ -1092,7 +1097,7 @@ require("statuscol").setup({
     segments = {
         { text = { scb.foldfunc }, click = "v:lua.ScFa" },
         { text = { scb.lnumfunc }, click = "v:lua.ScLa", },
-        { text = { " %s" }, click = "v:lua.ScSa" },
+        { text = { " %s" },        click = "v:lua.ScSa" },
     }
 })
 
@@ -1114,7 +1119,7 @@ require('indent_blankline').setup({
     char_highlight_list = {
         "IndentBlanklineIndent1",
     },
-    buftype_exclude = {"terminal", "nofile"},
+    buftype_exclude = { "terminal", "nofile" },
     -- filetype_exclude = {},
 })
 
@@ -1126,21 +1131,21 @@ require('s3edit').setup({
 })
 
 local function close_floating()
-  for _, win in ipairs(vim.api.nvim_list_wins()) do
-    local config = vim.api.nvim_win_get_config(win)
-    -- if config.relative == 'win' then
-    if config.relative ~= "" then
-      vim.api.nvim_win_close(win, false)
+    for _, win in ipairs(vim.api.nvim_list_wins()) do
+        local config = vim.api.nvim_win_get_config(win)
+        -- if config.relative == 'win' then
+        if config.relative ~= "" then
+            vim.api.nvim_win_close(win, false)
+        end
     end
-  end
 end
 
 require('which-key').register(
-  {
-    -- ["<C-w>f"] = { close_floating, "Close all floating windows"},
-    ["<Esc>"] = { close_floating, "Close all floating windows"},
-  },
-  { mode = 'n' }
+    {
+        -- ["<C-w>f"] = { close_floating, "Close all floating windows"},
+        ["<Esc>"] = { close_floating, "Close all floating windows" },
+    },
+    { mode = 'n' }
 )
 
 -- Broken, revisit when updated
@@ -1182,7 +1187,7 @@ require('oil').setup()
 
 require("twoslash-queries").setup({
     multi_line = false, -- to print types in multi line mode
-    is_enabled = true, -- to keep disabled at startup and enable it on request with the EnableTwoslashQueries
+    is_enabled = true,  -- to keep disabled at startup and enable it on request with the EnableTwoslashQueries
 })
 
 require('headlines').setup({
@@ -1238,12 +1243,12 @@ require('headlines').setup({
 
 require('smoothcursor').setup({
     autostart = true,
-    cursor = "",              -- cursor shape (need nerd font)
-    texthl = "SmoothCursor",   -- highlight group, default is { bg = nil, fg = "#FFD400" }
-    linehl = nil,              -- highlight sub-cursor line like 'cursorline', "CursorLine" recommended
-    type = "default",          -- define cursor movement calculate function, "default" or "exp" (exponential).
+    cursor = "",          -- cursor shape (need nerd font)
+    texthl = "SmoothCursor", -- highlight group, default is { bg = nil, fg = "#FFD400" }
+    linehl = nil,            -- highlight sub-cursor line like 'cursorline', "CursorLine" recommended
+    type = "default",        -- define cursor movement calculate function, "default" or "exp" (exponential).
     fancy = {
-        enable = true,        -- enable fancy mode
+        enable = true,       -- enable fancy mode
         head = { cursor = "▷", texthl = "SmoothCursor", linehl = nil },
         -- head = { cursor = "", texthl = "SmoothCursor", linehl = nil },
         body = {
@@ -1252,8 +1257,8 @@ require('smoothcursor').setup({
             { cursor = "●", texthl = "SmoothCursorYellow" },
             { cursor = "•", texthl = "SmoothCursorGreen" },
             { cursor = "•", texthl = "SmoothCursorAqua" },
-            { cursor = ".", texthl = "SmoothCursorBlue" },
-            { cursor = ".", texthl = "SmoothCursorPurple" },
+            { cursor = ".",   texthl = "SmoothCursorBlue" },
+            { cursor = ".",   texthl = "SmoothCursorPurple" },
         },
         tail = { cursor = nil, texthl = "SmoothCursor" }
     },
@@ -1297,4 +1302,3 @@ require('bufjump').setup({
 })
 
 require('highlight-undo').setup()
-
