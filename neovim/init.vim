@@ -1,6 +1,8 @@
 " ------ General settings ------
 
 filetype plugin indent on " enables filetype specific plugins
+
+" TODO: change to vim.g.mapleader = " "
 let mapleader=" "
 
 lua require('options')
@@ -8,7 +10,9 @@ lua require('options')
 " automatically equalize splits when vim is resized
 autocmd VimResized * wincmd =
 
-source $HOME/.dotfiles/neovim/plugins.vim
+lua require('plugins')
+
+" source $HOME/.dotfiles/neovim/plugins.vim
 
 lua require('main')
 
