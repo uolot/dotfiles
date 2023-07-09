@@ -56,7 +56,7 @@ require('lazy').setup({
 
     -- " Pop-up menu for code actions to show meta-information and diff preview
     -- "     Provides ":CodeActionMenu"
-    { 'weilbith/nvim-code-action-menu',       url = 'https://github.com/weilbith/nvim-code-action-menu' },
+    { 'weilbith/nvim-code-action-menu',       url = 'https://github.com/weilbith/nvim-code-action-menu', cmd = 'CodeActionMenu' },
 
     -- " LSP signature hint as you type
     -- { 'ray-x/lsp_signature.nvim',         url = 'https://github.com/ray-x/lsp_signature.nvim' },
@@ -122,8 +122,7 @@ require('lazy').setup({
     {
         'projekt0n/github-nvim-theme',
         url = 'https://github.com/projekt0n/github-nvim-theme',
-        branch =
-        '0.0.x'
+        branch = '0.0.x',
     },
 
     { 'rebelot/kanagawa.nvim',           url = 'https://github.com/rebelot/kanagawa.nvim' },
@@ -238,18 +237,26 @@ require('lazy').setup({
     { 'ElPiloto/telescope-vimwiki.nvim', url = 'https://github.com/ElPiloto/telescope-vimwiki.nvim' },
 
     -- " Markdown live preview
-    -- FIXME: figure how to run 'do' command with lazy
-    -- { 'iamcco/markdown-preview.nvim', url = 'https://github.com/iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']} },
-    -- let g:mkdp_auto_close = 0
+    { 'iamcco/markdown-preview.nvim',
+        url = 'https://github.com/iamcco/markdown-preview.nvim',
+        ft = {'markdown', 'vim-plug'},
+        config = function ()
+            vim.fn['mkdp#util#install']()
+            vim.g.mkdp_auto_close = 0
+        end
+    },
 
     -- " Neovim extension for zk
     { 'mickael-menu/zk-nvim',            url = 'https://github.com/mickael-menu/zk-nvim' },
-    { 'preservim/vim-markdown',          url = 'https://github.com/preservim/vim-markdown' },
-    -- let g:vim_markdown_folding_disabled = 1
-    -- let g:vim_markdown_no_default_key_mappings = 1
-    -- let g:vim_markdown_toc_autofit = 1
-    -- let g:vim_markdown_conceal_code_blocks = 0
-    -- let g:vim_markdown_strikethrough = 1
+    { 'preservim/vim-markdown',          url = 'https://github.com/preservim/vim-markdown',
+        config = function ()
+            vim.g.vim_markdown_folding_disabled = 1
+            vim.g.vim_markdown_no_default_key_mappings = 1
+            vim.g.vim_markdown_toc_autofit = 1
+            vim.g.vim_markdown_conceal_code_blocks = 0
+            vim.g.vim_markdown_strikethrough = 1
+        end
+    },
 
     -- " Additional highlights for markdown
     { 'lukas-reineke/headlines.nvim',    url = 'https://github.com/lukas-reineke/headlines.nvim' },
@@ -302,17 +309,43 @@ require('lazy').setup({
 
     -- " Broken, revisit when updated
     -- { 'nvim-zh/colorful-winsep.nvim',     url = 'https://github.com/nvim-zh/colorful-winsep.nvim' },
-    { 'tweekmonster/startuptime.vim',     url = 'https://github.com/tweekmonster/startuptime.vim' },
+    { 'tweekmonster/startuptime.vim', url = 'https://github.com/tweekmonster/startuptime.vim' },
 
     -- " Easily add additional highlights to your buffers
-    { 'folke/paint.nvim',                 url = 'https://github.com/folke/paint.nvim' },
+    { 'folke/paint.nvim',             url = 'https://github.com/folke/paint.nvim' },
 
     -- " Neovim file explorer: edit your filesystem like a buffer
-    { 'stevearc/oil.nvim',                url = 'https://github.com/stevearc/oil.nvim' },
+    { 'stevearc/oil.nvim',            url = 'https://github.com/stevearc/oil.nvim' },
 
     -- " Embed Neovim in Chrome, Firefox & others.
-    -- FIXME
-    -- { 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }, url = 'https://github.com/glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } } },
+    {
+        'glacambre/firenvim',
+        url = 'https://github.com/glacambre/firenvim',
+        cond = not not vim.g.started_by_firenvim,
+        build = function()
+            require('lazy').load({ plugins = 'firenvim', wait = true })
+            vim.fn['firenvim#install'](0)
+        end,
+        config = function ()
+            vim.g.firenvim_config = {
+                globalSettings = {
+                    alt = 'all',
+                },
+                localSettings = {
+                    ['.*'] = {
+                        cmdline = 'neovim',
+                        content = 'text',
+                        priority = 0,
+                        selector = 'textarea',
+                        takeover = 'never',
+                    },
+                },
+            }
+
+            vim.opt.background = 'light'
+            vim.opt.guifont = 'BlexMono Ner Font Mono:h12'
+        end
+    },
 
     -- " Nvim lua plugin which adds support for twoslash queries into typescript projects
     { 'marilari88/twoslash-queries.nvim', url = 'https://github.com/marilari88/twoslash-queries.nvim' },

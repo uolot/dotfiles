@@ -16,29 +16,6 @@ lua require('plugins')
 
 lua require('main')
 
-" firenvim
-    let g:firenvim_config = {
-        \ 'globalSettings': {
-            \ 'alt': 'all',
-        \  },
-        \ 'localSettings': {
-            \ '.*': {
-                \ 'cmdline': 'neovim',
-                \ 'content': 'text',
-                \ 'priority': 0,
-                \ 'selector': 'textarea',
-                \ 'takeover': 'never',
-            \ },
-        \ }
-    \ }
-
-    if exists('g:started_by_firenvim')
-        set background=light
-    endif
-
-    " set guifont=Monaco:h20
-    set guifont=BlexMono\ Nerd\ Font\ Mono:h12
-
 " Important!!
 if has('termguicolors')
     set termguicolors
