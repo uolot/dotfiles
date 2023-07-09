@@ -52,17 +52,27 @@ require('lazy').setup({
     { 'onsails/lspkind-nvim',                 url = 'https://github.com/onsails/lspkind-nvim' },
     -- { 'kosayoda/nvim-lightbulb',          url = 'https://github.com/kosayoda/nvim-lightbulb' },
 
-    { 'folke/trouble.nvim' },
+    {
+        'folke/trouble.nvim',
+        opts = {
+            icons = false,
+            severity = vim.diagnostic.severity.INFO,
+        }
+    },
 
     -- " Pop-up menu for code actions to show meta-information and diff preview
     -- "     Provides ":CodeActionMenu"
-    { 'weilbith/nvim-code-action-menu',       url = 'https://github.com/weilbith/nvim-code-action-menu', cmd = 'CodeActionMenu' },
+    {
+        'weilbith/nvim-code-action-menu',
+        url = 'https://github.com/weilbith/nvim-code-action-menu',
+        cmd = 'CodeActionMenu'
+    },
 
     -- " LSP signature hint as you type
     -- { 'ray-x/lsp_signature.nvim',         url = 'https://github.com/ray-x/lsp_signature.nvim' },
 
     -- " Incremental LSP rename command based on Neovim's command-preview feature
-    { 'smjonas/inc-rename.nvim',              url = 'https://github.com/smjonas/inc-rename.nvim' },
+    { 'smjonas/inc-rename.nvim',                  url = 'https://github.com/smjonas/inc-rename.nvim' },
 
     -- " render diagnostics using virtual lines on top of the real line of code.
     -- { 'Maan2003/lsp_lines.nvim',         url = 'https://github.com/Maan2003/lsp_lines.nvim' },
@@ -73,20 +83,157 @@ require('lazy').setup({
     {
         'nvim-treesitter/nvim-treesitter',
         url = 'https://github.com/nvim-treesitter/nvim-treesitter',
-        build =
-        ':TSUpdate'
+        build = ':TSUpdate',
+        lazy = false,
+        priority = 900,
+        opts = {
+            -- ensure_installed = "all",
+            ensure_installed = {
+                "bash", "c", "clojure", "comment", "cpp", "css", "dockerfile", "dot", "go", "hcl", "html", "java",
+                "javascript", "jsdoc", "json", "json5", "jsx", "lua", "make", "markdown", "python", "ruby", "rust",
+                "toml", "tsx", "typescript", "vim", "yaml"
+            },
+            ignore_install = {}, -- List of parsers to ignore installing
+            sync_install = false,
+            highlight = {
+                enable = true, -- false will disable the whole extension
+                disable = { "markdown" },
+                -- disable = { "c", "rust" },  -- list of language that will be disabled
+                -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+                -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+                -- Using this option may slow down your editor, and you may see some duplicate highlights.
+                -- Instead of true it can also be a list of languages
+                additional_vim_regex_highlighting = true,
+                -- additional_vim_regex_highlighting = { "markdown" },
+            },
+            indent = {
+                enable = true,
+                disable = { "python" },
+            },
+            context_commentstring = {
+                enable = true
+            },
+            autotag = {
+                enable = true,
+            },
+            refactor = {
+                highlight_definitions = {
+                    enable = true,
+                    clear_on_cursor_move = true,
+                },
+                -- highlight_current_scope = { enable = true },
+                navigation = {
+                    enable = true,
+                    keymaps = {
+                        goto_definition_lsp_fallback = "<leader>gn",
+                    },
+                },
+            },
+            -- rainbow = {
+            --     enable = true,
+            --     -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
+            --     extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+            --     max_file_lines = nil, -- Do not enable for files with more than n lines, int
+            --     -- colors = {}, -- table of hex strings
+            --     -- termcolors = {} -- table of colour name strings
+            -- },
+            textobjects = {
+                select = {
+                    enable = true,
+                    lookahead = true,
+                    keymaps = {
+                        ["af"] = "@function.outer",
+                        ["if"] = "@function.inner",
+                        ["al"] = "@class.outer",
+                        ["il"] = "@class.inner",
+                        ["aa"] = "@parameter.outer",
+                        ["ia"] = "@parameter.inner",
+                        ["ax"] = "@block.outer",
+                        ["ix"] = "@block.inner",
+                        ["=l"] = "@assignment.lhs",
+                        ["=r"] = "@assignment.rhs",
+                        ["i="] = "@assignment.inner",
+                        ["a="] = "@assignment.outer",
+                        ["ic"] = "@call.inner",
+                        ["ac"] = "@call.outer",
+                        ["i/"] = "@comment.outer",
+                        ["a/"] = "@comment.outer",
+                    },
+                    selection_modes = {
+                        ['@function.outer'] = 'V',
+                        ['@function.inner'] = 'v',
+                        ['@class.outer'] = 'V',
+                        ['@class.inner'] = 'V',
+                        ['@block.outer'] = 'V',
+                        ['@block.inner'] = 'V',
+                    },
+                },
+                move = {
+                    enable = true,
+                    set_jumps = true,
+                    goto_next_start = {
+                        -- ["]c"] = "@class.outer",
+                        -- ["]m"] = "@function.outer",
+                        ["]]"] = { "@class.outer", "@function.outer" },
+                        ["]m"] = { "@class.outer", "@function.outer" },
+                        -- ["]b"] = "@block.outer",
+                    },
+                    goto_previous_start = {
+                        -- ["[c"] = "@class.outer",
+                        -- ["[m"] = "@function.outer",
+                        ["[["] = { "@class.outer", "@function.outer" },
+                        ["[m"] = { "@class.outer", "@function.outer" },
+                        -- ["[b"] = "@block.outer",
+                    },
+                },
+                swap = {
+                    enable = true,
+                    swap_next = {
+                        ["]a"] = { "@parameter.inner" },
+                    },
+                    swap_previous = {
+                        ["[a"] = { "@parameter.inner" },
+                    },
+                },
+            },
+            incremental_selection = {
+                enable = false,
+                keymaps = {
+                    init_selection = '<CR>',
+                    -- scope_incremental = '<CR>',
+                    node_incremental = '<TAB>',
+                    node_decremental = '<S-TAB>',
+                },
+            },
+            playground = {
+                enable = true,
+                disable = {},
+                updatetime = 25,         -- Debounced time for highlighting nodes in the playground from source code
+                persist_queries = false, -- Whether the query persists across vim sessions
+                keybindings = {
+                    toggle_query_editor = 'o',
+                    toggle_hl_groups = 'i',
+                    toggle_injected_languages = 't',
+                    toggle_anonymous_nodes = 'a',
+                    toggle_language_display = 'I',
+                    focus_language = 'f',
+                    unfocus_language = 'F',
+                    update = 'R',
+                    goto_node = '<cr>',
+                    show_help = '?',
+                },
+            }
+        },
     },
     {
         'nvim-treesitter/nvim-treesitter-textobjects',
-        url =
-        'https://github.com/nvim-treesitter/nvim-treesitter-textobjects'
+        url = 'https://github.com/nvim-treesitter/nvim-treesitter-textobjects'
     },
     { 'nvim-treesitter/nvim-treesitter-refactor', url = 'https://github.com/nvim-treesitter/nvim-treesitter-refactor' },
     { 'nvim-treesitter/nvim-treesitter-context',  url = 'https://github.com/nvim-treesitter/nvim-treesitter-context' },
     {
         'JoosepAlviste/nvim-ts-context-commentstring',
-        url =
-        'https://github.com/JoosepAlviste/nvim-ts-context-commentstring'
+        url = 'https://github.com/JoosepAlviste/nvim-ts-context-commentstring'
     },
     -- " Use treesitter to auto close and auto rename html tags
     { 'windwp/nvim-ts-autotag', url = 'https://github.com/windwp/nvim-ts-autotag' },
@@ -118,14 +265,25 @@ require('lazy').setup({
     { 'nvim-lualine/lualine.nvim',               url = 'https://github.com/nvim-lualine/lualine.nvim' },
     { 'nvim-tree/nvim-web-devicons',             url = 'https://github.com/nvim-tree/nvim-web-devicons' },
 
-    -- " grep: github-colors github-theme
     {
-        'projekt0n/github-nvim-theme',
-        url = 'https://github.com/projekt0n/github-nvim-theme',
-        branch = '0.0.x',
+        'rebelot/kanagawa.nvim',
+        url = 'https://github.com/rebelot/kanagawa.nvim',
+        lazy = false,
+        priority = 1000,
+        init = function()
+            vim.cmd('colorscheme kanagawa')
+        end,
+        opts = {
+            theme = 'dragon',
+            background = {
+                dark = 'dragon',
+                light = 'lotus',
+            },
+            dimInactive = false,
+            keywordStyle = { italic = false, bold = false },
+            statementStyle = { italic = false, bold = true },
+        },
     },
-
-    { 'rebelot/kanagawa.nvim',           url = 'https://github.com/rebelot/kanagawa.nvim' },
 
     -- " -- Misc --
 
@@ -158,7 +316,20 @@ require('lazy').setup({
     -- "             \]
 
 
-    { 'numToStr/Comment.nvim',           url = 'https://github.com/numToStr/Comment.nvim' },
+    {
+        'numToStr/Comment.nvim',
+        url = 'https://github.com/numToStr/Comment.nvim',
+        opts = {
+            toggler = {
+                line = 'gcc',
+                block = 'gCC',
+            },
+            opleader = {
+                line = 'gc',
+                block = 'gC',
+            },
+        }
+    },
     -- {
     --     'hynek/vim-python-pep8-indent',
     --     url = 'https://github.com/hynek/vim-python-pep8-indent',
@@ -167,36 +338,43 @@ require('lazy').setup({
     -- },
 
     -- " highlighting visual selections
-    { 'Pocco81/HighStr.nvim',            url = 'https://github.com/Pocco81/HighStr.nvim' },
+    { 'Pocco81/HighStr.nvim',     url = 'https://github.com/Pocco81/HighStr.nvim' },
     -- " Highlight several words in different colors simultaneously
-    -- let g:mw_no_mappings = 1
-    { 'inkarkat/vim-ingo-library',       url = 'https://github.com/inkarkat/vim-ingo-library' },
-    { 'inkarkat/vim-mark',               url = 'https://github.com/inkarkat/vim-mark' },
+    -- { 'inkarkat/vim-ingo-library', url = 'https://github.com/inkarkat/vim-ingo-library' },
+    {
+        'inkarkat/vim-mark',
+        url = 'https://github.com/inkarkat/vim-mark',
+        dependencies = { 'inkarkat/vim-ingo-library' },
+        init = function()
+            vim.g.mw_no_mappings = 1
+            vim.g.mwDefaultHighlightingPalette = 'extended'
+        end
+    },
 
 
     -- " displays a popup with possible keybindings of the command you started typing
-    { 'folke/which-key.nvim',            url = 'https://github.com/folke/which-key.nvim' },
+    { 'folke/which-key.nvim',     url = 'https://github.com/folke/which-key.nvim' },
 
     -- " A file explorer tree for neovim written in lua
-    { 'kyazdani42/nvim-tree.lua',        url = 'https://github.com/kyazdani42/nvim-tree.lua' },
+    { 'kyazdani42/nvim-tree.lua', url = 'https://github.com/kyazdani42/nvim-tree.lua' },
 
 
     -- " -- Git --
 
-    { 'tpope/vim-fugitive',              url = 'https://github.com/tpope/vim-fugitive' },
-    { 'lewis6991/gitsigns.nvim',         url = 'https://github.com/lewis6991/gitsigns.nvim' },
+    { 'tpope/vim-fugitive',       url = 'https://github.com/tpope/vim-fugitive' },
+    { 'lewis6991/gitsigns.nvim',  url = 'https://github.com/lewis6991/gitsigns.nvim' },
 
     -- " Single tabpage interface for easily cycling through diffs for all modified files for any git rev
-    { 'sindrets/diffview.nvim',          url = 'https://github.com/sindrets/diffview.nvim' },
+    { 'sindrets/diffview.nvim',   url = 'https://github.com/sindrets/diffview.nvim' },
 
     -- " more pleasant editing on commit messages
-    { 'rhysd/committia.vim',             url = 'https://github.com/rhysd/committia.vim' },
+    { 'rhysd/committia.vim',      url = 'https://github.com/rhysd/committia.vim' },
 
     -- " A git commit browser in Vim
     -- { 'junegunn/gv.vim',                 url = 'https://github.com/junegunn/gv.vim' },
 
     -- " GitHub extension for fugitive.vim
-    { 'tpope/vim-rhubarb',               url = 'https://github.com/tpope/vim-rhubarb' },
+    { 'tpope/vim-rhubarb',        url = 'https://github.com/tpope/vim-rhubarb' },
     -- " extension to fugitive.vim for gitlab support
     -- { 'shumphrey/fugitive-gitlab.vim',   url = 'https://github.com/shumphrey/fugitive-gitlab.vim' },
     -- " Add Bitbucket URL support to fugitive.vim's :Gbrowse command
@@ -209,7 +387,22 @@ require('lazy').setup({
     -- " -- Misc -
 
     -- " Highlight, list and search todo comments in your projects
-    { 'folke/todo-comments.nvim',        url = 'https://github.com/folke/todo-comments.nvim' },
+    {
+        'folke/todo-comments.nvim',
+        url = 'https://github.com/folke/todo-comments.nvim',
+        opts = {
+            signs = false,
+            highlight = {
+                multiline = false,
+                -- pattern = [[.*<(KEYWORDS)\s*:]],
+                pattern = [[.*<(KEYWORDS)\s*]],
+                comments_only = true,
+            },
+            search = {
+                pattern = [[\b(KEYWORDS)\b]],
+            },
+        }
+    },
 
     -- " A better user experience for interacting with and manipulating Vim marks
     -- " mx              Set mark x
@@ -233,23 +426,32 @@ require('lazy').setup({
 
     -- " -- Vimwiki & Markdown --
 
-    { 'vimwiki/vimwiki',                 url = 'https://github.com/vimwiki/vimwiki' },
-    { 'ElPiloto/telescope-vimwiki.nvim', url = 'https://github.com/ElPiloto/telescope-vimwiki.nvim' },
+    { 'vimwiki/vimwiki',                 url = 'https://github.com/vimwiki/vimwiki',                 lazy = true },
+    { 'ElPiloto/telescope-vimwiki.nvim', url = 'https://github.com/ElPiloto/telescope-vimwiki.nvim', lazy = true },
 
     -- " Markdown live preview
-    { 'iamcco/markdown-preview.nvim',
+    {
+        'iamcco/markdown-preview.nvim',
         url = 'https://github.com/iamcco/markdown-preview.nvim',
-        ft = {'markdown', 'vim-plug'},
-        config = function ()
+        ft = { 'markdown', 'vim-plug' },
+        config = function()
             vim.fn['mkdp#util#install']()
             vim.g.mkdp_auto_close = 0
         end
     },
 
     -- " Neovim extension for zk
-    { 'mickael-menu/zk-nvim',            url = 'https://github.com/mickael-menu/zk-nvim' },
-    { 'preservim/vim-markdown',          url = 'https://github.com/preservim/vim-markdown',
-        config = function ()
+    {
+        'mickael-menu/zk-nvim',
+        url = 'https://github.com/mickael-menu/zk-nvim',
+        config = function()
+            require('zk').setup({ picker = 'telescope' })
+        end
+    },
+    {
+        'preservim/vim-markdown',
+        url = 'https://github.com/preservim/vim-markdown',
+        config = function()
             vim.g.vim_markdown_folding_disabled = 1
             vim.g.vim_markdown_no_default_key_mappings = 1
             vim.g.vim_markdown_toc_autofit = 1
@@ -259,15 +461,63 @@ require('lazy').setup({
     },
 
     -- " Additional highlights for markdown
-    { 'lukas-reineke/headlines.nvim',    url = 'https://github.com/lukas-reineke/headlines.nvim' },
+    {
+        'lukas-reineke/headlines.nvim',
+        url = 'https://github.com/lukas-reineke/headlines.nvim',
+        lazy = true,
+        ft = { 'markdown' },
+        -- dependencies = { 'nvim-treesitter/nvim-treesitter' },
+        config = function()
+            require('headlines').setup({
+                markdown = {
+                    -- query = vim.treesitter.parse_query(
+                    query = vim.treesitter.query.parse(
+                        "markdown",
+                        [[
+                            (atx_heading [
+                                (atx_h1_marker)
+                                (atx_h2_marker)
+                                (atx_h3_marker)
+                                (atx_h4_marker)
+                                (atx_h5_marker)
+                                (atx_h6_marker)
+                            ] @headline)
+
+                            (thematic_break) @dash
+
+                            (fenced_code_block) @codeblock
+
+                            (block_quote_marker) @quote
+                            (block_quote (paragraph (inline (block_continuation) @quote)))
+                        ]]
+                    ),
+                    headline_highlights = {
+                        "Headline1",
+                        "Headline2",
+                        "Headline3",
+                        "Headline4",
+                        "Headline5",
+                    },
+                    codeblock_highlight = "",
+                    dash_highlight = "Dash",
+                    dash_string = "─",
+                    quote_highlight = "Quote",
+                    quote_string = "┃",
+                    fat_headlines = false,
+                    -- fat_headline_upper_string = "▄",
+                    -- fat_headline_lower_string = "▀",
+                },
+            })
+        end
+    },
 
     -- " -- Misc --
 
     -- " Run Async Shell Commands
-    { 'skywind3000/asyncrun.vim',        url = 'https://github.com/skywind3000/asyncrun.vim' },
+    { 'skywind3000/asyncrun.vim', url = 'https://github.com/skywind3000/asyncrun.vim' },
 
     -- " Set of operators and textobjects to search/select/edit sandwiched texts
-    { 'machakann/vim-sandwich',          url = 'https://github.com/machakann/vim-sandwich' },
+    { 'machakann/vim-sandwich',   url = 'https://github.com/machakann/vim-sandwich' },
 
     -- " Additional text objects
     -- " Provides:
@@ -275,27 +525,34 @@ require('lazy').setup({
     -- " inX anX AnX InX for next object
     -- " ilX alX AlX IlX for previous (last) object
     -- " ia aa Ia Aa for arguments; works with nX/lX as well
-    { 'wellle/targets.vim',              url = 'https://github.com/wellle/targets.vim' },
+    { 'wellle/targets.vim',       url = 'https://github.com/wellle/targets.vim' },
 
-    -- " https://github.com/godlygeek/tabular
     {
         'godlygeek/tabular',
         url = 'https://github.com/godlygeek/tabular',
-        cmd =
-        'Tabularize'
+        cmd = 'Tabularize'
     },
 
     -- " Heuristically set buffer options
-    { 'tpope/vim-sleuth',                    url = 'https://github.com/tpope/vim-sleuth' },
-    { 'jbyuki/venn.nvim',                    url = 'https://github.com/jbyuki/venn.nvim' },
-    { 'levouh/tint.nvim',                    url = 'https://github.com/levouh/tint.nvim' },
-    { 'sindrets/winshift.nvim',              url = 'https://github.com/sindrets/winshift.nvim' },
-    { 'gbrlsnchs/winpick.nvim',              url = 'https://github.com/gbrlsnchs/winpick.nvim' },
+    { 'tpope/vim-sleuth', url = 'https://github.com/tpope/vim-sleuth' },
+    { 'jbyuki/venn.nvim', url = 'https://github.com/jbyuki/venn.nvim' },
+    {
+        'levouh/tint.nvim',
+        url = 'https://github.com/levouh/tint.nvim',
+        config = function()
+            require("tint").setup({
+                tint = 15,
+                tint_background_colors = true,
+            })
+        end
+    },
+    { 'sindrets/winshift.nvim',              url = 'https://github.com/sindrets/winshift.nvim',             lazy = true },
+    { 'gbrlsnchs/winpick.nvim',              url = 'https://github.com/gbrlsnchs/winpick.nvim',             lazy = true },
 
     -- " hide gutter numbers for folds
     { 'luukvbaal/statuscol.nvim',            url = 'https://github.com/luukvbaal/statuscol.nvim' },
     -- " ultra fold
-    { 'kevinhwang91/nvim-ufo',               url = 'https://github.com/kevinhwang91/nvim-ufo' },
+    { 'kevinhwang91/nvim-ufo',               url = 'https://github.com/kevinhwang91/nvim-ufo',              opts = {} },
     { 'lukas-reineke/indent-blankline.nvim', url = 'https://github.com/lukas-reineke/indent-blankline.nvim' },
 
     -- " Inversed J
@@ -303,8 +560,11 @@ require('lazy').setup({
     {
         'kiran94/s3edit.nvim',
         url = 'https://github.com/kiran94/s3edit.nvim',
-        cmd =
-        'S3Edit'
+        cmd = 'S3Edit',
+        opts = {
+            -- exclude = { ".git", ".hoodie", ".parquet", ".zip" },
+            autocommand_events = { "BufWritePost" },
+        }
     },
 
     -- " Broken, revisit when updated
@@ -315,7 +575,7 @@ require('lazy').setup({
     { 'folke/paint.nvim',             url = 'https://github.com/folke/paint.nvim' },
 
     -- " Neovim file explorer: edit your filesystem like a buffer
-    { 'stevearc/oil.nvim',            url = 'https://github.com/stevearc/oil.nvim' },
+    { 'stevearc/oil.nvim',            url = 'https://github.com/stevearc/oil.nvim',           lazy = true },
 
     -- " Embed Neovim in Chrome, Firefox & others.
     {
@@ -326,7 +586,7 @@ require('lazy').setup({
             require('lazy').load({ plugins = 'firenvim', wait = true })
             vim.fn['firenvim#install'](0)
         end,
-        config = function ()
+        config = function()
             vim.g.firenvim_config = {
                 globalSettings = {
                     alt = 'all',
@@ -348,16 +608,64 @@ require('lazy').setup({
     },
 
     -- " Nvim lua plugin which adds support for twoslash queries into typescript projects
-    { 'marilari88/twoslash-queries.nvim', url = 'https://github.com/marilari88/twoslash-queries.nvim' },
-    { 'gen740/SmoothCursor.nvim',         url = 'https://github.com/gen740/SmoothCursor.nvim' },
-    { 'stevearc/overseer.nvim',           url = 'https://github.com/stevearc/overseer.nvim' },
-    { 'rcarriga/nvim-notify',             url = 'https://github.com/rcarriga/nvim-notify' },
-    { 'kwkarlwang/bufjump.nvim',          url = 'https://github.com/kwkarlwang/bufjump.nvim' },
+    {
+        'marilari88/twoslash-queries.nvim',
+        url = 'https://github.com/marilari88/twoslash-queries.nvim',
+        opts = {
+            multi_line = false, -- to print types in multi line mode
+            is_enabled = true,  -- to keep disabled at startup and enable it on request with the EnableTwoslashQueries
+        }
+    },
+    {
+        'gen740/SmoothCursor.nvim',
+        url = 'https://github.com/gen740/SmoothCursor.nvim',
+        opts = {
+            autostart = true,
+            cursor = "",          -- cursor shape (need nerd font)
+            texthl = "SmoothCursor", -- highlight group, default is { bg = nil, fg = "#FFD400" }
+            linehl = nil,            -- highlight sub-cursor line like 'cursorline', "CursorLine" recommended
+            type = "default",        -- define cursor movement calculate function, "default" or "exp" (exponential).
+            fancy = {
+                enable = true,       -- enable fancy mode
+                head = { cursor = "▷", texthl = "SmoothCursor", linehl = nil },
+                -- head = { cursor = "", texthl = "SmoothCursor", linehl = nil },
+                body = {
+                    { cursor = "●", texthl = "SmoothCursorRed" },
+                    { cursor = "●", texthl = "SmoothCursorOrange" },
+                    { cursor = "●", texthl = "SmoothCursorYellow" },
+                    { cursor = "•", texthl = "SmoothCursorGreen" },
+                    { cursor = "•", texthl = "SmoothCursorAqua" },
+                    { cursor = ".",   texthl = "SmoothCursorBlue" },
+                    { cursor = ".",   texthl = "SmoothCursorPurple" },
+                },
+                tail = { cursor = nil, texthl = "SmoothCursor" }
+            },
+            flyin_effect = nil,        -- "bottom" or "top"
+            speed = 25,                -- max is 100 to stick to your current position
+            intervals = 35,            -- tick interval
+            priority = 10,             -- set marker priority
+            timeout = 2000,            -- timout for animation
+            threshold = 3,             -- animate if threshold lines jump
+            disable_float_win = false, -- disable on float window
+            enabled_filetypes = nil,   -- example: { "lua", "vim" }
+            disabled_filetypes = nil,  -- this option will be skipped if enabled_filetypes is set. example: { "TelescopePrompt", "NvimTree" }
+        }
+    },
+    -- { 'stevearc/overseer.nvim',           url = 'https://github.com/stevearc/overseer.nvim' },
+    { 'rcarriga/nvim-notify',        url = 'https://github.com/rcarriga/nvim-notify' },
+    {
+        'kwkarlwang/bufjump.nvim',
+        url = 'https://github.com/kwkarlwang/bufjump.nvim',
+        opts = {
+            forward = '<C-n>',
+            backward = '<C-p>',
+            on_success = nil
+        }
+    },
     -- { 'github/copilot.vim',               url = 'https://github.com/github/copilot.vim' },
-    { 'zbirenbaum/copilot.lua',           url = 'https://github.com/zbirenbaum/copilot.lua' },
-    { 'zbirenbaum/copilot-cmp',           url = 'https://github.com/zbirenbaum/copilot-cmp' },
-    { 'tzachar/highlight-undo.nvim',      url = 'https://github.com/tzachar/highlight-undo.nvim' },
-    { 'VidocqH/lsp-lens.nvim',            url = 'https://github.com/VidocqH/lsp-lens.nvim' },
-    { 'folke/neodev.nvim',                url = 'https://github.com/folke/neodev.nvim' },
+    { 'zbirenbaum/copilot.lua',      url = 'https://github.com/zbirenbaum/copilot.lua' },
+    { 'zbirenbaum/copilot-cmp',      url = 'https://github.com/zbirenbaum/copilot-cmp' },
+    { 'tzachar/highlight-undo.nvim', url = 'https://github.com/tzachar/highlight-undo.nvim', lazy = false,   opts = {} },
+    { 'folke/neodev.nvim',           url = 'https://github.com/folke/neodev.nvim',           priority = 1000 },
 
 })

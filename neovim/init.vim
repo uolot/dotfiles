@@ -10,8 +10,6 @@ lua require('options')
 " automatically equalize splits when vim is resized
 autocmd VimResized * wincmd =
 
-lua require('plugins')
-
 " source $HOME/.dotfiles/neovim/plugins.vim
 
 lua require('main')
@@ -21,13 +19,10 @@ if has('termguicolors')
     set termguicolors
 endif
 
-colorscheme kanagawa
-
 source $HOME/.dotfiles/neovim/vimwiki.vim
 
 " maps
 source $HOME/.dotfiles/neovim/mappings.vim
-lua require('mappings')
 
 " abbrevs
 source $HOME/.dotfiles/neovim/abbrev.vim

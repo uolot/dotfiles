@@ -1,8 +1,10 @@
+require('plugins')
+
 require('impatient')
 vim.loader.enable()
 
 -- needs setup before LSP
-require('neodev').setup({})
+-- require('neodev').setup({})
 
 -- LSP --
 
@@ -70,16 +72,6 @@ end
 -- jose-elias-alvarez/null-ls.nvim
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/CONFIG.md
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md
-
-require('lsp-lens').setup({
-    enable = true,
-    include_declaration = true,
-    sections = {
-        definition = true,
-        references = true,
-        implementation = true,
-    },
-})
 
 local null_ls = require("null-ls")
 local null_ls_helpers = require("null-ls.helpers")
@@ -175,16 +167,6 @@ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
         border = "rounded"
     }
 )
-
--- -- lsp_signature
--- require("lsp_signature").setup({
---     bind = true,
---     handler_opts = {
---         border = "rounded",
---     },
---     hint_enable = true,
---     hint_prefix = "",
--- })
 
 -- nvim-lsp-installer
 -- https://github.com/williamboman/nvim-lsp-installer#setup
@@ -340,14 +322,6 @@ require("mason-lspconfig").setup_handlers {
     -- end
 }
 
--- require('lsp_lines').setup()
-
--- require('e-kaput').setup({
---     enable = true,
---     transparency = 0,
---     borders = true,
--- })
-
 -- adjust virtual text severity
 vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -382,159 +356,6 @@ vim.diagnostic.config({
 -- smjonas/inc-rename.nvim
 require('inc_rename').setup()
 
-
--- Treesitter --
--- nvim-treesitter
-require('nvim-treesitter.configs').setup {
-    ensure_installed = "all",
-    -- ensure_installed = {
-    --     "bash", "c", "clojure", "comment", "cpp", "css", "dockerfile", "dot", "go", "hcl", "html", "java", "javascript", "jsdoc", "json", "json5", "lua", "make", "python", "ruby", "rust", "toml", "tsx", "typescript", "vim", "yaml"
-    -- },
-    ignore_install = {}, -- List of parsers to ignore installing
-    sync_install = false,
-    highlight = {
-        enable = true, -- false will disable the whole extension
-        disable = { "markdown" },
-        -- disable = { "c", "rust" },  -- list of language that will be disabled
-        -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-        -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-        -- Using this option may slow down your editor, and you may see some duplicate highlights.
-        -- Instead of true it can also be a list of languages
-        additional_vim_regex_highlighting = true,
-        -- additional_vim_regex_highlighting = { "markdown" },
-    },
-    indent = {
-        enable = true,
-        disable = { "python" },
-    },
-    context_commentstring = {
-        enable = true
-    },
-    autotag = {
-        enable = true,
-    },
-    refactor = {
-        highlight_definitions = {
-            enable = true,
-            clear_on_cursor_move = true,
-        },
-        -- highlight_current_scope = { enable = true },
-        navigation = {
-            enable = true,
-            keymaps = {
-                goto_definition_lsp_fallback = "<leader>gn",
-            },
-        },
-    },
-    -- rainbow = {
-    --     enable = true,
-    --     -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
-    --     extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-    --     max_file_lines = nil, -- Do not enable for files with more than n lines, int
-    --     -- colors = {}, -- table of hex strings
-    --     -- termcolors = {} -- table of colour name strings
-    -- },
-    textobjects = {
-        select = {
-            enable = true,
-            lookahead = true,
-            keymaps = {
-                ["af"] = "@function.outer",
-                ["if"] = "@function.inner",
-                ["al"] = "@class.outer",
-                ["il"] = "@class.inner",
-                ["aa"] = "@parameter.outer",
-                ["ia"] = "@parameter.inner",
-                ["ax"] = "@block.outer",
-                ["ix"] = "@block.inner",
-                ["=l"] = "@assignment.lhs",
-                ["=r"] = "@assignment.rhs",
-                ["i="] = "@assignment.inner",
-                ["a="] = "@assignment.outer",
-                ["ic"] = "@call.inner",
-                ["ac"] = "@call.outer",
-                ["i/"] = "@comment.outer",
-                ["a/"] = "@comment.outer",
-            },
-            selection_modes = {
-                ['@function.outer'] = 'V',
-                ['@function.inner'] = 'v',
-                ['@class.outer'] = 'V',
-                ['@class.inner'] = 'V',
-                ['@block.outer'] = 'V',
-                ['@block.inner'] = 'V',
-            },
-        },
-        move = {
-            enable = true,
-            set_jumps = true,
-            goto_next_start = {
-                -- ["]c"] = "@class.outer",
-                -- ["]m"] = "@function.outer",
-                ["]]"] = { "@class.outer", "@function.outer" },
-                ["]m"] = { "@class.outer", "@function.outer" },
-                -- ["]b"] = "@block.outer",
-            },
-            goto_previous_start = {
-                -- ["[c"] = "@class.outer",
-                -- ["[m"] = "@function.outer",
-                ["[["] = { "@class.outer", "@function.outer" },
-                ["[m"] = { "@class.outer", "@function.outer" },
-                -- ["[b"] = "@block.outer",
-            },
-        },
-        swap = {
-            enable = true,
-            swap_next = {
-                ["]a"] = { "@parameter.inner" },
-            },
-            swap_previous = {
-                ["[a"] = { "@parameter.inner" },
-            },
-        },
-    },
-    incremental_selection = {
-        enable = false,
-        keymaps = {
-            init_selection = '<CR>',
-            -- scope_incremental = '<CR>',
-            node_incremental = '<TAB>',
-            node_decremental = '<S-TAB>',
-        },
-    },
-    playground = {
-        enable = true,
-        disable = {},
-        updatetime = 25,         -- Debounced time for highlighting nodes in the playground from source code
-        persist_queries = false, -- Whether the query persists across vim sessions
-        keybindings = {
-            toggle_query_editor = 'o',
-            toggle_hl_groups = 'i',
-            toggle_injected_languages = 't',
-            toggle_anonymous_nodes = 'a',
-            toggle_language_display = 'I',
-            focus_language = 'f',
-            unfocus_language = 'F',
-            update = 'R',
-            goto_node = '<cr>',
-            show_help = '?',
-        },
-    }
-}
-
--- numToStr/Comment.nvim
-require("Comment").setup({
-    toggler = {
-        line = 'gcc',
-        block = 'gCC',
-    },
-    opleader = {
-        line = 'gc',
-        block = 'gC',
-    },
-})
-
---require('nvim-ts-autotag').setup()
 
 -- Completion --
 
@@ -697,33 +518,6 @@ cmp.setup.cmdline('?', {
     }
 })
 
--- require('cmp_tabnine.config'):setup({
---     max_lines = 1000,
---     max_num_results = 5,
---     sort = true,
---     run_on_every_keystroke = true,
---     snippet_placeholder = '...',
---     ignored_file_types = {
---         -- html = true,
---     },
---     show_prediction_strength = true,
--- })
-
--- require('tabnine').setup({
---     disable_auto_comment = true,
---     accept_keymap = '<C-j>',
---     dismiss_keymap = '<C-y>',
---     debounce_ms = 800,
---     suggestion_color = { gui = '#808080', cterm = 244 },
---     exclude_filetypes = {"TelescopePrompt"},
--- })
-
--- ZK
-require("zk").setup({
-    picker = "telescope",
-})
-
-
 -- Telescope
 local actions = require('telescope.actions')
 require('telescope').setup {
@@ -764,26 +558,6 @@ require('telescope').load_extension('zk')
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('ag')
 require('telescope').load_extension('ui-select')
-
--- github colorscheme
--- https://github.com/projekt0n/github-nvim-theme#configuration
--- require('github-theme').setup {
---     options = {
---         hide_end_of_buffer = false,
---         hide_nc_statusline = false,
---         module_default = true,
---         style = {
---             comments = 'italic',
---             functions = 'NONE',
---             keywords = 'NONE',
---         },
---         darken = {
---             floats = true,
---             sidebar = true,
---         },
---     },
--- }
-
 
 -- lualine
 -- https://github.com/nvim-lualine/lualine.nvim#usage-and-customization
@@ -918,16 +692,6 @@ require('gitsigns').setup {
     end
 }
 
--- windwp/floatline.nvim
--- https://github.com/windwp/floatline.nvim
---require('floatline').setup()
-
--- trouble
-require('trouble').setup {
-    icons = false,
-    severity = vim.diagnostic.severity.INFO,
-}
-
 -- folke/which-key.nvim
 -- https://github.com/folke/which-key.nvim
 require("which-key").setup {
@@ -950,7 +714,7 @@ require("which-key").setup {
 
 -- kyazdani42/nvim-tree.lua
 -- https://github.com/kyazdani42/nvim-tree.lua#setup
-tree_cb = require('nvim-tree.config').nvim_tree_callback
+local tree_cb = require('nvim-tree.config').nvim_tree_callback
 require('nvim-tree').setup {
     disable_netrw = false,
     hijack_netrw = true,
@@ -996,26 +760,11 @@ require('nvim-tree').setup {
     },
 }
 
--- folke/todo-comments.nvim
--- https://github.com/folke/todo-comments.nvim#%EF%B8%8F-configuration
-require("todo-comments").setup({
-    signs = false,
-    highlight = {
-        multiline = false,
-        -- pattern = [[.*<(KEYWORDS)\s*:]],
-        pattern = [[.*<(KEYWORDS)\s*]],
-        comments_only = true,
-    },
-    search = {
-        pattern = [[\b(KEYWORDS)\b]],
-    },
-})
-
 -- 'chentau/marks.nvim'
 -- https://github.com/chentoast/marks.nvim#setup
 require 'marks'.setup {
     -- whether to map keybinds or not. default true
-    default_mappings = true,
+    default_mappings = false,
     -- which builtin marks to show. default {}
     -- builtin_marks = { ".", "<", ">", "^" },
     builtin_marks = {},
@@ -1035,14 +784,6 @@ require 'marks'.setup {
     sign_priority = { lower = 10, upper = 15, builtin = 8, bookmark = 20 },
     mappings = {}
 }
-
-require('diffview').setup()
-
--- https://github.com/levouh/tint.nvim#gear-setup
-require("tint").setup({
-    tint = 15,
-    tint_background_colors = true,
-})
 
 -- diagrams
 -- require('./lua/venn-mappings.lua')
@@ -1101,8 +842,6 @@ require("statuscol").setup({
     }
 })
 
-require('ufo').setup()
-
 vim.cmd [[highlight IndentBlanklineIndent1 guifg=#444444 gui=nocombine]]
 -- -- vim.cmd [[highlight IndentBlanklineContextChar guifg=#666666 gui=nocombine]]
 vim.cmd [[highlight IndentBlanklineContextChar guifg=#909090 gui=nocombine]]
@@ -1123,13 +862,6 @@ require('indent_blankline').setup({
     -- filetype_exclude = {},
 })
 
--- require('nvim-autopairs').setup({})
-
-require('s3edit').setup({
-    -- exclude = { ".git", ".hoodie", ".parquet", ".zip" },
-    autocommand_events = { "BufWritePost" },
-})
-
 local function close_floating()
     for _, win in ipairs(vim.api.nvim_list_wins()) do
         local config = vim.api.nvim_win_get_config(win)
@@ -1147,11 +879,6 @@ require('which-key').register(
     },
     { mode = 'n' }
 )
-
--- Broken, revisit when updated
--- require('colorful-winsep').setup({
---     no_exec_files = { "packer", "TelescopePrompt", "mason", "CompetiTest", "NvimTree", "TodoTelescope", "Committia" },
--- })
 
 require('paint').setup({
     highlights = {
@@ -1183,122 +910,4 @@ require('paint').setup({
     },
 })
 
-require('oil').setup()
-
-require("twoslash-queries").setup({
-    multi_line = false, -- to print types in multi line mode
-    is_enabled = true,  -- to keep disabled at startup and enable it on request with the EnableTwoslashQueries
-})
-
-require('headlines').setup({
-    markdown = {
-        -- query = vim.treesitter.parse_query(
-        query = vim.treesitter.query.parse(
-            "markdown",
-            [[
-                (atx_heading [
-                    (atx_h1_marker)
-                    (atx_h2_marker)
-                    (atx_h3_marker)
-                    (atx_h4_marker)
-                    (atx_h5_marker)
-                    (atx_h6_marker)
-                ] @headline)
-
-                (thematic_break) @dash
-
-                (fenced_code_block) @codeblock
-
-                (block_quote_marker) @quote
-                (block_quote (paragraph (inline (block_continuation) @quote)))
-            ]]
-        ),
-        headline_highlights = {
-            "Headline1",
-            "Headline2",
-            "Headline3",
-            "Headline4",
-            "Headline5",
-        },
-        codeblock_highlight = "",
-        dash_highlight = "Dash",
-        dash_string = "─",
-        quote_highlight = "Quote",
-        quote_string = "┃",
-        fat_headlines = false,
-        -- fat_headline_upper_string = "▄",
-        -- fat_headline_lower_string = "▀",
-    },
-})
-
--- Prefetch tabnine suggestions on file read
--- local prefetch = vim.api.nvim_create_augroup("prefetch", {clear = true})
--- vim.api.nvim_create_autocmd('BufRead', {
---   group = prefetch,
---   -- pattern = '*.py',
---   callback = function()
---     require('cmp_tabnine'):prefetch(vim.fn.expand('%:p'))
---   end
--- })
-
-require('smoothcursor').setup({
-    autostart = true,
-    cursor = "",          -- cursor shape (need nerd font)
-    texthl = "SmoothCursor", -- highlight group, default is { bg = nil, fg = "#FFD400" }
-    linehl = nil,            -- highlight sub-cursor line like 'cursorline', "CursorLine" recommended
-    type = "default",        -- define cursor movement calculate function, "default" or "exp" (exponential).
-    fancy = {
-        enable = true,       -- enable fancy mode
-        head = { cursor = "▷", texthl = "SmoothCursor", linehl = nil },
-        -- head = { cursor = "", texthl = "SmoothCursor", linehl = nil },
-        body = {
-            { cursor = "●", texthl = "SmoothCursorRed" },
-            { cursor = "●", texthl = "SmoothCursorOrange" },
-            { cursor = "●", texthl = "SmoothCursorYellow" },
-            { cursor = "•", texthl = "SmoothCursorGreen" },
-            { cursor = "•", texthl = "SmoothCursorAqua" },
-            { cursor = ".",   texthl = "SmoothCursorBlue" },
-            { cursor = ".",   texthl = "SmoothCursorPurple" },
-        },
-        tail = { cursor = nil, texthl = "SmoothCursor" }
-    },
-    flyin_effect = nil,        -- "bottom" or "top"
-    speed = 25,                -- max is 100 to stick to your current position
-    intervals = 35,            -- tick interval
-    priority = 10,             -- set marker priority
-    timeout = 2000,            -- timout for animation
-    threshold = 3,             -- animate if threshold lines jump
-    disable_float_win = false, -- disable on float window
-    enabled_filetypes = nil,   -- example: { "lua", "vim" }
-    disabled_filetypes = nil,  -- this option will be skipped if enabled_filetypes is set. example: { "TelescopePrompt", "NvimTree" }
-})
-
-require('overseer').setup({
-    bindings = {
-        ["<C-h>"] = false,
-        ["<C-l>"] = false,
-        ["h"] = "DecreaseDetail",
-        ["l"] = "IncreaseDetail",
-    }
-})
-
--- vim.notify = require("notify")
-
-require('kanagawa').setup({
-    theme = 'dragon',
-    background = {
-        dark = 'dragon',
-        light = 'lotus',
-    },
-    dimInactive = false,
-    keywordStyle = { italic = false, bold = false },
-    statementStyle = { italic = false, bold = true },
-})
-
-require('bufjump').setup({
-    forward = '<C-n>',
-    backward = '<C-p>',
-    on_success = nil
-})
-
-require('highlight-undo').setup()
+require('mappings')
