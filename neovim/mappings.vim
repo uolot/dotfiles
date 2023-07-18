@@ -10,11 +10,8 @@
 " zk
     " normal
     nnoremap <Leader>zf :ZkNotes<CR>
-    nnoremap <Leader>zc :lua vim.ui.input("Title: ", function(i) vim.cmd('ZkNew {title="' .. i .. '"}') end)<CR>
-    " FIXME:
-    " nnoremap <Leader>zc :lua <Cmd>ZkNew {title=vim.fn.input('Title: ')}<CR>
-    " nnoremap <Leader>zn :lua <Cmd>ZkNew { title = vim.fn.input('Title: ') }<CR>
-    " lua vim.api.nvim_set_keymap("n", "<leader>zn", "<Cmd>ZkNew { title = vim.fn.input('Title: ') }<CR>", { noremap=true, silent=false });
+    nnoremap <Leader>zc :lua vim.ui.input({ prompt = "Title: " }, function(i) vim.cmd('ZkNew {title="' .. i .. '"}') end)<CR>
+    nnoremap <Leader>zn :lua vim.ui.input({ prompt = "Title: " }, function(i) vim.cmd('ZkNew {title="' .. i .. '"}') end)<CR>
     nnoremap <Leader>zl :ZkLinks<CR>
     nnoremap <Leader>zb :ZkBacklinks<CR>
     nnoremap <Leader>zt :ZkTags<CR>
@@ -28,16 +25,6 @@
     nnoremap <Leader>df <Cmd>DiffviewFileHistory %<CR>
     nnoremap <Leader>dc <Cmd>DiffviewClose<CR>
     nnoremap <Leader>do <Cmd>DiffviewOpen<CR>
-
-" overseer
-    nnoremap <silent> <Leader>oo <Cmd>OverseerToggle<CR>
-    nnoremap <Leader>oc :OverseerRunCmd 
-    nnoremap <Leader>or :OverseerRun 
-
-" rest-nvim
-    nnoremap <Leader>rr <Plug>RestNvim
-    nnoremap <Leader>rp <Plug>RestNvimPreview
-    nnoremap <Leader>rl <Plug>RestNvimLast
 
 " jump between splits
 nnoremap <C-h> <C-w>h

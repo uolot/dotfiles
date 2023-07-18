@@ -31,23 +31,24 @@ local on_lsp_attach = function(client, buffer)
     -- if client.resolved_capabilities.document_formatting then
     -- if client.server_capabilities.documentFormattingProvider then
     if client.supports_method('textDocument/formatting') then
-        -- vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 2000)")
+        require('lsp-zero').buffer_autoformat()
 
+        -- vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 2000)")
         -- vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format({timeout_ms = 5000})")
 
-        local augroup = vim.api.nvim_create_augroup('format_file', { clear = true })
-        vim.api.nvim_create_autocmd('BufWritePre', {
-            group = augroup,
-            buffer = buffer,
-            desc = 'Format',
-            callback = function()
-                vim.lsp.buf.format({
-                    async = true,
-                    timeout_ms = 5000,
-                    filter = function(client) return client.name ~= 'tsserver' end,
-                })
-            end
-        })
+        -- local augroup = vim.api.nvim_create_augroup('format_file', { clear = true })
+        -- vim.api.nvim_create_autocmd('BufWritePre', {
+        --     group = augroup,
+        --     buffer = buffer,
+        --     desc = 'Format',
+        --     callback = function()
+        --         vim.lsp.buf.format({
+        --             async = true,
+        --             timeout_ms = 5000,
+        --             filter = function(client) return client.name ~= 'tsserver' end,
+        --         })
+        --     end
+        -- })
     end
 
     -- if client.server_capabilities.inlayHintProvider then
@@ -77,49 +78,20 @@ local null_ls = require("null-ls")
 local null_ls_helpers = require("null-ls.helpers")
 null_ls.setup({
     sources = {
-        -- null_ls.builtins.code_actions.eslint,
+        -- typescript
         null_ls.builtins.code_actions.eslint_d,
         null_ls.builtins.diagnostics.eslint_d,
-        -- null_ls.builtins.formatting.eslint_d,
-        -- null_ls.builtins.formatting.prettier_eslint,
         null_ls.builtins.formatting.prettierd,
-        -- null_ls.builtins.formatting.eslint.with({
-        --     prefer_local = "node_modules/.bin"
-        -- }),
-        -- null_ls.builtins.code_actions.eslint.with({
-        --     prefer_local = "node_modules/.bin"
-        -- }),
-        -- null_ls.builtins.diagnostics.eslint.with({
-        --     prefer_local = "node_modules/.bin"
-        -- }),
-        -- null_ls.builtins.formatting.prettier.with({
-        --     prefer_local = "node_modules/.bin",
-        --     condition = function(utils)
-        --         return utils.root_has_file("node_modules/.bin/prettier")
-        --     end,
-        --     disabled_filetypes = {"json"},
-        --     -- command = "node_modules/.bin/prettier",
-        -- }),
-        -- null_ls.builtins.diagnostics.tsc.with({
-        --     prefer_local = "node_modules/.bin",
-        --     condition = function(utils)
-        --         return utils.root_has_file("node_modules/.bin/tsc")
-        --     end,
-        -- }),
         -- python
         null_ls.builtins.formatting.black,
         null_ls.builtins.formatting.isort,
         null_ls.builtins.diagnostics.mypy,
         null_ls.builtins.diagnostics.flake8,
         -- misc
-        -- null_ls.builtins.code_actions.refactoring,
+        null_ls.builtins.code_actions.refactoring,
         null_ls.builtins.diagnostics.trail_space.with({
             disabled_filetypes = { 'git', 'gitcommit', 'NvimTree', 'markdown' } }),
-        -- null_ls.builtins.diagnostics.cfn_lint.with({
-        --     condition = function(utils)
-        --         return null_ls_helpers.args['$FILENAME'] ~= 'serverless.yml'
-        --     end,
-        -- }),
+        null_ls.builtins.formatting.xmlformat,
     },
     on_attach = on_lsp_attach,
 })
@@ -364,34 +336,6 @@ local lspkind = require('lspkind')
 
 -- nvim-cmp
 
--- local kind_icons = {
---   Text = "",
---   Method = "",
---   Function = "",
---   Constructor = "",
---   Field = "",
---   Variable = "",
---   Class = "",
---   Interface = "",
---   Module = "",
---   Property = "ﰠ",
---   Unit = "",
---   Value = "",
---   Enum = "",
---   Keyword = "",
---   Snippet = "",
---   Color = "",
---   File = "",
---   Reference = "",
---   Folder = "",
---   EnumMember = "",
---   Constant = "",
---   Struct = "",
---   Event = "",
---   Operator = "",
---   TypeParameter = ""
--- }
-
 local cmp = require('cmp')
 
 require('copilot').setup({
@@ -408,7 +352,22 @@ cmp.setup({
     -- https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources
     sources = {
         { name = 'nvim_lsp',                max_item_count = 12, priority = 10 },
-        { name = 'buffer',                  max_item_count = 10, keyword_length = 3, priority = 9 },
+        {
+            name = 'buffer',
+            max_item_count = 10,
+            keyword_length = 3,
+            priority = 9,
+            option = {
+                -- get words from other buffers
+                get_bufnrs = function()
+                    local bufs = {}
+                    for _, win in ipairs(vim.api.nvim_list_wins()) do
+                        bufs[vim.api.nvim_win_get_buf(win)] = true
+                    end
+                    return vim.tbl_keys(bufs)
+                end
+            }
+        },
         { name = 'copilot',                 max_item_count = 10, keyword_length = 1, priority = 8 },
         -- { name = 'cmp_tabnine', max_item_count = 3, priority = 8 },
         { name = 'nvim_lsp_signature_help', priority = 7 },
@@ -552,7 +511,6 @@ require('telescope').setup {
         },
     },
 }
--- require('telescope').load_extension('fzf')
 require('telescope').load_extension('vimwiki')
 require('telescope').load_extension('zk')
 require('telescope').load_extension('fzf')

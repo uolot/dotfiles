@@ -54,6 +54,7 @@ require('lazy').setup({
 
     {
         'folke/trouble.nvim',
+        lazy = true,
         opts = {
             icons = false,
             severity = vim.diagnostic.severity.INFO,
@@ -247,17 +248,23 @@ require('lazy').setup({
     {
         'nvim-telescope/telescope.nvim',
         url = 'https://github.com/nvim-telescope/telescope.nvim',
-        branch =
-        '0.1.x'
+        branch = '0.1.x'
     },
     { 'kelly-lin/telescope-ag', url = 'https://github.com/kelly-lin/telescope-ag' },
     {
         'nvim-telescope/telescope-fzf-native.nvim',
         url = 'https://github.com/nvim-telescope/telescope-fzf-native.nvim',
-        build =
-        'make'
+        build = 'make'
     },
     { 'nvim-telescope/telescope-ui-select.nvim', url = 'https://github.com/nvim-telescope/telescope-ui-select.nvim' },
+    {
+        'nvim-telescope/telescope-live-grep-args.nvim',
+        url = 'https://github.com/nvim-telescope/telescope-live-grep-args.nvim',
+        lazy = true,
+        config = function()
+            require("telescope").load_extension("live_grep_args")
+        end,
+    },
 
 
     -- " -- Colorschemes --
@@ -361,7 +368,7 @@ require('lazy').setup({
 
     -- " -- Git --
 
-    { 'tpope/vim-fugitive',       url = 'https://github.com/tpope/vim-fugitive' },
+    { 'tpope/vim-fugitive',       url = 'https://github.com/tpope/vim-fugitive',      lazy = false },
     { 'lewis6991/gitsigns.nvim',  url = 'https://github.com/lewis6991/gitsigns.nvim' },
 
     -- " Single tabpage interface for easily cycling through diffs for all modified files for any git rev
@@ -390,6 +397,7 @@ require('lazy').setup({
     {
         'folke/todo-comments.nvim',
         url = 'https://github.com/folke/todo-comments.nvim',
+        lazy = false,
         opts = {
             signs = false,
             highlight = {
@@ -575,7 +583,14 @@ require('lazy').setup({
     { 'folke/paint.nvim',             url = 'https://github.com/folke/paint.nvim' },
 
     -- " Neovim file explorer: edit your filesystem like a buffer
-    { 'stevearc/oil.nvim',            url = 'https://github.com/stevearc/oil.nvim',           lazy = true },
+    {
+        'stevearc/oil.nvim',
+        url = 'https://github.com/stevearc/oil.nvim',
+        lazy = false,
+        config = function()
+            require('oil').setup()
+        end
+    },
 
     -- " Embed Neovim in Chrome, Firefox & others.
     {
@@ -652,7 +667,7 @@ require('lazy').setup({
         }
     },
     -- { 'stevearc/overseer.nvim',           url = 'https://github.com/stevearc/overseer.nvim' },
-    { 'rcarriga/nvim-notify',        url = 'https://github.com/rcarriga/nvim-notify' },
+    { 'rcarriga/nvim-notify',   url = 'https://github.com/rcarriga/nvim-notify' },
     {
         'kwkarlwang/bufjump.nvim',
         url = 'https://github.com/kwkarlwang/bufjump.nvim',
@@ -663,9 +678,29 @@ require('lazy').setup({
         }
     },
     -- { 'github/copilot.vim',               url = 'https://github.com/github/copilot.vim' },
-    { 'zbirenbaum/copilot.lua',      url = 'https://github.com/zbirenbaum/copilot.lua' },
-    { 'zbirenbaum/copilot-cmp',      url = 'https://github.com/zbirenbaum/copilot-cmp' },
-    { 'tzachar/highlight-undo.nvim', url = 'https://github.com/tzachar/highlight-undo.nvim', lazy = false,   opts = {} },
-    { 'folke/neodev.nvim',           url = 'https://github.com/folke/neodev.nvim',           priority = 1000 },
+    { 'zbirenbaum/copilot.lua', url = 'https://github.com/zbirenbaum/copilot.lua' },
+    { 'zbirenbaum/copilot-cmp', url = 'https://github.com/zbirenbaum/copilot-cmp' },
+    {
+        'tzachar/highlight-undo.nvim',
+        url = 'https://github.com/tzachar/highlight-undo.nvim',
+        keys = { 'u', 'U' },
+        opts = {}
+    },
+    { 'folke/neodev.nvim', url = 'https://github.com/folke/neodev.nvim', priority = 1000 },
+    {
+        'marcushwz/nvim-workbench',
+        url = 'https://github.com/weizheheng/nvim-workbench',
+        keys = {
+            '<Plug>ToggleProjectWorkbench',
+            '<Plug>ToggleBranchWorkbench',
+            '<Plug>WorkbenchToggleCheckbox',
+        },
+        init = function()
+            vim.g.workbench_border = 'rounded'
+        end
+    },
 
+}, {
+    -- diff = 'git',
+    diff = 'diffview.nvim',
 })

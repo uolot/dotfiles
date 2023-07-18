@@ -59,30 +59,40 @@ wk.register({
             x = { '<Cmd>TroubleToggle document_diagnostics<CR>', 'Trouble document diagnostics' },
             X = { '<Cmd>TroubleToggle workspace_diagnostics<CR>', 'Trouble workspace diagnostics' },
         },
+        -- TODO: merge f and t
         f = {
             name = '+find',
             f = { telescope_builtin.find_files, 'Find files' },
+            h = { '<Cmd>Telescope find_files hidden=true<CR>', 'Hidden files' },
             o = { telescope_builtin.oldfiles, 'Open recent files' },
         },
         t = {
             name = '+telescope',
-            a = { ':Ag ', 'Ag', { silent = false } },
+            a = { ':Ag ', 'Ag', silent = false },
             b = { telescope_builtin.buffers, 'Buffers' },
             d = { '<Cmd>TodoTelescope<CR>', 'Todos' },
             e = { telescope_builtin.emoji, 'Emoji' },
             g = { telescope_builtin.grep_string, 'Grep word' },
-            G = { telescope_builtin.live_grep, 'Live grep' },
-            l = { telescope_builtin.current_buffer_fuzzy_find, 'Current buffer fuzzy find' },
+            l = { telescope_builtin.live_grep, 'Live grep' },
+            L = { require("telescope").extensions.live_grep_args.live_grep_args, 'Live grep args' },
+            z = { telescope_builtin.current_buffer_fuzzy_find, 'Current buffer fuzzy find' },
+
         },
         k = {
             name = '+mark',
-            k = { '<Plug>MarkSet', 'Set mark', mode = {'n', 'x'} },
-            c = { '<Plug>MarkClear', 'Clear mark', mode = {'n', 'x'} },
-            m = { '<Plug>MarkToggle', 'Toggle mark', mode = {'n', 'x'} },
-            l = { 'V:<C-u>HSHighlight 1<CR>', 'Highlight line' },
-            r = { 'V:<C-u>HSHighlight 4<CR>', 'Highlight line red' },
-            g = { 'V:<C-u>HSHighlight 5<CR>', 'Highlight line green' },
-            x = { 'V:<C-u>HSRmHighlight<CR>', 'Remove highlight' },
+            k = { '<Plug>MarkSet', 'Set mark', mode = { 'n', 'x' } },
+            c = { '<Plug>MarkClear', 'Clear mark', mode = { 'n', 'x' } },
+            m = { '<Plug>MarkToggle', 'Toggle mark', mode = { 'n', 'x' } },
+            l = { 'V:<C-u>HSHighlight 1<CR>', 'Highlight line', mode = { 'n', 'x' } },
+            r = { 'V:<C-u>HSHighlight 4<CR>', 'Highlight line red', mode = { 'n', 'x' } },
+            g = { 'V:<C-u>HSHighlight 5<CR>', 'Highlight line green', mode = { 'n', 'x' } },
+            x = { 'V:<C-u>HSRmHighlight<CR>', 'Remove highlight', mode = { 'n', 'x' } },
+        },
+        w = {
+            name = '+workbench +vimwiki',
+            p = { '<Plug>ToggleProjectWorkbench', 'Toggle project workbench' },
+            b = { '<Plug>ToggleBranchWorkbench', 'Toggle branch workbench' },
+            t = { '<Plug>WorkbenchToggleCheckbox', 'Toggle workbench checkbox' },
         },
     },
     ['<C-w>'] = {
@@ -104,7 +114,8 @@ wk.register({
 vim.keymap.set('n', ']d', function() vim.diagnostic.goto_next({ wrap = false }) end, { noremap = true, silent = true })
 vim.keymap.set('n', '[d', function() vim.diagnostic.goto_prev({ wrap = false }) end, { noremap = true, silent = true })
 vim.keymap.set('n', '\\c', '/\\c', { noremap = true, silent = false, desc = 'Case insensitive search' })
-vim.keymap.set('n', '\\s', '/\\<\\><left><left>', { noremap = true, silent = false, desc = 'Search for word (like grep -w)' })
+vim.keymap.set('n', '\\s', '/\\<\\><left><left>',
+    { noremap = true, silent = false, desc = 'Search for word (like grep -w)' })
 
 -- make n/N always go in the same direction
 vim.keymap.set('n', 'n', "(v:searchforward ? 'n' : 'N')", { noremap = true, silent = true, expr = true })
