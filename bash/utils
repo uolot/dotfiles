@@ -133,3 +133,13 @@ aws_creds() {
 # docker
 
 alias dockerip="docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}'"
+
+# convert text to kebab case
+kebab() {
+    echo $* | sed -e 's/[^[:alnum:] ]//g' | sed -e 's/ /-/g' | tr '[:upper:]' '[:lower:]'
+}
+
+# convert text to snake case
+snake() {
+    echo $* | sed -e 's/[^[:alnum:] ]//g' | sed -e 's/ /_/g' | tr '[:upper:]' '[:lower:]'
+}
