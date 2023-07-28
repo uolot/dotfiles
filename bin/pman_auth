@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+if [ "$AWS_ACCESS_KEY_ID" == "" ]; then
+  echo '$AWS_ACCESS_KEY_ID not set'
+  exit 1
+fi
+
+if [ "$AWS_SECRET_ACCESS_KEY" == "" ]; then
+  echo '$AWS_SECRET_ACCESS_KEY not set'
+  exit 1
+fi
+
+if [ "$AWS_SESSION_TOKEN" == "" ]; then
+  echo '$AWS_SESSION_TOKEN not set'
+  exit 1
+fi
+
+echo $AWS_ACCESS_KEY_ID | tr -d '\n' | pbcopy
+echo -n "AccessKey copied"
+read
+
+echo $AWS_SECRET_ACCESS_KEY | tr -d '\n' | pbcopy
+echo -n "SecretKey copied"
+read
+
+echo $AWS_SESSION_TOKEN | tr -d '\n' | pbcopy
+echo -n "Session Token copied"

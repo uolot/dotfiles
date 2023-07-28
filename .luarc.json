@@ -1,0 +1,13 @@
+{
+    "$schema": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
+    "Lua.diagnostics.globals": [
+        "hs",
+        "vim"
+    ],
+    "workspace.library": [
+        "/Users/dkTomWal/.local/share/nvim/plugged/neodev.nvim/types/nightly",
+        "/usr/local/Cellar/neovim/HEAD-cc624fa/share/nvim/runtime/lua",
+        "/Users/dkTomWal/.dotfiles/neovim/lua",
+        "${3rd}/luv/library"
+    ]
+}

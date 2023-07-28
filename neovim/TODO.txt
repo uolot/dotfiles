@@ -15,17 +15,23 @@ dotfiles:
 [ ] https://idie.ru/posts/vim-modern-cpp
 [ ] https://gitlab.com/LongerHV/.dotfiles/-/tree/master/.config/nvim
 [ ] https://gist.github.com/benfrain/97f2b91087121b2d4ba0dcc4202d252f
+[ ] https://github.com/jdhao/nvim-config/blob/master/lua/config/lsp.lua
 
 plugins:
+[ ] https://github.com/mrjones2014/legendary.nvim
+[ ] https://github.com/nyngwang/NeoZoom.lua
 [ ] https://github.com/nathom/filetype.nvim
 [ ] https://github.com/dstein64/vim-startuptime
 [ ] https://github.com/lewis6991/impatient.nvim
 [ ] https://github.com/wbthomason/packer.nvim / https://github.com/Allaman/nvim/commit/47a08f5b3d67d02441e0f2307d4877eab009e1fb
-
+[ ] https://github.com/hrsh7th/vim-searchx
+[ ] https://github.com/vonheikemen/fine-cmdline.nvim
+[ ] https://github.com/stevearc/dressing.nvim
 [ ] https://github.com/ray-x/navigator.lua / https://www.youtube.com/watch?v=b4s9MhasGn4
 [ ] https://github.com/jose-elias-alvarez/null-ls.nvim
 [ ] https://github.com/LionC/nest.nvim
 [ ] https://gitlab.com/yorickpeterse/nvim-dd
+[ ] https://github.com/Matt-A-Bennett/vim-surround-funk
 [ ] https://github.com/NTBBloodbath/rest.nvim
 [ ] https://github.com/ThePrimeagen/git-worktree.nvim
 [ ] https://github.com/b3nj5m1n/kommentary
@@ -34,14 +40,17 @@ plugins:
 [ ] https://github.com/fatih/vim-go
 [ ] https://github.com/TimUntersberger/neogit
 [ ] https://github.com/kdheepak/lazygit.nvim
+[ ] https://github.com/ThePrimeagen/harpoon
+[ ] https://github.com/abecodes/tabout.nvim
+[ ] https://github.com/kkoomen/vim-doge
 [ ] https://github.com/kevinhwang91/nvim-bqf
 [ ] https://github.com/ldelossa/calltree.nvim
 [ ] https://github.com/lazytanuki/nvim-mapper
-[ ] https://github.com/lukas-reineke/headlines.nvim
 [ ] https://github.com/nanotee/nvim-lua-guide
 [ ] https://github.com/rktjmp/lush.nvim
 [ ] https://github.com/sakhnik/nvim-gdb
 [ ] https://github.com/simrat39/symbols-outline.nvim
+[ ] https://github.com/Furkanzmc/firvish.nvim
 [ ] https://github.com/sindrets/diffview.nvim
 [ ] https://github.com/sudormrfbin/cheatsheet.nvim
 [ ] https://github.com/weilbith/nvim-floating-tag-preview
@@ -58,6 +67,25 @@ plugins:
 [ ] https://github.com/tpope/vim-sensible
 [ ] https://github.com/pianocomposer321/yabs.nvim
 [ ] https://github.com/arkav/lualine-lsp-progress
+[ ] https://github.com/preservim/vim-pencil
+[ ] https://github.com/gennaro-tedesco/nvim-jqx
+[ ] https://github.com/kevinhwang91/nvim-hlslens
+[ ] https://github.com/stevearc/gkeep.nvim
+[ ] https://github.com/vim-test/vim-test
+[ ] https://github.com/AndrewRadev/sideways.vim
+[ ] https://github.com/ToruIwashita/nimble-anyjump.vim
+[ ] https://github.com/lpinilla/vim-codepainter
+[ ] https://github.com/justmao945/vim-clang
+[ ] Editor Config
+[ ] https://github.com/dyng/ctrlsf.vim
+[ ] https://github.com/dosimple/workspace.vim
+[ ] https://github.com/soywod/kronos.vim
+[ ] https://github.com/swalladge/paper.vim/blob/master/README.md
+[ ] https://github.com/jeetsukumaran/vim-indentwise
+[ ] https://github.com/tpope/vim-speeddating
+[ ] https://github.com/romainl/vim-qf/blob/master/README.md
+[ ] https://github.com/whiteinge/diffconflicts/blob/master/README.md
+[ ] https://github.com/liuchengxu/vista.vim
 
 [x] https://github.com/Pocco81/HighStr.nvim
 [x] https://github.com/ray-x/lsp_signature.nvim
@@ -74,6 +102,7 @@ plugins:
 [x] https://github.com/folke/which-key.nvim
 [x] https://github.com/mizlan/iswap.nvim/
 [x] https://github.com/gelguy/wilder.nvim
+[-] https://github.com/lukas-reineke/headlines.nvim
 
 plugin collections:
 [ ] https://github.com/rockerBOO/awesome-neovim
@@ -82,7 +111,13 @@ plugin collections:
 [ ] https://www.reddit.com/r/neovim/comments/po9g1y/github_rmagattigotopreview_a_small_neovim_plugin/
 
 colorschemes:
+[ ] https://github.com/EdenEast/nightfox.nvim
+[ ] https://marketplace.visualstudio.com/items?itemName=matklad.pale-fire
 [ ] https://github.com/thiagopnts/jellybeans
+[ ] https://www.nordtheme.com/ports/vim
+[ ] https://www.reddit.com/r/neovim/comments/r9619t/catppuccin_v010_a_midtone_dark_theme_for_neovim/
+[ ] https://github.com/NLKNguyen/papercolor-theme#-targeted-plugins-for-additional-syntax-highlighting
+[ ] https://github.com/AlessandroYorba/Alduin
 [x] https://github.com/embark-theme/vim
 [x] https://github.com/haishanh/night-owl.vim
 [x] https://github.com/projekt0n/github-nvim-theme

@@ -1,0 +1,185 @@
+tap "1password/tap"
+tap "cormacrelf/tap"
+tap "felixkratz/formulae"
+tap "homebrew/bundle"
+tap "homebrew/cask-drivers"
+tap "homebrew/cask-fonts"
+tap "homebrew/cask-versions"
+tap "homebrew/services"
+tap "koekeishiya/formulae"
+tap "mhanberg/zk"
+tap "osx-cross/arm"
+tap "osx-cross/avr"
+# ANSI/ASCII art to PNG converter
+brew "ansilove"
+# Extendable version manager with support for Ruby, Node.js, Erlang & more
+brew "asdf"
+# Official Amazon AWS command-line interface
+brew "awscli"
+# Simple command-line tool to read AWS CloudWatch logs
+brew "awslogs"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.10"
+# Microsoft Azure CLI 2.0
+brew "azure-cli"
+# Bourne-Again SHell, a UNIX command interpreter
+brew "bash"
+# Clone of cat(1) with syntax highlighting and Git integration
+brew "bat"
+# Core application library for C
+brew "glib"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.9"
+# Statistics utility to count lines of code
+brew "cloc"
+# Color-highlighted diff(1) output
+brew "colordiff"
+# SQL-like query language for csv
+brew "csvq"
+# JSON, YAML, TOML, XML, and CSV query and modification tool
+brew "dasel"
+# Load/unload environment variables based on $PWD
+brew "direnv"
+# Convert text between DOS, UNIX, and Mac formats
+brew "dos2unix"
+# Run arbitrary commands when files change
+brew "entr"
+# Simple, fast and user-friendly alternative to find
+brew "fd"
+# GNU Transport Layer Security (TLS) Library
+brew "gnutls"
+# OpenType text shaping engine
+brew "harfbuzz"
+# OCR (Optical Character Recognition) engine
+brew "tesseract"
+# Play, record, convert, and stream audio and video
+brew "ffmpeg"
+# Command-line fuzzy finder written in Go
+brew "fzf"
+# GitHub command-line tool
+brew "gh"
+# Distributed revision control system
+brew "git"
+# Syntax-highlighting pager for git and diff output
+brew "git-delta"
+# Library for USB device access
+brew "libusb"
+# GNU Pretty Good Privacy (PGP) package
+brew "gnupg"
+# Generate introspection data for GObject libraries
+brew "gobject-introspection"
+# Make JSON greppable
+brew "gron"
+# Improved top (interactive process viewer)
+brew "htop"
+# User-friendly cURL replacement (command-line HTTP client)
+brew "httpie"
+# ISO/IEC 23008-12:2017 HEIF file format decoder and encoder
+brew "libheif"
+# Tools and libraries to manipulate images in many formats
+brew "imagemagick"
+# Serializes the output of command-line tools to structured JSON output
+brew "jc"
+# Command-line pager for JSON data
+brew "jless"
+# JSON output from a shell
+brew "jo"
+# Lightweight and flexible command-line JSON processor
+brew "jq"
+# Network authentication protocol
+brew "krb5"
+# Exposes your localhost to the world for easy testing and sharing
+brew "localtunnel"
+# Language Server for the Lua language
+brew "lua-language-server"
+# Powerful, lightweight programming language (v5.1.5)
+brew "lua@5.1"
+# Package manager for the Lua programming language
+brew "luarocks"
+# Collection of tools that nobody wrote when UNIX was young
+brew "moreutils"
+# NCurses Disk Usage
+brew "ncdu"
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim", args: ["HEAD"]
+# Professional collaborative platform for embedded development
+brew "platformio"
+# Object-relational database system
+brew "postgresql@14"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
+# Readline wrapper: adds readline support to tools that lack it
+brew "rlwrap"
+# Login and retrieve AWS temporary credentials using a SAML IDP
+brew "saml2aws"
+# Fast and accurate code counter with complexity and COCOMO estimates
+brew "scc"
+# Display and control your Android device
+brew "scrcpy"
+# AWS SQS Message mover
+brew "sqsmover"
+# Cross-shell prompt for astronauts
+brew "starship"
+# User interface to the TELNET protocol
+brew "telnet"
+# Code-search similar to ack
+brew "the_silver_searcher"
+# Display directories as trees (with optional color/HTML output)
+brew "tree"
+# Maintained ctags implementation
+brew "universal-ctags"
+# Tool for writing command-line pipes with instant live preview
+brew "up"
+# Watch files and take action when they change
+brew "watchman"
+# Internet file retriever
+brew "wget"
+# Plain text note-taking assistant
+brew "zk"
+# Shell extension to navigate your filesystem faster
+brew "zoxide"
+# A tiling window manager for macOS based on binary space partitioning.
+brew "koekeishiya/formulae/yabai"
+# Command-line helper for the 1Password password manager
+cask "1password-cli"
+# Multi-track audio editor and recorder
+cask "audacity"
+# Open-source KVM software
+cask "barrier"
+# Developer targeted fonts with a high number of glyphs
+cask "font-blex-mono-nerd-font"
+# Desktop automation application
+cask "hammerspoon"
+# Java IDE by JetBrains
+cask "intellij-idea"
+# Terminal emulator as alternative to Apple's Terminal app
+cask "iterm2-beta"
+# Keyboard customizer
+cask "karabiner-elements"
+# Online collaborative whiteboard platform
+cask "miro"
+# Reverse proxy, secure introspectable tunnels to localhost
+cask "ngrok"
+# Open-source software for live streaming and screen recording
+cask "obs"
+# Collaboration platform for API development
+cask "postman"
+# Command-line shell and scripting language
+cask "powershell"
+# Control your tools with a few keystrokes
+cask "raycast"
+# Plugin for AWS CLI to start and end sessions that connect to managed instances
+cask "session-manager-plugin"
+# Team communication and collaboration software
+cask "slack"
+# Open-source code editor
+cask "visual-studio-code"
+vscode "asvetliakov.vscode-neovim"
+vscode "dbaeumer.vscode-eslint"
+vscode "EditorConfig.EditorConfig"
+vscode "esbenp.prettier-vscode"
+vscode "ms-azuretools.vscode-docker"
+vscode "ms-vscode-remote.remote-containers"
+vscode "ms-vsliveshare.vsliveshare"
+vscode "stylelint.vscode-stylelint"
+vscode "zengxingxin.sort-js-object-keys"

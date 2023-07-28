@@ -1,0 +1,52 @@
+{
+  "jest describe()": {
+    "prefix": [
+      "describe-jest"
+    ],
+    "body": [
+      "describe('$1', () => {",
+      "\t${0:// TODO:}",
+      "});"
+    ]
+  },
+  "jest it()": {
+    "prefix": [
+      "it-jest"
+    ],
+    "body": [
+      "it('$1', () => {",
+      "\t${0:// TODO:}",
+      "});"
+    ]
+  },
+  "jest async it()": {
+    "prefix": [
+      "it-async-jest"
+    ],
+    "body": [
+      "it('$1', async () => {",
+      "\t${0:// TODO:}",
+      "});"
+    ]
+  },
+  "jest test()": {
+    "prefix": [
+      "test-jest"
+    ],
+    "body": [
+      "test('$1', () => {",
+      "\t${0:// TODO:}",
+      "});"
+    ]
+  },
+  "jest async test()": {
+    "prefix": [
+      "test-async-jest"
+    ],
+    "body": [
+      "test('$1', async () => {",
+      "\t${0:// TODO:}",
+      "});"
+    ]
+  }
+}

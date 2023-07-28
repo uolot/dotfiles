@@ -1,3 +1,7 @@
 #!/usr/bin/env bash
 
-exec play -q $HOME/.dotfiles/bin/ding.mp3
+if [ "$(uname -s)" == "Darwin" ]; then
+  exec afplay $HOME/.dotfiles/bin/ding.mp3
+else
+  exec play -q $HOME/.dotfiles/bin/ding.mp3
+fi

@@ -17,3 +17,5 @@ Untitled.ipynb
 .cquery_cache
 *.twalotek
 .tool-versions
+tags.lock
+tags.temp

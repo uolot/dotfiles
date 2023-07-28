@@ -1,103 +1,30 @@
-" toggles
-    nnoremap <Leader>xw :set wrap!<CR>
-    " nnoremap <Leader>xW :call wilder#toggle()<CR>
-    nnoremap <Leader>xcl :set background=light \| colorscheme github_light<CR>
-    nnoremap <Leader>xcd :set background=dark \| colorscheme github_dimmed<CR>
-    nnoremap <Leader>xa :ALEToggle<CR>
-
-" lsp
-
-    inoremap <silent> <C-k> <Cmd>lua vim.lsp.buf.signature_help()<CR>
-    " nnoremap <silent> <Leader>ga :lua vim.lsp.buf.code_action()<CR>
-    nnoremap <silent> <Leader>ga :CodeActionMenu<CR>
-    " vnoremap <silent> <Leader>ga :<C-u>lua vim.lsp.buf.range_code_action()<CR>
-    vnoremap <silent> <Leader>ga :CodeActionMenu<CR>
-    nnoremap <silent> <Leader>ge :vim.lsp.diagnostic.show_line_diagnostics()<CR>
-    nnoremap <silent> <Leader>gd :lua vim.lsp.buf.definition()<CR>
-    nnoremap <silent> <Leader>gD :lua vim.lsp.buf.declaration()<CR>
-    nnoremap <silent> <Leader>gf :Telescope lsp_references<CR>
-    nnoremap <silent> <Leader>gF :lua vim.lsp.buf.formatting()<CR>
-    nnoremap <silent> <Leader>gh :lua vim.lsp.buf.hover()<CR>
-    nnoremap <silent> <Leader>gi :lua vim.lsp.buf.implementation()<CR>
-    nnoremap <silent> <Leader>gp <cmd>lua require('goto-preview').goto_preview_definition()<CR>
-    nnoremap <silent> <Leader>gP <cmd>lua require('goto-preview').goto_preview_implementation()<CR>
-    nnoremap <silent> <Leader>gq <cmd>lua require('goto-preview').close_all_win()<CR>
-    nnoremap <silent> <Leader>gR :lua vim.lsp.buf.rename()<CR>
-    nnoremap <silent> <Leader>gs :lua vim.lsp.buf.signature_help()<CR>
-    nnoremap <silent> <Leader>gt :lua vim.lsp.buf.type_definition()<CR>
-    nnoremap <silent> <Leader>gu :lua vim.lsp.buf.references()<CR>
-    nnoremap <silent> <Leader>gx :LspTroubleDocumentToggle<CR>
-    nnoremap <silent> <Leader>gX :LspTroubleToggle<CR>
-
-" ale
-    nnoremap ]} :ALENext<CR>
-    nnoremap [{ :ALEPrevious<CR>
-    nnoremap <Leader>ae :ALEDetail<CR>
-    nnoremap <Leader>af :ALEFix<CR>
-    nnoremap <Leader>ah :ALEHover<CR>
-    nnoremap <Leader>al :ALELint<CR>
-    nnoremap <Leader>at :ALEToggleBuffer<CR>
-    " nnoremap <Leader>aa :lopen<CR>
-    " nnoremap <Leader>aD :let g:ale_cursor_detail = g:ale_cursor_detail * -1 + 1<CR>
-
-" telescope
-    nnoremap <silent> <Leader>fb :Telescope buffers<CR>
-    nnoremap <silent> <Leader>ff :Telescope find_files<CR>
-    nnoremap <silent> <Leader>fg :Telescope grep_string<CR>
-    nnoremap <silent> <Leader>fl :Telescope live_grep<CR>
-    nnoremap <silent> <Leader>fo :Telescope oldfiles<CR>
-    nnoremap <silent> <Leader>ft :Telescope current_buffer_tags<CR>
-    nnoremap <silent> <Leader>fT :Telescope tags<CR>
-
-" more telescope
-    nnoremap <silent> <Leader>tc :Telescope git_bcommits<CR>
-    nnoremap <silent> <Leader>td :TodoTelescope<CR>
-    nnoremap <silent> <Leader>te :Telescope emoji<CR>
-    nnoremap <silent> <Leader>tf :Telescope current_buffer_fuzzy_find<CR>
-    nnoremap <silent> <Leader>tr :Telescope lsp_references<CR>
-    nnoremap <silent> <Leader>ts :Telescope lsp_dynamic_workspace_symbols<CR>
-    nnoremap <silent> <Leader>tS :Telescope lsp_document_symbols<CR>
-
-" edit
-    nnoremap <silent> <Leader>ess :ISwap<CR>
-    nnoremap <silent> <Leader>esw :ISwapWith<CR>
-
 " nvim-tree
     nnoremap <silent> <Leader>nc :NvimTreeClose<CR>
     nnoremap <silent> <Leader>nf :NvimTreeFindFile<CR>
     nnoremap <silent> <Leader>nn :NvimTreeToggle<CR>
     nnoremap <silent> <Leader>nr :NvimTreeRefresh<CR>
     nnoremap <silent> <Leader>nt :NvimTreeFocus<CR>
+" oil
+    nnoremap <silent> <Leader>n- <Cmd>lua require("oil").open()<CR>
 
-" colour
-    " visual
-    vnoremap <silent> <Leader>k1 :<c-u>HSHighlight 1<CR>
-    vnoremap <silent> <Leader>k2 :<c-u>HSHighlight 2<CR>
-    vnoremap <silent> <Leader>k3 :<c-u>HSHighlight 3<CR>
-    vnoremap <silent> <Leader>k4 :<c-u>HSHighlight 4<CR>
-    vnoremap <silent> <Leader>k5 :<c-u>HSHighlight 5<CR>
-    vnoremap <silent> <Leader>k6 :<c-u>HSHighlight 6<CR>
-    vnoremap <silent> <Leader>k7 :<c-u>HSHighlight 7<CR>
-    vnoremap <silent> <Leader>k8 :<c-u>HSHighlight 8<CR>
-    vnoremap <silent> <Leader>k9 :<c-u>HSHighlight 9<CR>
+" zk
     " normal
-    nnoremap <silent> <Leader>k1 V:<c-u>HSHighlight 1<CR>
-    nnoremap <silent> <Leader>k2 V:<c-u>HSHighlight 2<CR>
-    nnoremap <silent> <Leader>k3 V:<c-u>HSHighlight 3<CR>
-    nnoremap <silent> <Leader>k4 V:<c-u>HSHighlight 4<CR>
-    nnoremap <silent> <Leader>k5 V:<c-u>HSHighlight 5<CR>
-    nnoremap <silent> <Leader>k6 V:<c-u>HSHighlight 6<CR>
-    nnoremap <silent> <Leader>k7 V:<c-u>HSHighlight 7<CR>
-    nnoremap <silent> <Leader>k8 V:<c-u>HSHighlight 8<CR>
-    nnoremap <silent> <Leader>k9 V:<c-u>HSHighlight 9<CR>
-    " clear selection
-    vnoremap <silent> <Leader>kk :<c-u>HSRmHighlight<CR>
-    nnoremap <silent> <Leader>kk V:<c-u>HSRmHighlight<CR>
-    " colour word/Word
-    nnoremap <silent> <Leader>kw viw:<c-u>HSHighlight 1<CR>
-    nnoremap <silent> <Leader>kW viW:<c-u>HSHighlight 1<CR>
-    " clear all
-    nnoremap <silent> <Leader>kx :<c-u>HSRmHighlight rm_all<CR>
+    nnoremap <Leader>zf :ZkNotes<CR>
+    nnoremap <Leader>zc :lua vim.ui.input({ prompt = "Title: " }, function(i) vim.cmd('ZkNew {title="' .. i .. '"}') end)<CR>
+    nnoremap <Leader>zn :lua vim.ui.input({ prompt = "Title: " }, function(i) vim.cmd('ZkNew {title="' .. i .. '"}') end)<CR>
+    nnoremap <Leader>zl :ZkLinks<CR>
+    nnoremap <Leader>zb :ZkBacklinks<CR>
+    nnoremap <Leader>zt :ZkTags<CR>
+    " visual
+    xnoremap <Leader>zn :ZkNewFromTitleSelection<CR>
+    " TODO: Ask for title when creating content from selection
+    " xnoremap <Leader>zC :ZkNewFromContentSelection<CR>
+    xnoremap <Leader>zm :ZkMatch<CR>
+
+" diffview
+    nnoremap <Leader>df <Cmd>DiffviewFileHistory %<CR>
+    nnoremap <Leader>dc <Cmd>DiffviewClose<CR>
+    nnoremap <Leader>do <Cmd>DiffviewOpen<CR>
 
 " jump between splits
 nnoremap <C-h> <C-w>h
@@ -105,16 +32,28 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+" reversed J
+nmap <silent> K :lua require('trevj').format_at_cursor()<CR>
+
 " switch between buffers
 nnoremap <silent> gB :bp<CR>
 nnoremap <silent> gb :bn<CR>
 
+" quickfix navigation
+nnoremap <silent> ]q :cnext<CR>
+nnoremap <silent> [q :cprev<CR>
+
+" todo navigation
+nnoremap <silent> ]t <Cmd>lua require("todo-comments").jump_next()<CR>
+nnoremap <silent> [t <Cmd>lua require("todo-comments").jump_prev()<CR>
+
+" jest tests
+nnoremap <silent> [j ?^\s\+\<\(it\\|test\\|describe\\|beforeEach\\|afterEach\)\><CR>
+nnoremap <silent> ]j /^\s\+\<\(it\\|test\\|describe\\|beforeEach\\|afterEach\)\><CR>
+
 " insert blank lines
 nnoremap gO  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>'[
 nnoremap go  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
-
-" search for word (like grep -w)
-nnoremap <Leader>s /\<\><left><left>
 
 " reselect visual block after (un)indent
 vnoremap < <gv
@@ -123,20 +62,41 @@ vnoremap > >gv
 " select inserted/pasted text
 nnoremap gV `[v`]
 
-" make n/N always go in the same direction and center line
-noremap <expr> <SID>(search-forward) 'Nn'[v:searchforward]
-noremap <expr> <SID>(search-backward) 'nN'[v:searchforward]
-nmap n <SID>(search-forward)
-xmap n <SID>(search-forward)
-nmap N <SID>(search-backward)
-xmap N <SID>(search-backward)
-
-" text objects
-    xnoremap iu :lua require"treesitter-unit".select()<CR>
-    xnoremap au :lua require"treesitter-unit".select(true)<CR>
-    onoremap iu :<c-u>lua require"treesitter-unit".select()<CR>
-    onoremap au :<c-u>lua require"treesitter-unit".select(true)<CR>
-
 " fast buffer switching
 nnoremap <Backspace> <C-^>
 
+" make dot work over visual line selections
+xnoremap . :norm.<CR>
+" execute a macro over visual line selections
+xnoremap Q :'<,'>:normal @q<CR>
+
+" use very-magic mode for search regex
+" nnoremap / /\v
+" nnoremap ? ?\v
+
+nnoremap zR <Cmd>lua require('ufo').openAllFolds()<CR>
+nnoremap zM <Cmd>lua require('ufo').closeAllFolds()<CR>
+
+inoremap <C-Tab> <C-n>
+inoremap <C-S-Tab> <C-p>
+
+augroup markdown_mappings
+    autocmd FileType markdown nmap ]] <Plug>Markdown_MoveToNextSiblingHeader
+    autocmd FileType markdown nmap [[ <Plug>Markdown_MoveToPreviousSiblingHeader
+    autocmd FileType markdown nmap ]h <Plug>Markdown_MoveToNextHeader
+    autocmd FileType markdown nmap [h <Plug>Markdown_MoveToPreviousHeader
+    autocmd FileType markdown nmap ]u <Plug>Markdown_MoveToParentHeader
+    autocmd FileType markdown nmap [u <Plug>Markdown_MoveToParentHeader
+    autocmd FileType markdown nmap <silent> + :.HeaderIncrease<CR>
+    autocmd FileType markdown nmap <silent> - :.HeaderDecrease<CR>
+    autocmd FileType markdown nmap <silent> <Leader>mf :TableFormat<CR>
+    autocmd FileType markdown nmap <silent> <Leader>mp :MarkdownPreviewToggle<CR>
+    autocmd FileType markdown nmap <silent> <Leader>mt :Toc<CR>
+augroup end
+
+" vsnip
+" Jump forward or backward
+imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'

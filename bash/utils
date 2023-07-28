@@ -5,10 +5,6 @@ export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu
 
 # Misc
 
-alias todos="ag '(TODO|XXX|FIXME)' $@"
-alias scratchpad="nvim ~/scratchpad"
-alias scratchpad-copy="cat ~/scratchpad | wl-copy"
-
 # Start screensharing service
 screenshare() {
     killall xdg-desktop-portal
@@ -42,7 +38,8 @@ cd-git-root() {
 
 # fzf
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+# [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -f ~/.fzf/shell/key-bindings.bash ] && source ~/.fzf/shell/key-bindings.bash
 export FZF_DEFAULT_OPTS='--height=16 --layout=reverse --select-1 --bind=ctrl-p:toggle-preview'
 export FZF_DEFAULT_COMMAND='fd --type f --hidden'
 export FZF_CTRL_T_COMMAND='fd --type f --hidden --ignore-file <(echo .git)'
@@ -53,21 +50,32 @@ fzf-branch-select() {
     echo $(git branch --format='%(refname:short)' | fzf --preview 'git lgf {}')
 }
 
+fzf-mod-files-select() {
+    echo $(git status --short --branch | fzf --multi --preview='bat {2} --color=always' --header-lines=1 | cut -c 4-)
+}
+
 fzf-branch-widget() {
     local selected="$(fzf-branch-select)"
     READLINE_LINE="${READLINE_LINE:0:$READLINE_POINT}$selected${READLINE_LINE:$READLINE_POINT}"
     READLINE_POINT=$((READLINE_POINT + ${#selected}))
 }
 
+fzf-mod-files-widget() {
+    local selected="$(fzf-mod-files-select)"
+    READLINE_LINE="${READLINE_LINE:0:$READLINE_POINT}$selected${READLINE_LINE:$READLINE_POINT}"
+    READLINE_POINT=$((READLINE_POINT + ${#selected}))
+}
+
 bind -x '"\C-g": fzf-branch-widget'
+bind -x '"\C-o": fzf-mod-files-widget'
 
 # terraform
 
 # run terraform with logging
-tf() {
-    mkdir -p /tmp/tf
-    terraform $* |& tee /tmp/tf/$(basename $PWD)__tf-$1__$(date +'%Y%m%d-%H%M%S').log
-}
+# tf() {
+#     mkdir -p /tmp/tf
+#     terraform $* |& tee /tmp/tf/$(basename $PWD)__tf-$1__$(date +'%Y%m%d-%H%M%S').log
+# }
 
 # print the path of the last created tf.log file
 tf-last() {
@@ -110,17 +118,28 @@ aws_creds() {
 
 # direnv
 
-_direnv_hook() {
-    local previous_exit_status=$?
-    trap -- '' SIGINT
-    eval "$("/usr/bin/direnv" export bash)"
-    trap - SIGINT
-    return $previous_exit_status
-}
-if ! [[ "${PROMPT_COMMAND:-}" =~ _direnv_hook ]]; then
-    PROMPT_COMMAND="_direnv_hook${PROMPT_COMMAND:+;$PROMPT_COMMAND}"
-fi
+# _direnv_hook() {
+#     local previous_exit_status=$?
+#     trap -- '' SIGINT
+#     eval "$("/usr/bin/direnv" export bash)"
+#     eval 
+#     trap - SIGINT
+#     return $previous_exit_status
+# }
+# if ! [[ "${PROMPT_COMMAND:-}" =~ _direnv_hook ]]; then
+#     PROMPT_COMMAND="_direnv_hook${PROMPT_COMMAND:+;$PROMPT_COMMAND}"
+# fi
 
 # docker
 
 alias dockerip="docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}'"
+
+# convert text to kebab case
+kebab() {
+    echo $* | sed -e 's/[^[:alnum:] ]//g' | sed -e 's/ /-/g' | tr '[:upper:]' '[:lower:]'
+}
+
+# convert text to snake case
+snake() {
+    echo $* | sed -e 's/[^[:alnum:] ]//g' | sed -e 's/ /_/g' | tr '[:upper:]' '[:lower:]'
+}

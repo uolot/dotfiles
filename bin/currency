@@ -3,4 +3,5 @@
 export FREECURRENCY_API_KEY="$(cat "$HOME/.secrets/FREECURRENCY_API_KEY")"
 export EXCHANGERATE_API_KEY="$(cat "$HOME/.secrets/EXCHANGERATE_API_KEY")"
 
-"$HOME/Bin/currency.py" "$@"
+APP_ROOT=$HOME/Dev/Personal/currency-cli
+"$APP_ROOT/venv/bin/python" "$APP_ROOT/app.py" "$@" | pbcopy

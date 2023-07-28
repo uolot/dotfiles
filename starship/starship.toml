@@ -1,0 +1,42 @@
+# Starship config
+
+format = "$fill\n$all"
+command_timeout = 1200
+
+[directory]
+truncation_length = 8
+truncate_to_repo = true
+
+[fill]
+symbol = "─"
+
+[git_metrics]
+disabled = false
+
+[git_status]
+conflicted = "X"
+ahead = ""
+behind = ""
+diverged = ""
+up_to_date = ""
+untracked = "."
+stashed = ""
+modified = "*"
+staged = ""
+renamed = ""
+deleted = ""
+
+[package]
+symbol = "@ "
+
+[status]
+disabled = false
+
+[time]
+disabled = false
+
+[custom.aws_exp]
+command = "node $HOME/.dotfiles/starship/aws_exp.js"
+when = "env | grep AWS_CREDENTIAL_EXPIRATION"
+symbol = "🅰 "
+style = "bold 208"

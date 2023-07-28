@@ -1,32 +1,45 @@
+import platform
 from pathlib import Path
 
 from config import DOTFILES_DIR, HOME_DIR
 from lib import ask
 
+OS = platform.system()
+
 LINKS = {
-    "alacritty/alacritty.yml": ".config/alacritty/alacritty.yml",
     "bin": "Bin",
     "bash/bashrc": ".bashrc",
     "bash/bash_profile": ".bash_profile",
     "bash/inputrc": ".inputrc",
     "ctags/config.ctags": ".ctags.d/config.ctags",
-    "fusuma/config.yml": ".config/fusuma/config.yml",
-    "git/config": ".gitconfig",
+    # "git/config": ".gitconfig",
     "git/ignore": ".gitignore",
     "ipython/ipython_config.py": ".ipython/profile_default/ipython_config.py",
     "ipython/startup/vim.py": ".ipython/profile_default/startup/vim.py",
     "neovim/init.vim": ".config/nvim/init.vim",
+    "starship/starship.toml": ".config/starship.toml",
+    "TabNine.toml": ".config/TabNine/TabNine.yml",
+    "tmux/tmux.conf": ".tmux.conf",
+    "vim/ftplugin": ".vim/ftplugin",
+    "vim/vimrc": ".vimrc",
+}
+
+LINUX_LINKS = {
+    "alacritty/alacritty.yml": ".config/alacritty/alacritty.yml",
+    "fusuma/config.yml": ".config/fusuma/config.yml",
     "pam/pam_environment": ".pam_environment",
     "sway/config": ".config/sway/config",
     "sway/flashfocus.yml": ".config/flashfocus/flashfocus.yml",
     "sway/i3status": ".config/i3status/config",
     "sway/i3status-rust.toml": ".config/i3status-rust/config.toml",
     "sway/swaync-config.json": ".config/swaync/config.json",
-    "TabNine.toml": ".config/TabNine/TabNine.yml",
-    "tmux/tmux.conf": ".tmux.conf",
-    "vim/ftplugin": ".vim/ftplugin",
-    "vim/vimrc": ".vimrc",
     "wofi/style.css": ".config/wofi/style.css",
+}
+
+# TODO: add kitty terminal config
+MACOS_LINKS = {
+    "hammerspoon/init.lua": ".hammerspoon/init.lua",
+    "yabai/yabairc": ".config/yabai/yabairc",
 }
 
 
@@ -37,7 +50,13 @@ def create_links():
     print("Creating symlinks")
     print("Dotfiles path:", DOTFILES_DIR)
 
-    for src, dest in LINKS.items():
+    links = {
+        **LINKS,
+        **(LINUX_LINKS if OS == "Linux" else {}),
+        **(MACOS_LINKS if OS == "Darwin" else {}),
+    }
+
+    for src, dest in links.items():
         src_path = DOTFILES_DIR / src
         dest_path = HOME_DIR / dest
 
@@ -71,8 +90,13 @@ def link(src_path, dest_path, *, unlink=False):
         print("\t", e)
 
 
+def pam_info():
+    if OS == "Linux":
+        print("Add contents of ~/.pam_environment to /etc/environment")
+        with open(Path("~/.pam_environment").expanduser()) as f:
+            print(f.read())
+
+
 if __name__ == "__main__":
     create_links()
-    print("Add contents of ~/.pam_environment to /etc/environment")
-    with open(Path("~/.pam_environment").expanduser()) as f:
-        print(f.read())
+    pam_info()

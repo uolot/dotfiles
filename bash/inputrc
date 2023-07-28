@@ -12,7 +12,7 @@ j: history-search-forward
 
 set keymap vi-insert
 
-TAB: menu-complete
+# TAB: menu-complete
 
 "\e[A": history-search-backward
 "\e[B": history-search-forward
@@ -46,6 +46,6 @@ set show-all-if-ambiguous on
 set show-all-if-unmodified on
 set show-mode-in-prompt on
 set skip-completed-text on
-set vi-ins-mode-string 
+set vi-ins-mode-string
 set vi-cmd-mode-string "(cmd) "
 set visible-stats on

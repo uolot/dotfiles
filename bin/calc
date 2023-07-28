@@ -2,4 +2,26 @@
 
 import sys
 from math import *
-print(eval(' '.join(sys.argv[1:])))
+
+KB = 1024
+MB = KB * KB
+GB = KB * KB * KB
+
+
+def kb(n):
+    return n // KB
+
+
+def mb(n):
+    return n // MB
+
+
+def gb(n):
+    return n // GB
+
+
+if len(sys.argv) < 2:
+    while True:
+        print(eval(input(">>> ")))
+else:
+    print(eval(" ".join(sys.argv[1:])))
