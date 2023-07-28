@@ -701,6 +701,7 @@ require('lazy').setup({
     },
 
 }, {
+    -- diff = 'browser',
     -- diff = 'git',
-    diff = 'diffview.nvim',
+    -- diff = 'diffview.nvim',
 })

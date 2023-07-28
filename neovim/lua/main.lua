@@ -13,10 +13,6 @@ vim.loader.enable()
 local lspconfig = require('lspconfig')
 
 local on_lsp_attach = function(client, buffer)
-    --local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-    --local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-    --buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-
     -- ufo
     -- local capabilities = vim.lsp.protocol.make_client_capabilities()
     -- -- local capabilities = requite('cmp_nvim_lsp').default_capabilities()
@@ -28,32 +24,13 @@ local on_lsp_attach = function(client, buffer)
     -- ufo end
 
     -- TODO: update capabilities with `require('cmp_nvim_lsp').update_capabilities
-    -- if client.resolved_capabilities.document_formatting then
-    -- if client.server_capabilities.documentFormattingProvider then
     if client.supports_method('textDocument/formatting') then
         require('lsp-zero').buffer_autoformat()
-
-        -- vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 2000)")
-        -- vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format({timeout_ms = 5000})")
-
-        -- local augroup = vim.api.nvim_create_augroup('format_file', { clear = true })
-        -- vim.api.nvim_create_autocmd('BufWritePre', {
-        --     group = augroup,
-        --     buffer = buffer,
-        --     desc = 'Format',
-        --     callback = function()
-        --         vim.lsp.buf.format({
-        --             async = true,
-        --             timeout_ms = 5000,
-        --             filter = function(client) return client.name ~= 'tsserver' end,
-        --         })
-        --     end
-        -- })
     end
 
-    -- if client.server_capabilities.inlayHintProvider then
-    --     vim.lsp.buf.inlay_hint(bufnr, true)
-    -- end
+    if client.server_capabilities.inlayHintProvider then
+        vim.lsp.buf.inlay_hint(buffer, false)
+    end
 end
 
 -- TODO: remove
@@ -62,10 +39,9 @@ local on_tsserver_attach = function(client, bufnr)
     client.server_capabilities.documentFormattingProvider = false
     client.server_capabilities.documentRangeFormattingProvider = false
 
-    if client.server_capabilities.inlayHintProvider then
-        vim.lsp.buf.inlay_hint(bufnr, true)
-    end
-    -- vim.lsp.buf.inlay_hint(bufnr, true)
+    -- if client.server_capabilities.inlayHintProvider then
+    --     vim.lsp.buf.inlay_hint(bufnr, false)
+    -- end
 
     -- on_lsp_attach(client, bufnr)
 end
