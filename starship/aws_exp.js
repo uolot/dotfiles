@@ -54,8 +54,23 @@ if (profile === "saml") {
     let accountName;
 
     switch (accountId) {
+      case "lego-mct-ccd-prod":
+        accountName = "CD PROD";
+        break;
       case "lego-mct-ccd-dev":
         accountName = "CD DEV";
+        break;
+      case "lego-mct-ccd-sandbox":
+        accountName = "CD SANDBOX";
+        break;
+      case "lego-lac-prod":
+        accountName = "LAC PROD";
+        break;
+      case "lego-lac-qa":
+        accountName = "LAC QA";
+        break;
+      case "lego-lac-dev":
+        accountName = "LAC DEV";
         break;
       default:
         accountName = "UNKNOWN (profile)";
