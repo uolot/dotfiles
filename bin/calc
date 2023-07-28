@@ -4,8 +4,8 @@ import sys
 from math import *
 
 KB = 1024
-MB = KB * KB
-GB = KB * KB * KB
+MB = KB**2
+GB = KB**2 * KB
 
 
 def kb(n):
