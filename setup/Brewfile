@@ -2,23 +2,24 @@ tap "1password/tap"
 tap "cormacrelf/tap"
 tap "felixkratz/formulae"
 tap "homebrew/bundle"
-tap "homebrew/cask"
 tap "homebrew/cask-drivers"
+tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
-tap "homebrew/core"
 tap "homebrew/services"
 tap "koekeishiya/formulae"
 tap "mhanberg/zk"
 tap "osx-cross/arm"
 tap "osx-cross/avr"
+# ANSI/ASCII art to PNG converter
+brew "ansilove"
 # Extendable version manager with support for Ruby, Node.js, Erlang & more
 brew "asdf"
-# Library for USB device access
-brew "libusb"
 # Official Amazon AWS command-line interface
 brew "awscli"
 # Simple command-line tool to read AWS CloudWatch logs
 brew "awslogs"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.10"
 # Microsoft Azure CLI 2.0
 brew "azure-cli"
 # Bourne-Again SHell, a UNIX command interpreter
@@ -27,6 +28,8 @@ brew "bash"
 brew "bat"
 # Core application library for C
 brew "glib"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.9"
 # Statistics utility to count lines of code
 brew "cloc"
 # Color-highlighted diff(1) output
@@ -47,6 +50,8 @@ brew "fd"
 brew "gnutls"
 # OpenType text shaping engine
 brew "harfbuzz"
+# OCR (Optical Character Recognition) engine
+brew "tesseract"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
 # Command-line fuzzy finder written in Go
@@ -57,6 +62,8 @@ brew "gh"
 brew "git"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
+# Library for USB device access
+brew "libusb"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
 # Generate introspection data for GObject libraries
@@ -81,6 +88,8 @@ brew "jo"
 brew "jq"
 # Network authentication protocol
 brew "krb5"
+# Exposes your localhost to the world for easy testing and sharing
+brew "localtunnel"
 # Language Server for the Lua language
 brew "lua-language-server"
 # Powerful, lightweight programming language (v5.1.5)
@@ -125,18 +134,20 @@ brew "up"
 brew "watchman"
 # Internet file retriever
 brew "wget"
+# Plain text note-taking assistant
+brew "zk"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
 # A tiling window manager for macOS based on binary space partitioning.
-brew "koekeishiya/formulae/yabai", args: ["HEAD"]
-# Plain text note-taking assistant
-brew "mhanberg/zk/zk"
+brew "koekeishiya/formulae/yabai"
 # Command-line helper for the 1Password password manager
 cask "1password-cli"
 # Multi-track audio editor and recorder
 cask "audacity"
 # Open-source KVM software
 cask "barrier"
+# Developer targeted fonts with a high number of glyphs
+cask "font-blex-mono-nerd-font"
 # Desktop automation application
 cask "hammerspoon"
 # Java IDE by JetBrains
@@ -147,8 +158,14 @@ cask "iterm2-beta"
 cask "karabiner-elements"
 # Online collaborative whiteboard platform
 cask "miro"
+# Reverse proxy, secure introspectable tunnels to localhost
+cask "ngrok"
+# Open-source software for live streaming and screen recording
+cask "obs"
 # Collaboration platform for API development
 cask "postman"
+# Command-line shell and scripting language
+cask "powershell"
 # Control your tools with a few keystrokes
 cask "raycast"
 # Plugin for AWS CLI to start and end sessions that connect to managed instances
@@ -157,3 +174,12 @@ cask "session-manager-plugin"
 cask "slack"
 # Open-source code editor
 cask "visual-studio-code"
+vscode "asvetliakov.vscode-neovim"
+vscode "dbaeumer.vscode-eslint"
+vscode "EditorConfig.EditorConfig"
+vscode "esbenp.prettier-vscode"
+vscode "ms-azuretools.vscode-docker"
+vscode "ms-vscode-remote.remote-containers"
+vscode "ms-vsliveshare.vsliveshare"
+vscode "stylelint.vscode-stylelint"
+vscode "zengxingxin.sort-js-object-keys"
