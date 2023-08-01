@@ -22,6 +22,7 @@ LINKS = {
     "tmux/tmux.conf": ".tmux.conf",
     "vim/ftplugin": ".vim/ftplugin",
     "vim/vimrc": ".vimrc",
+    "wezterm/wezterm.lua": ".wezterm.lua",
 }
 
 LINUX_LINKS = {
