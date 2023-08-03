@@ -2,7 +2,6 @@ tap "1password/tap"
 tap "cormacrelf/tap"
 tap "felixkratz/formulae"
 tap "homebrew/bundle"
-tap "homebrew/cask-drivers"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "homebrew/services"
@@ -10,16 +9,12 @@ tap "koekeishiya/formulae"
 tap "mhanberg/zk"
 tap "osx-cross/arm"
 tap "osx-cross/avr"
-# ANSI/ASCII art to PNG converter
-brew "ansilove"
 # Extendable version manager with support for Ruby, Node.js, Erlang & more
 brew "asdf"
 # Official Amazon AWS command-line interface
 brew "awscli"
 # Simple command-line tool to read AWS CloudWatch logs
 brew "awslogs"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.10"
 # Microsoft Azure CLI 2.0
 brew "azure-cli"
 # Bourne-Again SHell, a UNIX command interpreter
@@ -28,16 +23,12 @@ brew "bash"
 brew "bat"
 # Core application library for C
 brew "glib"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.9"
 # Statistics utility to count lines of code
 brew "cloc"
 # Color-highlighted diff(1) output
 brew "colordiff"
 # SQL-like query language for csv
 brew "csvq"
-# JSON, YAML, TOML, XML, and CSV query and modification tool
-brew "dasel"
 # Load/unload environment variables based on $PWD
 brew "direnv"
 # Convert text between DOS, UNIX, and Mac formats
@@ -66,8 +57,6 @@ brew "git-delta"
 brew "libusb"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
-# Generate introspection data for GObject libraries
-brew "gobject-introspection"
 # Make JSON greppable
 brew "gron"
 # Improved top (interactive process viewer)
@@ -86,12 +75,6 @@ brew "jless"
 brew "jo"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
-# Network authentication protocol
-brew "krb5"
-# Exposes your localhost to the world for easy testing and sharing
-brew "localtunnel"
-# Language Server for the Lua language
-brew "lua-language-server"
 # Powerful, lightweight programming language (v5.1.5)
 brew "lua@5.1"
 # Package manager for the Lua programming language
@@ -104,8 +87,6 @@ brew "ncdu"
 brew "neovim", args: ["HEAD"]
 # Professional collaborative platform for embedded development
 brew "platformio"
-# Object-relational database system
-brew "postgresql@14"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Readline wrapper: adds readline support to tools that lack it
@@ -114,10 +95,6 @@ brew "rlwrap"
 brew "saml2aws"
 # Fast and accurate code counter with complexity and COCOMO estimates
 brew "scc"
-# Display and control your Android device
-brew "scrcpy"
-# AWS SQS Message mover
-brew "sqsmover"
 # Cross-shell prompt for astronauts
 brew "starship"
 # User interface to the TELNET protocol
@@ -140,6 +117,8 @@ brew "zk"
 brew "zoxide"
 # A tiling window manager for macOS based on binary space partitioning.
 brew "koekeishiya/formulae/yabai"
+# Password manager that keeps all passwords secure behind one password
+cask "1password"
 # Command-line helper for the 1Password password manager
 cask "1password-cli"
 # Multi-track audio editor and recorder
@@ -150,30 +129,34 @@ cask "barrier"
 cask "font-blex-mono-nerd-font"
 # Desktop automation application
 cask "hammerspoon"
-# Java IDE by JetBrains
-cask "intellij-idea"
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2-beta"
 # Keyboard customizer
 cask "karabiner-elements"
+# Software for Logitech devices
+cask "logitech-options"
 # Online collaborative whiteboard platform
 cask "miro"
-# Reverse proxy, secure introspectable tunnels to localhost
-cask "ngrok"
-# Open-source software for live streaming and screen recording
-cask "obs"
+# Cloud storage client
+cask "onedrive"
 # Collaboration platform for API development
 cask "postman"
 # Command-line shell and scripting language
 cask "powershell"
 # Control your tools with a few keystrokes
 cask "raycast"
+# Move and resize windows using keyboard shortcuts or snap areas
+cask "rectangle"
 # Plugin for AWS CLI to start and end sessions that connect to managed instances
 cask "session-manager-plugin"
 # Team communication and collaboration software
 cask "slack"
+# To-do list
+cask "todoist"
 # Open-source code editor
 cask "visual-studio-code"
+# GPU-accelerated cross-platform terminal emulator and multiplexer
+cask "wezterm"
 vscode "asvetliakov.vscode-neovim"
 vscode "dbaeumer.vscode-eslint"
 vscode "EditorConfig.EditorConfig"
