@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# TODO: remove this file?
+
 args="$*"
 fzf_args=""
 

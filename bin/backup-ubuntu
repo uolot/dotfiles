@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-ROOT="$HOME/VMs/Ubuntu"
-
-cd $ROOT
-
-tar -zcvf disk-backup.img.tar.gz disk.img

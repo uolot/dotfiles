@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-args="$@"
-brew install $* && echo "$args" >> "$HOME/.dotfiles/setup/brew_packages.txt"

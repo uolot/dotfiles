@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-name=$(wofi --dmenu --input=/dev/null --prompt="Name")
-~/Bin/rename_workspace "$name" --force

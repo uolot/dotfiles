@@ -5,10 +5,6 @@ case "$1" in
         git config user.name "Tomasz Walotek"
         git config user.email "tomasz.walotek@gmail.com"
         ;;
-    eh)
-        git config user.name "Tomasz Walotek"
-        git config user.email "tomasz.walotek@elementhuman.com"
-        ;;
     lego)
         git config user.name "Tomasz Walotek"
         git config user.email "tomasz.walotek@lego.com"
@@ -16,7 +12,7 @@ case "$1" in
         git config user.signingkey 2D55E293CF
         ;;
     *)
-        echo "Usage: $(basename $0) <personal|lego|eh>"
+        echo "Usage: $(basename $0) <personal|lego>"
         ;;
 esac
 

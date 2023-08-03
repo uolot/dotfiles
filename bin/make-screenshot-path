@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-SP=$HOME/Pictures/Screenshots
-mkdir -p $SP
-echo $SP/screenshot__$(date +'%Y-%m-%d__%H-%M-%S').png

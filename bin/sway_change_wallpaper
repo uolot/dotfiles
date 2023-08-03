@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-exec sway output "*" background $(fd . $HOME/Pictures/Wallpapers/ -e jpg -e jpeg -e png | shuf -n 1) fill
