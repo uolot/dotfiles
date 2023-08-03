@@ -1,5 +1,7 @@
 # vim: ft=bash
 
+source $HOME/.dotfiles/bash/colors
+
 export PYTHONDONTWRITEBYTECODE=1
 
 alias activate="source $HOME/Bin/activate.sh"
@@ -18,29 +20,16 @@ venv() {
 }
 
 venv-dev() {
-    pip install -qq -U pip && echo "pip upgraded"
+    pip install -qq -U pip && echo "${GREEN}upgraded pip${NOCOLOR}"
     pip require mypy isort black flake8
+    echo "${GREEN}installed mypy, isort, black, flake8${NOCOLOR}"
     pip install -qq ipython
-    echo "ipython installed"
-    pip install -qq pynvim
-    echo "pynvim installed"
+    echo "${GREEN}installed ipython${NOCOLOR}"
     pip install -qq autoimport
-    echo "autoimport installed"
+    echo "${GREEN}installed autoimport${NOCOLOR}"
     pip install -qq pdbpp
-    echo "pdbpp installed"
+    echo "${GREEN}installed pdbpp${NOCOLOR}"
 }
-
-# Pyenv
-
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-if command -v pyenv 1>/dev/null 2>&1; then
-    eval "$(pyenv init --path)"
-    eval "$(pyenv init -)"
-fi
-
-# Poetry
-export POETRY_VIRTUALENVS_IN_PROJECT=1
 
 # Pip
 # export PIP_REQUIRE_VIRTUALENV=true
