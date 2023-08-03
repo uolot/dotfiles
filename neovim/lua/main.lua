@@ -29,7 +29,7 @@ local on_lsp_attach = function(client, buffer)
     end
 
     if client.server_capabilities.inlayHintProvider then
-        vim.lsp.buf.inlay_hint(buffer, false)
+        vim.lsp.inlay_hint(buffer, false)
     end
 end
 
@@ -40,7 +40,7 @@ local on_tsserver_attach = function(client, bufnr)
     client.server_capabilities.documentRangeFormattingProvider = false
 
     -- if client.server_capabilities.inlayHintProvider then
-    --     vim.lsp.buf.inlay_hint(bufnr, false)
+    --     vim.lsp.inlay_hint(bufnr, false)
     -- end
 
     -- on_lsp_attach(client, bufnr)
