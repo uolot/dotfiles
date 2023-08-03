@@ -1,8 +1,0 @@
-"aur/ulauncher",
-"aur/wlr-randr",
-"aur/tidy-viewer",
-"aur/way-displays",
-"community/cmatrix",
-"aur/swaync-git",
-"aur/vscode-langservers-extracted",
-"aur/fzf-tab-completion-git",
