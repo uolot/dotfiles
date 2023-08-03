@@ -1,7 +1,0 @@
-# see /etc/environment
-MOZ_ENABLE_WAYLAND=1
-GDK_BACKEND=wayland
-XDG_CURRENT_DESKTOP=sway
-XDG_SESSION_TYPE=wayland
-QT_QPA_PLATFORM=wayland
-BROWSER=google-chrome-stable
