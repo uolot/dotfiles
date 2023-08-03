@@ -16,7 +16,7 @@ LINKS = {
     "git/ignore": ".gitignore",
     "ipython/ipython_config.py": ".ipython/profile_default/ipython_config.py",
     "ipython/startup/vim.py": ".ipython/profile_default/startup/vim.py",
-    "neovim/init.vim": ".config/nvim/init.vim",
+    "neovim": ".config/nvim",
     "starship/starship.toml": ".config/starship.toml",
     "TabNine.toml": ".config/TabNine/TabNine.yml",
     "tmux/tmux.conf": ".tmux.conf",
