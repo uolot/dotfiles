@@ -1,0 +1,17 @@
+# vim: ft=bash
+
+# run terraform with logging
+tf() {
+    mkdir -p /tmp/tf
+    terraform $* |& tee /tmp/tf/$(basename $PWD)__tf-$1__$(date +'%Y%m%d-%H%M%S').log
+}
+
+# print the path of the last created tf.log file
+tf-last() {
+    # '%C@' - ctime in epoch seconds, '%p' - path
+    find /tmp/tf -name '*.log' -printf '%C@ %p\n' |
+        sort -nr |
+        head -1 |
+        cut -d' ' -f2
+}
+

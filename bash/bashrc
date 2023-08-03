@@ -5,79 +5,31 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-set -o vi
+export PATH="$HOME/.dotfiles/bin:$HOME/.local/bin:/opt/homebrew/bin:$PATH"
 
-# Enable **/* wildards
-#shopt -s globstar
+CONFIG=$HOME/.dotfiles/bash/config
 
-export PATH="$HOME/.dotfiles/bin:$HOME/.local/bin:$HOME/.go/bin:$HOME/.cargo/bin:$PATH:$HOME/Build/flutter/bin:$HOME/.pub-cache/bin"
-export CDPATH=".:~:~/Dev/Personal:~/Dev/EH:~/Dev/M5:~/.dotfiles"
-shopt -s cdspell # fix small typos
-complete -d cd
+# core
+source $CONFIG/colors
+source $CONFIG/text
+source $CONFIG/search
+source $CONFIG/shell
+source $CONFIG/completion
+source $CONFIG/misc
 
-export BROWSER=google-chrome-stable
-export EDITOR=nvim
-export TERM=xterm-256color
-
-# history
-export HISTCONTROL=ignoredups:erasedups
-export HISTSIZE=100000
-export HISTFILESIZE=100000
-shopt -s histappend
-
-DOTBASH=$HOME/.dotfiles/bash
-source $DOTBASH/colors
-# source $DOTBASH/prompt
-source $DOTBASH/aliases
-source $DOTBASH/utils
-source $DOTBASH/vim
-source $DOTBASH/python
-source $DOTBASH/java
-source $DOTBASH/platformio
+# programs
+source $CONFIG/fzf
+source $CONFIG/git
+source $CONFIG/asdf
+source $CONFIG/python
+source $CONFIG/node
+source $CONFIG/aws
+source $CONFIG/zk
+source $CONFIG/docker
+# source $CONFIG/platformio
+# source $CONFIG/terraform
 
 eval "$(starship init bash)"
-
-[[ -f ~/.bashrc.local ]] && source ~/.bashrc.local
-
-[[ -f $HOME/.dotfiles/alacritty/alacritty.bash ]] && source $HOME/.dotfiles/alacritty/alacritty.bash
-export GOOGLE_APPLICATION_CREDENTIALS=~/.config/gcloud/platform-admin.json
-
 eval "$(zoxide init bash)"
-
-# source <(kubectl completion bash)
-
-# Fix after broken homebrew update: https://github.com/asdf-vm/asdf/issues/1103#issuecomment-986798629
-
-[[ -f /opt/asdf-vm/asdf.sh ]] && source /opt/asdf-vm/asdf.sh
-# source $(brew --prefix asdf)/libexec/asdf.sh
-export "ASDF_DIR=$(brew --prefix asdf)/libexec"
-source $ASDF_DIR/asdf.sh
-source $HOME/.asdf/plugins/java/set-java-home.bash
-
-source /usr/local/etc/bash_completion.d/asdf.bash
-source /usr/local/etc/bash_completion.d/aws_bash_completer
-source /usr/local/etc/bash_completion.d/brew
-source /usr/local/etc/bash_completion.d/brew-services
-# source /usr/local/etc/bash_completion.d/cargo.bashcomp.sh
-source /usr/local/etc/bash_completion.d/delta
-source /usr/local/etc/bash_completion.d/fd
-source /usr/local/etc/bash_completion.d/git-completion.bash
-# source /usr/local/etc/bash_completion.d/git-prompt.sh
-source /usr/local/etc/bash_completion.d/jo.bash
-source /usr/local/etc/bash_completion.d/rg.bash
-source /usr/local/etc/bash_completion.d/starship
-
 eval "$(direnv hook bash)"
-
 eval "$(gh completion -s bash)"
-
-# TODO: remove, already exists in bash_profile
-export NPM_TOKEN="$(cat "$HOME/.secrets/LEGO_GH_TOKEN")"
-export NODE_AUTH_TOKEN="$(cat "$HOME/.secrets/LEGO_GH_TOKEN")"
-
-test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash" || true
-
-command -v saml2aws >/dev/null 2>&1 && eval "$(saml2aws --completion-script-bash)"
-
-export ZK_NOTEBOOK_DIR=$HOME/Documents/ZK
-. "$HOME/.cargo/env"

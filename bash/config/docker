@@ -1,0 +1,3 @@
+# vim: ft=bash
+
+alias dockerip="docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}'"

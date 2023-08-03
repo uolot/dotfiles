@@ -1,3 +1,5 @@
+# vim: ft=bash
+
 # platformio system completion --help
 _platformio_completion() {
     local IFS=$'\t'

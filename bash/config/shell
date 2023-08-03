@@ -1,0 +1,57 @@
+# vim: ft=bash
+
+# enable vi mode
+# set -o vi
+
+# enable **/* wildards
+# shopt -s globstar
+
+# cd
+export CDPATH=".:~:~/Dev:~/Dev/Personal:~/.dotfiles"
+shopt -s cdspell # fix small typos
+complete -d cd
+
+# default programs
+export BROWSER=google-chrome-stable
+export EDITOR=nvim
+export TERM=xterm-256color
+
+# history
+export HISTCONTROL=ignoredups:erasedups
+export HISTSIZE=100000
+export HISTFILESIZE=100000
+shopt -s histappend
+
+# config tools
+export LESS=-FRSX
+export MANPAGER="/bin/sh -c \"col -b | nvim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
+# If the last character of the alias value is a blank, then the next command word following the alias is also checked for alias expansion.
+alias sudo='sudo '
+
+# aliases
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ,,='cd ..'
+
+alias x="exit"
+
+alias ls='ls --color=auto'
+alias ll='ls -lav --ignore=..' # show long listing of all except ".."
+
+# make a new dir and cd to it
+mkcd() {
+    mkdir -p $* && cd $*
+}
+
+# cd one level up and rm previous dir
+rmup() {
+    pwd=$(pwd)
+    cd ..
+    read -p "Remove ${pwd} ? " choice
+    case "$choice" in
+    y | Y)
+        echo "removing ${pwd}"
+        rm -rf "$pwd"
+        ;;
+    esac
+}

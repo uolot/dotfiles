@@ -1,0 +1,4 @@
+# vim: ft=bash
+
+export NPM_TOKEN="$(cat "$HOME/.secrets/LEGO_GH_TOKEN")"
+export NODE_AUTH_TOKEN="$(cat "$HOME/.secrets/LEGO_GH_TOKEN")"

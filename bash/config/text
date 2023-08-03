@@ -1,0 +1,28 @@
+# vim: ft=bash
+
+# convert text to kebab case
+kebab() {
+    sed -e 's/[^[:alnum:] ]//g' | sed -e 's/ /-/g' | tr '[:upper:]' '[:lower:]'
+}
+
+# convert text to snake case
+snake() {
+    sed -e 's/[^[:alnum:] ]//g' | sed -e 's/ /_/g' | tr '[:upper:]' '[:lower:]'
+}
+
+# convert to lowercase
+lower() {
+    tr '[:upper:]' '[:lower:]'
+}
+
+stripcolors() {
+    sed 's/\x1b\[[0-9;]*m//g'
+}
+
+# print horizontal divider
+hr() {
+    echo -n $(seq -s= $(echo $(tput cols) "-20" | bc) | tr -d '[:digit:]')
+    echo -n " "
+    echo $(date +'%Y-%m-%d %H:%M:%S')
+}
+alias hrr='printf "\n\n\n\n\n" ; hr ; printf "\n\n\n\n\n"'
