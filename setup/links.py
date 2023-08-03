@@ -25,18 +25,6 @@ LINKS = {
     "wezterm/wezterm.lua": ".wezterm.lua",
 }
 
-LINUX_LINKS = {
-    "alacritty/alacritty.yml": ".config/alacritty/alacritty.yml",
-    "fusuma/config.yml": ".config/fusuma/config.yml",
-    "pam/pam_environment": ".pam_environment",
-    "sway/config": ".config/sway/config",
-    "sway/flashfocus.yml": ".config/flashfocus/flashfocus.yml",
-    "sway/i3status": ".config/i3status/config",
-    "sway/i3status-rust.toml": ".config/i3status-rust/config.toml",
-    "sway/swaync-config.json": ".config/swaync/config.json",
-    "wofi/style.css": ".config/wofi/style.css",
-}
-
 # TODO: add kitty terminal config
 MACOS_LINKS = {
     "hammerspoon/init.lua": ".hammerspoon/init.lua",
@@ -53,7 +41,6 @@ def create_links():
 
     links = {
         **LINKS,
-        **(LINUX_LINKS if OS == "Linux" else {}),
         **(MACOS_LINKS if OS == "Darwin" else {}),
     }
 
@@ -91,13 +78,5 @@ def link(src_path, dest_path, *, unlink=False):
         print("\t", e)
 
 
-def pam_info():
-    if OS == "Linux":
-        print("Add contents of ~/.pam_environment to /etc/environment")
-        with open(Path("~/.pam_environment").expanduser()) as f:
-            print(f.read())
-
-
 if __name__ == "__main__":
     create_links()
-    pam_info()
