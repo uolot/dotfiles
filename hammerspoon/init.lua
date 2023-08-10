@@ -88,7 +88,8 @@ local function mouseHighlight()
 end
 
 local function yabai(args)
-    hs.task.new("/usr/local/bin/yabai", nil, function(...)
+    -- hs.task.new("/usr/local/bin/yabai", nil, function(...)
+    hs.task.new("/opt/homebrew/bin/yabai", nil, function(...)
         print("stream", hs.inspect(table.pack(...)))
         return true
     end, args):start()
@@ -107,23 +108,51 @@ local meh = { "alt", "ctrl", "shift" }
 -- HYPER
 
 -- mapped keys
--- Q W E R T Y U . . .
--- A S D F G . . . . ;
--- Z X C V B . . x x /
+-- . . . R T Y U . . .
+-- A . D F G . . . . ;
+-- Z X . V B . . x x /
 
 -- Apps
 -- hs.hotkey.bind(hyper, "p", toggleTeamsMute)
-hs.hotkey.bind(hyper, "i", startIterm)
+-- hs.hotkey.bind(hyper, "i", startIterm)
 
 -- Window navigation
 -- hs.hotkey.bind(hyper, ";", hs.hints.windowHints)
 hs.hotkey.bind(hyper, "return", function() yabai({ '-m', 'window', '--toggle', 'zoom-fullscreen' }) end)
 hs.hotkey.bind(hyper, "space", function() yabai({ '-m', 'window', '--toggle', 'float' }) end)
 
-hs.hotkey.bind(hyper, "h", function() yabai({ '-m', 'window', '--focus', 'west' }) end)
-hs.hotkey.bind(hyper, "j", function() yabai({ '-m', 'window', '--focus', 'south' }) end)
-hs.hotkey.bind(hyper, "k", function() yabai({ '-m', 'window', '--focus', 'north' }) end)
-hs.hotkey.bind(hyper, "l", function() yabai({ '-m', 'window', '--focus', 'east' }) end)
+-- hs.hotkey.bind(hyper, "q", function() hs.grid.setGrid("1x1") end)
+-- hs.hotkey.bind(hyper, "w", function() hs.grid.setGrid("2x1") end)
+-- hs.hotkey.bind(hyper, "e", function() hs.grid.setGrid("3x1") end)
+
+function dump(o)
+    if type(o) == 'table' then
+        local s = '{ '
+        for k, v in pairs(o) do
+            if type(k) ~= 'number' then k = '"' .. k .. '"' end
+            s = s .. '[' .. k .. '] = ' .. dump(v) .. ','
+        end
+        return s .. '} '
+    else
+        return tostring(o)
+    end
+end
+
+-- hs.hotkey.bind(hyper, "y", function() hs.grid.pushWindowLeft() end)
+-- hs.hotkey.bind(hyper, "u", function() hs.grid.pushWindowRight() end)
+
+-- hs.hotkey.bind(hyper, "s", function() hs.grid.snap(hs.window.focusedWindow()) end)
+hs.hotkey.bind(hyper, "c", function() hs.window.focusedWindow():centerOnScreen() end)
+
+hs.hotkey.bind(hyper, "h", function() hs.window.focusedWindow():focusWindowWest() end)
+hs.hotkey.bind(hyper, "j", function() hs.window.focusedWindow():focusWindowSouth() end)
+hs.hotkey.bind(hyper, "k", function() hs.window.focusedWindow():focusWindowNorth() end)
+hs.hotkey.bind(hyper, "l", function() hs.window.focusedWindow():focusWindowEast() end)
+
+-- hs.hotkey.bind(hyper, "h", function() yabai({ '-m', 'window', '--focus', 'west' }) end)
+-- hs.hotkey.bind(hyper, "j", function() yabai({ '-m', 'window', '--focus', 'south' }) end)
+-- hs.hotkey.bind(hyper, "k", function() yabai({ '-m', 'window', '--focus', 'north' }) end)
+-- hs.hotkey.bind(hyper, "l", function() yabai({ '-m', 'window', '--focus', 'east' }) end)
 
 hs.hotkey.bind(hyper, "n", function() yabai({ '-m', 'window', '--space', 'next' }) end)
 hs.hotkey.bind(hyper, "p", function() yabai({ '-m', 'window', '--space', 'prev' }) end)
