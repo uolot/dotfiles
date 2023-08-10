@@ -25,13 +25,11 @@ end
 
 wk.register({
     ["<Leader>"] = {
-        x = {
-            name = "+toggles",
-            b = { function() vim_opt_toggle('background', 'light', 'dark') end, "Background" },
-            d = { toggle_diagnostic, "Diagnostics" },
-            i = { function() vim.lsp.buf.inlay_hint(0) end, "Inlay hints" },
-            r = { function() vim_opt_toggle('relativenumber', true, false) end, "Relative number" },
-            w = { function() vim_opt_toggle('wrap', true, false) end, "Line wrap" },
+        f = {
+            name = '+find',
+            f = { telescope_builtin.find_files, 'Find files' },
+            h = { '<Cmd>Telescope find_files hidden=true<CR>', 'Hidden files' },
+            o = { telescope_builtin.oldfiles, 'Open recent files' },
         },
         g = {
             name = '+lsp',
@@ -63,11 +61,15 @@ wk.register({
             X = { telescope_builtin.diagnostics, 'All buffers diagnostics' },
         },
         -- TODO: merge f and t
-        f = {
-            name = '+find',
-            f = { telescope_builtin.find_files, 'Find files' },
-            h = { '<Cmd>Telescope find_files hidden=true<CR>', 'Hidden files' },
-            o = { telescope_builtin.oldfiles, 'Open recent files' },
+        k = {
+            name = '+mark',
+            k = { '<Plug>MarkSet', 'Set mark', mode = { 'n', 'x' } },
+            c = { '<Plug>MarkClear', 'Clear mark', mode = { 'n', 'x' } },
+            m = { '<Plug>MarkToggle', 'Toggle mark', mode = { 'n', 'x' } },
+            l = { 'V:<C-u>HSHighlight 1<CR>', 'Highlight line', mode = { 'n', 'x' } },
+            r = { 'V:<C-u>HSHighlight 4<CR>', 'Highlight line red', mode = { 'n', 'x' } },
+            g = { 'V:<C-u>HSHighlight 5<CR>', 'Highlight line green', mode = { 'n', 'x' } },
+            x = { 'V:<C-u>HSRmHighlight<CR>', 'Remove highlight', mode = { 'n', 'x' } },
         },
         t = {
             name = '+telescope',
@@ -84,21 +86,19 @@ wk.register({
             z = { telescope_builtin.current_buffer_fuzzy_find, 'Current buffer fuzzy find' },
 
         },
-        k = {
-            name = '+mark',
-            k = { '<Plug>MarkSet', 'Set mark', mode = { 'n', 'x' } },
-            c = { '<Plug>MarkClear', 'Clear mark', mode = { 'n', 'x' } },
-            m = { '<Plug>MarkToggle', 'Toggle mark', mode = { 'n', 'x' } },
-            l = { 'V:<C-u>HSHighlight 1<CR>', 'Highlight line', mode = { 'n', 'x' } },
-            r = { 'V:<C-u>HSHighlight 4<CR>', 'Highlight line red', mode = { 'n', 'x' } },
-            g = { 'V:<C-u>HSHighlight 5<CR>', 'Highlight line green', mode = { 'n', 'x' } },
-            x = { 'V:<C-u>HSRmHighlight<CR>', 'Remove highlight', mode = { 'n', 'x' } },
-        },
         w = {
             name = '+workbench +vimwiki',
             p = { '<Plug>ToggleProjectWorkbench', 'Toggle project workbench' },
             b = { '<Plug>ToggleBranchWorkbench', 'Toggle branch workbench' },
             t = { '<Plug>WorkbenchToggleCheckbox', 'Toggle workbench checkbox' },
+        },
+        x = {
+            name = "+toggles",
+            b = { function() vim_opt_toggle('background', 'light', 'dark') end, "Background" },
+            d = { toggle_diagnostic, "Diagnostics" },
+            i = { function() vim.lsp.buf.inlay_hint(0) end, "Inlay hints" },
+            r = { function() vim_opt_toggle('relativenumber', true, false) end, "Relative number" },
+            w = { function() vim_opt_toggle('wrap', true, false) end, "Line wrap" },
         },
     },
     ['<C-w>'] = {
