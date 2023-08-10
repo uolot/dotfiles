@@ -472,6 +472,10 @@ require('telescope').setup {
             i = {
                 ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
                 ["<C-a>"] = actions.smart_add_to_qflist + actions.open_qflist,
+                ["<C-d>"] = actions.results_scrolling_down,
+                ["<C-u>"] = actions.results_scrolling_up,
+                ["<C-f>"] = actions.preview_scrolling_down,
+                ["<C-b>"] = actions.preview_scrolling_up,
             },
         },
         file_ignore_patterns = { "tags*" },
