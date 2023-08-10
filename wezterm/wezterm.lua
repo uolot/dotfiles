@@ -222,29 +222,6 @@ local config = {
     },
 
   },
-
-  hyperlink_rules = {
-    -- Jira CD/CDA
-    {
-      regex = [[\b(CDA?-\d+)\b]],
-      format = 'https://legogroup.atlassian.net/browse/$1',
-    },
-    -- cd-monorepo Github PR
-    {
-      regex = [[#(\d+)]],
-      format = 'https://github.com/LEGO/cd-monorepo/pull/$1',
-    },
-    -- cd-monorepo commit
-    {
-      regex = [[([0-9a-f]{7})]],
-      format = 'https://github.com/LEGO/cd-monorepo/commit/$1',
-    },
-    -- -- Github user/repo in quotes
-    -- {
-    --   regex = [[["']([\w\d]{1}[-\w\d]+)(/){1}([-\w\d\.]+)["'].?]],
-    --   format = 'https://www.github.com/$1/$3',
-    -- }
-  },
 }
 
 -- select tab
@@ -255,5 +232,32 @@ for i = 1, 8 do
     action = wez.action.ActivateTab(i - 1),
   })
 end
+
+-- hyperlink rules
+config.hyperlink_rules = wez.default_hyperlink_rules()
+
+-- Jira CD/CDA
+table.insert(config.hyperlink_rules, {
+  regex = [[\b(CDA?-\d+)\b]],
+  format = 'https://legogroup.atlassian.net/browse/$1',
+})
+
+-- cd-monorepo Github PR
+table.insert(config.hyperlink_rules, {
+  regex = [[#(\d+)]],
+  format = 'https://github.com/LEGO/cd-monorepo/pull/$1',
+})
+
+-- cd-monorepo commit
+table.insert(config.hyperlink_rules, {
+  regex = [[([0-9a-f]{7})]],
+  format = 'https://github.com/LEGO/cd-monorepo/commit/$1',
+})
+
+-- Github user/repo in quotes
+table.insert(config.hyperlink_rules, {
+  regex = [[([\w\d]{1}[-\w\d]+)/([-\w\d\.]+)]],
+  format = 'https://www.github.com/$1/$3',
+})
 
 return config;
