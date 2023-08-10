@@ -407,7 +407,7 @@ require('lazy').setup({
     -- },
 
     -- highlighting visual selections
-    { 'Pocco81/HighStr.nvim',     url = 'https://github.com/Pocco81/HighStr.nvim' },
+    { 'Pocco81/HighStr.nvim', url = 'https://github.com/Pocco81/HighStr.nvim' },
     -- Highlight several words in different colors simultaneously
     -- { 'inkarkat/vim-ingo-library', url = 'https://github.com/inkarkat/vim-ingo-library' },
     {
@@ -422,10 +422,10 @@ require('lazy').setup({
 
 
     -- displays a popup with possible keybindings of the command you started typing
-    { 'folke/which-key.nvim',     url = 'https://github.com/folke/which-key.nvim' },
+    { 'folke/which-key.nvim', url = 'https://github.com/folke/which-key.nvim' },
 
     --
-    -- file manager
+    -- file explorer
     --
 
     {
@@ -439,22 +439,24 @@ require('lazy').setup({
     },
 
 
-    -- Git --
+    --
+    -- git
+    --
 
-    { 'tpope/vim-fugitive',       url = 'https://github.com/tpope/vim-fugitive',      lazy = false },
-    { 'lewis6991/gitsigns.nvim',  url = 'https://github.com/lewis6991/gitsigns.nvim' },
+    { 'tpope/vim-fugitive',      url = 'https://github.com/tpope/vim-fugitive',     lazy = false },
+    { 'lewis6991/gitsigns.nvim', url = 'https://github.com/lewis6991/gitsigns.nvim' },
 
     -- Single tabpage interface for easily cycling through diffs for all modified files for any git rev
-    { 'sindrets/diffview.nvim',   url = 'https://github.com/sindrets/diffview.nvim' },
+    { 'sindrets/diffview.nvim',  url = 'https://github.com/sindrets/diffview.nvim' },
 
     -- more pleasant editing on commit messages
-    { 'rhysd/committia.vim',      url = 'https://github.com/rhysd/committia.vim' },
+    { 'rhysd/committia.vim',     url = 'https://github.com/rhysd/committia.vim' },
 
     -- A git commit browser in Vim
     -- { 'junegunn/gv.vim',                 url = 'https://github.com/junegunn/gv.vim' },
 
     -- GitHub extension for fugitive.vim
-    { 'tpope/vim-rhubarb',        url = 'https://github.com/tpope/vim-rhubarb' },
+    { 'tpope/vim-rhubarb',       url = 'https://github.com/tpope/vim-rhubarb' },
     -- extension to fugitive.vim for gitlab support
     -- { 'shumphrey/fugitive-gitlab.vim',   url = 'https://github.com/shumphrey/fugitive-gitlab.vim' },
     -- Add Bitbucket URL support to fugitive.vim's :Gbrowse command

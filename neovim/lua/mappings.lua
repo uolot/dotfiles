@@ -63,12 +63,12 @@ wk.register({
         -- TODO: merge f and t
         k = {
             name = '+mark',
-            k = { '<Plug>MarkSet', 'Set mark', mode = { 'n', 'x' } },
             c = { '<Plug>MarkClear', 'Clear mark', mode = { 'n', 'x' } },
-            m = { '<Plug>MarkToggle', 'Toggle mark', mode = { 'n', 'x' } },
-            l = { 'V:<C-u>HSHighlight 1<CR>', 'Highlight line', mode = { 'n', 'x' } },
-            r = { 'V:<C-u>HSHighlight 4<CR>', 'Highlight line red', mode = { 'n', 'x' } },
             g = { 'V:<C-u>HSHighlight 5<CR>', 'Highlight line green', mode = { 'n', 'x' } },
+            k = { '<Plug>MarkSet', 'Set mark', mode = { 'n', 'x' } },
+            l = { 'V:<C-u>HSHighlight 1<CR>', 'Highlight line', mode = { 'n', 'x' } },
+            m = { '<Plug>MarkToggle', 'Toggle mark', mode = { 'n', 'x' } },
+            r = { 'V:<C-u>HSHighlight 4<CR>', 'Highlight line red', mode = { 'n', 'x' } },
             x = { 'V:<C-u>HSRmHighlight<CR>', 'Remove highlight', mode = { 'n', 'x' } },
         },
         n = {
@@ -86,7 +86,6 @@ wk.register({
             e = { telescope_builtin.emoji, 'Emoji' },
             g = { function() telescope_builtin.grep_string({ word_match = '-w' }) end, 'Grep word under cursor' },
             G = { telescope_builtin.grep_string, 'Grep text under cursor' },
-            -- h = { telescope_builtin., 'Live grep' },
             l = { telescope_builtin.live_grep, 'Live grep' },
             L = { require("telescope").extensions.live_grep_args.live_grep_args, 'Live grep args' },
             r = { telescope_builtin.resume, 'Resume' },
