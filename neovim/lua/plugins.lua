@@ -752,7 +752,7 @@ require('lazy').setup({
     {
         'tzachar/highlight-undo.nvim',
         url = 'https://github.com/tzachar/highlight-undo.nvim',
-        keys = { 'u', 'U' },
+        keys = { 'u', 'U', '<C-r>' },
         opts = {}
     },
     { 'folke/neodev.nvim', url = 'https://github.com/folke/neodev.nvim', priority = 1000 },
