@@ -71,6 +71,13 @@ wk.register({
             g = { 'V:<C-u>HSHighlight 5<CR>', 'Highlight line green', mode = { 'n', 'x' } },
             x = { 'V:<C-u>HSRmHighlight<CR>', 'Remove highlight', mode = { 'n', 'x' } },
         },
+        n = {
+            name = '+neo-tree',
+            c = { ':Neotree left filesystem toggle reveal_file=<cfile><CR>', 'Show file under cursor' },
+            d = { ':Neotree left filesystem toggle dir=', 'Open dir', silent=false },
+            f = { ':Neotree left filesystem toggle reveal<CR>', 'Show current file' },
+            n = { ':Neotree left filesystem toggle<CR>', 'Toggle' },
+        },
         t = {
             name = '+telescope',
             a = { ':Ag ', 'Ag', silent = false },

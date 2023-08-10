@@ -162,7 +162,7 @@ require('lazy').setup({
                     enable = true, -- false will disable the whole extension
                     disable = { "markdown" },
                     -- disable = { "c", "rust" },  -- list of language that will be disabled
-                    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+                    -- Setting this to true will run `:h syntax` and treesitter at the same time.
                     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
                     -- Using this option may slow down your editor, and you may see some duplicate highlights.
                     -- Instead of true it can also be a list of languages
@@ -333,7 +333,6 @@ require('lazy').setup({
     -- Colorschemes --
 
     { 'nvim-lualine/lualine.nvim',               url = 'https://github.com/nvim-lualine/lualine.nvim' },
-    { 'nvim-tree/nvim-web-devicons',             url = 'https://github.com/nvim-tree/nvim-web-devicons' },
 
     {
         'rebelot/kanagawa.nvim',
@@ -425,8 +424,19 @@ require('lazy').setup({
     -- displays a popup with possible keybindings of the command you started typing
     { 'folke/which-key.nvim',     url = 'https://github.com/folke/which-key.nvim' },
 
-    -- A file explorer tree for neovim written in lua
-    { 'kyazdani42/nvim-tree.lua', url = 'https://github.com/kyazdani42/nvim-tree.lua' },
+    --
+    -- file manager
+    --
+
+    {
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v3.x",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons",
+            "MunifTanjim/nui.nvim",
+        }
+    },
 
 
     -- Git --

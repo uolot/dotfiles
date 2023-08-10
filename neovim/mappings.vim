@@ -1,9 +1,3 @@
-" nvim-tree
-    nnoremap <silent> <Leader>nc :NvimTreeClose<CR>
-    nnoremap <silent> <Leader>nf :NvimTreeFindFile<CR>
-    nnoremap <silent> <Leader>nn :NvimTreeToggle<CR>
-    nnoremap <silent> <Leader>nr :NvimTreeRefresh<CR>
-    nnoremap <silent> <Leader>nt :NvimTreeFocus<CR>
 " oil
     nnoremap <silent> <Leader>n- <Cmd>lua require("oil").open()<CR>
 
