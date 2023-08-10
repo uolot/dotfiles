@@ -626,8 +626,14 @@ require('lazy').setup({
     { 'kevinhwang91/nvim-ufo',               url = 'https://github.com/kevinhwang91/nvim-ufo',              opts = {} },
     { 'lukas-reineke/indent-blankline.nvim', url = 'https://github.com/lukas-reineke/indent-blankline.nvim' },
 
-    -- " Inversed J
-    { 'AckslD/nvim-trevJ.lua/',              url = 'https://github.com/AckslD/nvim-trevJ.lua/' },
+    -- Inversed J
+    {
+        'AckslD/nvim-trevJ.lua',
+        url = 'https://github.com/AckslD/nvim-trevJ.lua/',
+        config = function()
+            require('trevj').setup()
+        end
+    },
     {
         'kiran94/s3edit.nvim',
         url = 'https://github.com/kiran94/s3edit.nvim',
