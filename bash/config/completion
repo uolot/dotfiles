@@ -24,3 +24,6 @@ source $BREW_PREFIX/etc/bash_completion.d/starship
 source $BREW_PREFIX/etc/bash_completion.d/zoxide
 
 source <(op completion bash)
+eval "$(gh completion -s bash)"
+eval "$(wezterm shell-completion --shell bash)"
+command -v saml2aws >/dev/null 2>&1 && eval "$(saml2aws --completion-script-bash)"

@@ -32,4 +32,3 @@ source $CONFIG/docker
 eval "$(starship init bash)"
 eval "$(zoxide init bash)"
 eval "$(direnv hook bash)"
-eval "$(gh completion -s bash)"
