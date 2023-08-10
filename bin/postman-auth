@@ -17,13 +17,16 @@ fi
 
 echo "Press <Enter> to copy"
 
+echo "AccessKey"
 echo $AWS_ACCESS_KEY_ID | tr -d '\n' | pbcopy
 echo -n "AccessKey copied"
 read
 
+echo "SecretKey"
 echo $AWS_SECRET_ACCESS_KEY | tr -d '\n' | pbcopy
 echo -n "SecretKey copied"
 read
 
+echo "Session Token"
 echo $AWS_SESSION_TOKEN | tr -d '\n' | pbcopy
 echo -n "Session Token copied"
