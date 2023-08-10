@@ -75,8 +75,9 @@ symbol = "󰏗 " # from Nerd Font Symbols Preset
 
 [custom.aws_exp]
 command = "node $HOME/.dotfiles/starship/aws_exp.js"
-when = "env | grep AWS_CREDENTIAL_EXPIRATION"
-symbol = "🅰 "
+# when = "env | grep AWS_CREDENTIAL_EXPIRATION"
+when = "env | grep SAML2AWS_PROFILE"
+symbol = " "
 style = "bold 208"
 
 # Nerd Font Symbols Preset
