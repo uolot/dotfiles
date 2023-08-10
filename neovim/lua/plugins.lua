@@ -13,14 +13,17 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
 
-    -- " cache plugins
+    -- cache plugins
     { 'lewis6991/impatient.nvim',             url = 'https://github.com/lewis6991/impatient.nvim' },
+
+    -- dependencies
     { 'nvim-lua/plenary.nvim' },
     { 'kevinhwang91/promise-async' },
 
-    -- " -- Completion --
+    -- Completion --
 
-    -- " Extra completions
+    -- Extra completions
+    -- TODO: check https://github.com/xero/dotfiles/blob/main/neovim/.config/nvim/lua/plugins/cmp.lua
     { 'hrsh7th/cmp-buffer',                   url = 'https://github.com/hrsh7th/cmp-buffer' },
     { 'hrsh7th/cmp-calc',                     url = 'https://github.com/hrsh7th/cmp-calc' },
     { 'hrsh7th/cmp-cmdline',                  url = 'https://github.com/hrsh7th/cmp-cmdline' },
@@ -30,17 +33,19 @@ require('lazy').setup({
     { 'hrsh7th/cmp-nvim-lsp-signature-help',  url = 'https://github.com/hrsh7th/cmp-nvim-lsp-signature-help' },
     { 'hrsh7th/cmp-path',                     url = 'https://github.com/hrsh7th/cmp-path' },
 
-    -- " A snippet plugin is required by nvim-cmp
+    -- A snippet plugin is required by nvim-cmp
     { 'hrsh7th/vim-vsnip',                    url = 'https://github.com/hrsh7th/vim-vsnip' },
     { 'hrsh7th/vim-vsnip-integ',              url = 'https://github.com/hrsh7th/vim-vsnip-integ' },
     { 'hrsh7th/cmp-vsnip',                    url = 'https://github.com/hrsh7th/cmp-vsnip' },
 
-    -- " Completion plugin
+    -- Completion plugin
     { 'hrsh7th/nvim-cmp',                     url = 'https://github.com/hrsh7th/nvim-cmp' },
 
-    -- " -- LSP --
+    --
+    -- lsp --
+    --
 
-    -- " Plug 'williamboman/nvim-lsp-installer'
+    -- Plug 'williamboman/nvim-lsp-installer'
     { 'neovim/nvim-lspconfig' },
     { 'williamboman/mason.nvim',              build = ':MasonUpdate' },
     { 'williamboman/mason-lspconfig.nvim' },
@@ -51,7 +56,13 @@ require('lazy').setup({
     { 'RishabhRD/nvim-lsputils',              url = 'https://github.com/RishabhRD/nvim-lsputils' },
     { 'onsails/lspkind-nvim',                 url = 'https://github.com/onsails/lspkind-nvim' },
     -- { 'kosayoda/nvim-lightbulb',          url = 'https://github.com/kosayoda/nvim-lightbulb' },
-
+    -- {
+    --     'lukas-reineke/lsp-format.nvim',
+    --     url = 'https://github.com/lukas-reineke/lsp-format.nvim',
+    --     config = function()
+    --         require("lsp-format").setup({})
+    --     end
+    -- },
     {
         'folke/trouble.nvim',
         lazy = true,
@@ -61,25 +72,27 @@ require('lazy').setup({
         }
     },
 
-    -- " Pop-up menu for code actions to show meta-information and diff preview
-    -- "     Provides ":CodeActionMenu"
+    -- Pop-up menu for code actions to show meta-information and diff preview
+    --     Provides ":CodeActionMenu"
     {
         'weilbith/nvim-code-action-menu',
         url = 'https://github.com/weilbith/nvim-code-action-menu',
         cmd = 'CodeActionMenu'
     },
 
-    -- " LSP signature hint as you type
+    -- LSP signature hint as you type
     -- { 'ray-x/lsp_signature.nvim',         url = 'https://github.com/ray-x/lsp_signature.nvim' },
 
-    -- " Incremental LSP rename command based on Neovim's command-preview feature
+    -- Incremental LSP rename command based on Neovim's command-preview feature
     { 'smjonas/inc-rename.nvim',                  url = 'https://github.com/smjonas/inc-rename.nvim' },
 
-    -- " render diagnostics using virtual lines on top of the real line of code.
+    -- render diagnostics using virtual lines on top of the real line of code.
     -- { 'Maan2003/lsp_lines.nvim',         url = 'https://github.com/Maan2003/lsp_lines.nvim' },
     -- { 'https://git.sr.ht/~whynothugo/lsp_lines.nvim' },
 
-    -- " -- Treesitter --
+    --
+    -- treesitter --
+    --
 
     {
         'nvim-treesitter/nvim-treesitter',
@@ -236,14 +249,14 @@ require('lazy').setup({
         'JoosepAlviste/nvim-ts-context-commentstring',
         url = 'https://github.com/JoosepAlviste/nvim-ts-context-commentstring'
     },
-    -- " Use treesitter to auto close and auto rename html tags
+    -- Use treesitter to auto close and auto rename html tags
     { 'windwp/nvim-ts-autotag', url = 'https://github.com/windwp/nvim-ts-autotag' },
-    -- " Rainbow parentheses for neovim using treesitter
-    -- " TODO: no longer maintained, migrate to nvim-ts-rainbow2
-    -- " Plug 'p00f/nvim-ts-rainbow'
+    -- Rainbow parentheses for neovim using treesitter
+    -- TODO: no longer maintained, migrate to nvim-ts-rainbow2
+    -- Plug 'p00f/nvim-ts-rainbow'
 
 
-    -- " -- Telescope --
+    -- Telescope --
 
     {
         'nvim-telescope/telescope.nvim',
@@ -267,7 +280,7 @@ require('lazy').setup({
     },
 
 
-    -- " -- Colorschemes --
+    -- Colorschemes --
 
     { 'nvim-lualine/lualine.nvim',               url = 'https://github.com/nvim-lualine/lualine.nvim' },
     { 'nvim-tree/nvim-web-devicons',             url = 'https://github.com/nvim-tree/nvim-web-devicons' },
@@ -292,35 +305,35 @@ require('lazy').setup({
         },
     },
 
-    -- " -- Misc --
+    -- Misc --
 
-    -- " Vim plugin that defines a new text object representing lines of code at the
-    -- " same indent level. Useful for python/vim scripts, etc.
+    -- Vim plugin that defines a new text object representing lines of code at the
+    -- same indent level. Useful for python/vim scripts, etc.
     { 'michaeljsmith/vim-indent-object', url = 'https://github.com/michaeljsmith/vim-indent-object' },
     -- { 'karb94/neoscroll.nvim',           url = 'https://github.com/karb94/neoscroll.nvim' },
 
-    -- " Readline style insertion
+    -- Readline style insertion
     { 'tpope/vim-rsi',                   url = 'https://github.com/tpope/vim-rsi' },
 
-    -- " disables search highlighting when you are done searching and re-enables it when you search again
+    -- disables search highlighting when you are done searching and re-enables it when you search again
     { 'romainl/vim-cool',                url = 'https://github.com/romainl/vim-cool' },
 
-    -- " handle line and column numbers in file names, eg: file.txt:10 or file.txt:10:5
+    -- handle line and column numbers in file names, eg: file.txt:10 or file.txt:10:5
     { 'kopischke/vim-fetch',             url = 'https://github.com/kopischke/vim-fetch' },
 
-    -- " " auto-generate ctags file
+    -- " auto-generate ctags file
     -- { 'ludovicchabant/vim-gutentags',    url = 'https://github.com/ludovicchabant/vim-gutentags' },
-    -- "     let g:gutentags_project_root = [
-    -- "             \'.python-version',
-    -- "             \'docker-compose.yml',
-    -- "             \'Makefile',
-    -- "             \'package.json',
-    -- "             \'pyproject.toml',
-    -- "             \'README',
-    -- "             \'README.md'
-    -- "             \'requirements.txt',
-    -- "             \'setup.py',
-    -- "             \]
+    --     let g:gutentags_project_root = [
+    --             \'.python-version',
+    --             \'docker-compose.yml',
+    --             \'Makefile',
+    --             \'package.json',
+    --             \'pyproject.toml',
+    --             \'README',
+    --             \'README.md'
+    --             \'requirements.txt',
+    --             \'setup.py',
+    --             \]
 
 
     {
@@ -344,9 +357,9 @@ require('lazy').setup({
     --     'python'
     -- },
 
-    -- " highlighting visual selections
+    -- highlighting visual selections
     { 'Pocco81/HighStr.nvim',     url = 'https://github.com/Pocco81/HighStr.nvim' },
-    -- " Highlight several words in different colors simultaneously
+    -- Highlight several words in different colors simultaneously
     -- { 'inkarkat/vim-ingo-library', url = 'https://github.com/inkarkat/vim-ingo-library' },
     {
         'inkarkat/vim-mark',
@@ -359,41 +372,41 @@ require('lazy').setup({
     },
 
 
-    -- " displays a popup with possible keybindings of the command you started typing
+    -- displays a popup with possible keybindings of the command you started typing
     { 'folke/which-key.nvim',     url = 'https://github.com/folke/which-key.nvim' },
 
-    -- " A file explorer tree for neovim written in lua
+    -- A file explorer tree for neovim written in lua
     { 'kyazdani42/nvim-tree.lua', url = 'https://github.com/kyazdani42/nvim-tree.lua' },
 
 
-    -- " -- Git --
+    -- Git --
 
     { 'tpope/vim-fugitive',       url = 'https://github.com/tpope/vim-fugitive',      lazy = false },
     { 'lewis6991/gitsigns.nvim',  url = 'https://github.com/lewis6991/gitsigns.nvim' },
 
-    -- " Single tabpage interface for easily cycling through diffs for all modified files for any git rev
+    -- Single tabpage interface for easily cycling through diffs for all modified files for any git rev
     { 'sindrets/diffview.nvim',   url = 'https://github.com/sindrets/diffview.nvim' },
 
-    -- " more pleasant editing on commit messages
+    -- more pleasant editing on commit messages
     { 'rhysd/committia.vim',      url = 'https://github.com/rhysd/committia.vim' },
 
-    -- " A git commit browser in Vim
+    -- A git commit browser in Vim
     -- { 'junegunn/gv.vim',                 url = 'https://github.com/junegunn/gv.vim' },
 
-    -- " GitHub extension for fugitive.vim
+    -- GitHub extension for fugitive.vim
     { 'tpope/vim-rhubarb',        url = 'https://github.com/tpope/vim-rhubarb' },
-    -- " extension to fugitive.vim for gitlab support
+    -- extension to fugitive.vim for gitlab support
     -- { 'shumphrey/fugitive-gitlab.vim',   url = 'https://github.com/shumphrey/fugitive-gitlab.vim' },
-    -- " Add Bitbucket URL support to fugitive.vim's :Gbrowse command
+    -- Add Bitbucket URL support to fugitive.vim's :Gbrowse command
     -- { 'tommcdo/vim-fubitive',            url = 'https://github.com/tommcdo/vim-fubitive' },
 
-    -- " One second to read GitHub code with vim
+    -- One second to read GitHub code with vim
     -- { 'drzel/vim-repo-edit',             url = 'https://github.com/drzel/vim-repo-edit' },
 
 
-    -- " -- Misc -
+    -- Misc -
 
-    -- " Highlight, list and search todo comments in your projects
+    -- Highlight, list and search todo comments in your projects
     {
         'folke/todo-comments.nvim',
         url = 'https://github.com/folke/todo-comments.nvim',
@@ -412,32 +425,32 @@ require('lazy').setup({
         }
     },
 
-    -- " A better user experience for interacting with and manipulating Vim marks
-    -- " mx              Set mark x
-    -- " m,              Set the next available alphabetical (lowercase) mark
-    -- " m;              Toggle the next available mark at the current line
-    -- " dmx             Delete mark x
-    -- " dm-             Delete all marks on the current line
-    -- " dm<space>       Delete all marks in the current buffer
-    -- " m]              Move to next mark
-    -- " m[              Move to previous mark
-    -- " m:              Preview mark. This will prompt you for a specific mark to
-    -- "                 preview; press <cr> to preview the next mark.
-    -- " m[0-9]          Add a bookmark from bookmark group[0-9].
-    -- " dm[0-9]         Delete all bookmarks from bookmark group[0-9].
-    -- " m}              Move to the next bookmark having the same type as the bookmark under
-    -- "                 the cursor. Works across buffers.
-    -- " m{              Move to the previous bookmark having the same type as the bookmark under
-    -- "                 the cursor. Works across buffers.
-    -- " dm=             Delete the bookmark under the cursor.
+    -- A better user experience for interacting with and manipulating Vim marks
+    -- mx              Set mark x
+    -- m,              Set the next available alphabetical (lowercase) mark
+    -- m;              Toggle the next available mark at the current line
+    -- dmx             Delete mark x
+    -- dm-             Delete all marks on the current line
+    -- dm<space>       Delete all marks in the current buffer
+    -- m]              Move to next mark
+    -- m[              Move to previous mark
+    -- m:              Preview mark. This will prompt you for a specific mark to
+    --                 preview; press <cr> to preview the next mark.
+    -- m[0-9]          Add a bookmark from bookmark group[0-9].
+    -- dm[0-9]         Delete all bookmarks from bookmark group[0-9].
+    -- m}              Move to the next bookmark having the same type as the bookmark under
+    --                 the cursor. Works across buffers.
+    -- m{              Move to the previous bookmark having the same type as the bookmark under
+    --                 the cursor. Works across buffers.
+    -- dm=             Delete the bookmark under the cursor.
     { 'chentoast/marks.nvim',            url = 'https://github.com/chentoast/marks.nvim' },
 
-    -- " -- Vimwiki & Markdown --
+    -- Vimwiki & Markdown --
 
     { 'vimwiki/vimwiki',                 url = 'https://github.com/vimwiki/vimwiki',                 lazy = true },
     { 'ElPiloto/telescope-vimwiki.nvim', url = 'https://github.com/ElPiloto/telescope-vimwiki.nvim', lazy = true },
 
-    -- " Markdown live preview
+    -- Markdown live preview
     {
         'iamcco/markdown-preview.nvim',
         url = 'https://github.com/iamcco/markdown-preview.nvim',
@@ -448,7 +461,7 @@ require('lazy').setup({
         end
     },
 
-    -- " Neovim extension for zk
+    -- Neovim extension for zk
     {
         'mickael-menu/zk-nvim',
         url = 'https://github.com/mickael-menu/zk-nvim',
@@ -468,7 +481,7 @@ require('lazy').setup({
         end
     },
 
-    -- " Additional highlights for markdown
+    -- Additional highlights for markdown
     {
         'lukas-reineke/headlines.nvim',
         url = 'https://github.com/lukas-reineke/headlines.nvim',
@@ -519,20 +532,20 @@ require('lazy').setup({
         end
     },
 
-    -- " -- Misc --
+    -- Misc --
 
-    -- " Run Async Shell Commands
+    -- Run Async Shell Commands
     { 'skywind3000/asyncrun.vim', url = 'https://github.com/skywind3000/asyncrun.vim' },
 
-    -- " Set of operators and textobjects to search/select/edit sandwiched texts
+    -- Set of operators and textobjects to search/select/edit sandwiched texts
     { 'machakann/vim-sandwich',   url = 'https://github.com/machakann/vim-sandwich' },
 
-    -- " Additional text objects
-    -- " Provides:
-    -- " iX aX IX AX where X = () [] {} <> t ' " ` , . ; : + - = ~ _ * # / | \ & $
-    -- " inX anX AnX InX for next object
-    -- " ilX alX AlX IlX for previous (last) object
-    -- " ia aa Ia Aa for arguments; works with nX/lX as well
+    -- Additional text objects
+    -- Provides:
+    -- iX aX IX AX where X = () [] {} <> t ' " ` , . ; : + - = ~ _ * # / | \ & $
+    -- inX anX AnX InX for next object
+    -- ilX alX AlX IlX for previous (last) object
+    -- ia aa Ia Aa for arguments; works with nX/lX as well
     { 'wellle/targets.vim',       url = 'https://github.com/wellle/targets.vim' },
 
     {
@@ -541,7 +554,7 @@ require('lazy').setup({
         cmd = 'Tabularize'
     },
 
-    -- " Heuristically set buffer options
+    -- Heuristically set buffer options
     { 'tpope/vim-sleuth', url = 'https://github.com/tpope/vim-sleuth' },
     { 'jbyuki/venn.nvim', url = 'https://github.com/jbyuki/venn.nvim' },
     {
@@ -557,9 +570,9 @@ require('lazy').setup({
     { 'sindrets/winshift.nvim',              url = 'https://github.com/sindrets/winshift.nvim',             lazy = true },
     { 'gbrlsnchs/winpick.nvim',              url = 'https://github.com/gbrlsnchs/winpick.nvim',             lazy = true },
 
-    -- " hide gutter numbers for folds
+    -- hide gutter numbers for folds
     { 'luukvbaal/statuscol.nvim',            url = 'https://github.com/luukvbaal/statuscol.nvim' },
-    -- " ultra fold
+    -- ultra fold
     { 'kevinhwang91/nvim-ufo',               url = 'https://github.com/kevinhwang91/nvim-ufo',              opts = {} },
     { 'lukas-reineke/indent-blankline.nvim', url = 'https://github.com/lukas-reineke/indent-blankline.nvim' },
 
@@ -575,14 +588,14 @@ require('lazy').setup({
         }
     },
 
-    -- " Broken, revisit when updated
+    -- Broken, revisit when updated
     -- { 'nvim-zh/colorful-winsep.nvim',     url = 'https://github.com/nvim-zh/colorful-winsep.nvim' },
     { 'tweekmonster/startuptime.vim', url = 'https://github.com/tweekmonster/startuptime.vim' },
 
-    -- " Easily add additional highlights to your buffers
+    -- Easily add additional highlights to your buffers
     { 'folke/paint.nvim',             url = 'https://github.com/folke/paint.nvim' },
 
-    -- " Neovim file explorer: edit your filesystem like a buffer
+    -- Neovim file explorer: edit your filesystem like a buffer
     {
         'stevearc/oil.nvim',
         url = 'https://github.com/stevearc/oil.nvim',
@@ -592,7 +605,7 @@ require('lazy').setup({
         end
     },
 
-    -- " Embed Neovim in Chrome, Firefox & others.
+    -- Embed Neovim in Chrome, Firefox & others.
     {
         'glacambre/firenvim',
         url = 'https://github.com/glacambre/firenvim',
@@ -622,7 +635,7 @@ require('lazy').setup({
         end
     },
 
-    -- " Nvim lua plugin which adds support for twoslash queries into typescript projects
+    -- Nvim lua plugin which adds support for twoslash queries into typescript projects
     {
         'marilari88/twoslash-queries.nvim',
         url = 'https://github.com/marilari88/twoslash-queries.nvim',
@@ -636,12 +649,12 @@ require('lazy').setup({
         url = 'https://github.com/gen740/SmoothCursor.nvim',
         opts = {
             autostart = true,
-            cursor = "",          -- cursor shape (need nerd font)
+            cursor = "", -- cursor shape (need nerd font)
             texthl = "SmoothCursor", -- highlight group, default is { bg = nil, fg = "#FFD400" }
-            linehl = nil,            -- highlight sub-cursor line like 'cursorline', "CursorLine" recommended
-            type = "default",        -- define cursor movement calculate function, "default" or "exp" (exponential).
+            linehl = nil, -- highlight sub-cursor line like 'cursorline', "CursorLine" recommended
+            type = "default", -- define cursor movement calculate function, "default" or "exp" (exponential).
             fancy = {
-                enable = true,       -- enable fancy mode
+                enable = true, -- enable fancy mode
                 head = { cursor = "▷", texthl = "SmoothCursor", linehl = nil },
                 -- head = { cursor = "", texthl = "SmoothCursor", linehl = nil },
                 body = {
@@ -650,12 +663,12 @@ require('lazy').setup({
                     { cursor = "●", texthl = "SmoothCursorYellow" },
                     { cursor = "•", texthl = "SmoothCursorGreen" },
                     { cursor = "•", texthl = "SmoothCursorAqua" },
-                    { cursor = ".",   texthl = "SmoothCursorBlue" },
-                    { cursor = ".",   texthl = "SmoothCursorPurple" },
+                    { cursor = ".", texthl = "SmoothCursorBlue" },
+                    { cursor = ".", texthl = "SmoothCursorPurple" },
                 },
                 tail = { cursor = nil, texthl = "SmoothCursor" }
             },
-            flyin_effect = nil,        -- "bottom" or "top"
+            flyin_effect = nil,        --bottom" or "top"
             speed = 25,                -- max is 100 to stick to your current position
             intervals = 35,            -- tick interval
             priority = 10,             -- set marker priority

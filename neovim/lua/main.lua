@@ -23,9 +23,11 @@ local on_lsp_attach = function(client, buffer)
     -- client.capabilities = capabilities
     -- ufo end
 
+
     -- TODO: update capabilities with `require('cmp_nvim_lsp').update_capabilities
     if client.supports_method('textDocument/formatting') then
         require('lsp-zero').buffer_autoformat()
+        -- require("lsp-format").on_attach(client)
     end
 
     if client.server_capabilities.inlayHintProvider then
