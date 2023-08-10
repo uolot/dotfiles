@@ -54,6 +54,11 @@ local config = {
     split = '#bbbbbb',
   },
 
+  -- available keys
+  -- ..e.tyui..
+  -- a.dfg....
+  -- zxc.b..
+
   -- keys
   leader = { key = 'w', mods = 'CMD', timeout_milliseconds = 1000 },
   keys = {
@@ -110,6 +115,12 @@ local config = {
       key = 'w',
       mods = 'LEADER',
       action = wez.action.PaneSelect { mode = 'SwapWithActive' },
+    },
+    -- rotate panes
+    {
+      key = 'o',
+      mods = 'LEADER',
+      action = wez.action.RotatePanes 'Clockwise',
     },
     -- resize pane
     {
@@ -228,11 +239,11 @@ local config = {
       regex = [[([0-9a-f]{7})]],
       format = 'https://github.com/LEGO/cd-monorepo/commit/$1',
     },
-    -- Github user/repo
-    {
-      regex = [[["]?([\w\d]{1}[-\w\d]+)(/){1}([-\w\d\.]+)["]?]],
-      format = 'https://www.github.com/$1/$3',
-    }
+    -- -- Github user/repo in quotes
+    -- {
+    --   regex = [[["']([\w\d]{1}[-\w\d]+)(/){1}([-\w\d\.]+)["'].?]],
+    --   format = 'https://www.github.com/$1/$3',
+    -- }
   },
 }
 
