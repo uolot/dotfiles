@@ -2,30 +2,42 @@
 
 command -v saml2aws >/dev/null 2>&1 && eval "$(saml2aws --completion-script-bash)"
 
-aws_creds() {
-    case "$1" in
-    print)
-        cat ~/.aws/credentials |
-            grep ^aws |
-            sed -e 's/^\([a-z_]\+\)/export \U\1/' -e 's/ = \(.\+\)/="\1"/'
-        ;;
-    load)
-        source <(aws_creds print)
-        ;;
-    unset)
-        for ENVAR in $(
-            cat ~/.aws/credentials |
-                grep ^aws |
-                sed -e 's/^\([a-z_]\+\).*/\U\1/'
-        ); do
-            read -p "Unset $ENVAR? [y/n] "
-            if [ "$REPLY" == "y" ]; then
-                unset $ENVAR
-            fi
-        done
-        ;;
-    *)
-        echo "Usage: $0 (print | load | unset)"
-        ;;
-    esac
+__pick-aws-account() {
+    local query=""
+    if [ $# -gt 0 ]; then
+        query="-q $*"
+    fi
+    cat $HOME/.saml2aws | ag '^name' | tr -d ' ' | cut -d= -f2 | fzf $query
+}
+
+__unset-aws-env-vars() {
+    unset AWS_ACCESS_KEY_ID
+    unset AWS_SECRET_ACCESS_KEY
+    unset AWS_SESSION_TOKEN
+    unset AWS_SECURITY_TOKEN
+    unset AWS_CREDENTIAL_EXPIRATION
+    unset SAML2AWS_PROFILE
+}
+
+eval-saml() {
+    local account=""
+    if [ $# -eq 0 ]; then
+        local account=$(__pick-aws-account $(cat /tmp/saml-account))
+    else
+        local account=$(__pick-aws-account $*);
+    fi
+    __unset-aws-env-vars
+    eval $(saml2aws script --shell=bash --idp-account=$account)
+}
+
+saml() {
+    local query=""
+    if [ $# -gt 0 ]; then
+        query="-q $*"
+    fi
+    local account=$(__pick-aws-account $*)
+    __unset-aws-env-vars
+    saml2aws login --skip-prompt --idp-account=$account
+    eval $(saml2aws script --shell=bash --idp-account=$account)
+    echo $account > /tmp/saml-account
 }
