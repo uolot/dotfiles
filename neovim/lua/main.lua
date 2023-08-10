@@ -456,7 +456,18 @@ cmp.setup.cmdline('?', {
 -- Telescope
 local actions = require('telescope.actions')
 require('telescope').setup {
-    defaults = require('telescope.themes').get_ivy {
+    defaults = {
+        -- defaults = require('telescope.themes').get_ivy {
+        -- defaults = require('telescope.themes').get_dropdown {
+        layout_strategy = 'center',
+        layout_config = {
+            prompt_position = 'top',
+            -- mirror = true,
+        },
+        dynamic_preview_title = true,
+        sorting_strategy = 'ascending',
+        -- path_display = { shorten = 3 },
+        -- wrap_results = true,
         mappings = {
             i = {
                 ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
@@ -466,7 +477,7 @@ require('telescope').setup {
         file_ignore_patterns = { "tags*" },
         pickers = {
             find_files = {
-                theme = "ivy",
+                -- theme = "ivy",
             },
             live_grep = {
                 only_sort_text = true,
