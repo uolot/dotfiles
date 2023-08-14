@@ -94,25 +94,25 @@ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
 
 -- nvim-lsp-installer
 -- https://github.com/williamboman/nvim-lsp-installer#setup
-local function filter(arr, fn)
-    if type(arr) ~= "table" then
-        return arr
-    end
+-- local function filter(arr, fn)
+--     if type(arr) ~= "table" then
+--         return arr
+--     end
+--
+--     local filtered = {}
+--     for k, v in pairs(arr) do
+--         if fn(v, k, arr) then
+--             table.insert(filtered, v)
+--         end
+--     end
+--
+--     return filtered
+-- end
 
-    local filtered = {}
-    for k, v in pairs(arr) do
-        if fn(v, k, arr) then
-            table.insert(filtered, v)
-        end
-    end
-
-    return filtered
-end
-
-local function filterDTS(value)
-    return string.match(value.uri, '%.d.ts') == nil
-    -- return string.match(value.targetUri, '%.d.ts') == nil
-end
+-- local function filterDTS(value)
+--     return string.match(value.uri, '%.d.ts') == nil
+--     -- return string.match(value.targetUri, '%.d.ts') == nil
+-- end
 
 -- local lsp_installer = require("nvim-lsp-installer")
 -- lsp_installer.on_server_ready(function(server)
