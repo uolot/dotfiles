@@ -4,7 +4,7 @@
 
 BREW_PREFIX=$(brew --prefix)
 
-source $BREW_PREFIX/etc/bash_completion.d/ag.bashcomp.sh
+# source $BREW_PREFIX/etc/bash_completion.d/ag.bashcomp.sh # breaks path tab completion
 source $BREW_PREFIX/etc/bash_completion.d/asdf.bash
 source $BREW_PREFIX/etc/bash_completion.d/aws_bash_completer
 source $BREW_PREFIX/etc/bash_completion.d/az
