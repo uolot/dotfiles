@@ -50,11 +50,38 @@ require('lazy').setup({
     { 'williamboman/mason.nvim',              build = ':MasonUpdate' },
     { 'williamboman/mason-lspconfig.nvim' },
     { 'VonHeikemen/lsp-zero.nvim',            branch = 'v2.x' },
-    { 'jose-elias-alvarez/null-ls.nvim',      url = 'https://github.com/jose-elias-alvarez/null-ls.nvim' },
+    {
+        'jose-elias-alvarez/null-ls.nvim',
+        -- https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/CONFIG.md
+        -- https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md
+        url = 'https://github.com/jose-elias-alvarez/null-ls.nvim',
+        config = function()
+            local null_ls = require("null-ls")
+            null_ls.setup({
+                sources = {
+                    -- typescript
+                    null_ls.builtins.code_actions.eslint_d,
+                    null_ls.builtins.diagnostics.eslint_d,
+                    -- null_ls.builtins.diagnostics.tsc,
+                    -- python
+                    null_ls.builtins.formatting.black,
+                    null_ls.builtins.formatting.isort,
+                    null_ls.builtins.diagnostics.mypy,
+                    null_ls.builtins.diagnostics.flake8,
+                    -- misc
+                    null_ls.builtins.code_actions.refactoring,
+                    null_ls.builtins.diagnostics.trail_space.with({
+                        disabled_filetypes = { 'git', 'gitcommit', 'NvimTree', 'markdown' } }),
+                    null_ls.builtins.formatting.xmlformat,
+                },
+                -- on_attach = on_lsp_attach,
+            })
+        end
+    },
     { 'jay-babu/mason-null-ls.nvim' },
-    { 'RishabhRD/popfix',                     url = 'https://github.com/RishabhRD/popfix' },
-    { 'RishabhRD/nvim-lsputils',              url = 'https://github.com/RishabhRD/nvim-lsputils' },
-    { 'onsails/lspkind-nvim',                 url = 'https://github.com/onsails/lspkind-nvim' },
+    { 'RishabhRD/popfix',           url = 'https://github.com/RishabhRD/popfix' },
+    { 'RishabhRD/nvim-lsputils',    url = 'https://github.com/RishabhRD/nvim-lsputils' },
+    { 'onsails/lspkind-nvim',       url = 'https://github.com/onsails/lspkind-nvim' },
     -- { 'kosayoda/nvim-lightbulb',          url = 'https://github.com/kosayoda/nvim-lightbulb' },
     -- {
     --     'lukas-reineke/lsp-format.nvim',
