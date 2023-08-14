@@ -213,18 +213,27 @@ local config = {
     },
 
     resize_pane = {
-      { key = 'LeftArrow',  action = wez.action.AdjustPaneSize { 'Left', 1 } },
-      { key = 'h',          action = wez.action.AdjustPaneSize { 'Left', 1 } },
-      { key = 'RightArrow', action = wez.action.AdjustPaneSize { 'Right', 1 } },
-      { key = 'l',          action = wez.action.AdjustPaneSize { 'Right', 1 } },
-      { key = 'UpArrow',    action = wez.action.AdjustPaneSize { 'Up', 1 } },
-      { key = 'k',          action = wez.action.AdjustPaneSize { 'Up', 1 } },
-      { key = 'DownArrow',  action = wez.action.AdjustPaneSize { 'Down', 1 } },
-      { key = 'j',          action = wez.action.AdjustPaneSize { 'Down', 1 } },
+      { key = 'LeftArrow',  mods = '',      action = wez.action.AdjustPaneSize { 'Left', 1 } },
+      { key = 'h',          mods = '',      action = wez.action.AdjustPaneSize { 'Left', 1 } },
+      { key = 'h',          mods = 'SHIFT', action = wez.action.AdjustPaneSize { 'Left', 10 } },
+      { key = 'RightArrow', mods = '',      action = wez.action.AdjustPaneSize { 'Right', 1 } },
+      { key = 'l',          mods = '',      action = wez.action.AdjustPaneSize { 'Right', 1 } },
+      {
+        key = 'l',
+        mods = 'SHIFT',
+        action = wez.action.AdjustPaneSize {
+          'Right', 10 }
+      },
+      { key = 'UpArrow',   mods = '',             action = wez.action.AdjustPaneSize { 'Up', 1 } },
+      { key = 'k',         mods = '',             action = wez.action.AdjustPaneSize { 'Up', 1 } },
+      { key = 'k',         mods = 'SHIFT',        action = wez.action.AdjustPaneSize { 'Up', 10 } },
+      { key = 'DownArrow', mods = '',             action = wez.action.AdjustPaneSize { 'Down', 1 } },
+      { key = 'j',         mods = '',             action = wez.action.AdjustPaneSize { 'Down', 1 } },
+      { key = 'j',         mods = 'SHIFT',        action = wez.action.AdjustPaneSize { 'Down', 10 } },
 
       -- Cancel the mode by pressing escape or Q
-      { key = 'q',          action = 'PopKeyTable' },
-      { key = 'Escape',     action = 'PopKeyTable' },
+      { key = 'q',         action = 'PopKeyTable' },
+      { key = 'Escape',    action = 'PopKeyTable' },
     },
 
   },
