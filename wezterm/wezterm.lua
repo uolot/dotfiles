@@ -55,7 +55,7 @@ local config = {
   },
 
   -- available keys
-  -- ..e.tyui..
+  -- ..e..yui..
   -- a.dfg....
   -- zxc.b..
 
@@ -169,6 +169,12 @@ local config = {
       key = 'n',
       mods = 'LEADER|SHIFT',
       action = wez.action.ActivateTabRelative(-1),
+    },
+    -- new tab
+    {
+      key = 't',
+      mods = 'LEADER',
+      action = wez.action.SpawnTab 'CurrentPaneDomain',
     },
     -- move tabs
     {
