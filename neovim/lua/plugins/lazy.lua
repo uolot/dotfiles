@@ -14,42 +14,61 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
 
     -- cache plugins
-    { 'lewis6991/impatient.nvim',             url = 'https://github.com/lewis6991/impatient.nvim' },
+    { 'lewis6991/impatient.nvim',  url = 'https://github.com/lewis6991/impatient.nvim' },
 
     -- dependencies
     { 'nvim-lua/plenary.nvim' },
     { 'kevinhwang91/promise-async' },
 
-    -- Completion --
+    --
+    -- cmp
+    --
 
-    -- Extra completions
-    -- TODO: check https://github.com/xero/dotfiles/blob/main/neovim/.config/nvim/lua/plugins/cmp.lua
-    { 'hrsh7th/cmp-buffer',                   url = 'https://github.com/hrsh7th/cmp-buffer' },
-    { 'hrsh7th/cmp-calc',                     url = 'https://github.com/hrsh7th/cmp-calc' },
-    { 'hrsh7th/cmp-cmdline',                  url = 'https://github.com/hrsh7th/cmp-cmdline' },
-    { 'hrsh7th/cmp-emoji',                    url = 'https://github.com/hrsh7th/cmp-emoji' },
-    { 'hrsh7th/cmp-nvim-lsp',                 url = 'https://github.com/hrsh7th/cmp-nvim-lsp' },
-    { 'hrsh7th/cmp-nvim-lsp-document-symbol', url = 'https://github.com/hrsh7th/cmp-nvim-lsp-document-symbol' },
-    { 'hrsh7th/cmp-nvim-lsp-signature-help',  url = 'https://github.com/hrsh7th/cmp-nvim-lsp-signature-help' },
-    { 'hrsh7th/cmp-path',                     url = 'https://github.com/hrsh7th/cmp-path' },
+    {
+        'hrsh7th/nvim-cmp',
+        url = 'https://github.com/hrsh7th/nvim-cmp',
+        event = { "InsertEnter", "CmdLineEnter" },
+        dependencies = {
+            -- sources
+            { 'hrsh7th/cmp-buffer',                   url = 'https://github.com/hrsh7th/cmp-buffer' },
+            { 'hrsh7th/cmp-calc',                     url = 'https://github.com/hrsh7th/cmp-calc' },
+            { 'hrsh7th/cmp-cmdline',                  url = 'https://github.com/hrsh7th/cmp-cmdline' },
+            { 'hrsh7th/cmp-emoji',                    url = 'https://github.com/hrsh7th/cmp-emoji' },
+            { 'hrsh7th/cmp-nvim-lsp',                 url = 'https://github.com/hrsh7th/cmp-nvim-lsp' },
+            { 'hrsh7th/cmp-nvim-lsp-document-symbol', url = 'https://github.com/hrsh7th/cmp-nvim-lsp-document-symbol' },
+            { 'hrsh7th/cmp-nvim-lsp-signature-help',  url = 'https://github.com/hrsh7th/cmp-nvim-lsp-signature-help' },
+            { 'hrsh7th/cmp-path',                     url = 'https://github.com/hrsh7th/cmp-path' },
+            { 'ray-x/cmp-treesitter',                 url = 'https://github.com/ray-x/cmp-treesitter' },
 
-    -- A snippet plugin is required by nvim-cmp
-    { 'hrsh7th/vim-vsnip',                    url = 'https://github.com/hrsh7th/vim-vsnip' },
-    { 'hrsh7th/vim-vsnip-integ',              url = 'https://github.com/hrsh7th/vim-vsnip-integ' },
-    { 'hrsh7th/cmp-vsnip',                    url = 'https://github.com/hrsh7th/cmp-vsnip' },
+            -- comparators
+            { 'lukas-reineke/cmp-under-comparator',   url = 'https://github.com/lukas-reineke/cmp-under-comparator' },
 
-    -- Completion plugin
-    { 'hrsh7th/nvim-cmp',                     url = 'https://github.com/hrsh7th/nvim-cmp' },
+            -- snippet plugin is required by nvim-cmp
+            { 'hrsh7th/vim-vsnip',                    url = 'https://github.com/hrsh7th/vim-vsnip' },
+            { 'hrsh7th/vim-vsnip-integ',              url = 'https://github.com/hrsh7th/vim-vsnip-integ' },
+            { 'hrsh7th/cmp-vsnip',                    url = 'https://github.com/hrsh7th/cmp-vsnip' },
+
+            -- copilot
+            {
+                'zbirenbaum/copilot-cmp',
+                url = 'https://github.com/zbirenbaum/copilot-cmp',
+                dependencies = { { 'zbirenbaum/copilot.lua', url = 'https://github.com/zbirenbaum/copilot.lua' } }
+            },
+        },
+        config = function()
+            require("plugins.completion")
+        end
+    },
 
     --
-    -- lsp --
+    -- lsp
     --
 
     -- Plug 'williamboman/nvim-lsp-installer'
     { 'neovim/nvim-lspconfig' },
-    { 'williamboman/mason.nvim',              build = ':MasonUpdate' },
+    { 'williamboman/mason.nvim',          build = ':MasonUpdate' },
     { 'williamboman/mason-lspconfig.nvim' },
-    { 'VonHeikemen/lsp-zero.nvim',            branch = 'v2.x' },
+    { 'VonHeikemen/lsp-zero.nvim',        branch = 'v2.x' },
     {
         'jose-elias-alvarez/null-ls.nvim',
         -- https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/CONFIG.md
@@ -775,7 +794,7 @@ require('lazy').setup({
         }
     },
     -- { 'stevearc/overseer.nvim',           url = 'https://github.com/stevearc/overseer.nvim' },
-    { 'rcarriga/nvim-notify',   url = 'https://github.com/rcarriga/nvim-notify' },
+    { 'rcarriga/nvim-notify', url = 'https://github.com/rcarriga/nvim-notify' },
     {
         'kwkarlwang/bufjump.nvim',
         url = 'https://github.com/kwkarlwang/bufjump.nvim',
@@ -785,16 +804,13 @@ require('lazy').setup({
             on_success = nil
         }
     },
-    -- { 'github/copilot.vim',               url = 'https://github.com/github/copilot.vim' },
-    { 'zbirenbaum/copilot.lua', url = 'https://github.com/zbirenbaum/copilot.lua' },
-    { 'zbirenbaum/copilot-cmp', url = 'https://github.com/zbirenbaum/copilot-cmp' },
     {
         'tzachar/highlight-undo.nvim',
         url = 'https://github.com/tzachar/highlight-undo.nvim',
         keys = { 'u', 'U', '<C-r>' },
         opts = {}
     },
-    { 'folke/neodev.nvim', url = 'https://github.com/folke/neodev.nvim', priority = 1000 },
+    { 'folke/neodev.nvim',    url = 'https://github.com/folke/neodev.nvim',   priority = 1000 },
     {
         'marcushwz/nvim-workbench',
         url = 'https://github.com/weizheheng/nvim-workbench',
