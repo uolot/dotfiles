@@ -10,8 +10,7 @@
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 -- set completefunc=syntaxcomplete#Complete " set user-mode completions for <C-x><C-u>
 vim.opt.completefunc = 'syntaxcomplete#Complete'
--- set conceallevel=0
-vim.opt.conceallevel = 0
+vim.opt.conceallevel = 2
 -- set cursorline " highlight cursor line
 vim.opt.cursorline = true
 -- set expandtab " convert tabs to spaces

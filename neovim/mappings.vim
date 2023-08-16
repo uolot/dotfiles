@@ -86,6 +86,7 @@ augroup markdown_mappings
     autocmd FileType markdown nmap <silent> <Leader>mf :TableFormat<CR>
     autocmd FileType markdown nmap <silent> <Leader>mp :MarkdownPreviewToggle<CR>
     autocmd FileType markdown nmap <silent> <Leader>mt :Toc<CR>
+    autocmd FileType markdown nmap <silent> <Leader>mT :InsertToc<CR>
 augroup end
 
 " vsnip
