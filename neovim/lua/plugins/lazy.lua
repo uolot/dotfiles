@@ -56,7 +56,7 @@ require('lazy').setup({
             },
         },
         config = function()
-            require("plugins.completion")
+            require("plugins.cmp")
         end
     },
 
