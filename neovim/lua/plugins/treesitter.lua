@@ -122,27 +122,37 @@ require('nvim-treesitter.configs').setup({
             enable = true,
             set_jumps = true,
             goto_next_start = {
-                -- ["]c"] = "@class.outer",
-                -- ["]m"] = "@function.outer",
-                ["]]"] = { "@class.outer", "@function.outer" },
-                ["]m"] = { "@class.outer", "@function.outer" },
-                -- ["]b"] = "@block.outer",
+                ["]l"] = "@class.outer",
+                ["]f"] = "@function.outer",
+                ["]a"] = "@parameter.inner",
             },
             goto_previous_start = {
-                -- ["[c"] = "@class.outer",
-                -- ["[m"] = "@function.outer",
-                ["[["] = { "@class.outer", "@function.outer" },
-                ["[m"] = { "@class.outer", "@function.outer" },
-                -- ["[b"] = "@block.outer",
+                ["[l"] = "@class.outer",
+                ["[f"] = "@function.outer",
+                ["[a"] = "@parameter.inner",
+            },
+            goto_next_end = {
+                ["]F"] = "@function.outer",
+            },
+            goto_previous_end = {
+                ["[F"] = "@function.outer",
             },
         },
         swap = {
             enable = true,
             swap_next = {
-                ["]a"] = { "@parameter.inner" },
+                ["]A"] = "@parameter.inner",
             },
             swap_previous = {
-                ["[a"] = { "@parameter.inner" },
+                ["[A"] = "@parameter.inner",
+            },
+        },
+        lsp_interop = {
+            enable = true,
+            border = 'rounded',
+            floating_preview_opts = {},
+            peek_definition_code = {
+                ['<leader>gp'] = '@function.outer',
             },
         },
     },
