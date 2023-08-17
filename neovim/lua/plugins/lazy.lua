@@ -606,7 +606,6 @@ require('lazy').setup({
             vim.g.workbench_border = 'rounded'
         end
     },
-
 }, {
     -- diff = 'browser',
     -- diff = 'git',

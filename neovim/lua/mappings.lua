@@ -30,6 +30,14 @@ wk.register({
             f = { telescope_builtin.find_files, 'Find files' },
             h = { '<Cmd>Telescope find_files hidden=true<CR>', 'Hidden files' },
             o = { telescope_builtin.oldfiles, 'Open recent files' },
+            p = {
+                function()
+                    local fname = vim.api.nvim_buf_get_name(0)
+                    local git_root = require('lspconfig.util').find_git_ancestor(fname)
+                    telescope_builtin.find_files({ cwd = git_root })
+                end,
+                'Find files in git root',
+            },
         },
         g = {
             name = '+lsp',
@@ -74,7 +82,7 @@ wk.register({
         n = {
             name = '+neo-tree',
             c = { ':Neotree left filesystem toggle reveal_file=<cfile><CR>', 'Show file under cursor' },
-            d = { ':Neotree left filesystem toggle dir=', 'Open dir', silent=false },
+            d = { ':Neotree left filesystem toggle dir=', 'Open dir', silent = false },
             f = { ':Neotree left filesystem toggle reveal<CR>', 'Show current file' },
             n = { ':Neotree left filesystem toggle<CR>', 'Toggle' },
         },
