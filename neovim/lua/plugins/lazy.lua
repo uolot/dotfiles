@@ -81,13 +81,6 @@ require('lazy').setup({
     { 'RishabhRD/nvim-lsputils',    url = 'https://github.com/RishabhRD/nvim-lsputils' },
     { 'onsails/lspkind-nvim',       url = 'https://github.com/onsails/lspkind-nvim' },
     -- { 'kosayoda/nvim-lightbulb',          url = 'https://github.com/kosayoda/nvim-lightbulb' },
-    -- {
-    --     'lukas-reineke/lsp-format.nvim',
-    --     url = 'https://github.com/lukas-reineke/lsp-format.nvim',
-    --     config = function()
-    --         require("lsp-format").setup({})
-    --     end
-    -- },
     {
         'folke/trouble.nvim',
         lazy = true,
@@ -105,15 +98,18 @@ require('lazy').setup({
         cmd = 'CodeActionMenu'
     },
 
-    -- LSP signature hint as you type
-    -- { 'ray-x/lsp_signature.nvim',         url = 'https://github.com/ray-x/lsp_signature.nvim' },
-
     -- Incremental LSP rename command based on Neovim's command-preview feature
     { 'smjonas/inc-rename.nvim',                  url = 'https://github.com/smjonas/inc-rename.nvim' },
 
-    -- render diagnostics using virtual lines on top of the real line of code.
-    -- { 'Maan2003/lsp_lines.nvim',         url = 'https://github.com/Maan2003/lsp_lines.nvim' },
-    -- { 'https://git.sr.ht/~whynothugo/lsp_lines.nvim' },
+    -- Nvim lua plugin which adds support for twoslash queries into typescript projects
+    {
+        'marilari88/twoslash-queries.nvim',
+        url = 'https://github.com/marilari88/twoslash-queries.nvim',
+        opts = {
+            multi_line = false, -- to print types in multi line mode
+            is_enabled = true,  -- to keep disabled at startup and enable it on request with the EnableTwoslashQueries
+        }
+    },
 
     --
     -- treesitter --
@@ -326,12 +322,11 @@ require('lazy').setup({
     },
     -- Use treesitter to auto close and auto rename html tags
     { 'windwp/nvim-ts-autotag', url = 'https://github.com/windwp/nvim-ts-autotag' },
-    -- Rainbow parentheses for neovim using treesitter
-    -- TODO: no longer maintained, migrate to nvim-ts-rainbow2
-    -- Plug 'p00f/nvim-ts-rainbow'
 
 
-    -- Telescope --
+    --
+    -- telescope
+    --
 
     {
         'nvim-telescope/telescope.nvim',
@@ -355,7 +350,9 @@ require('lazy').setup({
     },
 
 
-    -- Colorschemes --
+    --
+    -- colorschemes
+    --
 
     { 'nvim-lualine/lualine.nvim',               url = 'https://github.com/nvim-lualine/lualine.nvim' },
 
@@ -378,76 +375,6 @@ require('lazy').setup({
             statementStyle = { italic = false, bold = true },
         },
     },
-
-    -- Misc --
-
-    -- Vim plugin that defines a new text object representing lines of code at the
-    -- same indent level. Useful for python/vim scripts, etc.
-    { 'michaeljsmith/vim-indent-object', url = 'https://github.com/michaeljsmith/vim-indent-object' },
-    -- { 'karb94/neoscroll.nvim',           url = 'https://github.com/karb94/neoscroll.nvim' },
-
-    -- Readline style insertion
-    { 'tpope/vim-rsi',                   url = 'https://github.com/tpope/vim-rsi' },
-
-    -- disables search highlighting when you are done searching and re-enables it when you search again
-    { 'romainl/vim-cool',                url = 'https://github.com/romainl/vim-cool' },
-
-    -- handle line and column numbers in file names, eg: file.txt:10 or file.txt:10:5
-    { 'kopischke/vim-fetch',             url = 'https://github.com/kopischke/vim-fetch' },
-
-    -- " auto-generate ctags file
-    -- { 'ludovicchabant/vim-gutentags',    url = 'https://github.com/ludovicchabant/vim-gutentags' },
-    --     let g:gutentags_project_root = [
-    --             \'.python-version',
-    --             \'docker-compose.yml',
-    --             \'Makefile',
-    --             \'package.json',
-    --             \'pyproject.toml',
-    --             \'README',
-    --             \'README.md'
-    --             \'requirements.txt',
-    --             \'setup.py',
-    --             \]
-
-
-    {
-        'numToStr/Comment.nvim',
-        url = 'https://github.com/numToStr/Comment.nvim',
-        opts = {
-            toggler = {
-                line = 'gcc',
-                block = 'gCC',
-            },
-            opleader = {
-                line = 'gc',
-                block = 'gC',
-            },
-        }
-    },
-    -- {
-    --     'hynek/vim-python-pep8-indent',
-    --     url = 'https://github.com/hynek/vim-python-pep8-indent',
-    --     ft =
-    --     'python'
-    -- },
-
-    -- highlighting visual selections
-    { 'Pocco81/HighStr.nvim', url = 'https://github.com/Pocco81/HighStr.nvim' },
-    -- Highlight several words in different colors simultaneously
-    -- { 'inkarkat/vim-ingo-library', url = 'https://github.com/inkarkat/vim-ingo-library' },
-    {
-        'inkarkat/vim-mark',
-        url = 'https://github.com/inkarkat/vim-mark',
-        dependencies = { 'inkarkat/vim-ingo-library' },
-        init = function()
-            vim.g.mw_no_mappings = 1
-            vim.g.mwDefaultHighlightingPalette = 'extended'
-        end
-    },
-
-
-    -- displays a popup with possible keybindings of the command you started typing
-    { 'folke/which-key.nvim', url = 'https://github.com/folke/which-key.nvim' },
 
     --
     -- file explorer
@@ -490,71 +417,28 @@ require('lazy').setup({
     -- git
     --
 
-    { 'tpope/vim-fugitive',      url = 'https://github.com/tpope/vim-fugitive',     lazy = false },
-    { 'lewis6991/gitsigns.nvim', url = 'https://github.com/lewis6991/gitsigns.nvim' },
+    { 'tpope/vim-fugitive',              url = 'https://github.com/tpope/vim-fugitive',              lazy = false },
+    { 'lewis6991/gitsigns.nvim',         url = 'https://github.com/lewis6991/gitsigns.nvim' },
 
     -- Single tabpage interface for easily cycling through diffs for all modified files for any git rev
-    { 'sindrets/diffview.nvim',  url = 'https://github.com/sindrets/diffview.nvim' },
+    { 'sindrets/diffview.nvim',          url = 'https://github.com/sindrets/diffview.nvim' },
 
     -- more pleasant editing on commit messages
-    { 'rhysd/committia.vim',     url = 'https://github.com/rhysd/committia.vim' },
+    { 'rhysd/committia.vim',             url = 'https://github.com/rhysd/committia.vim' },
 
     -- A git commit browser in Vim
     -- { 'junegunn/gv.vim',                 url = 'https://github.com/junegunn/gv.vim' },
 
     -- GitHub extension for fugitive.vim
-    { 'tpope/vim-rhubarb',       url = 'https://github.com/tpope/vim-rhubarb' },
-    -- extension to fugitive.vim for gitlab support
-    -- { 'shumphrey/fugitive-gitlab.vim',   url = 'https://github.com/shumphrey/fugitive-gitlab.vim' },
-    -- Add Bitbucket URL support to fugitive.vim's :Gbrowse command
-    -- { 'tommcdo/vim-fubitive',            url = 'https://github.com/tommcdo/vim-fubitive' },
+    { 'tpope/vim-rhubarb',               url = 'https://github.com/tpope/vim-rhubarb' },
 
     -- One second to read GitHub code with vim
     -- { 'drzel/vim-repo-edit',             url = 'https://github.com/drzel/vim-repo-edit' },
 
 
-    -- Misc -
-
-    -- Highlight, list and search todo comments in your projects
-    {
-        'folke/todo-comments.nvim',
-        url = 'https://github.com/folke/todo-comments.nvim',
-        lazy = false,
-        opts = {
-            signs = false,
-            highlight = {
-                multiline = false,
-                -- pattern = [[.*<(KEYWORDS)\s*:]],
-                pattern = [[.*<(KEYWORDS)\s*]],
-                comments_only = true,
-            },
-            search = {
-                pattern = [[\b(KEYWORDS)\b]],
-            },
-        }
-    },
-
-    -- A better user experience for interacting with and manipulating Vim marks
-    -- mx              Set mark x
-    -- m,              Set the next available alphabetical (lowercase) mark
-    -- m;              Toggle the next available mark at the current line
-    -- dmx             Delete mark x
-    -- dm-             Delete all marks on the current line
-    -- dm<space>       Delete all marks in the current buffer
-    -- m]              Move to next mark
-    -- m[              Move to previous mark
-    -- m:              Preview mark. This will prompt you for a specific mark to
-    --                 preview; press <cr> to preview the next mark.
-    -- m[0-9]          Add a bookmark from bookmark group[0-9].
-    -- dm[0-9]         Delete all bookmarks from bookmark group[0-9].
-    -- m}              Move to the next bookmark having the same type as the bookmark under
-    --                 the cursor. Works across buffers.
-    -- m{              Move to the previous bookmark having the same type as the bookmark under
-    --                 the cursor. Works across buffers.
-    -- dm=             Delete the bookmark under the cursor.
-    { 'chentoast/marks.nvim',            url = 'https://github.com/chentoast/marks.nvim' },
-
-    -- Vimwiki & Markdown --
+    --
+    -- vimwiki & markdown
+    --
 
     { 'vimwiki/vimwiki',                 url = 'https://github.com/vimwiki/vimwiki',                 lazy = true },
     { 'ElPiloto/telescope-vimwiki.nvim', url = 'https://github.com/ElPiloto/telescope-vimwiki.nvim', lazy = true },
@@ -645,7 +529,95 @@ require('lazy').setup({
         end
     },
 
-    -- Misc --
+
+    --
+    -- misc
+    --
+
+    -- Vim plugin that defines a new text object representing lines of code at the
+    -- same indent level. Useful for python/vim scripts, etc.
+    { 'michaeljsmith/vim-indent-object', url = 'https://github.com/michaeljsmith/vim-indent-object' },
+    -- { 'karb94/neoscroll.nvim',           url = 'https://github.com/karb94/neoscroll.nvim' },
+
+    -- Readline style insertion
+    { 'tpope/vim-rsi',                   url = 'https://github.com/tpope/vim-rsi' },
+
+    -- disables search highlighting when you are done searching and re-enables it when you search again
+    { 'romainl/vim-cool',                url = 'https://github.com/romainl/vim-cool' },
+
+    -- handle line and column numbers in file names, eg: file.txt:10 or file.txt:10:5
+    { 'kopischke/vim-fetch',             url = 'https://github.com/kopischke/vim-fetch' },
+
+    {
+        'numToStr/Comment.nvim',
+        url = 'https://github.com/numToStr/Comment.nvim',
+        opts = {
+            toggler = {
+                line = 'gcc',
+                block = 'gCC',
+            },
+            opleader = {
+                line = 'gc',
+                block = 'gC',
+            },
+        }
+    },
+
+    -- highlighting visual selections
+    { 'Pocco81/HighStr.nvim', url = 'https://github.com/Pocco81/HighStr.nvim' },
+
+    -- Highlight several words in different colors simultaneously
+    {
+        'inkarkat/vim-mark',
+        url = 'https://github.com/inkarkat/vim-mark',
+        dependencies = { 'inkarkat/vim-ingo-library' },
+        init = function()
+            vim.g.mw_no_mappings = 1
+            vim.g.mwDefaultHighlightingPalette = 'extended'
+        end
+    },
+
+    -- displays a popup with possible keybindings of the command you started typing
+    { 'folke/which-key.nvim', url = 'https://github.com/folke/which-key.nvim' },
+
+    -- Highlight, list and search todo comments in your projects
+    {
+        'folke/todo-comments.nvim',
+        url = 'https://github.com/folke/todo-comments.nvim',
+        lazy = false,
+        opts = {
+            signs = false,
+            highlight = {
+                multiline = false,
+                -- pattern = [[.*<(KEYWORDS)\s*:]],
+                pattern = [[.*<(KEYWORDS)\s*]],
+                comments_only = true,
+            },
+            search = {
+                pattern = [[\b(KEYWORDS)\b]],
+            },
+        }
+    },
+
+    -- A better user experience for interacting with and manipulating Vim marks
+    -- mx              Set mark x
+    -- m,              Set the next available alphabetical (lowercase) mark
+    -- m;              Toggle the next available mark at the current line
+    -- dmx             Delete mark x
+    -- dm-             Delete all marks on the current line
+    -- dm<space>       Delete all marks in the current buffer
+    -- m]              Move to next mark
+    -- m[              Move to previous mark
+    -- m:              Preview mark. This will prompt you for a specific mark to
+    --                 preview; press <cr> to preview the next mark.
+    -- m[0-9]          Add a bookmark from bookmark group[0-9].
+    -- dm[0-9]         Delete all bookmarks from bookmark group[0-9].
+    -- m}              Move to the next bookmark having the same type as the bookmark under
+    --                 the cursor. Works across buffers.
+    -- m{              Move to the previous bookmark having the same type as the bookmark under
+    --                 the cursor. Works across buffers.
+    -- dm=             Delete the bookmark under the cursor.
+    { 'chentoast/marks.nvim',     url = 'https://github.com/chentoast/marks.nvim' },
 
     -- Run Async Shell Commands
     { 'skywind3000/asyncrun.vim', url = 'https://github.com/skywind3000/asyncrun.vim' },
@@ -754,15 +726,6 @@ require('lazy').setup({
         end
     },
 
-    -- Nvim lua plugin which adds support for twoslash queries into typescript projects
-    {
-        'marilari88/twoslash-queries.nvim',
-        url = 'https://github.com/marilari88/twoslash-queries.nvim',
-        opts = {
-            multi_line = false, -- to print types in multi line mode
-            is_enabled = true,  -- to keep disabled at startup and enable it on request with the EnableTwoslashQueries
-        }
-    },
     {
         'gen740/SmoothCursor.nvim',
         url = 'https://github.com/gen740/SmoothCursor.nvim',
