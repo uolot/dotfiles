@@ -14,7 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
 
     -- cache plugins
-    { 'lewis6991/impatient.nvim',  url = 'https://github.com/lewis6991/impatient.nvim' },
+    { 'lewis6991/impatient.nvim' },
 
     -- dependencies
     { 'nvim-lua/plenary.nvim' },
@@ -26,7 +26,6 @@ require('lazy').setup({
 
     {
         'hrsh7th/nvim-cmp',
-        url = 'https://github.com/hrsh7th/nvim-cmp',
         event = { "InsertEnter", "CmdLineEnter" },
         dependencies = require("plugins.cmp").dependencies,
         config = require("plugins.cmp").config,
@@ -43,16 +42,15 @@ require('lazy').setup({
     { 'VonHeikemen/lsp-zero.nvim',        branch = 'v2.x' },
     {
         'jose-elias-alvarez/null-ls.nvim',
-        url = 'https://github.com/jose-elias-alvarez/null-ls.nvim',
         config = function()
             require('plugins.null-ls')
         end
     },
     { 'jay-babu/mason-null-ls.nvim' },
-    { 'RishabhRD/popfix',           url = 'https://github.com/RishabhRD/popfix' },
-    { 'RishabhRD/nvim-lsputils',    url = 'https://github.com/RishabhRD/nvim-lsputils' },
-    { 'onsails/lspkind-nvim',       url = 'https://github.com/onsails/lspkind-nvim' },
-    -- { 'kosayoda/nvim-lightbulb',          url = 'https://github.com/kosayoda/nvim-lightbulb' },
+    { 'RishabhRD/popfix' },
+    { 'RishabhRD/nvim-lsputils' },
+    { 'onsails/lspkind-nvim' },
+    -- { 'kosayoda/nvim-lightbulb' },
     {
         'folke/trouble.nvim',
         lazy = true,
@@ -66,17 +64,15 @@ require('lazy').setup({
     --     Provides ":CodeActionMenu"
     {
         'weilbith/nvim-code-action-menu',
-        url = 'https://github.com/weilbith/nvim-code-action-menu',
         cmd = 'CodeActionMenu'
     },
 
     -- Incremental LSP rename command based on Neovim's command-preview feature
-    { 'smjonas/inc-rename.nvim',                  url = 'https://github.com/smjonas/inc-rename.nvim' },
+    { 'smjonas/inc-rename.nvim' },
 
     -- Nvim lua plugin which adds support for twoslash queries into typescript projects
     {
         'marilari88/twoslash-queries.nvim',
-        url = 'https://github.com/marilari88/twoslash-queries.nvim',
         opts = {
             multi_line = false, -- to print types in multi line mode
             is_enabled = true,  -- to keep disabled at startup and enable it on request with the EnableTwoslashQueries
@@ -89,7 +85,6 @@ require('lazy').setup({
 
     {
         'nvim-treesitter/nvim-treesitter',
-        url = 'https://github.com/nvim-treesitter/nvim-treesitter',
         build = ':TSUpdate',
         lazy = false,
         priority = 900,
@@ -99,16 +94,16 @@ require('lazy').setup({
     },
     {
         'nvim-treesitter/nvim-treesitter-textobjects',
-        url = 'https://github.com/nvim-treesitter/nvim-treesitter-textobjects'
+
     },
-    { 'nvim-treesitter/nvim-treesitter-refactor', url = 'https://github.com/nvim-treesitter/nvim-treesitter-refactor' },
-    { 'nvim-treesitter/nvim-treesitter-context',  url = 'https://github.com/nvim-treesitter/nvim-treesitter-context' },
+    { 'nvim-treesitter/nvim-treesitter-refactor' },
+    { 'nvim-treesitter/nvim-treesitter-context' },
     {
         'JoosepAlviste/nvim-ts-context-commentstring',
-        url = 'https://github.com/JoosepAlviste/nvim-ts-context-commentstring'
+
     },
     -- Use treesitter to auto close and auto rename html tags
-    { 'windwp/nvim-ts-autotag', url = 'https://github.com/windwp/nvim-ts-autotag' },
+    { 'windwp/nvim-ts-autotag' },
 
 
     --
@@ -117,19 +112,16 @@ require('lazy').setup({
 
     {
         'nvim-telescope/telescope.nvim',
-        url = 'https://github.com/nvim-telescope/telescope.nvim',
         branch = '0.1.x'
     },
-    { 'kelly-lin/telescope-ag', url = 'https://github.com/kelly-lin/telescope-ag' },
+    { 'kelly-lin/telescope-ag' },
     {
         'nvim-telescope/telescope-fzf-native.nvim',
-        url = 'https://github.com/nvim-telescope/telescope-fzf-native.nvim',
         build = 'make'
     },
-    { 'nvim-telescope/telescope-ui-select.nvim', url = 'https://github.com/nvim-telescope/telescope-ui-select.nvim' },
+    { 'nvim-telescope/telescope-ui-select.nvim' },
     {
         'nvim-telescope/telescope-live-grep-args.nvim',
-        url = 'https://github.com/nvim-telescope/telescope-live-grep-args.nvim',
         lazy = true,
         config = function()
             require("telescope").load_extension("live_grep_args")
@@ -141,11 +133,10 @@ require('lazy').setup({
     -- colorschemes
     --
 
-    { 'nvim-lualine/lualine.nvim',               url = 'https://github.com/nvim-lualine/lualine.nvim' },
+    { 'nvim-lualine/lualine.nvim' },
 
     {
         'rebelot/kanagawa.nvim',
-        url = 'https://github.com/rebelot/kanagawa.nvim',
         lazy = false,
         priority = 1000,
         init = function()
@@ -204,36 +195,35 @@ require('lazy').setup({
     -- git
     --
 
-    { 'tpope/vim-fugitive',              url = 'https://github.com/tpope/vim-fugitive',              lazy = false },
-    { 'lewis6991/gitsigns.nvim',         url = 'https://github.com/lewis6991/gitsigns.nvim' },
+    { 'tpope/vim-fugitive',              lazy = false },
+    { 'lewis6991/gitsigns.nvim' },
 
     -- Single tabpage interface for easily cycling through diffs for all modified files for any git rev
-    { 'sindrets/diffview.nvim',          url = 'https://github.com/sindrets/diffview.nvim' },
+    { 'sindrets/diffview.nvim' },
 
     -- more pleasant editing on commit messages
-    { 'rhysd/committia.vim',             url = 'https://github.com/rhysd/committia.vim' },
+    { 'rhysd/committia.vim' },
 
     -- A git commit browser in Vim
-    -- { 'junegunn/gv.vim',                 url = 'https://github.com/junegunn/gv.vim' },
+    -- { 'junegunn/gv.vim' },
 
     -- GitHub extension for fugitive.vim
-    { 'tpope/vim-rhubarb',               url = 'https://github.com/tpope/vim-rhubarb' },
+    { 'tpope/vim-rhubarb' },
 
     -- One second to read GitHub code with vim
-    -- { 'drzel/vim-repo-edit',             url = 'https://github.com/drzel/vim-repo-edit' },
+    -- { 'drzel/vim-repo-edit' },
 
 
     --
     -- vimwiki & markdown
     --
 
-    { 'vimwiki/vimwiki',                 url = 'https://github.com/vimwiki/vimwiki',                 lazy = true },
-    { 'ElPiloto/telescope-vimwiki.nvim', url = 'https://github.com/ElPiloto/telescope-vimwiki.nvim', lazy = true },
+    { 'vimwiki/vimwiki',                 lazy = true },
+    { 'ElPiloto/telescope-vimwiki.nvim', lazy = true },
 
     -- Markdown live preview
     {
         'iamcco/markdown-preview.nvim',
-        url = 'https://github.com/iamcco/markdown-preview.nvim',
         ft = { 'markdown', 'vim-plug' },
         config = function()
             vim.fn['mkdp#util#install']()
@@ -244,14 +234,12 @@ require('lazy').setup({
     -- Neovim extension for zk
     {
         'mickael-menu/zk-nvim',
-        url = 'https://github.com/mickael-menu/zk-nvim',
         config = function()
             require('zk').setup({ picker = 'telescope' })
         end
     },
     {
         'preservim/vim-markdown',
-        url = 'https://github.com/preservim/vim-markdown',
         config = function()
             vim.g.vim_markdown_folding_disabled = 0
             vim.g.vim_markdown_no_default_key_mappings = 1
@@ -261,14 +249,12 @@ require('lazy').setup({
             vim.g.vim_markdown_math = 1
             vim.g.vim_markdown_frontmatter = 1
             vim.g.vim_markdown_toml_frontmatter = 1
-            vim.g.vim_markdown_edit_url_in = 'vsplit'
         end
     },
 
     -- Additional highlights for markdown
     {
         'lukas-reineke/headlines.nvim',
-        url = 'https://github.com/lukas-reineke/headlines.nvim',
         lazy = true,
         ft = { 'markdown' },
         -- dependencies = { 'nvim-treesitter/nvim-treesitter' },
@@ -323,21 +309,20 @@ require('lazy').setup({
 
     -- Vim plugin that defines a new text object representing lines of code at the
     -- same indent level. Useful for python/vim scripts, etc.
-    { 'michaeljsmith/vim-indent-object', url = 'https://github.com/michaeljsmith/vim-indent-object' },
-    -- { 'karb94/neoscroll.nvim',           url = 'https://github.com/karb94/neoscroll.nvim' },
+    { 'michaeljsmith/vim-indent-object' },
+    -- { 'karb94/neoscroll.nvim' },
 
     -- Readline style insertion
-    { 'tpope/vim-rsi',                   url = 'https://github.com/tpope/vim-rsi' },
+    { 'tpope/vim-rsi' },
 
     -- disables search highlighting when you are done searching and re-enables it when you search again
-    { 'romainl/vim-cool',                url = 'https://github.com/romainl/vim-cool' },
+    { 'romainl/vim-cool' },
 
     -- handle line and column numbers in file names, eg: file.txt:10 or file.txt:10:5
-    { 'kopischke/vim-fetch',             url = 'https://github.com/kopischke/vim-fetch' },
+    { 'kopischke/vim-fetch' },
 
     {
         'numToStr/Comment.nvim',
-        url = 'https://github.com/numToStr/Comment.nvim',
         opts = {
             toggler = {
                 line = 'gcc',
@@ -351,12 +336,11 @@ require('lazy').setup({
     },
 
     -- highlighting visual selections
-    { 'Pocco81/HighStr.nvim', url = 'https://github.com/Pocco81/HighStr.nvim' },
+    { 'Pocco81/HighStr.nvim' },
 
     -- Highlight several words in different colors simultaneously
     {
         'inkarkat/vim-mark',
-        url = 'https://github.com/inkarkat/vim-mark',
         dependencies = { 'inkarkat/vim-ingo-library' },
         init = function()
             vim.g.mw_no_mappings = 1
@@ -365,12 +349,11 @@ require('lazy').setup({
     },
 
     -- displays a popup with possible keybindings of the command you started typing
-    { 'folke/which-key.nvim', url = 'https://github.com/folke/which-key.nvim' },
+    { 'folke/which-key.nvim' },
 
     -- Highlight, list and search todo comments in your projects
     {
         'folke/todo-comments.nvim',
-        url = 'https://github.com/folke/todo-comments.nvim',
         lazy = false,
         opts = {
             signs = false,
@@ -404,13 +387,13 @@ require('lazy').setup({
     -- m{              Move to the previous bookmark having the same type as the bookmark under
     --                 the cursor. Works across buffers.
     -- dm=             Delete the bookmark under the cursor.
-    { 'chentoast/marks.nvim',     url = 'https://github.com/chentoast/marks.nvim' },
+    { 'chentoast/marks.nvim' },
 
     -- Run Async Shell Commands
-    { 'skywind3000/asyncrun.vim', url = 'https://github.com/skywind3000/asyncrun.vim' },
+    { 'skywind3000/asyncrun.vim' },
 
     -- Set of operators and textobjects to search/select/edit sandwiched texts
-    { 'machakann/vim-sandwich',   url = 'https://github.com/machakann/vim-sandwich' },
+    { 'machakann/vim-sandwich' },
 
     -- Additional text objects
     -- Provides:
@@ -418,20 +401,18 @@ require('lazy').setup({
     -- inX anX AnX InX for next object
     -- ilX alX AlX IlX for previous (last) object
     -- ia aa Ia Aa for arguments; works with nX/lX as well
-    { 'wellle/targets.vim',       url = 'https://github.com/wellle/targets.vim' },
+    { 'wellle/targets.vim' },
 
     {
         'godlygeek/tabular',
-        url = 'https://github.com/godlygeek/tabular',
         cmd = 'Tabularize'
     },
 
     -- Heuristically set buffer options
-    { 'tpope/vim-sleuth', url = 'https://github.com/tpope/vim-sleuth' },
-    { 'jbyuki/venn.nvim', url = 'https://github.com/jbyuki/venn.nvim' },
+    { 'tpope/vim-sleuth' },
+    { 'jbyuki/venn.nvim' },
     {
         'levouh/tint.nvim',
-        url = 'https://github.com/levouh/tint.nvim',
         config = function()
             require("tint").setup({
                 tint = 15,
@@ -439,26 +420,24 @@ require('lazy').setup({
             })
         end
     },
-    { 'sindrets/winshift.nvim',              url = 'https://github.com/sindrets/winshift.nvim',             lazy = true },
-    { 'gbrlsnchs/winpick.nvim',              url = 'https://github.com/gbrlsnchs/winpick.nvim',             lazy = true },
+    { 'sindrets/winshift.nvim',              lazy = true },
+    { 'gbrlsnchs/winpick.nvim',              lazy = true },
 
     -- hide gutter numbers for folds
-    { 'luukvbaal/statuscol.nvim',            url = 'https://github.com/luukvbaal/statuscol.nvim' },
+    { 'luukvbaal/statuscol.nvim' },
     -- ultra fold
-    { 'kevinhwang91/nvim-ufo',               url = 'https://github.com/kevinhwang91/nvim-ufo',              opts = {} },
-    { 'lukas-reineke/indent-blankline.nvim', url = 'https://github.com/lukas-reineke/indent-blankline.nvim' },
+    { 'kevinhwang91/nvim-ufo',               opts = {} },
+    { 'lukas-reineke/indent-blankline.nvim' },
 
     -- Inversed J
     {
         'AckslD/nvim-trevJ.lua',
-        url = 'https://github.com/AckslD/nvim-trevJ.lua/',
         config = function()
             require('trevj').setup()
         end
     },
     {
         'kiran94/s3edit.nvim',
-        url = 'https://github.com/kiran94/s3edit.nvim',
         cmd = 'S3Edit',
         opts = {
             -- exclude = { ".git", ".hoodie", ".parquet", ".zip" },
@@ -467,16 +446,15 @@ require('lazy').setup({
     },
 
     -- Broken, revisit when updated
-    -- { 'nvim-zh/colorful-winsep.nvim',     url = 'https://github.com/nvim-zh/colorful-winsep.nvim' },
-    { 'tweekmonster/startuptime.vim', url = 'https://github.com/tweekmonster/startuptime.vim' },
+    -- { 'nvim-zh/colorful-winsep.nvim' },
+    { 'tweekmonster/startuptime.vim' },
 
     -- Easily add additional highlights to your buffers
-    { 'folke/paint.nvim',             url = 'https://github.com/folke/paint.nvim' },
+    { 'folke/paint.nvim' },
 
     -- Neovim file explorer: edit your filesystem like a buffer
     {
         'stevearc/oil.nvim',
-        url = 'https://github.com/stevearc/oil.nvim',
         lazy = false,
         config = function()
             require('oil').setup()
@@ -486,7 +464,6 @@ require('lazy').setup({
     -- Embed Neovim in Chrome, Firefox & others.
     {
         'glacambre/firenvim',
-        url = 'https://github.com/glacambre/firenvim',
         cond = not not vim.g.started_by_firenvim,
         build = function()
             require('lazy').load({ plugins = 'firenvim', wait = true })
@@ -515,7 +492,6 @@ require('lazy').setup({
 
     {
         'gen740/SmoothCursor.nvim',
-        url = 'https://github.com/gen740/SmoothCursor.nvim',
         opts = {
             autostart = true,
             cursor = "", -- cursor shape (need nerd font)
@@ -548,11 +524,10 @@ require('lazy').setup({
             disabled_filetypes = nil,  -- this option will be skipped if enabled_filetypes is set. example: { "TelescopePrompt", "NvimTree" }
         }
     },
-    -- { 'stevearc/overseer.nvim',           url = 'https://github.com/stevearc/overseer.nvim' },
-    { 'rcarriga/nvim-notify', url = 'https://github.com/rcarriga/nvim-notify' },
+    -- { 'stevearc/overseer.nvim' },
+    { 'rcarriga/nvim-notify' },
     {
         'kwkarlwang/bufjump.nvim',
-        url = 'https://github.com/kwkarlwang/bufjump.nvim',
         opts = {
             forward = '<C-n>',
             backward = '<C-p>',
@@ -561,14 +536,12 @@ require('lazy').setup({
     },
     {
         'tzachar/highlight-undo.nvim',
-        url = 'https://github.com/tzachar/highlight-undo.nvim',
         keys = { 'u', 'U', '<C-r>' },
         opts = {}
     },
-    { 'folke/neodev.nvim',    url = 'https://github.com/folke/neodev.nvim',   priority = 1000 },
+    { 'folke/neodev.nvim',    priority = 1000 },
     {
         'marcushwz/nvim-workbench',
-        url = 'https://github.com/weizheheng/nvim-workbench',
         keys = {
             '<Plug>ToggleProjectWorkbench',
             '<Plug>ToggleBranchWorkbench',
