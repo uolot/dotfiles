@@ -28,36 +28,8 @@ require('lazy').setup({
         'hrsh7th/nvim-cmp',
         url = 'https://github.com/hrsh7th/nvim-cmp',
         event = { "InsertEnter", "CmdLineEnter" },
-        dependencies = {
-            -- sources
-            { 'hrsh7th/cmp-buffer',                   url = 'https://github.com/hrsh7th/cmp-buffer' },
-            { 'hrsh7th/cmp-calc',                     url = 'https://github.com/hrsh7th/cmp-calc' },
-            { 'hrsh7th/cmp-cmdline',                  url = 'https://github.com/hrsh7th/cmp-cmdline' },
-            { 'hrsh7th/cmp-emoji',                    url = 'https://github.com/hrsh7th/cmp-emoji' },
-            { 'hrsh7th/cmp-nvim-lsp',                 url = 'https://github.com/hrsh7th/cmp-nvim-lsp' },
-            { 'hrsh7th/cmp-nvim-lsp-document-symbol', url = 'https://github.com/hrsh7th/cmp-nvim-lsp-document-symbol' },
-            { 'hrsh7th/cmp-nvim-lsp-signature-help',  url = 'https://github.com/hrsh7th/cmp-nvim-lsp-signature-help' },
-            { 'hrsh7th/cmp-path',                     url = 'https://github.com/hrsh7th/cmp-path' },
-            { 'ray-x/cmp-treesitter',                 url = 'https://github.com/ray-x/cmp-treesitter' },
-
-            -- comparators
-            { 'lukas-reineke/cmp-under-comparator',   url = 'https://github.com/lukas-reineke/cmp-under-comparator' },
-
-            -- snippet plugin is required by nvim-cmp
-            { 'hrsh7th/vim-vsnip',                    url = 'https://github.com/hrsh7th/vim-vsnip' },
-            { 'hrsh7th/vim-vsnip-integ',              url = 'https://github.com/hrsh7th/vim-vsnip-integ' },
-            { 'hrsh7th/cmp-vsnip',                    url = 'https://github.com/hrsh7th/cmp-vsnip' },
-
-            -- copilot
-            {
-                'zbirenbaum/copilot-cmp',
-                url = 'https://github.com/zbirenbaum/copilot-cmp',
-                dependencies = { { 'zbirenbaum/copilot.lua', url = 'https://github.com/zbirenbaum/copilot.lua' } }
-            },
-        },
-        config = function()
-            require("plugins.cmp")
-        end
+        dependencies = require("plugins.cmp").dependencies,
+        config = require("plugins.cmp").config,
     },
 
     --
