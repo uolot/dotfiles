@@ -8,6 +8,7 @@ require('nvim-treesitter.configs').setup({
         "comment",
         "cpp",
         "css",
+        "csv",
         "diff",
         "dockerfile",
         "dot",
