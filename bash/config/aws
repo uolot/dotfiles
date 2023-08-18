@@ -31,13 +31,14 @@ eval-saml() {
 }
 
 saml() {
-    local query=""
-    if [ $# -gt 0 ]; then
-        query="-q $*"
+    local args=""
+    if [[ "$1" == "-f" ]]; then
+        args="-f"
+        shift
     fi
     local account=$(__pick-aws-account $*)
     __unset-aws-env-vars
-    saml2aws login --skip-prompt --idp-account=$account
+    saml2aws login --skip-prompt --idp-account=$account $args
     eval $(saml2aws script --shell=bash --idp-account=$account)
     echo $account > /tmp/saml-account
 }
