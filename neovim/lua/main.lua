@@ -3,8 +3,6 @@ require('plugins.lazy')
 require('impatient')
 vim.loader.enable()
 
-vim.g.vim_json_conceal = 0
-
 -- needs setup before LSP
 -- require('neodev').setup({})
 

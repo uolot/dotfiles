@@ -62,5 +62,8 @@ command -range Reverse <line1>,<line2>!tac
 " vsnip snippets dir
 let g:vsnip_snippet_dir = "$HOME/.dotfiles/neovim/vsnip/"
 
+au FileType json setlocal conceallevel=0
+au FileType jsonc setlocal conceallevel=0
+
 " For VS Code:
 " exists('g:vscode')
