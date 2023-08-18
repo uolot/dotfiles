@@ -12,9 +12,9 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
-
-    -- cache plugins
+    -- top plugins
     { 'lewis6991/impatient.nvim' },
+    { 'folke/neodev.nvim',         priority = 1000 },
 
     -- dependencies
     { 'nvim-lua/plenary.nvim' },
@@ -80,7 +80,7 @@ require('lazy').setup({
     },
 
     --
-    -- treesitter --
+    -- treesitter
     --
 
     {
@@ -92,19 +92,12 @@ require('lazy').setup({
             require('plugins.treesitter')
         end
     },
-    {
-        'nvim-treesitter/nvim-treesitter-textobjects',
-
-    },
+    { 'nvim-treesitter/nvim-treesitter-textobjects' },
     { 'nvim-treesitter/nvim-treesitter-refactor' },
     { 'nvim-treesitter/nvim-treesitter-context' },
-    {
-        'JoosepAlviste/nvim-ts-context-commentstring',
-
-    },
+    { 'JoosepAlviste/nvim-ts-context-commentstring' },
     -- Use treesitter to auto close and auto rename html tags
     { 'windwp/nvim-ts-autotag' },
-
 
     --
     -- telescope
@@ -112,7 +105,9 @@ require('lazy').setup({
 
     {
         'nvim-telescope/telescope.nvim',
-        branch = '0.1.x'
+        branch = '0.1.x',
+        lazy = true,
+        config = require('plugins.telescope').config,
     },
     { 'kelly-lin/telescope-ag' },
     {
@@ -128,13 +123,11 @@ require('lazy').setup({
         end,
     },
 
-
     --
-    -- colorschemes
+    -- colors & highlighting
     --
 
-    { 'nvim-lualine/lualine.nvim' },
-
+    { 'nvim-lualine/lualine.nvim', opts = require('plugins.lualine').opts },
     {
         'rebelot/kanagawa.nvim',
         lazy = false,
@@ -153,191 +146,10 @@ require('lazy').setup({
             statementStyle = { italic = false, bold = true },
         },
     },
-
-    --
-    -- file explorer
-    --
-
-    {
-        "nvim-neo-tree/neo-tree.nvim",
-        branch = "v3.x",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "nvim-tree/nvim-web-devicons",
-            "MunifTanjim/nui.nvim",
-            {
-                -- only needed if you want to use the commands with "_with_window_picker" suffix
-                's1n7ax/nvim-window-picker',
-                version = "1.*",
-                config = function()
-                    require 'window-picker'.setup({
-                        autoselect_one = true,
-                        include_current = false,
-                        filter_rules = {
-                            -- filter using buffer options
-                            bo = {
-                                -- if the file type is one of following, the window will be ignored
-                                filetype = { 'neo-tree', "neo-tree-popup", "notify" },
-
-                                -- if the buffer type is one of following, the window will be ignored
-                                buftype = { 'terminal', "quickfix" },
-                            },
-                        },
-                        other_win_hl_color = '#e35e4f',
-                    })
-                end,
-            }
-        }
-    },
-
-
-    --
-    -- git
-    --
-
-    { 'tpope/vim-fugitive',              lazy = false },
-    { 'lewis6991/gitsigns.nvim' },
-
-    -- Single tabpage interface for easily cycling through diffs for all modified files for any git rev
-    { 'sindrets/diffview.nvim' },
-
-    -- more pleasant editing on commit messages
-    { 'rhysd/committia.vim' },
-
-    -- A git commit browser in Vim
-    -- { 'junegunn/gv.vim' },
-
-    -- GitHub extension for fugitive.vim
-    { 'tpope/vim-rhubarb' },
-
-    -- One second to read GitHub code with vim
-    -- { 'drzel/vim-repo-edit' },
-
-
-    --
-    -- vimwiki & markdown
-    --
-
-    { 'vimwiki/vimwiki',                 lazy = true },
-    { 'ElPiloto/telescope-vimwiki.nvim', lazy = true },
-
-    -- Markdown live preview
-    {
-        'iamcco/markdown-preview.nvim',
-        ft = { 'markdown', 'vim-plug' },
-        config = function()
-            vim.fn['mkdp#util#install']()
-            vim.g.mkdp_auto_close = 0
-        end
-    },
-
-    -- Neovim extension for zk
-    {
-        'mickael-menu/zk-nvim',
-        config = function()
-            require('zk').setup({ picker = 'telescope' })
-        end
-    },
-    {
-        'preservim/vim-markdown',
-        config = function()
-            vim.g.vim_markdown_folding_disabled = 0
-            vim.g.vim_markdown_no_default_key_mappings = 1
-            vim.g.vim_markdown_toc_autofit = 1
-            vim.g.vim_markdown_conceal_code_blocks = 0
-            vim.g.vim_markdown_strikethrough = 1
-            vim.g.vim_markdown_math = 1
-            vim.g.vim_markdown_frontmatter = 1
-            vim.g.vim_markdown_toml_frontmatter = 1
-        end
-    },
-
-    -- Additional highlights for markdown
-    {
-        'lukas-reineke/headlines.nvim',
-        lazy = true,
-        ft = { 'markdown' },
-        -- dependencies = { 'nvim-treesitter/nvim-treesitter' },
-        config = function()
-            require('headlines').setup({
-                markdown = {
-                    -- query = vim.treesitter.parse_query(
-                    query = vim.treesitter.query.parse(
-                        "markdown",
-                        [[
-                            (atx_heading [
-                                (atx_h1_marker)
-                                (atx_h2_marker)
-                                (atx_h3_marker)
-                                (atx_h4_marker)
-                                (atx_h5_marker)
-                                (atx_h6_marker)
-                            ] @headline)
-
-                            (thematic_break) @dash
-
-                            (fenced_code_block) @codeblock
-
-                            (block_quote_marker) @quote
-                            (block_quote (paragraph (inline (block_continuation) @quote)))
-                        ]]
-                    ),
-                    headline_highlights = {
-                        "Headline1",
-                        "Headline2",
-                        "Headline3",
-                        "Headline4",
-                        "Headline5",
-                    },
-                    codeblock_highlight = "",
-                    dash_highlight = "Dash",
-                    dash_string = "─",
-                    quote_highlight = "Quote",
-                    quote_string = "┃",
-                    fat_headlines = false,
-                    -- fat_headline_upper_string = "▄",
-                    -- fat_headline_lower_string = "▀",
-                },
-            })
-        end
-    },
-
-
-    --
-    -- misc
-    --
-
-    -- Vim plugin that defines a new text object representing lines of code at the
-    -- same indent level. Useful for python/vim scripts, etc.
-    { 'michaeljsmith/vim-indent-object' },
-    -- { 'karb94/neoscroll.nvim' },
-
-    -- Readline style insertion
-    { 'tpope/vim-rsi' },
-
     -- disables search highlighting when you are done searching and re-enables it when you search again
-    { 'romainl/vim-cool' },
-
-    -- handle line and column numbers in file names, eg: file.txt:10 or file.txt:10:5
-    { 'kopischke/vim-fetch' },
-
-    {
-        'numToStr/Comment.nvim',
-        opts = {
-            toggler = {
-                line = 'gcc',
-                block = 'gCC',
-            },
-            opleader = {
-                line = 'gc',
-                block = 'gC',
-            },
-        }
-    },
-
+    { 'romainl/vim-cool',          keys = { '/', '?' } },
     -- highlighting visual selections
     { 'Pocco81/HighStr.nvim' },
-
     -- Highlight several words in different colors simultaneously
     {
         'inkarkat/vim-mark',
@@ -347,10 +159,6 @@ require('lazy').setup({
             vim.g.mwDefaultHighlightingPalette = 'extended'
         end
     },
-
-    -- displays a popup with possible keybindings of the command you started typing
-    { 'folke/which-key.nvim' },
-
     -- Highlight, list and search todo comments in your projects
     {
         'folke/todo-comments.nvim',
@@ -368,49 +176,6 @@ require('lazy').setup({
             },
         }
     },
-
-    -- A better user experience for interacting with and manipulating Vim marks
-    -- mx              Set mark x
-    -- m,              Set the next available alphabetical (lowercase) mark
-    -- m;              Toggle the next available mark at the current line
-    -- dmx             Delete mark x
-    -- dm-             Delete all marks on the current line
-    -- dm<space>       Delete all marks in the current buffer
-    -- m]              Move to next mark
-    -- m[              Move to previous mark
-    -- m:              Preview mark. This will prompt you for a specific mark to
-    --                 preview; press <cr> to preview the next mark.
-    -- m[0-9]          Add a bookmark from bookmark group[0-9].
-    -- dm[0-9]         Delete all bookmarks from bookmark group[0-9].
-    -- m}              Move to the next bookmark having the same type as the bookmark under
-    --                 the cursor. Works across buffers.
-    -- m{              Move to the previous bookmark having the same type as the bookmark under
-    --                 the cursor. Works across buffers.
-    -- dm=             Delete the bookmark under the cursor.
-    { 'chentoast/marks.nvim' },
-
-    -- Run Async Shell Commands
-    { 'skywind3000/asyncrun.vim' },
-
-    -- Set of operators and textobjects to search/select/edit sandwiched texts
-    { 'machakann/vim-sandwich' },
-
-    -- Additional text objects
-    -- Provides:
-    -- iX aX IX AX where X = () [] {} <> t ' " ` , . ; : + - = ~ _ * # / | \ & $
-    -- inX anX AnX InX for next object
-    -- ilX alX AlX IlX for previous (last) object
-    -- ia aa Ia Aa for arguments; works with nX/lX as well
-    { 'wellle/targets.vim' },
-
-    {
-        'godlygeek/tabular',
-        cmd = 'Tabularize'
-    },
-
-    -- Heuristically set buffer options
-    { 'tpope/vim-sleuth' },
-    { 'jbyuki/venn.nvim' },
     {
         'levouh/tint.nvim',
         config = function()
@@ -420,15 +185,136 @@ require('lazy').setup({
             })
         end
     },
-    { 'sindrets/winshift.nvim',              lazy = true },
-    { 'gbrlsnchs/winpick.nvim',              lazy = true },
+    -- Easily add additional highlights to your buffers
+    { 'folke/paint.nvim',                opts = require('plugins.paint').opts },
+    {
+        'tzachar/highlight-undo.nvim',
+        keys = { 'u', 'U', '<C-r>' },
+        opts = {}
+    },
 
+    --
+    -- file explorer
+    --
+
+    {
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v3.x",
+        dependencies = require('plugins.neo-tree').dependencies
+    },
+
+    --
+    -- git
+    --
+
+    { 'tpope/vim-fugitive',              lazy = false },
+    { 'lewis6991/gitsigns.nvim',         opts = require('plugins.gitsigns').opts },
+    -- Single tabpage interface for easily cycling through diffs for all modified files for any git rev
+    { 'sindrets/diffview.nvim' },
+    -- more pleasant editing on commit messages
+    { 'rhysd/committia.vim' },
+    -- GitHub extension for fugitive.vim
+    { 'tpope/vim-rhubarb' },
+
+    --
+    -- vimwiki & markdown
+    --
+
+    { 'vimwiki/vimwiki',                 lazy = true },
+    { 'ElPiloto/telescope-vimwiki.nvim', lazy = true },
+    {
+        'iamcco/markdown-preview.nvim',
+        ft = { 'markdown' },
+        config = function()
+            vim.fn['mkdp#util#install']()
+            vim.g.mkdp_auto_close = 0
+        end
+    },
+    {
+        'mickael-menu/zk-nvim',
+        config = function()
+            require('zk').setup({ picker = 'telescope' })
+        end
+    },
+    {
+        'preservim/vim-markdown',
+        ft = { 'markdown' },
+        config = function()
+            vim.g.vim_markdown_folding_disabled = 0
+            vim.g.vim_markdown_no_default_key_mappings = 1
+            vim.g.vim_markdown_toc_autofit = 1
+            vim.g.vim_markdown_conceal_code_blocks = 0
+            vim.g.vim_markdown_strikethrough = 1
+            vim.g.vim_markdown_math = 1
+            vim.g.vim_markdown_frontmatter = 1
+            vim.g.vim_markdown_toml_frontmatter = 1
+        end
+    },
+    -- Additional highlights for markdown
+    {
+        'lukas-reineke/headlines.nvim',
+        lazy = true,
+        ft = { 'markdown' },
+        config = require('plugins.headlines').config,
+    },
+
+    --
+    -- misc
+    --
+
+    -- TODO: use treesitter texobjects indent instead?
+    { 'michaeljsmith/vim-indent-object' },
+    -- Readline style insertion
+    { 'tpope/vim-rsi',                  keys = { ':', '/', '?' } },
+    -- handle line and column numbers in file names, eg: file.txt:10 or file.txt:10:5
+    { 'kopischke/vim-fetch' },
+    {
+        'numToStr/Comment.nvim',
+        keys = { 'gcc', 'gCC', 'gc', 'gC' },
+        opts = {
+            toggler = {
+                line = 'gcc',
+                block = 'gCC',
+            },
+            opleader = {
+                line = 'gc',
+                block = 'gC',
+            },
+        }
+    },
+    { 'folke/which-key.nvim',    opts = require('plugins.which-key').opts },
+    { 'chentoast/marks.nvim',    opts = require('plugins.marks').opts },
+    -- Run Async Shell Commands
+    { 'skywind3000/asyncrun.vim' },
+
+    -- Set of operators and textobjects to search/select/edit sandwiched texts
+    { 'machakann/vim-sandwich' },
+    -- Additional text objects
+    -- Provides:
+    -- iX aX IX AX where X = () [] {} <> t ' " ` , . ; : + - = ~ _ * # / | \ & $
+    -- inX anX AnX InX for next object
+    -- ilX alX AlX IlX for previous (last) object
+    -- ia aa Ia Aa for arguments; works with nX/lX as well
+    { 'wellle/targets.vim' },
+    {
+        'godlygeek/tabular',
+        cmd = 'Tabularize'
+    },
+    -- Heuristically set buffer options
+    { 'tpope/vim-sleuth' },
+    { 'jbyuki/venn.nvim' },
+    {
+        'sindrets/winshift.nvim',
+        lazy = true,
+        opts = {
+            highlight_moving_win = true, }
+    },
+    { 'gbrlsnchs/winpick.nvim',              lazy = true,                                    opts = { border = 'rounded' } },
     -- hide gutter numbers for folds
-    { 'luukvbaal/statuscol.nvim' },
+    { 'luukvbaal/statuscol.nvim',            config = require('plugins.statuscol').config },
     -- ultra fold
     { 'kevinhwang91/nvim-ufo',               opts = {} },
-    { 'lukas-reineke/indent-blankline.nvim' },
-
+    { 'lukas-reineke/indent-blankline.nvim', opts = require('plugins.indent-blankline').opts },
     -- Inversed J
     {
         'AckslD/nvim-trevJ.lua',
@@ -444,112 +330,29 @@ require('lazy').setup({
             autocommand_events = { "BufWritePost" },
         }
     },
-
     -- Broken, revisit when updated
     -- { 'nvim-zh/colorful-winsep.nvim' },
-    { 'tweekmonster/startuptime.vim' },
-
-    -- Easily add additional highlights to your buffers
-    { 'folke/paint.nvim' },
-
-    -- Neovim file explorer: edit your filesystem like a buffer
-    {
-        'stevearc/oil.nvim',
-        lazy = false,
-        config = function()
-            require('oil').setup()
-        end
-    },
-
     -- Embed Neovim in Chrome, Firefox & others.
     {
         'glacambre/firenvim',
         cond = not not vim.g.started_by_firenvim,
-        build = function()
-            require('lazy').load({ plugins = 'firenvim', wait = true })
-            vim.fn['firenvim#install'](0)
-        end,
-        config = function()
-            vim.g.firenvim_config = {
-                globalSettings = {
-                    alt = 'all',
-                },
-                localSettings = {
-                    ['.*'] = {
-                        cmdline = 'neovim',
-                        content = 'text',
-                        priority = 0,
-                        selector = 'textarea',
-                        takeover = 'never',
-                    },
-                },
-            }
-
-            vim.opt.background = 'light'
-            vim.opt.guifont = 'BlexMono Ner Font Mono:h12'
-        end
+        build = require('plugins.firenvim').build,
+        config = require('plugins.firenvim').config,
     },
-
     {
         'gen740/SmoothCursor.nvim',
-        opts = {
-            autostart = true,
-            cursor = "", -- cursor shape (need nerd font)
-            texthl = "SmoothCursor", -- highlight group, default is { bg = nil, fg = "#FFD400" }
-            linehl = nil, -- highlight sub-cursor line like 'cursorline', "CursorLine" recommended
-            type = "default", -- define cursor movement calculate function, "default" or "exp" (exponential).
-            fancy = {
-                enable = true, -- enable fancy mode
-                head = { cursor = "▷", texthl = "SmoothCursor", linehl = nil },
-                -- head = { cursor = "", texthl = "SmoothCursor", linehl = nil },
-                body = {
-                    { cursor = "●", texthl = "SmoothCursorRed" },
-                    { cursor = "●", texthl = "SmoothCursorOrange" },
-                    { cursor = "●", texthl = "SmoothCursorYellow" },
-                    { cursor = "•", texthl = "SmoothCursorGreen" },
-                    { cursor = "•", texthl = "SmoothCursorAqua" },
-                    { cursor = ".", texthl = "SmoothCursorBlue" },
-                    { cursor = ".", texthl = "SmoothCursorPurple" },
-                },
-                tail = { cursor = nil, texthl = "SmoothCursor" }
-            },
-            flyin_effect = nil,        --bottom" or "top"
-            speed = 25,                -- max is 100 to stick to your current position
-            intervals = 35,            -- tick interval
-            priority = 10,             -- set marker priority
-            timeout = 2000,            -- timout for animation
-            threshold = 3,             -- animate if threshold lines jump
-            disable_float_win = false, -- disable on float window
-            enabled_filetypes = nil,   -- example: { "lua", "vim" }
-            disabled_filetypes = nil,  -- this option will be skipped if enabled_filetypes is set. example: { "TelescopePrompt", "NvimTree" }
-        }
+        opts = require('plugins.smooth-cursor').opts,
     },
     -- { 'stevearc/overseer.nvim' },
     { 'rcarriga/nvim-notify' },
     {
         'kwkarlwang/bufjump.nvim',
+        keys = { '<C-n>', '<C-p>' },
         opts = {
             forward = '<C-n>',
             backward = '<C-p>',
             on_success = nil
         }
-    },
-    {
-        'tzachar/highlight-undo.nvim',
-        keys = { 'u', 'U', '<C-r>' },
-        opts = {}
-    },
-    { 'folke/neodev.nvim',    priority = 1000 },
-    {
-        'marcushwz/nvim-workbench',
-        keys = {
-            '<Plug>ToggleProjectWorkbench',
-            '<Plug>ToggleBranchWorkbench',
-            '<Plug>WorkbenchToggleCheckbox',
-        },
-        init = function()
-            vim.g.workbench_border = 'rounded'
-        end
     },
 }, {
     -- diff = 'browser',

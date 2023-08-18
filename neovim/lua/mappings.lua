@@ -114,6 +114,7 @@ wk.register({
             r = { function() vim_opt_toggle('relativenumber', true, false) end, "Relative number" },
             w = { function() vim_opt_toggle('wrap', true, false) end, "Line wrap" },
         },
+        vv = { require('plugins.venn').toggle_venn, noremap = true, 'Toggle venn' },
     },
     ['<C-w>'] = {
         ['<C-m>'] = { '<Cmd>WinShift<CR>', 'Move window mode' },
