@@ -114,7 +114,20 @@ local meh = { "alt", "ctrl", "shift" }
 
 -- Apps
 -- hs.hotkey.bind(hyper, "p", toggleTeamsMute)
--- hs.hotkey.bind(hyper, "i", startIterm)
+hs.hotkey.bind(hyper, "i", function()
+    local screen = hs.mouse.getCurrentScreen()
+    local space = hs.spaces.activeSpaceOnScreen(screen)
+    local wez = hs.application.find('WezTerm')
+    local filter = hs.window.filter.new(false):setAppFilter(wez:name())
+
+    filter:subscribe(hs.window.filter.windowCreated, function(window, app_name, event)
+        hs.spaces.moveWindowToSpace(window, space)
+        window:focus()
+        filter:unsubscribe(hs.window.filter.windowCreated)
+    end, false)
+
+    wez:selectMenuItem("New Window")
+end)
 
 -- Window navigation
 -- hs.hotkey.bind(hyper, ";", hs.hints.windowHints)
