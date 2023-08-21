@@ -153,6 +153,7 @@ require('lazy').setup({
     -- Highlight several words in different colors simultaneously
     {
         'inkarkat/vim-mark',
+        keys = { '<Plug>MarkSet', '<Plug>MarkToggle', '<Plug>MarkClear' },
         dependencies = { 'inkarkat/vim-ingo-library' },
         init = function()
             vim.g.mw_no_mappings = 1
@@ -200,6 +201,7 @@ require('lazy').setup({
     {
         "nvim-neo-tree/neo-tree.nvim",
         branch = "v3.x",
+        cmd = 'Neotree',
         dependencies = require('plugins.neo-tree').dependencies
     },
 
@@ -210,7 +212,7 @@ require('lazy').setup({
     { 'tpope/vim-fugitive',              lazy = false },
     { 'lewis6991/gitsigns.nvim',         opts = require('plugins.gitsigns').opts },
     -- Single tabpage interface for easily cycling through diffs for all modified files for any git rev
-    { 'sindrets/diffview.nvim' },
+    { 'sindrets/diffview.nvim',          cmd = { 'DiffviewFileHistory', 'DiffviewClose', 'DiffviewOpen' } },
     -- more pleasant editing on commit messages
     { 'rhysd/committia.vim' },
     -- GitHub extension for fugitive.vim
@@ -232,6 +234,7 @@ require('lazy').setup({
     },
     {
         'mickael-menu/zk-nvim',
+        lazy = true,
         config = function()
             require('zk').setup({ picker = 'telescope' })
         end
@@ -282,10 +285,10 @@ require('lazy').setup({
             },
         }
     },
-    { 'folke/which-key.nvim',    opts = require('plugins.which-key').opts },
-    { 'chentoast/marks.nvim',    opts = require('plugins.marks').opts },
+    { 'folke/which-key.nvim',     opts = require('plugins.which-key').opts },
+    { 'chentoast/marks.nvim',     opts = require('plugins.marks').opts },
     -- Run Async Shell Commands
-    { 'skywind3000/asyncrun.vim' },
+    { 'skywind3000/asyncrun.vim', cmd = 'AsyncRun' },
 
     -- Set of operators and textobjects to search/select/edit sandwiched texts
     { 'machakann/vim-sandwich' },
