@@ -3,7 +3,7 @@
 alias gti="git"
 
 # change to git root dir
-git-up() {
+cdup() {
     cd $(git rev-parse --show-toplevel)
 }
 
