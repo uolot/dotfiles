@@ -306,8 +306,8 @@ require('lazy').setup({
     {
         'sindrets/winshift.nvim',
         lazy = true,
-        opts = {
-            highlight_moving_win = true, }
+        cmd = 'WinShift',
+        opts = { highlight_moving_win = true }
     },
     { 'gbrlsnchs/winpick.nvim',              lazy = true,                                    opts = { border = 'rounded' } },
     -- hide gutter numbers for folds
