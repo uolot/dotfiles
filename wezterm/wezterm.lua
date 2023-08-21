@@ -265,10 +265,10 @@ table.insert(config.hyperlink_rules, {
 })
 
 -- cd-monorepo commit
-table.insert(config.hyperlink_rules, {
-  regex = [[([0-9a-f]{7})]],
-  format = 'https://github.com/LEGO/cd-monorepo/commit/$1',
-})
+-- table.insert(config.hyperlink_rules, {
+--   regex = [[([0-9a-f]{7})]],
+--   format = 'https://github.com/LEGO/cd-monorepo/commit/$1',
+-- })
 
 -- Github user/repo in quotes
 table.insert(config.hyperlink_rules, {
