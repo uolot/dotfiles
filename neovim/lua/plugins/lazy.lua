@@ -305,7 +305,6 @@ require('lazy').setup({
     },
     -- Heuristically set buffer options
     { 'tpope/vim-sleuth' },
-    { 'jbyuki/venn.nvim' },
     {
         'sindrets/winshift.nvim',
         lazy = true,

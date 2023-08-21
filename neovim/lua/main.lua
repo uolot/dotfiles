@@ -6,9 +6,6 @@ vim.loader.enable()
 require('config.lsp')
 require('config.diagnostics')
 
--- toggle keymappings for venn using <leader>v
--- vim.api.nvim_set_keymap('n', '<leader>vv', ":lua Toggle_venn()<CR>", { noremap = true })
-
 -- TODO: move to mappings
 vim.keymap.set('n', '<C-w>p', function()
     local winid = require('winpick').select()
