@@ -234,6 +234,7 @@ local config = {
       -- Cancel the mode by pressing escape or Q
       { key = 'q',         action = 'PopKeyTable' },
       { key = 'Escape',    action = 'PopKeyTable' },
+      { key = 'Enter',     action = 'PopKeyTable' },
     },
 
   },
