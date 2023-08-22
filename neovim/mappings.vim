@@ -1,53 +1,5 @@
-" oil
-    nnoremap <silent> <Leader>n- <Cmd>lua require("oil").open()<CR>
-
-" zk
-    " normal
-    nnoremap <Leader>zf :ZkNotes<CR>
-    nnoremap <Leader>zc :lua vim.ui.input({ prompt = "Title: " }, function(i) vim.cmd('ZkNew {title="' .. i .. '"}') end)<CR>
-    nnoremap <Leader>zn :lua vim.ui.input({ prompt = "Title: " }, function(i) vim.cmd('ZkNew {title="' .. i .. '"}') end)<CR>
-    nnoremap <Leader>zl :ZkLinks<CR>
-    nnoremap <Leader>zb :ZkBacklinks<CR>
-    nnoremap <Leader>zt :ZkTags<CR>
-    " visual
-    xnoremap <Leader>zn :ZkNewFromTitleSelection<CR>
-    " TODO: Ask for title when creating content from selection
-    " xnoremap <Leader>zC :ZkNewFromContentSelection<CR>
-    xnoremap <Leader>zm :ZkMatch<CR>
-
-" diffview
-    nnoremap <Leader>df <Cmd>DiffviewFileHistory %<CR>
-    nnoremap <Leader>dc <Cmd>DiffviewClose<CR>
-    nnoremap <Leader>do <Cmd>DiffviewOpen<CR>
-
-" jump between splits
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-
 " reversed J
 nmap <silent> K :lua require('trevj').format_at_cursor()<CR>
-
-" switch between buffers
-nnoremap <silent> gB :bp<CR>
-nnoremap <silent> gb :bn<CR>
-
-" quickfix navigation
-nnoremap <silent> ]q :cnext<CR>
-nnoremap <silent> [q :cprev<CR>
-
-" todo navigation
-nnoremap <silent> ]t <Cmd>lua require("todo-comments").jump_next()<CR>
-nnoremap <silent> [t <Cmd>lua require("todo-comments").jump_prev()<CR>
-
-" jest tests
-nnoremap <silent> [j ?^\s\+\<\(it\\|test\\|describe\\|beforeEach\\|afterEach\)\><CR>
-nnoremap <silent> ]j /^\s\+\<\(it\\|test\\|describe\\|beforeEach\\|afterEach\)\><CR>
-
-" insert blank lines
-nnoremap gO  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>'[
-nnoremap go  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
 
 " reselect visual block after (un)indent
 vnoremap < <gv

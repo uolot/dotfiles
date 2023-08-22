@@ -2,9 +2,6 @@
 
 filetype plugin indent on " enables filetype specific plugins
 
-" TODO: change to vim.g.mapleader = " "
-let mapleader=" "
-
 lua require('options')
 
 " automatically equalize splits when vim is resized
@@ -29,9 +26,6 @@ augroup markdown_highlights
     highlight Headline4 guifg=Cyan
     highlight Headline5 guifg=Pink
 augroup end
-
-" bg for hl_match_area
-highlight MatchArea guibg=#303030
 
 augroup highlight_yank
     autocmd!

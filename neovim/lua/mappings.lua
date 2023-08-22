@@ -23,8 +23,25 @@ local function toggle_diagnostic()
     end
 end
 
+local function close_floating()
+    for _, win in ipairs(vim.api.nvim_list_wins()) do
+        local config = vim.api.nvim_win_get_config(win)
+        -- if config.relative == 'win' then
+        if config.relative ~= "" then
+            vim.api.nvim_win_close(win, false)
+        end
+    end
+end
+
 wk.register({
+    ["<Esc>"] = { close_floating, "Close all floating windows" },
     ["<Leader>"] = {
+        d = {
+            name = '+diffview',
+            c = { '<Cmd>DiffviewClose<CR>', 'Close' },
+            f = { '<Cmd>DiffviewFileHistory<CR>', 'File history' },
+            o = { '<Cmd>DiffviewOpen<CR>', 'Open' },
+        },
         f = {
             name = '+find',
             f = { telescope_builtin.find_files, 'Find files' },
@@ -114,6 +131,18 @@ wk.register({
             r = { function() vim_opt_toggle('relativenumber', true, false) end, "Relative number" },
             w = { function() vim_opt_toggle('wrap', true, false) end, "Line wrap" },
         },
+        z = {
+            name = '+zk',
+            c = {
+                function() vim.ui.input({ prompt = "Title: " }, function(i) vim.cmd('ZkNew {title="' .. i .. '"}') end) end,
+                'New note' },
+            b = { '<Cmd>ZkBackLinks<CR>', 'Backlinks' },
+            f = { '<Cmd>ZkNotes<CR>', 'Find a note' },
+            l = { '<Cmd>ZkLinks<CR>', 'Links' },
+            t = { '<Cmd>ZkNewFromTitleSelection<CR>', mode = 'v', 'New note from title selection' },
+            T = { '<Cmd>ZkTags<CR>', 'Tags' },
+            v = { '<Cmd>ZkNewFromContentSelection<CR>', mode = 'v', 'New note from content selection' },
+        },
     },
     ['<C-w>'] = {
         ['<C-m>'] = { '<Cmd>WinShift<CR>', 'Move window mode' },
@@ -126,17 +155,57 @@ wk.register({
             k = { '<Cmd>WinShift up<CR>', 'Move up' },
             l = { '<Cmd>WinShift right<CR>', 'Move right' },
         },
-        p = 'Pick a window',
+        p = {
+            function()
+                local winid = require('winpick').select()
+                if winid then
+                    vim.api.nvim_set_current_win(winid)
+                end
+            end, 'Pick a window' }
     },
 })
 
+--
 -- lsp
+--
 vim.keymap.set('n', ']d', function() vim.diagnostic.goto_next({ wrap = false }) end, { noremap = true, silent = true })
 vim.keymap.set('n', '[d', function() vim.diagnostic.goto_prev({ wrap = false }) end, { noremap = true, silent = true })
+
+--
+-- search
+--
 vim.keymap.set('n', '\\c', '/\\c', { noremap = true, silent = false, desc = 'Case insensitive search' })
 vim.keymap.set('n', '\\s', '/\\<\\><left><left>',
     { noremap = true, silent = false, desc = 'Search for word (like grep -w)' })
-
 -- make n/N always go in the same direction
 vim.keymap.set('n', 'n', "(v:searchforward ? 'n' : 'N')", { noremap = true, silent = true, expr = true })
 vim.keymap.set('n', 'N', "(v:searchforward ? 'N' : 'n')", { noremap = true, silent = true, expr = true })
+
+--
+-- navigation
+--
+-- windows
+vim.keymap.set('n', '<C-h>', '<C-w>h', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-j>', '<C-w>j', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-k>', '<C-w>k', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-l>', '<C-w>l', { noremap = true, silent = true })
+-- buffers
+vim.keymap.set('n', 'gB', '<Cmd>bp<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', 'gb', '<Cmd>bn<CR>', { noremap = true, silent = true })
+-- quickfix
+vim.keymap.set('n', ']q', '<Cmd>cnext<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '[q', '<Cmd>cprev<CR>', { noremap = true, silent = true })
+-- todo comments
+vim.keymap.set('n', ']t', function() require('todo-comments').jump_next() end, { noremap = true, silent = true })
+vim.keymap.set('n', '[t', function() require('todo-comments').jump_prev() end, { noremap = true, silent = true })
+-- jest
+vim.cmd [[nnoremap <silent> [j ?^\s\+\<\(it\\|test\\|describe\\|beforeEach\\|afterEach\)\><CR>]]
+vim.cmd [[nnoremap <silent> ]j /^\s\+\<\(it\\|test\\|describe\\|beforeEach\\|afterEach\)\><CR>]]
+
+--
+-- edit
+--
+-- insert blank lines
+-- TODO: rewrite to lua mapping
+vim.cmd [[nnoremap gO  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>'[]]
+vim.cmd [[nnoremap go  :<c-u>put =repeat(nr2char(10), v:count1)<cr>]]

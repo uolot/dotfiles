@@ -1,3 +1,8 @@
+vim.cmd [[highlight IndentBlanklineIndent1 guifg=#444444 gui=nocombine]]
+-- -- vim.cmd [[highlight IndentBlanklineContextChar guifg=#666666 gui=nocombine]]
+vim.cmd [[highlight IndentBlanklineContextChar guifg=#909090 gui=nocombine]]
+-- vim.cmd [[highlight IndentBlanklineContextStart guisp=#909090 gui=underline]]
+
 local opts = {
     use_treesitter = true,
     space_char_blankline = " ",

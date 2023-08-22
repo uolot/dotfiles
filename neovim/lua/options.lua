@@ -6,6 +6,8 @@
 -- " set laststatus=2 " show statusline for single buffer
 -- " set wildmenu " enable filename completion
 
+vim.g.mapleader = ' '
+
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 vim.opt.completefunc = 'syntaxcomplete#Complete'
 vim.opt.conceallevel = 2
