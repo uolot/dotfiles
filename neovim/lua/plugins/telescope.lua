@@ -53,6 +53,7 @@ local function config()
     require('telescope').load_extension('fzf')
     require('telescope').load_extension('ag')
     require('telescope').load_extension('ui-select')
+    require('telescope').load_extension('notify')
 end
 
 return { config = config }

@@ -14,11 +14,6 @@ autocmd VimResized * wincmd =
 
 lua require('main')
 
-" Important!!
-if has('termguicolors')
-    set termguicolors
-endif
-
 source $HOME/.dotfiles/neovim/vimwiki.vim
 
 " maps

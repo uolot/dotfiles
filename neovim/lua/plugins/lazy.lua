@@ -347,7 +347,7 @@ require('lazy').setup({
         opts = require('plugins.smooth-cursor').opts,
     },
     -- { 'stevearc/overseer.nvim' },
-    { 'rcarriga/nvim-notify' },
+    { 'rcarriga/nvim-notify', config = function() require('notify').setup({ stages = 'static' }) end },
     {
         'kwkarlwang/bufjump.nvim',
         keys = { '<C-n>', '<C-p>' },
