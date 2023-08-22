@@ -1,8 +1,7 @@
 # vim: ft=bash
 
 source $(brew --prefix asdf)/libexec/asdf.sh
-# FIXME
-# source $HOME/.asdf/plugins/java/set-java-home.bash
+source $HOME/.asdf/plugins/java/set-java-home.bash
 
 # install one or more versions of specified language
 # e.g. `asdfi rust` # => fzf multimode, tab to mark, enter to install
