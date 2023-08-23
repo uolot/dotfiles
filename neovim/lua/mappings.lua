@@ -118,7 +118,7 @@ wk.register({
 
         },
         w = {
-            name = '+workbench +vimwiki',
+            name = '+workbench',
             p = { '<Plug>ToggleProjectWorkbench', 'Toggle project workbench' },
             b = { '<Plug>ToggleBranchWorkbench', 'Toggle branch workbench' },
             t = { '<Plug>WorkbenchToggleCheckbox', 'Toggle workbench checkbox' },

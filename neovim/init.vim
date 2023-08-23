@@ -11,8 +11,6 @@ autocmd VimResized * wincmd =
 
 lua require('main')
 
-source $HOME/.dotfiles/neovim/vimwiki.vim
-
 " maps
 source $HOME/.dotfiles/neovim/mappings.vim
 

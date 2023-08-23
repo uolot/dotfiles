@@ -48,7 +48,6 @@ local function config()
         },
     }
 
-    require('telescope').load_extension('vimwiki')
     require('telescope').load_extension('zk')
     require('telescope').load_extension('fzf')
     require('telescope').load_extension('ag')

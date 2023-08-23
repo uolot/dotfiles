@@ -220,11 +220,8 @@ require('lazy').setup({
     { 'tpope/vim-rhubarb' },
 
     --
-    -- vimwiki & markdown
+    -- markdown
     --
-
-    { 'vimwiki/vimwiki',                 lazy = true },
-    { 'ElPiloto/telescope-vimwiki.nvim', lazy = true },
     {
         'iamcco/markdown-preview.nvim',
         ft = { 'markdown' },
