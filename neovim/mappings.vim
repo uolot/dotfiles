@@ -1,31 +1,3 @@
-" reversed J
-nmap <silent> K :lua require('trevj').format_at_cursor()<CR>
-
-" reselect visual block after (un)indent
-vnoremap < <gv
-vnoremap > >gv
-
-" select inserted/pasted text
-nnoremap gV `[v`]
-
-" fast buffer switching
-nnoremap <Backspace> <C-^>
-
-" make dot work over visual line selections
-xnoremap . :norm.<CR>
-" execute a macro over visual line selections
-xnoremap Q :'<,'>:normal @q<CR>
-
-" use very-magic mode for search regex
-" nnoremap / /\v
-" nnoremap ? ?\v
-
-nnoremap zR <Cmd>lua require('ufo').openAllFolds()<CR>
-nnoremap zM <Cmd>lua require('ufo').closeAllFolds()<CR>
-
-inoremap <C-Tab> <C-n>
-inoremap <C-S-Tab> <C-p>
-
 augroup markdown_mappings
     autocmd FileType markdown nmap ]] <Plug>Markdown_MoveToNextSiblingHeader
     autocmd FileType markdown nmap [[ <Plug>Markdown_MoveToPreviousSiblingHeader

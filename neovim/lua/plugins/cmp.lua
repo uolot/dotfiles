@@ -14,9 +14,14 @@ local dependencies = {
     { 'lukas-reineke/cmp-under-comparator',   url = 'https://github.com/lukas-reineke/cmp-under-comparator' },
 
     -- snippet plugin is required by nvim-cmp
-    { 'hrsh7th/vim-vsnip',                    url = 'https://github.com/hrsh7th/vim-vsnip' },
-    { 'hrsh7th/vim-vsnip-integ',              url = 'https://github.com/hrsh7th/vim-vsnip-integ' },
-    { 'hrsh7th/cmp-vsnip',                    url = 'https://github.com/hrsh7th/cmp-vsnip' },
+    {
+        'hrsh7th/vim-vsnip',
+        config = function()
+            vim.g.vsnip_snippet_dir = "$HOME/.dotfiles/neovim/vsnip/"
+        end
+    },
+    { 'hrsh7th/vim-vsnip-integ', url = 'https://github.com/hrsh7th/vim-vsnip-integ' },
+    { 'hrsh7th/cmp-vsnip',       url = 'https://github.com/hrsh7th/cmp-vsnip' },
 
     -- copilot
     {

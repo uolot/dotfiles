@@ -188,7 +188,7 @@ require('lazy').setup({
         end
     },
     -- Easily add additional highlights to your buffers
-    { 'folke/paint.nvim',                opts = require('plugins.paint').opts },
+    { 'folke/paint.nvim',        opts = require('plugins.paint').opts },
     {
         'tzachar/highlight-undo.nvim',
         keys = { 'u', 'U', '<C-r>' },
@@ -210,10 +210,10 @@ require('lazy').setup({
     -- git
     --
 
-    { 'tpope/vim-fugitive',              lazy = false },
-    { 'lewis6991/gitsigns.nvim',         opts = require('plugins.gitsigns').opts },
+    { 'tpope/vim-fugitive',      lazy = false },
+    { 'lewis6991/gitsigns.nvim', opts = require('plugins.gitsigns').opts },
     -- Single tabpage interface for easily cycling through diffs for all modified files for any git rev
-    { 'sindrets/diffview.nvim',          cmd = { 'DiffviewFileHistory', 'DiffviewClose', 'DiffviewOpen' } },
+    { 'sindrets/diffview.nvim',  cmd = { 'DiffviewFileHistory', 'DiffviewClose', 'DiffviewOpen' } },
     -- more pleasant editing on commit messages
     { 'rhysd/committia.vim' },
     -- GitHub extension for fugitive.vim
@@ -318,8 +318,11 @@ require('lazy').setup({
     -- Inversed J
     {
         'AckslD/nvim-trevJ.lua',
+        keys = { 'K' },
         config = function()
-            require('trevj').setup()
+            local trevj = require('trevj')
+            trevj.setup()
+            require('which-key').register({ K = { trevj.format_at_cursor, 'Split' } })
         end
     },
     {
