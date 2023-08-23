@@ -76,6 +76,9 @@
 	st = status --short --branch
 	mod = !git status --short --branch | fzf --multi --preview='bat {2} --color=always' --header-lines=1 | cut -c 4-
 
+	ss = stash
+	sp = stash pop
+
 	# extra tools
 	last = lgf -1
 	todos = !"ag '(TODO|XXX|FIXME)' $(git diff --name-only)"
