@@ -30,6 +30,7 @@ wk.register({
         -- TODO: merge f and t ???
         f = require('mappings.find'),
         g = require('mappings.lsp'),
+        h = require('mappings.gitsigns'),
         k = require('mappings.marks'),
         n = require('mappings.neo-tree'),
         t = require('mappings.telescope'),
