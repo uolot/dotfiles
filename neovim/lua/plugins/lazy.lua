@@ -323,7 +323,7 @@ require('lazy').setup({
     -- Inversed J
     {
         'AckslD/nvim-trevJ.lua',
-        keys = { 'K' },
+        -- keys = { 'K' },
         config = function()
             local trevj = require('trevj')
             trevj.setup()
