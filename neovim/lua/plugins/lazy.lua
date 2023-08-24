@@ -271,7 +271,12 @@ require('lazy').setup({
     { 'kopischke/vim-fetch' },
     {
         'numToStr/Comment.nvim',
-        keys = { 'gcc', 'gCC', 'gc', 'gC' },
+        keys = {
+            { 'gcc', mode = { 'n', 'x' } },
+            { 'gCC', mode = { 'n', 'x' } },
+            { 'gc',  mode = { 'n', 'x' } },
+            { 'gC',  mode = { 'n', 'x' } },
+        },
         opts = {
             toggler = {
                 line = 'gcc',
