@@ -148,7 +148,7 @@ require('lazy').setup({
         },
     },
     -- disables search highlighting when you are done searching and re-enables it when you search again
-    { 'romainl/vim-cool',          keys = { '/', '?' } },
+    { 'romainl/vim-cool' },
     -- highlighting visual selections
     { 'Pocco81/HighStr.nvim' },
     -- Highlight several words in different colors simultaneously

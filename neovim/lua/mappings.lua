@@ -41,6 +41,8 @@ wk.register({
 
 -- TODO: convert to which-key mappings
 
+vim.keymap.set('x', '.', ':norm.<CR', { noremap = true, silent = true, desc = 'Make dot work in visual' })
+
 --
 -- lsp
 --
