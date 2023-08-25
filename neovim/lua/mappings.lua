@@ -14,8 +14,9 @@ end
 wk.register({
     ["<Esc>"] = { close_floating, "Close all floating windows" },
     ["<Backspace>"] = { '<C-^>', "Quick buffer switch" },
-    ["<C-Tab>"] = { '<C-n>', "Next completion" },
-    ["<C-S-Tab>"] = { '<C-n>', "Previous completion" },
+    ["<Tab>"] = { '<C-w>w', 'Next window' },
+    -- ["<C-Tab>"] = { '<C-n>', "Next completion" },
+    -- ["<C-S-Tab>"] = { '<C-p>', "Previous completion" },
     ["<C-h>"] = { '<C-w>h', "Move left" },
     ["<C-j>"] = { "<C-w>j", "Move down" },
     ["<C-k>"] = { "<C-w>k", "Move up" },
