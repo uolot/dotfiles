@@ -60,6 +60,17 @@ require('lazy').setup({
         }
     },
 
+    {
+        "ThePrimeagen/refactoring.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+        },
+        config = function()
+            require("refactoring").setup()
+        end,
+    },
+
     -- Pop-up menu for code actions to show meta-information and diff preview
     --     Provides ":CodeActionMenu"
     {

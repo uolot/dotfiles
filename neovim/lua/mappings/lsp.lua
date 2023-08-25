@@ -2,7 +2,7 @@ local telescope_builtin = require('telescope.builtin')
 
 return {
     name = '+lsp',
-    a = { '<Cmd>CodeActionMenu<CR>', 'Code Action' },
+    a = { '<Cmd>CodeActionMenu<CR>', 'Code Action', mode = { 'n', 'x' } },
     e = { vim.diagnostic.open_float, 'Show current line diagnostics' },
     d = { vim.lsp.buf.definition, 'Go to definition' },
     D = { vim.lsp.buf.declaration, 'Go to declaration' },
