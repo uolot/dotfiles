@@ -1,5 +1,4 @@
 local wk = require('which-key')
-local telescope_builtin = require('telescope.builtin')
 
 local function close_floating()
     for _, win in ipairs(vim.api.nvim_list_wins()) do

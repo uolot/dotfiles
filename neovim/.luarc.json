@@ -1,0 +1,8 @@
+{
+  "Lua": {
+    "workspace.checkThirdParty": false
+  },
+  "diagnostics.globals": [
+    "get_repo_edit_cmd"
+  ]
+}

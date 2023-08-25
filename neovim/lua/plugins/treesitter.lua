@@ -56,7 +56,10 @@ require('nvim-treesitter.configs').setup({
     sync_install = false,
     highlight = {
         enable = true, -- false will disable the whole extension
-        disable = { "markdown" },
+        disable = {
+            "lua",     -- FIXME: temporary disabled, slows everything down
+            "markdown",
+        },
         -- disable = { "c", "rust" },  -- list of language that will be disabled
         -- Setting this to true will run `:h syntax` and treesitter at the same time.
         -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
