@@ -14,7 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	-- top plugins
 	{ "lewis6991/impatient.nvim" },
-	{ "folke/neodev.nvim", opts = {}, priority = 1000 },
+	{ "folke/neodev.nvim",         opts = {}, ft = 'lua', priority = 1000 },
 
 	-- dependencies
 	{ "nvim-lua/plenary.nvim" },
@@ -62,6 +62,7 @@ require("lazy").setup({
 
 	{
 		"ThePrimeagen/refactoring.nvim",
+		cmd = 'CodeActionMenu',
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-treesitter/nvim-treesitter",
@@ -240,7 +241,7 @@ require("lazy").setup({
 	--
 	{
 		"iamcco/markdown-preview.nvim",
-		ft = { "markdown" },
+		cmd = 'MarkdownPreviewToggle',
 		config = function()
 			vim.fn["mkdp#util#install"]()
 			vim.g.mkdp_auto_close = 0
