@@ -3,7 +3,7 @@ return {
     c = {
         function() vim.ui.input({ prompt = "Title: " }, function(i) vim.cmd('ZkNew {title="' .. i .. '"}') end) end,
         'New note' },
-    b = { '<Cmd>ZkBackLinks<CR>', 'Backlinks' },
+    b = { '<Cmd>ZkBacklinks<CR>', 'Backlinks' },
     f = { '<Cmd>ZkNotes<CR>', 'Find a note' },
     i = { '<Cmd>ZkInsertLink<CR>', 'Insert link' },
     l = { '<Cmd>ZkLinks<CR>', 'Links' },
