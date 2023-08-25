@@ -47,11 +47,7 @@ local config = function()
 				-- }),
 			},
 			json = formatters.lsp,
-			-- lua = formatters.lsp,
-			lua = {
-				formatters.lsp,
-				formatters.stylua,
-			},
+			lua = formatters.lsp,
 			markdown = formatters.prettierd,
 			python = {
 				formatters.remove_trailing_whitespace,
