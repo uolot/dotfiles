@@ -1,17 +1,18 @@
 local dependencies = {
     -- sources
-    { 'hrsh7th/cmp-buffer',                   url = 'https://github.com/hrsh7th/cmp-buffer' },
-    { 'hrsh7th/cmp-calc',                     url = 'https://github.com/hrsh7th/cmp-calc' },
-    { 'hrsh7th/cmp-cmdline',                  url = 'https://github.com/hrsh7th/cmp-cmdline' },
-    { 'hrsh7th/cmp-emoji',                    url = 'https://github.com/hrsh7th/cmp-emoji' },
-    { 'hrsh7th/cmp-nvim-lsp',                 url = 'https://github.com/hrsh7th/cmp-nvim-lsp' },
-    { 'hrsh7th/cmp-nvim-lsp-document-symbol', url = 'https://github.com/hrsh7th/cmp-nvim-lsp-document-symbol' },
-    { 'hrsh7th/cmp-nvim-lsp-signature-help',  url = 'https://github.com/hrsh7th/cmp-nvim-lsp-signature-help' },
-    { 'hrsh7th/cmp-path',                     url = 'https://github.com/hrsh7th/cmp-path' },
-    { 'ray-x/cmp-treesitter',                 url = 'https://github.com/ray-x/cmp-treesitter' },
+    { 'hrsh7th/cmp-buffer' },
+    { 'hrsh7th/cmp-calc' },
+    { 'hrsh7th/cmp-cmdline' },
+    { 'hrsh7th/cmp-emoji' },
+    { 'hrsh7th/cmp-nvim-lsp' },
+    { 'hrsh7th/cmp-nvim-lsp-document-symbol' },
+    { 'hrsh7th/cmp-nvim-lsp-signature-help' },
+    { 'hrsh7th/cmp-path' },
+    { 'ray-x/cmp-treesitter' },
+    { 'quangnguyen30192/cmp-nvim-tags',      ft = { 'markdown' } },
 
     -- comparators
-    { 'lukas-reineke/cmp-under-comparator',   url = 'https://github.com/lukas-reineke/cmp-under-comparator' },
+    { 'lukas-reineke/cmp-under-comparator',  url = 'https://github.com/lukas-reineke/cmp-under-comparator' },
 
     -- snippet plugin is required by nvim-cmp
     {
@@ -64,6 +65,7 @@ local function config()
         { name = 'path',                   option = { trailing_slash = false } },
         { name = 'calc' },
         { name = 'emoji',                  option = { insert = true } },
+        { name = 'tags',                   options = { current_buffer_only = false } },
         -- { name = 'cmp_tabnine' },
         -- { name = 'omni' },
     }
