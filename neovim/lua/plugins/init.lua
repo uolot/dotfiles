@@ -36,10 +36,10 @@ require("lazy").setup({
 	--
 
 	-- Plug 'williamboman/nvim-lsp-installer'
-	{ "neovim/nvim-lspconfig", dependencies = { "folke/neodev.nvim" } },
-	{ "williamboman/mason.nvim", build = ":MasonUpdate" },
+	{ "neovim/nvim-lspconfig",            dependencies = { "folke/neodev.nvim" } },
+	{ "williamboman/mason.nvim",          build = ":MasonUpdate" },
 	{ "williamboman/mason-lspconfig.nvim" },
-	{ "VonHeikemen/lsp-zero.nvim", branch = "v2.x" },
+	{ "VonHeikemen/lsp-zero.nvim",        branch = "v2.x" },
 	{
 		"jose-elias-alvarez/null-ls.nvim",
 		config = function()
@@ -199,7 +199,7 @@ require("lazy").setup({
 		end,
 	},
 	-- Easily add additional highlights to your buffers
-	{ "folke/paint.nvim", opts = require("plugins.paint").opts },
+	{ "folke/paint.nvim",        opts = require("plugins.paint").opts },
 	{
 		"tzachar/highlight-undo.nvim",
 		keys = { "u", "U", "<C-r>" },
@@ -221,10 +221,10 @@ require("lazy").setup({
 	-- git
 	--
 
-	{ "tpope/vim-fugitive", lazy = false },
+	{ "tpope/vim-fugitive",      lazy = false },
 	{ "lewis6991/gitsigns.nvim", opts = require("plugins.gitsigns").opts },
 	-- Single tabpage interface for easily cycling through diffs for all modified files for any git rev
-	{ "sindrets/diffview.nvim", cmd = { "DiffviewFileHistory", "DiffviewClose", "DiffviewOpen" } },
+	{ "sindrets/diffview.nvim",  cmd = { "DiffviewFileHistory", "DiffviewClose", "DiffviewOpen" } },
 	-- more pleasant editing on commit messages
 	{ "rhysd/committia.vim" },
 	-- GitHub extension for fugitive.vim
@@ -282,7 +282,7 @@ require("lazy").setup({
 	-- TODO: use treesitter texobjects indent instead?
 	{ "michaeljsmith/vim-indent-object" },
 	-- Readline style insertion
-	{ "tpope/vim-rsi", keys = { ":", "/", "?" } },
+	{ "tpope/vim-rsi",                  keys = { ":", "/", "?" } },
 	-- handle line and column numbers in file names, eg: file.txt:10 or file.txt:10:5
 	{ "kopischke/vim-fetch" },
 	{
@@ -290,8 +290,8 @@ require("lazy").setup({
 		keys = {
 			{ "gcc", mode = { "n", "x" } },
 			{ "gCC", mode = { "n", "x" } },
-			{ "gc", mode = { "n", "x" } },
-			{ "gC", mode = { "n", "x" } },
+			{ "gc",  mode = { "n", "x" } },
+			{ "gC",  mode = { "n", "x" } },
 		},
 		opts = {
 			toggler = {
@@ -304,8 +304,8 @@ require("lazy").setup({
 			},
 		},
 	},
-	{ "folke/which-key.nvim", opts = require("plugins.which-key").opts },
-	{ "chentoast/marks.nvim", opts = require("plugins.marks").opts },
+	{ "folke/which-key.nvim",     opts = require("plugins.which-key").opts },
+	{ "chentoast/marks.nvim",     opts = require("plugins.marks").opts },
 	-- Run Async Shell Commands
 	{ "skywind3000/asyncrun.vim", cmd = "AsyncRun" },
 
@@ -336,9 +336,9 @@ require("lazy").setup({
 		opts = { border = "rounded" },
 	},
 	-- hide gutter numbers for folds
-	{ "luukvbaal/statuscol.nvim", config = require("plugins.statuscol").config },
+	{ "luukvbaal/statuscol.nvim",            config = require("plugins.statuscol").config },
 	-- ultra fold
-	{ "kevinhwang91/nvim-ufo", opts = {} },
+	{ "kevinhwang91/nvim-ufo",               opts = {} },
 	{ "lukas-reineke/indent-blankline.nvim", opts = require("plugins.indent-blankline").opts },
 	-- Inversed J
 	{
