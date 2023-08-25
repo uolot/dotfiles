@@ -5,6 +5,7 @@ return {
         'New note' },
     b = { '<Cmd>ZkBackLinks<CR>', 'Backlinks' },
     f = { '<Cmd>ZkNotes<CR>', 'Find a note' },
+    i = { '<Cmd>ZkInsertLink<CR>', 'Insert link' },
     l = { '<Cmd>ZkLinks<CR>', 'Links' },
     t = { '<Cmd>ZkNewFromTitleSelection<CR>', mode = 'v', 'New note from title selection' },
     T = { '<Cmd>ZkTags<CR>', 'Tags' },
