@@ -62,10 +62,10 @@ require("lazy").setup({
 
 	{
 		"ThePrimeagen/refactoring.nvim",
-		cmd = 'CodeActionMenu',
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-treesitter/nvim-treesitter",
+			"weilbith/nvim-code-action-menu",
 		},
 		config = function()
 			require("refactoring").setup()
