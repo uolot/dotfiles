@@ -375,9 +375,9 @@ require("lazy").setup({
 	-- { 'stevearc/overseer.nvim' },
 	{
 		"rcarriga/nvim-notify",
-		config = function()
-			require("notify").setup({ stages = "static" })
-		end,
+		-- config = function()
+		-- 	require("notify").setup({ stages = "static" })
+		-- end,
 	},
 	{
 		"kwkarlwang/bufjump.nvim",
