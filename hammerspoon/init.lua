@@ -118,6 +118,12 @@ hs.hotkey.bind(hyper, "i", function()
     local screen = hs.mouse.getCurrentScreen()
     local space = hs.spaces.activeSpaceOnScreen(screen)
     local wez = hs.application.find('WezTerm')
+
+    if wez == nil then
+        wez = hs.application.open('WezTerm')
+        return
+    end
+
     local filter = hs.window.filter.new(false):setAppFilter(wez:name())
 
     filter:subscribe(hs.window.filter.windowCreated, function(window, app_name, event)
