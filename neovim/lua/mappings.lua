@@ -21,8 +21,8 @@ wk.register({
   ["<C-k>"] = { "<C-w>k", "Move up" },
   ["<C-l>"] = { "<C-w>l", "Move right" },
   -- K = { require('trevj').format_at_cursor, 'Split' },
-  ["<"] = { "<gv", "Indent left", mode = "v" },
-  [">"] = { "<gv", "Indent right", mode = "v" },
+  ["<"] = { "<gv", "Indent left", mode = "x" },
+  [">"] = { ">gv", "Indent right", mode = "x" },
   g = require("mappings.g"),
   z = require("mappings.z"),
   ["<Leader>"] = {
