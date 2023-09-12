@@ -33,6 +33,7 @@ wk.register({
     h = require("mappings.gitsigns"),
     k = require("mappings.marks"),
     n = require("mappings.neo-tree"),
+    o = require("mappings.obsidian-nvim"),
     t = require("mappings.telescope"),
     x = require("mappings.toggles"),
     z = require("mappings.zk"),

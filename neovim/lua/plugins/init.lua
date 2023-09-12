@@ -91,6 +91,16 @@ require("lazy").setup({
 		},
 	},
 	{ "elentok/format-on-save.nvim", config = require("plugins.format-on-save").config },
+	-- {
+	-- 	'nvimdev/lspsaga.nvim',
+	-- 	config = function()
+	-- 		require('lspsaga').setup({})
+	-- 	end,
+	-- 	dependencies = {
+	-- 		'nvim-treesitter/nvim-treesitter', -- optional
+	-- 		'nvim-tree/nvim-web-devicons', -- optional
+	-- 	}
+	-- },
 
 	--
 	-- treesitter
@@ -276,6 +286,21 @@ require("lazy").setup({
 		lazy = true,
 		ft = { "markdown" },
 		config = require("plugins.headlines").config,
+	},
+	{
+		"epwalsh/obsidian.nvim",
+		lazy = true,
+		cmd = require('plugins.obsidian-nvim').cmd,
+		-- event = {
+		-- 	"BufReadPre path/to/my-vault/**.md",
+		-- 	"BufNewFile path/to/my-vault/**.md",
+		-- },
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"hrsh7th/nvim-cmp",
+			"nvim-telescope/telescope.nvim",
+		},
+		opts = require('plugins.obsidian-nvim').opts,
 	},
 
 	--
