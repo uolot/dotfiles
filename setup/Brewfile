@@ -95,6 +95,8 @@ brew "rlwrap"
 brew "saml2aws"
 # Fast and accurate code counter with complexity and COCOMO estimates
 brew "scc"
+# Intuitive find & replace CLI
+brew "sd"
 # Cross-shell prompt for astronauts
 brew "starship"
 # User interface to the TELNET protocol
@@ -107,6 +109,8 @@ brew "tree"
 brew "universal-ctags"
 # Tool for writing command-line pipes with instant live preview
 brew "up"
+# Executes a program periodically, showing output fullscreen
+brew "watch"
 # Watch files and take action when they change
 brew "watchman"
 # Internet file retriever
@@ -137,6 +141,8 @@ cask "karabiner-elements"
 cask "logitech-options"
 # Online collaborative whiteboard platform
 cask "miro"
+# Knowledge base that works on top of a local folder of plain text Markdown files
+cask "obsidian"
 # Cloud storage client
 cask "onedrive"
 # Collaboration platform for API development
@@ -151,6 +157,8 @@ cask "rectangle"
 cask "session-manager-plugin"
 # Team communication and collaboration software
 cask "slack"
+# Music streaming service
+cask "spotify"
 # To-do list
 cask "todoist"
 # Open-source code editor
