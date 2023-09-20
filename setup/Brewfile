@@ -85,7 +85,7 @@ brew "moreutils"
 brew "ncdu"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim", args: ["HEAD"]
-# Professional collaborative platform for embedded development
+# Your Gateway to Embedded Software Development Excellence
 brew "platformio"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
@@ -123,7 +123,7 @@ brew "zoxide"
 brew "koekeishiya/formulae/yabai"
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
-# Command-line helper for the 1Password password manager
+# Command-line interface for 1Password
 cask "1password-cli"
 # Multi-track audio editor and recorder
 cask "audacity"
