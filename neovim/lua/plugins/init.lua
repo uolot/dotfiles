@@ -14,11 +14,11 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	-- top plugins
 	{ "lewis6991/impatient.nvim" },
-	{ "folke/neodev.nvim",         opts = {}, ft = 'lua', priority = 1000 },
+	{ "folke/neodev.nvim",       opts = {}, ft = 'lua', priority = 1000 },
 
 	-- dependencies
-	{ "nvim-lua/plenary.nvim" },
-	{ "kevinhwang91/promise-async" },
+	-- { "nvim-lua/plenary.nvim" },
+	-- { "kevinhwang91/promise-async" },
 
 	--
 	-- cmp
@@ -40,12 +40,7 @@ require("lazy").setup({
 	{ "williamboman/mason.nvim",          build = ":MasonUpdate" },
 	{ "williamboman/mason-lspconfig.nvim" },
 	{ "VonHeikemen/lsp-zero.nvim",        branch = "v2.x" },
-	{
-		"jose-elias-alvarez/null-ls.nvim",
-		config = function()
-			require("plugins.null-ls")
-		end,
-	},
+	{ "jose-elias-alvarez/null-ls.nvim",  config = require("plugins.null-ls").config },
 	{ "jay-babu/mason-null-ls.nvim" },
 	{ "RishabhRD/popfix" },
 	{ "RishabhRD/nvim-lsputils" },
@@ -68,6 +63,7 @@ require("lazy").setup({
 			"weilbith/nvim-code-action-menu",
 		},
 		config = function()
+			---@diagnostic disable-next-line: missing-parameter
 			require("refactoring").setup()
 		end,
 	},
@@ -91,16 +87,6 @@ require("lazy").setup({
 		},
 	},
 	{ "elentok/format-on-save.nvim", config = require("plugins.format-on-save").config },
-	-- {
-	-- 	'nvimdev/lspsaga.nvim',
-	-- 	config = function()
-	-- 		require('lspsaga').setup({})
-	-- 	end,
-	-- 	dependencies = {
-	-- 		'nvim-treesitter/nvim-treesitter', -- optional
-	-- 		'nvim-tree/nvim-web-devicons', -- optional
-	-- 	}
-	-- },
 
 	--
 	-- treesitter
@@ -130,19 +116,40 @@ require("lazy").setup({
 		"nvim-telescope/telescope.nvim",
 		branch = "0.1.x",
 		lazy = true,
+		dependencies = require("plugins.telescope").dependencies,
 		config = require("plugins.telescope").config,
 	},
-	{ "kelly-lin/telescope-ag" },
+
+	--
+	-- ui
+	--
+	{ "nvim-lualine/lualine.nvim", opts = require("plugins.lualine").opts },
+	{ "folke/which-key.nvim",      opts = require("plugins.which-key").opts },
+	{ "chentoast/marks.nvim",      opts = require("plugins.marks").opts },
 	{
-		"nvim-telescope/telescope-fzf-native.nvim",
-		build = "make",
-	},
-	{ "nvim-telescope/telescope-ui-select.nvim" },
-	{
-		"nvim-telescope/telescope-live-grep-args.nvim",
+		"sindrets/winshift.nvim",
 		lazy = true,
+		cmd = "WinShift",
+		opts = { highlight_moving_win = true },
+	},
+	{
+		"gbrlsnchs/winpick.nvim",
+		lazy = true,
+		opts = { border = "rounded" },
+	},
+	-- hide gutter numbers for folds
+	{ "luukvbaal/statuscol.nvim",            config = require("plugins.statuscol").config },
+	{ "lukas-reineke/indent-blankline.nvim", opts = require("plugins.indent-blankline").opts },
+	{
+		"gen740/SmoothCursor.nvim",
+		opts = require("plugins.smooth-cursor").opts,
+	},
+	{
+		"rcarriga/nvim-notify",
+		dependencies = 'nvim-telescope/telescope.nvim',
 		config = function()
-			require("telescope").load_extension("live_grep_args")
+			require('telescope').load_extension('notify')
+			-- require("notify").setup({ stages = "static" })
 		end,
 	},
 
@@ -150,7 +157,6 @@ require("lazy").setup({
 	-- colors & highlighting
 	--
 
-	{ "nvim-lualine/lualine.nvim", opts = require("plugins.lualine").opts },
 	{
 		"rebelot/kanagawa.nvim",
 		lazy = false,
@@ -261,8 +267,10 @@ require("lazy").setup({
 	},
 	{
 		"mickael-menu/zk-nvim",
-		lazy = true,
+		-- lazy = true,
+		dependencies = 'nvim-telescope/telescope.nvim',
 		config = function()
+			require('telescope').load_extension('zk')
 			require("zk").setup({ picker = "telescope" })
 		end,
 	},
@@ -315,12 +323,7 @@ require("lazy").setup({
 	{ "kopischke/vim-fetch" },
 	{
 		"numToStr/Comment.nvim",
-		keys = {
-			{ "gcc", mode = { "n", "x" } },
-			{ "gCC", mode = { "n", "x" } },
-			{ "gc",  mode = { "n", "x" } },
-			{ "gC",  mode = { "n", "x" } },
-		},
+		lazy = false,
 		opts = {
 			toggler = {
 				line = "gcc",
@@ -332,8 +335,6 @@ require("lazy").setup({
 			},
 		},
 	},
-	{ "folke/which-key.nvim",     opts = require("plugins.which-key").opts },
-	{ "chentoast/marks.nvim",     opts = require("plugins.marks").opts },
 	-- Run Async Shell Commands
 	{ "skywind3000/asyncrun.vim", cmd = "AsyncRun" },
 
@@ -352,22 +353,12 @@ require("lazy").setup({
 	},
 	-- Heuristically set buffer options
 	{ "tpope/vim-sleuth" },
-	{
-		"sindrets/winshift.nvim",
-		lazy = true,
-		cmd = "WinShift",
-		opts = { highlight_moving_win = true },
-	},
-	{
-		"gbrlsnchs/winpick.nvim",
-		lazy = true,
-		opts = { border = "rounded" },
-	},
-	-- hide gutter numbers for folds
-	{ "luukvbaal/statuscol.nvim",            config = require("plugins.statuscol").config },
 	-- ultra fold
-	{ "kevinhwang91/nvim-ufo",               opts = {} },
-	{ "lukas-reineke/indent-blankline.nvim", opts = require("plugins.indent-blankline").opts },
+	{
+		"kevinhwang91/nvim-ufo",
+		dependencies = { "kevinhwang91/promise-async" },
+		opts = {}
+	},
 	-- Inversed J
 	{
 		"AckslD/nvim-trevJ.lua",
@@ -395,17 +386,7 @@ require("lazy").setup({
 		build = require("plugins.firenvim").build,
 		config = require("plugins.firenvim").config,
 	},
-	{
-		"gen740/SmoothCursor.nvim",
-		opts = require("plugins.smooth-cursor").opts,
-	},
 	-- { 'stevearc/overseer.nvim' },
-	{
-		"rcarriga/nvim-notify",
-		-- config = function()
-		-- 	require("notify").setup({ stages = "static" })
-		-- end,
-	},
 	{
 		"kwkarlwang/bufjump.nvim",
 		keys = { "<C-n>", "<C-p>" },

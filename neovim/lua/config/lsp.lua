@@ -3,23 +3,6 @@
 local lspconfig = require('lspconfig')
 
 local on_lsp_attach = function(client, buffer)
-    -- ufo
-    -- local capabilities = vim.lsp.protocol.make_client_capabilities()
-    -- -- local capabilities = requite('cmp_nvim_lsp').default_capabilities()
-    -- capabilities.textDocument.foldingRange = {
-    --     dynamicRegistration = false,
-    --     lineFoldingOnly = true,
-    -- }
-    -- client.capabilities = capabilities
-    -- ufo end
-
-
-    -- TODO: update capabilities with `require('cmp_nvim_lsp').update_capabilities
-    -- if client.supports_method('textDocument/formatting') then
-    --     require('lsp-zero').buffer_autoformat()
-    --     -- require("lsp-format").on_attach(client)
-    -- end
-
     if client.server_capabilities.inlayHintProvider then
         vim.lsp.inlay_hint(buffer, false)
     end
@@ -30,12 +13,6 @@ local on_tsserver_attach = function(client, bufnr)
     require("twoslash-queries").attach(client, bufnr)
     client.server_capabilities.documentFormattingProvider = false
     client.server_capabilities.documentRangeFormattingProvider = false
-
-    -- if client.server_capabilities.inlayHintProvider then
-    --     vim.lsp.inlay_hint(bufnr, false)
-    -- end
-
-    -- on_lsp_attach(client, bufnr)
 end
 
 local lsputils_border_chars = {

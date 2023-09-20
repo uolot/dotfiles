@@ -1,3 +1,13 @@
+local dependencies = {
+    "nvim-lua/plenary.nvim",
+    "kelly-lin/telescope-ag",
+    "nvim-telescope/telescope-fzf-native.nvim",
+    "nvim-telescope/telescope-ui-select.nvim",
+    "nvim-telescope/telescope-live-grep-args.nvim",
+    'piersolenski/telescope-import.nvim',
+    "debugloop/telescope-undo.nvim",
+}
+
 local function config()
     local actions = require('telescope.actions')
     require('telescope').setup {
@@ -45,14 +55,22 @@ local function config()
             ['ui-select'] = {
                 require('telescope.themes').get_dropdown {}
             },
+            undo = {
+                side_by_side = true,
+                layout_strategy = "vertical",
+                layout_config = {
+                    preview_height = 0.7,
+                },
+            },
         },
     }
 
-    require('telescope').load_extension('zk')
-    require('telescope').load_extension('fzf')
     require('telescope').load_extension('ag')
+    require('telescope').load_extension('fzf')
     require('telescope').load_extension('ui-select')
-    require('telescope').load_extension('notify')
+    require("telescope").load_extension("live_grep_args")
+    require("telescope").load_extension("import")
+    require("telescope").load_extension("undo")
 end
 
-return { config = config }
+return { config = config, dependencies = dependencies }
