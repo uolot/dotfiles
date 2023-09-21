@@ -86,6 +86,9 @@ require("lazy").setup({
 			is_enabled = true, -- to keep disabled at startup and enable it on request with the EnableTwoslashQueries
 		},
 	},
+	{
+		"davidosomething/format-ts-errors.nvim"
+	},
 	{ "elentok/format-on-save.nvim", config = require("plugins.format-on-save").config },
 
 	--
