@@ -100,7 +100,11 @@ require("lazy").setup({
 	{
 		"davidosomething/format-ts-errors.nvim"
 	},
-	{ "elentok/format-on-save.nvim", config = require("plugins.format-on-save").config },
+	{ "elentok/format-on-save.nvim",                config = require("plugins.format-on-save").config },
+	{
+		"pmizio/typescript-tools.nvim",
+		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+	},
 
 	--
 	-- treesitter

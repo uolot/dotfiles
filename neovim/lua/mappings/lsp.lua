@@ -4,7 +4,16 @@ return {
     name = '+lsp',
     a = { '<Cmd>CodeActionMenu<CR>', 'Code Action', mode = { 'n', 'x' } },
     e = { vim.diagnostic.open_float, 'Show current line diagnostics' },
-    d = { vim.lsp.buf.definition, 'Go to definition' },
+    d = {
+        function()
+            if vim.bo.filetype == 'typescript' then
+                vim.cmd('TSToolsGoToSourceDefinition')
+            else
+                vim.lsp.buf.definition()
+            end
+        end,
+        'Go to definition',
+    },
     D = { vim.lsp.buf.declaration, 'Go to declaration' },
     -- f = { function() telescope_builtin.lsp_references({ fname_width = 50 }) end, 'Find references' },
     -- f = { function() telescope_builtin.lsp_references() end, 'Find references' },
@@ -12,9 +21,9 @@ return {
         'Find references' },
     -- f = { function() telescope_builtin.lsp_references({ show_line = false }) end, 'Find references' },
     h = { vim.lsp.buf.hover, 'Hover' },
-    -- I = { vim.lsp.buf.implementation, 'Go to implementation' },
     i = { telescope_builtin.lsp_incoming_calls, 'Incoming calls' },
     I = { '<Cmd>Telescope import<CR>', 'Import' },
+    m = { vim.lsp.buf.implementation, 'Go to implementation' },
     o = { telescope_builtin.lsp_outgoing_calls, 'Outgoing calls' },
     r = { vim.lsp.buf.rename, 'Rename' },
     -- r = { '<Cmd>IncRename <C-r><C-w>', 'Rename' },
