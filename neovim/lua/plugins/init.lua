@@ -11,6 +11,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- TODO: replace with `config = true`?
 local function setup(plugin)
 	return function()
 		require(plugin).setup()
@@ -42,7 +43,11 @@ require("lazy").setup({
 	--
 
 	{ "neovim/nvim-lspconfig",             dependencies = { "folke/neodev.nvim" } },
-	{ "williamboman/mason.nvim",           build = ":MasonUpdate",                    config = setup("mason") },
+	{
+		"williamboman/mason.nvim",
+		build = ":MasonUpdate",
+		config = setup("mason"),
+	},
 	{ "williamboman/mason-lspconfig.nvim", opts = {} },
 	{ "VonHeikemen/lsp-zero.nvim",         branch = "v2.x" },
 	{ "jose-elias-alvarez/null-ls.nvim",   config = require("plugins.null-ls").config },
@@ -56,7 +61,6 @@ require("lazy").setup({
 	{ "RishabhRD/popfix" },
 	{ "RishabhRD/nvim-lsputils" },
 	{ "onsails/lspkind-nvim" },
-	-- { 'kosayoda/nvim-lightbulb' },
 	{
 		"folke/trouble.nvim",
 		lazy = true,
@@ -73,13 +77,8 @@ require("lazy").setup({
 			"weilbith/nvim-code-action-menu",
 		},
 		config = setup('refactoring'),
-		-- config = function()
-		-- 	---@diagnostic disable-next-line: missing-parameter
-		-- 	require("refactoring").setup()
-		-- end,
 	},
-	-- Pop-up menu for code actions to show meta-information and diff preview
-	--     Provides ":CodeActionMenu"
+	-- Pop-up menu for code actions to show meta-information and diff preview - provides ":CodeActionMenu"
 	{
 		"weilbith/nvim-code-action-menu",
 		cmd = "CodeActionMenu",
@@ -167,7 +166,6 @@ require("lazy").setup({
 		dependencies = 'nvim-telescope/telescope.nvim',
 		config = function()
 			require('telescope').load_extension('notify')
-			-- require("notify").setup({ stages = "static" })
 		end,
 	},
 
@@ -230,12 +228,6 @@ require("lazy").setup({
 			tint = 15,
 			tint_background_colors = true,
 		},
-		-- config = function()
-		-- 	require("tint").setup({
-		-- 		tint = 15,
-		-- 		tint_background_colors = true,
-		-- 	})
-		-- end,
 	},
 	-- Easily add additional highlights to your buffers
 	{ "folke/paint.nvim",        opts = require("plugins.paint").opts },
@@ -432,25 +424,6 @@ require("lazy").setup({
 			-- 	"#0000ff"
 			-- },
 		},
-		-- config = function()
-		-- 	-- percent number  -- The change in color. 0.8 would change each box to be 20% darker than the last and 1.2 would be 20% brighter.
-		-- 	-- depth number -- De depths of changing colors. Defaults to 4. After this the colors reset. Note that the first color is taken from your "Normal" highlight so a 4 is 3 new colors.
-		-- 	-- automatic boolean -- Automatically turns this on when treesitter finds a parser for the current file.
-		-- 	-- colors string [] | nil -- A list of colors to use instead. If this is set percent and depth are not taken into account.
-		-- 	-- bg string? -- If you'd prefer to use a different color other than the default "Normal" highlight.
-		-- 	require("block").setup({
-		-- 		percent = 1.22,
-		-- 		depth = 10,
-		-- 		colors = nil,
-		-- 		automatic = false,
-		-- 		-- bg = nil,
-		-- 		-- colors = {
-		-- 		-- 	"#ff0000"
-		-- 		-- 	"#00ff00"
-		-- 		-- 	"#0000ff"
-		-- 		-- },
-		-- 	})
-		-- end
 	},
 }, {
 	-- diff = 'browser',
