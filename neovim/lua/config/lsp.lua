@@ -252,6 +252,12 @@ require("typescript-tools").setup({
                 quotePreference = "auto",
                 includeCompletionsForModuleExports = true,
                 includeCompletionsForImportStatements = true,
+                -- <!--
+                includeCompletionsWithSnippetText = true,
+                includeAutomaticOptionalChainCompletions = true,
+                includeCompletionsWithClassMemberSnippets = true,
+                includeCompletionsWithObjectLiteralMethodSnippets = true,
+                -- -->
                 -- "shortest" | "project-relative" | "relative" | "non-relative"
                 importModuleSpecifierPreference = "project-relative",
             },
