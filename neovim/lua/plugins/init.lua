@@ -11,6 +11,12 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+local function setup(plugin)
+	return function()
+		require(plugin).setup()
+	end
+end
+
 require("lazy").setup({
 	-- top plugins
 	{ "lewis6991/impatient.nvim" },
@@ -35,13 +41,18 @@ require("lazy").setup({
 	-- lsp
 	--
 
-	-- Plug 'williamboman/nvim-lsp-installer'
-	{ "neovim/nvim-lspconfig",            dependencies = { "folke/neodev.nvim" } },
-	{ "williamboman/mason.nvim",          build = ":MasonUpdate" },
-	{ "williamboman/mason-lspconfig.nvim" },
-	{ "VonHeikemen/lsp-zero.nvim",        branch = "v2.x" },
-	{ "jose-elias-alvarez/null-ls.nvim",  config = require("plugins.null-ls").config },
-	{ "jay-babu/mason-null-ls.nvim" },
+	{ "neovim/nvim-lspconfig",             dependencies = { "folke/neodev.nvim" } },
+	{ "williamboman/mason.nvim",           build = ":MasonUpdate",                    config = setup("mason") },
+	{ "williamboman/mason-lspconfig.nvim", opts = {} },
+	{ "VonHeikemen/lsp-zero.nvim",         branch = "v2.x" },
+	{ "jose-elias-alvarez/null-ls.nvim",   config = require("plugins.null-ls").config },
+	{
+		"jay-babu/mason-null-ls.nvim",
+		opts = {
+			ensure_installed = {},
+			automatic_installation = true,
+		},
+	},
 	{ "RishabhRD/popfix" },
 	{ "RishabhRD/nvim-lsputils" },
 	{ "onsails/lspkind-nvim" },
@@ -54,7 +65,6 @@ require("lazy").setup({
 			severity = vim.diagnostic.severity.INFO,
 		},
 	},
-
 	{
 		"ThePrimeagen/refactoring.nvim",
 		dependencies = {
@@ -62,22 +72,23 @@ require("lazy").setup({
 			"nvim-treesitter/nvim-treesitter",
 			"weilbith/nvim-code-action-menu",
 		},
-		config = function()
-			---@diagnostic disable-next-line: missing-parameter
-			require("refactoring").setup()
-		end,
+		config = setup('refactoring'),
+		-- config = function()
+		-- 	---@diagnostic disable-next-line: missing-parameter
+		-- 	require("refactoring").setup()
+		-- end,
 	},
-
 	-- Pop-up menu for code actions to show meta-information and diff preview
 	--     Provides ":CodeActionMenu"
 	{
 		"weilbith/nvim-code-action-menu",
 		cmd = "CodeActionMenu",
 	},
-
 	-- Incremental LSP rename command based on Neovim's command-preview feature
-	{ "smjonas/inc-rename.nvim" },
-
+	{
+		"smjonas/inc-rename.nvim",
+		config = setup("inc_rename"),
+	},
 	-- Nvim lua plugin which adds support for twoslash queries into typescript projects
 	{
 		"marilari88/twoslash-queries.nvim",
@@ -211,12 +222,16 @@ require("lazy").setup({
 	},
 	{
 		"levouh/tint.nvim",
-		config = function()
-			require("tint").setup({
-				tint = 15,
-				tint_background_colors = true,
-			})
-		end,
+		opts = {
+			tint = 15,
+			tint_background_colors = true,
+		},
+		-- config = function()
+		-- 	require("tint").setup({
+		-- 		tint = 15,
+		-- 		tint_background_colors = true,
+		-- 	})
+		-- end,
 	},
 	-- Easily add additional highlights to your buffers
 	{ "folke/paint.nvim",        opts = require("plugins.paint").opts },
@@ -401,27 +416,37 @@ require("lazy").setup({
 	},
 	{
 		"HampusHauffman/block.nvim",
-		config = function()
-			-- require("block").setup({})
-
-			-- percent number  -- The change in color. 0.8 would change each box to be 20% darker than the last and 1.2 would be 20% brighter.
-			-- depth number -- De depths of changing colors. Defaults to 4. After this the colors reset. Note that the first color is taken from your "Normal" highlight so a 4 is 3 new colors.
-			-- automatic boolean -- Automatically turns this on when treesitter finds a parser for the current file.
-			-- colors string [] | nil -- A list of colors to use instead. If this is set percent and depth are not taken into account.
-			-- bg string? -- If you'd prefer to use a different color other than the default "Normal" highlight.
-			require("block").setup({
-				percent = 1.22,
-				depth = 10,
-				colors = nil,
-				automatic = false,
-				-- bg = nil,
-				-- colors = {
-				-- 	"#ff0000"
-				-- 	"#00ff00"
-				-- 	"#0000ff"
-				-- },
-			})
-		end
+		opts = {
+			percent = 1.22,
+			depth = 10,
+			colors = nil,
+			automatic = false,
+			-- bg = nil,
+			-- colors = {
+			-- 	"#ff0000"
+			-- 	"#00ff00"
+			-- 	"#0000ff"
+			-- },
+		},
+		-- config = function()
+		-- 	-- percent number  -- The change in color. 0.8 would change each box to be 20% darker than the last and 1.2 would be 20% brighter.
+		-- 	-- depth number -- De depths of changing colors. Defaults to 4. After this the colors reset. Note that the first color is taken from your "Normal" highlight so a 4 is 3 new colors.
+		-- 	-- automatic boolean -- Automatically turns this on when treesitter finds a parser for the current file.
+		-- 	-- colors string [] | nil -- A list of colors to use instead. If this is set percent and depth are not taken into account.
+		-- 	-- bg string? -- If you'd prefer to use a different color other than the default "Normal" highlight.
+		-- 	require("block").setup({
+		-- 		percent = 1.22,
+		-- 		depth = 10,
+		-- 		colors = nil,
+		-- 		automatic = false,
+		-- 		-- bg = nil,
+		-- 		-- colors = {
+		-- 		-- 	"#ff0000"
+		-- 		-- 	"#00ff00"
+		-- 		-- 	"#0000ff"
+		-- 		-- },
+		-- 	})
+		-- end
 	},
 }, {
 	-- diff = 'browser',

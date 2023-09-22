@@ -1,6 +1,5 @@
 -- neovim/nvim-lspconfig
 -- https://github.com/neovim/nvim-lspconfig
-local lspconfig = require('lspconfig')
 
 local on_lsp_attach = function(client, buffer)
     if client.server_capabilities.inlayHintProvider then
@@ -8,7 +7,6 @@ local on_lsp_attach = function(client, buffer)
     end
 end
 
--- TODO: remove
 local on_tsserver_attach = function(client, bufnr)
     require("twoslash-queries").attach(client, bufnr)
     client.server_capabilities.documentFormattingProvider = false
@@ -45,103 +43,21 @@ vim.g.lsp_utils_codeaction_opts = {
     }
 }
 
+local enhanced_float_handler = require('config.enhanced_float_handler')
+
 -- LSP borders
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
+vim.lsp.handlers["textDocument/signatureHelp"] = enhanced_float_handler(vim.lsp.with(
     vim.lsp.handlers.signature_help, {
         border = 'rounded'
     }
-)
+))
 
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+vim.lsp.handlers["textDocument/hover"] = enhanced_float_handler(vim.lsp.with(
     vim.lsp.handlers.hover,
     {
         border = "rounded"
     }
-)
-
--- nvim-lsp-installer
--- https://github.com/williamboman/nvim-lsp-installer#setup
--- local function filter(arr, fn)
---     if type(arr) ~= "table" then
---         return arr
---     end
---
---     local filtered = {}
---     for k, v in pairs(arr) do
---         if fn(v, k, arr) then
---             table.insert(filtered, v)
---         end
---     end
---
---     return filtered
--- end
-
--- local function filterDTS(value)
---     return string.match(value.uri, '%.d.ts') == nil
---     -- return string.match(value.targetUri, '%.d.ts') == nil
--- end
-
--- local lsp_installer = require("nvim-lsp-installer")
--- lsp_installer.on_server_ready(function(server)
---     local opts = {
---         on_attach = on_lsp_attach,
---         flags = {
---             -- This will be the default in neovim 0.7+
---             debounce_text_changes = 150,
---         },
---     }
---
---     local signs = { Hint = "", Info = "", Warn = "", Error = "" }
---     for type, icon in pairs(signs) do
---         local hl = "DiagnosticSign" .. type
---         vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
---     end
---
---     if server.name == "tsserver" then
---         opts.on_attach = on_tsserver_attach
---         -- opts.on_attach = on_lsp_attach
---         -- opts.handlers = {
---         --     ["textDocument/definition"] = function (error, result, method, ...)
---         --         -- if not vim.tbl_islist(result) or type(result) ~= "table" then
---         --         --     return vim.lsp.handlers["textDocument/definition"](err, result, method, ...)
---         --         -- end
---         --         --
---         --         -- return vim.lsp.handlers["textDocument/definition"](err, { result[1] }, method, ...)
---         --
---         --         -- vim.notify(vim.inspect(result))
---         --         if (vim.tbl_islist(result) or type(result) == "table") and #result > 1 then
---         --             local filtered_result = filter(result, filterDTS)
---         --             -- vim.notify(vim.inspect(filtered_result))
---         --             return vim.lsp.handlers["textDocument/definition"](err, filtered_result, method, ...)
---         --         end
---         --
---         --         return vim.lsp.handlers["textDocument/definition"](err, result, method, ...)
---         --     end
---         -- }
---     end
---
---     server:setup(opts)
--- end)
-
--- local lspconfig = require('lspconfig')
--- lspconfig.tsserver.setup { on_attach = on_attach }
---
-require("null-ls").setup()
-require("mason-null-ls").setup({
-    --     -- ensure_installed = {"prettier", "eslint-lsp"},
-    automatic_installation = true,
-    --     automatic_setup = true,
-})
-
-require("mason").setup()
-
-require("mason-lspconfig").setup({
-    -- ensure_installed = {
-    --     'tsserver',
-    --     'eslint',
-    --     -- 'prettier',
-    -- }
-})
+))
 
 local lsp = require('lsp-zero')
 -- lsp.set_sign_icons()
@@ -157,18 +73,15 @@ lsp.extend_lspconfig({
         }
     }
 })
--- local lsp = require('lsp-zero').preset({})
--- lsp.on_attach(function(client, bufnr)
---   -- lsp.default_keymaps({buffer = bufnr})
--- end)
--- lsp.setup()
+
+local lspconfig = require('lspconfig')
 
 require("mason-lspconfig").setup_handlers {
     -- The first entry (without a key) will be the default handler
     -- and will be called for each installed server that doesn't have
     -- a dedicated handler.
     function(server_name) -- default handler (optional)
-        require("lspconfig")[server_name].setup({
+        lspconfig[server_name].setup({
             -- on_attach = on_lsp_attach
         })
     end,
