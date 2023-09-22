@@ -2,6 +2,7 @@
 
 # ZK
 export ZK_NOTEBOOK_DIR=$HOME/Documents/ZK
-# TODO: add journal
-alias scratchpad="nvim ${ZK_NOTEBOOK_DIR}/scratchpad_0ixi_2022-03-30.md"
-alias scratchpad-copy="cat ~/scratchpad | pbcopy"
+
+# TODO:move somewhere else due to migrating away from ZK
+# alias scratchpad="nvim ${ZK_NOTEBOOK_DIR}/scratchpad_0ixi_2022-03-30.md"
+alias daily="nvim ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Notes/Work/Daily.md"
