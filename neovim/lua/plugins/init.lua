@@ -392,7 +392,7 @@ require("lazy").setup({
 		},
 	},
 	-- Broken, revisit when updated
-	-- { 'nvim-zh/colorful-winsep.nvim' },
+	{ 'nvim-zh/colorful-winsep.nvim', config = true, event = { "WinNew" } },
 	-- Embed Neovim in Chrome, Firefox & others.
 	{
 		"glacambre/firenvim",
