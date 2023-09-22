@@ -55,9 +55,9 @@ local config = {
   },
 
   -- available keys
-  -- ..e..yui..
+  -- .we..yui..
   -- a.dfg....
-  -- zxc.b..
+  -- z.c.b..
 
   -- keys
   leader = { key = 'w', mods = 'CMD', timeout_milliseconds = 1000 },
@@ -112,7 +112,7 @@ local config = {
     },
     -- swap with pane
     {
-      key = 'w',
+      key = 'x',
       mods = 'LEADER',
       action = wez.action.PaneSelect { mode = 'SwapWithActive' },
     },
@@ -158,6 +158,15 @@ local config = {
       key = 'q',
       mods = 'LEADER',
       action = wez.action.CloseCurrentPane({ confirm = false }),
+    },
+    -- promote pane to tab
+    {
+      key = "t",
+      mods = "LEADER | SHIFT",
+      action = wez.action_callback(
+        function(win, pane)
+          pane:move_to_new_tab()
+        end)
     },
     -- move between tabs
     {
