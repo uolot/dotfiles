@@ -95,6 +95,35 @@ local function yabai(args)
     end, args):start()
 end
 
+-- resize window to reasonable size - 60%, max 1025x900px
+local function reasonableSize()
+    local window = hs.window.focusedWindow()
+    local screen = window:screen()
+    local mode = screen:currentMode()
+    local w = math.min(math.floor(mode.w * 0.6), 1025)
+    local h = math.min(math.floor(mode.h * 0.6), 900)
+    window:setSize(w, h)
+    window:centerOnScreen()
+end
+
+-- grow window by 10%
+local function grow()
+    local window = hs.window.focusedWindow()
+    local size = window:size()
+    local w = math.floor(size.w * 1.1)
+    local h = math.floor(size.h * 1.1)
+    window:setSize(w, h)
+end
+
+-- shrink window by 10%
+local function shrink()
+    local window = hs.window.focusedWindow()
+    local size = window:size()
+    local w = math.floor(size.w * 0.9)
+    local h = math.floor(size.h * 0.9)
+    window:setSize(w, h)
+end
+
 -- local function warpd(args)
 --     hs.task.new("/usr/local/bin/warpd", nil, function (...)
 --         print("stream", hs.inspect(table.pack(...)))
@@ -113,7 +142,6 @@ local meh = { "alt", "ctrl", "shift" }
 -- Z X . V B . . x x /
 
 -- Apps
--- hs.hotkey.bind(hyper, "p", toggleTeamsMute)
 hs.hotkey.bind(hyper, "i", function()
     local screen = hs.mouse.getCurrentScreen()
     local space = hs.spaces.activeSpaceOnScreen(screen)
@@ -136,13 +164,11 @@ hs.hotkey.bind(hyper, "i", function()
 end)
 
 -- Window navigation
--- hs.hotkey.bind(hyper, ";", hs.hints.windowHints)
 hs.hotkey.bind(hyper, "return", function() yabai({ '-m', 'window', '--toggle', 'zoom-fullscreen' }) end)
-hs.hotkey.bind(hyper, "space", function() yabai({ '-m', 'window', '--toggle', 'float' }) end)
-
--- hs.hotkey.bind(hyper, "q", function() hs.grid.setGrid("1x1") end)
--- hs.hotkey.bind(hyper, "w", function() hs.grid.setGrid("2x1") end)
--- hs.hotkey.bind(hyper, "e", function() hs.grid.setGrid("3x1") end)
+hs.hotkey.bind(hyper, "space", function()
+    yabai({ '-m', 'window', '--toggle', 'float' })
+    reasonableSize()
+end)
 
 function dump(o)
     if type(o) == 'table' then
@@ -157,10 +183,6 @@ function dump(o)
     end
 end
 
--- hs.hotkey.bind(hyper, "y", function() hs.grid.pushWindowLeft() end)
--- hs.hotkey.bind(hyper, "u", function() hs.grid.pushWindowRight() end)
-
--- hs.hotkey.bind(hyper, "s", function() hs.grid.snap(hs.window.focusedWindow()) end)
 hs.hotkey.bind(hyper, "c", function() hs.window.focusedWindow():centerOnScreen() end)
 
 hs.hotkey.bind(hyper, "h", function() hs.window.focusedWindow():focusWindowWest() end)
@@ -168,30 +190,13 @@ hs.hotkey.bind(hyper, "j", function() hs.window.focusedWindow():focusWindowSouth
 hs.hotkey.bind(hyper, "k", function() hs.window.focusedWindow():focusWindowNorth() end)
 hs.hotkey.bind(hyper, "l", function() hs.window.focusedWindow():focusWindowEast() end)
 
--- hs.hotkey.bind(hyper, "h", function() yabai({ '-m', 'window', '--focus', 'west' }) end)
--- hs.hotkey.bind(hyper, "j", function() yabai({ '-m', 'window', '--focus', 'south' }) end)
--- hs.hotkey.bind(hyper, "k", function() yabai({ '-m', 'window', '--focus', 'north' }) end)
--- hs.hotkey.bind(hyper, "l", function() yabai({ '-m', 'window', '--focus', 'east' }) end)
-
 hs.hotkey.bind(hyper, "n", function() yabai({ '-m', 'window', '--space', 'next' }) end)
 hs.hotkey.bind(hyper, "p", function() yabai({ '-m', 'window', '--space', 'prev' }) end)
 
 hs.hotkey.bind(hyper, "right", function() yabai({ '-m', 'display', '--focus', 'next' }) end)
 hs.hotkey.bind(hyper, "left", function() yabai({ '-m', 'display', '--focus', 'prev' }) end)
 
--- hs.hotkey.bind(hyper, "z", function () warpd({'--hint'}) end)
--- hs.hotkey.bind(hyper, "x", function () warpd({'--grid'}) end)
--- hs.hotkey.bind(hyper, "c", function () warpd({'--normal'}) end)
-
--- grow
--- hs.hotkey.bind(hyper, "e", function () yabai({'-m', 'window', '--resize', 'top:0:-200'}) end)
--- hs.hotkey.bind(hyper, "s", function () yabai({'-m', 'window', '--resize', 'left:-200:0'}) end)
--- hs.hotkey.bind(hyper, "d", function () yabai({'-m', 'window', '--resize', 'bottom:0:200'}) end)
--- hs.hotkey.bind(hyper, "f", function () yabai({'-m', 'window', '--resize', 'right:200:0'}) end)
-
 -- Mouse
--- TODO:
--- hs.hotkey.bind(hyper, "m", leftMouseClick)
 hs.hotkey.bind(hyper, "m", mouseHighlight)
 
 -- MEH
@@ -206,8 +211,10 @@ hs.hotkey.bind(meh, "j", function() yabai({ '-m', 'window', '--swap', 'south' })
 hs.hotkey.bind(meh, "k", function() yabai({ '-m', 'window', '--swap', 'north' }) end)
 hs.hotkey.bind(meh, "l", function() yabai({ '-m', 'window', '--swap', 'east' }) end)
 
-hs.hotkey.bind(meh, "space", function() yabai({ '-m', 'window', '--toggle', 'float', '--grid', '6:4:1:1:2:4' }) end)
+hs.hotkey.bind(meh, "space", function() reasonableSize() end)
 hs.hotkey.bind(meh, "s", function() yabai({ '-m', 'window', '--toggle', 'sticky' }) end)
+hs.hotkey.bind(meh, "u", function() grow() end)
+hs.hotkey.bind(meh, "d", function() shrink() end)
 
 hs.hotkey.bind(meh, "b", function() yabai({ '-m', 'space', '--balance' }) end)
 hs.hotkey.bind(meh, "r", function() yabai({ '-m', 'space', '--rotate', '270' }) end)
@@ -222,9 +229,3 @@ hs.hotkey.bind(meh, "y",
 
 hs.hotkey.bind(meh, "n", moveWindowToNextScreen)
 hs.hotkey.bind(meh, "p", moveWindowToPreviousScreen)
-
--- shrink
--- hs.hotkey.bind(meh, "e", function () yabai({'-m', 'window', '--resize', 'top:0:200'}) end)
--- hs.hotkey.bind(meh, "s", function () yabai({'-m', 'window', '--resize', 'left:200:0'}) end)
--- hs.hotkey.bind(meh, "d", function () yabai({'-m', 'window', '--resize', 'bottom:0:-200'}) end)
--- hs.hotkey.bind(meh, "f", function () yabai({'-m', 'window', '--resize', 'right:-200:0'}) end)
