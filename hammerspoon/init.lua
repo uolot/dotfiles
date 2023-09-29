@@ -202,9 +202,9 @@ hs.hotkey.bind(hyper, "m", mouseHighlight)
 -- MEH
 
 -- mapped keys
--- Q W E . T . U I O .
--- A . D F . G . . . ;
--- Z . C V . . M x x /
+-- Q W E . T . . I O .
+-- A . . F . G . . . ;
+-- Z . . V . . M x x /
 
 hs.hotkey.bind(meh, "h", function() yabai({ '-m', 'window', '--swap', 'west' }) end)
 hs.hotkey.bind(meh, "j", function() yabai({ '-m', 'window', '--swap', 'south' }) end)
@@ -212,9 +212,11 @@ hs.hotkey.bind(meh, "k", function() yabai({ '-m', 'window', '--swap', 'north' })
 hs.hotkey.bind(meh, "l", function() yabai({ '-m', 'window', '--swap', 'east' }) end)
 
 hs.hotkey.bind(meh, "space", function() reasonableSize() end)
-hs.hotkey.bind(meh, "s", function() yabai({ '-m', 'window', '--toggle', 'sticky' }) end)
 hs.hotkey.bind(meh, "u", function() grow() end)
 hs.hotkey.bind(meh, "d", function() shrink() end)
+hs.hotkey.bind(meh, "c", function() hs.window.focusedWindow():centerOnScreen() end)
+
+hs.hotkey.bind(meh, "s", function() yabai({ '-m', 'window', '--toggle', 'sticky' }) end)
 
 hs.hotkey.bind(meh, "b", function() yabai({ '-m', 'space', '--balance' }) end)
 hs.hotkey.bind(meh, "r", function() yabai({ '-m', 'space', '--rotate', '270' }) end)
