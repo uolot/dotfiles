@@ -7,8 +7,10 @@ local function config()
     null_ls.setup({
         sources = {
             -- typescript
-            null_ls.builtins.code_actions.eslint_d,
-            null_ls.builtins.diagnostics.eslint_d,
+            -- null_ls.builtins.code_actions.eslint_d,
+            -- null_ls.builtins.diagnostics.eslint_d,
+            null_ls.builtins.code_actions.eslint,
+            null_ls.builtins.diagnostics.eslint,
             -- python
             null_ls.builtins.formatting.black,
             null_ls.builtins.formatting.isort,
