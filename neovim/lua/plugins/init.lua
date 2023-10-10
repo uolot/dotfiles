@@ -159,8 +159,7 @@ require("lazy").setup({
     {
         "lukas-reineke/indent-blankline.nvim",
         main = "ibl",
-        opts = require(
-            "plugins.indent-blankline").opts
+        opts = require("plugins.indent-blankline").opts
     },
     {
         "gen740/SmoothCursor.nvim",
