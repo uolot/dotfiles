@@ -1,7 +1,8 @@
 local wez = require('wezterm')
 
 local font_family = 'BlexMono Nerd Font Mono'
-local color_scheme = 'GitHub Dark'
+-- local color_scheme = 'GitHub Dark'
+local color_scheme = 'Bamboo Multiplex'
 
 -- Show which key table is active in the status area
 wez.on('update-right-status', function(window, pane)
