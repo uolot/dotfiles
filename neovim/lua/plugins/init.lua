@@ -1,4 +1,5 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
         "git",
@@ -186,9 +187,9 @@ require("lazy").setup({
         "rebelot/kanagawa.nvim",
         lazy = false,
         priority = 1000,
-        init = function()
-            vim.cmd("colorscheme kanagawa")
-        end,
+        -- init = function()
+        --     vim.cmd("colorscheme kanagawa")
+        -- end,
         opts = {
             theme = "dragon",
             background = {
@@ -200,6 +201,22 @@ require("lazy").setup({
             statementStyle = { italic = false, bold = true },
         },
     },
+
+    {
+        'ribru17/bamboo.nvim',
+        lazy = false,
+        priority = 1000,
+        config = function()
+            require('bamboo').setup {
+                -- style = "multiplex",
+                diagnostics = {
+                    undercurl = true,
+                },
+            }
+            require('bamboo').load()
+        end,
+    },
+
     -- disables search highlighting when you are done searching and re-enables it when you search again
     { "romainl/vim-cool" },
     -- highlighting visual selections

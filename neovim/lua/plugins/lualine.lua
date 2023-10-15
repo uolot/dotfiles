@@ -3,7 +3,7 @@ local opts = {
         -- theme = 'github',
         -- theme = 'auto',
         -- theme = 'nordic',
-        theme = 'kanagawa',
+        -- theme = 'kanagawa',
         globalstatus = false,
     },
     sections = {
