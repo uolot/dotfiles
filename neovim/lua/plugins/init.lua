@@ -251,7 +251,8 @@ require("lazy").setup({
     {
         "levouh/tint.nvim",
         opts = {
-            tint = 15,
+            tint = -15,
+            saturation = 0.5,
             tint_background_colors = true,
         },
     },
