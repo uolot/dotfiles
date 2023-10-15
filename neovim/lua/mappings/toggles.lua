@@ -24,7 +24,7 @@ return {
     name = "+toggles",
     b = { function() vim_opt_toggle('background', 'light', 'dark') end, "Background" },
     d = { toggle_diagnostic, "Diagnostics" },
-    i = { function() vim.lsp.inlay_hint(0) end, "Inlay hints" },
+    i = { function() vim.lsp.inlay_hint(vim.api.nvim_get_current_buf()) end, "Inlay hints" },
     r = { function() vim_opt_toggle('relativenumber', true, false) end, "Relative number" },
     w = { function() vim_opt_toggle('wrap', true, false) end, "Line wrap" },
 }
