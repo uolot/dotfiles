@@ -19,7 +19,10 @@ local config = {
   enable_scroll_bar = false,
   window_padding = { left = 0, right = 0, top = 0, bottom = 0 },
   window_decorations = "TITLE | RESIZE",
-  inactive_pane_hsb = { saturation = 0.9, brightness = 1.8 },
+  inactive_pane_hsb = {
+    saturation = 0.9,
+    brightness = 0.6,
+  },
 
   -- font
   font = wez.font { family = font_family, weight = 'Regular' },
