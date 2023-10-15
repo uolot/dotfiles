@@ -102,7 +102,12 @@ require("lazy").setup({
     { "elentok/format-on-save.nvim",                config = require("plugins.format-on-save").config },
     {
         "pmizio/typescript-tools.nvim",
+        ft = { "typescript", "typescriptreact", "typescript.tsx" },
         dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+        opts = {
+            code_lens = "all",
+            expose_as_code_action = { "fix_all", "organize_imports" },
+        },
     },
 
     --
