@@ -27,8 +27,8 @@ local config = {
   -- font
   font = wez.font { family = font_family, weight = 'Regular' },
   freetype_load_target = 'Light',
-  font_size = 15,
-  line_height = 1.2,
+  font_size = 14.5,
+  line_height = 1.4,
   font_rules = {
     {
       intensity = 'Half',
