@@ -12,7 +12,8 @@ local opts = {
     },
     scope = {
         enabled = true,
-        show_start = true,
+        show_start = false,
+        show_end = false,
     },
     -- char_highlight_list = { "IndentBlanklineIndent1" },
     exclude = {
