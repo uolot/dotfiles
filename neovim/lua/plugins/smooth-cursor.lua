@@ -19,15 +19,15 @@ local opts = {
         },
         tail = { cursor = nil, texthl = "SmoothCursor" }
     },
-    flyin_effect = nil,                --bottom" or "top"
-    speed = 25,                        -- max is 100 to stick to your current position
-    intervals = 35,                    -- tick interval
-    priority = 10,                     -- set marker priority
-    timeout = 2000,                    -- timout for animation
-    threshold = 3,                     -- animate if threshold lines jump
-    disable_float_win = false,         -- disable on float window
-    enabled_filetypes = nil,           -- example: { "lua", "vim" }
-    disabled_filetypes = nil,          -- this option will be skipped if enabled_filetypes is set. example: { "TelescopePrompt", "NvimTree" }
+    flyin_effect = nil,        -- "bottom" or "top"
+    speed = 25,                -- max is 100 to stick to your current position
+    intervals = 35,            -- tick interval
+    priority = 10,             -- set marker priority
+    timeout = 2000,            -- timout for animation
+    threshold = 3,             -- animate if threshold lines jump
+    disable_float_win = false, -- disable on float window
+    enabled_filetypes = nil,   -- example: { "lua", "vim" }
+    disabled_filetypes = nil,  -- this option will be skipped if enabled_filetypes is set. example: { "TelescopePrompt", "NvimTree" }
 }
 
 return { opts = opts }
