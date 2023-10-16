@@ -22,7 +22,8 @@ end
 
 return {
     name = "+toggles",
-    b = { function() vim_opt_toggle('background', 'light', 'dark') end, "Background" },
+    -- b = { function() vim_opt_toggle('background', 'light', 'dark') end, "Background" },
+    b = { function() require('bamboo').toggle() end, "Background" },
     d = { toggle_diagnostic, "Diagnostics" },
     i = { function() vim.lsp.inlay_hint(vim.api.nvim_get_current_buf()) end, "Inlay hints" },
     r = { function() vim_opt_toggle('relativenumber', true, false) end, "Relative number" },

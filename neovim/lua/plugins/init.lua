@@ -209,7 +209,9 @@ require("lazy").setup({
         priority = 1000,
         config = function()
             require('bamboo').setup {
-                -- style = "multiplex",
+                style = "vulgaris",
+                toggle_style_list = { "vulgaris", "light" },
+                -- toggle_style_key = "<Leader>xb", -- defined in lua/mapping/toggles.lua
                 diagnostics = {
                     undercurl = true,
                 },
