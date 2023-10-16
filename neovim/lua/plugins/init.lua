@@ -72,6 +72,7 @@ require("lazy").setup({
     },
     {
         "ThePrimeagen/refactoring.nvim",
+        cmd = 'CodeActionsMenu',
         dependencies = {
             "nvim-lua/plenary.nvim",
             "nvim-treesitter/nvim-treesitter",
