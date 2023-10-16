@@ -171,13 +171,14 @@ require("lazy").setup({
         "gen740/SmoothCursor.nvim",
         opts = require("plugins.smooth-cursor").opts,
     },
-    {
-        "rcarriga/nvim-notify",
-        dependencies = 'nvim-telescope/telescope.nvim',
-        config = function()
-            require('telescope').load_extension('notify')
-        end,
-    },
+
+    -- {
+    --     "rcarriga/nvim-notify",
+    --     dependencies = 'nvim-telescope/telescope.nvim',
+    --     config = function()
+    --         require('telescope').load_extension('notify')
+    --     end,
+    -- },
 
     --
     -- colors & highlighting
