@@ -215,7 +215,13 @@ require("lazy").setup({
                 -- toggle_style_key = "<Leader>xb", -- defined in lua/mapping/toggles.lua
                 dim_inactive = true,
                 diagnostics = {
+                    darker = false,
                     undercurl = true,
+                },
+                highlights = {
+                    IblIndent = { fg = '#444444', fmt = 'nocombine' },
+                    -- IblWhitespace = { bg = '#00ff00', fmt = 'nocombine' },
+                    IblScope = { fg = '#909090', fmt = 'nocombine' },
                 },
             }
             require('bamboo').load()

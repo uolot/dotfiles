@@ -1,9 +1,7 @@
--- FIXME: https://github.com/lukas-reineke/indent-blankline.nvim/wiki/Migrate-to-version-3
-
-vim.cmd [[highlight IndentBlanklineIndent1 guifg=#444444 gui=nocombine]]
--- -- vim.cmd [[highlight IndentBlanklineContextChar guifg=#666666 gui=nocombine]]
-vim.cmd [[highlight IndentBlanklineContextChar guifg=#909090 gui=nocombine]]
--- vim.cmd [[highlight IndentBlanklineContextStart guisp=#909090 gui=underline]]
+-- Configured in bamboo theme:
+-- vim.cmd [[highlight IblIndent guifg=#ff0000 gui=nocombine]]
+-- vim.cmd [[highlight IblWhitespace guifg=#00ff00 gui=nocombine]]
+-- vim.cmd [[highlight IblScope guifg=#0000ff gui=nocombine]]
 
 local opts = {
     indent = {
@@ -14,8 +12,27 @@ local opts = {
         enabled = true,
         show_start = false,
         show_end = false,
+        -- char = '▎',
+        include = {
+            -- check the current node:
+            -- print(vim.treesitter.get_node():type())
+            -- see also:
+            -- https://github.com/lukas-reineke/indent-blankline.nvim/issues/632
+            node_type = {
+                -- { ['*'] = { '*' } },
+                javascript = {
+                    "named_imports",
+                    "parenthesized_expression",
+                    "object",
+                },
+                typescript = {
+                    "named_imports",
+                    "parenthesized_expression",
+                    "object",
+                },
+            },
+        },
     },
-    -- char_highlight_list = { "IndentBlanklineIndent1" },
     exclude = {
         filetypes = {},
         buftypes = { "terminal", "nofile" },
