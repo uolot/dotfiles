@@ -465,6 +465,9 @@ require("lazy").setup({
         dependencies = { "nvim-tree/nvim-web-devicons" },
     }
 }, {
+    ui = {
+        border = "rounded",
+    },
     -- diff = 'browser',
     -- diff = 'git',
     -- diff = 'diffview.nvim',
