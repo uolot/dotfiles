@@ -213,6 +213,7 @@ require("lazy").setup({
                 style = "vulgaris",
                 toggle_style_list = { "vulgaris", "light" },
                 -- toggle_style_key = "<Leader>xb", -- defined in lua/mapping/toggles.lua
+                dim_inactive = true,
                 diagnostics = {
                     undercurl = true,
                 },
@@ -252,14 +253,14 @@ require("lazy").setup({
             },
         },
     },
-    {
-        "levouh/tint.nvim",
-        opts = {
-            tint = -15,
-            saturation = 0.5,
-            tint_background_colors = true,
-        },
-    },
+    -- {
+    --     "levouh/tint.nvim",
+    --     opts = {
+    --         tint = -15,
+    --         saturation = 0.5,
+    --         tint_background_colors = true,
+    --     },
+    -- },
     -- Easily add additional highlights to your buffers
     { "folke/paint.nvim",        opts = require("plugins.paint").opts },
     {
