@@ -74,6 +74,8 @@ vim.diagnostic.config({
     update_in_insert = false,
     severity_sort = true,
     float = {
+        header = '',
+        border = "rounded",
         source = true,
         -- source = false,
         format = float_format,
