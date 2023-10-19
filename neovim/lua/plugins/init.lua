@@ -127,7 +127,17 @@ require("lazy").setup({
     },
     { "nvim-treesitter/nvim-treesitter-textobjects" },
     { "nvim-treesitter/nvim-treesitter-refactor" },
-    { "nvim-treesitter/nvim-treesitter-context" },
+    {
+        "nvim-treesitter/nvim-treesitter-context",
+        opts = {
+            separator = '─',
+            mode = 'topline',
+            -- mode = 'cursor',
+            max_lines = 5,
+            multiline_threshold = 5,
+            min_window_height = 10,
+        },
+    },
     { "JoosepAlviste/nvim-ts-context-commentstring" },
     -- Use treesitter to auto close and auto rename html tags
     { "windwp/nvim-ts-autotag" },
