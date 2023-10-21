@@ -36,6 +36,6 @@ return {
         r = { vim.lsp.buf.remove_workspace_folder, 'Remove workspace folder' },
         l = { vim.lsp.buf.list_workspace_folders, 'List workspace folders' },
     },
-    x = { function() telescope_builtin.diagnostics({ bufnr = vim.api.nvim_get_current_buf() }) end, 'Buffer diagnostics' },
+    x = { function() telescope_builtin.diagnostics({ bufnr = 0 }) end, 'Buffer diagnostics' },
     X = { telescope_builtin.diagnostics, 'All buffers diagnostics' },
 }
