@@ -118,14 +118,19 @@ require("lazy").setup({
         build = ":TSUpdate",
         lazy = false,
         priority = 900,
-        config = function()
-            require("plugins.treesitter")
-        end,
+        config = function() require("plugins.treesitter") end,
     },
-    { "nvim-treesitter/nvim-treesitter-textobjects" },
-    { "nvim-treesitter/nvim-treesitter-refactor" },
+    {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
+    },
+    {
+        "nvim-treesitter/nvim-treesitter-refactor",
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
+    },
     {
         "nvim-treesitter/nvim-treesitter-context",
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
         opts = {
             separator = '─',
             mode = 'topline',
@@ -135,9 +140,15 @@ require("lazy").setup({
             min_window_height = 10,
         },
     },
-    { "JoosepAlviste/nvim-ts-context-commentstring" },
+    {
+        "JoosepAlviste/nvim-ts-context-commentstring",
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
+    },
     -- Use treesitter to auto close and auto rename html tags
-    { "windwp/nvim-ts-autotag" },
+    {
+        "windwp/nvim-ts-autotag",
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
+    },
 
     --
     -- telescope
@@ -154,9 +165,9 @@ require("lazy").setup({
     --
     -- ui
     --
-    { "nvim-lualine/lualine.nvim", opts = require("plugins.lualine").opts },
-    { "folke/which-key.nvim",      opts = require("plugins.which-key").opts },
-    { "chentoast/marks.nvim",      opts = require("plugins.marks").opts },
+    { "nvim-lualine/lualine.nvim",   opts = require("plugins.lualine").opts },
+    { "folke/which-key.nvim",        opts = require("plugins.which-key").opts },
+    { "chentoast/marks.nvim",        opts = require("plugins.marks").opts },
     {
         "sindrets/winshift.nvim",
         lazy = true,
