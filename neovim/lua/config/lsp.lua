@@ -1,16 +1,19 @@
 -- neovim/nvim-lspconfig
 -- https://github.com/neovim/nvim-lspconfig
 
-local on_lsp_attach = function(client, buffer)
-    if client.server_capabilities.inlayHintProvider then
-        vim.lsp.inlay_hint(buffer, false)
-    end
-end
-
 local on_tsserver_attach = function(client, bufnr)
     require("twoslash-queries").attach(client, bufnr)
     client.server_capabilities.documentFormattingProvider = false
     client.server_capabilities.documentRangeFormattingProvider = false
+end
+
+local on_lsp_attach = function(client, buffer)
+    if client.server_capabilities.inlayHintProvider then
+        vim.lsp.inlay_hint(buffer, false)
+    end
+    if client.name == 'typescript-tools' then
+        on_tsserver_attach(client, buffer)
+    end
 end
 
 local lsputils_border_chars = {
@@ -86,75 +89,8 @@ require("mason-lspconfig").setup_handlers {
         })
     end,
     -- ['tsserver'] = function()
-    --     lspconfig.tsserver.setup({
+    --     lspconfig['tsserver'].setup({
     --         on_attach = on_tsserver_attach,
-    --         settings = {
-    --             completions = {
-    --                 -- completeFunctionCalls = true
-    --             },
-    --             typescript = {
-    --                 inlayHints = {
-    --                     includeInlayParameterNameHints = 'all',
-    --                     includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-    --                     includeInlayFunctionParameterTypeHints = true,
-    --                     includeInlayVariableTypeHints = true,
-    --                     includeInlayVariableTypeHintsWhenTypeMatchesName = false,
-    --                     includeInlayPropertyDeclarationTypeHints = true,
-    --                     includeInlayFunctionLikeReturnTypeHints = true,
-    --                     includeInlayEnumMemberValueHints = true,
-    --                 }
-    --             },
-    --             javascript = {
-    --                 inlayHints = {
-    --                     includeInlayParameterNameHints = 'all',
-    --                     includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-    --                     includeInlayFunctionParameterTypeHints = true,
-    --                     includeInlayVariableTypeHints = true,
-    --                     includeInlayVariableTypeHintsWhenTypeMatchesName = false,
-    --                     includeInlayPropertyDeclarationTypeHints = true,
-    --                     includeInlayFunctionLikeReturnTypeHints = true,
-    --                     includeInlayEnumMemberValueHints = true,
-    --                 }
-    --             }
-    --         },
-    --
-    --         -- davidosomething/format-ts-errors.nvim
-    --         handlers = {
-    --             ["textDocument/publishDiagnostics"] = function(
-    --                 _,
-    --                 result,
-    --                 ctx,
-    --                 config
-    --             )
-    --                 if result.diagnostics == nil then
-    --                     return
-    --                 end
-    --
-    --                 -- ignore some tsserver diagnostics
-    --                 local idx = 1
-    --                 while idx <= #result.diagnostics do
-    --                     local entry = result.diagnostics[idx]
-    --
-    --                     local formatter = require('format-ts-errors')[entry.code]
-    --                     entry.message = formatter and formatter(entry.message) or entry.message
-    --
-    --                     -- codes: https://github.com/microsoft/TypeScript/blob/main/src/compiler/diagnosticMessages.json
-    --                     if entry.code == 80001 then
-    --                         -- { message = "File is a CommonJS module; it may be converted to an ES module.", }
-    --                         table.remove(result.diagnostics, idx)
-    --                     else
-    --                         idx = idx + 1
-    --                     end
-    --                 end
-    --
-    --                 vim.lsp.diagnostic.on_publish_diagnostics(
-    --                     _,
-    --                     result,
-    --                     ctx,
-    --                     config
-    --                 )
-    --             end,
-    --         },
     --     })
     -- end
 
@@ -180,7 +116,9 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
 require("typescript-tools").setup({
     {
         on_attach = on_tsserver_attach,
-        -- davidosomething/format-ts-errors.nvim
+        disable_formatting = true,
+        code_lens = "all",
+        expose_as_code_action = { "fix_all", "organize_imports" },
         handlers = {
             ["textDocument/publishDiagnostics"] = function(
                 _,
@@ -260,6 +198,7 @@ require("typescript-tools").setup({
                 -- -->
                 -- "shortest" | "project-relative" | "relative" | "non-relative"
                 importModuleSpecifierPreference = "project-relative",
+                allowRenameOfImportPath = true,
             },
             -- https://github.com/microsoft/TypeScript/blob/v5.0.4/src/server/protocol.ts#L3418
             tsserver_format_options = {},
