@@ -338,7 +338,8 @@ require("lazy").setup({
     },
     {
         "mickael-menu/zk-nvim",
-        lazy = true,
+        cmd = { 'ZkBacklinks', 'ZkInsertLink', 'ZkLinks', 'ZkNew', 'ZkNewFromContentSelection',
+            'ZkNewFromTitleSelection', 'ZkNotes', 'ZkTags' },
         dependencies = 'nvim-telescope/telescope.nvim',
         config = function()
             require('telescope').load_extension('zk')
