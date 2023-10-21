@@ -233,7 +233,7 @@ require("lazy").setup({
                 -- toggle_style_key = "<Leader>xb", -- defined in lua/mapping/toggles.lua
                 dim_inactive = true,
                 diagnostics = {
-                    darker = false,
+                    darker = true,
                     undercurl = true,
                 },
                 highlights = {
