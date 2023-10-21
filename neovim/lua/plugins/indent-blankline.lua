@@ -25,6 +25,9 @@ local opts = {
                     "parenthesized_expression",
                     "object",
                 },
+                lua = {
+                    "table_constructor",
+                },
                 typescript = {
                     "named_imports",
                     "parenthesized_expression",
