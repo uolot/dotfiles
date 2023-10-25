@@ -35,7 +35,7 @@ local function float_format(diag)
         print('client')
         print(vim.inspect(client.name))
 
-        if not diag.user_data.lsp then
+        if not diag.user_data or not diag.user_data.lsp then
             print('no diag.user_data.lsp')
             goto continue
         end
