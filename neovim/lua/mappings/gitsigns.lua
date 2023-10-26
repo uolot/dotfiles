@@ -18,9 +18,10 @@ return {
     l = { gs.setloclist, 'Set loclist' },
     q = { gs.setqflist, 'Set qflist' },
 
-    t = {
+    x = {
         name = '+toggles',
         b = { gs.toggle_current_line_blame, 'Toggle current line blame' },
+        B = { '<Cmd>ToggleBlame virtual<CR>', 'Blame entire file' },
         d = { gs.toggle_deleted, 'Toggle deleted' },
         l = { gs.toggle_linehl, 'Toggle line highlight' },
         w = { gs.toggle_word_diff, 'Toggle word diff' },

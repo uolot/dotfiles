@@ -314,6 +314,15 @@ require("lazy").setup({
     { "sindrets/diffview.nvim",  cmd = { "DiffviewFileHistory", "DiffviewClose", "DiffviewOpen" } },
     -- more pleasant editing on commit messages
     { "rhysd/committia.vim" },
+    {
+        'FabijanZulj/blame.nvim',
+        cmd = 'ToggleBlame',
+        opts = {
+            virtual_style = 'right_alight',
+            -- virtual_style = 'float',
+            merge_consecutive = false,
+        }
+    },
 
     --
     -- markdown
