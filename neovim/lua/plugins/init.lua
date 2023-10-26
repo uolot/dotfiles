@@ -308,7 +308,7 @@ require("lazy").setup({
     -- git
     --
 
-    { "tpope/vim-fugitive",      lazy = false },
+    -- { "tpope/vim-fugitive",      lazy = false },
     { "lewis6991/gitsigns.nvim", opts = require("plugins.gitsigns").opts },
     -- Single tabpage interface for easily cycling through diffs for all modified files for any git rev
     { "sindrets/diffview.nvim",  cmd = { "DiffviewFileHistory", "DiffviewClose", "DiffviewOpen" } },
