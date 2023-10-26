@@ -314,8 +314,6 @@ require("lazy").setup({
     { "sindrets/diffview.nvim",  cmd = { "DiffviewFileHistory", "DiffviewClose", "DiffviewOpen" } },
     -- more pleasant editing on commit messages
     { "rhysd/committia.vim" },
-    -- GitHub extension for fugitive.vim
-    { "tpope/vim-rhubarb" },
     {
         "drzel/vim-repo-edit",
         cmd = { "RepoEdit", "RepoEditGithub" },
