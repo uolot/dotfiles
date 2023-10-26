@@ -314,11 +314,6 @@ require("lazy").setup({
     { "sindrets/diffview.nvim",  cmd = { "DiffviewFileHistory", "DiffviewClose", "DiffviewOpen" } },
     -- more pleasant editing on commit messages
     { "rhysd/committia.vim" },
-    {
-        "drzel/vim-repo-edit",
-        cmd = { "RepoEdit", "RepoEditGithub" },
-        config = require("plugins.repo-edit").config,
-    },
 
     --
     -- markdown
