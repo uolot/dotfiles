@@ -24,6 +24,15 @@ local opts = {
         lualine_c = {
             'searchcount',
             { 'diagnostics', sections = { "error", "warn" } },
+            {
+                'lsp_progress',
+                display_components = {
+                    'lsp_client_name',
+                    {
+                        'percentage',
+                    },
+                },
+            },
         },
         -- right
         lualine_x = {

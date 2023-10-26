@@ -166,8 +166,12 @@ require("lazy").setup({
     -- ui
     --
     { "nvim-lualine/lualine.nvim",   opts = require("plugins.lualine").opts },
-    { "folke/which-key.nvim",        opts = require("plugins.which-key").opts },
-    { "chentoast/marks.nvim",        opts = require("plugins.marks").opts },
+    {
+        'arkav/lualine-lsp-progress',
+        dependencies = { 'nvim-lualine/lualine.nvim' },
+    },
+    { "folke/which-key.nvim", opts = require("plugins.which-key").opts },
+    { "chentoast/marks.nvim", opts = require("plugins.marks").opts },
     {
         "sindrets/winshift.nvim",
         lazy = true,
