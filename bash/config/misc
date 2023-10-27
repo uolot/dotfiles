@@ -15,3 +15,7 @@ alias serve="pyhon3 -m http.server"
 
 # duh
 alias killeslint="ps aux | grep eslint | grep -v grep | awk '{print $2}' | xargs kill"
+
+vimviki2markdown() {
+    pandoc -f vimwiki "$1" -t gfm --wrap=none | pbcopy
+}
