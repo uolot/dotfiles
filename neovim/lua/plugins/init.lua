@@ -252,7 +252,7 @@ require("lazy").setup({
                 style = "vulgaris",
                 toggle_style_list = { "vulgaris", "light" },
                 -- toggle_style_key = "<Leader>xb", -- defined in lua/mapping/toggles.lua
-                dim_inactive = true,
+                dim_inactive = false,
                 diagnostics = {
                     darker = true,
                     undercurl = true,
