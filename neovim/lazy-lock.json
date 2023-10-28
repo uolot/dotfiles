@@ -1,4 +1,5 @@
 {
+  "BufferTabs.nvim": { "branch": "main", "commit": "74bd7acea7eb86bd5835bc1ae0466059851ffc71" },
   "Comment.nvim": { "branch": "master", "commit": "0236521ea582747b58869cb72f70ccfa967d2e89" },
   "HighStr.nvim": { "branch": "main", "commit": "1cb5e030bb16df52c8428b53dc235466a4eb1d01" },
   "SmoothCursor.nvim": { "branch": "main", "commit": "8c2c5d61899a5c0ecc1dc34827a6eda1270cebdf" },

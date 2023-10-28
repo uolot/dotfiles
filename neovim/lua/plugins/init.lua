@@ -194,6 +194,23 @@ require("lazy").setup({
         "gen740/SmoothCursor.nvim",
         opts = require("plugins.smooth-cursor").opts,
     },
+    {
+        'tomiis4/BufferTabs.nvim',
+        dependencies = {
+            'nvim-tree/nvim-web-devicons', -- optional
+        },
+        lazy = false,
+        config = function()
+            require('buffertabs').setup({
+                border = 'rounded',
+                padding = 1,
+                show_all = false,
+                display = 'row',
+                horizontal = 'right',
+                vertical = 'bottom',
+            })
+        end
+    },
 
     -- {
     --     "rcarriga/nvim-notify",

@@ -27,5 +27,6 @@ return {
     d = { toggle_diagnostic, "Diagnostics" },
     i = { function() vim.lsp.inlay_hint(vim.api.nvim_get_current_buf()) end, "Inlay hints" },
     r = { function() vim_opt_toggle('relativenumber', true, false) end, "Relative number" },
+    t = { require('buffertabs').toggle, 'Buffer tabs' },
     w = { function() vim_opt_toggle('wrap', true, false) end, "Line wrap" },
 }
