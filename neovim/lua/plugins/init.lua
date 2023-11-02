@@ -208,6 +208,7 @@ require("lazy").setup({
                 display = 'row',
                 horizontal = 'right',
                 vertical = 'bottom',
+                timeout = 1500,
             })
         end
     },
