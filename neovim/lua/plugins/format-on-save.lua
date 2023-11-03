@@ -60,7 +60,7 @@ local config = function()
       sh = formatters.shfmt,
       terraform = formatters.lsp,
       typescript = {
-        formatters.eslint_d_fix,
+        -- formatters.eslint_d_fix,
         formatters.prettierd,
         -- formatters.if_file_exists({
         --     pattern = { ".eslintrc.*" },
