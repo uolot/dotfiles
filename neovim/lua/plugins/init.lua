@@ -518,7 +518,22 @@ require("lazy").setup({
         opts = {},
         -- Optional dependencies
         dependencies = { "nvim-tree/nvim-web-devicons" },
-    }
+    },
+    {
+        'willothy/wezterm.nvim',
+        config = true
+    },
+    {
+        "willothy/flatten.nvim",
+        opts = {
+            one_per = {
+                wezterm = true,
+            },
+        },
+        -- Ensure that it runs first to minimize delay when opening file from terminal
+        lazy = false,
+        priority = 1001,
+    },
 }, {
     ui = {
         border = "rounded",
