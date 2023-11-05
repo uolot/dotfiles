@@ -1,5 +1,16 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
+-- TOC:
+-- 1_cmp
+-- 3_treesitter
+-- 4_telescope
+-- 5_ui
+-- 6_colors_and_highlighting
+-- 7_file_management
+-- 8_git
+-- 9_markdown
+-- 99_misc
+
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
         "git",
@@ -29,7 +40,7 @@ require("lazy").setup({
     -- { "kevinhwang91/promise-async" },
 
     --
-    -- cmp
+    -- 1_cmp
     --
 
     {
@@ -40,7 +51,7 @@ require("lazy").setup({
     },
 
     --
-    -- lsp
+    -- 2_lsp
     --
 
     { "neovim/nvim-lspconfig",             dependencies = { "folke/neodev.nvim" } },
@@ -110,7 +121,7 @@ require("lazy").setup({
     },
 
     --
-    -- treesitter
+    -- 3_treesitter
     --
 
     {
@@ -151,7 +162,7 @@ require("lazy").setup({
     },
 
     --
-    -- telescope
+    -- 4_telescope
     --
 
     {
@@ -163,7 +174,7 @@ require("lazy").setup({
     },
 
     --
-    -- ui
+    -- 5_ui
     --
     { "nvim-lualine/lualine.nvim",   opts = require("plugins.lualine").opts },
     {
@@ -213,16 +224,8 @@ require("lazy").setup({
         end
     },
 
-    -- {
-    --     "rcarriga/nvim-notify",
-    --     dependencies = 'nvim-telescope/telescope.nvim',
-    --     config = function()
-    --         require('telescope').load_extension('notify')
-    --     end,
-    -- },
-
     --
-    -- colors & highlighting
+    -- 6_colors_and_highlighting
     --
 
     {
@@ -316,7 +319,7 @@ require("lazy").setup({
     },
 
     --
-    -- file explorer
+    -- 7_file_management
     --
 
     {
@@ -325,9 +328,15 @@ require("lazy").setup({
         cmd = "Neotree",
         dependencies = require("plugins.neo-tree").dependencies,
     },
+    {
+        'stevearc/oil.nvim',
+        opts = {},
+        -- Optional dependencies
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+    },
 
     --
-    -- git
+    -- 8_git
     --
 
     -- { "tpope/vim-fugitive",      lazy = false },
@@ -352,7 +361,7 @@ require("lazy").setup({
     },
 
     --
-    -- markdown
+    -- 9_markdown
     --
     {
         "iamcco/markdown-preview.nvim",
@@ -413,7 +422,7 @@ require("lazy").setup({
     },
 
     --
-    -- misc
+    -- 99_misc
     --
 
     -- TODO: use treesitter texobjects indent instead?
@@ -512,12 +521,6 @@ require("lazy").setup({
             --     "#0000ff"
             -- },
         },
-    },
-    {
-        'stevearc/oil.nvim',
-        opts = {},
-        -- Optional dependencies
-        dependencies = { "nvim-tree/nvim-web-devicons" },
     },
     {
         'willothy/wezterm.nvim',
