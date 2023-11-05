@@ -12,10 +12,3 @@ augroup markdown_mappings
     autocmd FileType markdown nmap <silent> <Leader>mt :Toc<CR>
     autocmd FileType markdown nmap <silent> <Leader>mT :InsertToc<CR>
 augroup end
-
-" vsnip
-" Jump forward or backward
-imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
-smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
-imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
-smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'

@@ -92,6 +92,8 @@ local function config()
         ['<Tab>'] = function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
+            elseif vim.fn["vsnip#jumpable"](1) ~= 0 then
+                vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>(vsnip-jump-next)", true, true, true), "")
             else
                 fallback()
             end
@@ -99,6 +101,8 @@ local function config()
         ['<S-Tab>'] = function(fallback)
             if cmp.visible() then
                 cmp.select_prev_item()
+            elseif vim.fn["vsnip#jumpable"](1) ~= 0 then
+                vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>(vsnip-jump-prev)", true, true, true), "")
             else
                 fallback()
             end

@@ -72,6 +72,7 @@
   "refactoring.nvim": { "branch": "master", "commit": "5831194debd23920a32abd9fefd5dddba44e34fc" },
   "s3edit.nvim": { "branch": "main", "commit": "89d602431b750ab800b5aa2c7b46b948d7a539a1" },
   "statuscol.nvim": { "branch": "main", "commit": "98d02fc90ebd7c4674ec935074d1d09443d49318" },
+  "tabout.nvim": { "branch": "master", "commit": "0d275c8d25f32457e67b5c66d6ae43f26a61bce5" },
   "tabular": { "branch": "master", "commit": "339091ac4dd1f17e225fe7d57b48aff55f99b23a" },
   "targets.vim": { "branch": "master", "commit": "642d3a4ce306264b05ea3219920b13ea80931767" },
   "telescope-ag": { "branch": "main", "commit": "7d25064da3c7689461bcfa89ad1f08548415193d" },
