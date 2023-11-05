@@ -25,7 +25,8 @@ shopt -s histappend
 
 # config tools
 export LESS=-FRSX
-export MANPAGER="/bin/sh -c \"col -b | nvim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
+# export MANPAGER="/bin/sh -c \"col -b | nvim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
+export MANPAGER="nvim +Man!"
 # If the last character of the alias value is a blank, then the next command word following the alias is also checked for alias expansion.
 alias sudo='sudo '
 
