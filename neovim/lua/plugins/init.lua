@@ -345,6 +345,11 @@ require("lazy").setup({
             merge_consecutive = false,
         }
     },
+    {
+        "almo7aya/openingh.nvim",
+        cmd = { 'OpenInGHRepo', 'OpenInGHFile', 'OpenInGHFileLines' },
+        config = true,
+    },
 
     --
     -- markdown

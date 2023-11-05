@@ -9,14 +9,25 @@ return {
     i = { gs.preview_hunk_inline, 'Preview hunk inline' },
     p = { gs.preview_hunk, 'Preview hunk' },
 
-    s = { gs.stage_hunk, 'Stage hunk', { mode = { 'n', 'x' } } },
+    s = { gs.stage_hunk, 'Stage hunk', mode = { 'n', 'x' } },
     S = { gs.stage_buffer, 'Stage buffer' },
-    r = { gs.reset_hunk, 'Reset hunk', { mode = { 'n', 'x' } } },
+    r = { gs.reset_hunk, 'Reset hunk', mode = { 'n', 'x' } },
     R = { gs.reset_buffer, 'Reset buffer' },
     u = { gs.undo_stage_hunk, 'Undo stage hunk' },
 
     l = { gs.setloclist, 'Set loclist' },
     q = { gs.setqflist, 'Set qflist' },
+
+    o = {
+        name = '+open in gh',
+        f = { '<Cmd>OpenInGHFile<CR>', 'Open file (default branch)' },
+        F = { '<Cmd>OpenInGHFile!<CR>', 'Open file (HEAD)' },
+        l = { "<Cmd>'<,'>OpenInGHFileLines<CR>", 'Open lines (default branch)', mode = { 'x' } },
+        L = { "<Cmd>'<,'>OpenInGHFileLines!<CR>", 'Open lines (HEAD)', mode = { 'x' } },
+        r = { '<Cmd>OpenInGHRepo<CR>', 'Open repo' },
+        y = { '<Cmd>OpenInGHFile+<CR>', 'Copy file link to system clipboard (default branch)' },
+        Y = { '<Cmd>OpenInGHFile!+<CR>', 'Copy file link to system clipboard (HEAD)' },
+    },
 
     x = {
         name = '+toggles',
