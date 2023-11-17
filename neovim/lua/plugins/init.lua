@@ -62,7 +62,10 @@ require("lazy").setup({
     },
     { "williamboman/mason-lspconfig.nvim", opts = {} },
     { "VonHeikemen/lsp-zero.nvim",         branch = "v2.x" },
-    { "jose-elias-alvarez/null-ls.nvim",   config = require("plugins.null-ls").config },
+    {
+        "nvimtools/none-ls.nvim",
+        config = require("plugins.null-ls").config,
+    },
     {
         "jay-babu/mason-null-ls.nvim",
         opts = {
