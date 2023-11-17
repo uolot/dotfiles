@@ -405,21 +405,6 @@ require("lazy").setup({
         ft = { "markdown" },
         config = require("plugins.headlines").config,
     },
-    {
-        "epwalsh/obsidian.nvim",
-        lazy = true,
-        cmd = require('plugins.obsidian-nvim').cmd,
-        -- event = {
-        --     "BufReadPre path/to/my-vault/**.md",
-        --     "BufNewFile path/to/my-vault/**.md",
-        -- },
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "hrsh7th/nvim-cmp",
-            "nvim-telescope/telescope.nvim",
-        },
-        opts = require('plugins.obsidian-nvim').opts,
-    },
 
     --
     -- 99_misc
