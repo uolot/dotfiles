@@ -134,7 +134,7 @@ require("lazy").setup({
         build = ":TSUpdate",
         lazy = false,
         priority = 900,
-        config = function() require("plugins.treesitter") end,
+        config = require("plugins.treesitter").config,
     },
     {
         "nvim-treesitter/nvim-treesitter-textobjects",
@@ -158,7 +158,7 @@ require("lazy").setup({
     },
     {
         "JoosepAlviste/nvim-ts-context-commentstring",
-        dependencies = { "nvim-treesitter/nvim-treesitter" },
+        config = true,
     },
     -- Use treesitter to auto close and auto rename html tags
     {
