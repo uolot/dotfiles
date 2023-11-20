@@ -16,12 +16,31 @@ local function config()
             null_ls.builtins.formatting.isort,
             null_ls.builtins.diagnostics.mypy,
             -- null_ls.builtins.diagnostics.flake8,
+
+            -- shell
+            null_ls.builtins.code_actions.shellcheck,
+
+            -- github actions
+            null_ls.builtins.diagnostics.actionlint,
+
+            -- cloudformation
+            null_ls.builtins.diagnostics.cfn_lint,
+
+            -- xml
+            null_ls.builtins.formatting.xmlformat,
+
+            -- spelling
+            null_ls.builtins.diagnostics.typos.with({
+                extra_args = { '--config', os.getenv('HOME') .. '/.dotfiles/typos/typos.toml' },
+            }),
+
             -- misc
             null_ls.builtins.code_actions.refactoring,
             null_ls.builtins.diagnostics.trail_space.with({
                 disabled_filetypes = { 'git', 'gitcommit', 'NvimTree', 'markdown' } }),
-            null_ls.builtins.formatting.xmlformat,
         },
+        border = 'rounded',
+        diagnostics_format = "#{s}: #{m} (#{c})"
     })
 end
 
