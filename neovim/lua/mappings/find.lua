@@ -3,6 +3,7 @@ local telescope_builtin = require('telescope.builtin')
 return {
     name = '+find',
     f = { telescope_builtin.find_files, 'Find files' },
+    g = { telescope_builtin.git_status, 'Git status' },
     h = { '<Cmd>Telescope find_files hidden=true<CR>', 'Hidden files' },
     o = { telescope_builtin.oldfiles, 'Open recent files' },
     p = {
