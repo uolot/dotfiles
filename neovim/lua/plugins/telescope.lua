@@ -6,6 +6,7 @@ local dependencies = {
     { "nvim-telescope/telescope-live-grep-args.nvim", lazy = true },
     { 'piersolenski/telescope-import.nvim',           lazy = true },
     { "debugloop/telescope-undo.nvim",                lazy = true },
+    { "nvim-telescope/telescope-frecency.nvim",       lazy = true },
 }
 
 local function config()
@@ -62,6 +63,21 @@ local function config()
                     preview_height = 0.7,
                 },
             },
+            frecency = {
+                ignore_patterns = { "*.git/*", "*/tmp/*", "*/node_modules/*", "*venv/*" },
+                db_safe_mode = true,
+                -- NOTE: run :FrecencyValidate to remove deleted files from frecency database
+                auto_validate = false,
+                workspaces = {
+                    ["monorepo"] = os.getenv("HOME") .. "/Dev/cd-monorepo",
+                    ["estore"] = os.getenv("HOME") .. "/Dev/cd-monorepo/apps/estore-integrator",
+                    ["brandbank"] = os.getenv("HOME") .. "/Dev/cd-monorepo/apps/brandbank-integrator",
+                    ["salsify"] = os.getenv("HOME") .. "/Dev/cd-monorepo/apps/salsify-integrator",
+                    ["content-api"] = os.getenv("HOME") .. "/Dev/cd-monorepo/apps/content-api",
+                    ["dotfiles"] = os.getenv("HOME") .. "/.dotfiles",
+                    ["neovim"] = os.getenv("HOME") .. "/.dotfiles/neovim",
+                },
+            },
         },
     }
 
@@ -71,6 +87,7 @@ local function config()
     require("telescope").load_extension("live_grep_args")
     require("telescope").load_extension("import")
     require("telescope").load_extension("undo")
+    require("telescope").load_extension "frecency"
 end
 
 return { config = config, dependencies = dependencies }
