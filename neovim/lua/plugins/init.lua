@@ -35,10 +35,6 @@ require("lazy").setup({
     { "lewis6991/impatient.nvim" },
     { "folke/neodev.nvim",       opts = {}, ft = 'lua', priority = 1000 },
 
-    -- dependencies
-    -- { "nvim-lua/plenary.nvim" },
-    -- { "kevinhwang91/promise-async" },
-
     --
     -- 1_cmp
     --
@@ -58,12 +54,18 @@ require("lazy").setup({
     {
         "williamboman/mason.nvim",
         build = ":MasonUpdate",
-        config = setup("mason"),
+        opts = {
+            pip = { upgrade_pip = true },
+            ui = { border = "rounded" },
+        },
     },
     { "williamboman/mason-lspconfig.nvim", opts = {} },
     { "VonHeikemen/lsp-zero.nvim",         branch = "v2.x" },
     {
         "nvimtools/none-ls.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+        },
         config = require("plugins.null-ls").config,
     },
     {
