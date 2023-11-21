@@ -116,9 +116,6 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
 require("typescript-tools").setup({
     {
         on_attach = on_tsserver_attach,
-        disable_formatting = true,
-        code_lens = "all",
-        expose_as_code_action = { "fix_all", "organize_imports" },
         handlers = {
             ["textDocument/publishDiagnostics"] = function(
                 _,
@@ -156,6 +153,8 @@ require("typescript-tools").setup({
             end,
         },
         settings = {
+            -- TODO: temporary
+            tsserver_logs = "normal",
             -- spawn additional tsserver instance to calculate diagnostics on it
             separate_diagnostic_server = true,
             -- "change"|"insert_leave" determine when the client asks the server about diagnostic
@@ -165,13 +164,16 @@ require("typescript-tools").setup({
             -- to include all supported code actions
             -- specify commands exposed as code_actions
             -- expose_as_code_action = {},
-            expose_as_code_action = "all",
+            -- expose_as_code_action = "all",
+            expose_as_code_action = { "fix_all", "organize_imports" },
             -- string|nil - specify a custom path to `tsserver.js` file, if this is nil or file under path
             -- not exists then standard path resolution strategy is applied
             tsserver_path = nil,
             -- specify a list of plugins to load by tsserver, e.g., for support `styled-components`
             -- (see 💅 `styled-components` support section)
-            tsserver_plugins = {},
+            tsserver_plugins = {
+                "@monodon/typescript-nx-imports-plugin",
+            },
             -- this value is passed to: https://nodejs.org/api/cli.html#--max-old-space-sizesize-in-megabytes
             -- memory limit in megabytes or "auto"(basically no limit)
             tsserver_max_memory = "auto",
@@ -202,11 +204,11 @@ require("typescript-tools").setup({
             },
             -- https://github.com/microsoft/TypeScript/blob/v5.0.4/src/server/protocol.ts#L3418
             tsserver_format_options = {},
+            code_lens = "all",
+            disable_member_code_lens = true,
             -- mirror of VSCode's `typescript.suggest.completeFunctionCalls`
             complete_function_calls = false,
-            completions = {
-                -- completeFunctionCalls = true
-            },
+            include_completions_with_insert_text = true,
         },
     }
 })
