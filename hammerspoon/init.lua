@@ -96,8 +96,10 @@ local function yabai(args)
 end
 
 -- resize window to reasonable size - 60%, max 1025x900px
-local function reasonableSize()
-    local window = hs.window.focusedWindow()
+local function reasonableSize(window)
+    if window == nil then
+        window = hs.window.focusedWindow()
+    end
     local screen = window:screen()
     local mode = screen:currentMode()
     local w = math.min(math.floor(mode.w * 0.6), 1025)
@@ -142,7 +144,7 @@ local meh = { "alt", "ctrl", "shift" }
 -- Z X . V B . . x x /
 
 -- Apps
-hs.hotkey.bind(hyper, "i", function()
+local function spawnWezterm(float)
     local screen = hs.mouse.getCurrentScreen()
     local space = hs.spaces.activeSpaceOnScreen(screen)
     local wez = hs.application.find('WezTerm')
@@ -155,13 +157,21 @@ hs.hotkey.bind(hyper, "i", function()
     local filter = hs.window.filter.new(false):setAppFilter(wez:name())
 
     filter:subscribe(hs.window.filter.windowCreated, function(window, app_name, event)
+        filter:unsubscribe(hs.window.filter.windowCreated)
         hs.spaces.moveWindowToSpace(window, space)
         window:focus()
-        filter:unsubscribe(hs.window.filter.windowCreated)
+        if float then
+            hs.timer.doAfter(0.5, function()
+                yabai({ '-m', 'window', '--toggle', 'float' })
+                reasonableSize(window)
+            end):fire()
+        end
     end, false)
 
     wez:selectMenuItem("New Window")
-end)
+end
+
+hs.hotkey.bind(hyper, "i", function() spawnWezterm(false) end)
 
 -- Window navigation
 hs.hotkey.bind(hyper, "return", function() yabai({ '-m', 'window', '--toggle', 'zoom-fullscreen' }) end)
@@ -202,7 +212,7 @@ hs.hotkey.bind(hyper, "m", mouseHighlight)
 -- MEH
 
 -- mapped keys
--- Q W E . T . . I O .
+-- Q W E . T . . . O .
 -- A . . F . G . . . ;
 -- Z . . V . . M x x /
 
@@ -231,3 +241,7 @@ hs.hotkey.bind(meh, "y",
 
 hs.hotkey.bind(meh, "n", moveWindowToNextScreen)
 hs.hotkey.bind(meh, "p", moveWindowToPreviousScreen)
+
+hs.hotkey.bind(meh, "i", function()
+    spawnWezterm(true)
+end)
