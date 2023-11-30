@@ -2,6 +2,15 @@ local config = function()
   local format_on_save = require("format-on-save")
   local formatters = require("format-on-save.formatters")
 
+  vim.api.nvim_create_augroup('TSToolsOrganizeImports', {})
+  vim.api.nvim_create_autocmd('BufWritePre', {
+    pattern = '*.ts',
+    group = 'TSToolsOrganizeImports',
+    callback = function()
+      vim.cmd('TSToolsOrganizeImports sync')
+    end
+  })
+
   format_on_save.setup({
     exclude_path_patterns = {
       "/node_modules/",
