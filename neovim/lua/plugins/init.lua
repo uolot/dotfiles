@@ -2,6 +2,7 @@ local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
 -- TOC:
 -- 1_cmp
+-- 2_lsp
 -- 3_treesitter
 -- 4_telescope
 -- 5_ui
@@ -149,8 +150,8 @@ require("lazy").setup({
         dependencies = { "nvim-treesitter/nvim-treesitter" },
         opts = {
             separator = '─',
-            mode = 'topline',
-            -- mode = 'cursor',
+            -- mode = 'topline',
+            mode = 'cursor',
             max_lines = 5,
             multiline_threshold = 5,
             min_window_height = 10,
@@ -538,7 +539,9 @@ require("lazy").setup({
     },
     {
         'abecodes/tabout.nvim',
-        config = true,
+        config = {
+            ignore_beginning = false,
+        },
         dependencies = { 'hrsh7th/nvim-cmp', 'nvim-treesitter' },
     },
 }, {
