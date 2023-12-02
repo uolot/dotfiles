@@ -5,7 +5,6 @@ return {
     f = { telescope_builtin.find_files, 'Find files' },
     g = { telescope_builtin.git_status, 'Git status' },
     h = { '<Cmd>Telescope find_files hidden=true<CR>', 'Hidden files' },
-    m = { "<Cmd>Telescope frecency workspace=monorepo<CR>", 'Recent monorepo files' },
     o = { telescope_builtin.oldfiles, 'Open recent files' },
     p = {
         function()
@@ -15,5 +14,4 @@ return {
         end,
         'Find files in git root',
     },
-    r = { "<Cmd>Telescope frecency<CR>", 'Recent files' },
 }
