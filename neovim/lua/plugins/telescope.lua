@@ -62,6 +62,14 @@ local function config()
                 layout_config = {
                     preview_height = 0.7,
                 },
+                mappings = {
+                    i = {
+                        ["<cr>"] = require("telescope-undo.actions").restore,
+                        ["<C-cr>"] = require("telescope-undo.actions").yank_additions,
+                        ["<S-cr>"] = require("telescope-undo.actions").yank_deletions,
+                    },
+                    n = {},
+                },
             },
             frecency = {
                 ignore_patterns = { "*.git/*", "*/tmp/*", "*/node_modules/*", "*venv/*" },
