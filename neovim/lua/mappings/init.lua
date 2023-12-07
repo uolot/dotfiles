@@ -34,6 +34,7 @@ wk.register({
     k = require("mappings.marks"),
     n = require("mappings.neo-tree"),
     t = require("mappings.telescope"),
+    T = require("mappings.leader-s-t"),
     x = require("mappings.toggles"),
     z = require("mappings.zk"),
   },
