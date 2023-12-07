@@ -539,7 +539,7 @@ require("lazy").setup({
     },
     {
         'abecodes/tabout.nvim',
-        config = {
+        opts = {
             ignore_beginning = false,
         },
         dependencies = { 'hrsh7th/nvim-cmp', 'nvim-treesitter' },
