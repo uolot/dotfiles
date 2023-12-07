@@ -1,5 +1,6 @@
 return {
     ['<C-m>'] = { '<Cmd>WinShift<CR>', 'Move window mode' },
+    d = { '<Cmd>Detour<CR>', 'Detour' },
     m = { '<Cmd>WinShift<CR>', 'Move window mode' },
     x = { '<Cmd>WinShift swap<CR>' },
     g = {

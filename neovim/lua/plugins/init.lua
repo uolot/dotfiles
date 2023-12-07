@@ -544,6 +544,11 @@ require("lazy").setup({
         },
         dependencies = { 'hrsh7th/nvim-cmp', 'nvim-treesitter' },
     },
+    {
+        "carbon-steel/detour.nvim",
+        cmd = 'Detour',
+        -- config = true,
+    },
 }, {
     ui = {
         border = "rounded",
