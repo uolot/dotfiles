@@ -114,101 +114,101 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
 )
 
 require("typescript-tools").setup({
-    {
-        on_attach = on_tsserver_attach,
-        handlers = {
-            ["textDocument/publishDiagnostics"] = function(
+    on_attach = on_tsserver_attach,
+    handlers = {
+        ["textDocument/publishDiagnostics"] = function(
+            _,
+            result,
+            ctx,
+            config
+        )
+            if result.diagnostics == nil then
+                return
+            end
+
+            -- ignore some tsserver diagnostics
+            local idx = 1
+            while idx <= #result.diagnostics do
+                local entry = result.diagnostics[idx]
+
+                local formatter = require('format-ts-errors')[entry.code]
+                entry.message = formatter and formatter(entry.message) or entry.message
+                -- entry.message = require('better-ts-errors.parser').prettify_string(entry.message)
+
+                -- codes: https://github.com/microsoft/TypeScript/blob/main/src/compiler/diagnosticMessages.json
+                if entry.code == 80001 then
+                    -- { message = "File is a CommonJS module; it may be converted to an ES module.", }
+                    table.remove(result.diagnostics, idx)
+                else
+                    idx = idx + 1
+                end
+            end
+
+            vim.lsp.diagnostic.on_publish_diagnostics(
                 _,
                 result,
                 ctx,
                 config
             )
-                if result.diagnostics == nil then
-                    return
-                end
-
-                -- ignore some tsserver diagnostics
-                local idx = 1
-                while idx <= #result.diagnostics do
-                    local entry = result.diagnostics[idx]
-
-                    local formatter = require('format-ts-errors')[entry.code]
-                    entry.message = formatter and formatter(entry.message) or entry.message
-
-                    -- codes: https://github.com/microsoft/TypeScript/blob/main/src/compiler/diagnosticMessages.json
-                    if entry.code == 80001 then
-                        -- { message = "File is a CommonJS module; it may be converted to an ES module.", }
-                        table.remove(result.diagnostics, idx)
-                    else
-                        idx = idx + 1
-                    end
-                end
-
-                vim.lsp.diagnostic.on_publish_diagnostics(
-                    _,
-                    result,
-                    ctx,
-                    config
-                )
-            end,
+        end,
+    },
+    settings = {
+        -- TODO: temporary
+        tsserver_logs = "normal",
+        -- spawn additional tsserver instance to calculate diagnostics on it
+        separate_diagnostic_server = true,
+        -- "change"|"insert_leave" determine when the client asks the server about diagnostic
+        publish_diagnostic_on = "insert_leave",
+        -- array of strings("fix_all"|"add_missing_imports"|"remove_unused"|
+        -- "remove_unused_imports"|"organize_imports") -- or string "all"
+        -- to include all supported code actions
+        -- specify commands exposed as code_actions
+        -- expose_as_code_action = {},
+        -- expose_as_code_action = "all",
+        expose_as_code_action = { "fix_all", "organize_imports" },
+        -- string|nil - specify a custom path to `tsserver.js` file, if this is nil or file under path
+        -- not exists then standard path resolution strategy is applied
+        tsserver_path = nil,
+        -- specify a list of plugins to load by tsserver, e.g., for support `styled-components`
+        -- (see 💅 `styled-components` support section)
+        tsserver_plugins = {
+            "@monodon/typescript-nx-imports-plugin",
         },
-        settings = {
-            -- TODO: temporary
-            tsserver_logs = "normal",
-            -- spawn additional tsserver instance to calculate diagnostics on it
-            separate_diagnostic_server = true,
-            -- "change"|"insert_leave" determine when the client asks the server about diagnostic
-            publish_diagnostic_on = "insert_leave",
-            -- array of strings("fix_all"|"add_missing_imports"|"remove_unused"|
-            -- "remove_unused_imports"|"organize_imports") -- or string "all"
-            -- to include all supported code actions
-            -- specify commands exposed as code_actions
-            -- expose_as_code_action = {},
-            -- expose_as_code_action = "all",
-            expose_as_code_action = { "fix_all", "organize_imports" },
-            -- string|nil - specify a custom path to `tsserver.js` file, if this is nil or file under path
-            -- not exists then standard path resolution strategy is applied
-            tsserver_path = nil,
-            -- specify a list of plugins to load by tsserver, e.g., for support `styled-components`
-            -- (see 💅 `styled-components` support section)
-            tsserver_plugins = {
-                "@monodon/typescript-nx-imports-plugin",
-            },
-            -- this value is passed to: https://nodejs.org/api/cli.html#--max-old-space-sizesize-in-megabytes
-            -- memory limit in megabytes or "auto"(basically no limit)
-            tsserver_max_memory = "auto",
-            -- Defaults: https://github.com/pmizio/typescript-tools.nvim/blob/master/lua/typescript-tools/config.lua#L17
-            -- https://github.com/microsoft/TypeScript/blob/v5.0.4/src/server/protocol.ts#L3439
-            tsserver_file_preferences = {
-                includeInlayParameterNameHints = 'all',
-                includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-                includeInlayFunctionParameterTypeHints = true,
-                includeInlayVariableTypeHints = true,
-                includeInlayVariableTypeHintsWhenTypeMatchesName = false,
-                includeInlayPropertyDeclarationTypeHints = true,
-                includeInlayFunctionLikeReturnTypeHints = true,
-                includeInlayEnumMemberValueHints = true,
-                -- new
-                quotePreference = "auto",
-                includeCompletionsForModuleExports = true,
-                includeCompletionsForImportStatements = true,
-                -- <!--
-                includeCompletionsWithSnippetText = true,
-                includeAutomaticOptionalChainCompletions = true,
-                includeCompletionsWithClassMemberSnippets = true,
-                includeCompletionsWithObjectLiteralMethodSnippets = true,
-                -- -->
-                -- "shortest" | "project-relative" | "relative" | "non-relative"
-                importModuleSpecifierPreference = "project-relative",
-                allowRenameOfImportPath = true,
-            },
-            -- https://github.com/microsoft/TypeScript/blob/v5.0.4/src/server/protocol.ts#L3418
-            tsserver_format_options = {},
-            code_lens = "all",
-            disable_member_code_lens = true,
-            -- mirror of VSCode's `typescript.suggest.completeFunctionCalls`
-            complete_function_calls = false,
-            include_completions_with_insert_text = true,
+        -- this value is passed to: https://nodejs.org/api/cli.html#--max-old-space-sizesize-in-megabytes
+        -- memory limit in megabytes or "auto"(basically no limit)
+        tsserver_max_memory = "auto",
+        -- Defaults: https://github.com/pmizio/typescript-tools.nvim/blob/master/lua/typescript-tools/config.lua#L17
+        -- https://github.com/microsoft/TypeScript/blob/v5.0.4/src/server/protocol.ts#L3439
+        tsserver_file_preferences = {
+            includeInlayParameterNameHints = 'all',
+            includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+            includeInlayFunctionParameterTypeHints = true,
+            includeInlayVariableTypeHints = true,
+            includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+            includeInlayPropertyDeclarationTypeHints = true,
+            includeInlayFunctionLikeReturnTypeHints = true,
+            includeInlayEnumMemberValueHints = true,
+            -- new
+            quotePreference = "auto",
+            includeCompletionsForModuleExports = true,
+            includeCompletionsForImportStatements = true,
+            -- <!--
+            includeCompletionsWithSnippetText = true,
+            includeAutomaticOptionalChainCompletions = true,
+            includeCompletionsWithClassMemberSnippets = true,
+            includeCompletionsWithObjectLiteralMethodSnippets = true,
+            -- -->
+            -- "shortest" | "project-relative" | "relative" | "non-relative"
+            importModuleSpecifierPreference = "project-relative",
+            allowRenameOfImportPath = true,
         },
-    }
+        -- https://github.com/microsoft/TypeScript/blob/v5.0.4/src/server/protocol.ts#L3418
+        tsserver_format_options = {},
+        code_lens = "all",
+        disable_member_code_lens = true,
+        -- mirror of VSCode's `typescript.suggest.completeFunctionCalls`
+        complete_function_calls = false,
+        include_completions_with_insert_text = true,
+    },
+
 })
