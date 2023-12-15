@@ -5,6 +5,7 @@
   "SmoothCursor.nvim": { "branch": "main", "commit": "8c2c5d61899a5c0ecc1dc34827a6eda1270cebdf" },
   "asyncrun.vim": { "branch": "master", "commit": "61cc3081963a12048e00e89f8cedc8bd1cb83b8c" },
   "bamboo.nvim": { "branch": "master", "commit": "e53efd7db8732fc3260ebd5e559834b84145352f" },
+  "better-ts-errors.nvim": { "branch": "main", "commit": "f64649de11fedaf5449af93714faa8ed8d241fb6" },
   "blame.nvim": { "branch": "main", "commit": "562661972085a273914c8f702b11924f8aa573ea" },
   "block.nvim": { "branch": "main", "commit": "6fb969ab12579e58b9379aa51933cad4a466cf75" },
   "bufjump.nvim": { "branch": "master", "commit": "a020f81bb82f758da51594a07bfcb9635a6b0f73" },

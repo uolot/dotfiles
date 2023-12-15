@@ -1,6 +1,6 @@
 return {
     name = '+typescript',
-    d = { '<Cmd>TSToolsGoToSourceDefinition<CR>', 'Go to source definition' },
+    -- e = { require('better-ts-errors').toggle, 'Better TS errors' },
     i = {
         name = '+imports',
         a = { '<Cmd>TSToolsAddMissingImports<CR>', 'Add missing imports' },
@@ -10,7 +10,7 @@ return {
     },
     f = { '<Cmd>TSToolsFileReferences<CR>', 'File references' },
     r = { '<Cmd>TSToolsRenameFile<CR>', 'Rename file' },
+    s = { '<Cmd>TSToolsGoToSourceDefinition<CR>', 'Go to source definition' },
     u = { '<Cmd>TSToolsRemoveUnused<CR>', 'Remove unused' },
     x = { '<Cmd>TSToolsFixAll<CR>', 'Fix all' },
-
 }

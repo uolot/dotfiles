@@ -125,6 +125,16 @@ require("lazy").setup({
         dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
         -- configured in config/lsp.lua
     },
+    {
+        "OlegGulevskyy/better-ts-errors.nvim",
+        dependencies = { "MunifTanjim/nui.nvim" },
+        opts = {
+            keymaps = {
+                toggle = '<leader>Te',
+                go_to_definition = '<leader>Td',
+            }
+        }
+    },
 
     --
     -- 3_treesitter
