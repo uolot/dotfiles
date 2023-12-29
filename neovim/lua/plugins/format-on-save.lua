@@ -2,16 +2,23 @@ local config = function()
   local format_on_save = require("format-on-save")
   local formatters = require("format-on-save.formatters")
 
-  vim.api.nvim_create_augroup('TSToolsOrganizeImports', {})
+  vim.api.nvim_create_augroup('FormatTS', { clear = true })
   vim.api.nvim_create_autocmd('BufWritePre', {
     pattern = '*.ts',
-    group = 'TSToolsOrganizeImports',
+    group = 'FormatTS',
     callback = function()
+      vim.cmd('TSToolsAddMissingImports sync')
       vim.cmd('TSToolsOrganizeImports sync')
+      format_on_save.format()
+      format_on_save.restore_cursors()
+      vim.cmd('normal zz')
     end
   })
 
   format_on_save.setup({
+    auto_commands = false,
+    user_commands = false,
+
     exclude_path_patterns = {
       "/node_modules/",
       ".local/share/nvim/lazy",
@@ -56,7 +63,7 @@ local config = function()
         -- }),
       },
       json = {
-        formatters.lsp,
+        -- formatters.lsp,
         formatters.prettierd,
       },
       lua = formatters.lsp,
@@ -72,6 +79,7 @@ local config = function()
       sh = formatters.shfmt,
       terraform = formatters.lsp,
       typescript = {
+        -- formatters.lsp,
         -- formatters.eslint_d_fix,
         formatters.prettierd,
         -- formatters.if_file_exists({
