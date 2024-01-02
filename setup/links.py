@@ -1,5 +1,4 @@
 import platform
-from pathlib import Path
 
 from config import DOTFILES_DIR, HOME_DIR
 from lib import ask

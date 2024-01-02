@@ -9,8 +9,12 @@ tap "koekeishiya/formulae"
 tap "mhanberg/zk"
 tap "osx-cross/arm"
 tap "osx-cross/avr"
+# Static checker for GitHub Actions workflow files
+brew "actionlint"
 # Extendable version manager with support for Ruby, Node.js, Erlang & more
 brew "asdf"
+# Code searching, linting, rewriting
+brew "ast-grep"
 # Official Amazon AWS command-line interface
 brew "awscli"
 # Simple command-line tool to read AWS CloudWatch logs
@@ -23,8 +27,12 @@ brew "bash"
 brew "bat"
 # Core application library for C
 brew "glib"
+# Validate CloudFormation templates against the CloudFormation spec
+brew "cfn-lint"
 # Statistics utility to count lines of code
 brew "cloc"
+# Fix common misspellings in source code and text files
+brew "codespell"
 # Color-highlighted diff(1) output
 brew "colordiff"
 # SQL-like query language for csv
@@ -75,6 +83,10 @@ brew "jless"
 brew "jo"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
+# Exposes your localhost to the world for easy testing and sharing
+brew "localtunnel"
+# Parsing Expression Grammars For Lua
+brew "lpeg"
 # Powerful, lightweight programming language (v5.1.5)
 brew "lua@5.1"
 # Package manager for the Lua programming language
@@ -85,6 +97,8 @@ brew "moreutils"
 brew "ncdu"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim", args: ["HEAD"]
+# Swiss-army knife of markup format conversion
+brew "pandoc"
 # Your Gateway to Embedded Software Development Excellence
 brew "platformio"
 # Search tool like grep and The Silver Searcher
@@ -97,14 +111,22 @@ brew "saml2aws"
 brew "scc"
 # Intuitive find & replace CLI
 brew "sd"
+# Static analysis and lint tool, for (ba)sh scripts
+brew "shellcheck"
 # Cross-shell prompt for astronauts
 brew "starship"
+# TCP port forwarder
+brew "tcptunnel"
 # User interface to the TELNET protocol
 brew "telnet"
+# Tool to build, change, and version infrastructure
+brew "terraform"
 # Code-search similar to ack
 brew "the_silver_searcher"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
+# Source code spell checker
+brew "typos-cli"
 # Maintained ctags implementation
 brew "universal-ctags"
 # Tool for writing command-line pipes with instant live preview
@@ -115,6 +137,8 @@ brew "watch"
 brew "watchman"
 # Internet file retriever
 brew "wget"
+# Format XML documents
+brew "xmlformat"
 # Plain text note-taking assistant
 brew "zk"
 # Shell extension to navigate your filesystem faster
@@ -125,6 +149,8 @@ brew "koekeishiya/formulae/yabai"
 cask "1password"
 # Command-line interface for 1Password
 cask "1password-cli"
+# Enable Windows-like alt-tab
+cask "alt-tab"
 # Multi-track audio editor and recorder
 cask "audacity"
 # Open-source KVM software
@@ -141,6 +167,8 @@ cask "karabiner-elements"
 cask "logitech-options"
 # Online collaborative whiteboard platform
 cask "miro"
+# Reverse proxy, secure introspectable tunnels to localhost
+cask "ngrok"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
 # Cloud storage client
