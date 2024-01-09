@@ -25,7 +25,13 @@ return {
     -- b = { function() vim_opt_toggle('background', 'light', 'dark') end, "Background" },
     b = { function() require('bamboo').toggle() end, "Background" },
     d = { toggle_diagnostic, "Diagnostics" },
-    i = { function() vim.lsp.inlay_hint(vim.api.nvim_get_current_buf()) end, "Inlay hints" },
+    -- TODO: change to .toggle() when implemented
+    -- i = { function() vim.lsp.inlay_hint.enable(vim.api.nvim_get_current_buf()) end, "Inlay hints" },
+    i = {
+        name = "+inlay hints",
+        i = { function() vim.lsp.inlay_hint.enable(vim.api.nvim_get_current_buf(), false) end, "Disable inlay hints" },
+        I = { function() vim.lsp.inlay_hint.enable(vim.api.nvim_get_current_buf(), true) end, "Enable inlay hints" },
+    },
     r = { function() vim_opt_toggle('relativenumber', true, false) end, "Relative number" },
     t = { require('buffertabs').toggle, 'Buffer tabs' },
     w = { function() vim_opt_toggle('wrap', true, false) end, "Line wrap" },

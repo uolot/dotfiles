@@ -9,7 +9,7 @@ end
 
 local on_lsp_attach = function(client, buffer)
     if client.server_capabilities.inlayHintProvider then
-        vim.lsp.inlay_hint(buffer, false)
+        vim.lsp.inlay_hint.enable(buffer, false)
     end
     if client.name == 'typescript-tools' then
         on_tsserver_attach(client, buffer)
