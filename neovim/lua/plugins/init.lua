@@ -230,47 +230,10 @@ require("lazy").setup({
         "gen740/SmoothCursor.nvim",
         opts = require("plugins.smooth-cursor").opts,
     },
-    {
-        'tomiis4/BufferTabs.nvim',
-        dependencies = {
-            'nvim-tree/nvim-web-devicons', -- optional
-        },
-        lazy = false,
-        config = function()
-            require('buffertabs').setup({
-                border = 'rounded',
-                padding = 1,
-                show_all = false,
-                display = 'row',
-                horizontal = 'right',
-                vertical = 'bottom',
-                timeout = 1500,
-            })
-        end
-    },
 
     --
     -- 6_colors_and_highlighting
     --
-
-    {
-        "rebelot/kanagawa.nvim",
-        lazy = false,
-        priority = 1000,
-        -- init = function()
-        --     vim.cmd("colorscheme kanagawa")
-        -- end,
-        opts = {
-            theme = "dragon",
-            background = {
-                dark = "dragon",
-                light = "lotus",
-            },
-            dimInactive = false,
-            keywordStyle = { italic = false, bold = false },
-            statementStyle = { italic = false, bold = true },
-        },
-    },
 
     {
         'ribru17/bamboo.nvim',
@@ -327,14 +290,6 @@ require("lazy").setup({
             },
         },
     },
-    -- {
-    --     "levouh/tint.nvim",
-    --     opts = {
-    --         tint = -15,
-    --         saturation = 0.5,
-    --         tint_background_colors = true,
-    --     },
-    -- },
     -- Easily add additional highlights to your buffers
     { "folke/paint.nvim",        opts = require("plugins.paint").opts },
     {
@@ -352,12 +307,6 @@ require("lazy").setup({
         branch = "v3.x",
         cmd = "Neotree",
         dependencies = require("plugins.neo-tree").dependencies,
-    },
-    {
-        'stevearc/oil.nvim',
-        opts = {},
-        -- Optional dependencies
-        dependencies = { "nvim-tree/nvim-web-devicons" },
     },
     {
         'echasnovski/mini.files',
@@ -411,7 +360,7 @@ require("lazy").setup({
         end,
     },
     {
-        "mickael-menu/zk-nvim",
+        "zk-org/zk-nvim",
         cmd = { 'ZkBacklinks', 'ZkInsertLink', 'ZkLinks', 'ZkNew', 'ZkNewFromContentSelection',
             'ZkNewFromTitleSelection', 'ZkNotes', 'ZkTags' },
         dependencies = 'nvim-telescope/telescope.nvim',
@@ -527,36 +476,6 @@ require("lazy").setup({
             backward = "<C-p>",
             on_success = nil,
         },
-    },
-    {
-        "HampusHauffman/block.nvim",
-        opts = {
-            percent = 1.22,
-            depth = 10,
-            colors = nil,
-            automatic = false,
-            -- bg = nil,
-            -- colors = {
-            --     "#ff0000"
-            --     "#00ff00"
-            --     "#0000ff"
-            -- },
-        },
-    },
-    {
-        'willothy/wezterm.nvim',
-        config = true
-    },
-    {
-        "willothy/flatten.nvim",
-        opts = {
-            one_per = {
-                wezterm = true,
-            },
-        },
-        -- Ensure that it runs first to minimize delay when opening file from terminal
-        lazy = false,
-        priority = 1001,
     },
     {
         'abecodes/tabout.nvim',

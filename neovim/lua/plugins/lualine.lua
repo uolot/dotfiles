@@ -1,9 +1,5 @@
 local opts = {
     options = {
-        -- theme = 'github',
-        -- theme = 'auto',
-        -- theme = 'nordic',
-        -- theme = 'kanagawa',
         globalstatus = false,
     },
     sections = {
