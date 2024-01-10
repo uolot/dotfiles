@@ -5,6 +5,7 @@ return {
     f = { telescope_builtin.find_files, 'Find files' },
     g = { telescope_builtin.git_status, 'Git status' },
     h = { '<Cmd>Telescope find_files hidden=true<CR>', 'Hidden files' },
+    m = { require('mini.files').open, 'Mini files' },
     o = { telescope_builtin.oldfiles, 'Open recent files' },
     p = {
         function()

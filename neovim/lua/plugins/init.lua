@@ -359,6 +359,17 @@ require("lazy").setup({
         -- Optional dependencies
         dependencies = { "nvim-tree/nvim-web-devicons" },
     },
+    {
+        'echasnovski/mini.files',
+        ---@diagnostic disable-next-line: assign-type-mismatch
+        version = false,
+        opts = {
+            windows = {
+                preview = true,
+                width_preview = 50,
+            },
+        },
+    },
 
     --
     -- 8_git
