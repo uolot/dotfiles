@@ -2,7 +2,7 @@ local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
 -- TOC:
 -- 1_cmp
--- 2_lsp
+-- 2_lsp_and_diagnostics
 -- 3_treesitter
 -- 4_telescope
 -- 5_ui
@@ -48,7 +48,7 @@ require("lazy").setup({
     },
 
     --
-    -- 2_lsp
+    -- 2_lsp_and_diagnostics
     --
 
     { "neovim/nvim-lspconfig",             dependencies = { "folke/neodev.nvim" } },
@@ -139,6 +139,10 @@ require("lazy").setup({
                 go_to_definition = '<leader>Td',
             }
         }
+    },
+    {
+        'yorickpeterse/nvim-dd',
+        opts = { timeout = 750 },
     },
 
     --
