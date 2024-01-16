@@ -2,6 +2,7 @@
   "Comment.nvim": { "branch": "master", "commit": "0236521ea582747b58869cb72f70ccfa967d2e89" },
   "HighStr.nvim": { "branch": "main", "commit": "1cb5e030bb16df52c8428b53dc235466a4eb1d01" },
   "SmoothCursor.nvim": { "branch": "main", "commit": "cc8780622a7b7c328f774762fa2d97d9f83be828" },
+  "actions-preview.nvim": { "branch": "master", "commit": "dd63df1a4ed0ffe1458945ee50ecb1dd02b605ab" },
   "asyncrun.vim": { "branch": "master", "commit": "61cc3081963a12048e00e89f8cedc8bd1cb83b8c" },
   "bamboo.nvim": { "branch": "master", "commit": "3e1dc333c8609d11a688ff8353d22c487287be15" },
   "better-ts-errors.nvim": { "branch": "main", "commit": "757757352fcff1bc2069edec64a7a16080e266e6" },

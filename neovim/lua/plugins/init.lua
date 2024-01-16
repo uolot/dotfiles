@@ -98,9 +98,14 @@ require("lazy").setup({
         config = setup('refactoring'),
     },
     -- Pop-up menu for code actions to show meta-information and diff preview - provides ":CodeActionMenu"
+    -- TODO: archived: https://github.com/weilbith/nvim-code-action-menu/commit/8c7672a#diff-b335630551682c19a781afebcf4d07bf978fb1f8ac04c6bf87428ed5106870f5
+    --       remove if actions-preview works well
     {
         "weilbith/nvim-code-action-menu",
         cmd = "CodeActionMenu",
+    },
+    {
+        "aznhe21/actions-preview.nvim",
     },
     -- Incremental LSP rename command based on Neovim's command-preview feature
     {

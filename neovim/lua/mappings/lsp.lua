@@ -2,7 +2,9 @@ local telescope_builtin = require('telescope.builtin')
 
 return {
     name = '+lsp',
-    a = { '<Cmd>CodeActionMenu<CR>', 'Code Action', mode = { 'n', 'x' } },
+    -- TODO: remove if actions-preview works well
+    A = { '<Cmd>CodeActionMenu<CR>', 'Code Action', mode = { 'n', 'x' } },
+    a = { require('actions-preview').code_actions, 'Code Action', mode = { 'n', 'v', 'x' } },
     e = { vim.diagnostic.open_float, 'Show current line diagnostics' },
     d = {
         function()
