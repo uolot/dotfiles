@@ -10,6 +10,7 @@ local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 -- 7_file_management
 -- 8_git
 -- 9_markdown
+-- 10_databases
 -- 99_misc
 
 if not vim.loop.fs_stat(lazypath) then
@@ -398,6 +399,31 @@ require("lazy").setup({
         lazy = true,
         ft = { "markdown" },
         config = require("plugins.headlines").config,
+    },
+
+    --
+    -- 10_databases
+    --
+    {
+        'kristijanhusak/vim-dadbod-ui',
+        dependencies = {
+            { 'tpope/vim-dadbod',                     lazy = true },
+            { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }, lazy = true },
+        },
+        cmd = {
+            'DBUI',
+            'DBUIToggle',
+            'DBUIAddConnection',
+            'DBUIFindBuffer',
+        },
+        init = function()
+            -- Your DBUI configuration
+            vim.g.db_ui_use_nerd_fonts = 1
+            -- Enable nvim-cmp autocomplete
+            vim.cmd(
+                [[autocmd FileType sql,mysql,plsql lua require('cmp').setup.buffer({ sources = {{ name = 'vim-dadbod-completion' }} })]]
+            )
+        end,
     },
 
     --
