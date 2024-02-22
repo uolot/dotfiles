@@ -1,4 +1,101 @@
+-- 01_TOC
+-- 02_keys
+-- 10_appearance
+-- 20_font
+-- 30_colors
+-- 40_keys
+--   41_available_keys
+--     411_leader
+--   42_key_bindings
+--     421_splits
+--     422_move_between_panes
+--     423_activate_pane_mode -> 51_activate_pane
+--     424_select_pane
+--     425_swap_with_pane
+--     426_rotate_panes
+--     428_resize_pane_mode -> 52_resize_pane
+--     429_close_pane
+--     430_promote_pane_to_tab
+--     432_new_tab
+--     433_move_tabs
+--     434_override_hiding_the_window
+--     435_command_palette
+--     436_activate_copy_mode
+--     437_activate_quick_select_mode
+--     438_activate_quick_select_url_mode
+--     439_activate_next_pane
+--     440_balance_panes
+-- 50_key_tables
+-- 51_activate_pane
+-- 52_resize_pane
+-- 60_select_tab_keymaps
+-- 70_hyperlink_rules
+
+-- 02_keys:
+
+-- Splits
+--   LEADER-v: Split Horizontal
+--   LEADER-s: Split Vertical
+
+-- Pane navigation
+--   LEADER-p: Select Pane
+--   LEADER-n: Activate Next Pane
+--   LEADER-h: Activate Left Pane
+--   LEADER-j: Activate Right Pane
+--   LEADER-k: Activate Up Pane
+--   LEADER-l: Activate Down Pane
+--   LEADER-m: Enter Activate Pane Mode
+--       h: Activate Left Pane
+--       l: Activate Right Pane
+--       k: Activate Up Pane
+--       j: Activate Down Pane
+
+-- Pane management
+--   LEADER-x: Select Pane To Swap With
+--   LEADER-o: Rotate Panes Clockwise
+--   LEADER-q: Close Current Pane
+--   LEADER-SHIFT-t: Move Pane To A New Tab
+
+-- Pane resizing
+--   LEADER-b: Balance panes
+--   LEADER-r: Activate Resize Pane Mode
+--       h: Resize Left 1
+--       SHIFT-h: Resize Left 10
+--       CTRL-h: Resize Left 50
+--       l: Resize Right 1
+--       SHIFT-l: Resize Right 10
+--       CTRL-l: Resize Right 50
+--       k: Resize Up 1
+--       SHIFT-k: Resize Up 10
+--       CTRL-k: Resize Up 50
+--       j: Resize Down 1
+--       SHIFT-j: Resize Down 10
+--       CTRL-j: Resize Down 50
+
+-- Tabs
+--   LEADER-t: Open New Tab
+--   LEADER->: Switch To Next Tab
+--   LEADER-<: Switch To Previous Tab
+--   LEADER-1: Switch To Tab 0
+--   LEADER-2: Switch To Tab 1
+--   LEADER-3: Switch To Tab 2
+--   LEADER-4: Switch To Tab 3
+--   LEADER-5: Switch To Tab 4
+--   LEADER-6: Switch To Tab 5
+--   LEADER-7: Switch To Tab 6
+--   LEADER-8: Switch To Tab 7
+
+-- Selection
+--   LEADER-c: Activate Copy Mode
+--   LEADER-y: Start Quick Select
+--   LEADER-u: Quick Select URL
+
+-- Misc
+--   LEADER-Space: Activate Command Palette
+--   CMD-h: Nop
+
 local wez = require('wezterm')
+local balance = require('balance')
 
 local font_family = 'BlexMono Nerd Font Mono'
 -- local color_scheme = 'GitHub Dark'
@@ -14,7 +111,7 @@ wez.on('update-right-status', function(window, pane)
 end)
 
 local config = {
-  -- appearance
+  -- 10_appearance
   use_fancy_tab_bar = false,
   enable_scroll_bar = false,
   window_padding = { left = 0, right = 0, top = 0, bottom = 0 },
@@ -24,7 +121,7 @@ local config = {
     brightness = 0.6,
   },
 
-  -- font
+  -- 20_font
   font = wez.font { family = font_family, weight = 'Regular' },
   freetype_load_target = 'Light',
   font_size = 14.5,
@@ -52,21 +149,26 @@ local config = {
     },
   },
 
-  -- colors
+  -- 30_colors
+
   color_scheme = color_scheme,
   colors = {
     split = '#bbbbbb',
   },
 
-  -- available keys
-  -- .we..yui..
-  -- a.dfg....
-  -- z.c.b..
+  -- 40_keys
 
-  -- keys
+  -- 41_available_keys
+
+  -- 411_leader
+  -- .we....i..
+  -- a.dfg....
+  -- z......
+
+  -- 42_key_bindings
   leader = { key = 'w', mods = 'CMD', timeout_milliseconds = 1000 },
   keys = {
-    -- splits
+    -- 421_splits
     {
       key = 'v',
       mods = 'LEADER',
@@ -77,7 +179,7 @@ local config = {
       mods = 'LEADER',
       action = wez.action.SplitVertical { domain = 'CurrentPaneDomain' },
     },
-    -- move between panes
+    -- 422_move_between_panes
     {
       key = 'h',
       mods = 'LEADER',
@@ -98,7 +200,7 @@ local config = {
       mods = 'LEADER',
       action = wez.action.ActivatePaneDirection 'Right',
     },
-    -- activate pane mode
+    -- 423_activate_pane_mode -> 51_activate_pane
     {
       key = 'm',
       mods = 'LEADER',
@@ -108,46 +210,25 @@ local config = {
         timeout_milliseconds = 2000,
       }
     },
-    -- select pane
+    -- 424_select_pane
     {
       key = 'p',
       mods = 'LEADER',
       action = wez.action.PaneSelect,
     },
-    -- swap with pane
+    -- 425_swap_with_pane
     {
       key = 'x',
       mods = 'LEADER',
       action = wez.action.PaneSelect { mode = 'SwapWithActive' },
     },
-    -- rotate panes
+    -- 426_rotate_panes
     {
       key = 'o',
       mods = 'LEADER',
       action = wez.action.RotatePanes 'Clockwise',
     },
-    -- resize pane
-    {
-      key = 'h',
-      mods = 'LEADER|SHIFT',
-      action = wez.action.AdjustPaneSize { 'Left', 5 },
-    },
-    {
-      key = 'j',
-      mods = 'LEADER|SHIFT',
-      action = wez.action.AdjustPaneSize { 'Down', 5 },
-    },
-    {
-      key = 'k',
-      mods = 'LEADER|SHIFT',
-      action = wez.action.AdjustPaneSize { 'Up', 5 }
-    },
-    {
-      key = 'l',
-      mods = 'LEADER|SHIFT',
-      action = wez.action.AdjustPaneSize { 'Right', 5 },
-    },
-    -- resize pane mode
+    -- 428_resize_pane_mode -> 52_resize_pane
     {
       key = 'r',
       mods = 'LEADER',
@@ -157,13 +238,13 @@ local config = {
         -- timeout_milliseconds = 1000,
       }
     },
-    -- close pane
+    -- 429_close_pane
     {
       key = 'q',
       mods = 'LEADER',
       action = wez.action.CloseCurrentPane({ confirm = false }),
     },
-    -- promote pane to tab
+    -- 430_promote_pane_to_tab
     {
       key = "t",
       mods = "LEADER | SHIFT",
@@ -172,24 +253,13 @@ local config = {
           pane:move_to_new_tab()
         end)
     },
-    -- move between tabs
-    {
-      key = 'n',
-      mods = 'LEADER',
-      action = wez.action.ActivateTabRelative(1),
-    },
-    {
-      key = 'n',
-      mods = 'LEADER|SHIFT',
-      action = wez.action.ActivateTabRelative(-1),
-    },
-    -- new tab
+    -- 432_new_tab
     {
       key = 't',
       mods = 'LEADER',
       action = wez.action.SpawnTab 'CurrentPaneDomain',
     },
-    -- move tabs
+    -- 433_move_tabs
     {
       key = '>',
       mods = 'LEADER',
@@ -200,15 +270,60 @@ local config = {
       mods = 'LEADER',
       action = wez.action.MoveTabRelative(-1),
     },
-    -- override hiding the window
+    -- 434_override_hiding_the_window
     {
       key = 'h',
       mods = 'CMD',
       action = wez.action.Nop,
     },
+    -- 435_command_palette
+    {
+      key = 'Space',
+      mods = 'LEADER',
+      action = wez.action.ActivateCommandPalette,
+    },
+    -- 436_activate_copy_mode
+    {
+      key = 'c',
+      mods = 'LEADER',
+      action = wez.action.ActivateCopyMode,
+    },
+    -- 437_activate_quick_select_mode
+    {
+      key = 'y',
+      mods = 'LEADER',
+      action = wez.action.QuickSelect,
+    },
+    -- 438_activate_quick_select_url_mode
+    {
+      key = 'u',
+      mods = 'LEADER',
+      action = wez.action.QuickSelectArgs {
+        patterns = {
+          'https?://\\S+',
+        },
+      }
+    },
+    -- 439_activate_next_pane
+    {
+      key = 'n',
+      mods = 'LEADER',
+      action = wez.action.ActivatePaneDirection 'Next',
+    },
+    -- 440_balance_panes
+    {
+      key = 'b',
+      mods = 'LEADER',
+      action = wez.action.Multiple {
+        wez.action_callback(balance.balance_panes("x")),
+        wez.action_callback(balance.balance_panes("y")),
+      },
+    },
   },
 
+  -- 50_key_tables
   key_tables = {
+    -- 51_activate_pane
     activate_pane = {
       { key = 'LeftArrow',  action = wez.action.ActivatePaneDirection 'Left' },
       { key = 'h',          action = wez.action.ActivatePaneDirection 'Left' },
@@ -225,35 +340,31 @@ local config = {
       { key = 'Enter',      action = 'PopKeyTable' },
     },
 
+    -- 52_resize_pane
     resize_pane = {
-      { key = 'LeftArrow',  mods = '',      action = wez.action.AdjustPaneSize { 'Left', 1 } },
-      { key = 'h',          mods = '',      action = wez.action.AdjustPaneSize { 'Left', 1 } },
-      { key = 'h',          mods = 'SHIFT', action = wez.action.AdjustPaneSize { 'Left', 10 } },
-      { key = 'RightArrow', mods = '',      action = wez.action.AdjustPaneSize { 'Right', 1 } },
-      { key = 'l',          mods = '',      action = wez.action.AdjustPaneSize { 'Right', 1 } },
-      {
-        key = 'l',
-        mods = 'SHIFT',
-        action = wez.action.AdjustPaneSize {
-          'Right', 10 }
-      },
-      { key = 'UpArrow',   mods = '',             action = wez.action.AdjustPaneSize { 'Up', 1 } },
-      { key = 'k',         mods = '',             action = wez.action.AdjustPaneSize { 'Up', 1 } },
-      { key = 'k',         mods = 'SHIFT',        action = wez.action.AdjustPaneSize { 'Up', 10 } },
-      { key = 'DownArrow', mods = '',             action = wez.action.AdjustPaneSize { 'Down', 1 } },
-      { key = 'j',         mods = '',             action = wez.action.AdjustPaneSize { 'Down', 1 } },
-      { key = 'j',         mods = 'SHIFT',        action = wez.action.AdjustPaneSize { 'Down', 10 } },
+      { key = 'h',      mods = '',             action = wez.action.AdjustPaneSize { 'Left', 10 } },
+      { key = 'h',      mods = 'SHIFT',        action = wez.action.AdjustPaneSize { 'Left', 1 } },
+      { key = 'h',      mods = 'CTRL',         action = wez.action.AdjustPaneSize { 'Left', 50 } },
+      { key = 'l',      mods = '',             action = wez.action.AdjustPaneSize { 'Right', 10 } },
+      { key = 'l',      mods = 'SHIFT',        action = wez.action.AdjustPaneSize { 'Right', 1 } },
+      { key = 'l',      mods = 'CTRL',         action = wez.action.AdjustPaneSize { 'Right', 50 } },
+      { key = 'k',      mods = '',             action = wez.action.AdjustPaneSize { 'Up', 10 } },
+      { key = 'k',      mods = 'SHIFT',        action = wez.action.AdjustPaneSize { 'Up', 1 } },
+      { key = 'k',      mods = 'CTRL',         action = wez.action.AdjustPaneSize { 'Up', 50 } },
+      { key = 'j',      mods = '',             action = wez.action.AdjustPaneSize { 'Down', 10 } },
+      { key = 'j',      mods = 'SHIFT',        action = wez.action.AdjustPaneSize { 'Down', 1 } },
+      { key = 'j',      mods = 'CTRL',         action = wez.action.AdjustPaneSize { 'Down', 50 } },
 
       -- Cancel the mode by pressing escape or Q
-      { key = 'q',         action = 'PopKeyTable' },
-      { key = 'Escape',    action = 'PopKeyTable' },
-      { key = 'Enter',     action = 'PopKeyTable' },
+      { key = 'q',      action = 'PopKeyTable' },
+      { key = 'Escape', action = 'PopKeyTable' },
+      { key = 'Enter',  action = 'PopKeyTable' },
     },
 
   },
 }
 
--- select tab
+-- 60_select_tab_keymaps
 for i = 1, 8 do
   table.insert(config.keys, {
     key = tostring(i),
@@ -262,7 +373,8 @@ for i = 1, 8 do
   })
 end
 
--- hyperlink rules
+-- 70_hyperlink_rules
+
 config.hyperlink_rules = wez.default_hyperlink_rules()
 
 -- Jira CD/CDA

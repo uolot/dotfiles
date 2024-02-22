@@ -21,7 +21,7 @@ LINKS = {
     "tmux/tmux.conf": ".tmux.conf",
     "vim/ftplugin": ".vim/ftplugin",
     "vim/vimrc": ".vimrc",
-    "wezterm/wezterm.lua": ".config/wezterm/wezterm.lua",
+    "wezterm": ".config/wezterm",
 }
 
 # TODO: add kitty terminal config
