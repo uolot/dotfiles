@@ -498,7 +498,8 @@ require("lazy").setup({
     -- Embed Neovim in Chrome, Firefox & others.
     {
         "glacambre/firenvim",
-        cond = not not vim.g.started_by_firenvim,
+        -- cond = not not vim.g.started_by_firenvim,
+        lazy = not vim.g.started_by_firenvim,
         build = require("plugins.firenvim").build,
         config = require("plugins.firenvim").config,
     },

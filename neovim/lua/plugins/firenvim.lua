@@ -20,6 +20,11 @@ local function config()
     }
     vim.opt.background = 'light'
     vim.opt.guifont = 'BlexMono Ner Font Mono:h12'
+
+    vim.api.nvim_create_autocmd({ 'TextChanged', 'TextChangedI' }, {
+        nested = true,
+        command = "write"
+    })
 end
 
 return {
