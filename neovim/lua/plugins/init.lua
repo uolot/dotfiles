@@ -517,6 +517,15 @@ require("lazy").setup({
         'abecodes/tabout.nvim',
         opts = {
             ignore_beginning = false,
+            tabouts = {
+                { open = "'", close = "'" },
+                { open = '"', close = '"' },
+                { open = '`', close = '`' },
+                { open = '(', close = ')' },
+                { open = '[', close = ']' },
+                { open = '{', close = '}' },
+                { open = '<', close = '>' },
+            },
         },
         dependencies = { 'hrsh7th/nvim-cmp', 'nvim-treesitter' },
     },
