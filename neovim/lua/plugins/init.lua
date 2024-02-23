@@ -540,7 +540,14 @@ require("lazy").setup({
     },
     -- diff = 'browser',
     -- diff = 'git',
+    -- diff = 'terminal_git',
     -- diff = 'diffview.nvim',
+    checker = { enabled = true },
+    change_detection = {
+        -- automatically check for config file changes and reload the ui
+        enabled = true,
+        notify = true, -- get a notification when changes are found
+    },
     performance = {
         rtp = {
             disabled_plugins = {
