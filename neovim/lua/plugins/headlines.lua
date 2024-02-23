@@ -20,15 +20,18 @@ local function config()
 
                             (block_quote_marker) @quote
                             (block_quote (paragraph (inline (block_continuation) @quote)))
+                            (block_quote (paragraph (block_continuation) @quote))
+                            (block_quote (block_continuation) @quote)
                         ]]
             ),
             headline_highlights = {
-                "Headline1",
-                "Headline2",
-                "Headline3",
-                "Headline4",
-                "Headline5",
+                -- "Headline1",
+                -- "Headline2",
+                -- "Headline3",
+                -- "Headline4",
+                -- "Headline5",
             },
+            bullets = {},
             codeblock_highlight = "",
             dash_highlight = "Dash",
             dash_string = "─",

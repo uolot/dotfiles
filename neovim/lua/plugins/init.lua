@@ -394,12 +394,12 @@ require("lazy").setup({
         end,
     },
     -- Additional highlights for markdown
-    {
-        "lukas-reineke/headlines.nvim",
-        lazy = true,
-        ft = { "markdown" },
-        config = require("plugins.headlines").config,
-    },
+    -- {
+    --     "lukas-reineke/headlines.nvim",
+    --     lazy = true,
+    --     ft = { "markdown" },
+    --     config = require("plugins.headlines").config,
+    -- },
 
     --
     -- 10_databases
