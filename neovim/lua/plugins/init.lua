@@ -242,6 +242,12 @@ require("lazy").setup({
         "gen740/SmoothCursor.nvim",
         opts = require("plugins.smooth-cursor").opts,
     },
+    {
+        "rcarriga/nvim-notify",
+        config = function()
+            vim.notify = require("notify")
+        end,
+    },
 
     --
     -- 6_colors_and_highlighting
