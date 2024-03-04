@@ -4,13 +4,17 @@
 
 local function config()
     local null_ls = require("null-ls")
+    local shellcheck = require("none-ls-shellcheck")
+
     null_ls.setup({
         sources = {
             -- typescript
             -- null_ls.builtins.code_actions.eslint_d,
             -- null_ls.builtins.diagnostics.eslint_d,
-            null_ls.builtins.code_actions.eslint,
-            null_ls.builtins.diagnostics.eslint,
+            -- null_ls.builtins.code_actions.eslint, -- TODO: deprecated
+            -- null_ls.builtins.diagnostics.eslint,  -- TODO: deprecated
+            -- null_ls.builtins.code_actions.eslint, -- from none-ls-extras
+            -- null_ls.builtins.diagnostics.eslint,  -- from none-ls-extras
 
             -- python
             null_ls.builtins.formatting.black,
@@ -19,7 +23,9 @@ local function config()
             -- null_ls.builtins.diagnostics.flake8,
 
             -- shell
-            null_ls.builtins.code_actions.shellcheck,
+            -- null_ls.builtins.code_actions.shellcheck, -- TODO: deprecated
+            shellcheck.code_actions,
+            shellcheck.diagnostics,
 
             -- github actions
             null_ls.builtins.diagnostics.actionlint,
@@ -28,12 +34,12 @@ local function config()
             null_ls.builtins.diagnostics.cfn_lint,
 
             -- xml
-            null_ls.builtins.formatting.xmlformat,
+            -- null_ls.builtins.formatting.xmlformat, -- TODO: deprecated
 
             -- spelling
-            null_ls.builtins.diagnostics.typos.with({
-                extra_args = { '--config', os.getenv('HOME') .. '/.dotfiles/typos/typos.toml' },
-            }),
+            -- null_ls.builtins.diagnostics.typos.with({
+            --     extra_args = { '--config', os.getenv('HOME') .. '/.dotfiles/typos/typos.toml' },
+            -- }), -- TODO: deprecated
 
             -- misc
             null_ls.builtins.code_actions.refactoring,
