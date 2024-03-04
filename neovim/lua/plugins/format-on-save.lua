@@ -2,16 +2,33 @@ local config = function()
   local format_on_save = require("format-on-save")
   local formatters = require("format-on-save.formatters")
 
-  vim.api.nvim_create_augroup('FormatTS', { clear = true })
-  vim.api.nvim_create_autocmd('BufWritePre', {
-    pattern = '*.ts',
-    group = 'FormatTS',
-    callback = function()
+  local function formatTS()
+    pcall(function()
       vim.cmd('TSToolsAddMissingImports sync')
       vim.cmd('TSToolsOrganizeImports sync')
-      format_on_save.format()
-      format_on_save.restore_cursors()
-      vim.cmd('normal zz')
+    end)
+
+    format_on_save.format()
+    format_on_save.restore_cursors()
+
+    vim.cmd('normal zz')
+  end
+
+  vim.api.nvim_create_augroup('Format', { clear = true })
+  vim.api.nvim_create_autocmd('BufWritePre', {
+    -- pattern = '{*}{*.ts}\\@<!',
+    group = 'Format',
+    callback = function(args)
+      if vim.g.started_by_firenvim then
+        return
+      end
+
+      if vim.regex('\\.ts$'):match_str(args.file) then
+        formatTS()
+      else
+        format_on_save.format()
+        format_on_save.restore_cursors()
+      end
     end
   })
 
@@ -38,6 +55,10 @@ local config = function()
     -- },
 
     formatter_by_ft = {
+      bash = {
+        formatters.lsp,
+        formatters.shfmt,
+      },
       css = formatters.lsp,
       html = formatters.lsp,
       java = formatters.lsp,
@@ -74,13 +95,18 @@ local config = function()
         formatters.black,
         -- formatters.ruff,
       },
+      query = formatters.lsp,
       rust = formatters.lsp,
+      scheme = formatters.lsp,
       scss = formatters.lsp,
-      sh = formatters.shfmt,
+      sh = {
+        formatters.lsp,
+        formatters.shfmt,
+      },
       terraform = formatters.lsp,
       typescript = {
         -- formatters.lsp,
-        -- formatters.eslint_d_fix,
+        formatters.eslint_d_fix,
         formatters.prettierd,
         -- formatters.if_file_exists({
         --     pattern = { ".eslintrc.*" },
@@ -92,6 +118,7 @@ local config = function()
         -- }),
       },
       typescriptreact = formatters.prettierd,
+      xml = formatters.lsp,
       yaml = formatters.lsp,
 
       -- Add your own shell formatters:
