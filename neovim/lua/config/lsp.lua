@@ -78,6 +78,7 @@ lsp.extend_lspconfig({
 })
 
 local lspconfig = require('lspconfig')
+require('lspconfig.ui.windows').default_options.border = 'rounded'
 
 require("mason-lspconfig").setup_handlers {
     -- The first entry (without a key) will be the default handler
