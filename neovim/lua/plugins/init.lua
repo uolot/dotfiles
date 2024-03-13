@@ -508,10 +508,6 @@ require("lazy").setup({
     -- handle line and column numbers in file names, eg: file.txt:10 or file.txt:10:5
     { "kopischke/vim-fetch" },
 
-    -- Run Async Shell Commands
-    -- TODO: remove
-    { "skywind3000/asyncrun.vim",       cmd = "AsyncRun" },
-
     -- Additional text objects
     -- Provides:
     -- iX aX IX AX where X = () [] {} <> t ' " ` , . ; : + - = ~ _ * # / | \ & $

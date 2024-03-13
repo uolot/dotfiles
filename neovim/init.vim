@@ -27,12 +27,5 @@ augroup highlight_yank
     au TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=350 }
 augroup end
 
-" Auto-commit & push ZK files
-function! AutoCommit()
-    AsyncRun bash $HOME/Bin/zk-commit.sh ${VIM_FILEPATH}
-endfun
-autocmd BufWritePost $ZK_NOTEBOOK_DIR/*.md call AutoCommit()
-autocmd BufWritePost $ZK_NOTEBOOK_DIR/**/*.md call AutoCommit()
-
 au FileType json setlocal conceallevel=0
 au FileType jsonc setlocal conceallevel=0
