@@ -11,6 +11,8 @@ local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 -- 8_git
 -- 9_markdown
 -- 10_databases
+-- 11_programming_misc
+-- 12_text_manipulation
 -- 99_misc
 
 if not vim.loop.fs_stat(lazypath) then
@@ -457,15 +459,8 @@ require("lazy").setup({
     },
 
     --
-    -- 99_misc
+    -- 11_programming_misc
     --
-
-    -- TODO: use treesitter texobjects indent instead?
-    { "michaeljsmith/vim-indent-object" },
-    -- Readline style insertion
-    { "tpope/vim-rsi",                  keys = { ":", "/", "?" } },
-    -- handle line and column numbers in file names, eg: file.txt:10 or file.txt:10:5
-    { "kopischke/vim-fetch" },
     {
         "numToStr/Comment.nvim",
         lazy = false,
@@ -480,30 +475,16 @@ require("lazy").setup({
             },
         },
     },
-    -- Run Async Shell Commands
-    { "skywind3000/asyncrun.vim", cmd = "AsyncRun" },
+
+    --
+    -- 12_text_manipulation
+    --
 
     -- Set of operators and textobjects to search/select/edit sandwiched texts
     { "machakann/vim-sandwich" },
-    -- Additional text objects
-    -- Provides:
-    -- iX aX IX AX where X = () [] {} <> t ' " ` , . ; : + - = ~ _ * # / | \ & $
-    -- inX anX AnX InX for next object
-    -- ilX alX AlX IlX for previous (last) object
-    -- ia aa Ia Aa for arguments; works with nX/lX as well
-    { "wellle/targets.vim" },
     {
         "godlygeek/tabular",
         cmd = "Tabularize",
-    },
-    -- Heuristically set buffer options
-    { "tpope/vim-sleuth" },
-    -- ultra fold
-    {
-        "kevinhwang91/nvim-ufo",
-        dependencies = { "kevinhwang91/promise-async" },
-        event = "LspAttach",
-        opts = {}
     },
     -- Inversed J
     {
@@ -514,6 +495,38 @@ require("lazy").setup({
             trevj.setup()
             require("which-key").register({ K = { trevj.format_at_cursor, "Split" } })
         end,
+    },
+
+    --
+    -- 99_misc
+    --
+
+    -- TODO: use treesitter texobjects indent instead?
+    { "michaeljsmith/vim-indent-object" },
+    -- Readline style insertion
+    { "tpope/vim-rsi",                  keys = { ":", "/", "?" } },
+    -- handle line and column numbers in file names, eg: file.txt:10 or file.txt:10:5
+    { "kopischke/vim-fetch" },
+
+    -- Run Async Shell Commands
+    -- TODO: remove
+    { "skywind3000/asyncrun.vim",       cmd = "AsyncRun" },
+
+    -- Additional text objects
+    -- Provides:
+    -- iX aX IX AX where X = () [] {} <> t ' " ` , . ; : + - = ~ _ * # / | \ & $
+    -- inX anX AnX InX for next object
+    -- ilX alX AlX IlX for previous (last) object
+    -- ia aa Ia Aa for arguments; works with nX/lX as well
+    { "wellle/targets.vim" },
+    -- Heuristically set buffer options
+    { "tpope/vim-sleuth" },
+    -- ultra fold
+    {
+        "kevinhwang91/nvim-ufo",
+        dependencies = { "kevinhwang91/promise-async" },
+        event = "LspAttach",
+        opts = {}
     },
     {
         "kiran94/s3edit.nvim",
@@ -533,7 +546,6 @@ require("lazy").setup({
         build = require("plugins.firenvim").build,
         config = require("plugins.firenvim").config,
     },
-    -- { 'stevearc/overseer.nvim' },
     {
         "kwkarlwang/bufjump.nvim",
         keys = { "<C-n>", "<C-p>" },
