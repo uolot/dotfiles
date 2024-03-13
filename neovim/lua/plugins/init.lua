@@ -320,6 +320,14 @@ require("lazy").setup({
         branch = "v3.x",
         cmd = "Neotree",
         dependencies = require("plugins.neo-tree").dependencies,
+        opts = {
+            sources = {
+                'filesystem',
+                'git_status',
+                'document_symbols',
+                'buffers',
+            },
+        },
     },
     {
         'echasnovski/mini.files',
