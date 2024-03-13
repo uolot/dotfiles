@@ -19,8 +19,6 @@ LINKS = {
     "starship/starship.toml": ".config/starship.toml",
     "TabNine.toml": ".config/TabNine/TabNine.yml",
     "tmux/tmux.conf": ".tmux.conf",
-    "vim/ftplugin": ".vim/ftplugin",
-    "vim/vimrc": ".vimrc",
     "wezterm": ".config/wezterm",
 }
 
