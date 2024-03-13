@@ -6,38 +6,43 @@ local opts = {
         -- left
         lualine_a = { 'mode' },
         lualine_b = {
-            { 'filename', path = 1, shorting_target = 40 },
+            {
+                'filename',
+                path = 1,
+                shorting_target = 40,
+            },
             {
                 'fileformat',
                 icons_enabled = true,
-                symbols = {
-                    unix = '',
-                    dos = ' CRLF ',
-                    mac = ' CR ',
-                },
+                symbols = { unix = '', dos = ' CRLF ', mac = ' CR ', },
             },
         },
         lualine_c = {
-            'searchcount',
-            { 'diagnostics', sections = { "error", "warn" } },
+            {
+                'diagnostics',
+                sections = { "error", "warn" },
+            },
+            'diff',
+            'branch',
+        },
+        -- right
+        lualine_x = {
             {
                 'lsp_progress',
                 display_components = {
                     'lsp_client_name',
-                    {
-                        'percentage',
-                    },
+                    { 'percentage', },
                 },
             },
-        },
-        -- right
-        lualine_x = {
-            -- 'branch',
         },
         lualine_y = {
             'filetype',
         },
-        lualine_z = { 'location', 'progress' },
+        lualine_z = {
+            'searchcount',
+            'location',
+            'progress',
+        },
     },
     inactive_sections = {
         -- left
@@ -46,12 +51,17 @@ local opts = {
             { 'filename', path = 1, shorting_target = 40 },
         },
         lualine_c = {
-            { 'diagnostics', sections = { "error", "warn" } },
+            {
+                'diagnostics',
+                sections = { "error", "warn" },
+            },
+            'diff',
         },
         -- right
         lualine_x = {
         },
         lualine_y = {
+            'filetype',
         },
         lualine_z = {},
     }
