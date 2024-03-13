@@ -498,6 +498,21 @@ require("lazy").setup({
     },
 
     --
+    -- 13_navigation
+    --
+
+    {
+        "kwkarlwang/bufjump.nvim",
+        keys = { "<C-n>", "<C-p>" },
+        opts = {
+            forward = "<C-n>",
+            backward = "<C-p>",
+            on_success = nil,
+        },
+    },
+
+
+    --
     -- 99_misc
     --
 
@@ -541,15 +556,6 @@ require("lazy").setup({
         lazy = not vim.g.started_by_firenvim,
         build = require("plugins.firenvim").build,
         config = require("plugins.firenvim").config,
-    },
-    {
-        "kwkarlwang/bufjump.nvim",
-        keys = { "<C-n>", "<C-p>" },
-        opts = {
-            forward = "<C-n>",
-            backward = "<C-p>",
-            on_success = nil,
-        },
     },
     {
         'abecodes/tabout.nvim',
