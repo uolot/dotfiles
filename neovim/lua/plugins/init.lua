@@ -25,13 +25,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- TODO: replace with `config = true`?
-local function setup(plugin)
-    return function()
-        require(plugin).setup()
-    end
-end
-
 require("lazy").setup({
     -- top plugins
     { "lewis6991/impatient.nvim" },
@@ -98,7 +91,7 @@ require("lazy").setup({
             "nvim-treesitter/nvim-treesitter",
             "weilbith/nvim-code-action-menu",
         },
-        config = setup('refactoring'),
+        config = true,
     },
     -- Pop-up menu for code actions to show meta-information and diff preview - provides ":CodeActionMenu"
     -- TODO: archived: https://github.com/weilbith/nvim-code-action-menu/commit/8c7672a#diff-b335630551682c19a781afebcf4d07bf978fb1f8ac04c6bf87428ed5106870f5
@@ -113,7 +106,7 @@ require("lazy").setup({
     -- Incremental LSP rename command based on Neovim's command-preview feature
     {
         "smjonas/inc-rename.nvim",
-        config = setup("inc_rename"),
+        config = true,
     },
     -- Nvim lua plugin which adds support for twoslash queries into typescript projects
     {
