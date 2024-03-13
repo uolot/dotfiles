@@ -13,6 +13,7 @@ local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 -- 10_databases
 -- 11_programming_misc
 -- 12_text_manipulation
+-- 13_navigation
 -- 99_misc
 
 if not vim.loop.fs_stat(lazypath) then
