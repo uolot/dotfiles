@@ -8,16 +8,5 @@ alias todos="ag -i '(TODO|XXX|FIXME):?' $@"
 
 # find random file
 random-file() {
-    echo "$(fd -t f . | shuf -n 1)"
-}
-
-# open random file
-nvr() {
-  # nvim $(fd . -t f | shuf | head -1)
-  nvim $(random-file)
-}
-
-# fuzzy grep open via ag with line number
-nvfl() {
-  nvim -O $(ag --nobreak --numbers --noheading . | fzf --multi | cut -d: -f1-2)
+  echo "$(fd -t f . | shuf -n 1)"
 }
