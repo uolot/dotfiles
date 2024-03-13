@@ -4,7 +4,6 @@ local dependencies = {
     { "nvim-telescope/telescope-fzf-native.nvim",     lazy = true },
     { "nvim-telescope/telescope-ui-select.nvim",      lazy = true },
     { "nvim-telescope/telescope-live-grep-args.nvim", lazy = true },
-    { 'piersolenski/telescope-import.nvim',           lazy = true },
     { "debugloop/telescope-undo.nvim",                lazy = true },
 }
 
@@ -77,7 +76,6 @@ local function config()
     require('telescope').load_extension('fzf')
     require('telescope').load_extension('ui-select')
     require("telescope").load_extension("live_grep_args")
-    require("telescope").load_extension("import")
     require("telescope").load_extension("undo")
 end
 

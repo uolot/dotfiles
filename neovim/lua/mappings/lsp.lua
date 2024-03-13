@@ -24,7 +24,6 @@ return {
     -- f = { function() telescope_builtin.lsp_references({ show_line = false }) end, 'Find references' },
     h = { vim.lsp.buf.hover, 'Hover' },
     i = { telescope_builtin.lsp_incoming_calls, 'Incoming calls' },
-    I = { '<Cmd>Telescope import<CR>', 'Import' },
     m = { vim.lsp.buf.implementation, 'Go to implementation' },
     o = { telescope_builtin.lsp_outgoing_calls, 'Outgoing calls' },
     r = { vim.lsp.buf.rename, 'Rename' },
