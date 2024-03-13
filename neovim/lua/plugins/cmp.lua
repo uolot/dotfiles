@@ -27,8 +27,7 @@ local dependencies = {
     -- copilot
     {
         'zbirenbaum/copilot-cmp',
-        url = 'https://github.com/zbirenbaum/copilot-cmp',
-        dependencies = { { 'zbirenbaum/copilot.lua', url = 'https://github.com/zbirenbaum/copilot.lua' } }
+        dependencies = { 'zbirenbaum/copilot.lua' },
     },
 }
 
