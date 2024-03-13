@@ -200,7 +200,7 @@ require("typescript-tools").setup({
             includeCompletionsWithObjectLiteralMethodSnippets = true,
             -- -->
             -- "shortest" | "project-relative" | "relative" | "non-relative"
-            importModuleSpecifierPreference = "project-relative",
+            -- importModuleSpecifierPreference = "project-relative",
             allowRenameOfImportPath = true,
         },
         -- https://github.com/microsoft/TypeScript/blob/v5.0.4/src/server/protocol.ts#L3418
