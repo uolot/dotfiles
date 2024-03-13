@@ -19,15 +19,6 @@ local opts = {
         },
         lualine_c = {
             {
-                'diagnostics',
-                sections = { "error", "warn" },
-            },
-            'diff',
-            'branch',
-        },
-        -- right
-        lualine_x = {
-            {
                 'lsp_progress',
                 display_components = {
                     'lsp_client_name',
@@ -35,13 +26,15 @@ local opts = {
                 },
             },
         },
-        lualine_y = {
-            'filetype',
+        -- right
+        lualine_x = {
         },
-        lualine_z = {
-            'searchcount',
+        lualine_y = {
             'location',
             'progress',
+        },
+        lualine_z = {
+            'filetype'
         },
     },
     inactive_sections = {
@@ -50,21 +43,68 @@ local opts = {
         lualine_b = {
             { 'filename', path = 1, shorting_target = 40 },
         },
-        lualine_c = {
-            {
-                'diagnostics',
-                sections = { "error", "warn" },
-            },
-            'diff',
-        },
+        lualine_c = {},
         -- right
         lualine_x = {
         },
         lualine_y = {
-            'filetype',
         },
         lualine_z = {},
-    }
+    },
+    tabline = {
+        lualine_a = {
+        },
+        lualine_b = {
+            { 'tabs', mode = 2 },
+        },
+        lualine_c = {},
+        lualine_x = {
+        },
+        lualine_y = {
+            { 'buffers', mode = 4 },
+        },
+        lualine_z = {
+        }
+    },
+    winbar = {
+        lualine_a = {
+            'filename',
+        },
+        lualine_b = {
+            {
+                'diagnostics',
+                sections = { "error", "warn" },
+            },
+        },
+        lualine_c = {
+        },
+        lualine_x = {
+            'branch',
+        },
+        lualine_y = {
+            'diff',
+        },
+        lualine_z = {
+        }
+    },
+    inactive_winbar = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = {
+            'filename',
+            {
+                'diagnostics',
+                sections = { "error", "warn" },
+                colored = false,
+            },
+        },
+        lualine_x = {
+        },
+        lualine_y = {
+            { 'diff', colored = false },
+        },
+        lualine_z = {}
+    },
 }
 
 return { opts = opts }
