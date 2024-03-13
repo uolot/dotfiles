@@ -1,9 +1,13 @@
+todo:
+- [ ] configure actions-preview
+    https://github.com/aznhe21/actions-preview.nvim
+- [ ] check nvim-pqf 
+    https://gitlab.com/yorickpeterse/nvim-pqf
+- [ ] update git-conflict.nvim mappings
+    https://github.com/akinsho/git-conflict.nvim?tab=readme-ov-file
+
 read:
-[ ] https://www.reddit.com/r/neovim/comments/pqnymo/the_lspsaga_hover_doc_command_not_working/
-[ ] https://www.reddit.com/r/neovim/comments/pvwk8l/do_you_use_a_completion_plugin_or_use_your_own/hed2ikq/?context=3
-[ ] https://mark-story.com/posts/view/switching-to-neovim-native-lsp
 [ ] https://github.com/mattn/efm-langserver/issues/132
-[ ] https://github.com/nanotee/nvim-lua-guide
 
 dotfiles:
 [ ] https://github.com/ibhagwan/nvim-lua
@@ -35,9 +39,4 @@ colorschemes:
 [x] https://github.com/haishanh/night-owl.vim
 [x] https://github.com/projekt0n/github-nvim-theme
 [x] https://github.com/wuelnerdotexe/vim-enfocado
-
-efm-langserver:
-[ ] https://github.com/mattn/efm-langserver
-[ ] https://github.com/mattn/efm-langserver/issues/132
-[ ] https://www.reddit.com/r/neovim/comments/kpkc7o/how_to_leverage_neovims_vimlspbufformatting/
 
