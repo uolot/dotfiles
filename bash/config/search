@@ -4,7 +4,7 @@
 alias ag="ag --hidden"
 
 # find to-dos
-alias todos="ag '(TODO|XXX|FIXME)' $@"
+alias todos="ag -i '(TODO|XXX|FIXME):?' $@"
 
 # find random file
 random-file() {
