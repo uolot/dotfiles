@@ -28,6 +28,7 @@
   "firenvim": { "branch": "master", "commit": "3363c140dca2ef0b89e2be0317917f077d752cd7" },
   "format-on-save.nvim": { "branch": "main", "commit": "b7ea8d72391281d14ea1fa10324606c1684180da" },
   "format-ts-errors.nvim": { "branch": "main", "commit": "5dca66563baa9ccfff820b7ba97a2836d2421f7f" },
+  "git-conflict.nvim": { "branch": "main", "commit": "4c8e252b87d54d944c1e56bfb477f78b6fdaf661" },
   "gitsigns.nvim": { "branch": "main", "commit": "2c2463dbd82eddd7dbab881c3a62cfbfbe3c67ae" },
   "harpoon": { "branch": "master", "commit": "ccae1b9bec717ae284906b0bf83d720e59d12b91" },
   "highlight-undo.nvim": { "branch": "main", "commit": "50a6884a8476be04ecce8f1c4ed692c5000ef0a1" },
