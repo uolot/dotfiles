@@ -12,14 +12,14 @@ source $BREW_PREFIX/etc/bash_completion.d/az
 source $BREW_PREFIX/etc/bash_completion.d/brew
 source $BREW_PREFIX/etc/bash_completion.d/brew-services
 source $BREW_PREFIX/etc/bash_completion.d/delta
-source $BREW_PREFIX/etc/bash_completion.d/fd
+# source $BREW_PREFIX/etc/bash_completion.d/fd
 source $BREW_PREFIX/etc/bash_completion.d/gh
 source $BREW_PREFIX/etc/bash_completion.d/git-completion.bash
 source $BREW_PREFIX/etc/bash_completion.d/httpie
 source $BREW_PREFIX/etc/bash_completion.d/jc
 source $BREW_PREFIX/etc/bash_completion.d/jo.bash
 source $BREW_PREFIX/etc/bash_completion.d/npm
-source $BREW_PREFIX/etc/bash_completion.d/rg.bash
+source $BREW_PREFIX/etc/bash_completion.d/rg
 source $BREW_PREFIX/etc/bash_completion.d/starship
 source $BREW_PREFIX/etc/bash_completion.d/zoxide
 
