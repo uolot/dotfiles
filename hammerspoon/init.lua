@@ -25,18 +25,20 @@ local function focused()
     return hs.window.focusedWindow()
 end
 
+---@diagnostic disable-next-line: unused-function,unused-local
 local function toggleTeamsMute()
     local teams = hs.application.find(teamsID)
     -- hs.application.findWindow(titlePattern)
-    if not (teams == null) then
+    if not (teams == nil) then
         hs.eventtap.keyStroke({ "cmd", "shift" }, "m", 50, teams)
     end
 end
 
+---@diagnostic disable-next-line: unused-function,unused-local
 local function startIterm()
     -- XXX: try hs.application.launchOrFocus(itermID)
     local iterm = hs.application.find(itermID)
-    if not (iterm == null) then
+    if not (iterm == nil) then
         hs.eventtap.keyStroke({ "cmd" }, "n", 0, iterm)
     end
 end
@@ -156,6 +158,7 @@ local function spawnWezterm(float)
 
     local filter = hs.window.filter.new(false):setAppFilter(wez:name())
 
+    ---@diagnostic disable-next-line: unused-local
     filter:subscribe(hs.window.filter.windowCreated, function(window, app_name, event)
         filter:unsubscribe(hs.window.filter.windowCreated)
         hs.spaces.moveWindowToSpace(window, space)
@@ -180,7 +183,8 @@ hs.hotkey.bind(hyper, "space", function()
     reasonableSize()
 end)
 
-function dump(o)
+---@diagnostic disable-next-line: unused-function
+local function dump(o)
     if type(o) == 'table' then
         local s = '{ '
         for k, v in pairs(o) do
