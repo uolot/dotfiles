@@ -72,6 +72,7 @@ symbol = "󰏗 " # from Nerd Font Symbols Preset
 # https://starship.rs/config/#aws
 [aws]
 # symbol = "  "
+disabled = true
 
 [custom.aws_exp]
 command = "node $HOME/.dotfiles/starship/aws_exp.js"
@@ -82,9 +83,6 @@ style = "bold 208"
 
 # Nerd Font Symbols Preset
 # https://starship.rs/presets/nerd-font.html#nerd-font-symbols-preset
-
-# [aws]
-# symbol = "  "
 
 [buf]
 symbol = " "
