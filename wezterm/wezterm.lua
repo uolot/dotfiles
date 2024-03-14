@@ -16,6 +16,7 @@
 --     428_resize_pane_mode -> 52_resize_pane
 --     429_close_pane
 --     430_promote_pane_to_tab
+--     431_promote_pane_to_window
 --     432_new_tab
 --     433_move_tabs
 --     434_override_hiding_the_window
@@ -55,6 +56,7 @@
 --   LEADER-o: Rotate Panes Clockwise
 --   LEADER-q: Close Current Pane
 --   LEADER-SHIFT-t: Move Pane To A New Tab
+--   LEADER-SHIFT-w: Move Pane To A New Window
 
 -- Pane resizing
 --   LEADER-b: Balance panes
@@ -251,6 +253,15 @@ local config = {
       action = wez.action_callback(
         function(win, pane)
           pane:move_to_new_tab()
+        end)
+    },
+    -- 431_promote_pane_to_window
+    {
+      key = "w",
+      mods = "LEADER | SHIFT",
+      action = wez.action_callback(
+        function(win, pane)
+          pane:move_to_new_window()
         end)
     },
     -- 432_new_tab
