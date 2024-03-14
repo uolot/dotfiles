@@ -12,6 +12,8 @@
 	editor = nvim
 	excludesfile = ~/.gitignore
 	pager = delta
+[credential "https://gitlab.com"]
+	helper = !/usr/bin/glab auth git-credential
 [delta]
 	features = line-numbers decorations
 	inspect-raw-lines = false
@@ -23,10 +25,12 @@
 	file-decoration-style = none
 [diff]
 	colorMoved = default
+[fetch]
+	prune = true
 [help]
 	autoCorrect = prompt
 [interactive]
-	; diffFilter = delta --color-only
+	diffFilter = delta --color-only
 [log]
 	decorate = full
 [merge]
@@ -34,17 +38,17 @@
 	conflictstyle = diff3
 [mergetool]
 	prompt = false
+[pull]
+	ff = only
 [push]
 	default = simple
 	followTags = true
-[status]
-	showUntrackedFiles = all
-[fetch]
-	prune = true
 [rebase]
 	autoSquash = true
 [rerere]
 	enabled = true
+[status]
+	showUntrackedFiles = all
 [user]
 	useconfigonly = true
 
@@ -74,7 +78,6 @@
 	p = push
 
 	st = status --short --branch
-	mod = !git status --short --branch | fzf --multi --preview='bat {2} --color=always' --header-lines=1 | cut -c 4-
 
 	ss = stash
 	sp = stash pop
@@ -83,8 +86,5 @@
 	last = lgf -1
 	todos = !"ag -i '(TODO|XXX|FIXME):?' $(git diff --name-only)"
 	rebase-since-last-merge = ! git rebase -i $(git log --merges -1 --format="%h")
-	mod = !"git st | grep -v '^##' | awk '{print $2}' | fzf --multi"
-[pull]
-	ff = only
-[credential "https://gitlab.com"]
-	helper = !/usr/bin/glab auth git-credential
+	; mod = !git status --short --branch | fzf --multi --preview='bat {2} --color=always' --header-lines=1 | cut -c 4-
+	mod = !git status --short --branch | fzf --multi --preview='git df --color=always {2}' --header-lines=1 | cut -c 4-
