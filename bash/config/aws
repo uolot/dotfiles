@@ -33,7 +33,7 @@ eval-saml() {
 saml() {
     local args=""
     if [[ "$1" == "-f" ]]; then
-        args="-f"
+        args="--force"
         shift
     fi
     local account=$(__pick-aws-account $*)
