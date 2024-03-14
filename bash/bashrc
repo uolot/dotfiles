@@ -24,7 +24,6 @@ source $CONFIG/asdf
 source $CONFIG/python
 source $CONFIG/node
 source $CONFIG/aws
-source $CONFIG/zk
 source $CONFIG/docker
 # source $CONFIG/platformio
 # source $CONFIG/terraform
