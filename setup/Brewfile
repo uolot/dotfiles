@@ -101,6 +101,8 @@ brew "neovim", args: ["HEAD"]
 brew "pandoc"
 # Your Gateway to Embedded Software Development Excellence
 brew "platformio"
+# Object-relational database system
+brew "postgresql@15", restart_service: true
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Readline wrapper: adds readline support to tools that lack it
@@ -155,6 +157,10 @@ cask "alt-tab"
 cask "audacity"
 # Open-source KVM software
 cask "barrier"
+# Universal database tool and SQL client
+cask "dbeaver-community"
+# App to build and share containerized applications and microservices
+cask "docker"
 # Developer targeted fonts with a high number of glyphs
 cask "font-blex-mono-nerd-font"
 # Desktop automation application
@@ -173,6 +179,8 @@ cask "ngrok"
 cask "obsidian"
 # Cloud storage client
 cask "onedrive"
+# GUI client for PostgreSQL databases
+cask "postico"
 # Collaboration platform for API development
 cask "postman"
 # Command-line shell and scripting language
@@ -195,7 +203,7 @@ cask "visual-studio-code"
 cask "wezterm"
 vscode "asvetliakov.vscode-neovim"
 vscode "dbaeumer.vscode-eslint"
-vscode "EditorConfig.EditorConfig"
+vscode "editorconfig.editorconfig"
 vscode "esbenp.prettier-vscode"
 vscode "ms-azuretools.vscode-docker"
 vscode "ms-vscode-remote.remote-containers"
