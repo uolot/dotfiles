@@ -102,7 +102,7 @@ brew "pandoc"
 # Your Gateway to Embedded Software Development Excellence
 brew "platformio"
 # Object-relational database system
-brew "postgresql@15", restart_service: true
+brew "postgresql@15"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Readline wrapper: adds readline support to tools that lack it
@@ -115,6 +115,8 @@ brew "scc"
 brew "sd"
 # Static analysis and lint tool, for (ba)sh scripts
 brew "shellcheck"
+# Microsoft SQL Server command-line interface
+brew "sqlcmd"
 # Cross-shell prompt for astronauts
 brew "starship"
 # TCP port forwarder
@@ -159,7 +161,7 @@ cask "audacity"
 cask "barrier"
 # Universal database tool and SQL client
 cask "dbeaver-community"
-# App to build and share containerized applications and microservices
+# App to build and share containerised applications and microservices
 cask "docker"
 # Developer targeted fonts with a high number of glyphs
 cask "font-blex-mono-nerd-font"
@@ -167,12 +169,14 @@ cask "font-blex-mono-nerd-font"
 cask "hammerspoon"
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2-beta"
-# Keyboard customizer
+# Keyboard customiser
 cask "karabiner-elements"
 # Software for Logitech devices
 cask "logitech-options"
 # Online collaborative whiteboard platform
 cask "miro"
+# Tool to control external monitor brightness & volume
+cask "monitorcontrol"
 # Reverse proxy, secure introspectable tunnels to localhost
 cask "ngrok"
 # Knowledge base that works on top of a local folder of plain text Markdown files
