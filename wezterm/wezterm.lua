@@ -26,6 +26,8 @@
 --     438_activate_quick_select_url_mode
 --     439_activate_next_pane
 --     440_balance_panes
+--     441_toggle_bottom_pane
+--     442_toggle_right_pane
 -- 50_key_tables
 -- 51_activate_pane
 -- 52_resize_pane
@@ -329,6 +331,48 @@ local config = {
         wez.action_callback(balance.balance_panes("x")),
         wez.action_callback(balance.balance_panes("y")),
       },
+    },
+    -- 441_toggle_bottom_pane
+    {
+      key = ";",
+      mods = 'CMD',
+      action = wez.action_callback(function(_, pane)
+        local tab = pane:tab()
+        local panes = tab:panes_with_info()
+        if #panes == 1 then
+          pane:split({
+            direction = "Bottom",
+            size = 0.4,
+          })
+        elseif not panes[1].is_zoomed then
+          panes[1].pane:activate()
+          tab:set_zoomed(true)
+        elseif panes[1].is_zoomed then
+          tab:set_zoomed(false)
+          panes[2].pane:activate()
+        end
+      end),
+    },
+    -- 442_toggle_right_pane
+    {
+      key = ",",
+      mods = 'CMD',
+      action = wez.action_callback(function(_, pane)
+        local tab = pane:tab()
+        local panes = tab:panes_with_info()
+        if #panes == 1 then
+          pane:split({
+            direction = "Right",
+            size = 0.3,
+          })
+        elseif not panes[1].is_zoomed then
+          panes[1].pane:activate()
+          tab:set_zoomed(true)
+        elseif panes[1].is_zoomed then
+          tab:set_zoomed(false)
+          panes[2].pane:activate()
+        end
+      end),
     },
   },
 
