@@ -243,8 +243,10 @@ hs.hotkey.bind(meh, "y",
         yabai({ '-m', 'space', '--mirror', 'y-axis' }); yabai({ '-m', 'space', '--balance' })
     end)
 
-hs.hotkey.bind(meh, "n", moveWindowToNextScreen)
-hs.hotkey.bind(meh, "p", moveWindowToPreviousScreen)
+-- hs.hotkey.bind(meh, "n", moveWindowToNextScreen)
+-- hs.hotkey.bind(meh, "p", moveWindowToPreviousScreen)
+hs.hotkey.bind(meh, "n", function() yabai({ '-m', 'window', '--display', 'next' }) end)
+hs.hotkey.bind(meh, "p", function() yabai({ '-m', 'window', '--display', 'prev' }) end)
 
 hs.hotkey.bind(meh, "i", function()
     spawnWezterm(true)
