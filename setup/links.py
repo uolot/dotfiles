@@ -19,6 +19,7 @@ LINKS = {
     "starship/starship.toml": ".config/starship.toml",
     "TabNine.toml": ".config/TabNine/TabNine.yml",
     "tmux/tmux.conf": ".tmux.conf",
+    "typos/typos.toml": ".typos.toml",
     "wezterm": ".config/wezterm",
 }
 
