@@ -155,20 +155,12 @@ cask "1password"
 cask "1password-cli"
 # Enable Windows-like alt-tab
 cask "alt-tab"
-# Multi-track audio editor and recorder
-cask "audacity"
-# Open-source KVM software
-cask "barrier"
-# Universal database tool and SQL client
-cask "dbeaver-community"
 # App to build and share containerised applications and microservices
 cask "docker"
 # Developer targeted fonts with a high number of glyphs
 cask "font-blex-mono-nerd-font"
 # Desktop automation application
 cask "hammerspoon"
-# Terminal emulator as alternative to Apple's Terminal app
-cask "iterm2-beta"
 # Keyboard customiser
 cask "karabiner-elements"
 # Software for Logitech devices
@@ -177,26 +169,18 @@ cask "logitech-options"
 cask "miro"
 # Tool to control external monitor brightness & volume
 cask "monitorcontrol"
-# Reverse proxy, secure introspectable tunnels to localhost
-cask "ngrok"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
 # Cloud storage client
 cask "onedrive"
-# GUI client for PostgreSQL databases
-cask "postico"
 # Collaboration platform for API development
 cask "postman"
 # Command-line shell and scripting language
 cask "powershell"
 # Control your tools with a few keystrokes
 cask "raycast"
-# Move and resize windows using keyboard shortcuts or snap areas
-cask "rectangle"
 # Plugin for AWS CLI to start and end sessions that connect to managed instances
 cask "session-manager-plugin"
-# Team communication and collaboration software
-cask "slack"
 # Music streaming service
 cask "spotify"
 # To-do list
