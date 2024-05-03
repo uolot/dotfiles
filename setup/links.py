@@ -5,7 +5,9 @@ from lib import ask
 
 OS = platform.system()
 
+# local path -> home path
 LINKS = {
+    "aerospace/aerospace.toml": ".aerospace.toml",
     "bin": "Bin",
     "bash/bashrc": ".bashrc",
     "bash/bash_profile": ".bash_profile",
@@ -16,6 +18,7 @@ LINKS = {
     "ipython/ipython_config.py": ".ipython/profile_default/ipython_config.py",
     "ipython/startup/vim.py": ".ipython/profile_default/startup/vim.py",
     "neovim": ".config/nvim",
+    "sketchybar": ".config/sketchybar",
     "starship/starship.toml": ".config/starship.toml",
     "TabNine.toml": ".config/TabNine/TabNine.yml",
     "tmux/tmux.conf": ".tmux.conf",
