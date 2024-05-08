@@ -62,6 +62,7 @@ local function config()
         { name = 'treesitter' },
         { name = 'vsnip' },
         { name = 'path',                   option = { trailing_slash = false } },
+        { name = 'lazydev' },
         { name = 'calc' },
         { name = 'emoji',                  option = { insert = true } },
         { name = 'tags',                   options = { current_buffer_only = false } },
@@ -163,6 +164,11 @@ local function config()
             documentation = cmp.config.window.bordered(),
         },
         formatting = formatting,
+        view = {
+            entries = {
+                follow_cursor = true,
+            },
+        },
         sorting = sorting,
         snippet = {
             -- REQUIRED - you must specify a snippet engine

@@ -8,11 +8,17 @@ local dependencies = {
 }
 
 local function config()
+    local telescope = require('telescope')
     local actions = require('telescope.actions')
-    require('telescope').setup {
+    local themes = require('telescope.themes')
+
+    local live_grep_args_actions = require('telescope-live-grep-args.actions')
+    local telescope_undo_actions = require('telescope-undo.actions')
+
+    telescope.setup {
         defaults = {
-            -- defaults = require('telescope.themes').get_ivy {
-            -- defaults = require('telescope.themes').get_dropdown {
+            -- defaults = themes.get_ivy {
+            -- defaults = themes.get_dropdown {
             layout_strategy = 'center',
             layout_config = {
                 prompt_position = 'top',
@@ -52,7 +58,7 @@ local function config()
         },
         extensions = {
             ['ui-select'] = {
-                require('telescope.themes').get_dropdown {}
+                themes.get_dropdown {}
             },
             undo = {
                 side_by_side = true,
@@ -62,21 +68,32 @@ local function config()
                 },
                 mappings = {
                     i = {
-                        ["<cr>"] = require("telescope-undo.actions").restore,
-                        ["<C-cr>"] = require("telescope-undo.actions").yank_additions,
-                        ["<S-cr>"] = require("telescope-undo.actions").yank_deletions,
+                        ["<cr>"] = telescope_undo_actions.restore,
+                        ["<C-cr>"] = telescope_undo_actions.yank_additions,
+                        ["<S-cr>"] = telescope_undo_actions.yank_deletions,
                     },
                     n = {},
+                },
+            },
+            live_grep_args = {
+                auto_quoting = true,
+                mappings = {
+                    i = {
+                        ["<C-k>"] = live_grep_args_actions.quote_prompt(),
+                        ["<C-i>"] = live_grep_args_actions.quote_prompt({ postfix = " --iglob " }),
+                        -- freeze the current list and start a fuzzy search in the frozen list
+                        ["<C-r>"] = actions.to_fuzzy_refine,
+                    },
                 },
             },
         },
     }
 
-    require('telescope').load_extension('ag')
-    require('telescope').load_extension('fzf')
-    require('telescope').load_extension('ui-select')
-    require("telescope").load_extension("live_grep_args")
-    require("telescope").load_extension("undo")
+    telescope.load_extension('ag')
+    telescope.load_extension('fzf')
+    telescope.load_extension('ui-select')
+    telescope.load_extension("live_grep_args")
+    telescope.load_extension("undo")
 end
 
 return { config = config, dependencies = dependencies }

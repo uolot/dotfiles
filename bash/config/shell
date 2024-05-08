@@ -13,7 +13,7 @@ complete -d cd
 
 # default programs
 export BROWSER=google-chrome-stable
-export EDITOR=nvim
+export EDITOR="nvim -u NONE"
 # export TERM=xterm-256color
 export TERM=wezterm
 
@@ -42,18 +42,18 @@ alias ll='ls -lav --ignore=..' # show long listing of all except ".."
 
 # make a new dir and cd to it
 mkcd() {
-    mkdir -p $* && cd $*
+  mkdir -p $* && cd $*
 }
 
 # cd one level up and rm previous dir
 rmup() {
-    pwd=$(pwd)
-    cd ..
-    read -p "Remove ${pwd} ? " choice
-    case "$choice" in
+  pwd=$(pwd)
+  cd ..
+  read -p "Remove ${pwd} ? " choice
+  case "$choice" in
     y | Y)
-        echo "removing ${pwd}"
-        rm -rf "$pwd"
-        ;;
-    esac
+      echo "removing ${pwd}"
+      rm -rf "$pwd"
+      ;;
+  esac
 }

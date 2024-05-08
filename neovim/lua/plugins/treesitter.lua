@@ -82,9 +82,6 @@ local function config()
             enable = true,
             disable = { "python" },
         },
-        autotag = {
-            enable = true,
-        },
         refactor = {
             highlight_definitions = {
                 enable = true,

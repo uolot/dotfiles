@@ -2,6 +2,7 @@ local opts = {
     options = {
         globalstatus = false,
     },
+
     sections = {
         -- left
         lualine_a = { 'mode' },
@@ -37,6 +38,7 @@ local opts = {
             'filetype'
         },
     },
+
     inactive_sections = {
         -- left
         lualine_a = {},
@@ -51,21 +53,23 @@ local opts = {
         },
         lualine_z = {},
     },
-    tabline = {
-        lualine_a = {
-        },
-        lualine_b = {
-            { 'tabs', mode = 2 },
-        },
-        lualine_c = {},
-        lualine_x = {
-        },
-        lualine_y = {
-            { 'buffers', mode = 4 },
-        },
-        lualine_z = {
-        }
-    },
+
+    -- tabline = {
+    --     lualine_a = {
+    --     },
+    --     lualine_b = {
+    --         -- { 'tabs', mode = 2 },
+    --     },
+    --     lualine_c = {},
+    --     lualine_x = {
+    --     },
+    --     lualine_y = {
+    --         { 'buffers', mode = 4 },
+    --     },
+    --     lualine_z = {
+    --     }
+    -- },
+
     winbar = {
         lualine_a = {
             'filename',
@@ -73,7 +77,7 @@ local opts = {
         lualine_b = {
             {
                 'diagnostics',
-                sections = { "error", "warn" },
+                -- sections = { "error", "warn" },
             },
         },
         lualine_c = {
@@ -87,6 +91,7 @@ local opts = {
         lualine_z = {
         }
     },
+
     inactive_winbar = {
         lualine_a = {},
         lualine_b = {},
