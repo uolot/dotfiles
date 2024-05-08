@@ -25,9 +25,11 @@ wk.register({
   ["<Leader>"] = {
     d = require("mappings.diffview"),
     -- TODO: merge f and t ???
+    e = require('mappings.refactoring').extract,
     f = require("mappings.find"),
     g = require("mappings.lsp"),
     h = require("mappings.leader-h"),
+    i = require('mappings.refactoring').inline,
     k = require("mappings.marks"),
     n = require("mappings.neo-tree"),
     t = require("mappings.telescope"),

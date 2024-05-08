@@ -103,10 +103,12 @@ local config = function()
         formatters.lsp,
         formatters.shfmt,
       },
+      -- FIXME:
+      -- sql = formatters.lsp,
       terraform = formatters.lsp,
       typescript = {
         -- formatters.lsp,
-        formatters.eslint_d_fix,
+        -- formatters.eslint_d_fix,
         formatters.prettierd,
         -- formatters.if_file_exists({
         --     pattern = { ".eslintrc.*" },

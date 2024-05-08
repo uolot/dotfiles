@@ -9,7 +9,7 @@ end
 
 local on_lsp_attach = function(client, buffer)
     if client.server_capabilities.inlayHintProvider then
-        vim.lsp.inlay_hint.enable(buffer, false)
+        vim.lsp.inlay_hint.enable(false, { bufnr = 0 }) -- try getting bufnr from `buffer` if this doesn't work
     end
     if client.name == 'typescript-tools' then
         on_tsserver_attach(client, buffer)
@@ -201,6 +201,7 @@ require("typescript-tools").setup({
             -- -->
             -- "shortest" | "project-relative" | "relative" | "non-relative"
             -- importModuleSpecifierPreference = "project-relative",
+            importModuleSpecifierPreference = "non-relative",
             allowRenameOfImportPath = true,
         },
         -- https://github.com/microsoft/TypeScript/blob/v5.0.4/src/server/protocol.ts#L3418

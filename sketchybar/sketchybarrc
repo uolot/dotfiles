@@ -13,7 +13,7 @@ PLUGIN_DIR="$CONFIG_DIR/plugins"
 # https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
 
 #sketchybar --bar position=top height=40 blur_radius=30 color=0x40000000
-sketchybar --bar position=top height=30 blur_radius=30 color=0x40000000
+sketchybar --bar position=top height=30 blur_radius=30 color=0x40000000 notch_width=200
 
 ##### Changing Defaults #####
 # We now change some default values, which are applied to all further items.
@@ -64,11 +64,11 @@ sketchybar --default "${default[@]}"
 # only the properties deviating from the current defaults need to be set
 
 # TODO: revisit later
-#sketchybar --add item chevron left \
-#           --set chevron icon= label.drawing=off \
-#           --add item front_app left \
-#           --set front_app icon.drawing=off script="$PLUGIN_DIR/front_app.sh" \
-#           --subscribe front_app front_app_switched
+sketchybar --add item chevron left \
+          --set chevron icon= label.drawing=off \
+          --add item front_app left \
+          --set front_app icon.drawing=off script="$PLUGIN_DIR/front_app.sh" \
+          --subscribe front_app front_app_switched
 
 ##### Adding Right Items #####
 # In the same way as the left items we can add items to the right side.
@@ -81,14 +81,20 @@ sketchybar --default "${default[@]}"
 # volume is registered. More info about the event system can be found here:
 # https://felixkratz.github.io/SketchyBar/config/events
 
-sketchybar --add item clock right \
-           --set clock update_freq=10 icon=  script="$PLUGIN_DIR/clock.sh" \
-           --add item volume right \
-           --set volume script="$PLUGIN_DIR/volume.sh" \
-           --subscribe volume volume_change \
-           --add item battery right \
+sketchybar --add item battery e \
            --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
            --subscribe battery system_woke power_source_change
+
+sketchybar --add item volume e \
+           --set volume script="$PLUGIN_DIR/volume.sh" \
+           --subscribe volume volume_change
+
+sketchybar --add item clock right \
+           --set clock update_freq=1 icon=  script="$PLUGIN_DIR/clock.sh"
+
+sketchybar --add item pomo right \
+           --set pomo update_freq=1 icon=  script="$PLUGIN_DIR/pomodoro.py" \
+                click_script="$PLUGIN_DIR/pomodoro.py start"
 
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update
@@ -98,16 +104,30 @@ sketchybar --update
 
 # Display Aerospace workspaces
 sketchybar --add event aerospace_workspace_change
+sketchybar --add event aerospace_refresh_workspaces
 
-for sid in $(aerospace list-workspaces --all); do
-    sketchybar --add item space.$sid left \
-        --subscribe space.$sid aerospace_workspace_change \
-        --set space.$sid \
-        background.color=0x44ffffff \
-        background.corner_radius=5 \
-        background.height=20 \
-        background.drawing=off \
-        label="$sid" \
-        click_script="aerospace workspace $sid" \
-        script="$CONFIG_DIR/plugins/aerospace.sh $sid"
+for mid in $(aerospace list-monitors | awk -F'|' '{print $1}'); do
+    for sid in $(aerospace list-workspaces --monitor $mid | sort -r); do
+        sketchybar --add item space.$sid q \
+            --subscribe space.$sid aerospace_workspace_change \
+            --subscribe space.$sid aerospace_refresh_workspaces \
+            --set space.$sid \
+            display=$mid \
+            background.color=0x44ffffff \
+            background.corner_radius=5 \
+            background.height=20 \
+            background.drawing=off \
+            label="$sid" \
+            click_script="aerospace workspace $sid" \
+            script="$CONFIG_DIR/plugins/aerospace.sh $sid"
+    done
 done
+
+# Show Bluetooth headphone indicator
+
+# sketchybar -m --add       event              bluetooth_change "com.apple.bluetooth.status"                       \
+#               --add       item headphones    right                                                               \
+#               --set       headphones         icon=insert_icon                                                    \
+#                                              script="~/.config/sketchybar/plugins/ble_headset.sh"                \
+#               --subscribe headphones         bluetooth_change
+

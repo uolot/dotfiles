@@ -2,7 +2,7 @@ local gs = require('gitsigns')
 -- local gs = package.loaded.gitsigns
 
 return {
-    name = '+gitsigns/harpoon',
+    name = '+gitsigns',
 
     -- gitsigns
 
@@ -34,27 +34,11 @@ return {
     x = {
         name = '+toggles',
         b = { gs.toggle_current_line_blame, 'Toggle current line blame' },
-        B = { '<Cmd>ToggleBlame virtual<CR>', 'Blame entire file' },
+        B = { '<Cmd>Gitsigns blame<CR>', 'Blame entire file' },
         d = { gs.toggle_deleted, 'Toggle deleted' },
         l = { gs.toggle_linehl, 'Toggle line highlight' },
         w = { gs.toggle_word_diff, 'Toggle word diff' },
     },
     --        map('v', '<leader>hr', function() gs.reset_hunk({ vim.fn.line("."), vim.fn.line("v") }) end)
     --        map('v', '<leader>hs', function() gs.stage_hunk({ vim.fn.line("."), vim.fn.line("v") }) end)
-
-    -- harpoon
-
-    m = { require('harpoon.ui').toggle_quick_menu, 'Harpoon menu' },
-    a = { require('harpoon.mark').add_file, 'Harpoon add file' },
-    j = { require('harpoon.ui').nav_next, 'Harpoon next' },
-    k = { require('harpoon.ui').nav_prev, 'Haroon prev' },
-    ["1"] = { function() require('harpoon.ui').nav_file(1) end, 'Harpoon 1' },
-    ["2"] = { function() require('harpoon.ui').nav_file(2) end, 'Harpoon 2' },
-    ["3"] = { function() require('harpoon.ui').nav_file(3) end, 'Harpoon 3' },
-    ["4"] = { function() require('harpoon.ui').nav_file(4) end, 'Harpoon 4' },
-    ["5"] = { function() require('harpoon.ui').nav_file(5) end, 'Harpoon 5' },
-    ["6"] = { function() require('harpoon.ui').nav_file(6) end, 'Harpoon 6' },
-    ["7"] = { function() require('harpoon.ui').nav_file(7) end, 'Harpoon 7' },
-    ["8"] = { function() require('harpoon.ui').nav_file(8) end, 'Harpoon 8' },
-    ["9"] = { function() require('harpoon.ui').nav_file(9) end, 'Harpoon 9' },
 }

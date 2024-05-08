@@ -33,6 +33,10 @@ local function config()
             -- cloudformation
             null_ls.builtins.diagnostics.cfn_lint,
 
+            -- sql
+            -- FIXME:
+            -- null_ls.builtins.formatting.sqlformat,
+
             -- xml
             -- null_ls.builtins.formatting.xmlformat, -- TODO: deprecated
 

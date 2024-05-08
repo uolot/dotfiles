@@ -16,6 +16,9 @@ local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 -- 13_navigation
 -- 99_misc
 
+-- example split config:
+-- https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/editor.lua
+
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
         "git",
@@ -26,12 +29,25 @@ if not vim.loop.fs_stat(lazypath) then
         lazypath,
     })
 end
+---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     -- top plugins
     { "lewis6991/impatient.nvim" },
-    { "folke/neodev.nvim",       opts = {}, ft = 'lua', priority = 1000 },
+
+    {
+        "folke/lazydev.nvim",
+        ft = "lua", -- only load on lua files
+        opts = {
+            library = {
+                -- See the configuration section for more details
+                -- Load luvit types when the `vim.uv` word is found
+                { path = "luvit-meta/library", words = { "vim%.uv" } },
+            },
+        },
+    },
+    { "Bilal2453/luvit-meta",    lazy = true }, -- optional `vim.uv` typings
 
     --
     -- 1_cmp
@@ -42,6 +58,19 @@ require("lazy").setup({
         event = { "InsertEnter", "CmdLineEnter" },
         dependencies = require("plugins.cmp").dependencies,
         config = require("plugins.cmp").config,
+    },
+    {
+        "CopilotC-Nvim/CopilotChat.nvim",
+        branch = "canary",
+        dependencies = {
+            { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
+            { "nvim-lua/plenary.nvim" },  -- for curl, log wrapper
+        },
+        opts = {
+            debug = true, -- Enable debugging
+            -- See Configuration section for rest
+        },
+        -- See Commands section for default commands if you want to lazy load on them
     },
 
     --
@@ -75,20 +104,23 @@ require("lazy").setup({
             automatic_installation = true,
         },
     },
+    -- TODO: Review this
     { "RishabhRD/popfix" },
     { "RishabhRD/nvim-lsputils" },
     { "onsails/lspkind-nvim" },
     {
         "folke/trouble.nvim",
-        lazy = true,
-        opts = {
-            icons = false,
-            severity = vim.diagnostic.severity.INFO,
-        },
+        -- lazy = true,
+        cmd = 'Trouble',
+        opts = {},
+        -- opts = {
+        --     icons = false,
+        --     severity = vim.diagnostic.severity.INFO,
+        -- },
     },
     {
         "ThePrimeagen/refactoring.nvim",
-        cmd = 'CodeActionsMenu',
+        -- cmd = 'CodeActionMenu',
         dependencies = {
             "nvim-lua/plenary.nvim",
             "nvim-treesitter/nvim-treesitter",
@@ -96,13 +128,7 @@ require("lazy").setup({
         },
         config = true,
     },
-    -- Pop-up menu for code actions to show meta-information and diff preview - provides ":CodeActionMenu"
-    -- TODO: archived: https://github.com/weilbith/nvim-code-action-menu/commit/8c7672a#diff-b335630551682c19a781afebcf4d07bf978fb1f8ac04c6bf87428ed5106870f5
-    --       remove if actions-preview works well
-    {
-        "weilbith/nvim-code-action-menu",
-        cmd = "CodeActionMenu",
-    },
+    -- TODO: explore ibhagwan/fzf-lua as an alternative
     {
         "aznhe21/actions-preview.nvim",
     },
@@ -139,10 +165,10 @@ require("lazy").setup({
             }
         }
     },
-    {
-        'yorickpeterse/nvim-dd',
-        opts = { timeout = 750 },
-    },
+    -- {
+    --     'yorickpeterse/nvim-dd',
+    --     opts = { timeout = 750 },
+    -- },
 
     --
     -- 3_treesitter
@@ -182,22 +208,24 @@ require("lazy").setup({
     -- Use treesitter to auto close and auto rename html tags
     {
         "windwp/nvim-ts-autotag",
-        dependencies = { "nvim-treesitter/nvim-treesitter" },
+        opts = {
+            opts = {
+                enable_close = true,
+                enable_rename = true,
+                enable_close_on_slash = true,
+                -- per_filetype = {
+                --     ["html"] = {
+                --         enable_close = false,
+                --     },
+                -- },
+            }
+        }
     },
 
     --
     -- 4_telescope
     --
 
-    {
-        'ThePrimeagen/harpoon',
-        dependencies = { 'nvim-lua/plenary.nvim' },
-        opts = {
-            menu = {
-                width = 100,
-            },
-        },
-    },
     {
         "nvim-telescope/telescope.nvim",
         branch = "0.1.x",
@@ -294,11 +322,27 @@ require("lazy").setup({
         "folke/todo-comments.nvim",
         lazy = false,
         opts = {
-            signs = false,
+            signs = true,
+            keywords = {
+                FIX = {
+                    icon = " ", -- icon used for the sign, and in search results
+                    color = "error", -- can be a hex color, or a named color (see below)
+                    alt = { "FIXME", "BUG", "fixme" }, -- a set of other keywords that all map to this FIX keywords
+                    -- signs = false, -- configure signs for some keywords individually
+                },
+                TODO = { icon = " ", color = "info", alt = { "todo" } },
+                HACK = { icon = " ", color = "warning" },
+                WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
+                PERF = { icon = " ", alt = {} },
+                NOTE = { icon = " ", color = "hint", alt = { "INFO", "info" } },
+                TEST = { icon = "⏲ ", color = "test", alt = {} },
+            },
             highlight = {
                 multiline = false,
                 -- pattern = [[.*<(KEYWORDS)\s*:]],
-                pattern = [[.*<(KEYWORDS)\s*]],
+                -- pattern = [[\c.*<(KEYWORDS)\s*]],
+                -- pattern = [[\c.*<(KEYWORDS)[: ].*]],
+                pattern = [[\c.*<(KEYWORDS)(:\s+|:?$).*]],
                 comments_only = true,
             },
             search = {
@@ -392,27 +436,6 @@ require("lazy").setup({
     -- 9_markdown
     --
     {
-        "iamcco/markdown-preview.nvim",
-        ft = 'markdown',
-        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-        build = function()
-            vim.fn["mkdp#util#install"]()
-        end,
-        config = function()
-            vim.g.mkdp_auto_close = 0
-        end,
-    },
-    {
-        "zk-org/zk-nvim",
-        cmd = { 'ZkBacklinks', 'ZkInsertLink', 'ZkLinks', 'ZkNew', 'ZkNewFromContentSelection',
-            'ZkNewFromTitleSelection', 'ZkNotes', 'ZkTags' },
-        dependencies = 'nvim-telescope/telescope.nvim',
-        config = function()
-            require('telescope').load_extension('zk')
-            require("zk").setup({ picker = "telescope" })
-        end,
-    },
-    {
         "preservim/vim-markdown",
         ft = { "markdown" },
         config = function()
@@ -426,13 +449,6 @@ require("lazy").setup({
             vim.g.vim_markdown_toml_frontmatter = 1
         end,
     },
-    -- Additional highlights for markdown
-    -- {
-    --     "lukas-reineke/headlines.nvim",
-    --     lazy = true,
-    --     ft = { "markdown" },
-    --     config = require("plugins.headlines").config,
-    -- },
 
     --
     -- 10_databases
@@ -506,8 +522,8 @@ require("lazy").setup({
         "kwkarlwang/bufjump.nvim",
         keys = { "<C-n>", "<C-p>" },
         opts = {
-            forward = "<C-n>",
-            backward = "<C-p>",
+            forward_key = "<C-n>",
+            backward_key = "<C-p>",
             on_success = nil,
         },
     },
@@ -540,16 +556,7 @@ require("lazy").setup({
         event = "LspAttach",
         opts = {}
     },
-    {
-        "kiran94/s3edit.nvim",
-        cmd = "S3Edit",
-        opts = {
-            -- exclude = { ".git", ".hoodie", ".parquet", ".zip" },
-            autocommand_events = { "BufWritePost" },
-        },
-    },
-    -- Broken, revisit when updated
-    -- { 'nvim-zh/colorful-winsep.nvim', config = true, event = { "WinNew" } },
+    { 'nvim-zh/colorful-winsep.nvim', config = true, event = { "WinNew" } },
     -- Embed Neovim in Chrome, Firefox & others.
     {
         "glacambre/firenvim",
@@ -557,22 +564,6 @@ require("lazy").setup({
         lazy = not vim.g.started_by_firenvim,
         build = require("plugins.firenvim").build,
         config = require("plugins.firenvim").config,
-    },
-    {
-        'abecodes/tabout.nvim',
-        opts = {
-            ignore_beginning = false,
-            tabouts = {
-                { open = "'", close = "'" },
-                { open = '"', close = '"' },
-                { open = '`', close = '`' },
-                { open = '(', close = ')' },
-                { open = '[', close = ']' },
-                { open = '{', close = '}' },
-                { open = '<', close = '>' },
-            },
-        },
-        dependencies = { 'hrsh7th/nvim-cmp', 'nvim-treesitter' },
     },
     {
         "carbon-steel/detour.nvim",
@@ -587,7 +578,10 @@ require("lazy").setup({
     -- diff = 'git',
     -- diff = 'terminal_git',
     -- diff = 'diffview.nvim',
-    checker = { enabled = true },
+    checker = {
+        enabled = false,
+        frequency = 3600 * 48, -- every two days
+    },
     change_detection = {
         -- automatically check for config file changes and reload the ui
         enabled = true,

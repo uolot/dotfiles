@@ -157,7 +157,9 @@ local config = {
 
   color_scheme = color_scheme,
   colors = {
-    split = '#bbbbbb',
+    -- split = '#bbbbbb',
+    -- split = '#ffa500', -- orange from janky borders
+    split = '#C07100',
   },
 
   -- 40_keys
@@ -171,6 +173,7 @@ local config = {
 
   -- 42_key_bindings
   leader = { key = 'w', mods = 'CMD', timeout_milliseconds = 1000 },
+
   keys = {
     -- 421_splits
     {
@@ -202,6 +205,26 @@ local config = {
     {
       key = 'l',
       mods = 'LEADER',
+      action = wez.action.ActivatePaneDirection 'Right',
+    },
+    {
+      key = 'h',
+      mods = 'CMD',
+      action = wez.action.ActivatePaneDirection 'Left',
+    },
+    {
+      key = 'j',
+      mods = 'CMD',
+      action = wez.action.ActivatePaneDirection 'Down',
+    },
+    {
+      key = 'k',
+      mods = 'CMD',
+      action = wez.action.ActivatePaneDirection 'Up',
+    },
+    {
+      key = 'l',
+      mods = 'CMD',
       action = wez.action.ActivatePaneDirection 'Right',
     },
     -- 423_activate_pane_mode -> 51_activate_pane
@@ -284,11 +307,11 @@ local config = {
       action = wez.action.MoveTabRelative(-1),
     },
     -- 434_override_hiding_the_window
-    {
-      key = 'h',
-      mods = 'CMD',
-      action = wez.action.Nop,
-    },
+    -- {
+    --   key = 'h',
+    --   mods = 'CMD',
+    --   action = wez.action.Nop,
+    -- },
     -- 435_command_palette
     {
       key = 'Space',
@@ -334,7 +357,7 @@ local config = {
     },
     -- 441_toggle_bottom_pane
     {
-      key = ";",
+      key = ",",
       mods = 'CMD',
       action = wez.action_callback(function(_, pane)
         local tab = pane:tab()
@@ -355,7 +378,7 @@ local config = {
     },
     -- 442_toggle_right_pane
     {
-      key = ",",
+      key = ";",
       mods = 'CMD',
       action = wez.action_callback(function(_, pane)
         local tab = pane:tab()
@@ -398,17 +421,17 @@ local config = {
     -- 52_resize_pane
     resize_pane = {
       { key = 'h',      mods = '',             action = wez.action.AdjustPaneSize { 'Left', 10 } },
-      { key = 'h',      mods = 'SHIFT',        action = wez.action.AdjustPaneSize { 'Left', 1 } },
-      { key = 'h',      mods = 'CTRL',         action = wez.action.AdjustPaneSize { 'Left', 50 } },
+      { key = 'h',      mods = 'SHIFT',        action = wez.action.AdjustPaneSize { 'Left', 50 } },
+      { key = 'h',      mods = 'CTRL',         action = wez.action.AdjustPaneSize { 'Left', 1 } },
       { key = 'l',      mods = '',             action = wez.action.AdjustPaneSize { 'Right', 10 } },
-      { key = 'l',      mods = 'SHIFT',        action = wez.action.AdjustPaneSize { 'Right', 1 } },
-      { key = 'l',      mods = 'CTRL',         action = wez.action.AdjustPaneSize { 'Right', 50 } },
-      { key = 'k',      mods = '',             action = wez.action.AdjustPaneSize { 'Up', 10 } },
-      { key = 'k',      mods = 'SHIFT',        action = wez.action.AdjustPaneSize { 'Up', 1 } },
-      { key = 'k',      mods = 'CTRL',         action = wez.action.AdjustPaneSize { 'Up', 50 } },
-      { key = 'j',      mods = '',             action = wez.action.AdjustPaneSize { 'Down', 10 } },
-      { key = 'j',      mods = 'SHIFT',        action = wez.action.AdjustPaneSize { 'Down', 1 } },
-      { key = 'j',      mods = 'CTRL',         action = wez.action.AdjustPaneSize { 'Down', 50 } },
+      { key = 'l',      mods = 'SHIFT',        action = wez.action.AdjustPaneSize { 'Right', 50 } },
+      { key = 'l',      mods = 'CTRL',         action = wez.action.AdjustPaneSize { 'Right', 1 } },
+      { key = 'k',      mods = '',             action = wez.action.AdjustPaneSize { 'Up', 4 } },
+      { key = 'k',      mods = 'SHIFT',        action = wez.action.AdjustPaneSize { 'Up', 20 } },
+      { key = 'k',      mods = 'CTRL',         action = wez.action.AdjustPaneSize { 'Up', 1 } },
+      { key = 'j',      mods = '',             action = wez.action.AdjustPaneSize { 'Down', 4 } },
+      { key = 'j',      mods = 'SHIFT',        action = wez.action.AdjustPaneSize { 'Down', 20 } },
+      { key = 'j',      mods = 'CTRL',         action = wez.action.AdjustPaneSize { 'Down', 1 } },
 
       -- Cancel the mode by pressing escape or Q
       { key = 'q',      action = 'PopKeyTable' },
