@@ -162,9 +162,9 @@ cask "aerospace"
 cask "alt-tab"
 # App to build and share containerised applications and microservices
 cask "docker"
-# Developer targeted fonts with a high number of glyphs
+# Web browser
+cask "firefox"
 cask "font-blex-mono-nerd-font"
-# Developer targeted fonts with a high number of glyphs
 cask "font-hack-nerd-font"
 # Desktop automation application
 cask "hammerspoon"
