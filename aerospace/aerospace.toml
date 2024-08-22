@@ -4,18 +4,6 @@
 # Feel free to omit keys that you don't use in your config.
 # If the key is absent in your config the default value is taken from this config
 
-# WORKSPACES
-# b = browser
-# c = calls (teams)
-# d = develop (terminal, browser)
-# e = media (spotify, youtube)
-# p = personal (browsers, etc)
-# q = temp 3 (sidecar)
-# t = tasks (calendar, obsidian, things)
-# w = work (browser, outlook, teams)
-# x = temp 2 (external monitor)
-# z = temp 1 (laptop)
-
 # You can use it to add commands that run after login to macOS user session.
 # 'start-at-login' needs to be 'true' for 'after-login-command' to work
 # Available commands: https://nikitabobko.github.io/AeroSpace/commands
@@ -87,18 +75,17 @@ inherit-env-vars = true
 PATH = '/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}'
 
 # See https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
-# TODO: uncomment this
 [workspace-to-monitor-force-assignment]
-b = 1
-c = 1
-d = 2
-e = 1
-p = 2
-q = 'sidecar'
-t = 1
-w = 2
-x = 2
-z = 1
+b = 1 # browser
+d = 2 # develop
+e = 1 # entrertainment
+m = 1 # meeting
+p = 2 # personal
+q = 'sidecar' # temp 3
+t = 1 # tasks
+w = 2 # work
+x = 2 # temp 2
+z = 1 # temp 1
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -122,79 +109,70 @@ z = 1
 
 # You can uncomment this line to open up terminal with alt + enter shortcut
 # See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
-# alt-enter = 'exec-and-forget open -n /System/Applications/Utilities/Terminal.app'
-alt-enter = 'exec-and-forget open -n /Applications/WezTerm.app'
+cmd-alt-ctrl-shift-enter = 'exec-and-forget open -n /Applications/WezTerm.app'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
-alt-slash = 'layout tiles horizontal vertical'
-alt-comma = 'layout accordion horizontal vertical'
+cmd-alt-ctrl-shift-slash = 'layout tiles horizontal vertical'
+cmd-alt-ctrl-shift-comma = 'layout accordion horizontal vertical'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
-alt-h = 'focus left'
-alt-j = 'focus down'
-alt-k = 'focus up'
-alt-l = 'focus right'
+cmd-alt-ctrl-shift-h = 'focus left'
+cmd-alt-ctrl-shift-j = 'focus down'
+cmd-alt-ctrl-shift-k = 'focus up'
+cmd-alt-ctrl-shift-l = 'focus right'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move
-alt-shift-h = 'move left'
-alt-shift-j = 'move down'
-alt-shift-k = 'move up'
-alt-shift-l = 'move right'
+alt-ctrl-shift-h = 'move left'
+alt-ctrl-shift-j = 'move down'
+alt-ctrl-shift-k = 'move up'
+alt-ctrl-shift-l = 'move right'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#resize
-# alt-shift-minus = 'resize smart -50'
-# alt-shift-equal = 'resize smart +50'
-alt-i = 'resize smart -100'
-alt-u = 'resize smart +100'
-alt-shift-i = 'resize smart -500'
-alt-shift-u = 'resize smart +500'
+cmd-alt-ctrl-shift-r = 'mode resize'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
-alt-b = 'workspace b'
-alt-c = 'workspace c'
-alt-d = 'workspace d'
-alt-e = 'workspace e'
-alt-p = 'workspace p'
-alt-q = 'workspace q'
-alt-t = 'workspace t'
-alt-w = 'workspace w'
-alt-x = 'workspace x'
-alt-z = 'workspace z'
+cmd-alt-ctrl-shift-b = 'workspace b'
+cmd-alt-ctrl-shift-d = 'workspace d'
+cmd-alt-ctrl-shift-e = 'workspace e'
+cmd-alt-ctrl-shift-m = 'workspace m'
+cmd-alt-ctrl-shift-p = 'workspace p'
+cmd-alt-ctrl-shift-q = 'workspace q'
+cmd-alt-ctrl-shift-t = 'workspace t'
+cmd-alt-ctrl-shift-w = 'workspace w'
+cmd-alt-ctrl-shift-x = 'workspace x'
+cmd-alt-ctrl-shift-z = 'workspace z'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-alt-shift-b = 'move-node-to-workspace b'
-alt-shift-c = 'move-node-to-workspace c'
-alt-shift-d = 'move-node-to-workspace d'
-alt-shift-e = 'move-node-to-workspace e'
-alt-shift-p = 'move-node-to-workspace p'
-alt-shift-q = 'move-node-to-workspace q'
-alt-shift-t = 'move-node-to-workspace t'
-alt-shift-w = 'move-node-to-workspace w'
-alt-shift-x = 'move-node-to-workspace x'
-alt-shift-z = 'move-node-to-workspace z'
+alt-ctrl-shift-b = 'move-node-to-workspace b'
+alt-ctrl-shift-d = 'move-node-to-workspace d'
+alt-ctrl-shift-e = 'move-node-to-workspace e'
+alt-ctrl-shift-m = 'move-node-to-workspace m'
+alt-ctrl-shift-p = 'move-node-to-workspace p'
+alt-ctrl-shift-q = 'move-node-to-workspace q'
+alt-ctrl-shift-t = 'move-node-to-workspace t'
+alt-ctrl-shift-w = 'move-node-to-workspace w'
+alt-ctrl-shift-x = 'move-node-to-workspace x'
+alt-ctrl-shift-z = 'move-node-to-workspace z'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
-alt-tab = 'workspace-back-and-forth'
-alt-semicolon = 'workspace-back-and-forth'
+cmd-alt-ctrl-shift-tab = 'workspace-back-and-forth'
+cmd-alt-ctrl-shift-semicolon = 'workspace-back-and-forth'
 
-alt-n = "workspace --wrap-around next"
+cmd-alt-ctrl-shift-n = "workspace --wrap-around next"
 # alt-p = "workspace --wrap-around prev"
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
 # alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
-alt-shift-semicolon = 'mode service'
+alt-ctrl-shift-semicolon = 'mode service'
 
 # alt-w = 'mode workspace'
-alt-m = 'mode monitor'
+# alt-ctrl-shift-m = 'mode monitor'
 
 # Toggle between floating and tiling layout
-alt-f = 'layout floating tiling'
-alt-shift-f = 'macos-native-fullscreen'
-
-alt-s = 'split horizontal'
-alt-v = 'split vertical'
+cmd-alt-ctrl-shift-f = 'layout floating tiling'
+alt-ctrl-shift-f = 'macos-native-fullscreen'
 
 # Disable hide application shortcut
 # cmd-h = []
@@ -209,28 +187,38 @@ s = [
     'exec-and-forget killall sketchybar',
     'mode main'
 ]
-q = ['flatten-workspace-tree', 'mode main'] # reset layout
-#s = ['layout sticky tiling', 'mode main'] # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
-f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
+# q = ['flatten-workspace-tree', 'mode main'] # reset layout
+# s = ['layout sticky tiling', 'mode main'] # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
+# f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
 # backspace = ['close-all-windows-but-current', 'mode main']
 
-alt-shift-h = ['join-with left', 'mode main']
-alt-shift-j = ['join-with down', 'mode main']
-alt-shift-k = ['join-with up', 'mode main']
-alt-shift-l = ['join-with right', 'mode main']
+alt-ctrl-shift-h = ['join-with left', 'mode main']
+alt-ctrl-shift-j = ['join-with down', 'mode main']
+alt-ctrl-shift-k = ['join-with up', 'mode main']
+alt-ctrl-shift-l = ['join-with right', 'mode main']
 
-[mode.monitor.binding]
-esc = ['mode main']
-n = ['focus-monitor --wrap-around next', 'mode main']
-p = ['focus-monitor --wrap-around prev', 'mode main']
-shift-n = [
-    'move-workspace-to-monitor --wrap-around next',
-    'exec-and-forget sketchybar --trigger aerospace_refresh_workspaces',
-    'mode main'
-]
-shift-p = [
-    'move-workspace-to-monitor --wrap-around prev',
-    'exec-and-forget sketchybar --trigger aerospace_refresh_workspaces',
-    'mode main'
-]
+[mode.resize.binding]
+s = ['split horizontal', 'mode main']
+v = ['split vertical', 'mode main']
+u = 'resize smart +100'
+i = 'resize smart -100'
+shift-u = 'resize smart +500'
+shift-i = 'resize smart -500'
+q = 'mode main'
+esc = 'mode main'
+
+# [mode.monitor.binding]
+# esc = ['mode main']
+# n = ['focus-monitor --wrap-around next', 'mode main']
+# p = ['focus-monitor --wrap-around prev', 'mode main']
+# shift-n = [
+#     'move-workspace-to-monitor --wrap-around next',
+#     'exec-and-forget sketchybar --trigger aerospace_refresh_workspaces',
+#     'mode main'
+# ]
+# shift-p = [
+#     'move-workspace-to-monitor --wrap-around prev',
+#     'exec-and-forget sketchybar --trigger aerospace_refresh_workspaces',
+#     'mode main'
+# ]
 
