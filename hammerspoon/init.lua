@@ -1,13 +1,5 @@
 -- http://www.hammerspoon.org/docs/
 
--- TODO: add a function for flashing current window
-
--- https://github.com/mengelbrecht/hammerspoon-config/blob/main/init.lua#L129
--- local teamsID = "com.microsoft.teams"
-local teamsID = "microsoft.teams"
-local itermID = "com.googlecode.iterm2"
--- local outlookID = "com.microsoft.outlook"
-
 local mouseCircleConfig = {
     radius = 40,
     color = { red = 1, blue = 0, green = 0, alpha = 0.4 },
@@ -21,41 +13,17 @@ hs.window.animationDuration = 0
 -- debug print:
 -- hs.console.printStyledtext(hs.inspect.inspect(obj))
 
-local function focused()
-    return hs.window.focusedWindow()
-end
-
----@diagnostic disable-next-line: unused-function,unused-local
-local function toggleTeamsMute()
-    local teams = hs.application.find(teamsID)
-    -- hs.application.findWindow(titlePattern)
-    if not (teams == nil) then
-        hs.eventtap.keyStroke({ "cmd", "shift" }, "m", 50, teams)
-    end
-end
-
----@diagnostic disable-next-line: unused-function,unused-local
-local function startIterm()
-    -- XXX: try hs.application.launchOrFocus(itermID)
-    local iterm = hs.application.find(itermID)
-    if not (iterm == nil) then
-        hs.eventtap.keyStroke({ "cmd" }, "n", 0, iterm)
-    end
-end
-
-local function moveWindowToPreviousScreen()
-    local window = focused()
-    local screen = window:screen():previous()
-    if not (screen == nil) then
-        window:moveToScreen(screen)
-    end
-end
-
-local function moveWindowToNextScreen()
-    local window = focused()
-    local screen = window:screen():next()
-    if not (screen == nil) then
-        window:moveToScreen(screen)
+---@diagnostic disable-next-line: unused-function
+local function dump(o)
+    if type(o) == 'table' then
+        local s = '{ '
+        for k, v in pairs(o) do
+            if type(k) ~= 'number' then k = '"' .. k .. '"' end
+            s = s .. '[' .. k .. '] = ' .. dump(v) .. ','
+        end
+        return s .. '} '
+    else
+        return tostring(o)
     end
 end
 
@@ -89,14 +57,6 @@ local function mouseHighlight()
         end)
 end
 
-local function yabai(args)
-    -- hs.task.new("/usr/local/bin/yabai", nil, function(...)
-    hs.task.new("/opt/homebrew/bin/yabai", nil, function(...)
-        print("stream", hs.inspect(table.pack(...)))
-        return true
-    end, args):start()
-end
-
 -- resize window to reasonable size - 60%, max 1025x900px
 local function reasonableSize(window)
     if window == nil then
@@ -128,126 +88,14 @@ local function shrink()
     window:setSize(w, h)
 end
 
--- local function warpd(args)
---     hs.task.new("/usr/local/bin/warpd", nil, function (...)
---         print("stream", hs.inspect(table.pack(...)))
---         return true
---     end, args):start()
--- end
---
-local hyper = { "cmd", "alt", "ctrl", "shift" }
+-- local hyper = { "cmd", "alt", "ctrl", "shift" }
 local meh = { "alt", "ctrl", "shift" }
 
--- HYPER
-
--- mapped keys
--- . . . R T Y U . . .
--- A . D F G . . . . ;
--- Z X . V B . . x x /
-
--- Apps
-local function spawnWezterm(float)
-    local screen = hs.mouse.getCurrentScreen()
-    local space = hs.spaces.activeSpaceOnScreen(screen)
-    local wez = hs.application.find('WezTerm')
-
-    if wez == nil then
-        wez = hs.application.open('WezTerm')
-        return
-    end
-
-    local filter = hs.window.filter.new(false):setAppFilter(wez:name())
-
-    ---@diagnostic disable-next-line: unused-local
-    filter:subscribe(hs.window.filter.windowCreated, function(window, app_name, event)
-        filter:unsubscribe(hs.window.filter.windowCreated)
-        hs.spaces.moveWindowToSpace(window, space)
-        window:focus()
-        if float then
-            hs.timer.doAfter(0.5, function()
-                yabai({ '-m', 'window', '--toggle', 'float' })
-                reasonableSize(window)
-            end):fire()
-        end
-    end, false)
-
-    wez:selectMenuItem("New Window")
-end
-
-hs.hotkey.bind(hyper, "i", function() spawnWezterm(false) end)
-
--- Window navigation
-hs.hotkey.bind(hyper, "return", function() yabai({ '-m', 'window', '--toggle', 'zoom-fullscreen' }) end)
-hs.hotkey.bind(hyper, "space", function()
-    yabai({ '-m', 'window', '--toggle', 'float' })
-    reasonableSize()
-end)
-
----@diagnostic disable-next-line: unused-function
-local function dump(o)
-    if type(o) == 'table' then
-        local s = '{ '
-        for k, v in pairs(o) do
-            if type(k) ~= 'number' then k = '"' .. k .. '"' end
-            s = s .. '[' .. k .. '] = ' .. dump(v) .. ','
-        end
-        return s .. '} '
-    else
-        return tostring(o)
-    end
-end
-
-hs.hotkey.bind(hyper, "c", function() hs.window.focusedWindow():centerOnScreen() end)
-
-hs.hotkey.bind(hyper, "h", function() hs.window.focusedWindow():focusWindowWest() end)
-hs.hotkey.bind(hyper, "j", function() hs.window.focusedWindow():focusWindowSouth() end)
-hs.hotkey.bind(hyper, "k", function() hs.window.focusedWindow():focusWindowNorth() end)
-hs.hotkey.bind(hyper, "l", function() hs.window.focusedWindow():focusWindowEast() end)
-
-hs.hotkey.bind(hyper, "n", function() yabai({ '-m', 'window', '--space', 'next' }) end)
-hs.hotkey.bind(hyper, "p", function() yabai({ '-m', 'window', '--space', 'prev' }) end)
-
-hs.hotkey.bind(hyper, "right", function() yabai({ '-m', 'display', '--focus', 'next' }) end)
-hs.hotkey.bind(hyper, "left", function() yabai({ '-m', 'display', '--focus', 'prev' }) end)
-
--- Mouse
-hs.hotkey.bind(hyper, "m", mouseHighlight)
 
 -- MEH
 
--- mapped keys
--- Q W E . T . . . O .
--- A . . F . G . . . ;
--- Z . . V . . M x x /
-
-hs.hotkey.bind(meh, "h", function() yabai({ '-m', 'window', '--swap', 'west' }) end)
-hs.hotkey.bind(meh, "j", function() yabai({ '-m', 'window', '--swap', 'south' }) end)
-hs.hotkey.bind(meh, "k", function() yabai({ '-m', 'window', '--swap', 'north' }) end)
-hs.hotkey.bind(meh, "l", function() yabai({ '-m', 'window', '--swap', 'east' }) end)
-
-hs.hotkey.bind(meh, "space", function() reasonableSize() end)
-hs.hotkey.bind(meh, "u", function() grow() end)
-hs.hotkey.bind(meh, "d", function() shrink() end)
+-- hs.hotkey.bind(meh, "m", mouseHighlight)
 hs.hotkey.bind(meh, "c", function() hs.window.focusedWindow():centerOnScreen() end)
-
-hs.hotkey.bind(meh, "s", function() yabai({ '-m', 'window', '--toggle', 'sticky' }) end)
-
-hs.hotkey.bind(meh, "b", function() yabai({ '-m', 'space', '--balance' }) end)
-hs.hotkey.bind(meh, "r", function() yabai({ '-m', 'space', '--rotate', '270' }) end)
-hs.hotkey.bind(meh, "x",
-    function()
-        yabai({ '-m', 'space', '--mirror', 'x-axis' }); yabai({ '-m', 'space', '--balance' })
-    end)
-hs.hotkey.bind(meh, "y",
-    function()
-        yabai({ '-m', 'space', '--mirror', 'y-axis' }); yabai({ '-m', 'space', '--balance' })
-    end)
-
--- hs.hotkey.bind(meh, "n", moveWindowToNextScreen)
--- hs.hotkey.bind(meh, "p", moveWindowToPreviousScreen)
-hs.hotkey.bind(meh, "n", function() yabai({ '-m', 'window', '--display', 'next' }) end)
-hs.hotkey.bind(meh, "p", function() yabai({ '-m', 'window', '--display', 'prev' }) end)
-
-hs.hotkey.bind(meh, "i", function()
-    spawnWezterm(true)
-end)
+hs.hotkey.bind(meh, "s", function() reasonableSize() end)
+hs.hotkey.bind(meh, "u", function() grow() end)
+hs.hotkey.bind(meh, "i", function() shrink() end)

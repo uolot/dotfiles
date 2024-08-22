@@ -15,6 +15,7 @@ LINKS = {
     "ctags/config.ctags": ".ctags.d/config.ctags",
     # "git/config": ".gitconfig",
     "git/ignore": ".gitignore",
+    "hammerspoon/init.lua": ".hammerspoon/init.lua",
     "ipython/ipython_config.py": ".ipython/profile_default/ipython_config.py",
     "ipython/startup/vim.py": ".ipython/profile_default/startup/vim.py",
     "neovim": ".config/nvim",
@@ -24,12 +25,6 @@ LINKS = {
     "tmux/tmux.conf": ".tmux.conf",
     "typos/typos.toml": ".typos.toml",
     "wezterm": ".config/wezterm",
-}
-
-# TODO: add kitty terminal config
-MACOS_LINKS = {
-    "hammerspoon/init.lua": ".hammerspoon/init.lua",
-    "yabai/yabairc": ".config/yabai/yabairc",
 }
 
 
@@ -42,7 +37,6 @@ def create_links():
 
     links = {
         **LINKS,
-        **(MACOS_LINKS if OS == "Darwin" else {}),
     }
 
     for src, dest in links.items():
