@@ -192,6 +192,8 @@ cask "session-manager-plugin"
 cask "spotify"
 # To-do list
 cask "todoist"
+# Tool to invert scroll direction for physical scroll wheels
+cask "unnaturalscrollwheels"
 # Open-source code editor
 cask "visual-studio-code"
 # GPU-accelerated cross-platform terminal emulator and multiplexer
