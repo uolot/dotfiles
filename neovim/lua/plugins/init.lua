@@ -368,6 +368,7 @@ require("lazy").setup({
         cmd = "Neotree",
         dependencies = require("plugins.neo-tree").dependencies,
         opts = {
+            popup_border_style = "rounded",
             sources = {
                 'filesystem',
                 'git_status',
