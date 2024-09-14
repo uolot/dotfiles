@@ -187,9 +187,8 @@ s = [
     'exec-and-forget killall sketchybar',
     'mode main'
 ]
-f = ['flatten-workspace-tree', 'mode main'] # reset layout
+l = ['flatten-workspace-tree', 'mode main'] # reset layout
 # s = ['layout sticky tiling', 'mode main'] # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
-# f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
 # backspace = ['close-all-windows-but-current', 'mode main']
 
 alt-ctrl-shift-h = ['join-with left', 'mode main']
