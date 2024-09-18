@@ -82,6 +82,8 @@
 	ss = stash
 	sp = stash pop
 
+	wt = worktree
+
 	# extra tools
 	last = lgf -1
 	todos = !"ag -i '(TODO|XXX|FIXME):?' $(git diff --name-only)"
