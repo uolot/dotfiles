@@ -173,6 +173,9 @@ alt-ctrl-shift-semicolon = 'mode service'
 # Toggle between floating and tiling layout
 cmd-alt-ctrl-shift-f = 'layout floating tiling'
 alt-ctrl-shift-f = 'macos-native-fullscreen'
+# Splits
+alt-ctrl-shift-s = 'split horizontal'
+alt-ctrl-shift-v = 'split vertical'
 
 # Disable hide application shortcut
 # cmd-h = []
