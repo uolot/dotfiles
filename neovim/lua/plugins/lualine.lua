@@ -8,31 +8,20 @@ local opts = {
         lualine_a = { 'mode' },
         lualine_b = {
             {
-                'filename',
-                path = 1,
-                shorting_target = 40,
-            },
-            {
                 'fileformat',
                 icons_enabled = true,
                 symbols = { unix = '', dos = ' CRLF ', mac = ' CR ', },
             },
+            'filename',
+            'diagnostics',
         },
         lualine_c = {
-            {
-                'lsp_progress',
-                display_components = {
-                    'lsp_client_name',
-                    { 'percentage', },
-                },
-            },
+            'diff',
         },
         -- right
         lualine_x = {
         },
         lualine_y = {
-            'location',
-            'progress',
         },
         lualine_z = {
             'filetype'
@@ -43,72 +32,89 @@ local opts = {
         -- left
         lualine_a = {},
         lualine_b = {
-            { 'filename', path = 1, shorting_target = 40 },
+            'filename',
+            { 'diagnostics', colored = false },
         },
-        lualine_c = {},
+        lualine_c = {
+            { 'diff', colored = false },
+        },
         -- right
-        lualine_x = {
-        },
-        lualine_y = {
-        },
+        lualine_x = {},
+        lualine_y = {},
         lualine_z = {},
     },
 
-    -- tabline = {
-    --     lualine_a = {
-    --     },
-    --     lualine_b = {
-    --         -- { 'tabs', mode = 2 },
-    --     },
-    --     lualine_c = {},
-    --     lualine_x = {
-    --     },
-    --     lualine_y = {
-    --         { 'buffers', mode = 4 },
-    --     },
-    --     lualine_z = {
-    --     }
-    -- },
-
     winbar = {
         lualine_a = {
-            'filename',
         },
         lualine_b = {
-            {
-                'diagnostics',
-                -- sections = { "error", "warn" },
-            },
         },
         lualine_c = {
         },
         lualine_x = {
-            'branch',
         },
         lualine_y = {
-            'diff',
         },
         lualine_z = {
         }
     },
 
     inactive_winbar = {
-        lualine_a = {},
-        lualine_b = {},
+        lualine_a = {
+        },
+        lualine_b = {
+        },
         lualine_c = {
-            'filename',
-            {
-                'diagnostics',
-                sections = { "error", "warn" },
-                colored = false,
-            },
         },
         lualine_x = {
         },
         lualine_y = {
-            { 'diff', colored = false },
         },
         lualine_z = {}
+    },
+
+    tabline = {
+        lualine_a = {
+            {
+                'tabs',
+                mode = 0,
+                -- use_mode_color = true,
+            },
+        },
+        lualine_b = {
+        },
+        lualine_c = {
+            -- {
+            --     'windows',
+            --     mode = 2,
+            -- },
+            {
+                'filename',
+                path = 1,
+                shorting_target = 0,
+            },
+            -- 'diagnostics',
+        },
+        lualine_x = {
+            {
+                'lsp_progress',
+                display_components = {
+                    'lsp_client_name',
+                    { 'percentage', },
+                },
+            },
+        },
+        lualine_y = {
+            -- 'diff',
+            -- {
+            --     'filename',
+            --     path = 1,
+            --     shorting_target = 0,
+            -- },
+        },
+        lualine_z = {
+            'branch',
+        }
     },
 }
 
