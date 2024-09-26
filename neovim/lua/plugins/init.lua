@@ -43,7 +43,8 @@ require("lazy").setup({
             library = {
                 -- See the configuration section for more details
                 -- Load luvit types when the `vim.uv` word is found
-                { path = "luvit-meta/library", words = { "vim%.uv" } },
+                { path = "luvit-meta/library",  words = { "vim%.uv" } },
+                { path = "rcarriga/nvim-dap-ui" },
             },
         },
     },
@@ -572,6 +573,25 @@ require("lazy").setup({
         "carbon-steel/detour.nvim",
         cmd = 'Detour',
         -- config = true,
+    },
+
+    {
+        "rcarriga/nvim-dap-ui",
+        dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
+        config = true,
+    },
+    {
+        "jay-babu/mason-nvim-dap.nvim",
+        opts = {
+            handlers = {
+                function(config)
+                    -- all sources with no handler get passed here
+
+                    -- Keep original functionality
+                    require('mason-nvim-dap').default_setup(config)
+                end,
+            }
+        }
     },
 }, {
     ui = {
