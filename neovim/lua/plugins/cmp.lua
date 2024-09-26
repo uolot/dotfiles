@@ -132,7 +132,8 @@ local function config()
 
     local formatting = {
         format = lspkind.cmp_format({
-            mode = 'text_symbol',
+            -- mode = 'text_symbol',
+            mode = 'text',
             maxwidth = 50,
             -- preset = "default",
             menu = ({
