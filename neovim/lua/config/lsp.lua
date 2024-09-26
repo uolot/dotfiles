@@ -46,21 +46,23 @@ vim.g.lsp_utils_codeaction_opts = {
     }
 }
 
-local enhanced_float_handler = require('config.enhanced_float_handler')
+-- local enhanced_float_handler = require('config.enhanced_float_handler')
 
 -- LSP borders
-vim.lsp.handlers["textDocument/signatureHelp"] = enhanced_float_handler(vim.lsp.with(
+-- vim.lsp.handlers["textDocument/signatureHelp"] = enhanced_float_handler(vim.lsp.with(
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
     vim.lsp.handlers.signature_help, {
         border = 'rounded'
     }
-))
+)
 
-vim.lsp.handlers["textDocument/hover"] = enhanced_float_handler(vim.lsp.with(
+-- vim.lsp.handlers["textDocument/hover"] = enhanced_float_handler(vim.lsp.with(
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
     vim.lsp.handlers.hover,
     {
         border = "rounded"
     }
-))
+)
 
 local lsp = require('lsp-zero')
 -- lsp.set_sign_icons()
