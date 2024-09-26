@@ -2,20 +2,20 @@
 
 # git-style diff
 gdiff() {
-    diff -u $@ | colordiff
+  diff -u $@ | colordiff
 }
 
 # generate random integet from 1 to arg
 randint() {
-    python3 -c "import random; print(random.randint(1, $1))"
+  python3 -c "import random; print(random.randint(1, $1))"
 }
 
 # start HTTP server in current dir
-alias serve="pyhon3 -m http.server"
+alias serve="python3 -m http.server"
 
 # duh
 alias killeslint="ps aux | grep eslint | grep -v grep | awk '{print $2}' | xargs kill"
 
 vimviki2markdown() {
-    pandoc -f vimwiki "$1" -t gfm --wrap=none | pbcopy
+  pandoc -f vimwiki "$1" -t gfm --wrap=none | pbcopy
 }
