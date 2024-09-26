@@ -166,6 +166,7 @@ cask "docker"
 cask "firefox"
 cask "font-blex-mono-nerd-font"
 cask "font-hack-nerd-font"
+cask "font-meslo-lg-nerd-font"
 # Desktop automation application
 cask "hammerspoon"
 # Keyboard customiser

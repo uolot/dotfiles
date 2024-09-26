@@ -101,7 +101,9 @@
 local wez = require('wezterm')
 local balance = require('balance')
 
-local font_family = 'BlexMono Nerd Font Mono'
+-- local font_family = 'BlexMono Nerd Font Mono'
+local font_family = 'MesloLGL Nerd Font Mono'
+
 -- local color_scheme = 'GitHub Dark'
 local color_scheme = 'Bamboo Multiplex'
 
@@ -128,8 +130,9 @@ local config = {
   -- 20_font
   font = wez.font { family = font_family, weight = 'Regular' },
   freetype_load_target = 'Light',
-  font_size = 14.5,
-  line_height = 1.3,
+  -- font_size = 14.5,
+  font_size = 15,
+  -- line_height = 1.3,
   font_rules = {
     {
       intensity = 'Half',
