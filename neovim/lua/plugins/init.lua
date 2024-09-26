@@ -76,8 +76,10 @@ require("lazy").setup({
     --
     -- 2_lsp_and_diagnostics
     --
-
-    { "neovim/nvim-lspconfig",             dependencies = { "folke/neodev.nvim" } },
+    {
+        "neovim/nvim-lspconfig",
+        dependencies = { "folke/neodev.nvim" },
+    },
     {
         "williamboman/mason.nvim",
         build = ":MasonUpdate",
@@ -286,7 +288,7 @@ require("lazy").setup({
                 style = "vulgaris",
                 toggle_style_list = { "vulgaris", "light" },
                 -- toggle_style_key = "<Leader>xb", -- defined in lua/mapping/toggles.lua
-                dim_inactive = false,
+                dim_inactive = true,
                 diagnostics = {
                     darker = false,
                     undercurl = true,
