@@ -1,3 +1,5 @@
+-- require('CopilotChat.integrations.cmp').setup()
+
 local dependencies = {
     -- sources
     { 'hrsh7th/cmp-buffer' },

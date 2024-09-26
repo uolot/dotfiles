@@ -67,10 +67,21 @@ require("lazy").setup({
             { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
             { "nvim-lua/plenary.nvim" },  -- for curl, log wrapper
         },
+        build = "make tiktoken",
         opts = {
             debug = true, -- Enable debugging
             -- See Configuration section for rest
+            model = 'gpt-4o-mini',
+            auto_insert_mode = true,
         },
+        window = {
+            layout = 'float',
+            relative = 'cursor',
+            border = 'rounded',
+            width = 0.4,
+            height = 0.4,
+            row = 1
+        }
         -- See Commands section for default commands if you want to lazy load on them
     },
 
