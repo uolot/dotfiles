@@ -1,16 +1,13 @@
 local opts = {
-    marks = true,
-    registers = true,
-    spelling = {
-        enabled = false,
-        suggestions = 20,
-    },
+    -- spec = {},
+    preset = "helix",
+    notify = true,
     presets = {
-        operators = false,
-        motions = false,
+        operators = true,
+        motions = true,
         text_objects = true,
         windows = true,
-        nav = false,
+        nav = true,
         z = true,
         g = true,
     },

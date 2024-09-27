@@ -1,44 +1,51 @@
+local wk = require("which-key")
 local gs = require('gitsigns')
--- local gs = package.loaded.gitsigns
 
-return {
-    name = '+gitsigns',
+local function blame_line()
+    gs.blame_line({ full = false })
+end
 
-    -- gitsigns
+local function blame_line_full()
+    gs.blame_line({ full = true })
+end
 
-    b = { function() gs.blame_line({ full = false }) end, 'Blame line' },
-    B = { function() gs.blame_line({ full = true }) end, 'Blame line (full)' },
-
-    i = { gs.preview_hunk_inline, 'Preview hunk inline' },
-    p = { gs.preview_hunk, 'Preview hunk' },
-
-    s = { gs.stage_hunk, 'Stage hunk', mode = { 'n', 'x' } },
-    S = { gs.stage_buffer, 'Stage buffer' },
-    r = { gs.reset_hunk, 'Reset hunk', mode = { 'n', 'x' } },
-    R = { gs.reset_buffer, 'Reset buffer' },
-    u = { gs.undo_stage_hunk, 'Undo stage hunk' },
-
-    l = { gs.setloclist, 'Set loclist' },
-    q = { gs.setqflist, 'Set qflist' },
-
-    o = {
-        name = '+open in gh',
-        f = { '<Cmd>OpenInGHFile<CR>', 'Open file (default branch)' },
-        F = { '<Cmd>OpenInGHFile!<CR>', 'Open file (HEAD)' },
-        l = { "<Cmd>'<,'>OpenInGHFileLines<CR>", 'Open lines (default branch)', mode = { 'x' } },
-        L = { "<Cmd>'<,'>OpenInGHFileLines!<CR>", 'Open lines (HEAD)', mode = { 'x' } },
-        r = { '<Cmd>OpenInGHRepo<CR>', 'Open repo' },
-        y = { '<Cmd>OpenInGHFile+<CR>', 'Copy file link to system clipboard (default branch)' },
-        Y = { '<Cmd>OpenInGHFile!+<CR>', 'Copy file link to system clipboard (HEAD)' },
+wk.add({
+    mode = 'n',
+    { "<Leader>h",  group = "Git signs" },
+    -- blame
+    { "<Leader>hb", blame_line,             desc = 'Blame line' },
+    { "<Leader>hB", blame_line_full,        desc = 'Blame line (full)' },
+    -- preview hunk
+    { "<Leader>hi", gs.preview_hunk_inline, desc = 'Preview hunk inline' },
+    { "<Leader>hp", gs.preview_hunk,        desc = 'Preview hunk' },
+    -- stage and reset
+    {
+        { "<Leader>hs", gs.stage_hunk,      desc = 'Stage hunk',     mode = { 'n', 'x' } },
+        { "<Leader>hS", gs.stage_buffer,    desc = 'Stage buffer' },
+        { "<Leader>hr", gs.reset_hunk,      desc = 'Reset hunk',     mode = { 'n', 'x' } },
+        { "<Leader>hR", gs.reset_buffer,    desc = 'Reset buffer' },
+        { "<Leader>hu", gs.undo_stage_hunk, desc = 'Undo stage hunk' },
     },
-    x = {
-        name = '+toggles',
-        b = { gs.toggle_current_line_blame, 'Toggle current line blame' },
-        B = { '<Cmd>Gitsigns blame<CR>', 'Blame entire file' },
-        d = { gs.toggle_deleted, 'Toggle deleted' },
-        l = { gs.toggle_linehl, 'Toggle line highlight' },
-        w = { gs.toggle_word_diff, 'Toggle word diff' },
+    -- set loclist and qflist
+    { "<Leader>hl",  gs.setloclist,            desc = 'Set loclist' },
+    { "<Leader>hq",  gs.setqflist,             desc = 'Set qflist' },
+    -- open in GitHub
+    { "<Leader>ho",  group = "Open in GitHub" },
+    { "<Leader>hor", '<Cmd>OpenInGHRepo<CR>',  desc = 'Open repo' },
+    { "<Leader>hof", '<Cmd>OpenInGHFile<CR>',  desc = 'Open file (default branch)' },
+    { "<Leader>hoF", '<Cmd>OpenInGHFile!<CR>', desc = 'Open file (HEAD)' },
+    {
+        mode = "x",
+        { "<Leader>hol", "<Cmd>'<,'>OpenInGHFileLines<CR>",  desc = 'Open lines (default branch)' },
+        { "<Leader>hoL", "<Cmd>'<,'>OpenInGHFileLines!<CR>", desc = 'Open lines (HEAD)' },
     },
-    --        map('v', '<leader>hr', function() gs.reset_hunk({ vim.fn.line("."), vim.fn.line("v") }) end)
-    --        map('v', '<leader>hs', function() gs.stage_hunk({ vim.fn.line("."), vim.fn.line("v") }) end)
-}
+    { "<Leader>hoy", '<Cmd>OpenInGHFile+<CR>',     desc = 'Copy file link to system clipboard (default branch)' },
+    { "<Leader>hoY", '<Cmd>OpenInGHFile!+<CR>',    desc = 'Copy file link to system clipboard (HEAD)' },
+    -- toggles
+    { "<Leader>hx",  group = "Toggles" },
+    { "<Leader>hxb", gs.toggle_current_line_blame, desc = 'Toggle current line blame' },
+    { "<Leader>hxB", '<Cmd>Gitsigns blame<CR>',    desc = 'Blame entire file' },
+    { "<Leader>hxd", gs.toggle_deleted,            desc = 'Toggle deleted' },
+    { "<Leader>hxl", gs.toggle_linehl,             desc = 'Toggle line highlight' },
+    { "<Leader>hxw", gs.toggle_word_diff,          desc = 'Toggle word diff' },
+})

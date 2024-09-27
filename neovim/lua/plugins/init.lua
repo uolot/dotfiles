@@ -138,17 +138,37 @@ require("lazy").setup({
         dependencies = {
             "nvim-lua/plenary.nvim",
             "nvim-treesitter/nvim-treesitter",
-            "weilbith/nvim-code-action-menu",
+            -- "weilbith/nvim-code-action-menu",
         },
         config = true,
     },
     -- TODO: explore ibhagwan/fzf-lua as an alternative
     {
         "aznhe21/actions-preview.nvim",
+        config = function()
+            require('actions-preview').setup({
+                highlight_command = {
+                    require("actions-preview.highlight").delta()
+                },
+                telescope = {
+                    layout_strategy = "vertical",
+                    layout_config = {
+                        width = 0.6,
+                        height = 0.6,
+                        preview_cutoff = 20,
+                        -- preview_height = 0.7,
+                        preview_height = function(_, _, max_lines)
+                            return max_lines - 15
+                        end,
+                    },
+                },
+            })
+        end
     },
     -- Incremental LSP rename command based on Neovim's command-preview feature
     {
         "smjonas/inc-rename.nvim",
+        event = "VeryLazy",
         config = true,
     },
     -- Nvim lua plugin which adds support for twoslash queries into typescript projects
@@ -529,7 +549,7 @@ require("lazy").setup({
         config = function()
             local trevj = require("trevj")
             trevj.setup()
-            require("which-key").register({ K = { trevj.format_at_cursor, "Split" } })
+            require("which-key").add({ "K", trevj.format_at_cursor, desc = "Split", mode = "n" })
         end,
     },
 

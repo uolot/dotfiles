@@ -1,3 +1,5 @@
+local wk = require("which-key")
+
 local function get_ts_tree(node, tree)
     if not tree then tree = '' end
     if not node then node = vim.treesitter.get_node() end
@@ -16,20 +18,19 @@ local function get_ts_tree(node, tree)
     end
 end
 
-return {
-    name = '+typescript',
-    -- e = { require('better-ts-errors').toggle, 'Better TS errors' },
-    i = {
-        name = '+imports',
-        a = { '<Cmd>TSToolsAddMissingImports<CR>', 'Add missing imports' },
-        o = { '<Cmd>TSToolsOrganizeImports<CR>', 'Organize imports' },
-        s = { '<Cmd>TSToolsSortImports<CR>', 'Sort imports' },
-        r = { '<Cmd>TSToolsRemoveUnusedImports<CR>', 'Remove unused imports' },
-    },
-    f = { '<Cmd>TSToolsFileReferences<CR>', 'File references' },
-    r = { '<Cmd>TSToolsRenameFile<CR>', 'Rename file' },
-    s = { '<Cmd>TSToolsGoToSourceDefinition<CR>', 'Go to source definition' },
-    t = { function() print(get_ts_tree()) end, 'Show current TS node' },
-    u = { '<Cmd>TSToolsRemoveUnused<CR>', 'Remove unused' },
-    x = { '<Cmd>TSToolsFixAll<CR>', 'Fix all' },
-}
+wk.add({
+    mode = "n",
+    { "<Leader>T",   group = "Typescript" },
+    { "<Leader>Tf",  '<Cmd>TSToolsFileReferences<CR>',       desc = 'File references' },
+    { "<Leader>Tr",  '<Cmd>TSToolsRenameFile<CR>',           desc = 'Rename file' },
+    { "<Leader>Ts",  '<Cmd>TSToolsGoToSourceDefinition<CR>', desc = 'Go to source definition' },
+    { "<Leader>Tt",  function() print(get_ts_tree()) end,    desc = 'Show current TS node' },
+    { "<Leader>Tu",  '<Cmd>TSToolsRemoveUnused<CR>',         desc = 'Remove unused' },
+    { "<Leader>Tx",  '<Cmd>TSToolsFixAll<CR>',               desc = 'Fix all' },
+    -- imports
+    { "<Leader>Ti",  group = 'Imports' },
+    { "<Leader>Tia", '<Cmd>TSToolsAddMissingImports<CR>',    desc = 'Add missing imports' },
+    { "<Leader>Tio", '<Cmd>TSToolsOrganizeImports<CR>',      desc = 'Organize imports' },
+    { "<Leader>Tis", '<Cmd>TSToolsSortImports<CR>',          desc = 'Sort imports' },
+    { "<Leader>Tir", '<Cmd>TSToolsRemoveUnusedImports<CR>',  desc = 'Remove unused imports' },
+})
