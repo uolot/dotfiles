@@ -628,6 +628,11 @@ require("lazy").setup({
             }
         }
     },
+
+    {
+        "jaimecgomezz/here.term",
+        opts = {}
+    },
 }, {
     ui = {
         border = "rounded",
