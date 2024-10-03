@@ -389,11 +389,13 @@ require("lazy").setup({
         },
     },
     -- Easily add additional highlights to your buffers
-    { "folke/paint.nvim",        opts = require("plugins.paint").opts },
+    {
+        "folke/paint.nvim",
+        opts = require("plugins.paint").opts,
+    },
     {
         "tzachar/highlight-undo.nvim",
-        keys = { "u", "U", "<C-r>" },
-        opts = {},
+        config = true,
     },
 
     --
