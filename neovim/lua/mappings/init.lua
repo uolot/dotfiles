@@ -43,12 +43,12 @@ wk.add({
       { "N",   "(v:searchforward ? 'N' : 'n')", expr = true },
     },
     { -- quickfix
-      { "]q", "<Cmd>cnext<CR>" },
-      { "[q", "<Cmd>cprev<CR>" },
+      { "]q", "<Cmd>cnext<CR>", desc = "Next quickfix" },
+      { "[q", "<Cmd>cprev<CR>", desc = "Previous quickfix" },
     },
     { -- todo comments
-      { "]t", require("todo-comments").jump_next },
-      { "[t", require("todo-comments").jump_prev },
+      { "]t", require("todo-comments").jump_next, desc = "Next todo comment" },
+      { "[t", require("todo-comments").jump_prev, desc = "Previous todo comment" },
     },
   }
 }, {
