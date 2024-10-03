@@ -34,8 +34,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     -- top plugins
-    { "lewis6991/impatient.nvim" },
-
     {
         "folke/lazydev.nvim",
         ft = "lua", -- only load on lua files

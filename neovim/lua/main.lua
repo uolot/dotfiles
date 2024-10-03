@@ -1,6 +1,5 @@
 require("plugins")
 
-require("impatient")
 vim.loader.enable()
 
 require("config.lsp")
