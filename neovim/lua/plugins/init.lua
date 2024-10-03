@@ -73,15 +73,15 @@ require("lazy").setup({
             -- See Configuration section for rest
             model = 'gpt-4o-mini',
             auto_insert_mode = true,
+            window = {
+                layout = 'float',
+                relative = 'cursor',
+                border = 'rounded',
+                width = 0.4,
+                height = 0.4,
+                row = 1
+            }
         },
-        window = {
-            layout = 'float',
-            relative = 'cursor',
-            border = 'rounded',
-            width = 0.4,
-            height = 0.4,
-            row = 1
-        }
         -- See Commands section for default commands if you want to lazy load on them
     },
 
