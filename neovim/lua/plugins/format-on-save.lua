@@ -121,7 +121,10 @@ local config = function()
       },
       typescriptreact = formatters.prettierd,
       xml = formatters.lsp,
-      yaml = formatters.lsp,
+      yaml = {
+        formatters.prettierd,
+        formatters.lsp,
+      },
 
       -- Add your own shell formatters:
       -- myfiletype = formatters.shell({ cmd = { "myformatter", "%" } }),
