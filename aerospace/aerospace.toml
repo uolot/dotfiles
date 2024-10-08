@@ -129,6 +129,10 @@ alt-ctrl-shift-l = 'move right'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#resize
 alt-ctrl-shift-r = 'mode resize'
+cmd-alt-ctrl-shift-u = 'resize smart +100'
+cmd-alt-ctrl-shift-i = 'resize smart -100'
+# cmd-alt-ctrl-shift-j = 'resize smart +500'
+# cmd-alt-ctrl-shift-k = 'resize smart -500'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
 cmd-alt-ctrl-shift-b = 'workspace b'
