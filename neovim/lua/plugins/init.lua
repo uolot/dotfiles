@@ -46,7 +46,10 @@ require("lazy").setup({
             },
         },
     },
-    { "Bilal2453/luvit-meta",    lazy = true }, -- optional `vim.uv` typings
+    { -- optional `vim.uv` typings
+        "Bilal2453/luvit-meta",
+        lazy = true,
+    },
 
     --
     -- 1_cmp
@@ -98,8 +101,14 @@ require("lazy").setup({
             ui = { border = "rounded" },
         },
     },
-    { "williamboman/mason-lspconfig.nvim", opts = {} },
-    { "VonHeikemen/lsp-zero.nvim",         branch = "v2.x" },
+    {
+        "williamboman/mason-lspconfig.nvim",
+        opts = {},
+    },
+    {
+        "VonHeikemen/lsp-zero.nvim",
+        branch = "v2.x",
+    },
     {
         "nvimtools/none-ls.nvim",
         dependencies = {
@@ -180,7 +189,10 @@ require("lazy").setup({
     {
         "davidosomething/format-ts-errors.nvim"
     },
-    { "elentok/format-on-save.nvim", config = require("plugins.format-on-save").config },
+    {
+        "elentok/format-on-save.nvim",
+        config = require("plugins.format-on-save").config,
+    },
     {
         "pmizio/typescript-tools.nvim",
         ft = { "typescript", "typescriptreact", "typescript.tsx" },
@@ -269,12 +281,18 @@ require("lazy").setup({
     --
     -- 5_ui
     --
-    { "nvim-lualine/lualine.nvim",   opts = require("plugins.lualine").opts },
+    {
+        "nvim-lualine/lualine.nvim",
+        opts = require("plugins.lualine").opts,
+    },
     {
         'arkav/lualine-lsp-progress',
         dependencies = { 'nvim-lualine/lualine.nvim' },
     },
-    { "folke/which-key.nvim",     opts = require("plugins.which-key").opts },
+    {
+        "folke/which-key.nvim",
+        opts = require("plugins.which-key").opts,
+    },
     {
         "chentoast/marks.nvim",
         event = "VeryLazy",
@@ -292,7 +310,10 @@ require("lazy").setup({
         opts = { border = "rounded" },
     },
     -- hide gutter numbers for folds
-    { "luukvbaal/statuscol.nvim", config = require("plugins.statuscol").config },
+    {
+        "luukvbaal/statuscol.nvim",
+        config = require("plugins.statuscol").config,
+    },
     {
         "lukas-reineke/indent-blankline.nvim",
         main = "ibl",
@@ -428,9 +449,15 @@ require("lazy").setup({
     --
 
     -- { "tpope/vim-fugitive",      lazy = false },
-    { "lewis6991/gitsigns.nvim", opts = require("plugins.gitsigns").opts },
+    {
+        "lewis6991/gitsigns.nvim",
+        opts = require("plugins.gitsigns").opts,
+    },
     -- Single tabpage interface for easily cycling through diffs for all modified files for any git rev
-    { "sindrets/diffview.nvim",  cmd = { "DiffviewFileHistory", "DiffviewClose", "DiffviewOpen" } },
+    {
+        "sindrets/diffview.nvim",
+        cmd = { "DiffviewFileHistory", "DiffviewClose", "DiffviewOpen" },
+    },
     -- more pleasant editing on commit messages
     { "rhysd/committia.vim" },
     {
@@ -491,8 +518,15 @@ require("lazy").setup({
     {
         'kristijanhusak/vim-dadbod-ui',
         dependencies = {
-            { 'tpope/vim-dadbod',                     lazy = true },
-            { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }, lazy = true },
+            {
+                'tpope/vim-dadbod',
+                lazy = true,
+            },
+            {
+                'kristijanhusak/vim-dadbod-completion',
+                ft = { 'sql', 'mysql', 'plsql' },
+                lazy = true,
+            },
         },
         cmd = {
             'DBUI',
@@ -571,7 +605,10 @@ require("lazy").setup({
     -- TODO: use treesitter texobjects indent instead?
     { "michaeljsmith/vim-indent-object" },
     -- Readline style insertion
-    { "tpope/vim-rsi",                  keys = { ":", "/", "?" } },
+    {
+        "tpope/vim-rsi",
+        keys = { ":", "/", "?" },
+    },
     -- handle line and column numbers in file names, eg: file.txt:10 or file.txt:10:5
     { "kopischke/vim-fetch" },
 
@@ -591,7 +628,11 @@ require("lazy").setup({
         event = "LspAttach",
         opts = {}
     },
-    { 'nvim-zh/colorful-winsep.nvim', config = true, event = { "WinNew" } },
+    {
+        'nvim-zh/colorful-winsep.nvim',
+        config = true,
+        event = { "WinNew" },
+    },
     -- Embed Neovim in Chrome, Firefox & others.
     {
         "glacambre/firenvim",
