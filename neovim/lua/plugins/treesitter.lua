@@ -51,6 +51,7 @@ local function config()
             "rust",
             "sql",
             "ssh_config",
+            "superhtml",
             "svelte",
             "terraform",
             "toml",
