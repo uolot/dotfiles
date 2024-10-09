@@ -375,10 +375,6 @@ require("lazy").setup({
             },
             highlight = {
                 multiline = false,
-                -- pattern = [[.*<(KEYWORDS)\s*:]],
-                -- pattern = [[\c.*<(KEYWORDS)\s*]],
-                -- pattern = [[\c.*<(KEYWORDS)[: ].*]],
-                pattern = [[\c.*<(KEYWORDS)(:\s+|:?$).*]],
                 comments_only = true,
             },
             search = {
