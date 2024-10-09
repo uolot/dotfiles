@@ -11,9 +11,6 @@ autocmd VimResized * wincmd =
 
 lua require('main')
 
-" maps
-source $HOME/.dotfiles/neovim/mappings.vim
-
 augroup markdown_highlights
     highlight Headline1 guifg=Yellow
     highlight Headline2 guifg=Orange

@@ -74,6 +74,7 @@ require("mappings.leader-r")
 require("mappings.leader-t")
 require("mappings.leader-s-t")
 require("mappings.leader-x")
+require("mappings.ft.markdown")
 
 -- jest
 vim.cmd([[nnoremap <silent> [j ?^\s*\<\(it\\|test\\|describe\\|beforeEach\\|afterEach\\|beforeAll\\|afterAll\)\><CR>]])
