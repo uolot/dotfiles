@@ -11,13 +11,15 @@ end
 
 wk.add({
     mode = 'n',
-    { "<Leader>h",  group = "Git signs" },
+    { "<Leader>h",  group = "Git" },
+    -- add
+    { "<Leader>hA", '<Cmd>!git add %<CR><CR>', desc = 'Add file',           silent = true },
     -- blame
-    { "<Leader>hb", blame_line,             desc = 'Blame line' },
-    { "<Leader>hB", blame_line_full,        desc = 'Blame line (full)' },
+    { "<Leader>hb", blame_line,                desc = 'Blame line' },
+    { "<Leader>hB", blame_line_full,           desc = 'Blame line (full)' },
     -- preview hunk
-    { "<Leader>hi", gs.preview_hunk_inline, desc = 'Preview hunk inline' },
-    { "<Leader>hp", gs.preview_hunk,        desc = 'Preview hunk' },
+    { "<Leader>hi", gs.preview_hunk_inline,    desc = 'Preview hunk inline' },
+    { "<Leader>hp", gs.preview_hunk,           desc = 'Preview hunk' },
     -- stage and reset
     {
         { "<Leader>hs", gs.stage_hunk,      desc = 'Stage hunk',     mode = { 'n', 'x' } },
