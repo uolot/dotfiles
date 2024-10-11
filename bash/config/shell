@@ -34,7 +34,8 @@ alias sudo='sudo '
 # -A - show hidden files except . and ..
 # -F - append file type indicator
 # -G - colorize output
-alias ls='ls -AFG'
+alias ls='ls -FG'
+alias lsa='ls -AFG'
 
 alias ..='cd ..'
 alias ...='cd ../..'
