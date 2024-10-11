@@ -76,6 +76,7 @@
 	lgf = log --pretty=format:"%C(green)%h\\ %C(yellow)%ad\\ %C(white)%s\\ %C(blue)%an%n%C(dim)%C(blue)%-d" --decorate --date=human --topo-order --graph -n 10
 
 	p = push
+	pp = push --no-verify
 
 	st = status --short --branch
 
