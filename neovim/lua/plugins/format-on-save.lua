@@ -55,6 +55,9 @@ local config = function()
     -- },
 
     formatter_by_ft = {
+      astro = {
+        formatters.lsp,
+      },
       bash = {
         formatters.lsp,
         formatters.shfmt,
