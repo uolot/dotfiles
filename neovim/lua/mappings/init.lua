@@ -50,6 +50,10 @@ wk.add({
       { "]t", require("todo-comments").jump_next, desc = "Next todo comment" },
       { "[t", require("todo-comments").jump_prev, desc = "Previous todo comment" },
     },
+    { -- buffers
+      { "]b", "<Cmd>bn<CR>", desc = "Next buffer" },
+      { "[b", "<Cmd>bp<CR>", desc = "Previous buffer" },
+    },
   }
 }, {
   mode = "x",
