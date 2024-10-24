@@ -18,6 +18,16 @@ local function prev_diagnostic()
   vim.diagnostic.goto_prev({ wrap = false })
 end
 
+local function first_diagnostic()
+  vim.cmd([[norm G$]])
+  vim.diagnostic.goto_next({ wrap = true })
+end
+
+local function last_diagnostic()
+  vim.cmd([[norm gg0]])
+  vim.diagnostic.goto_prev({ wrap = true })
+end
+
 wk.add({
   mode = "n",
   { "<Esc>",       close_floating, desc = "Close all floating windows" },
@@ -33,8 +43,10 @@ wk.add({
     noremap = true,
     silent = true,
     { -- jump to diagnostic
-      { "]d", next_diagnostic, desc = "Go to next diagnostic" },
-      { "[d", prev_diagnostic, desc = "Go to previous diagnostic" },
+      { "]d", next_diagnostic,  desc = "Go to next diagnostic" },
+      { "[d", prev_diagnostic,  desc = "Go to previous diagnostic" },
+      { "]D", last_diagnostic,  desc = "Go to last diagnostic" },
+      { "[D", first_diagnostic, desc = "Go to first diagnostic" },
     },
     { -- search
       { "\\c", "/\\c",                          desc = "Case insensitive search", silent = false },
@@ -43,16 +55,18 @@ wk.add({
       { "N",   "(v:searchforward ? 'N' : 'n')", expr = true },
     },
     { -- quickfix
-      { "]q", "<Cmd>cnext<CR>", desc = "Next quickfix" },
-      { "[q", "<Cmd>cprev<CR>", desc = "Previous quickfix" },
+      { "[q", "<Cmd>cprev<CR>",  desc = "Previous quickfix" },
+      { "]q", "<Cmd>cnext<CR>",  desc = "Next quickfix" },
+      { "[Q", "<Cmd>cfirst<CR>", desc = "First quickfix" },
+      { "]Q", "<Cmd>clast<CR>",  desc = "Last quickfix" },
     },
     { -- todo comments
-      { "]t", require("todo-comments").jump_next, desc = "Next todo comment" },
       { "[t", require("todo-comments").jump_prev, desc = "Previous todo comment" },
+      { "]t", require("todo-comments").jump_next, desc = "Next todo comment" },
     },
     { -- buffers
-      { "]b", "<Cmd>bn<CR>", desc = "Next buffer" },
       { "[b", "<Cmd>bp<CR>", desc = "Previous buffer" },
+      { "]b", "<Cmd>bn<CR>", desc = "Next buffer" },
     },
   }
 }, {
