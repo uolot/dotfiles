@@ -9,6 +9,14 @@ local function blame_line_full()
     gs.blame_line({ full = true })
 end
 
+local function stage_selected_hunk()
+    gs.stage_hunk { vim.fn.line('.'), vim.fn.line('v') }
+end
+
+local function reset_selected_hunk()
+    gs.reset_hunk { vim.fn.line('.'), vim.fn.line('v') }
+end
+
 wk.add({
     mode = 'n',
     { "<Leader>h",  group = "Git" },
@@ -22,11 +30,17 @@ wk.add({
     { "<Leader>hp", gs.preview_hunk,           desc = 'Preview hunk' },
     -- stage and reset
     {
-        { "<Leader>hs", gs.stage_hunk,      desc = 'Stage hunk',     mode = { 'n', 'x' } },
+        mode = 'n',
+        { "<Leader>hs", gs.stage_hunk,      desc = 'Stage hunk', },
         { "<Leader>hS", gs.stage_buffer,    desc = 'Stage buffer' },
-        { "<Leader>hr", gs.reset_hunk,      desc = 'Reset hunk',     mode = { 'n', 'x' } },
+        { "<Leader>hr", gs.reset_hunk,      desc = 'Reset hunk', },
         { "<Leader>hR", gs.reset_buffer,    desc = 'Reset buffer' },
         { "<Leader>hu", gs.undo_stage_hunk, desc = 'Undo stage hunk' },
+    },
+    {
+        mode = 'v',
+        { "<Leader>hs", stage_selected_hunk, desc = 'Stage hunk', },
+        { "<Leader>hr", reset_selected_hunk, desc = 'Reset hunk', },
     },
     -- set loclist and qflist
     { "<Leader>hl",  gs.setloclist,            desc = 'Set loclist' },
