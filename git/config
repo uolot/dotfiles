@@ -81,6 +81,7 @@
 	pfn = push --force --no-verify
 
 	st = status --short --branch
+	tst = st
 
 	ss = stash
 	sp = stash pop
