@@ -435,26 +435,13 @@ require("lazy").setup({
         branch = "v3.x",
         cmd = "Neotree",
         dependencies = require("plugins.neo-tree").dependencies,
-        opts = {
-            popup_border_style = "rounded",
-            sources = {
-                'filesystem',
-                'git_status',
-                'document_symbols',
-                'buffers',
-            },
-        },
+        opts = require("plugins.neo-tree").opts,
     },
     {
         'echasnovski/mini.files',
         ---@diagnostic disable-next-line: assign-type-mismatch
         version = false,
-        opts = {
-            windows = {
-                preview = true,
-                width_preview = 50,
-            },
-        },
+        config = require("plugins.mini").files.config,
     },
 
     --

@@ -26,6 +26,31 @@ local dependencies = {
     }
 }
 
+local opts = function(_, opts)
+    local default_opts = {
+        popup_border_style = "rounded",
+        sources = {
+            'filesystem',
+            'git_status',
+            'document_symbols',
+            'buffers',
+        },
+    }
+    opts = vim.tbl_extend('force', default_opts, opts or {})
+
+    local function on_move(data)
+        Snacks.rename.on_rename_file(data.source, data.destination)
+    end
+
+    local events = require('neo-tree.events')
+    opts.event_handlers = opts.event_handlers or {}
+    vim.list_extend(opts.event_handlers, {
+        { event = events.FILE_MOVED,   handler = on_move },
+        { event = events.FILE_RENAMED, handler = on_move },
+    })
+end
+
 return {
     dependencies = dependencies,
+    opts = opts,
 }
