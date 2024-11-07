@@ -50,6 +50,19 @@ require("lazy").setup({
         "Bilal2453/luvit-meta",
         lazy = true,
     },
+    {
+        -- TODO: setup debug: https://github.com/folke/snacks.nvim/blob/main/docs/debug.md
+        "folke/snacks.nvim",
+        priority = 1000,
+        lazy = false,
+        opts = {
+            bigfile = { enabled = false },
+            notifier = { enabled = true }, -- TODO: remove this
+            quickfile = { enabled = true },
+            statuscolumn = { enabled = false },
+            words = { enabled = true, debounce = 200 },
+        },
+    },
 
     --
     -- 1_cmp
@@ -232,10 +245,6 @@ require("lazy").setup({
         dependencies = { "nvim-treesitter/nvim-treesitter" },
     },
     {
-        "nvim-treesitter/nvim-treesitter-refactor",
-        dependencies = { "nvim-treesitter/nvim-treesitter" },
-    },
-    {
         "nvim-treesitter/nvim-treesitter-context",
         dependencies = { "nvim-treesitter/nvim-treesitter" },
         opts = {
@@ -313,6 +322,7 @@ require("lazy").setup({
     },
     -- hide gutter numbers for folds
     {
+        -- TODO: consider replacing with Snacks.statuscolumn https://github.com/folke/snacks.nvim/blob/main/docs/statuscolumn.md
         "luukvbaal/statuscol.nvim",
         config = require("plugins.statuscol").config,
     },
@@ -326,6 +336,7 @@ require("lazy").setup({
         opts = require("plugins.smooth-cursor").opts,
     },
     {
+        -- TODO: replace with Snacks.notifier? https://github.com/folke/snacks.nvim/blob/main/docs/notifier.md
         "rcarriga/nvim-notify",
         config = function()
             vim.notify = require("notify")

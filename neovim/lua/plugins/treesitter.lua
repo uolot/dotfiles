@@ -83,22 +83,6 @@ local function config()
             enable = true,
             disable = { "python" },
         },
-        refactor = {
-            highlight_definitions = {
-                enable = true,
-                clear_on_cursor_move = true,
-            },
-            -- highlight_current_scope = { enable = true },
-            navigation = {
-                enable = true,
-                keymaps = {
-                    goto_definition_lsp_fallback = "<leader>gn",
-                    list_definitions_toc = '<leader>gl',
-                    goto_next_usage = ']u',
-                    goto_previous_usage = '[u',
-                },
-            },
-        },
         textobjects = {
             select = {
                 enable = true,

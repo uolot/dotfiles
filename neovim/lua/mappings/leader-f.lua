@@ -13,6 +13,7 @@ end
 
 local function telescope_search_git_root()
     local fname = vim.api.nvim_buf_get_name(0)
+    -- TODO: Use require('snacks').git.get_root() instead?
     local git_root = require("lspconfig.util").find_git_ancestor(fname)
     telescope_builtin.find_files({ cwd = git_root })
 end

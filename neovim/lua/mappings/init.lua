@@ -1,4 +1,5 @@
 local wk = require("which-key")
+local snacks = require("snacks")
 
 local function close_floating()
   for _, win in ipairs(vim.api.nvim_list_wins()) do
@@ -28,6 +29,14 @@ local function last_diagnostic()
   vim.diagnostic.goto_prev({ wrap = true })
 end
 
+local function next_usage()
+  snacks.words.jump(1, true)
+end
+
+local function previous_usage()
+  snacks.words.jump(-1, true)
+end
+
 wk.add({
   mode = "n",
   { "<Esc>",       close_floating, desc = "Close all floating windows" },
@@ -39,6 +48,7 @@ wk.add({
     { "<C-k>", "<C-w>k", desc = "Move up" },
     { "<C-l>", "<C-w>l", desc = "Move right" },
   },
+  -- { "<C-,>", Snacks.terminal.toggle },
   {
     noremap = true,
     silent = true,
@@ -68,6 +78,10 @@ wk.add({
       { "[b", "<Cmd>bp<CR>", desc = "Previous buffer" },
       { "]b", "<Cmd>bn<CR>", desc = "Next buffer" },
     },
+    { -- lsp next/prev
+      { "[n", previous_usage, desc = "Previous usage" },
+      { "]n", next_usage,     desc = "Next usage" },
+    },
   },
 }, {
   mode = "x",
@@ -87,6 +101,7 @@ require('mappings.leader-f')
 require('mappings.leader-g')
 require("mappings.leader-h")
 require("mappings.leader-k")
+require("mappings.leader-l")
 require("mappings.leader-n")
 require("mappings.leader-r")
 require("mappings.leader-s")
