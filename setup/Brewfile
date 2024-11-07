@@ -42,6 +42,16 @@ brew "csvq"
 brew "direnv"
 # Convert text between DOS, UNIX, and Mac formats
 brew "dos2unix"
+# Collection of reusable C++ library artifacts developed at Facebook
+brew "folly"
+# C++14 implementation of the TLS-1.3 standard
+brew "fizz"
+# Modular, composable client/server abstractions framework
+brew "wangle"
+# Facebook's branch of Apache Thrift, including a new C++ server
+brew "fbthrift"
+# Thrift functions for querying information from a service
+brew "fb303"
 # Run arbitrary commands when files change
 brew "entr"
 # Simple, fast and user-friendly alternative to find
@@ -50,6 +60,8 @@ brew "fd"
 brew "gnutls"
 # OpenType text shaping engine
 brew "harfbuzz"
+# Subtitle renderer for the ASS/SSA subtitle format
+brew "libass"
 # OCR (Optical Character Recognition) engine
 brew "tesseract"
 # Play, record, convert, and stream audio and video
@@ -60,6 +72,8 @@ brew "fzf"
 brew "gh"
 # Distributed revision control system
 brew "git"
+# Automatic git commit --fixup
+brew "git-absorb"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
 # Library for USB device access
@@ -84,6 +98,8 @@ brew "jless"
 brew "jo"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
+# Library to render SVG files using Cairo
+brew "librsvg"
 # Exposes your localhost to the world for easy testing and sharing
 brew "localtunnel"
 # Parsing Expression Grammars For Lua
@@ -102,6 +118,8 @@ brew "neovim"
 brew "pandoc"
 # Your Gateway to Embedded Software Development Excellence
 brew "platformio"
+# Open source backend for your next project in 1 file
+brew "pocketbase"
 # Object-relational database system
 brew "postgresql@15"
 # Search tool like grep and The Silver Searcher
@@ -160,6 +178,8 @@ cask "1password-cli"
 cask "aerospace"
 # Enable Windows-like alt-tab
 cask "alt-tab"
+# Prevents your sleeping computer from connecting to Bluetooth accessories
+cask "bluesnooze"
 # App to build and share containerised applications and microservices
 cask "docker"
 # Web browser
