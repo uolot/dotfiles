@@ -72,13 +72,15 @@ require("lazy").setup({
         opts = {
             debug = true, -- Enable debugging
             -- See Configuration section for rest
-            model = 'gpt-4o-mini',
+            -- model = 'gpt-4o-mini',
+            -- model = 'claude-3.5-sonnet',
+            model = 'o1-mini',
             auto_insert_mode = true,
             window = {
                 layout = 'float',
                 relative = 'cursor',
                 border = 'rounded',
-                width = 0.4,
+                width = 0.6,
                 height = 0.4,
                 row = 1
             }

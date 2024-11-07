@@ -40,6 +40,10 @@ local function config()
     require('copilot').setup({
         suggestion = { enabled = false },
         panel = { enabled = false },
+        filetypes = {
+            ['*'] = true,
+            ['.env'] = false,
+        },
     })
 
     require('copilot_cmp').setup()
@@ -114,11 +118,12 @@ local function config()
     local sorting = {
         priority_weight = 2,
         comparators = {
+            cmp.config.compare.exact,
+            cmp.config.compare.recently_used,
             cmp.config.compare.score,
             cmp.config.compare.offset,
-            cmp.config.compare.exact,
+            -- cmp.config.compare.exact,
             cmp.config.compare.locality,
-            cmp.config.compare.recently_used,
             cmp.config.compare.order,
             -- cmp.config.compare.locallity,
             require('copilot_cmp.comparators').prioritize,
