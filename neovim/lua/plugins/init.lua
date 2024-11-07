@@ -572,16 +572,6 @@ require("lazy").setup({
         "godlygeek/tabular",
         cmd = "Tabularize",
     },
-    -- Inversed J
-    {
-        "AckslD/nvim-trevJ.lua",
-        -- keys = { 'K' },
-        config = function()
-            local trevj = require("trevj")
-            trevj.setup()
-            require("which-key").add({ "K", trevj.format_at_cursor, desc = "Split", mode = "n" })
-        end,
-    },
 
     --
     -- 13_navigation
@@ -670,6 +660,17 @@ require("lazy").setup({
         "jaimecgomezz/here.term",
         opts = {}
     },
+
+    {
+        'Wansmer/treesj',
+        keys = { '<space>m', '<space>j', '<space>s' },
+        dependencies = { 'nvim-treesitter/nvim-treesitter' }, -- if you install parsers with `nvim-treesitter`
+        config = function()
+            require('treesj').setup({
+                use_default_keymaps = false,
+            })
+        end,
+    }
 }, {
     ui = {
         border = "rounded",

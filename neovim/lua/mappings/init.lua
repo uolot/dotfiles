@@ -68,7 +68,7 @@ wk.add({
       { "[b", "<Cmd>bp<CR>", desc = "Previous buffer" },
       { "]b", "<Cmd>bn<CR>", desc = "Next buffer" },
     },
-  }
+  },
 }, {
   mode = "x",
   noremap = true,
@@ -89,6 +89,7 @@ require("mappings.leader-h")
 require("mappings.leader-k")
 require("mappings.leader-n")
 require("mappings.leader-r")
+require("mappings.leader-s")
 require("mappings.leader-t")
 require("mappings.leader-s-t")
 require("mappings.leader-x")
