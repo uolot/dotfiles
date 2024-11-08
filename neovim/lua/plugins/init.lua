@@ -618,11 +618,11 @@ require("lazy").setup({
         event = "LspAttach",
         opts = {}
     },
-    {
-        'nvim-zh/colorful-winsep.nvim',
-        config = true,
-        event = { "WinNew" },
-    },
+    -- {
+    --     'nvim-zh/colorful-winsep.nvim',
+    --     config = true,
+    --     event = { "WinNew" },
+    -- },
     -- Embed Neovim in Chrome, Firefox & others.
     {
         "glacambre/firenvim",
