@@ -20,15 +20,14 @@ end
 
 wk.add({
     mode = "n",
-    { "<Leader>f",   group = "Find" },
+    { "<Leader>f",  group = "+files" },
     -- Telescope
-    { "<Leader>ff",  telescope_builtin.find_files,                desc = "Find files" },
-    { "<Leader>fg",  telescope_builtin.git_status,                desc = "Find modified git files" },
-    { "<Leader>fh",  "<Cmd>Telescope find_files hidden=true<CR>", desc = "Find hidden files" },
-    { "<Leader>fo",  telescope_builtin.oldfiles,                  desc = "Open recent files" },
-    { "<Leader>fp",  telescope_search_git_root,                   desc = "Find files in git root" },
+    { "<Leader>ff", telescope_builtin.find_files,                desc = "Open files" },
+    { "<Leader>fg", telescope_builtin.git_status,                desc = "Open modified git files" },
+    { "<Leader>fh", "<Cmd>Telescope find_files hidden=true<CR>", desc = "Open hidden files" },
+    { "<Leader>fo", telescope_builtin.oldfiles,                  desc = "Open recent files" },
+    { "<Leader>fp", telescope_search_git_root,                   desc = "Open files in git root" },
     -- Mini files
-    { "<Leader>fm",  group = "Mini files" },
-    { "<Leader>fmc", mini_files_current,                          desc = "Current file" },
-    { "<Leader>fmo", mini_files_toggle,                           desc = "Open", },
+    { "<Leader>fc", mini_files_current,                          desc = "mini.files: Show current file" },
+    { "<Leader>f",  mini_files_toggle,                           desc = "mini.files: Open", },
 })
