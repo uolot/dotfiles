@@ -60,7 +60,12 @@ require("lazy").setup({
             notifier = { enabled = true }, -- TODO: remove this
             quickfile = { enabled = true },
             statuscolumn = { enabled = false },
-            words = { enabled = true, debounce = 200 },
+            words = {
+                enabled = true,
+                debounce = 200,
+                notify_jump = false,
+                notify_end = true,
+            },
         },
     },
 
