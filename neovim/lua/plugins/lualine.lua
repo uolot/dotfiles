@@ -100,7 +100,8 @@ local opts = {
                 'lsp_progress',
                 display_components = {
                     'lsp_client_name',
-                    { 'percentage', },
+                    'spinner',
+                    { 'title', 'percentage', },
                 },
             },
         },
