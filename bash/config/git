@@ -2,6 +2,7 @@
 
 alias gti="git"
 alias gi="git"
+alias lg="lazygit"
 
 # change to git root dir
 cdup() {
