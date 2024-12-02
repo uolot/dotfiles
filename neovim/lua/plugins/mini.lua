@@ -3,6 +3,21 @@ local opts = {
         preview = true,
         width_preview = 50,
     },
+    mappings = {
+        close       = 'q',
+        go_in       = '<Right>',
+        go_in_plus  = '<Enter>',
+        go_out      = '<Left>',
+        go_out_plus = nil,
+        mark_goto   = "'",
+        mark_set    = 'm',
+        reset       = '<BS>',
+        reveal_cwd  = '@',
+        show_help   = 'g?',
+        synchronize = '=',
+        trim_left   = '<',
+        trim_right  = '>',
+    },
 }
 
 local function files_setup(_, _opts)
