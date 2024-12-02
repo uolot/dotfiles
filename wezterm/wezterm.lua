@@ -126,6 +126,7 @@ local config = {
     saturation = 0.9,
     brightness = 0.6,
   },
+  max_fps = 120,
 
   -- 20_font
   font = wez.font { family = font_family, weight = 'Regular' },
