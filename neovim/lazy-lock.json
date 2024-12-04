@@ -74,6 +74,7 @@
   "popfix": { "branch": "master", "commit": "bf3cc436df63cd535350d5ef1b951c91554d4b01" },
   "promise-async": { "branch": "main", "commit": "119e8961014c9bfaf1487bf3c2a393d254f337e2" },
   "refactoring.nvim": { "branch": "master", "commit": "53ed6854e0bba64d467c58e87084dcf8b1c22d36" },
+  "smear-cursor.nvim": { "branch": "main", "commit": "4ccbe9b93fc2999527f7dbf970e97343087d311d" },
   "snacks.nvim": { "branch": "main", "commit": "bc0cf370915ac4e8d5b1bd8188b5091a4a0ee22c" },
   "statuscol.nvim": { "branch": "main", "commit": "8822f76e105549620ef9c0d96e7b95aedf14c490" },
   "tabular": { "branch": "master", "commit": "12437cd1b53488e24936ec4b091c9324cafee311" },

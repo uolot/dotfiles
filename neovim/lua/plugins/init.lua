@@ -338,7 +338,19 @@ require("lazy").setup({
     },
     {
         "gen740/SmoothCursor.nvim",
+        enabled = false,
         opts = require("plugins.smooth-cursor").opts,
+    },
+    {
+        "sphamba/smear-cursor.nvim",
+        opts = {
+            opts = { -- Default  Range
+                -- stiffness = 0.8,   -- 0.6      [0, 1]
+                -- trailing_stiffness = 0.5, -- 0.25     [0, 1]
+                -- distance_stop_animating = 0.5, -- 0.1      > 0
+                -- hide_target_hack = false, -- true     boolean
+            },
+        },
     },
     {
         -- TODO: replace with Snacks.notifier? https://github.com/folke/snacks.nvim/blob/main/docs/notifier.md
