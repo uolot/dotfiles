@@ -532,11 +532,6 @@ require("lazy").setup({
         }
     },
     {
-        "almo7aya/openingh.nvim",
-        cmd = { 'OpenInGHRepo', 'OpenInGHFile', 'OpenInGHFileLines' },
-        config = true,
-    },
-    {
         'akinsho/git-conflict.nvim',
         -- lazy = true,
         -- cmd = {
