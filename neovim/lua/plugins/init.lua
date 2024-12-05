@@ -16,8 +16,9 @@ local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 -- 13_navigation
 -- 99_misc
 
--- example split config:
--- https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/editor.lua
+-- TODO: split the config:
+-- https://lazy.folke.io/installation
+-- https://lazy.folke.io/usage/structuring
 
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
