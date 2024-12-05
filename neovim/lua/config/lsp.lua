@@ -74,7 +74,12 @@ lsp.extend_lspconfig({
             foldingRange = { -- ufo
                 dynamicRegistration = false,
                 lineFoldingOnly = true,
-            }
+            },
+            completion = {
+                completionItem = {
+                    snippetSupport = true
+                },
+            },
         }
     }
 })
@@ -91,6 +96,25 @@ require("mason-lspconfig").setup_handlers {
             -- on_attach = on_lsp_attach
         })
     end,
+    ['emmet_ls'] = function()
+        lspconfig.emmet_ls.setup({
+            filetypes = {
+                "astro",
+                "css",
+                "eruby",
+                "html",
+                "javascript",
+                "javascriptreact",
+                "less",
+                "sass",
+                "scss",
+                "svelte",
+                "pug",
+                "typescriptreact",
+                "vue",
+            },
+        })
+    end
     -- ['tsserver'] = function()
     --     lspconfig['tsserver'].setup({
     --         on_attach = on_tsserver_attach,
