@@ -57,7 +57,51 @@ require("lazy").setup({
         priority = 1000,
         lazy = false,
         opts = {
-            bigfile = { enabled = false },
+            bigfile = { enabled = true },
+            dashboard = {
+                sections = {
+                    { section = "header" },
+                    { section = "startup", padding = 1 },
+                    { icon = " ", title = "Recent Project Files", section = "recent_files", indent = 2, padding = 1, limit = 8, cwd = true },
+                    { icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1, limit = 6 },
+                    {
+                        pane = 2,
+                        icon = " ",
+                        desc = "Browse Repo",
+                        padding = 1,
+                        key = "b",
+                        action = function()
+                            Snacks.gitbrowse()
+                        end,
+                    },
+                    function()
+                        local in_git = Snacks.git.get_root() ~= nil
+                        local cmds = {
+                            {
+                                icon = " ",
+                                title = "Open PRs",
+                                cmd = "gh pr list -L 8",
+                                key = "p",
+                                action = function()
+                                    vim.fn.jobstart("gh pr list --web", { detach = true })
+                                end,
+                                height = 13,
+                            },
+                        }
+                        return vim.tbl_map(function(cmd)
+                            return vim.tbl_extend("force", {
+                                pane = 2,
+                                section = "terminal",
+                                enabled = in_git,
+                                padding = 1,
+                                ttl = 5 * 60,
+                                indent = 3,
+                            }, cmd)
+                        end, cmds)
+                    end,
+                    { icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
+                },
+            },
             notifier = { enabled = true },
             quickfile = { enabled = true },
             statuscolumn = { enabled = false },
