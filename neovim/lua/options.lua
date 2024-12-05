@@ -7,6 +7,7 @@
 -- " set wildmenu " enable filename completion
 
 vim.g.mapleader = ' '
+vim.g.maplocalleader = '-'
 
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 vim.opt.completefunc = 'syntaxcomplete#Complete'

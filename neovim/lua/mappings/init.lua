@@ -108,6 +108,7 @@ require("mappings.leader-s")
 require("mappings.leader-t")
 require("mappings.leader-s-t")
 require("mappings.leader-x")
+require("mappings.localleader")
 require("mappings.ft.markdown")
 
 -- jest
