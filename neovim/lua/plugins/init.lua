@@ -619,6 +619,23 @@ require("lazy").setup({
         },
     },
 
+    {
+        'stevearc/aerial.nvim',
+        opts = {
+            layout = {
+                max_width = 50,
+                min_width = 20,
+            },
+            highlight_on_hober = true,
+            show_guides = true,
+        },
+        -- Optional dependencies
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+            "nvim-tree/nvim-web-devicons"
+        },
+    },
+
     --
     -- 12_text_manipulation
     --

@@ -82,6 +82,10 @@ wk.add({
       { "[n", previous_usage, desc = "Previous usage" },
       { "]n", next_usage,     desc = "Next usage" },
     },
+    { -- aerial outline symbols
+      { "[o", '<Cmd>AerialPrev<CR>', desc = "Previous symbol" },
+      { "]o", '<Cmd>AerialNext<CR>', desc = "Next symbol" },
+    },
   },
 }, {
   mode = "x",
@@ -95,6 +99,7 @@ wk.add({
 require("mappings.g")
 require("mappings.z")
 require("mappings.c-w")
+require('mappings.leader-a')
 require('mappings.leader-c')
 require('mappings.leader-d')
 require('mappings.leader-f')
