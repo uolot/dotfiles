@@ -57,13 +57,17 @@ local config = function()
     formatter_by_ft = {
       astro = {
         formatters.lsp,
+        formatters.prettierd,
       },
       bash = {
         formatters.lsp,
         formatters.shfmt,
       },
       css = formatters.lsp,
-      html = formatters.lsp,
+      html = {
+        formatters.lsp,
+        formatters.prettierd,
+      },
       java = formatters.lsp,
       go = { -- Use a tempfile instead of stdin
         formatters.shell({
