@@ -14,7 +14,8 @@ local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 -- 11_programming_misc
 -- 12_text_manipulation
 -- 13_navigation
--- 99_misc
+-- 98_misc
+-- 99_end
 
 -- TODO: split the config:
 -- https://lazy.folke.io/installation
@@ -663,7 +664,7 @@ require("lazy").setup({
 
 
     --
-    -- 99_misc
+    -- 98_misc
     --
 
     -- TODO: use treesitter texobjects indent instead?
@@ -779,6 +780,8 @@ require("lazy").setup({
             },
         },
     },
+
+    -- 99_end
 }, {
     ui = {
         border = "rounded",
