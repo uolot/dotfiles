@@ -22,13 +22,17 @@ local function telescope_find_all()
     telescope_builtin.find_files({ hidden = true, no_ignore = true })
 end
 
+local function telescope_find_hidden()
+    telescope_builtin.find_files({ hidden = true, no_ignore = false })
+end
+
 wk.add({
     mode = "n",
     { "<Leader>f",  group = "+files" },
     -- Telescope
     { "<Leader>ff", telescope_builtin.find_files, desc = "Find files" },
     { "<Leader>fg", telescope_builtin.git_status, desc = "Find modified git files" },
-    -- { "<Leader>fh", "<Cmd>Telescope find_files hidden=true no_ignore=true<CR>", desc = "Find hidden files" },
+    { "<Leader>fh", telescope_find_hidden,        desc = "Find hidden files" },
     { "<Leader>fa", telescope_find_all,           desc = "Find all files" },
     { "<Leader>fo", telescope_builtin.oldfiles,   desc = "Find recent files" },
     { "<Leader>fp", telescope_search_git_root,    desc = "Find files in git root" },
