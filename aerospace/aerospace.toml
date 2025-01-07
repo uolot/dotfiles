@@ -176,8 +176,7 @@ alt-ctrl-shift-space = 'mode windows'
 # alt-ctrl-shift-m = 'mode monitor'
 
 # Toggle between floating and tiling layout
-cmd-alt-ctrl-shift-f = 'layout floating tiling'
-alt-ctrl-shift-f = 'macos-native-fullscreen'
+alt-ctrl-shift-f = 'layout floating tiling'
 
 # Disable hide application shortcut
 # cmd-h = []
