@@ -32,7 +32,7 @@ exec-on-workspace-change = ['/bin/bash', '-c',
 start-at-login = false
 
 # Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
-enable-normalization-flatten-containers = false
+enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
 
 # See: https://nikitabobko.github.io/AeroSpace/guide#layouts
@@ -121,11 +121,11 @@ cmd-alt-ctrl-shift-j = 'focus down'
 cmd-alt-ctrl-shift-k = 'focus up'
 cmd-alt-ctrl-shift-l = 'focus right'
 
-# See: https://nikitabobko.github.io/AeroSpace/commands#move
-alt-ctrl-shift-h = 'move left'
-alt-ctrl-shift-j = 'move down'
-alt-ctrl-shift-k = 'move up'
-alt-ctrl-shift-l = 'move right'
+# See: https://nikitabobko.github.io/AeroSpace/commands#join-with
+alt-ctrl-shift-h = 'join-with left'
+alt-ctrl-shift-j = 'join-with down'
+alt-ctrl-shift-k = 'join-with up'
+alt-ctrl-shift-l = 'join-with right'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#resize
 alt-ctrl-shift-r = 'mode resize'
@@ -170,6 +170,7 @@ cmd-alt-ctrl-shift-n = "workspace --wrap-around next"
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
 alt-ctrl-shift-semicolon = 'mode service'
+alt-ctrl-shift-space = 'mode windows'
 
 # alt-w = 'mode workspace'
 # alt-ctrl-shift-m = 'mode monitor'
@@ -177,9 +178,6 @@ alt-ctrl-shift-semicolon = 'mode service'
 # Toggle between floating and tiling layout
 cmd-alt-ctrl-shift-f = 'layout floating tiling'
 alt-ctrl-shift-f = 'macos-native-fullscreen'
-# Splits
-alt-ctrl-shift-v = 'split horizontal'
-alt-ctrl-shift-s = 'split vertical'
 
 # Disable hide application shortcut
 # cmd-h = []
@@ -194,7 +192,6 @@ s = [
     'exec-and-forget killall sketchybar',
     'mode main'
 ]
-l = ['flatten-workspace-tree', 'mode main'] # reset layout
 # s = ['layout sticky tiling', 'mode main'] # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
 # backspace = ['close-all-windows-but-current', 'mode main']
 
@@ -203,13 +200,15 @@ alt-ctrl-shift-j = ['join-with down', 'mode main']
 alt-ctrl-shift-k = ['join-with up', 'mode main']
 alt-ctrl-shift-l = ['join-with right', 'mode main']
 
-[mode.resize.binding]
-s = ['split horizontal', 'mode main']
-v = ['split vertical', 'mode main']
-u = 'resize smart +100'
-i = 'resize smart -100'
-shift-u = 'resize smart +500'
-shift-i = 'resize smart -500'
+[mode.windows.binding]
+# b = ['balance-sizes', 'mode main'] # FIXME: why does this error out?
+f = ['flatten-workspace-tree', 'mode main'] # reset layout
+# See: https://nikitabobko.github.io/AeroSpace/commands#move
+h = ['move left', 'mode main']
+j = ['move down', 'mode main']
+k = ['move up', 'mode main']
+l = ['move right', 'mode main']
+
 q = 'mode main'
 esc = 'mode main'
 enter = 'mode main'
