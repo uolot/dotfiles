@@ -419,26 +419,57 @@ require("lazy").setup({
         opts = {
             signs = true,
             keywords = {
-                FIX = {
-                    icon = " ", -- icon used for the sign, and in search results
-                    color = "error", -- can be a hex color, or a named color (see below)
-                    alt = { "FIXME", "BUG", "fixme" }, -- a set of other keywords that all map to this FIX keywords
-                    -- signs = false, -- configure signs for some keywords individually
-                },
-                TODO = { icon = " ", color = "info", alt = { "todo" } },
+                FIX = { icon = " ", color = "error", alt = { "FIXME", "BUG", "fixme" } },
+                TODO = { icon = " ", color = "info", alt = { "it.todo", "test.todo" } },
                 HACK = { icon = " ", color = "warning" },
                 WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
                 PERF = { icon = " ", alt = {} },
-                NOTE = { icon = " ", color = "hint", alt = { "INFO", "info" } },
+                NOTE = { icon = " ", color = "hint", alt = { "INFO", "it.skip", "test.skip" } },
                 TEST = { icon = "⏲ ", color = "test", alt = {} },
             },
+            merge_keywords = true,
             highlight = {
                 multiline = false,
-                comments_only = true,
+                comments_only = false,
+                before = "fg",
+                keyword = "bg",
+                after = "fg",
+                pattern = {
+                    -- [[.*<(KEYWORDS)( |:|;|\s+|\.|,|;|$)]],
+                    [[.*<(KEYWORDS)\s*]],
+                    -- [[.*<(KEYWORDS)\s*(\(.*\))?\s*:?]],
+                },
+                exclude = {
+                    "TelescopePrompt",
+                    "TelescopeResults",
+                    "help",
+                    "lazy",
+                    "lspinfo",
+                    "mason",
+                    "nvcheatsheet",
+                    "nvdash",
+                    "terminal",
+                    'nerdtree',
+                    'unite',
+                    'OverseerForm',
+                    'OverseerList',
+                },
             },
             search = {
-                pattern = [[\b(KEYWORDS)\b]],
+                command = "rg",
+                args = {
+                    "--color=never",
+                    "--no-heading",
+                    "--with-filename",
+                    "--line-number",
+                    "--column",
+                },
+                -- regex that will be used to match keywords.
+                -- don't replace the (KEYWORDS) placeholder
+                -- pattern = [[\b(KEYWORDS):]], -- ripgrep regex
+                pattern = [[\b(KEYWORDS)\b]], -- match without the extra colon. You'll likely get false positives
             },
+
         },
     },
     -- Easily add additional highlights to your buffers
