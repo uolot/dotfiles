@@ -326,7 +326,10 @@ require("lazy").setup({
         "sindrets/winshift.nvim",
         lazy = true,
         cmd = "WinShift",
-        opts = { highlight_moving_win = true },
+        opts = {
+            highlight_moving_win = true,
+            window_picker = function() return require('winpick').select() end,
+        },
     },
     {
         "gbrlsnchs/winpick.nvim",
