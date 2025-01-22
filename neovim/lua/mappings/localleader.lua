@@ -9,4 +9,10 @@ end
 wk.add({
     mode = "n",
     { "<localleader>bd", delete_current_buffer, desc = "Delete current buffer" },
+    { "<localleader>t",  "<Cmd>tabnew<CR>",     desc = "Open new tab" },
+    { "<localleader>n",  "<Cmd>enew<CR>",       desc = "Open new file" },
+    { "<localleader>k",  "<Cmd>bnext<CR>",      desc = "Next buffer" },
+    { "<localleader>j",  "<Cmd>bprev<CR>",      desc = "Previous buffer" },
+    { "<localleader>l",  "<Cmd>tabnext<CR>",    desc = "Next tab" },
+    { "<localleader>h",  "<Cmd>tabprev<CR>",    desc = "Previous tab" },
 })
