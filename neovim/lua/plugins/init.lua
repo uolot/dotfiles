@@ -350,12 +350,6 @@ require("lazy").setup({
     },
 
     {
-        "gen740/SmoothCursor.nvim",
-        enabled = false,
-        opts = require("plugins.smooth-cursor").opts,
-    },
-
-    {
         "sphamba/smear-cursor.nvim",
         opts = {
             opts = { -- Default  Range
