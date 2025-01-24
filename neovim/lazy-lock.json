@@ -99,6 +99,5 @@
   "vim-vsnip-integ": { "branch": "master", "commit": "90ae474e8b05ed41e36d6f58382a9fbfb4b672c4" },
   "which-key.nvim": { "branch": "main", "commit": "6cebd86917df559a88de0f806b2989799c6e6423" },
   "winpick.nvim": { "branch": "trunk", "commit": "044623e236750a2f61a2cb96ce0833e113921b88" },
-  "winshift.nvim": { "branch": "main", "commit": "37468ed6f385dfb50402368669766504c0e15583" },
-  "yazi.nvim": { "branch": "main", "commit": "501f3626f09511473ed1a30220c4ddb5a09896ef" }
+  "winshift.nvim": { "branch": "main", "commit": "37468ed6f385dfb50402368669766504c0e15583" }
 }
