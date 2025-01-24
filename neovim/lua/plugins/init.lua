@@ -554,6 +554,7 @@ require("lazy").setup({
     --
     {
         "preservim/vim-markdown",
+        enabled = false,
         ft = { "markdown" },
         config = function()
             vim.g.vim_markdown_folding_disabled = 0
