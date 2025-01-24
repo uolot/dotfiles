@@ -17,6 +17,10 @@ local function reset_selected_hunk()
     gs.reset_hunk { vim.fn.line('.'), vim.fn.line('v') }
 end
 
+local function diffthis()
+    gs.diffthis('~')
+end
+
 wk.add({
     mode = 'n',
     { "<Leader>h",   group = "Git" },
@@ -29,19 +33,19 @@ wk.add({
     { "<Leader>hB",  blame_line_full,                  desc = 'Blame line (full)' },
     -- diffview
     { "<Leader>hf",  "<Cmd>DiffviewFileHistory %<CR>", desc = "File history" },
-    { "<Leader>hdo", "<Cmd>DiffviewOpen<CR>",          desc = "Diffview open" },
+    { "<Leader>hdo", "<Cmd>DiffviewOpen<CR>",          desc = "Diffview open  " },
     { "<Leader>hdc", "<Cmd>DiffviewClose<CR>",         desc = "Diffview close" },
+    { "<Leader>hdt", diffthis,                         desc = "Diffview close" },
     -- preview hunk
     { "<Leader>hi",  gs.preview_hunk_inline,           desc = 'Preview hunk inline' },
     { "<Leader>hp",  gs.preview_hunk,                  desc = 'Preview hunk' },
     -- stage and reset
     {
         mode = 'n',
-        { "<Leader>hs", gs.stage_hunk,      desc = 'Stage hunk', },
-        { "<Leader>hS", gs.stage_buffer,    desc = 'Stage buffer' },
-        { "<Leader>hr", gs.reset_hunk,      desc = 'Reset hunk', },
-        { "<Leader>hR", gs.reset_buffer,    desc = 'Reset buffer' },
-        { "<Leader>hu", gs.undo_stage_hunk, desc = 'Undo stage hunk' },
+        { "<Leader>hs", gs.stage_hunk,   desc = 'Stage hunk', },
+        { "<Leader>hS", gs.stage_buffer, desc = 'Stage buffer' },
+        { "<Leader>hr", gs.reset_hunk,   desc = 'Reset hunk', },
+        { "<Leader>hR", gs.reset_buffer, desc = 'Reset buffer' },
     },
     {
         mode = 'v',
@@ -63,7 +67,6 @@ wk.add({
         { "<Leader>hx",  group = "Toggles" },
         { "<Leader>hxb", gs.toggle_current_line_blame, desc = 'Toggle current line blame' },
         { "<Leader>hxB", '<Cmd>Gitsigns blame<CR>',    desc = 'Blame entire file' },
-        { "<Leader>hxd", gs.toggle_deleted,            desc = 'Toggle deleted' },
         { "<Leader>hxl", gs.toggle_linehl,             desc = 'Toggle line highlight' },
         { "<Leader>hxw", gs.toggle_word_diff,          desc = 'Toggle word diff' },
     },
