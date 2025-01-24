@@ -9,7 +9,6 @@ end
 
 wk.add({
     { "<C-w><C-m>", '<Cmd>WinShift<CR>',      desc = 'Enter window move mode' },
-    { "<C-w>d",     '<Cmd>Detour<CR>',        desc = 'Detour' },
     { "<C-w>m",     '<Cmd>WinShift<CR>',      desc = 'Enter window move mode' },
     { "<C-w>p",     pick_window,              desc = 'Pick a window' },
     { "<C-w>x",     '<Cmd>WinShift swap<CR>', desc = 'Swap windows' },

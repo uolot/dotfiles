@@ -675,11 +675,6 @@ require("lazy").setup({
         build = require("plugins.firenvim").build,
         config = require("plugins.firenvim").config,
     },
-    {
-        "carbon-steel/detour.nvim",
-        cmd = 'Detour',
-        -- config = true,
-    },
 
     {
         "jaimecgomezz/here.term",
