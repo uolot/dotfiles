@@ -19,10 +19,6 @@ local config = function()
     -- pattern = '{*}{*.ts}\\@<!',
     group = 'Format',
     callback = function(args)
-      if vim.g.started_by_firenvim then
-        return
-      end
-
       if vim.regex('\\.ts$'):match_str(args.file) then
         formatTS()
       else

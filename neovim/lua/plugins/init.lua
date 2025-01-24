@@ -662,19 +662,6 @@ require("lazy").setup({
         event = "LspAttach",
         opts = {}
     },
-    -- {
-    --     'nvim-zh/colorful-winsep.nvim',
-    --     config = true,
-    --     event = { "WinNew" },
-    -- },
-    -- Embed Neovim in Chrome, Firefox & others.
-    {
-        "glacambre/firenvim",
-        -- cond = not not vim.g.started_by_firenvim,
-        lazy = not vim.g.started_by_firenvim,
-        build = require("plugins.firenvim").build,
-        config = require("plugins.firenvim").config,
-    },
 
     {
         "jaimecgomezz/here.term",
