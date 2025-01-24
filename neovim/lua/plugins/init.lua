@@ -348,11 +348,13 @@ require("lazy").setup({
         main = "ibl",
         opts = require("plugins.indent-blankline").opts
     },
+
     {
         "gen740/SmoothCursor.nvim",
         enabled = false,
         opts = require("plugins.smooth-cursor").opts,
     },
+
     {
         "sphamba/smear-cursor.nvim",
         opts = {
@@ -364,6 +366,7 @@ require("lazy").setup({
             },
         },
     },
+
     {
         -- TODO: replace with Snacks.notifier? https://github.com/folke/snacks.nvim/blob/main/docs/notifier.md
         "rcarriga/nvim-notify",
@@ -404,8 +407,10 @@ require("lazy").setup({
 
     -- disables search highlighting when you are done searching and re-enables it when you search again
     { "romainl/vim-cool" },
+
     -- highlighting visual selections
     { "Pocco81/HighStr.nvim" },
+    --
     -- Highlight several words in different colors simultaneously
     {
         "inkarkat/vim-mark",
@@ -416,71 +421,21 @@ require("lazy").setup({
             vim.g.mwDefaultHighlightingPalette = "extended"
         end,
     },
+
     -- Highlight, list and search todo comments in your projects
+    -- TODO: move to its own file
     {
         "folke/todo-comments.nvim",
         lazy = false,
-        opts = {
-            signs = true,
-            keywords = {
-                FIX = { icon = " ", color = "error", alt = { "FIXME", "BUG", "fixme" } },
-                TODO = { icon = " ", color = "info", alt = { "it.todo", "test.todo" } },
-                HACK = { icon = " ", color = "warning" },
-                WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
-                PERF = { icon = " ", alt = {} },
-                NOTE = { icon = " ", color = "hint", alt = { "INFO", "it.skip", "test.skip" } },
-                TEST = { icon = "⏲ ", color = "test", alt = {} },
-            },
-            merge_keywords = true,
-            highlight = {
-                multiline = false,
-                comments_only = false,
-                before = "fg",
-                keyword = "bg",
-                after = "fg",
-                pattern = {
-                    -- [[.*<(KEYWORDS)( |:|;|\s+|\.|,|;|$)]],
-                    [[.*<(KEYWORDS)\s*]],
-                    -- [[.*<(KEYWORDS)\s*(\(.*\))?\s*:?]],
-                },
-                exclude = {
-                    "TelescopePrompt",
-                    "TelescopeResults",
-                    "help",
-                    "lazy",
-                    "lspinfo",
-                    "mason",
-                    "nvcheatsheet",
-                    "nvdash",
-                    "terminal",
-                    'nerdtree',
-                    'unite',
-                    'OverseerForm',
-                    'OverseerList',
-                },
-            },
-            search = {
-                command = "rg",
-                args = {
-                    "--color=never",
-                    "--no-heading",
-                    "--with-filename",
-                    "--line-number",
-                    "--column",
-                },
-                -- regex that will be used to match keywords.
-                -- don't replace the (KEYWORDS) placeholder
-                -- pattern = [[\b(KEYWORDS):]], -- ripgrep regex
-                pattern = [[\b(KEYWORDS)\b]], -- match without the extra colon. You'll likely get false positives
-            },
-
-        },
+        opts = require('plugins.todo-comments').opts,
     },
+
     -- Easily add additional highlights to your buffers
     {
         "folke/paint.nvim",
         opts = require("plugins.paint").opts,
     },
+
     {
         "tzachar/highlight-undo.nvim",
         config = true,
@@ -497,6 +452,7 @@ require("lazy").setup({
         dependencies = require("plugins.neo-tree").dependencies,
         opts = require("plugins.neo-tree").opts,
     },
+
     {
         'echasnovski/mini.files',
         ---@diagnostic disable-next-line: assign-type-mismatch
@@ -513,13 +469,16 @@ require("lazy").setup({
         "lewis6991/gitsigns.nvim",
         opts = require("plugins.gitsigns").opts,
     },
+
     -- Single tabpage interface for easily cycling through diffs for all modified files for any git rev
     {
         "sindrets/diffview.nvim",
         cmd = { "DiffviewFileHistory", "DiffviewClose", "DiffviewOpen" },
     },
+
     -- more pleasant editing on commit messages
     { "rhysd/committia.vim" },
+
     {
         'FabijanZulj/blame.nvim',
         cmd = 'ToggleBlame',
@@ -529,6 +488,7 @@ require("lazy").setup({
             merge_consecutive = false,
         }
     },
+
     {
         'akinsho/git-conflict.nvim',
         -- lazy = true,
@@ -607,6 +567,17 @@ require("lazy").setup({
         },
     },
 
+    {
+        'Wansmer/treesj',
+        keys = { '<space>m', '<space>j', '<space>s' },
+        dependencies = { 'nvim-treesitter/nvim-treesitter' }, -- if you install parsers with `nvim-treesitter`
+        config = function()
+            require('treesj').setup({
+                use_default_keymaps = false,
+            })
+        end,
+    },
+
     --
     -- 12_text_manipulation
     --
@@ -669,16 +640,6 @@ require("lazy").setup({
         opts = {}
     },
 
-    {
-        'Wansmer/treesj',
-        keys = { '<space>m', '<space>j', '<space>s' },
-        dependencies = { 'nvim-treesitter/nvim-treesitter' }, -- if you install parsers with `nvim-treesitter`
-        config = function()
-            require('treesj').setup({
-                use_default_keymaps = false,
-            })
-        end,
-    },
 
     -- 99_end
 }, {
