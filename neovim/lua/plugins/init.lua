@@ -490,21 +490,6 @@ require("lazy").setup({
     --
     -- 9_markdown
     --
-    {
-        "preservim/vim-markdown",
-        enabled = false,
-        ft = { "markdown" },
-        config = function()
-            vim.g.vim_markdown_folding_disabled = 0
-            vim.g.vim_markdown_no_default_key_mappings = 1
-            vim.g.vim_markdown_toc_autofit = 1
-            vim.g.vim_markdown_conceal_code_blocks = 0
-            vim.g.vim_markdown_strikethrough = 1
-            vim.g.vim_markdown_math = 1
-            vim.g.vim_markdown_frontmatter = 1
-            vim.g.vim_markdown_toml_frontmatter = 1
-        end,
-    },
 
     {
         "OXY2DEV/markview.nvim",
