@@ -44,16 +44,21 @@ wk.add({
   { "<Backspace>", "<C-^>",        desc = "Quick buffer switch" },
   { "<Tab>",       "<C-w>w",       desc = "Next window" },
   { -- move
-    { "<C-h>", "<C-w>h", desc = "Move left" },
-    { "<C-j>", "<C-w>j", desc = "Move down" },
-    { "<C-k>", "<C-w>k", desc = "Move up" },
-    { "<C-l>", "<C-w>l", desc = "Move right" },
+    { "<C-h>",    "<C-w>h", desc = "Move left" },
+    { "<C-j>",    "<C-w>j", desc = "Move down" },
+    { "<C-k>",    "<C-w>k", desc = "Move up" },
+    { "<C-l>",    "<C-w>l", desc = "Move right" },
+    { mode = "t", "<C-,>",  Snacks.terminal.toggle, desc = "Exit terminal mode" },
   },
-  -- { "<C-,>", Snacks.terminal.toggle },
+  -- Snacks
+  { "<C-,>",     Snacks.terminal.toggle,                                  desc = "Toggle terminal" },
+  { "<Leader>.", function() Snacks.scratch.open({ ft = "markdown" }) end, desc = "Open scratch window" },
+  { "<Leader>/", Snacks.scratch.select,                                   desc = "Select scratch window" },
   {
     mode = { "n", "x" },
     { "K", treesj.toggle, desc = "Split/join", },
   },
+  -- Jumps
   {
     noremap = true,
     silent = true,
@@ -90,6 +95,10 @@ wk.add({
     { -- aerial outline symbols
       { "[o", '<Cmd>AerialPrev<CR>', desc = "Previous symbol" },
       { "]o", '<Cmd>AerialNext<CR>', desc = "Next symbol" },
+    },
+    { -- treesitter scope from snacks
+      { "[%", Snacks.scope.jump,                                   desc = "Scope top" },
+      { "]%", function() Snacks.scope.jump({ bottom = true }) end, desc = "Scope bottom" },
     },
   },
 })
