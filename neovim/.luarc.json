@@ -4,6 +4,7 @@
   },
   "diagnostics.globals": [
     "get_repo_edit_cmd",
-        "Snacks"
+        "Snacks",
+        "vim"
   ]
 }
