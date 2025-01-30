@@ -414,12 +414,6 @@ require("lazy").setup({
         opts = require('plugins.todo-comments').opts,
     },
 
-    -- Easily add additional highlights to your buffers
-    {
-        "folke/paint.nvim",
-        opts = require("plugins.paint").opts,
-    },
-
     {
         "tzachar/highlight-undo.nvim",
         config = true,
