@@ -1,5 +1,6 @@
 local wk = require("which-key")
 local snacks = require("snacks")
+local treesj = require('treesj')
 
 local function close_floating()
   for _, win in ipairs(vim.api.nvim_list_wins()) do
@@ -49,6 +50,10 @@ wk.add({
     { "<C-l>", "<C-w>l", desc = "Move right" },
   },
   -- { "<C-,>", Snacks.terminal.toggle },
+  {
+    mode = { "n", "x" },
+    { "K", treesj.toggle, desc = "Split/join", },
+  },
   {
     noremap = true,
     silent = true,
@@ -108,7 +113,7 @@ require("mappings.leader-k")
 require("mappings.leader-l")
 require("mappings.leader-n")
 require("mappings.leader-r")
-require("mappings.leader-s")
+-- require("mappings.leader-s")
 require("mappings.leader-t")
 require("mappings.leader-s-t")
 require("mappings.leader-x")
