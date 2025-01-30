@@ -60,7 +60,22 @@ wk.add({
         { "<Leader>ho",  group = "Open in GitHub" },
         { "<Leader>hor", function() Snacks.gitbrowse({ what = "repo" }) end,                  desc = 'Open repo' },
         { "<Leader>hof", function() Snacks.gitbrowse({ what = "file" }) end,                  desc = 'Open file' },
-        { "<Leader>hoF", function() Snacks.gitbrowse({ what = "file", branch = "main" }) end, desc = 'Open file in main' },
+        { "<Leader>hoF", function() Snacks.gitbrowse({ what = "file", branch = "main" }) end, desc = 'Open file on main' },
+        {
+            mode = 'v',
+            {
+                "<Leader>hof",
+                function()
+                    Snacks.gitbrowse({
+                        what = "file",
+                        line_start = vim.fn.line("<"),
+                        line_end = vim.fn.line("'>"),
+
+                    })
+                end,
+                desc = 'Open selected'
+            },
+        },
     },
     -- toggles
     {
