@@ -33,7 +33,9 @@ wk.add({
     { "<Leader>fh", find_hidden_files,        desc = "Find hidden files" },
     { "<Leader>fa", find_all_files,           desc = "Find all files" },
     { "<Leader>fo", Snacks.picker.recent,     desc = "Find recent files" },
-    { "<Leader>fp", Snacks.picker.git_files,  desc = "Find files in git root" },
+    { "<Leader>fp", Snacks.picker.projects,   desc = "Find projects" },
+    { "<Leader>fr", Snacks.picker.git_files,  desc = "Find files in git root" },
+    { "<Leader>fz", Snacks.picker.zoxide,     desc = 'Zoxide' },
     -- Mini files
     { "<Leader>fc", mini_files_current,       desc = "mini.files: Show current file" },
     { "<Leader>fm", mini_files_toggle,        desc = "mini.files: Open", },
