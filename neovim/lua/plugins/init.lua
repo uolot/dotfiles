@@ -73,6 +73,21 @@ require("lazy").setup({
                     { section = "startup", padding = 1 },
                 },
             },
+            indent = {
+                enabled = true,
+                animate = { enabled = false },
+                scope = { enabled = true, },
+                chunk = {
+                    enabled = true,
+                    char = {
+                        corner_top = "╭",
+                        corner_bottom = "╰",
+                        horizontal = "─",
+                        vertical = "│",
+                        arrow = "─",
+                    },
+                },
+            },
             notifier = { enabled = true },
             quickfile = { enabled = true },
             statuscolumn = { enabled = false },
@@ -281,9 +296,8 @@ require("lazy").setup({
                     background = true,
                 },
                 highlights = {
-                    IblIndent = { fg = '#444444', fmt = 'nocombine' },
-                    -- IblWhitespace = { bg = '#00ff00', fmt = 'nocombine' },
-                    IblScope = { fg = '#909090', fmt = 'nocombine' },
+                    SnacksIndentScope = { fg = '#909090', fmt = 'nocombine' },
+                    SnacksIndentChunk = { fg = '#909090', fmt = 'nocombine' },
                     ['@comment'] = { fg = '$grey' },
                 },
             }
@@ -633,12 +647,6 @@ require("lazy").setup({
     -- 18_editing
     --
 
-    {
-        "lukas-reineke/indent-blankline.nvim",
-        main = "ibl",
-        opts = require("plugins.indent-blankline").opts
-    },
-    --
     -- TODO: use treesitter texobjects indent instead?
     { "michaeljsmith/vim-indent-object" },
 
