@@ -3,10 +3,10 @@ local live_grep_args = require('telescope').extensions.live_grep_args
 
 local function grep_word()
     Snacks.picker.grep_word({
+        args = { "-w" },
         matcher = {
             ignorecase = false,
-            fuzzy = false,
-        }
+        },
     })
 end
 
