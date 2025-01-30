@@ -59,10 +59,10 @@ wk.add({
       { "[D", first_diagnostic, desc = "Go to first diagnostic" },
     },
     { -- search
-      { "\\c", "/\\c",                          desc = "Case insensitive search", silent = false },
-      { "\\s", "/\\<\\><left><left>",           desc = "Search for word",         silent = false },
-      { "n",   "(v:searchforward ? 'n' : 'N')", expr = true },
-      { "N",   "(v:searchforward ? 'N' : 'n')", expr = true },
+      { "\\c", "/\\c",                              desc = "Case insensitive search", silent = false },
+      { "\\s", "/\\<\\><left><left>",               desc = "Search for word",         silent = false },
+      { "n",   "(v:searchforward ? 'nzz' : 'Nzz')", expr = true },
+      { "N",   "(v:searchforward ? 'Nzz' : 'nzz')", expr = true },
     },
     { -- quickfix
       { "[q", "<Cmd>cprev<CR>",  desc = "Previous quickfix" },
