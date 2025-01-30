@@ -159,16 +159,6 @@ require("lazy").setup({
     { "RishabhRD/nvim-lsputils" },
     { "onsails/lspkind-nvim" },
     {
-        "folke/trouble.nvim",
-        -- lazy = true,
-        cmd = 'Trouble',
-        opts = {},
-        -- opts = {
-        --     icons = false,
-        --     severity = vim.diagnostic.severity.INFO,
-        -- },
-    },
-    {
         "ThePrimeagen/refactoring.nvim",
         -- cmd = 'CodeActionMenu',
         dependencies = {
