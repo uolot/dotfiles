@@ -15,4 +15,6 @@ wk.add({
     { "<localleader>j",  "<Cmd>bprev<CR>",      desc = "Previous buffer" },
     { "<localleader>l",  "<Cmd>tabnext<CR>",    desc = "Next tab" },
     { "<localleader>h",  "<Cmd>tabprev<CR>",    desc = "Previous tab" },
+    { "<localleader>qq", "<Cmd>cclose<CR>",     desc = "Close quickfix window" },
+    { "<localleader>qo", "<Cmd>copen<CR>",      desc = "Open quickfix window" },
 })
