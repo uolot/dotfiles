@@ -1,7 +1,7 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
 -- TOC:
--- 1_cmp
+-- 1_completion
 -- 2_lsp_and_diagnostics
 -- 3_treesitter
 -- 4_telescope
@@ -14,7 +14,14 @@ local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 -- 11_programming_misc
 -- 12_text_manipulation
 -- 13_navigation
--- 98_misc
+-- 14_typescript
+-- 15_formatting
+-- 16_keybindings
+-- 17_windows
+-- 18_editing
+-- 96_misc
+-- 97_to_remove
+-- 98_evaluating
 -- 99_end
 
 -- TODO: split the config:
@@ -79,7 +86,7 @@ require("lazy").setup({
     },
 
     --
-    -- 1_cmp
+    -- 1_completion
     --
 
     {
@@ -158,80 +165,16 @@ require("lazy").setup({
     -- { "RishabhRD/popfix" },
     { "RishabhRD/nvim-lsputils" },
     { "onsails/lspkind-nvim" },
-    {
-        "ThePrimeagen/refactoring.nvim",
-        -- cmd = 'CodeActionMenu',
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "nvim-treesitter/nvim-treesitter",
-            -- "weilbith/nvim-code-action-menu",
-        },
-        config = true,
-    },
-    -- TODO: explore ibhagwan/fzf-lua as an alternative
-    {
-        "aznhe21/actions-preview.nvim",
-        config = function()
-            require('actions-preview').setup({
-                highlight_command = {
-                    require("actions-preview.highlight").delta()
-                },
-                telescope = {
-                    layout_strategy = "vertical",
-                    layout_config = {
-                        width = 0.6,
-                        height = 0.6,
-                        preview_cutoff = 20,
-                        -- preview_height = 0.7,
-                        preview_height = function(_, _, max_lines)
-                            return max_lines - 15
-                        end,
-                    },
-                },
-            })
-        end
-    },
     -- Incremental LSP rename command based on Neovim's command-preview feature
     {
         "smjonas/inc-rename.nvim",
         event = "VeryLazy",
         config = true,
     },
-    -- Nvim lua plugin which adds support for twoslash queries into typescript projects
     {
-        "marilari88/twoslash-queries.nvim",
-        opts = {
-            multi_line = false, -- to print types in multi line mode
-            is_enabled = true,  -- to keep disabled at startup and enable it on request with the EnableTwoslashQueries
-        },
+        'arkav/lualine-lsp-progress',
+        dependencies = { 'nvim-lualine/lualine.nvim' },
     },
-    {
-        "davidosomething/format-ts-errors.nvim"
-    },
-    {
-        "elentok/format-on-save.nvim",
-        config = require("plugins.format-on-save").config,
-    },
-    {
-        "pmizio/typescript-tools.nvim",
-        ft = { "typescript", "typescriptreact", "typescript.tsx" },
-        dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-        -- configured in config/lsp.lua
-    },
-    {
-        "OlegGulevskyy/better-ts-errors.nvim",
-        dependencies = { "MunifTanjim/nui.nvim" },
-        opts = {
-            keymaps = {
-                toggle = '<leader>Te',
-                go_to_definition = '<leader>Td',
-            }
-        }
-    },
-    -- {
-    --     'yorickpeterse/nvim-dd',
-    --     opts = { timeout = 750 },
-    -- },
 
     --
     -- 3_treesitter
@@ -269,14 +212,9 @@ require("lazy").setup({
         "windwp/nvim-ts-autotag",
         opts = {
             opts = {
-                enable_close = true,
+                enable_close = false,
                 enable_rename = true,
                 enable_close_on_slash = true,
-                -- per_filetype = {
-                --     ["html"] = {
-                --         enable_close = false,
-                --     },
-                -- },
             }
         }
     },
@@ -301,31 +239,9 @@ require("lazy").setup({
         opts = require("plugins.lualine").opts,
     },
     {
-        'arkav/lualine-lsp-progress',
-        dependencies = { 'nvim-lualine/lualine.nvim' },
-    },
-    {
-        "folke/which-key.nvim",
-        opts = require("plugins.which-key").opts,
-    },
-    {
         "chentoast/marks.nvim",
         event = "VeryLazy",
         opts = require("plugins.marks").opts,
-    },
-    {
-        "sindrets/winshift.nvim",
-        lazy = true,
-        cmd = "WinShift",
-        opts = {
-            highlight_moving_win = true,
-            window_picker = function() return require('winpick').select() end,
-        },
-    },
-    {
-        "gbrlsnchs/winpick.nvim",
-        lazy = true,
-        opts = { border = "rounded" },
     },
     -- hide gutter numbers for folds
     {
@@ -333,12 +249,6 @@ require("lazy").setup({
         "luukvbaal/statuscol.nvim",
         config = require("plugins.statuscol").config,
     },
-    {
-        "lukas-reineke/indent-blankline.nvim",
-        main = "ibl",
-        opts = require("plugins.indent-blankline").opts
-    },
-
     {
         "sphamba/smear-cursor.nvim",
         opts = {
@@ -406,14 +316,6 @@ require("lazy").setup({
         end,
     },
 
-    -- Highlight, list and search todo comments in your projects
-    -- TODO: move to its own file
-    {
-        "folke/todo-comments.nvim",
-        lazy = false,
-        opts = require('plugins.todo-comments').opts,
-    },
-
     {
         "tzachar/highlight-undo.nvim",
         config = true,
@@ -442,7 +344,6 @@ require("lazy").setup({
     -- 8_git
     --
 
-    -- { "tpope/vim-fugitive",      lazy = false },
     {
         "lewis6991/gitsigns.nvim",
         opts = require("plugins.gitsigns").opts,
@@ -602,6 +503,50 @@ require("lazy").setup({
         end,
     },
 
+    -- TODO: Remove?
+    {
+        "ThePrimeagen/refactoring.nvim",
+        -- cmd = 'CodeActionMenu',
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+            -- "weilbith/nvim-code-action-menu",
+        },
+        config = true,
+    },
+
+    -- TODO: explore ibhagwan/fzf-lua as an alternative
+    {
+        "aznhe21/actions-preview.nvim",
+        config = function()
+            require('actions-preview').setup({
+                highlight_command = {
+                    require("actions-preview.highlight").delta()
+                },
+                telescope = {
+                    layout_strategy = "vertical",
+                    layout_config = {
+                        width = 0.6,
+                        height = 0.6,
+                        preview_cutoff = 20,
+                        -- preview_height = 0.7,
+                        preview_height = function(_, _, max_lines)
+                            return max_lines - 15
+                        end,
+                    },
+                },
+            })
+        end
+    },
+
+    -- Highlight, list and search todo comments in your projects
+    -- TODO: move to its own file
+    {
+        "folke/todo-comments.nvim",
+        lazy = false,
+        opts = require('plugins.todo-comments').opts,
+    },
+
     --
     -- 12_text_manipulation
     --
@@ -627,20 +572,83 @@ require("lazy").setup({
         },
     },
 
+    --
+    -- 14_typescript
+    --
+    {
+        "pmizio/typescript-tools.nvim",
+        ft = { "typescript", "typescriptreact", "typescript.tsx" },
+        dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+        -- configured in config/lsp.lua
+    },
+    -- Nvim lua plugin which adds support for twoslash queries into typescript projects
+    {
+        "marilari88/twoslash-queries.nvim",
+        opts = {
+            multi_line = false, -- to print types in multi line mode
+            is_enabled = true,  -- to keep disabled at startup and enable it on request with the EnableTwoslashQueries
+        },
+    },
+    {
+        "davidosomething/format-ts-errors.nvim"
+    },
+    {
+        "OlegGulevskyy/better-ts-errors.nvim",
+        dependencies = { "MunifTanjim/nui.nvim" },
+        opts = {
+            keymaps = {
+                toggle = '<leader>Te',
+                go_to_definition = '<leader>Td',
+            }
+        }
+    },
 
     --
-    -- 98_misc
+    -- 15_formatting
+    --
+    {
+        "elentok/format-on-save.nvim",
+        config = require("plugins.format-on-save").config,
+    },
+
+    --
+    -- 16_keybindings
+    --
+    {
+        "folke/which-key.nvim",
+        opts = require("plugins.which-key").opts,
+    },
+
+    --
+    -- 17_windows
+    --
+    {
+        "sindrets/winshift.nvim",
+        lazy = true,
+        cmd = "WinShift",
+        opts = {
+            highlight_moving_win = true,
+            window_picker = function() return require('winpick').select() end,
+        },
+    },
+    {
+        "gbrlsnchs/winpick.nvim",
+        lazy = true,
+        opts = { border = "rounded" },
+    },
+
+    --
+    -- 18_editing
     --
 
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        main = "ibl",
+        opts = require("plugins.indent-blankline").opts
+    },
+    --
     -- TODO: use treesitter texobjects indent instead?
     { "michaeljsmith/vim-indent-object" },
-    -- Readline style insertion
-    {
-        "tpope/vim-rsi",
-        keys = { ":", "/", "?" },
-    },
-    -- handle line and column numbers in file names, eg: file.txt:10 or file.txt:10:5
-    { "kopischke/vim-fetch" },
 
     -- Additional text objects
     -- Provides:
@@ -649,8 +657,23 @@ require("lazy").setup({
     -- ilX alX AlX IlX for previous (last) object
     -- ia aa Ia Aa for arguments; works with nX/lX as well
     { "wellle/targets.vim" },
+
+    --
+    -- 96_misc
+    --
+
+    -- Readline style insertion
+    {
+        "tpope/vim-rsi",
+        keys = { ":", "/", "?" },
+    },
+
+    -- handle line and column numbers in file names, eg: file.txt:10 or file.txt:10:5
+    { "kopischke/vim-fetch" },
+
     -- Heuristically set buffer options
     { "tpope/vim-sleuth" },
+
     -- ultra fold
     {
         "kevinhwang91/nvim-ufo",
@@ -663,6 +686,14 @@ require("lazy").setup({
         "jaimecgomezz/here.term",
         opts = {}
     },
+
+    --
+    -- 97_to_remove
+    --
+
+    --
+    -- 98_evaluating
+    --
 
 
     -- 99_end
