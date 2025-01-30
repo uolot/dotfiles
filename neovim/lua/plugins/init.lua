@@ -155,7 +155,7 @@ require("lazy").setup({
         },
     },
     -- TODO: Review this
-    { "RishabhRD/popfix" },
+    -- { "RishabhRD/popfix" },
     { "RishabhRD/nvim-lsputils" },
     { "onsails/lspkind-nvim" },
     {
