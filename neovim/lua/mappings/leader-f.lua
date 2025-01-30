@@ -16,25 +16,25 @@ local function telescope_search_git_root()
     telescope_builtin.find_files({ cwd = git_root })
 end
 
-local function telescope_find_all()
-    telescope_builtin.find_files({ hidden = true, no_ignore = true })
+local function find_all_files()
+    Snacks.picker.files({ hidden = true, ignored = true })
 end
 
-local function telescope_find_hidden()
-    telescope_builtin.find_files({ hidden = true, no_ignore = false })
+local function find_hidden_files()
+    Snacks.picker.files({ hidden = true, ignored = false })
 end
 
 wk.add({
     mode = "n",
     { "<Leader>f",  group = "+files" },
     -- Telescope
-    { "<Leader>ff", telescope_builtin.find_files, desc = "Find files" },
-    { "<Leader>fg", telescope_builtin.git_status, desc = "Find modified git files" },
-    { "<Leader>fh", telescope_find_hidden,        desc = "Find hidden files" },
-    { "<Leader>fa", telescope_find_all,           desc = "Find all files" },
-    { "<Leader>fo", telescope_builtin.oldfiles,   desc = "Find recent files" },
-    { "<Leader>fp", telescope_search_git_root,    desc = "Find files in git root" },
+    { "<Leader>ff", Snacks.picker.files,      desc = "Find files" },
+    { "<Leader>fg", Snacks.picker.git_status, desc = "Find modified git files" },
+    { "<Leader>fh", find_hidden_files,        desc = "Find hidden files" },
+    { "<Leader>fa", find_all_files,           desc = "Find all files" },
+    { "<Leader>fo", Snacks.picker.recent,     desc = "Find recent files" },
+    { "<Leader>fp", Snacks.picker.git_files,  desc = "Find files in git root" },
     -- Mini files
-    { "<Leader>fc", mini_files_current,           desc = "mini.files: Show current file" },
-    { "<Leader>fm", mini_files_toggle,            desc = "mini.files: Open", },
+    { "<Leader>fc", mini_files_current,       desc = "mini.files: Show current file" },
+    { "<Leader>fm", mini_files_toggle,        desc = "mini.files: Open", },
 })

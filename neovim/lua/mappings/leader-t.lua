@@ -1,24 +1,20 @@
 local wk = require('which-key')
-local telescope = require('telescope.builtin')
-local undo_tree = require('telescope').extensions.undo
 local live_grep_args = require('telescope').extensions.live_grep_args
-
-local function grep_word()
-    telescope.grep_string({ word_match = '-w' })
-end
 
 wk.add({
     mode = "n",
     { "<Leader>t",  group = "Telescope" },
-    { "<Leader>ta", ':Ag ',                              desc = 'Ag',                       silent = false },
-    { "<Leader>tb", telescope.buffers,                   desc = 'Buffers' },
-    { "<Leader>td", '<Cmd>TodoTelescope<CR>',            desc = 'Todos' },
-    { "<Leader>te", telescope.emoji,                     desc = 'Emoji' },
-    { "<Leader>tg", grep_word,                           desc = 'Grep word under cursor' },
-    { "<Leader>tG", telescope.grep_string,               desc = 'Grep text under cursor' },
-    { "<Leader>tl", telescope.live_grep,                 desc = 'Live grep' },
-    { "<Leader>tL", live_grep_args.live_grep_args,       desc = 'Live grep args' },
-    { "<Leader>tr", telescope.resume,                    desc = 'Resume' },
-    { "<Leader>tu", undo_tree.undo,                      desc = 'Undo tree' },
-    { "<Leader>t/", telescope.current_buffer_fuzzy_find, desc = 'Current buffer fuzzy find' },
+    { "<Leader>ta", ':Ag ',                        desc = 'Ag',                       silent = false },
+    { "<Leader>tb", Snacks.picker.buffers,         desc = 'Buffers' },
+    { "<Leader>tc", Snacks.picker.command_history, desc = 'Command history' },
+    { "<Leader>td", Snacks.picker.todo_comments,   desc = 'Todos' },
+    { "<Leader>tg", Snacks.picker.grep_word,       desc = 'Grep word under cursor' },
+    { "<Leader>tl", Snacks.picker.grep,            desc = 'Live grep' },
+    { "<Leader>tL", live_grep_args.live_grep_args, desc = 'Live grep args' },
+    { "<Leader>tr", Snacks.picker.resume,          desc = 'Resume' },
+    { "<Leader>ts", Snacks.picker.search_history,  desc = 'Search history' },
+    { "<Leader>tt", Snacks.picker.smart,           desc = 'Smart' },
+    { "<Leader>tu", Snacks.picker.undo,            desc = 'Undo tree' },
+    { "<Leader>tz", Snacks.picker.zoxide,          desc = 'Zoxide' },
+    { "<Leader>t/", Snacks.picker.lines,           desc = 'Current buffer fuzzy find' },
 })

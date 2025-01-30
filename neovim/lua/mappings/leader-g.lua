@@ -12,11 +12,11 @@ local function go_to_definition()
 end
 
 local function lsp_references()
-    telescope.lsp_references({ fname_width = 70, trim_text = true })
+    Snacks.picker.lsp_references()
 end
 
 local function buffer_diagnostics()
-    telescope.diagnostics({ bufnr = 0 })
+    Snacks.picker.buffer_diagnostics()
 end
 
 local function next_usage()
@@ -31,24 +31,24 @@ local buf_lsp = vim.lsp.buf
 
 wk.add({
     { "<Leader>g",  group = "+lsp" },
-    { "<Leader>ga", actions_preview.code_actions,            desc = "Code Action",                  mode = { "n", "v", "x" } },
-    { "<Leader>ge", vim.diagnostic.open_float,               desc = "Show current line diagnostics" },
-    { "<Leader>gd", go_to_definition,                        desc = "Go to definition" },
-    { "<Leader>gD", buf_lsp.declaration,                     desc = "Go to declaration" },
-    { "<Leader>gf", lsp_references,                          desc = "Find references" },
-    { "<Leader>gh", buf_lsp.hover,                           desc = "Hover" },
-    { "<Leader>gi", telescope.lsp_incoming_calls,            desc = "Incoming calls" },
-    { "<Leader>gj", next_usage,                              desc = "Next usage" },
-    { "<Leader>gk", previous_usage,                          desc = "Previous usage" },
-    { "<Leader>gm", buf_lsp.implementation,                  desc = "Go to implementation" },
-    { "<Leader>go", telescope.lsp_outgoing_calls,            desc = "Outgoing calls" },
-    { "<Leader>gr", buf_lsp.rename,                          desc = "Rename" },
-    { "<Leader>gR", ":IncRename <C-r><C-w>",                 desc = "Inc rename" },
-    { "<Leader>gs", telescope.lsp_document_symbols,          desc = "Document symbols" },
-    { "<Leader>gS", telescope.lsp_dynamic_workspace_symbols, desc = "Workspace symbols" },
-    { "<Leader>gt", buf_lsp.type_definition,                 desc = "Go to type definition" },
-    { "<Leader>gx", buffer_diagnostics,                      desc = "Buffer diagnostics" },
-    { "<Leader>gX", telescope.diagnostics,                   desc = "All buffers diagnostics" },
+    { "<Leader>ga", actions_preview.code_actions,        desc = "Code Action",                  mode = { "n", "v", "x" } },
+    { "<Leader>ge", vim.diagnostic.open_float,           desc = "Show current line diagnostics" },
+    { "<Leader>gd", go_to_definition,                    desc = "Go to definition" },
+    { "<Leader>gD", buf_lsp.declaration,                 desc = "Go to declaration" },
+    { "<Leader>gf", lsp_references,                      desc = "Find references" },
+    { "<Leader>gh", buf_lsp.hover,                       desc = "Hover" },
+    { "<Leader>gi", telescope.lsp_incoming_calls,        desc = "Incoming calls" },
+    { "<Leader>gj", next_usage,                          desc = "Next usage" },
+    { "<Leader>gk", previous_usage,                      desc = "Previous usage" },
+    { "<Leader>gm", buf_lsp.implementation,              desc = "Go to implementation" },
+    { "<Leader>go", telescope.lsp_outgoing_calls,        desc = "Outgoing calls" },
+    { "<Leader>gr", buf_lsp.rename,                      desc = "Rename" },
+    { "<Leader>gR", ":IncRename <C-r><C-w>",             desc = "Inc rename" },
+    { "<Leader>gs", Snacks.picker.lsp_symbols,           desc = "Document symbols" },
+    { "<Leader>gS", Snacks.picker.lsp_workspace_symbols, desc = "Workspace symbols" },
+    { "<Leader>gt", buf_lsp.type_definition,             desc = "Go to type definition" },
+    { "<Leader>gx", Snacks.picker.diagnostics_buffer,    desc = "Buffer diagnostics" },
+    { "<Leader>gX", Snacks.picker.diagnostics,           desc = "All buffers diagnostics" },
     {
         { "<Leader>gw",  group = "Workspace" },
         { "<Leader>gwa", buf_lsp.add_workspace_folder,    desc = "Add workspace folder" },
