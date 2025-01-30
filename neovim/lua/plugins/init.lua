@@ -694,6 +694,10 @@ require("lazy").setup({
     --
     -- 98_evaluating
     --
+    {
+        'nullromo/go-up.nvim',
+        config = true,
+    },
 
 
     -- 99_end
