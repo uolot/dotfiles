@@ -27,16 +27,13 @@ local dependencies = {
 }
 
 local opts = function(_, opts)
-    local default_opts = {
-        popup_border_style = "rounded",
-        sources = {
-            'filesystem',
-            'git_status',
-            'document_symbols',
-            'buffers',
-        },
+    opts.popup_border_style = "rounded"
+    opts.sources = {
+        'filesystem',
+        'git_status',
+        'document_symbols',
+        'buffers',
     }
-    opts = vim.tbl_extend('force', default_opts, opts or {})
 
     local function on_move(data)
         Snacks.rename.on_rename_file(data.source, data.destination)
