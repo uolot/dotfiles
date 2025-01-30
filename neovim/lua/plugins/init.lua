@@ -261,14 +261,6 @@ require("lazy").setup({
         },
     },
 
-    {
-        -- TODO: replace with Snacks.notifier? https://github.com/folke/snacks.nvim/blob/main/docs/notifier.md
-        "rcarriga/nvim-notify",
-        config = function()
-            vim.notify = require("notify")
-        end,
-    },
-
     --
     -- 6_colors_and_highlighting
     --
