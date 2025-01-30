@@ -92,13 +92,6 @@ wk.add({
       { "]o", '<Cmd>AerialNext<CR>', desc = "Next symbol" },
     },
   },
-}, {
-  mode = "x",
-  noremap = true,
-  silent = true,
-  { "<", "<gv",        desc = "Indent left" },
-  { ">", ">gv",        desc = "Indent right" },
-  { ".", ":norm.<CR>", desc = "Make dot work in visual" },
 })
 
 require("mappings.g")
@@ -123,3 +116,6 @@ require("mappings.ft.markdown")
 -- jest
 vim.cmd([[nnoremap <silent> [j ?^\s*\<\(it\\|test\\|describe\\|beforeEach\\|afterEach\\|beforeAll\\|afterAll\)\><CR>]])
 vim.cmd([[nnoremap <silent> ]j /^\s*\<\(it\\|test\\|describe\\|beforeEach\\|afterEach\\|beforeAll\\|afterAll\)\><CR>]])
+
+vim.cmd([[vnoremap <silent> < <gv]])
+vim.cmd([[vnoremap <silent> > >gv]])
