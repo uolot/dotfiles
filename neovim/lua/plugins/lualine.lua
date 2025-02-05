@@ -22,6 +22,8 @@ local opts = {
         lualine_x = {
         },
         lualine_y = {
+            'progress',
+            'location',
         },
         lualine_z = {
             'filetype'
