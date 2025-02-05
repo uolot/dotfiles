@@ -18,4 +18,9 @@ wk.add({
     { "<localleader>h",  "<Cmd>tabprev<CR>",    desc = "Previous tab" },
     { "<localleader>qq", "<Cmd>cclose<CR>",     desc = "Close quickfix window" },
     { "<localleader>qo", "<Cmd>copen<CR>",      desc = "Open quickfix window" },
+    { "<localleader>p",  '"+p',                 desc = "Paste from system clipboard" },
+    {
+        mode = { "n", "v" },
+        { "<localleader>y", '"+y', desc = "Yank to system clipboard" },
+    },
 })
