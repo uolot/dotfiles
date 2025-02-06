@@ -84,8 +84,8 @@ p = 2 # personal
 q = 'sidecar' # temp 3
 t = 1 # tasks
 w = 2 # work
-x = 2 # temp 2
-z = 1 # temp 1
+x = 1 # temp 1
+z = 2 # temp 2
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
