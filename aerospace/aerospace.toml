@@ -207,6 +207,16 @@ h = ['move left', 'mode main']
 j = ['move down', 'mode main']
 k = ['move up', 'mode main']
 l = ['move right', 'mode main']
+n = [
+    'move-workspace-to-monitor --wrap-around next',
+    'exec-and-forget killall sketchybar',
+    'mode main'
+]
+p = [
+    'move-workspace-to-monitor --wrap-around prev',
+    'exec-and-forget killall sketchybar',
+    'mode main'
+]
 
 q = 'mode main'
 esc = 'mode main'
