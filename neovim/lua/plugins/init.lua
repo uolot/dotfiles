@@ -68,6 +68,7 @@ require("lazy").setup({
         opts = {
             bigfile = { enabled = true },
             dashboard = {
+                enabled = false,
                 sections = {
                     { section = "header" },
                     { section = "startup", padding = 1 },
