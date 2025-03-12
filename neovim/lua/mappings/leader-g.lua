@@ -15,10 +15,6 @@ local function lsp_references()
     Snacks.picker.lsp_references()
 end
 
-local function buffer_diagnostics()
-    Snacks.picker.buffer_diagnostics()
-end
-
 local function next_usage()
     snacks.words.jump(1, true)
 end
