@@ -24,11 +24,25 @@ local function find_hidden_files()
     Snacks.picker.files({ hidden = true, ignored = false })
 end
 
+local function calculate_file_truncate_width(self)
+    local width = self.list.win:size().width
+    return width - 6
+end
+
 wk.add({
     mode = "n",
     { "<Leader>f",  group = "+files" },
     -- Telescope
-    { "<Leader>ff", Snacks.picker.files,      desc = "Find files" },
+    {
+        "<Leader>ff",
+        function()
+            Snacks.picker.files({
+                -- formatters = { file = { truncate = calculate_file_truncate_width(self) } },
+                formatters = { file = { truncate = 100 } },
+            })
+        end,
+        desc = "Find files"
+    },
     { "<Leader>fg", Snacks.picker.git_status, desc = "Find modified git files" },
     { "<Leader>fh", find_hidden_files,        desc = "Find hidden files" },
     { "<Leader>fa", find_all_files,           desc = "Find all files" },
