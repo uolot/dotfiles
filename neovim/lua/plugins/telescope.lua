@@ -2,15 +2,12 @@ local dependencies = {
     { "nvim-lua/plenary.nvim",                   lazy = true },
     { "kelly-lin/telescope-ag",                  lazy = true },
     { "nvim-telescope/telescope-ui-select.nvim", lazy = true },
-    { "debugloop/telescope-undo.nvim",           lazy = true },
 }
 
 local function config()
     local telescope = require('telescope')
     local actions = require('telescope.actions')
     local themes = require('telescope.themes')
-
-    local telescope_undo_actions = require('telescope-undo.actions')
 
     telescope.setup {
         defaults = {
@@ -57,27 +54,11 @@ local function config()
             ['ui-select'] = {
                 themes.get_dropdown {}
             },
-            undo = {
-                side_by_side = true,
-                layout_strategy = "vertical",
-                layout_config = {
-                    preview_height = 0.7,
-                },
-                mappings = {
-                    i = {
-                        ["<cr>"] = telescope_undo_actions.restore,
-                        ["<C-cr>"] = telescope_undo_actions.yank_additions,
-                        ["<S-cr>"] = telescope_undo_actions.yank_deletions,
-                    },
-                    n = {},
-                },
-            },
         },
     }
 
     telescope.load_extension('ag')
     telescope.load_extension('ui-select')
-    telescope.load_extension("undo")
 end
 
 return { config = config, dependencies = dependencies }
