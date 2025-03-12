@@ -1,9 +1,8 @@
 local dependencies = {
-    { "nvim-lua/plenary.nvim",                        lazy = true },
-    { "kelly-lin/telescope-ag",                       lazy = true },
-    { "nvim-telescope/telescope-ui-select.nvim",      lazy = true },
-    { "nvim-telescope/telescope-live-grep-args.nvim", lazy = true },
-    { "debugloop/telescope-undo.nvim",                lazy = true },
+    { "nvim-lua/plenary.nvim",                   lazy = true },
+    { "kelly-lin/telescope-ag",                  lazy = true },
+    { "nvim-telescope/telescope-ui-select.nvim", lazy = true },
+    { "debugloop/telescope-undo.nvim",           lazy = true },
 }
 
 local function config()
@@ -11,7 +10,6 @@ local function config()
     local actions = require('telescope.actions')
     local themes = require('telescope.themes')
 
-    local live_grep_args_actions = require('telescope-live-grep-args.actions')
     local telescope_undo_actions = require('telescope-undo.actions')
 
     telescope.setup {
@@ -74,23 +72,11 @@ local function config()
                     n = {},
                 },
             },
-            live_grep_args = {
-                auto_quoting = true,
-                mappings = {
-                    i = {
-                        ["<C-k>"] = live_grep_args_actions.quote_prompt(),
-                        ["<C-i>"] = live_grep_args_actions.quote_prompt({ postfix = " --iglob " }),
-                        -- freeze the current list and start a fuzzy search in the frozen list
-                        ["<C-r>"] = actions.to_fuzzy_refine,
-                    },
-                },
-            },
         },
     }
 
     telescope.load_extension('ag')
     telescope.load_extension('ui-select')
-    telescope.load_extension("live_grep_args")
     telescope.load_extension("undo")
 end
 
