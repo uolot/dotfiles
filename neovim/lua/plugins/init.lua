@@ -334,14 +334,6 @@ require("lazy").setup({
     --
 
     {
-        "nvim-neo-tree/neo-tree.nvim",
-        branch = "v3.x",
-        cmd = "Neotree",
-        dependencies = require("plugins.neo-tree").dependencies,
-        opts = require("plugins.neo-tree").opts,
-    },
-
-    {
         'echasnovski/mini.files',
         ---@diagnostic disable-next-line: assign-type-mismatch
         version = false,
