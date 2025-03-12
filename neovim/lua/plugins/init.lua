@@ -529,20 +529,19 @@ require("lazy").setup({
         "aznhe21/actions-preview.nvim",
         config = function()
             require('actions-preview').setup({
+                backend = { "snacks" },
                 highlight_command = {
                     require("actions-preview.highlight").delta()
                 },
-                telescope = {
-                    layout_strategy = "vertical",
-                    layout_config = {
-                        width = 0.6,
-                        height = 0.6,
-                        preview_cutoff = 20,
-                        -- preview_height = 0.7,
-                        preview_height = function(_, _, max_lines)
-                            return max_lines - 15
-                        end,
-                    },
+                snacks = {
+                    -- layout = { preset = "default" },
+                    -- layout = { preset = "vscode" },
+                    -- layout = { preset = "vertical" },
+                    -- layout = { preset = "ivy", layout = { position = "top" } },
+                    -- layout = { preset = "ivy", layout = { position = "bottom" } },
+                    -- layout = { preset = "select" },
+                    -- layout = { preset = "sidebar", layout = { position = "right" } },
+                    layout = { preset = "sidebar", layout = { position = "left" } },
                 },
             })
         end
