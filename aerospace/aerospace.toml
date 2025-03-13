@@ -120,6 +120,16 @@ cmd-alt-ctrl-shift-h = 'focus left'
 cmd-alt-ctrl-shift-j = 'focus down'
 cmd-alt-ctrl-shift-k = 'focus up'
 cmd-alt-ctrl-shift-l = 'focus right'
+cmd-alt-ctrl-shift-left = 'focus left'
+cmd-alt-ctrl-shift-down = 'focus down'
+cmd-alt-ctrl-shift-up = 'focus up'
+cmd-alt-ctrl-shift-right = 'focus right'
+
+# See: https://nikitabobko.github.io/AeroSpace/commands#move
+alt-ctrl-shift-left = 'move left'
+alt-ctrl-shift-down = 'move down'
+alt-ctrl-shift-up = 'move up'
+alt-ctrl-shift-right = 'move right'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#join-with
 alt-ctrl-shift-h = 'join-with left'
@@ -194,11 +204,6 @@ s = [
 # s = ['layout sticky tiling', 'mode main'] # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
 # backspace = ['close-all-windows-but-current', 'mode main']
 
-alt-ctrl-shift-h = ['join-with left', 'mode main']
-alt-ctrl-shift-j = ['join-with down', 'mode main']
-alt-ctrl-shift-k = ['join-with up', 'mode main']
-alt-ctrl-shift-l = ['join-with right', 'mode main']
-
 [mode.windows.binding]
 # b = ['balance-sizes', 'mode main'] # FIXME: why does this error out?
 f = ['flatten-workspace-tree', 'mode main'] # reset layout
@@ -214,6 +219,10 @@ n = [
 ]
 p = [
     'move-workspace-to-monitor --wrap-around prev',
+    'exec-and-forget killall sketchybar',
+    'mode main'
+]
+s = [
     'exec-and-forget killall sketchybar',
     'mode main'
 ]
