@@ -1,10 +1,14 @@
 # vi: filetype=gitconfig
 
+[branch]
+	sort = -committerdate
 [color]
 	ui = auto
 [color "diff"]
 	meta = white reverse
 	frag = cyan reverse
+[column]
+	ui = auto
 [commit]
 	verbose = true
 [core]
@@ -24,31 +28,50 @@
 	file-style = bold yellow ul
 	file-decoration-style = none
 [diff]
-	colorMoved = default
+	algorithm = histogram
+	colorMoved = plain
+	mnemonicPrefix = true
+	renames = true
 [fetch]
+	all = true
 	prune = true
+	pruneTags = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
 [help]
 	autoCorrect = prompt
+[init]
+	defaultBranch = main
 [interactive]
 	diffFilter = delta --color-only
 [log]
 	decorate = full
 [merge]
 	tool = vimdiff
-	conflictstyle = diff3
+	conflictstyle = zdiff3
 [mergetool]
 	prompt = false
 [pull]
 	ff = only
+	rebase = true
 [push]
+	autoSetupRemove = true
 	default = simple
 	followTags = true
 [rebase]
 	autoSquash = true
+	autoStash = true
+	updateRefs = true
 [rerere]
+	autoupdate = true
 	enabled = true
 [status]
 	showUntrackedFiles = all
+[tag]
+	sort = version:refname
 [user]
 	useconfigonly = true
 
@@ -77,8 +100,8 @@
 
 	p = push
 	pn = push --no-verify
-	pf = push --force
-	pfn = push --force --no-verify
+	pf = push --force-with-lease
+	pfn = push --force-with-lease --no-verify
 
 	st = status --short --branch
 	tst = st
