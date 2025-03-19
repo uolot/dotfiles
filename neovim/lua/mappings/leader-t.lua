@@ -6,6 +6,9 @@ local function grep_word()
         matcher = {
             ignorecase = false,
         },
+        formatters = {
+            file = { truncate = 100 },
+        },
     })
 end
 
