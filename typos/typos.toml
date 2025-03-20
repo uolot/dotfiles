@@ -2,6 +2,7 @@
 [default.extend-words]
 # _attributes = "_attributes"
 INH = "INH"
+enew = "enew"
+fo = "fo"
 iterm = "iterm"
 pn = "pn"
-enew = "enew"
