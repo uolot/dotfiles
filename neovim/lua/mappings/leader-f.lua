@@ -43,9 +43,10 @@ wk.add({
         end,
         desc = "Find files"
     },
+    { "<Leader>fa", find_all_files,           desc = "Find all files" },
+    { "<Leader>fe", Snacks.explorer.open,     desc = "Toggle explorer" },
     { "<Leader>fg", Snacks.picker.git_status, desc = "Find modified git files" },
     { "<Leader>fh", find_hidden_files,        desc = "Find hidden files" },
-    { "<Leader>fa", find_all_files,           desc = "Find all files" },
     { "<Leader>fo", Snacks.picker.recent,     desc = "Find recent files" },
     { "<Leader>fp", Snacks.picker.projects,   desc = "Find projects" },
     { "<Leader>fr", Snacks.picker.git_files,  desc = "Find files in git root" },
