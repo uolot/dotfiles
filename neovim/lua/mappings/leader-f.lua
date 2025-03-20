@@ -36,22 +36,25 @@ wk.add({
     {
         "<Leader>ff",
         function()
-            Snacks.picker.files({
-                -- formatters = { file = { truncate = calculate_file_truncate_width(self) } },
-                formatters = { file = { truncate = 100 } },
-            })
+            Snacks.picker.files({ formatters = { file = { truncate = 100 } } })
         end,
         desc = "Find files"
     },
-    { "<Leader>fa", find_all_files,           desc = "Find all files" },
-    { "<Leader>fe", Snacks.explorer.open,     desc = "Toggle explorer" },
-    { "<Leader>fg", Snacks.picker.git_status, desc = "Find modified git files" },
-    { "<Leader>fh", find_hidden_files,        desc = "Find hidden files" },
-    { "<Leader>fo", Snacks.picker.recent,     desc = "Find recent files" },
-    { "<Leader>fp", Snacks.picker.projects,   desc = "Find projects" },
-    { "<Leader>fr", Snacks.picker.git_files,  desc = "Find files in git root" },
-    { "<Leader>fz", Snacks.picker.zoxide,     desc = 'Zoxide' },
+    { "<Leader>fa", find_all_files,       desc = "Find all files" },
+    { "<Leader>fe", Snacks.explorer.open, desc = "Toggle explorer" },
+    {
+        "<Leader>fg",
+        function()
+            Snacks.picker.git_status({ formatters = { file = { truncate = 100 } } })
+        end,
+        desc = "Find modified git files",
+    },
+    { "<Leader>fh", find_hidden_files,       desc = "Find hidden files" },
+    { "<Leader>fo", Snacks.picker.recent,    desc = "Find recent files" },
+    { "<Leader>fp", Snacks.picker.projects,  desc = "Find projects" },
+    { "<Leader>fr", Snacks.picker.git_files, desc = "Find files in git root" },
+    { "<Leader>fz", Snacks.picker.zoxide,    desc = 'Zoxide' },
     -- Mini files
-    { "<Leader>fc", mini_files_current,       desc = "mini.files: Show current file" },
-    { "<Leader>fm", mini_files_toggle,        desc = "mini.files: Open", },
+    { "<Leader>fc", mini_files_current,      desc = "mini.files: Show current file" },
+    { "<Leader>fm", mini_files_toggle,       desc = "mini.files: Open", },
 })
