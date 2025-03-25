@@ -38,7 +38,11 @@ local function config()
     local lspkind = require('lspkind')
 
     require('copilot').setup({
-        suggestion = { enabled = false },
+        -- cmd = 'Copilot',
+        -- event = 'InsertEnter',
+        copilot_model = 'gpt-4o-copilot',
+        -- suggestion = { enabled = false },
+        suggestion = { enabled = true, auto_trigger = true },
         panel = { enabled = false },
         filetypes = {
             ['*'] = true,
@@ -174,7 +178,9 @@ local function config()
         formatting = formatting,
         view = {
             entries = {
+                -- name = 'custom',
                 follow_cursor = true,
+                vertical_positioning = 'below',
             },
         },
         sorting = sorting,

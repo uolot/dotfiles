@@ -64,9 +64,9 @@ end
 
 -- https://neovim.io/doc/user/diagnostic.html#vim.diagnostic.config()
 vim.diagnostic.config({
-    -- virtual_text = false,
     virtual_text = {
-        source = false,
+        -- source = false,
+        source = "if_many",
         prefix = '●',
         spacing = 1,
     },
@@ -76,8 +76,8 @@ vim.diagnostic.config({
     float = {
         header = '',
         border = "rounded",
-        source = true,
-        -- source = false,
+        -- source = true,
+        source = 'if_many',
         format = float_format,
     },
     signs = true,

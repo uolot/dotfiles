@@ -39,7 +39,8 @@ wk.add({
   { "<Leader>x",  group = "Toggles" },
   { "<Leader>xb", function() require("bamboo").toggle() end,                    desc = "Background" },
   { "<Leader>xd", toggle_diagnostic,                                            desc = "Diagnostics" },
-  { "<Leader>xi", toggle_inlay_hints,                                           desc = "Inlay hints" },
+  -- moved to lsp config
+  -- { "<Leader>xi", toggle_inlay_hints,                                           desc = "Inlay hints" },
   { "<Leader>xr", function() vim_opt_toggle("relativenumber", true, false) end, desc = "Relative number" },
   { "<Leader>xw", function() vim_opt_toggle("wrap", true, false) end,           desc = "Line wrap" },
 })
