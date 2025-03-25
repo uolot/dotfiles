@@ -31,7 +31,6 @@ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
 )
 
 local lsp = require('lsp-zero')
--- lsp.set_sign_icons()
 lsp.extend_lspconfig({
     set_lsp_keymaps = false,
     on_attach = on_lsp_attach,
@@ -81,25 +80,11 @@ require("mason-lspconfig").setup_handlers {
             },
         })
     end
-    -- ['tsserver'] = function()
-    --     lspconfig['tsserver'].setup({
-    --         on_attach = on_tsserver_attach,
-    --     })
-    -- end
-
-    -- Next, you can provide a dedicated handler for specific servers.
-    -- For example, a handler override for the `rust_analyzer`:
-    -- ["rust_analyzer"] = function ()
-    --     require("rust-tools").setup {}
-    -- end
 }
 
 -- adjust virtual text severity
 vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {
-        -- signs = {
-        --     severity_limit = 'Warning',
-        -- },
         virtual_text = {
             severity = { min = vim.diagnostic.severity.WARN },
         },
