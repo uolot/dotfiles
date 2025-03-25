@@ -16,17 +16,13 @@ local on_lsp_attach = function(client, buffer)
     end
 end
 
--- local enhanced_float_handler = require('config.enhanced_float_handler')
-
 -- LSP borders
--- vim.lsp.handlers["textDocument/signatureHelp"] = enhanced_float_handler(vim.lsp.with(
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
     vim.lsp.handlers.signature_help, {
         border = 'rounded'
     }
 )
 
--- vim.lsp.handlers["textDocument/hover"] = enhanced_float_handler(vim.lsp.with(
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
     vim.lsp.handlers.hover,
     {
