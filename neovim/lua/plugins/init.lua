@@ -521,9 +521,10 @@ require("lazy").setup({
                     -- layout = { preset = "vertical" },
                     -- layout = { preset = "ivy", layout = { position = "top" } },
                     -- layout = { preset = "ivy", layout = { position = "bottom" } },
+                    layout = { preset = "dropdown" },
                     -- layout = { preset = "select" },
                     -- layout = { preset = "sidebar", layout = { position = "right" } },
-                    layout = { preset = "sidebar", layout = { position = "left" } },
+                    -- layout = { preset = "sidebar", layout = { position = "left" } },
                 },
             })
         end
