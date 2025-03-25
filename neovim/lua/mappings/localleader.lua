@@ -26,11 +26,10 @@ wk.add({
     -- tab nav
     { "<localleader>l", "<Cmd>tabnext<CR>", desc = "Next tab" },
     { "<localleader>h", "<Cmd>tabprev<CR>", desc = "Previous tab" },
-    -- quickfix
+    -- quickfix & loclist
     {
-        { "<localleader>q",  group = "+quickfix" },
-        { "<localleader>qq", "<Cmd>cclose<CR>",  desc = "Close quickfix window" },
-        { "<localleader>qo", "<Cmd>copen<CR>",   desc = "Open quickfix window" },
+        { "<localleader>q", function() require('quicker').toggle() end,                  desc = "Toggle quickfix" },
+        { "<localleader>l", function() require('quicker').toggle({ loclist = true }) end, desc = "Toggle loclist" },
     },
     -- system clipboard
     { "<localleader>p",     '"+p', desc = "Paste from system clipboard below" },
