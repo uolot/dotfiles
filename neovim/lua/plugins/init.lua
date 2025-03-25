@@ -144,9 +144,6 @@ require("lazy").setup({
             automatic_installation = true,
         },
     },
-    -- TODO: Review this
-    -- { "RishabhRD/popfix" },
-    { "RishabhRD/nvim-lsputils" },
     { "onsails/lspkind-nvim" },
     -- Incremental LSP rename command based on Neovim's command-preview feature
     {

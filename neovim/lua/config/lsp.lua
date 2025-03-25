@@ -16,36 +16,6 @@ local on_lsp_attach = function(client, buffer)
     end
 end
 
-local lsputils_border_chars = {
-    TOP_LEFT = '┌',
-    TOP_RIGHT = '┐',
-    MID_HORIZONTAL = '─',
-    MID_VERTICAL = '│',
-    BOTTOM_LEFT = '└',
-    BOTTOM_RIGHT = '┘',
-}
-
-vim.g.lsp_utils_location_opts = {
-    preview = {
-        border = true,
-        border_chars = lsputils_border_chars,
-    }
-}
-
-vim.g.lsp_utils_symbols_opts = {
-    preview = {
-        border = true,
-        border_chars = lsputils_border_chars,
-    }
-}
-
-vim.g.lsp_utils_codeaction_opts = {
-    preview = {
-        border = true,
-        border_chars = lsputils_border_chars,
-    }
-}
-
 -- local enhanced_float_handler = require('config.enhanced_float_handler')
 
 -- LSP borders
