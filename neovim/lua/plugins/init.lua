@@ -28,6 +28,8 @@ local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 -- https://lazy.folke.io/installation
 -- https://lazy.folke.io/usage/structuring
 
+vim.loader.enable()
+
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
         "git",
