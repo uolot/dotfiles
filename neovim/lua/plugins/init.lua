@@ -586,8 +586,8 @@ require("lazy").setup({
         dependencies = { "MunifTanjim/nui.nvim" },
         opts = {
             keymaps = {
-                toggle = '<leader>Te',
-                go_to_definition = '<leader>Td',
+                toggle = '<leader>gE',
+                -- go_to_definition = '<leader>Td',
             }
         }
     },
