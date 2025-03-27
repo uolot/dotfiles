@@ -114,7 +114,6 @@ require("lazy").setup({
                 keyword = { range = 'full' }, -- or 'prefix'
                 accept = { auto_brackets = { enabled = false }, },
                 menu = {
-                    border = "rounded",
                     -- auto_show = false,
                     draw = {
                         columns = {
@@ -135,7 +134,6 @@ require("lazy").setup({
                 documentation = {
                     auto_show = true,
                     auto_show_delay_ms = 500,
-                    window = { border = "rounded" },
                 },
                 ghost_text = {
                     -- enabled = true,
@@ -144,7 +142,6 @@ require("lazy").setup({
             },
             signature = {
                 enabled = true,
-                window = { border = "rounded" },
             },
 
             -- Default list of enabled providers defined so that you can extend it
@@ -210,7 +207,6 @@ require("lazy").setup({
             window = {
                 layout = 'float',
                 relative = 'cursor',
-                border = 'rounded',
                 width = 0.6,
                 height = 0.4,
                 row = 1

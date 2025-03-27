@@ -12,24 +12,6 @@ local function close_floating()
   end
 end
 
-local function next_diagnostic()
-  vim.diagnostic.goto_next({ wrap = false })
-end
-
-local function prev_diagnostic()
-  vim.diagnostic.goto_prev({ wrap = false })
-end
-
-local function first_diagnostic()
-  vim.cmd([[norm G$]])
-  vim.diagnostic.goto_next({ wrap = true })
-end
-
-local function last_diagnostic()
-  vim.cmd([[norm gg0]])
-  vim.diagnostic.goto_prev({ wrap = true })
-end
-
 local function next_usage()
   snacks.words.jump(1, true)
 end
@@ -62,39 +44,23 @@ wk.add({
   {
     noremap = true,
     silent = true,
-    { -- jump to diagnostic
-      { "]d", next_diagnostic,  desc = "Go to next diagnostic" },
-      { "[d", prev_diagnostic,  desc = "Go to previous diagnostic" },
-      { "]D", last_diagnostic,  desc = "Go to last diagnostic" },
-      { "[D", first_diagnostic, desc = "Go to first diagnostic" },
-    },
     { -- search
       { "\\c", "/\\c",                              desc = "Case insensitive search", silent = false },
       { "\\s", "/\\<\\><left><left>",               desc = "Search for word",         silent = false },
       { "n",   "(v:searchforward ? 'nzz' : 'Nzz')", expr = true },
       { "N",   "(v:searchforward ? 'Nzz' : 'nzz')", expr = true },
     },
-    { -- quickfix
-      { "[q", "<Cmd>cprev<CR>",  desc = "Previous quickfix" },
-      { "]q", "<Cmd>cnext<CR>",  desc = "Next quickfix" },
-      { "[Q", "<Cmd>cfirst<CR>", desc = "First quickfix" },
-      { "]Q", "<Cmd>clast<CR>",  desc = "Last quickfix" },
-    },
     { -- todo comments
       { "[t", require("todo-comments").jump_prev, desc = "Previous todo comment" },
       { "]t", require("todo-comments").jump_next, desc = "Next todo comment" },
-    },
-    { -- buffers
-      { "[b", "<Cmd>bp<CR>", desc = "Previous buffer" },
-      { "]b", "<Cmd>bn<CR>", desc = "Next buffer" },
     },
     { -- lsp next/prev
       { "[n", previous_usage, desc = "Previous usage" },
       { "]n", next_usage,     desc = "Next usage" },
     },
     { -- aerial outline symbols
-      { "[o", '<Cmd>AerialPrev<CR>', desc = "Previous symbol" },
-      { "]o", '<Cmd>AerialNext<CR>', desc = "Next symbol" },
+      { "[s", '<Cmd>AerialPrev<CR>', desc = "Previous symbol" },
+      { "]s", '<Cmd>AerialNext<CR>', desc = "Next symbol" },
     },
     { -- treesitter scope from snacks
       { "[%", Snacks.scope.jump,                                   desc = "Scope top" },

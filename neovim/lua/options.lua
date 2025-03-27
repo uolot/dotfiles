@@ -52,5 +52,6 @@ vim.o.updatetime = 100
 vim.o.wildignorecase = true
 -- vim.o.wildmode = { 'list:longest', 'full' }
 vim.o.wildmode = [[list:longest,full]]
+vim.o.winborder = 'rounded'
 vim.o.wrap = false
 vim.o.wrapscan = false

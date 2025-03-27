@@ -144,20 +144,6 @@ local function config()
     local ensure_installed = vim.tbl_keys(servers or {})
     -- vim.list_extend(ensure_installed, { "stylua" })
 
-    -- LSP borders
-    vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
-        vim.lsp.handlers.signature_help, {
-            border = 'rounded'
-        }
-    )
-
-    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-        vim.lsp.handlers.hover,
-        {
-            border = "rounded"
-        }
-    )
-
     require('mason-lspconfig').setup({
         ensure_installed = ensure_installed,
         automatic_installation = false,

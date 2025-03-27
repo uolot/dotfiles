@@ -50,7 +50,7 @@ local function config()
             null_ls.builtins.diagnostics.trail_space.with({
                 disabled_filetypes = { 'git', 'gitcommit', 'NvimTree', 'markdown', 'dbout' } }),
         },
-        border = 'rounded',
+        border = 'rounded', -- TODO: remove?
         diagnostics_format = "#{s}: #{m} (#{c})"
     })
 end

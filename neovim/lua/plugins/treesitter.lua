@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-fields
 local function config()
     require('nvim-treesitter.configs').setup({
         -- ensure_installed = "all",
@@ -118,12 +119,12 @@ local function config()
                 enable = true,
                 set_jumps = true,
                 goto_next_start = {
-                    ["]l"] = "@class.outer",
+                    ["]c"] = "@class.outer",
                     ["]f"] = "@function.outer",
                     ["]a"] = "@parameter.inner",
                 },
                 goto_previous_start = {
-                    ["[l"] = "@class.outer",
+                    ["[c"] = "@class.outer",
                     ["[f"] = "@function.outer",
                     ["[a"] = "@parameter.inner",
                 },
@@ -145,7 +146,6 @@ local function config()
             },
             lsp_interop = {
                 enable = true,
-                border = 'rounded',
                 floating_preview_opts = {},
                 peek_definition_code = {
                     ['<leader>gp'] = '@function.outer',
