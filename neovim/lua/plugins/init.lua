@@ -591,6 +591,7 @@ require("lazy").setup({
             }
         }
     },
+    { 'dmmulroy/ts-error-translator.nvim' },
 
     --
     -- 15_formatting

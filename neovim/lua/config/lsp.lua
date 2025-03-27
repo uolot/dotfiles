@@ -163,44 +163,13 @@ local function config()
     end
 
     require("typescript-tools").setup({
-        on_attach = on_tsserver_attach,
         handlers = {
-            ["textDocument/publishDiagnostics"] = function(
-                _,
-                result,
-                ctx,
-                config
-            )
-                if result.diagnostics == nil then
-                    return
-                end
-
-                -- ignore some tsserver diagnostics
-                local idx = 1
-                while idx <= #result.diagnostics do
-                    local entry = result.diagnostics[idx]
-
-                    local formatter = require('format-ts-errors')[entry.code]
-                    entry.message = formatter and formatter(entry.message) or entry.message
-                    -- entry.message = require('better-ts-errors.parser').prettify_string(entry.message)
-
-                    -- codes: https://github.com/microsoft/TypeScript/blob/main/src/compiler/diagnosticMessages.json
-                    if entry.code == 80001 then
-                        -- { message = "File is a CommonJS module; it may be converted to an ES module.", }
-                        table.remove(result.diagnostics, idx)
-                    else
-                        idx = idx + 1
-                    end
-                end
-
-                vim.lsp.diagnostic.on_publish_diagnostics(
-                    _,
-                    result,
-                    ctx,
-                    config
-                )
+            ["textDocument/publishDiagnostics"] = function(err, result, ctx)
+                require("ts-error-translator").translate_diagnostics(err, result, ctx)
+                vim.lsp.diagnostic.on_publish_diagnostics(err, result, ctx)
             end,
         },
+        on_attach = on_tsserver_attach,
         settings = {
             -- TODO: temporary
             tsserver_logs = "normal",
@@ -221,7 +190,7 @@ local function config()
             -- specify a list of plugins to load by tsserver, e.g., for support `styled-components`
             -- (see 💅 `styled-components` support section)
             tsserver_plugins = {
-                "@monodon/typescript-nx-imports-plugin",
+                -- "@monodon/typescript-nx-imports-plugin",
             },
             -- this value is passed to: https://nodejs.org/api/cli.html#--max-old-space-sizesize-in-megabytes
             -- memory limit in megabytes or "auto"(basically no limit)
