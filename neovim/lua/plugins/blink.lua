@@ -1,6 +1,17 @@
+-- TOC:
+-- appearance
+-- sources
+
 local dependencies = {
     'rafamadriz/friendly-snippets',
     'disrupted/blink-cmp-conventional-commits',
+    {
+        "fang2hou/blink-copilot",
+        dependencies = { "zbirenbaum/copilot.lua" },
+        opts = {
+            kind_icon = "",
+        },
+    },
 }
 
 ---@module 'blink.cmp'
@@ -23,8 +34,10 @@ local opts = {
 
     appearance = {
         -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
-        -- Adjusts spacing to ensure icons are aligned
-        nerd_font_variant = 'mono'
+        nerd_font_variant = 'mono',
+        kind_icons = {
+            -- Copilot = "",
+        },
     },
 
     completion = {
@@ -71,6 +84,8 @@ local opts = {
             'buffer',
             'path',
             'snippets',
+            'copilot',
+            'omni',
         },
         providers = {
             path = {
@@ -86,7 +101,13 @@ local opts = {
                 end,
                 ---@module 'blink-cmp-conventional-commits'
                 ---@type blink-cmp-conventional-commits.Options
-                opts = {},     -- none so far
+                opts = {}, -- none so far
+            },
+            copilot = {
+                name = "Copilot",
+                module = "blink-copilot",
+                score_offset = 2,
+                async = true,
             },
         },
     },
@@ -103,7 +124,7 @@ local opts = {
                 if (a.client_name == nil or b.client_name == nil) or (a.client_name == b.client_name) then
                     return
                 end
-                return b.client_name == 'emmet_ls'
+                return b.client_name == 'emmet_ls' or b.client_name == 'copilot'
             end,
             -- default sorts
             'score',
