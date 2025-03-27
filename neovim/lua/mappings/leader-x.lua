@@ -22,25 +22,21 @@ local function toggle_diagnostic()
   end
 end
 
-local function toggle_inlay_hints()
-  local enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = 0 })
-  vim.lsp.inlay_hint.enable(not enabled, { bufnr = 0 }) -- try getting bufnr from `buffer` if this doesn't work
-
-  if enabled then
-    vim.notify("Disabled inlay hints")
+local function toggle_formatting()
+  if vim.b.disable_autoformat then
+    vim.b.disable_autoformat = false
+    vim.notify("Enabled buffer formatting")
   else
-    vim.notify("Enabled inlay hints")
+    vim.b.disable_autoformat = true
+    vim.notify("Disabled buffer formatting")
   end
 end
-
--- b = { function() vim_opt_toggle("background", "light", "dark") end, "Background" },
 
 wk.add({
   { "<Leader>x",  group = "Toggles" },
   { "<Leader>xb", function() require("bamboo").toggle() end,                    desc = "Background" },
   { "<Leader>xd", toggle_diagnostic,                                            desc = "Diagnostics" },
-  -- moved to lsp config
-  -- { "<Leader>xi", toggle_inlay_hints,                                           desc = "Inlay hints" },
+  { "<Leader>xf", toggle_formatting,                                            desc = "Formatting" },
   { "<Leader>xr", function() vim_opt_toggle("relativenumber", true, false) end, desc = "Relative number" },
   { "<Leader>xw", function() vim_opt_toggle("wrap", true, false) end,           desc = "Line wrap" },
 })

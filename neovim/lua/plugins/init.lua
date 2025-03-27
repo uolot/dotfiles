@@ -598,7 +598,13 @@ require("lazy").setup({
     --
     {
         "elentok/format-on-save.nvim",
+        enabled = false,
         config = require("plugins.format-on-save").config,
+    },
+    {
+        'stevearc/conform.nvim',
+        opts = require('plugins.conform').opts,
+        init = require('plugins.conform').init,
     },
 
     --
