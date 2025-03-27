@@ -7,6 +7,7 @@
   "bamboo.nvim": { "branch": "master", "commit": "97124a0b81f886abc0d666ebec512b92425d67b6" },
   "better-ts-errors.nvim": { "branch": "main", "commit": "d57a7794b271e1a0010d0328e5d3f18e20f1face" },
   "blame.nvim": { "branch": "main", "commit": "39bb4cda9e658d053a43919b10ca52c0a4d738e1" },
+  "blink-cmp-conventional-commits": { "branch": "main", "commit": "e7ce3ddcc6d4044067d6d77ab41d480202e814ad" },
   "blink.cmp": { "branch": "main", "commit": "49f211fe5d729df53df4c042d7c3464cf47d199e" },
   "bufjump.nvim": { "branch": "master", "commit": "ae2728a77defbd27e9e5ef64c854fb0813ffba01" },
   "committia.vim": { "branch": "master", "commit": "c8c0f255e8090ed90dd9d5dd2e8672994f8e3671" },

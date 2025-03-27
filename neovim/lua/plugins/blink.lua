@@ -1,4 +1,7 @@
-local dependencies = { 'rafamadriz/friendly-snippets' }
+local dependencies = {
+    'rafamadriz/friendly-snippets',
+    'disrupted/blink-cmp-conventional-commits',
+}
 
 ---@module 'blink.cmp'
 ---@type blink.cmp.Config
@@ -62,12 +65,28 @@ local opts = {
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
     sources = {
-        default = { 'lsp', 'path', 'snippets', 'buffer' },
+        default = {
+            'conventional_commits',
+            'lsp',
+            'buffer',
+            'path',
+            'snippets',
+        },
         providers = {
             path = {
                 opts = {
                     get_cwd = function(_) return vim.fn.getcwd() end,
                 },
+            },
+            conventional_commits = {
+                name = 'Conventional Commits',
+                module = 'blink-cmp-conventional-commits',
+                enabled = function()
+                    return vim.bo.filetype == 'gitcommit'
+                end,
+                ---@module 'blink-cmp-conventional-commits'
+                ---@type blink-cmp-conventional-commits.Options
+                opts = {},     -- none so far
             },
         },
     },
