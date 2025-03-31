@@ -133,6 +133,7 @@ local function config()
         marksman = {},
         ruff = {},
         sqlls = {},
+        svelte = {},
         tailwindcss = {},
         taplo = {},
         typos_lsp = {},
