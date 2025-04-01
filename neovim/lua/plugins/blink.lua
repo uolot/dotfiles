@@ -36,12 +36,13 @@ local opts = {
         -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
         nerd_font_variant = 'mono',
         kind_icons = {
-            -- Copilot = "",
         },
     },
 
     completion = {
         keyword = { range = 'full' }, -- or 'prefix'
+        -- Don't select by default, auto insert on selection
+        list = { selection = { preselect = false, auto_insert = true } },
         accept = { auto_brackets = { enabled = false }, },
         menu = {
             -- auto_show = false,
