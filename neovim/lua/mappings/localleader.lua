@@ -13,6 +13,7 @@ wk.add({
         { "<localleader>b",  group = "+bufs" },
         { "<localleader>bn", "<Cmd>enew<CR>",       desc = "Open new buffer" },
         { "<localleader>bd", delete_current_buffer, desc = "Delete current buffer" },
+        { "<localleader>bD", "<Cmd>!rm %<CR>",      desc = "Delete current file" },
     },
     -- tabs
     {
