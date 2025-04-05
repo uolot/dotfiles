@@ -28,8 +28,8 @@ wk.add({
     { "<localleader>h", "<Cmd>tabprev<CR>", desc = "Previous tab" },
     -- quickfix & loclist
     {
-        { "<localleader>q", function() require('quicker').toggle() end,                  desc = "Toggle quickfix" },
-        { "<localleader>l", function() require('quicker').toggle({ loclist = true }) end, desc = "Toggle loclist" },
+        { "<localleader>q", function() require('quicker').toggle() end,                   desc = "Toggle quickfix" },
+        { "<localleader>Q", function() require('quicker').toggle({ loclist = true }) end, desc = "Toggle loclist" },
     },
     -- system clipboard
     { "<localleader>p",     '"+p', desc = "Paste from system clipboard below" },
