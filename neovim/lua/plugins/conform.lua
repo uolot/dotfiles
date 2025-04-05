@@ -6,6 +6,8 @@ local opts = {
         json = { "prettierd" },
         jsonc = { "prettierd" },
         markdown = { "prettierd" },
+        javascript = { "prettierd" },
+        javascriptreact = { "prettierd" },
         typescript = { "prettierd" },
         typescriptreact = { "prettierd" },
     },
