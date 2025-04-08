@@ -13,19 +13,21 @@ after-login-command = []
 # 'after-startup-command' is run after 'after-login-command'
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
-    # JankyBorders has a built-in detection of already running process,
-    # so it won't be run twice on AeroSpace restart
-    # 'exec-and-forget /opt/homebrew/opt/borders/bin/borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0',
-    'exec-and-forget /opt/homebrew/opt/borders/bin/borders active_color=0xffffa500 inactive_color=0x44444444 width=8',
-    # Run Sketchybar together with AeroSpace
-    # sketchbar has a built-in detection of already running process,
-    # so it won't be run twice on AeroSpace restart
-    'exec-and-forget /opt/homebrew/opt/sketchybar/bin/sketchybar'
+  # JankyBorders has a built-in detection of already running process,
+  # so it won't be run twice on AeroSpace restart
+  # 'exec-and-forget /opt/homebrew/opt/borders/bin/borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0',
+  'exec-and-forget /opt/homebrew/opt/borders/bin/borders active_color=0xffffa500 inactive_color=0x44444444 width=8',
+  # Run Sketchybar together with AeroSpace
+  # sketchbar has a built-in detection of already running process,
+  # so it won't be run twice on AeroSpace restart
+  'exec-and-forget /opt/homebrew/opt/sketchybar/bin/sketchybar',
 ]
 
 # Notify Sketchybar about workspace change
-exec-on-workspace-change = ['/bin/bash', '-c',
-    '/opt/homebrew/opt/sketchybar/bin/sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
+exec-on-workspace-change = [
+  '/bin/bash',
+  '-c',
+  '/opt/homebrew/opt/sketchybar/bin/sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE',
 ]
 
 # Start AeroSpace at login
@@ -61,12 +63,12 @@ key-mapping.preset = 'qwerty'
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
 inner.horizontal = 10
-inner.vertical =   10
-outer.left =       10
-outer.bottom =     10
+inner.vertical = 10
+outer.left = 10
+outer.bottom = 10
 # outer.top =        30
-outer.top = [{monitor."Built-in Retina Display" = 5}, 35]
-outer.right =      10
+outer.top = [{ monitor."Built-in Retina Display" = 5 }, 35]
+outer.right = 10
 
 # See https://nikitabobko.github.io/AeroSpace/guide#exec-env-vars
 [exec]
@@ -76,16 +78,16 @@ PATH = '/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}'
 
 # See https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [workspace-to-monitor-force-assignment]
-b = 1 # browser
-d = 2 # develop
-e = 1 # entrertainment
-m = 1 # meeting
-p = 2 # personal
+b = 1         # browser
+d = 2         # develop
+e = 1         # entrertainment
+m = 1         # meeting
+p = 2         # personal
 q = 'sidecar' # temp 3
-t = 1 # tasks
-w = 2 # work
-x = 1 # temp 1
-z = 2 # temp 2
+t = 1         # tasks
+w = 2         # work
+x = 1         # temp 1
+z = 2         # temp 2
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -197,9 +199,9 @@ alt-ctrl-shift-f = 'layout floating tiling'
 esc = ['mode main']
 r = ['reload-config', 'mode main']
 s = [
-    # 'exec-and-forget sketchybar --trigger aerospace_refresh_workspaces',
-    'exec-and-forget killall sketchybar',
-    'mode main'
+  # 'exec-and-forget sketchybar --trigger aerospace_refresh_workspaces',
+  'exec-and-forget killall sketchybar',
+  'mode main',
 ]
 # s = ['layout sticky tiling', 'mode main'] # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
 # backspace = ['close-all-windows-but-current', 'mode main']
@@ -208,19 +210,16 @@ s = [
 # b = ['balance-sizes', 'mode main'] # FIXME: why does this error out?
 f = ['flatten-workspace-tree', 'mode main'] # reset layout
 n = [
-    'move-workspace-to-monitor --wrap-around next',
-    'exec-and-forget killall sketchybar',
-    'mode main'
+  'move-workspace-to-monitor --wrap-around next',
+  'exec-and-forget killall sketchybar',
+  'mode main',
 ]
 p = [
-    'move-workspace-to-monitor --wrap-around prev',
-    'exec-and-forget killall sketchybar',
-    'mode main'
+  'move-workspace-to-monitor --wrap-around prev',
+  'exec-and-forget killall sketchybar',
+  'mode main',
 ]
-s = [
-    'exec-and-forget killall sketchybar',
-    'mode main'
-]
+s = ['exec-and-forget killall sketchybar', 'mode main']
 
 q = 'mode main'
 esc = 'mode main'
@@ -240,4 +239,3 @@ enter = 'mode main'
 #     'exec-and-forget sketchybar --trigger aerospace_refresh_workspaces',
 #     'mode main'
 # ]
-
