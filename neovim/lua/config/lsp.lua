@@ -1,3 +1,6 @@
+-- Quick jump:
+-- servers
+
 -- neovim/nvim-lspconfig
 -- https://github.com/neovim/nvim-lspconfig
 
