@@ -145,7 +145,11 @@ local function config()
         svelte = {},
         tailwindcss = {},
         taplo = {},
-        typos_lsp = {},
+        typos_lsp = {
+            init_options = {
+                diagnosticSeverity = "Info"
+            },
+        },
         vimls = {},
         volar = {},
         vtsls = {
