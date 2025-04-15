@@ -606,6 +606,12 @@ require("lazy").setup({
         opts = {},
     },
 
+    {
+        "briangwaltney/paren-hint.nvim",
+        lazy = false,
+        config = true,
+    },
+
     -- 99_end
 }, {
     ui = {
