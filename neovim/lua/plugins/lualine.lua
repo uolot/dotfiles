@@ -1,32 +1,44 @@
+local left = ''
+local right = ''
+local separators = { left = left, right = right }
+
 local opts = {
     options = {
         globalstatus = false,
+        component_separators = { left = '', right = '' },
+        section_separators = { left = '', right = '' },
     },
+
+    extensions = { 'aerial', 'quickfix' },
 
     sections = {
         -- left
-        lualine_a = { 'mode' },
+        lualine_a = {
+            { 'mode', separator = separators },
+        },
         lualine_b = {
+            { 'diff', icon = '', padding = 2 },
+            { 'diagnostics', padding = 2 },
+            { 'searchcount', icon = '', padding = 2 },
+        },
+        lualine_c = {
+            { '%=', separator = '' },
             {
                 'fileformat',
                 icons_enabled = true,
                 symbols = { unix = '', dos = ' CRLF ', mac = ' CR ', },
             },
             'filename',
-            'diagnostics',
-        },
-        lualine_c = {
-            'diff',
         },
         -- right
         lualine_x = {
         },
         lualine_y = {
-            'progress',
-            'location',
+            -- 'progress',
+            { 'location', padding = { left = 0, right = 1 } },
         },
         lualine_z = {
-            'filetype'
+            { 'filetype', separator = separators }
         },
     },
 
@@ -35,67 +47,32 @@ local opts = {
         lualine_a = {},
         lualine_b = {
             'filename',
+            { 'diff',        colored = false },
             { 'diagnostics', colored = false },
         },
-        lualine_c = {
-            { 'diff', colored = false },
-        },
+        lualine_c = {},
         -- right
         lualine_x = {},
         lualine_y = {},
         lualine_z = {},
     },
 
-    winbar = {
-        lualine_a = {
-        },
-        lualine_b = {
-        },
-        lualine_c = {
-        },
-        lualine_x = {
-        },
-        lualine_y = {
-        },
-        lualine_z = {
-        }
-    },
-
-    inactive_winbar = {
-        lualine_a = {
-        },
-        lualine_b = {
-        },
-        lualine_c = {
-        },
-        lualine_x = {
-        },
-        lualine_y = {
-        },
-        lualine_z = {}
-    },
-
     tabline = {
         lualine_a = {
             {
                 'tabs',
-                mode = 0,
-                -- use_mode_color = true,
+                mode = 2,
+                separator = separators,
+                use_mode_colors = true,
+                show_modified_status = false,
             },
         },
-        lualine_b = {
-        },
         lualine_c = {
-            -- {
-            --     'windows',
-            --     mode = 2,
-            -- },
             {
                 'filename',
                 path = 1,
                 shorting_target = 0,
             },
-            -- 'diagnostics',
         },
         lualine_x = {
             {
@@ -123,16 +100,9 @@ local opts = {
             },
         },
         lualine_y = {
-            -- 'diff',
-            -- {
-            --     'filename',
-            --     path = 1,
-            --     shorting_target = 0,
-            -- },
+            { 'branch', separator = separators },
         },
-        lualine_z = {
-            'branch',
-        }
+        lualine_z = {}
     },
 }
 

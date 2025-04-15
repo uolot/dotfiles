@@ -5,6 +5,17 @@ local function delete_current_buffer()
     Snacks.bufdelete(bufnr)
 end
 
+local function rename_current_tab()
+    vim.ui.input(
+        { prompt = "Tab name: " },
+        function(name)
+            if name then
+                vim.cmd('LualineRenameTab ' .. name)
+            end
+        end
+    )
+end
+
 wk.add({
     mode = "n",
     -- buffers
@@ -18,8 +29,10 @@ wk.add({
     -- tabs
     {
         { "<localleader>t",  group = "+tabs" },
-        { "<localleader>tn", "<Cmd>tabnew<CR>",   desc = "Open new tab" },
-        { "<localleader>tc", "<Cmd>tabclose<CR>", desc = "Close current tab" },
+        { "<localleader>tn", "<Cmd>tabnew<CR>",           desc = "Open new tab" },
+        { "<localleader>tc", "<Cmd>tabclose<CR>",         desc = "Close tab" },
+        { "<localleader>tr", rename_current_tab,          desc = "Rename tab" },
+        { "<localleader>tR", "<Cmd>LualineRenameTab<CR>", desc = "Reset tab name" },
     },
     -- buf nav
     { "<localleader>k", "<Cmd>bnext<CR>",   desc = "Next buffer" },
