@@ -227,12 +227,9 @@ require("lazy").setup({
     {
         "sphamba/smear-cursor.nvim",
         opts = {
-            opts = { -- Default  Range
-                -- stiffness = 0.8,   -- 0.6      [0, 1]
-                -- trailing_stiffness = 0.5, -- 0.25     [0, 1]
-                -- distance_stop_animating = 0.5, -- 0.1      > 0
-                -- hide_target_hack = false, -- true     boolean
-            },
+            stiffness = 0.5,
+            trailing_stiffness = 0.49,
+            never_draw_over_target = false,
         },
     },
     {
