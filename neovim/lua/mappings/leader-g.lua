@@ -23,7 +23,8 @@ wk.add({
     { "<Leader>g",  group = "+lsp" },
     {
         mode = { "n", "v", "x" },
-        { "<Leader>ga", actions_preview.code_actions, desc = "Code Action" },
+        { "<Leader>ga", require('fastaction').code_action, desc = "Code Action" },
+        { "<Leader>gA", actions_preview.code_actions,      desc = "Code Action" },
     },
     { "<Leader>ge", vim.diagnostic.open_float,           desc = "Show current line diagnostics" },
     -- { "<Leader>gd", go_to_definition,                    desc = "Go to definition" },

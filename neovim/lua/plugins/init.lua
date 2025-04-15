@@ -600,6 +600,11 @@ require("lazy").setup({
     --
     -- 98_nursery
     --
+    {
+        'Chaitanyabsprip/fastaction.nvim',
+        ---@type FastActionConfig
+        opts = {},
+    },
 
     -- 99_end
 }, {
