@@ -235,6 +235,30 @@ require("lazy").setup({
             },
         },
     },
+    {
+        'stevearc/quicker.nvim',
+        event = "FileType qf",
+        ---@module "quicker"
+        ---@type quicker.SetupOptions
+        opts = {
+            keys = {
+                {
+                    ">",
+                    function()
+                        require("quicker").expand({ before = 2, after = 2, add_to_existing = true })
+                    end,
+                    desc = "Expand quickfix context",
+                },
+                {
+                    "<",
+                    function()
+                        require("quicker").collapse()
+                    end,
+                    desc = "Collapse quickfix context",
+                },
+            },
+        },
+    },
 
     --
     -- 6_colors_and_highlighting
@@ -575,71 +599,10 @@ require("lazy").setup({
     -- 97_to_remove
     --
 
-    {
-        "elentok/format-on-save.nvim",
-        enabled = false,
-        config = require("plugins.format-on-save").config, -- TODO: delete the file
-    },
-
-    {
-        'nullromo/go-up.nvim',
-        enabled = false,
-        config = true,
-    },
-
-    {
-        'jinh0/eyeliner.nvim',
-        enabled = false,
-        opts = {
-            -- show highlights only after keypress
-            highlight_on_key = true,
-            -- dim all other characters if set to true (recommended!)
-            dim = true,
-            -- set the maximum number of characters eyeliner.nvim will check from
-            -- your current cursor position; this is useful if you are dealing with
-            -- large files: see https://github.com/jinh0/eyeliner.nvim/issues/41
-            max_length = 9999,
-            -- filetypes for which eyeliner should be disabled;
-            -- e.g., to disable on help files:
-            -- disabled_filetypes = {"help"}
-            disabled_filetypes = {},
-            -- buftypes for which eyeliner should be disabled
-            -- e.g., disabled_buftypes = {"nofile"}
-            disabled_buftypes = {},
-            -- add eyeliner to f/F/t/T keymaps;
-            -- see section on advanced configuration for more information
-            default_keymaps = true,
-        }
-    },
-
 
     --
     -- 98_nursery
     --
-    {
-        'stevearc/quicker.nvim',
-        event = "FileType qf",
-        ---@module "quicker"
-        ---@type quicker.SetupOptions
-        opts = {
-            keys = {
-                {
-                    ">",
-                    function()
-                        require("quicker").expand({ before = 2, after = 2, add_to_existing = true })
-                    end,
-                    desc = "Expand quickfix context",
-                },
-                {
-                    "<",
-                    function()
-                        require("quicker").collapse()
-                    end,
-                    desc = "Collapse quickfix context",
-                },
-            },
-        },
-    },
 
     -- 99_end
 }, {
