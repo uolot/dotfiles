@@ -400,18 +400,6 @@ require("lazy").setup({
         end,
     },
 
-    -- TODO: Remove?
-    {
-        "ThePrimeagen/refactoring.nvim",
-        -- cmd = 'CodeActionMenu',
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "nvim-treesitter/nvim-treesitter",
-            -- "weilbith/nvim-code-action-menu",
-        },
-        config = true,
-    },
-
     -- TODO: explore ibhagwan/fzf-lua as an alternative
     {
         "aznhe21/actions-preview.nvim",

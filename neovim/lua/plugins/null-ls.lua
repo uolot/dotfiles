@@ -46,7 +46,6 @@ local function config()
             -- }), -- TODO: deprecated
 
             -- misc
-            null_ls.builtins.code_actions.refactoring,
             null_ls.builtins.diagnostics.trail_space.with({
                 disabled_filetypes = { 'git', 'gitcommit', 'NvimTree', 'markdown', 'dbout' } }),
         },
