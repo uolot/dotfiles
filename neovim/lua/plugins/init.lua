@@ -21,7 +21,7 @@ local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 -- 18_editing
 -- 96_misc
 -- 97_to_remove
--- 98_evaluating
+-- 98_nursery
 -- 99_end
 
 -- TODO: split the config:
@@ -508,11 +508,6 @@ require("lazy").setup({
     -- 15_formatting
     --
     {
-        "elentok/format-on-save.nvim",
-        enabled = false,
-        config = require("plugins.format-on-save").config,
-    },
-    {
         'stevearc/conform.nvim',
         opts = require('plugins.conform').opts,
         init = require('plugins.conform').init,
@@ -592,16 +587,21 @@ require("lazy").setup({
     -- 97_to_remove
     --
 
-    --
-    -- 98_evaluating
-    --
+    {
+        "elentok/format-on-save.nvim",
+        enabled = false,
+        config = require("plugins.format-on-save").config, -- TODO: delete the file
+    },
+
     {
         'nullromo/go-up.nvim',
+        enabled = false,
         config = true,
     },
 
     {
         'jinh0/eyeliner.nvim',
+        enabled = false,
         opts = {
             -- show highlights only after keypress
             highlight_on_key = true,
@@ -624,6 +624,10 @@ require("lazy").setup({
         }
     },
 
+
+    --
+    -- 98_nursery
+    --
     {
         'stevearc/quicker.nvim',
         event = "FileType qf",
