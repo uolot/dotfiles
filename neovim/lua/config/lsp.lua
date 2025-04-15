@@ -98,6 +98,12 @@ local function config()
     -- blink-cmp
     capabilities = vim.tbl_deep_extend('force', capabilities, require('blink.cmp').get_lsp_capabilities(capabilities))
 
+    local on_tsserver_attach = function(client, bufnr)
+        require("twoslash-queries").attach(client, bufnr)
+        client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentRangeFormattingProvider = false
+    end
+
     local servers = {
         -- server = {
         --   cmd = {...},
@@ -142,6 +148,9 @@ local function config()
         typos_lsp = {},
         vimls = {},
         volar = {},
+        vtsls = {
+            on_attach = on_tsserver_attach,
+        },
         yamlls = {},
     }
 
@@ -160,12 +169,7 @@ local function config()
         }
     })
 
-    local on_tsserver_attach = function(client, bufnr)
-        require("twoslash-queries").attach(client, bufnr)
-        client.server_capabilities.documentFormattingProvider = false
-        client.server_capabilities.documentRangeFormattingProvider = false
-    end
-
+    --[[
     require("typescript-tools").setup({
         handlers = {
             ["textDocument/publishDiagnostics"] = function(err, result, ctx)
@@ -233,8 +237,8 @@ local function config()
             complete_function_calls = false,
             include_completions_with_insert_text = true,
         },
-
     })
+    ]]
 end
 
 return {

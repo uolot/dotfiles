@@ -474,6 +474,7 @@ require("lazy").setup({
     --
     {
         "pmizio/typescript-tools.nvim",
+        enabled = false,
         ft = { "typescript", "typescriptreact", "typescript.tsx" },
         dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
         -- configured in config/lsp.lua
@@ -500,6 +501,8 @@ require("lazy").setup({
         }
     },
     { 'dmmulroy/ts-error-translator.nvim' },
+
+    { 'yioneko/nvim-vtsls' },
 
     --
     -- 15_formatting
