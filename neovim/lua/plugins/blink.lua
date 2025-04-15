@@ -107,8 +107,11 @@ local opts = {
             copilot = {
                 name = "Copilot",
                 module = "blink-copilot",
-                score_offset = 2,
+                score_offset = 1,
                 async = true,
+            },
+            snippets = {
+                score_offset = -3,
             },
         },
     },
@@ -120,6 +123,8 @@ local opts = {
     -- See the fuzzy documentation for more information
     fuzzy = {
         implementation = "prefer_rust_with_warning",
+        use_frecency = true,
+        use_proximity = true,
         sorts = {
             function(a, b)
                 if (a.client_name == nil or b.client_name == nil) or (a.client_name == b.client_name) then
@@ -128,6 +133,7 @@ local opts = {
                 return b.client_name == 'emmet_ls' or b.client_name == 'copilot'
             end,
             -- default sorts
+            'exact',
             'score',
             'sort_text',
         },
