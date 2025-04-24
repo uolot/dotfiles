@@ -67,12 +67,14 @@ local opts = {
                 show_modified_status = false,
             },
         },
-        lualine_c = {
+        lualine_b = {
             {
                 'filename',
                 path = 1,
                 shorting_target = 0,
             },
+        },
+        lualine_c = {
         },
         lualine_x = {
             {
