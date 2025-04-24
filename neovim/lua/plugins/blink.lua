@@ -17,6 +17,9 @@ local dependencies = {
 ---@module 'blink.cmp'
 ---@type blink.cmp.Config
 local opts = {
+    -- enabled = function() return not vim.tbl_contains({ "lua", "markdown" }, vim.bo.filetype) end,
+    enabled = function() return not vim.tbl_contains({ "copilot-chat" }, vim.bo.filetype) end,
+
     -- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
     -- 'super-tab' for mappings similar to vscode (tab to accept)
     -- 'enter' for enter to accept
@@ -35,8 +38,6 @@ local opts = {
     appearance = {
         -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
         nerd_font_variant = 'mono',
-        kind_icons = {
-        },
     },
 
     completion = {
