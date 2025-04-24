@@ -612,6 +612,18 @@ require("lazy").setup({
         config = true,
     },
 
+    {
+        "leath-dub/snipe.nvim",
+        opts = {
+            ui = {
+                position = "center",
+                open_win_override = {
+                    border = "rounded",
+                },
+            },
+        }
+    },
+
     -- 99_end
 }, {
     ui = {

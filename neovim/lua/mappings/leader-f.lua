@@ -24,9 +24,8 @@ local function find_hidden_files()
     Snacks.picker.files({ hidden = true, ignored = false })
 end
 
-local function calculate_file_truncate_width(self)
-    local width = self.list.win:size().width
-    return width - 6
+local function snipe()
+    require("snipe").open_buffer_menu()
 end
 
 wk.add({
@@ -53,6 +52,7 @@ wk.add({
     { "<Leader>fo", Snacks.picker.recent,    desc = "Find recent files" },
     { "<Leader>fp", Snacks.picker.projects,  desc = "Find projects" },
     { "<Leader>fr", Snacks.picker.git_files, desc = "Find files in git root" },
+    { "<Leader>fs", snipe,                   desc = "Open Snipe buffer menu" },
     { "<Leader>fz", Snacks.picker.zoxide,    desc = 'Zoxide' },
     -- Mini files
     { "<Leader>fc", mini_files_current,      desc = "mini.files: Show current file" },
