@@ -155,7 +155,11 @@ local function config()
         vtsls = {
             on_attach = on_tsserver_attach,
             settings = {
+                -- schema: https://github.com/yioneko/vtsls/blob/main/packages/service/configuration.schema.json
                 typescript = {
+                    preferences = {
+                        importModuleSpecifier = "non-relative",
+                    },
                     inlayHints = {
                         parameterNames = { enabled = "all" },
                         parameterTypes = { enabled = true },
@@ -163,7 +167,7 @@ local function config()
                         propertyDeclarationTypes = { enabled = true },
                         functionLikeReturnTypes = { enabled = true },
                         enumMemberValues = { enabled = true },
-                    }
+                    },
                 },
             }
         },
