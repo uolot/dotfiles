@@ -399,8 +399,13 @@ require("lazy").setup({
             layout = {
                 max_width = 50,
                 min_width = 20,
+                placement = 'edge',
             },
-            highlight_on_hober = true,
+            attach_mode = 'global',
+            -- close_automatic_events = { 'unfocus' },
+            close_on_select = true,
+            -- autojump = true,
+            highlight_on_hover = true,
             show_guides = true,
         },
         -- Optional dependencies
