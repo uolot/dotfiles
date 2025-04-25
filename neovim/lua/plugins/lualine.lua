@@ -46,11 +46,13 @@ local opts = {
         -- left
         lualine_a = {},
         lualine_b = {
-            'filename',
             { 'diff',        colored = false },
             { 'diagnostics', colored = false },
         },
-        lualine_c = {},
+        lualine_c = {
+            { '%=', separator = '' },
+            'filename',
+        },
         -- right
         lualine_x = {},
         lualine_y = {},
