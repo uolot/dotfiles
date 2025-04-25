@@ -23,15 +23,12 @@ local init = function()
                 return
             end
 
-            require("conform").format({ bufnr = args.buf })
-
             local filetype = vim.bo[args.buf].filetype
-            if filetype == "typescript" or filetype == "typescriptreact" then
-                pcall(function()
-                    vim.cmd('TSToolsAddMissingImports sync')
-                    vim.cmd('TSToolsOrganizeImports sync')
-                end)
+            if vim.tbl_contains({ "typescript", "typescriptreact" }, filetype) then
+                -- vim.cmd("VtsExec organize_imports")
             end
+
+            require("conform").format({ bufnr = args.buf, async = false })
         end,
     })
 
