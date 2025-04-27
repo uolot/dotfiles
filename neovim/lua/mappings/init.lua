@@ -69,6 +69,18 @@ wk.add({
   },
 })
 
+wk.add({
+  mode = "i",
+  { "(<space>",    "()<left>" },
+  { "(<cr>",       "(<cr>)<esc>O" },
+  { "[<space>",    "[]<left>" },
+  { "[<cr>",       "[<cr>]<esc>O" },
+  { "{<space>",    "{}<left>" },
+  { "{<cr>",       "{<cr>}<esc>O" },
+  { "<lt><space>", "<lt>><left>" },
+  { "<lt><cr>",    "<lt><cr>><esc>O" },
+})
+
 require("mappings.g")
 require("mappings.z")
 require("mappings.c-w")
