@@ -11,6 +11,7 @@ local opts = {
         toml = { "taplo" },
         typescript = { "prettierd" },
         typescriptreact = { "prettierd" },
+        yaml = { "prettierd" },
     },
 }
 
