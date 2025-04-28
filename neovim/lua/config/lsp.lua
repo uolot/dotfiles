@@ -135,6 +135,9 @@ local function config()
             },
         },
         eslint = {},
+        gh_actions_ls = {
+            init_options = { sessionToken = 'foo' },
+        },
         jedi_language_server = {},
         jsonls = {},
         lemminx = {},
@@ -176,6 +179,15 @@ local function config()
 
     local ensure_installed = vim.tbl_keys(servers or {})
     -- vim.list_extend(ensure_installed, { "stylua" })
+
+    -- remove 'gh_actions-language-server' from ensure_installed - not supported by mason-lspconfig
+    ensure_installed = vim.tbl_filter(function(server)
+        return server ~= "gh_actions_ls"
+    end, ensure_installed)
+
+    -- TODO: disabled for now
+    -- vim.lsp.config('gh_actions_ls', servers.gh_actions_ls)
+    -- vim.lsp.enable('gh_actions_ls')
 
     require('mason-lspconfig').setup({
         ensure_installed = ensure_installed,
