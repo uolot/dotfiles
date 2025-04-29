@@ -87,7 +87,7 @@ local opts = {
             'path',
             'snippets',
             'copilot',
-            'omni',
+            -- 'omni',
         },
         providers = {
             path = {
