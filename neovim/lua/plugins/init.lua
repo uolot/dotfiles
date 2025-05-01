@@ -83,6 +83,7 @@ require("lazy").setup({
     -- },
     {
         'saghen/blink.cmp',
+        event = "VeryLazy",
         version = '*',
         dependencies = require('plugins.blink').dependencies,
         opts = require('plugins.blink').opts,
@@ -91,6 +92,7 @@ require("lazy").setup({
 
     {
         "zbirenbaum/copilot.lua",
+        lazy = true,
         opts = {
             suggestion = { enabled = false },
             panel = { enabled = false },
@@ -99,6 +101,7 @@ require("lazy").setup({
 
     {
         "CopilotC-Nvim/CopilotChat.nvim",
+        event = "VeryLazy",
         branch = "main",
         dependencies = {
             { "zbirenbaum/copilot.lua" },
@@ -128,6 +131,7 @@ require("lazy").setup({
     --
     {
         "neovim/nvim-lspconfig",
+        event = "VeryLazy",
         dependencies = require("config.lsp").dependencies,
         config = require("config.lsp").config,
     },
@@ -148,6 +152,7 @@ require("lazy").setup({
     },
     {
         'arkav/lualine-lsp-progress',
+        lazy = true,
         dependencies = { 'nvim-lualine/lualine.nvim' },
     },
 
@@ -157,8 +162,8 @@ require("lazy").setup({
 
     {
         "nvim-treesitter/nvim-treesitter",
+        event = 'VeryLazy',
         build = ":TSUpdate",
-        lazy = false,
         priority = 900,
         config = require("plugins.treesitter").config,
     },
@@ -180,6 +185,7 @@ require("lazy").setup({
     },
     {
         "JoosepAlviste/nvim-ts-context-commentstring",
+        event = "VeryLazy",
         config = true,
     },
     -- Use treesitter to auto close and auto rename html tags
@@ -200,6 +206,7 @@ require("lazy").setup({
 
     {
         "nvim-telescope/telescope.nvim",
+        event = 'VeryLazy',
         branch = "0.1.x",
         lazy = true,
         dependencies = require("plugins.telescope").dependencies,
@@ -211,6 +218,7 @@ require("lazy").setup({
     --
     {
         "nvim-lualine/lualine.nvim",
+        event = "VeryLazy",
         opts = require("plugins.lualine").opts,
     },
     {
@@ -417,6 +425,7 @@ require("lazy").setup({
 
     {
         'Wansmer/treesj',
+        event = 'VeryLazy',
         keys = { 'K' },
         dependencies = { 'nvim-treesitter/nvim-treesitter' }, -- if you install parsers with `nvim-treesitter`
         config = function()
