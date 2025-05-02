@@ -15,6 +15,16 @@ local function find_all_files()
     Snacks.picker.files({ hidden = true, ignored = true })
 end
 
+local function find_recent_files()
+    Snacks.picker.recent({
+        filter = {
+            paths = {
+                [Snacks.git.get_root()] = true,
+            }
+        }
+    })
+end
+
 local function find_hidden_files()
     Snacks.picker.files({ hidden = true, ignored = false })
 end
@@ -52,7 +62,7 @@ wk.add({
     { "<Leader>fg", find_git_modified_files, desc = "Find modified git files" },
     { "<Leader>fG", Snacks.picker.git_files, desc = "Find files in git root" },
     { "<Leader>fh", find_hidden_files,       desc = "Find hidden files" },
-    { "<Leader>fo", Snacks.picker.recent,    desc = "Find recent files" },
+    { "<Leader>fo", find_recent_files,       desc = "Find recent files" },
     { "<Leader>fp", Snacks.picker.projects,  desc = "Find projects" },
     { "<Leader>fs", snipe,                   desc = "Open Snipe buffer menu" },
     { "<Leader>fz", Snacks.picker.zoxide,    desc = 'Zoxide' },
