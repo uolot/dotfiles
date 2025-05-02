@@ -83,7 +83,7 @@ require("lazy").setup({
     -- },
     {
         'saghen/blink.cmp',
-        event = "VeryLazy",
+        event = "InsertEnter",
         version = '*',
         dependencies = require('plugins.blink').dependencies,
         opts = require('plugins.blink').opts,
@@ -131,7 +131,8 @@ require("lazy").setup({
     --
     {
         "neovim/nvim-lspconfig",
-        event = "VeryLazy",
+        event = "FileType",
+        cmd = { "LspInfo", "LspInstall", "LspUninstall" },
         dependencies = require("config.lsp").dependencies,
         config = require("config.lsp").config,
     },
