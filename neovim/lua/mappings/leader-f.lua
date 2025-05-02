@@ -50,6 +50,7 @@ end
 wk.add({
     mode = "n",
     { "<Leader>f",  group = "+files" },
+    { "<Leader>fe", Snacks.explorer.open, desc = "Toggle explorer" },
     {
         "<Leader>ff",
         function()
@@ -57,11 +58,10 @@ wk.add({
         end,
         desc = "Find files"
     },
-    { "<Leader>fa", find_all_files,       desc = "Find all files" },
-    { "<Leader>fe", Snacks.explorer.open, desc = "Toggle explorer" },
     { "<Leader>fg", find_git_modified_files, desc = "Find modified git files" },
     { "<Leader>fG", Snacks.picker.git_files, desc = "Find files in git root" },
     { "<Leader>fh", find_hidden_files,       desc = "Find hidden files" },
+    { "<Leader>fi", find_all_files,          desc = "Find all files" },
     { "<Leader>fo", find_recent_files,       desc = "Find recent files" },
     { "<Leader>fp", Snacks.picker.projects,  desc = "Find projects" },
     { "<Leader>fs", snipe,                   desc = "Open Snipe buffer menu" },
