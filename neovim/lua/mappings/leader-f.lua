@@ -1,5 +1,4 @@
 local wk = require("which-key")
-local telescope_builtin = require("telescope.builtin")
 local mini_files = require("mini.files")
 
 local function mini_files_current()

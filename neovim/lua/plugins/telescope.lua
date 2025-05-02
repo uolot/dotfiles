@@ -1,6 +1,5 @@
 local dependencies = {
     { "nvim-lua/plenary.nvim",                   lazy = true },
-    { "kelly-lin/telescope-ag",                  lazy = true },
     { "nvim-telescope/telescope-ui-select.nvim", lazy = true },
 }
 
@@ -57,7 +56,6 @@ local function config()
         },
     }
 
-    telescope.load_extension('ag')
     telescope.load_extension('ui-select')
 end
 

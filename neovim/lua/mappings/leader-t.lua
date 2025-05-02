@@ -15,7 +15,6 @@ end
 wk.add({
     mode = "n",
     { "<Leader>t",  group = "Telescope" },
-    { "<Leader>ta", ':Ag ',                        desc = 'Ag',                       silent = false },
     { "<Leader>tb", Snacks.picker.buffers,         desc = 'Buffers' },
     { "<Leader>tc", Snacks.picker.command_history, desc = 'Command history' },
     ---@diagnostic disable-next-line: undefined-field
