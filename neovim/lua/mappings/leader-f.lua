@@ -11,17 +11,26 @@ local function mini_files_toggle()
     if not mini_files.close() then mini_files.open() end
 end
 
-local function telescope_search_git_root()
-    local git_root = Snacks.git.get_root()
-    telescope_builtin.find_files({ cwd = git_root })
-end
-
 local function find_all_files()
     Snacks.picker.files({ hidden = true, ignored = true })
 end
 
 local function find_hidden_files()
     Snacks.picker.files({ hidden = true, ignored = false })
+end
+
+local function find_git_modified_files()
+    Snacks.picker.git_status({
+        formatters = { file = { truncate = 100 } },
+        win = {
+            input = {
+                keys = {
+                    ["<Space>"] = { "git_stage", mode = { "n", "i" } },
+                    ["<Tab>"] = { "select_and_next", mode = { "n", "i" } },
+                }
+            }
+        }
+    })
 end
 
 local function snipe()
@@ -31,7 +40,6 @@ end
 wk.add({
     mode = "n",
     { "<Leader>f",  group = "+files" },
-    -- Telescope
     {
         "<Leader>ff",
         function()
@@ -41,17 +49,11 @@ wk.add({
     },
     { "<Leader>fa", find_all_files,       desc = "Find all files" },
     { "<Leader>fe", Snacks.explorer.open, desc = "Toggle explorer" },
-    {
-        "<Leader>fg",
-        function()
-            Snacks.picker.git_status({ formatters = { file = { truncate = 100 } } })
-        end,
-        desc = "Find modified git files",
-    },
+    { "<Leader>fg", find_git_modified_files, desc = "Find modified git files" },
+    { "<Leader>fG", Snacks.picker.git_files, desc = "Find files in git root" },
     { "<Leader>fh", find_hidden_files,       desc = "Find hidden files" },
     { "<Leader>fo", Snacks.picker.recent,    desc = "Find recent files" },
     { "<Leader>fp", Snacks.picker.projects,  desc = "Find projects" },
-    { "<Leader>fr", Snacks.picker.git_files, desc = "Find files in git root" },
     { "<Leader>fs", snipe,                   desc = "Open Snipe buffer menu" },
     { "<Leader>fz", Snacks.picker.zoxide,    desc = 'Zoxide' },
     -- Mini files
