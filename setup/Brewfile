@@ -30,6 +30,8 @@ brew "azure-cli"
 brew "bash"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# Cross-platform command-line tool for safe batch renaming via regular expressions
+brew "brename"
 # Core application library for C
 brew "glib"
 # Validate CloudFormation templates against the CloudFormation spec
@@ -90,6 +92,8 @@ brew "gnupg"
 brew "gron"
 # Tool for glamorous shell scripts
 brew "gum"
+# Colourful, human-friendly hexdump tool
+brew "hexd"
 # Improved top (interactive process viewer)
 brew "htop"
 # User-friendly cURL replacement (command-line HTTP client)
@@ -124,6 +128,8 @@ brew "lua@5.1"
 brew "luarocks"
 # Collection of tools that nobody wrote when UNIX was young
 brew "moreutils"
+# Update multiple repositories in with one command
+brew "multi-gitter"
 # Code snippets in your terminal
 brew "nap"
 # NCurses Disk Usage
@@ -146,6 +152,8 @@ brew "postgresql@17"
 brew "ripgrep"
 # Readline wrapper: adds readline support to tools that lack it
 brew "rlwrap"
+# Window switcher, application launcher and dmenu replacement
+brew "rofi"
 # Login and retrieve AWS temporary credentials using a SAML IDP
 brew "saml2aws"
 # Fast and accurate code counter with complexity and COCOMO estimates
@@ -178,6 +186,8 @@ brew "watch"
 brew "watchman"
 # Internet file retriever
 brew "wget"
+# Validate and execute GitHub Actions workflows locally
+brew "wrkflw"
 # Format XML documents
 brew "xmlformat"
 # Blazing fast terminal file manager written in Rust, based on async I/O
