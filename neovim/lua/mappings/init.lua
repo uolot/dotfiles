@@ -32,9 +32,9 @@ wk.add({
     { mode = "t", "<C-,>",  Snacks.terminal.toggle, desc = "Exit terminal mode" },
   },
   -- Snacks
-  { "<C-,>",     Snacks.terminal.toggle,                                  desc = "Toggle terminal" },
-  { "<Leader>.", function() Snacks.scratch.open({ ft = "markdown" }) end, desc = "Open scratch window" },
-  { "<Leader>/", Snacks.scratch.select,                                   desc = "Select scratch window" },
+  { "<C-,>",     Snacks.terminal.toggle,               desc = "Toggle terminal" },
+  { "<Leader>.", function() Snacks.scratch.open() end, desc = "Open scratch window" },
+  { "<Leader>/", Snacks.scratch.select,                desc = "Select scratch window" },
   {
     mode = { "n", "x" },
     {
