@@ -50,12 +50,26 @@ local function snipe()
     require("snipe").open_buffer_menu()
 end
 
+local function open_buffer_menu()
+    local buffers = require('snipe').get_sorted_buffer_list()
+
+    require('fastaction').select(buffers, {
+        prompt = "Select buffer",
+        format_item = function(item) return item.name end,
+        kind = "buffer",
+    }
+    , function(choice)
+        -- vim.api.nvim_open_win(choice.id, true, {external=true})
+        vim.api.nvim_set_current_buf(choice.id)
+    end)
+end
+
 wk.add({
     mode = "n",
     { "<Leader>f",  group = "+files" },
-    { "<Leader>fe", Snacks.explorer.open, desc = "Toggle explorer" },
-    {
-        "<Leader>ff",
+    -- { "<Leader>fb", snipe,                   desc = "Buffer menu (Snipe)" },
+    { "<Leader>fb", open_buffer_menu,        desc = "Buffer menu (Snipe)" },
+    { "<Leader>fe", Snacks.explorer.open,    desc = "Toggle explorer" },
     { "<Leader>ff", find_files,              desc = "Find files" },
     { "<Leader>fg", find_git_modified_files, desc = "Find modified git files" },
     { "<Leader>fG", Snacks.picker.git_files, desc = "Find files in git root" },
@@ -63,7 +77,7 @@ wk.add({
     { "<Leader>fi", find_all_files,          desc = "Find all files" },
     { "<Leader>fo", find_recent_files,       desc = "Find recent files" },
     { "<Leader>fp", Snacks.picker.projects,  desc = "Find projects" },
-    { "<Leader>fs", snipe,                   desc = "Open Snipe buffer menu" },
+    { "<Leader>fs", Snacks.picker.smart,     desc = "Smart open" },
     { "<Leader>fz", Snacks.picker.zoxide,    desc = 'Zoxide' },
     -- Mini files
     { "<Leader>fc", mini_files_current,      desc = "mini.files: Show current file" },

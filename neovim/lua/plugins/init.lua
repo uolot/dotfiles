@@ -630,7 +630,12 @@ require("lazy").setup({
     {
         'Chaitanyabsprip/fastaction.nvim',
         ---@type FastActionConfig
-        opts = {},
+        opts = {
+            register_ui_select = true,
+            popup = {
+                relative = 'cursor',
+            }
+        },
     },
 
     {
