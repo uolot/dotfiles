@@ -163,7 +163,7 @@ require("lazy").setup({
 
     {
         "nvim-treesitter/nvim-treesitter",
-        event = 'VeryLazy',
+        event = { 'BufReadPre', 'BufNewFile' },
         build = ":TSUpdate",
         priority = 900,
         config = require("plugins.treesitter").config,
@@ -610,8 +610,7 @@ require("lazy").setup({
     -- ultra fold
     {
         "kevinhwang91/nvim-ufo",
-        lazy = true,
-        -- event = { "BufReadPre", "BufNewFile" },
+        event = { "BufReadPre", "BufNewFile" },
         dependencies = { "kevinhwang91/promise-async" },
         opts = {}
     },
