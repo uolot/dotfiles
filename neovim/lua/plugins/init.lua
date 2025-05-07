@@ -170,10 +170,12 @@ require("lazy").setup({
     },
     {
         "nvim-treesitter/nvim-treesitter-textobjects",
+        event = 'VeryLazy',
         dependencies = { "nvim-treesitter/nvim-treesitter" },
     },
     {
         "nvim-treesitter/nvim-treesitter-context",
+        event = 'VeryLazy',
         dependencies = { "nvim-treesitter/nvim-treesitter" },
         opts = {
             separator = '─',
@@ -192,6 +194,7 @@ require("lazy").setup({
     -- Use treesitter to auto close and auto rename html tags
     {
         "windwp/nvim-ts-autotag",
+        event = 'VeryLazy',
         opts = {
             opts = {
                 enable_close = false,
@@ -199,6 +202,16 @@ require("lazy").setup({
                 enable_close_on_slash = true,
             }
         }
+    },
+    {
+        'Wansmer/treesj',
+        keys = { 'K' },
+        dependencies = { 'nvim-treesitter/nvim-treesitter' }, -- if you install parsers with `nvim-treesitter`
+        opts = {
+            use_default_keymaps = false,
+            max_join_length = 600,
+            on_error = function() vim.lsp.buf.hover() end,
+        },
     },
 
     --
@@ -404,6 +417,7 @@ require("lazy").setup({
 
     {
         'stevearc/aerial.nvim',
+        event = "LspAttach",
         opts = {
             layout = {
                 max_width = 50,
@@ -422,18 +436,6 @@ require("lazy").setup({
             "nvim-treesitter/nvim-treesitter",
             "nvim-tree/nvim-web-devicons"
         },
-    },
-
-    {
-        'Wansmer/treesj',
-        event = 'VeryLazy',
-        keys = { 'K' },
-        dependencies = { 'nvim-treesitter/nvim-treesitter' }, -- if you install parsers with `nvim-treesitter`
-        config = function()
-            require('treesj').setup({
-                use_default_keymaps = false,
-            })
-        end,
     },
 
     -- TODO: explore ibhagwan/fzf-lua as an alternative
@@ -506,16 +508,19 @@ require("lazy").setup({
     -- Nvim lua plugin which adds support for twoslash queries into typescript projects
     {
         "marilari88/twoslash-queries.nvim",
+        ft = { "typescript", "typescriptreact", "typescript.tsx" },
         opts = {
             multi_line = false, -- to print types in multi line mode
             is_enabled = true,  -- to keep disabled at startup and enable it on request with the EnableTwoslashQueries
         },
     },
     {
-        "davidosomething/format-ts-errors.nvim"
+        "davidosomething/format-ts-errors.nvim",
+        ft = { "typescript", "typescriptreact", "typescript.tsx" },
     },
     {
         "OlegGulevskyy/better-ts-errors.nvim",
+        ft = { "typescript", "typescriptreact", "typescript.tsx" },
         dependencies = { "MunifTanjim/nui.nvim" },
         opts = {
             keymaps = {
@@ -524,9 +529,15 @@ require("lazy").setup({
             }
         }
     },
-    { 'dmmulroy/ts-error-translator.nvim' },
+    {
+        'dmmulroy/ts-error-translator.nvim',
+        ft = { "typescript", "typescriptreact", "typescript.tsx" },
+    },
 
-    { 'yioneko/nvim-vtsls' },
+    {
+        'yioneko/nvim-vtsls',
+        ft = { "typescript", "typescriptreact", "typescript.tsx" },
+    },
 
     --
     -- 15_formatting
@@ -597,8 +608,9 @@ require("lazy").setup({
     -- ultra fold
     {
         "kevinhwang91/nvim-ufo",
+        lazy = true,
+        -- event = { "BufReadPre", "BufNewFile" },
         dependencies = { "kevinhwang91/promise-async" },
-        event = "LspAttach",
         opts = {}
     },
 

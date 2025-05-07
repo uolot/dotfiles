@@ -1,6 +1,5 @@
 local wk = require("which-key")
 local snacks = require("snacks")
-local treesj = require('treesj')
 
 local function close_floating()
   for _, win in ipairs(vim.api.nvim_list_wins()) do
@@ -38,7 +37,13 @@ wk.add({
   { "<Leader>/", Snacks.scratch.select,                                   desc = "Select scratch window" },
   {
     mode = { "n", "x" },
-    { "K", treesj.toggle, desc = "Split/join", },
+    {
+      "K",
+      function()
+        require('treesj').toggle()
+      end,
+      desc = "Split/join",
+    },
   },
   -- Jumps
   {
