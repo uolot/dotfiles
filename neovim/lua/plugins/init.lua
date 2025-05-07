@@ -303,6 +303,7 @@ require("lazy").setup({
                     SnacksIndentScope = { fg = '#909090', fmt = 'nocombine' },
                     SnacksIndentChunk = { fg = '#909090', fmt = 'nocombine' },
                     ['@comment'] = { fg = '$grey' },
+                    LspReferenceText = { bg = '#505050', fmt = 'bold' },
                 },
             }
             require('bamboo').load()
