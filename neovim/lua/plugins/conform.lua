@@ -8,6 +8,7 @@ local opts = {
         markdown = { "prettierd" },
         javascript = { "prettierd" },
         javascriptreact = { "prettierd" },
+        sql = { "sql_formatter" },
         toml = { "taplo" },
         typescript = { "prettierd" },
         typescriptreact = { "prettierd" },
