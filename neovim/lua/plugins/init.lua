@@ -221,6 +221,7 @@ require("lazy").setup({
     {
         "nvim-telescope/telescope.nvim",
         event = 'VeryLazy',
+        enabled = false,
         branch = "0.1.x",
         lazy = true,
         dependencies = require("plugins.telescope").dependencies,

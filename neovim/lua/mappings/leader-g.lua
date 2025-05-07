@@ -1,15 +1,6 @@
 local wk = require("which-key")
-local telescope = require("telescope.builtin")
 local actions_preview = require("actions-preview")
 local snacks = require("snacks")
-
-local function go_to_definition()
-    if vim.bo.filetype == "typescript" then
-        vim.cmd("TSToolsGoToSourceDefinition")
-    else
-        vim.lsp.buf.definition()
-    end
-end
 
 local function next_usage()
     snacks.words.jump(1, true)
@@ -27,18 +18,15 @@ wk.add({
         { "<Leader>gA", actions_preview.code_actions,      desc = "Code Action" },
     },
     { "<Leader>ge", vim.diagnostic.open_float,           desc = "Show current line diagnostics" },
-    -- { "<Leader>gd", go_to_definition,                    desc = "Go to definition" },
     { "<Leader>gd", vim.lsp.buf.definition,              desc = "Go to definition" },
     { "<Leader>gD", vim.lsp.buf.declaration,             desc = "Go to declaration" },
     { "<Leader>gf", Snacks.picker.lsp_references,        desc = "Find references" },
     { "<Leader>gh", vim.lsp.buf.hover,                   desc = "Hover" },
-    { "<Leader>gi", telescope.lsp_incoming_calls,        desc = "Incoming calls" },
-    -- { "<Leader>gi", vim.lsp.buf.incoming_calls,              desc = "Incoming calls" },
+    { "<Leader>gi", vim.lsp.buf.incoming_calls,          desc = "Incoming calls" },
     { "<Leader>gj", next_usage,                          desc = "Next usage" },
     { "<Leader>gk", previous_usage,                      desc = "Previous usage" },
     { "<Leader>gm", vim.lsp.buf.implementation,          desc = "Go to implementation" },
-    { "<Leader>go", telescope.lsp_outgoing_calls,        desc = "Outgoing calls" },
-    -- { "<Leader>go", vim.lsp.buf.outgoing_calls,              desc = "Outgoing calls" },
+    { "<Leader>go", vim.lsp.buf.outgoing_calls,          desc = "Outgoing calls" },
     { "<Leader>gr", vim.lsp.buf.rename,                  desc = "Rename" },
     { "<Leader>gR", ":IncRename <C-r><C-w>",             desc = "Inc rename" },
     { "<Leader>gs", Snacks.picker.lsp_symbols,           desc = "Document symbols" },
