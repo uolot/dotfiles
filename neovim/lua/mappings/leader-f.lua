@@ -10,6 +10,10 @@ local function mini_files_toggle()
     if not mini_files.close() then mini_files.open() end
 end
 
+local function find_files()
+    Snacks.picker.files({ formatters = { file = { truncate = 100 } } })
+end
+
 local function find_all_files()
     Snacks.picker.files({ hidden = true, ignored = true })
 end
@@ -52,11 +56,7 @@ wk.add({
     { "<Leader>fe", Snacks.explorer.open, desc = "Toggle explorer" },
     {
         "<Leader>ff",
-        function()
-            Snacks.picker.files({ formatters = { file = { truncate = 100 } } })
-        end,
-        desc = "Find files"
-    },
+    { "<Leader>ff", find_files,              desc = "Find files" },
     { "<Leader>fg", find_git_modified_files, desc = "Find modified git files" },
     { "<Leader>fG", Snacks.picker.git_files, desc = "Find files in git root" },
     { "<Leader>fh", find_hidden_files,       desc = "Find hidden files" },
