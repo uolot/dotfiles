@@ -99,11 +99,8 @@ local function config()
     -- blink-cmp
     capabilities = vim.tbl_deep_extend('force', capabilities, require('blink.cmp').get_lsp_capabilities(capabilities))
 
-    local on_tsserver_attach = function(client, bufnr)
-        require("twoslash-queries").attach(client, bufnr)
-        client.server_capabilities.documentFormattingProvider = false
-        client.server_capabilities.documentRangeFormattingProvider = false
-    end
+    local svelte_capabilities = vim.tbl_deep_extend("force", {}, capabilities)
+    svelte_capabilities.workspace = { didChangeWatchedFiles = false }
 
     local servers = {
         -- server = {
@@ -146,7 +143,10 @@ local function config()
         marksman = {},
         ruff = {},
         sqlls = {},
-        svelte = {},
+        svelte = {
+            capabilities = svelte_capabilities,
+            filetypes = { "svelte" },
+        },
         tailwindcss = {},
         taplo = {},
         typos_lsp = {
@@ -157,7 +157,11 @@ local function config()
         vimls = {},
         volar = {},
         vtsls = {
-            on_attach = on_tsserver_attach,
+            on_attach = function(client, bufnr)
+                require("twoslash-queries").attach(client, bufnr)
+                client.server_capabilities.documentFormattingProvider = false
+                client.server_capabilities.documentRangeFormattingProvider = false
+            end,
             settings = {
                 -- schema: https://github.com/yioneko/vtsls/blob/main/packages/service/configuration.schema.json
                 typescript = {
