@@ -5,29 +5,46 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-export PATH="$HOME/.dotfiles/bin:$HOME/.local/bin:/opt/homebrew/bin:$PATH"
+export PATH="$HOME/.dotfiles/bin:$HOME/.local/bin:/opt/homebrew/bin:$HOME/.turso:$PATH"
 
 CONFIG=$HOME/.dotfiles/bash/config
 
 # core
-source $CONFIG/colors
-source $CONFIG/text
-source $CONFIG/search
-source $CONFIG/shell
-source $CONFIG/completion
-source $CONFIG/misc
+source "$CONFIG/colors"
+source "$CONFIG/text"
+source "$CONFIG/search"
+source "$CONFIG/shell"
+source "$CONFIG/completion"
+source "$CONFIG/misc"
 
 # programs
-source $CONFIG/fzf
-source $CONFIG/git
-source $CONFIG/asdf
-source $CONFIG/python
-source $CONFIG/node
-source $CONFIG/aws
-source $CONFIG/docker
-# source $CONFIG/platformio
-# source $CONFIG/terraform
+source "$CONFIG/fzf"
+source "$CONFIG/git"
+source "$CONFIG/python"
+source "$CONFIG/node"
+source "$CONFIG/aws"
+source "$CONFIG/docker"
 
-eval "$(starship init bash)"
-eval "$(zoxide init bash)"
-eval "$(direnv hook bash)"
+if command -v starship >/dev/null 2>&1; then
+  eval "$(starship init bash)"
+fi
+
+if command -v zoxide >/dev/null 2>&1; then
+  eval "$(zoxide init bash)"
+fi
+
+if command -v direnv >/dev/null 2>&1; then
+  eval "$(direnv hook bash)"
+fi
+
+if command -v brew >/dev/null 2>&1; then
+  source "$(brew --prefix asdf)/libexec/asdf.sh"
+fi
+
+if [[ -f $HOME/.local/bin/mise ]]; then
+  eval "$($HOME/.local/bin/mise activate bash)"
+fi
+
+if [[ -f $HOME/.local/share/bob ]]; then
+  alias nvim=$HOME/.local/share/bob/nvim-bin/nvim
+fi

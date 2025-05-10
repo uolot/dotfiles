@@ -1,7 +1,7 @@
 # vim: ft=bash
 
 # [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-eval "$(fzf --bash)"
+eval "$(fzf --bash 2>/dev/null)"
 
 export FZF_DEFAULT_OPTS='--height=16 --layout=reverse --select-1 --bind=ctrl-p:toggle-preview'
 export FZF_DEFAULT_COMMAND='fd --type f --hidden'

@@ -2,28 +2,38 @@
 
 # Fix after broken homebrew update: https://github.com/asdf-vm/asdf/issues/1103#issuecomment-986798629
 
-BREW_PREFIX=$(brew --prefix)
+# If MacOS and homebrew is installed
+if [[ "$OSTYPE" == "darwin"* && $(command -v brew) ]]; then
+  if [[ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]]; then
+    source "$(brew --prefix)/etc/profile.d/bash_completion.sh"
+  elif [ -f "$(brew --prefix)/etc/bash_completion" ]; then
+    . "$(brew --prefix)/etc/bash_completion"
+  fi
+# If Linux
+elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  if ! shopt -oq posix; then
+    if [ -f /usr/share/bash-completion/bash_completion ]; then
+      source /usr/share/bash-completion/bash_completion
+    elif [ -f /etc/bash_completion ]; then
+      source /etc/bash_completion
+    fi
+  fi
+fi
 
-# source $BREW_PREFIX/etc/bash_completion.d/ag.bashcomp.sh # breaks path tab completion
-source $BREW_PREFIX/etc/bash_completion.d/asdf.bash
-source $BREW_PREFIX/etc/bash_completion.d/aws_bash_completer
-source $BREW_PREFIX/etc/bash_completion.d/az
-# source $BREW_PREFIX/etc/bash_completion.d/bat # errors out
-source $BREW_PREFIX/etc/bash_completion.d/brew
-# source $BREW_PREFIX/etc/bash_completion.d/brew-services
-source $BREW_PREFIX/etc/bash_completion.d/delta
-# source $BREW_PREFIX/etc/bash_completion.d/fd
-source $BREW_PREFIX/etc/bash_completion.d/gh
-source $BREW_PREFIX/etc/bash_completion.d/git-completion.bash
-source $BREW_PREFIX/etc/bash_completion.d/httpie
-source $BREW_PREFIX/etc/bash_completion.d/jc
-source $BREW_PREFIX/etc/bash_completion.d/jo.bash
-source $BREW_PREFIX/etc/bash_completion.d/npm
-source $BREW_PREFIX/etc/bash_completion.d/rg
-source $BREW_PREFIX/etc/bash_completion.d/starship
-source $BREW_PREFIX/etc/bash_completion.d/zoxide
+# If 1password is installed
+if command -v op >/dev/null 2>&1; then
+  source <(op completion bash)
+fi
 
-source <(op completion bash)
-eval "$(gh completion -s bash)"
-eval "$(wezterm shell-completion --shell bash)"
-command -v saml2aws > /dev/null 2>&1 && eval "$(saml2aws --completion-script-bash)"
+# If github cli is installed
+if command -v gh >/dev/null 2>&1; then
+  eval "$(gh completion -s bash)"
+fi
+
+# If wezterm is installed
+if command -v wezterm >/dev/null 2>&1; then
+  eval "$(wezterm shell-completion --shell bash)"
+fi
+
+# If saml2aws is installed
+command -v saml2aws >/dev/null 2>&1 && eval "$(saml2aws --completion-script-bash)"
