@@ -14,6 +14,10 @@ local function find_files()
     Snacks.picker.files({ formatters = { file = { truncate = 100 } } })
 end
 
+local function find_files_smart()
+    Snacks.picker.smart({ formatters = { file = { truncate = 100 } } })
+end
+
 local function find_all_files()
     Snacks.picker.files({ hidden = true, ignored = true })
 end
@@ -77,7 +81,7 @@ wk.add({
     { "<Leader>fi", find_all_files,          desc = "Find all files" },
     { "<Leader>fo", find_recent_files,       desc = "Find recent files" },
     { "<Leader>fp", Snacks.picker.projects,  desc = "Find projects" },
-    { "<Leader>fs", Snacks.picker.smart,     desc = "Smart open" },
+    { "<Leader>fs", find_files_smart,        desc = "Smart open" },
     { "<Leader>fz", Snacks.picker.zoxide,    desc = 'Zoxide' },
     -- Mini files
     { "<Leader>fc", mini_files_current,      desc = "mini.files: Show current file" },

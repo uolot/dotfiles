@@ -1,5 +1,9 @@
 local wk = require('which-key')
 
+local function buffers()
+    Snacks.picker.buffers({ formatters = { file = { truncate = 100 } } })
+end
+
 local function grep_word()
     Snacks.picker.grep_word({
         args = { "-w" },
@@ -27,7 +31,7 @@ end
 wk.add({
     mode = "n",
     { "<Leader>t",  group = "+pickers" },
-    { "<Leader>tb", Snacks.picker.buffers,         desc = 'Buffers' },
+    { "<Leader>tb", buffers,                       desc = 'Buffers' },
     { "<Leader>tc", Snacks.picker.command_history, desc = 'Command history' },
     ---@diagnostic disable-next-line: undefined-field
     { "<Leader>td", Snacks.picker.todo_comments,   desc = 'Todos' },
