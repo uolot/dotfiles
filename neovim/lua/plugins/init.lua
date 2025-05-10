@@ -205,6 +205,7 @@ require("lazy").setup({
     },
     {
         'Wansmer/treesj',
+        lazy = true,
         keys = { 'K' },
         dependencies = { 'nvim-treesitter/nvim-treesitter' }, -- if you install parsers with `nvim-treesitter`
         opts = {
