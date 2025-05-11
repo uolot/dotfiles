@@ -7,23 +7,9 @@
 
 export PATH="$HOME/.dotfiles/bin:$HOME/.local/bin:/opt/homebrew/bin:$HOME/.turso:$PATH"
 
-CONFIG=$HOME/.dotfiles/bash/config
-
-# core
-source "$CONFIG/colors"
-source "$CONFIG/text"
-source "$CONFIG/search"
-source "$CONFIG/shell"
-source "$CONFIG/completion"
-source "$CONFIG/misc"
-
-# programs
-source "$CONFIG/fzf"
-source "$CONFIG/git"
-source "$CONFIG/python"
-source "$CONFIG/node"
-source "$CONFIG/aws"
-source "$CONFIG/docker"
+if [[ -f $HOME/.local/share/bob ]]; then
+  alias nvim=$HOME/.local/share/bob/nvim-bin/nvim
+fi
 
 if command -v starship >/dev/null 2>&1; then
   eval "$(starship init bash)"
@@ -45,6 +31,20 @@ if [[ -f $HOME/.local/bin/mise ]]; then
   eval "$($HOME/.local/bin/mise activate bash)"
 fi
 
-if [[ -f $HOME/.local/share/bob ]]; then
-  alias nvim=$HOME/.local/share/bob/nvim-bin/nvim
-fi
+CONFIG=$HOME/.dotfiles/bash/config
+
+# core
+source "$CONFIG/colors"
+source "$CONFIG/text"
+source "$CONFIG/search"
+source "$CONFIG/shell"
+source "$CONFIG/completion"
+source "$CONFIG/misc"
+
+# programs
+source "$CONFIG/fzf"
+source "$CONFIG/git"
+source "$CONFIG/python"
+source "$CONFIG/node"
+source "$CONFIG/aws"
+source "$CONFIG/docker"
