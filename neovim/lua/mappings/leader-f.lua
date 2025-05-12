@@ -50,16 +50,25 @@ local function find_git_modified_files()
     })
 end
 
-local function snipe()
-    require("snipe").open_buffer_menu()
-end
+-- local function snipe()
+--     require("snipe").open_buffer_menu()
+-- end
 
 local function open_buffer_menu()
-    local buffers = require('snipe').get_sorted_buffer_list()
+    -- local buffers = require('snipe').get_sorted_buffer_list()
+    local buffinfo = vim.fn.getbufinfo()
+    local buffers = vim.tbl_filter(function(b)
+        return b.listed == 1 and b.name ~= nil
+    end, buffinfo)
 
     require('fastaction').select(buffers, {
         prompt = "Select buffer",
-        format_item = function(item) return item.name end,
+        -- format_item = function(item) return item.name end,
+        format_item =
+            function(item)
+                local relative_to_cwd = vim.fn.fnamemodify(item.name, ":.")
+                return relative_to_cwd
+            end,
         kind = "buffer",
     }
     , function(choice)
@@ -72,7 +81,7 @@ wk.add({
     mode = "n",
     { "<Leader>f",  group = "+files" },
     -- { "<Leader>fb", snipe,                   desc = "Buffer menu (Snipe)" },
-    { "<Leader>fb", open_buffer_menu,        desc = "Buffer menu (Snipe)" },
+    { "<Leader>fb", open_buffer_menu,        desc = "Buffer menu" },
     { "<Leader>fe", Snacks.explorer.open,    desc = "Toggle explorer" },
     { "<Leader>ff", find_files,              desc = "Find files" },
     { "<Leader>fg", find_git_modified_files, desc = "Find modified git files" },
