@@ -35,16 +35,6 @@ wk.add({
   { "<C-,>",     Snacks.terminal.toggle,               desc = "Toggle terminal" },
   { "<Leader>.", function() Snacks.scratch.open() end, desc = "Open scratch window" },
   { "<Leader>/", Snacks.scratch.select,                desc = "Select scratch window" },
-  {
-    mode = { "n", "x" },
-    {
-      "K",
-      function()
-        require('treesj').toggle()
-      end,
-      desc = "Split/join",
-    },
-  },
   -- Jumps
   {
     noremap = true,

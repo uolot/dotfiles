@@ -206,7 +206,9 @@ require("lazy").setup({
     {
         'Wansmer/treesj',
         lazy = true,
-        keys = { 'K' },
+        keys = {
+            { "K", function() require('treesj').toggle() end, mode = { "n", "x" }, desc = "Split/join" },
+        },
         dependencies = { 'nvim-treesitter/nvim-treesitter' }, -- if you install parsers with `nvim-treesitter`
         opts = {
             use_default_keymaps = false,
