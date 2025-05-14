@@ -50,20 +50,23 @@ local function find_git_modified_files()
     })
 end
 
--- local function snipe()
---     require("snipe").open_buffer_menu()
--- end
-
 local function open_buffer_menu()
-    -- local buffers = require('snipe').get_sorted_buffer_list()
     local buffinfo = vim.fn.getbufinfo()
-    local buffers = vim.tbl_filter(function(b)
-        return b.listed == 1 and b.name ~= nil
+    local listed_buffers = vim.tbl_filter(function(b)
+        return b.listed == 1 and b.name ~= nil and b.name ~= ""
     end, buffinfo)
+
+    local hidden = vim.tbl_filter(function(b)
+        return b.hidden == 1
+    end, listed_buffers) or {}
+    local visible = vim.tbl_filter(function(b)
+        return b.hidden == 0
+    end, listed_buffers) or {}
+
+    local buffers = vim.tbl_extend("keep", hidden, visible, listed_buffers)
 
     require('fastaction').select(buffers, {
         prompt = "Select buffer",
-        -- format_item = function(item) return item.name end,
         format_item =
             function(item)
                 local relative_to_cwd = vim.fn.fnamemodify(item.name, ":.")
@@ -72,15 +75,13 @@ local function open_buffer_menu()
         kind = "buffer",
     }
     , function(choice)
-        -- vim.api.nvim_open_win(choice.id, true, {external=true})
-        vim.api.nvim_set_current_buf(choice.id)
+        vim.api.nvim_set_current_buf(choice.bufnr)
     end)
 end
 
 wk.add({
     mode = "n",
     { "<Leader>f",  group = "+files" },
-    -- { "<Leader>fb", snipe,                   desc = "Buffer menu (Snipe)" },
     { "<Leader>fb", open_buffer_menu,        desc = "Buffer menu" },
     { "<Leader>fe", Snacks.explorer.open,    desc = "Toggle explorer" },
     { "<Leader>ff", find_files,              desc = "Find files" },
