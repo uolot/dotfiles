@@ -11,7 +11,6 @@ local opts = {
         delay = 500,
     },
     preview_config = {
-        border = 'single',
         style = 'minimal',
         relative = 'cursor',
         row = 1,

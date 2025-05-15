@@ -84,7 +84,7 @@ require("lazy").setup({
     {
         'saghen/blink.cmp',
         event = "InsertEnter",
-        version = '*',
+        version = '1.*',
         dependencies = require('plugins.blink').dependencies,
         opts = require('plugins.blink').opts,
         opts_extend = { "sources.default" }

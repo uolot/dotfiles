@@ -93,6 +93,10 @@ local opts = {
             -- 'omni',
         },
         providers = {
+            -- By default, the buffer source will only show when the LSP source returns no items. Enable always showing the buffer source.
+            lsp = {
+                fallbacks = {},
+            },
             path = {
                 opts = {
                     get_cwd = function(_) return vim.fn.getcwd() end,
@@ -146,6 +150,9 @@ local opts = {
     cmdline = {
         keymap = {
             ['<Tab>'] = { 'show', 'accept' },
+            ['<Up>'] = { 'select_prev', 'fallback' },
+            ['<Down>'] = { 'select_next', 'fallback' },
+            ['<Right>'] = { 'select_and_accept' },
         },
         completion = {
             menu = { auto_show = true },
