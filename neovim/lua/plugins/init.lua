@@ -43,6 +43,8 @@ end
 ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
+local ts_ft = { "typescript", "typescriptreact", "typescript.tsx", "svelte", "astro" }
+
 require("lazy").setup({
     -- top plugins
     {
@@ -506,14 +508,14 @@ require("lazy").setup({
     {
         "pmizio/typescript-tools.nvim",
         enabled = false,
-        ft = { "typescript", "typescriptreact", "typescript.tsx" },
+        ft = ts_ft,
         dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
         -- configured in config/lsp.lua
     },
     -- Nvim lua plugin which adds support for twoslash queries into typescript projects
     {
         "marilari88/twoslash-queries.nvim",
-        ft = { "typescript", "typescriptreact", "typescript.tsx" },
+        ft = ts_ft,
         opts = {
             multi_line = false, -- to print types in multi line mode
             is_enabled = true,  -- to keep disabled at startup and enable it on request with the EnableTwoslashQueries
@@ -521,11 +523,11 @@ require("lazy").setup({
     },
     {
         "davidosomething/format-ts-errors.nvim",
-        ft = { "typescript", "typescriptreact", "typescript.tsx" },
+        ft = ts_ft,
     },
     {
         "OlegGulevskyy/better-ts-errors.nvim",
-        ft = { "typescript", "typescriptreact", "typescript.tsx" },
+        ft = ts_ft,
         dependencies = { "MunifTanjim/nui.nvim" },
         opts = {
             keymaps = {
@@ -536,12 +538,12 @@ require("lazy").setup({
     },
     {
         'dmmulroy/ts-error-translator.nvim',
-        ft = { "typescript", "typescriptreact", "typescript.tsx" },
+        ft = ts_ft,
     },
 
     {
         'yioneko/nvim-vtsls',
-        ft = { "typescript", "typescriptreact", "typescript.tsx" },
+        ft = ts_ft,
     },
 
     --
