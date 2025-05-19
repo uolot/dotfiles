@@ -27,7 +27,7 @@ wk.add({
     -- add
     { "<Leader>hA",  '<Cmd>!git add %<CR>',            desc = 'Add file',           silent = true },
     -- delete
-    { "<Leader>hD",  '<Cmd>!git rm -f %<CR>',          desc = 'Delete file',        silent = true },
+    { "<Leader>hD",  "<Cmd>!git rm -f '%'<CR>",        desc = 'Delete file',        silent = true },
     -- blame
     { "<Leader>hb",  blame_line,                       desc = 'Blame line' },
     { "<Leader>hB",  blame_line_full,                  desc = 'Blame line (full)' },
