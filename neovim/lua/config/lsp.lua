@@ -7,7 +7,7 @@
 local dependencies = {
     "folke/neodev.nvim",
     {
-        "williamboman/mason.nvim",
+        "mason-org/mason.nvim",
         build = ":MasonUpdate",
         opts = {
             pip = { upgrade_pip = true },
@@ -15,7 +15,7 @@ local dependencies = {
         },
     },
     {
-        "williamboman/mason-lspconfig.nvim",
+        "mason-org/mason-lspconfig.nvim",
         opts = {},
     },
     -- "VonHeikemen/lsp-zero.nvim",
@@ -155,7 +155,6 @@ local function config()
             },
         },
         vimls = {},
-        volar = {},
         vtsls = {
             on_attach = function(client, bufnr)
                 require("twoslash-queries").attach(client, bufnr)
