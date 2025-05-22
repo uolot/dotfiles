@@ -150,8 +150,8 @@ local opts = {
     cmdline = {
         keymap = {
             ['<Tab>'] = { 'show', 'accept' },
-            ['<Up>'] = { 'select_prev', 'fallback' },
-            ['<Down>'] = { 'select_next', 'fallback' },
+            -- ['<Up>'] = { 'select_prev', 'fallback' },
+            -- ['<Down>'] = { 'select_next', 'fallback' },
             ['<Right>'] = { 'select_and_accept' },
         },
         completion = {
