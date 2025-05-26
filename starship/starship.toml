@@ -38,6 +38,9 @@ truncate_to_repo = true
 read_only = " 󰌾"        # from Nerd Font Symbols Preset
 # fish_style_pwd_dir_length = 4
 
+[direnv]
+disabled = true
+
 [fill]
 symbol = "─"
 style = "bold black"
@@ -50,20 +53,26 @@ truncation_length = 50
 disabled = false
 
 [git_metrics]
-disabled = false
+disabled = true
 
 [git_status]
 conflicted = "X"
-ahead = ""
-behind = ""
+# ahead = ""
+# behind = ""
 diverged = ""
 up_to_date = ""
 untracked = "."
 stashed = ""
 modified = "*"
 staged = "+"
-renamed = ""
-deleted = ""
+# renamed = ""
+deleted = "x"
+
+[git_state]
+disabled = false
+
+[jobs]
+symbol = "󰤄"
 
 [package]
 # symbol = "@ "
