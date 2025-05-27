@@ -29,8 +29,9 @@ wk.add({
     -- tabs
     {
         { "<localleader>t",  group = "+tabs" },
+        { "<localleader>tc", "<Cmd>tabnew<CR>",           desc = "Open new tab" },
+        { "<localleader>td", "<Cmd>tabclose<CR>",         desc = "Close tab" },
         { "<localleader>tn", "<Cmd>tabnew<CR>",           desc = "Open new tab" },
-        { "<localleader>tc", "<Cmd>tabclose<CR>",         desc = "Close tab" },
         { "<localleader>tr", rename_current_tab,          desc = "Rename tab" },
         { "<localleader>tR", "<Cmd>LualineRenameTab<CR>", desc = "Reset tab name" },
     },
