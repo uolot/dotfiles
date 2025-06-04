@@ -165,7 +165,8 @@ require("lazy").setup({
 
     {
         "nvim-treesitter/nvim-treesitter",
-        event = { 'BufReadPre', 'BufNewFile' },
+        branch = "master", -- TODO: change to "main"
+        lazy = false,
         build = ":TSUpdate",
         priority = 900,
         config = require("plugins.treesitter").config,
