@@ -76,13 +76,6 @@ require("lazy").setup({
     -- 1_completion
     --
 
-    -- TODO: remove
-    -- {
-    --     "hrsh7th/nvim-cmp",
-    --     event = { "InsertEnter", "CmdLineEnter" },
-    --     dependencies = require("plugins.cmp").dependencies,
-    --     config = require("plugins.cmp").config,
-    -- },
     {
         'saghen/blink.cmp',
         event = "InsertEnter",
@@ -138,14 +131,6 @@ require("lazy").setup({
         dependencies = require("config.lsp").dependencies,
         config = require("config.lsp").config,
     },
-    -- TODO: remove?
-    -- {
-    --     "jay-babu/mason-null-ls.nvim",
-    --     opts = {
-    --         ensure_installed = {},
-    --         automatic_installation = true,
-    --     },
-    -- },
 
     -- Incremental LSP rename command based on Neovim's command-preview feature
     {
@@ -446,7 +431,6 @@ require("lazy").setup({
         },
     },
 
-    -- TODO: explore ibhagwan/fzf-lua as an alternative
     {
         "aznhe21/actions-preview.nvim",
         config = function()

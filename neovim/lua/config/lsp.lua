@@ -18,17 +18,6 @@ local dependencies = {
         "mason-org/mason-lspconfig.nvim",
         opts = {},
     },
-    -- "VonHeikemen/lsp-zero.nvim",
-    -- TODO: remove this and the config file
-    -- {
-    --     "nvimtools/none-ls.nvim",
-    --     dependencies = {
-    --         "nvim-lua/plenary.nvim",
-    --         "nvimtools/none-ls-extras.nvim",
-    --         "gbprod/none-ls-shellcheck.nvim",
-    --     },
-    --     config = require("plugins.null-ls").config,
-    -- },
 }
 
 local function config()
