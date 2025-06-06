@@ -25,14 +25,27 @@ wk.add({
   { "<Backspace>", "<C-^>",        desc = "Quick buffer switch" },
   { "<Tab>",       "<C-w>w",       desc = "Next window" },
   { -- move
-    { "<C-h>",    "<C-w>h", desc = "Move left" },
-    { "<C-j>",    "<C-w>j", desc = "Move down" },
-    { "<C-k>",    "<C-w>k", desc = "Move up" },
-    { "<C-l>",    "<C-w>l", desc = "Move right" },
-    { mode = "t", "<C-,>",  Snacks.terminal.toggle, desc = "Exit terminal mode" },
+    { "<C-h>", "<C-w>h", desc = "Move left" },
+    { "<C-j>", "<C-w>j", desc = "Move down" },
+    { "<C-k>", "<C-w>k", desc = "Move up" },
+    { "<C-l>", "<C-w>l", desc = "Move right" },
   },
-  -- Snacks
+  -- Terminal
+  {
+    mode = "t",
+    { "<C-h>", "<C-\\><C-N><C-w>h", desc = "Move left" },
+    { "<C-j>", "<C-\\><C-N><C-w>j", desc = "Move down" },
+    { "<C-k>", "<C-\\><C-N><C-w>k", desc = "Move up" },
+    { "<C-l>", "<C-\\><C-N><C-w>l", desc = "Move right" },
+    { "<Esc>", "<C-\\><C-N>",       desc = " Exit terminal mode" },
+  },
+  -- Snacks terminal
   { "<C-,>",     Snacks.terminal.toggle,               desc = "Toggle terminal" },
+  {
+    mode = "t",
+    { "<C-,>", Snacks.terminal.toggle, desc = "Exit terminal mode" },
+  },
+  -- Snacks scratch
   { "<Leader>.", function() Snacks.scratch.open() end, desc = "Open scratch window" },
   { "<Leader>/", Snacks.scratch.select,                desc = "Select scratch window" },
   -- Jumps
