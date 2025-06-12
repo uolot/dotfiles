@@ -183,16 +183,15 @@ local function config()
     -- vim.lsp.config('gh_actions_ls', servers.gh_actions_ls)
     -- vim.lsp.enable('gh_actions_ls')
 
+    for server_name, server in pairs(servers) do
+        -- Set default capabilities for all servers
+        -- server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+        vim.lsp.config(server_name, server)
+    end
+
     require('mason-lspconfig').setup({
         ensure_installed = ensure_installed,
         automatic_enable = true,
-        handlers = {
-            function(server_name)
-                local server = servers[server_name] or {}
-                server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-                require('lspconfig')[server_name].setup(server)
-            end
-        }
     })
 
     --[[
