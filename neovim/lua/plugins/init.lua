@@ -537,25 +537,6 @@ require("lazy").setup({
             is_enabled = true,  -- to keep disabled at startup and enable it on request with the EnableTwoslashQueries
         },
     },
-    {
-        "davidosomething/format-ts-errors.nvim",
-        ft = ts_ft,
-    },
-    {
-        "OlegGulevskyy/better-ts-errors.nvim",
-        ft = ts_ft,
-        dependencies = { "MunifTanjim/nui.nvim" },
-        opts = {
-            keymaps = {
-                toggle = '<leader>gE',
-                -- go_to_definition = '<leader>Td',
-            }
-        }
-    },
-    {
-        'dmmulroy/ts-error-translator.nvim',
-        ft = ts_ft,
-    },
 
     {
         'yioneko/nvim-vtsls',
