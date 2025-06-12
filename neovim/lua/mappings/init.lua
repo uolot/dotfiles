@@ -19,6 +19,10 @@ local function previous_usage()
   snacks.words.jump(-1, true)
 end
 
+-- unmap 's' in normal mode
+vim.api.nvim_set_keymap("n", "s", "", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "S", "", { noremap = true, silent = true })
+
 wk.add({
   mode = "n",
   { "<Esc>",       close_floating, desc = "Close all floating windows" },

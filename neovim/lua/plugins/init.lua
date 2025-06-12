@@ -640,6 +640,42 @@ require("lazy").setup({
             },
         }
     },
+    {
+        'smoka7/hop.nvim',
+        version = "*",
+        opts = {
+            keys = 'etovxqpdygfblzhckisuran'
+        },
+        config = function()
+            local hop = require('hop')
+            hop.setup({ keys = 'etovxqpdygfblzhckisuran' })
+
+            local wk = require('which-key')
+            local dir = require('hop.hint').HintDirection
+            wk.add({
+                mode = "n",
+                { "s",  group = "+hop/sandwich" },
+                { "sf", hop.hint_char1,                 desc = "Hop to char" },
+                { "sg", hop.hint_anywhere,              desc = "Hop anywhere" },
+                { "sl", hop.hint_lines_skip_whitespace, desc = "Hop to line" },
+                { "sp", hop.hint_patterns,              desc = "Hop to pattern" },
+                { "ss", hop.hint_char2,                 desc = "Hop to char pair" },
+                { "sv", hop.hint_vertical,              desc = "Hop vertical" },
+                { "sw", hop.hint_words,                 desc = "Hop word" },
+                -- f-jumps
+                {
+                    ---@diagnostic disable-next-line: missing-fields
+                    { "f", function() hop.hint_char1({ current_line_only = true, direction = dir.AFTER_CURSOR }) end },
+                    ---@diagnostic disable-next-line: missing-fields
+                    { "F", function() hop.hint_char1({ current_line_only = true, direction = dir.BEFORE_CURSOR }) end },
+                    ---@diagnostic disable-next-line: missing-fields
+                    { "t", function() hop.hint_char1({ current_line_only = true, direction = dir.AFTER_CURSOR, hint_offset = -1 }) end },
+                    ---@diagnostic disable-next-line: missing-fields
+                    { "T", function() hop.hint_char1({ current_line_only = true, direction = dir.BEFORE_CURSOR, hint_offset = 1 }) end },
+                },
+            })
+        end,
+    },
 
     -- 99_end
 }, {

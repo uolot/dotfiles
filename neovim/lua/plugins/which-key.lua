@@ -16,6 +16,10 @@ local opts = {
         z = true,
         g = true,
     },
+    triggers = {
+        { "<auto>", mode = "nixsotc" },
+        { "s",      mode = { "n", "v" } },
+    }
 }
 
 return { opts = opts }
