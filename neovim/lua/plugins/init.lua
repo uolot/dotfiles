@@ -88,9 +88,38 @@ require("lazy").setup({
     {
         "zbirenbaum/copilot.lua",
         lazy = true,
+        cmd = "Copilot",
+        event = "InsertEnter",
         opts = {
-            suggestion = { enabled = false },
+            -- suggestion = { enabled = false },
+            suggestion = {
+                auto_trigger = true,
+                enabled = true,
+                -- hide_during_completion = false,
+                -- debounce = 75,
+                -- trigger_on_accept = true,
+                keymap = {
+                    accept = "<M-l>",
+                    accept_word = "<M-Space>",
+                    accept_line = "<M-m>",
+                    next = "<M-j>",
+                    prev = "<M-k>",
+                    dismiss = "<C-]>",
+                },
+            },
+            filetypes = {
+                -- yaml = false,
+                -- markdown = false,
+                help = false,
+                -- gitcommit = false,
+                gitrebase = false,
+                hgcommit = false,
+                svn = false,
+                cvs = false,
+                ["."] = false,
+            },
             panel = { enabled = false },
+            copilot_model = "gemini-2.5-pro",
         },
     },
 
@@ -107,7 +136,9 @@ require("lazy").setup({
             debug = true, -- Enable debugging
             -- See Configuration section for rest
             -- model = 'gpt-4o-mini',
-            model = 'claude-3.7-sonnet',
+            -- model = 'claude-3.7-sonnet',
+            -- model = 'claude-sonnet-4',
+            model = 'gemini-2.5-pro',
             -- model = 'o1-mini',
             auto_insert_mode = true,
             window = {
