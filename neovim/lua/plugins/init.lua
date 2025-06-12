@@ -543,6 +543,22 @@ require("lazy").setup({
         ft = ts_ft,
     },
 
+    {
+        "youyoumu/pretty-ts-errors.nvim",
+        build = 'npm install -g pretty-ts-errors-markdown; asdf reshim',
+        opts = {
+            auto_open = false,
+        },
+        init = function()
+            vim.keymap.set(
+                'n',
+                '<leader>Te',
+                function() require('pretty-ts-errors').show_formatted_error() end,
+                { desc = "Show TS error" }
+            )
+        end,
+    },
+
     --
     -- 15_formatting
     --
