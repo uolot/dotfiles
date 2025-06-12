@@ -125,6 +125,7 @@ local function config()
         gh_actions_ls = {
             init_options = { sessionToken = 'foo' },
         },
+        gopls = {},
         jedi_language_server = {},
         jsonls = {},
         lemminx = {},
