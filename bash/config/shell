@@ -44,7 +44,7 @@ alias ,,='cd ..'
 
 alias x="exit"
 
-alias :e="nvim"
+alias g="fg"
 
 # make a new dir and cd to it
 mkcd() {
@@ -57,9 +57,9 @@ rmup() {
   cd ..
   read -p "Remove ${pwd} ? " choice
   case "$choice" in
-    y | Y)
-      echo "removing ${pwd}"
-      rm -rf "$pwd"
-      ;;
+  y | Y)
+    echo "removing ${pwd}"
+    rm -rf "$pwd"
+    ;;
   esac
 }
