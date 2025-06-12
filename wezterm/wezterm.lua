@@ -137,6 +137,7 @@ local config = {
   -- font_size = 14.5,
   font_size = 16,
   line_height = 1.25,
+  allow_square_glyphs_to_overflow_width = 'Always',
 
   -- 30_colors
 
