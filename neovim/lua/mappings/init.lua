@@ -19,15 +19,18 @@ local function previous_usage()
   snacks.words.jump(-1, true)
 end
 
--- unmap 's' in normal mode
-vim.api.nvim_set_keymap("n", "s", "", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "S", "", { noremap = true, silent = true })
-
 wk.add({
   mode = "n",
   { "<Esc>",       close_floating, desc = "Close all floating windows" },
   { "<Backspace>", "<C-^>",        desc = "Quick buffer switch" },
   { "<Tab>",       "<C-w>w",       desc = "Next window" },
+  -- Unmap 's' and 'S' in normal mode
+  {
+    noremap = true,
+    silent = true,
+    { "s", "<Nop>" },
+    { "S", "<Nop>" },
+  },
   -- Delete mark
   { "dm",    ":delmark ",            desc = "Delete mark" },
   -- Move between windows
@@ -47,7 +50,7 @@ wk.add({
     { "<Esc>", "<C-\\><C-N>",       desc = " Exit terminal mode" },
   },
   -- Snacks terminal
-  { "<C-,>",     Snacks.terminal.toggle,               desc = "Toggle terminal" },
+  { "<C-,>", Snacks.terminal.toggle, desc = "Toggle terminal" },
   {
     mode = "t",
     { "<C-,>", Snacks.terminal.toggle, desc = "Exit terminal mode" },
