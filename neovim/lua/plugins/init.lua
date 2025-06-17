@@ -658,17 +658,6 @@ require("lazy").setup({
     },
 
     {
-        "leath-dub/snipe.nvim",
-        opts = {
-            ui = {
-                position = "center",
-                open_win_override = {
-                    border = "rounded",
-                },
-            },
-        }
-    },
-    {
         'smoka7/hop.nvim',
         version = "*",
         opts = {
