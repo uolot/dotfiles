@@ -259,17 +259,6 @@ require("lazy").setup({
         opts = require("plugins.lualine").opts,
     },
     {
-        "chentoast/marks.nvim",
-        event = "VeryLazy",
-        opts = require("plugins.marks").opts,
-    },
-    -- hide gutter numbers for folds
-    {
-        -- TODO: consider replacing with Snacks.statuscolumn https://github.com/folke/snacks.nvim/blob/main/docs/statuscolumn.md
-        "luukvbaal/statuscol.nvim",
-        config = require("plugins.statuscol").config,
-    },
-    {
         "sphamba/smear-cursor.nvim",
         opts = {
             stiffness = 0.5,

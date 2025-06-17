@@ -28,7 +28,10 @@ wk.add({
   { "<Esc>",       close_floating, desc = "Close all floating windows" },
   { "<Backspace>", "<C-^>",        desc = "Quick buffer switch" },
   { "<Tab>",       "<C-w>w",       desc = "Next window" },
-  { -- move
+  -- Delete mark
+  { "dm",    ":delmark ",            desc = "Delete mark" },
+  -- Move between windows
+  {
     { "<C-h>", "<C-w>h", desc = "Move left" },
     { "<C-j>", "<C-w>j", desc = "Move down" },
     { "<C-k>", "<C-w>k", desc = "Move up" },
