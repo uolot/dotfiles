@@ -187,11 +187,13 @@ require("lazy").setup({
         priority = 900,
         config = require("plugins.treesitter").config,
     },
+
     {
         "nvim-treesitter/nvim-treesitter-textobjects",
         event = 'VeryLazy',
         dependencies = { "nvim-treesitter/nvim-treesitter" },
     },
+
     {
         "nvim-treesitter/nvim-treesitter-context",
         event = 'VeryLazy',
@@ -199,6 +201,7 @@ require("lazy").setup({
         opts = {
             separator = '─',
             -- mode = 'topline',
+            trim_scope = 'inner',
             mode = 'cursor',
             max_lines = 5,
             multiline_threshold = 5,
