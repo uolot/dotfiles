@@ -486,7 +486,6 @@ require("lazy").setup({
     },
 
     -- Highlight, list and search todo comments in your projects
-    -- TODO: move to its own file
     {
         "folke/todo-comments.nvim",
         lazy = false,
@@ -598,7 +597,6 @@ require("lazy").setup({
     -- 18_editing
     --
 
-    -- TODO: use treesitter texobjects indent instead?
     { "michaeljsmith/vim-indent-object" },
 
     -- Additional text objects
