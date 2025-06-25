@@ -65,7 +65,17 @@ local function open_buffer_menu()
 
     local buffers = vim.tbl_extend("keep", hidden, visible, listed_buffers)
 
-    require('fastaction').select(buffers, {
+    -- remove duplicate buffers
+    local unique_buffers = {}
+    local seen = {}
+    for _, buf in ipairs(buffers) do
+        if not seen[buf.bufnr] then
+            seen[buf.bufnr] = true
+            table.insert(unique_buffers, buf)
+        end
+    end
+
+    require('fastaction').select(unique_buffers, {
         prompt = "Select buffer",
         format_item =
             function(item)
