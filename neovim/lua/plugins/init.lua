@@ -671,14 +671,15 @@ require("lazy").setup({
                 { "sw", hop.hint_words,                 desc = "Hop word" },
                 -- f-jumps
                 {
+                    mode = 'nvo',
                     ---@diagnostic disable-next-line: missing-fields
-                    { "f", function() hop.hint_char1({ current_line_only = true, direction = dir.AFTER_CURSOR }) end },
+                    { "f", function() hop.hint_char1({ current_line_only = true, direction = dir.AFTER_CURSOR }) end,                   remap = true },
                     ---@diagnostic disable-next-line: missing-fields
-                    { "F", function() hop.hint_char1({ current_line_only = true, direction = dir.BEFORE_CURSOR }) end },
+                    { "F", function() hop.hint_char1({ current_line_only = true, direction = dir.BEFORE_CURSOR }) end,                  remap = true },
                     ---@diagnostic disable-next-line: missing-fields
-                    { "t", function() hop.hint_char1({ current_line_only = true, direction = dir.AFTER_CURSOR, hint_offset = -1 }) end },
+                    { "t", function() hop.hint_char1({ current_line_only = true, direction = dir.AFTER_CURSOR, hint_offset = -1 }) end, remap = true },
                     ---@diagnostic disable-next-line: missing-fields
-                    { "T", function() hop.hint_char1({ current_line_only = true, direction = dir.BEFORE_CURSOR, hint_offset = 1 }) end },
+                    { "T", function() hop.hint_char1({ current_line_only = true, direction = dir.BEFORE_CURSOR, hint_offset = 1 }) end, remap = true },
                 },
             })
         end,
