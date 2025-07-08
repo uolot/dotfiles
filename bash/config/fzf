@@ -16,7 +16,10 @@ fzf-branch-select() {
 }
 
 fzf-mod-files-select() {
-  echo $(git status --short --branch | fzf --bind=ctrl-z:ignore --multi --preview='git df --color {2}' --header-lines=1 | cut -c 4-)
+  echo $(git status --short --branch |
+    fzf --bind=ctrl-z:ignore --multi --preview='git df --color {2}' --header-lines=1 |
+    cut -c 4- |
+    awk '{ print "'\''" $0 "'\''" }')
 }
 
 fzf-commits-select() {
