@@ -97,7 +97,7 @@ require("lazy").setup({
                 enabled = true,
                 -- hide_during_completion = false,
                 -- debounce = 75,
-                -- trigger_on_accept = true,
+                trigger_on_accept = true,
                 keymap = {
                     accept = "<M-l>",
                     accept_word = "<M-Space>",
@@ -108,10 +108,10 @@ require("lazy").setup({
                 },
             },
             filetypes = {
-                -- yaml = false,
-                -- markdown = false,
+                yaml = true,
+                markdown = true,
                 help = false,
-                -- gitcommit = false,
+                gitcommit = true,
                 gitrebase = false,
                 hgcommit = false,
                 svn = false,

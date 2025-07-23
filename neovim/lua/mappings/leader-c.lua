@@ -14,7 +14,8 @@ wk.add({
         end,
         desc = "Quick chat",
     },
-    { "<Leader>cs", ":CopilotChatStop<CR>", desc = "Stop" },
+    { "<Leader>cm", ":CopilotChatModels<CR>", desc = "Models" },
+    { "<Leader>cs", ":CopilotChatStop<CR>",   desc = "Stop" },
     {
         { "<Leader>cp",  group = "Prompts" },
         { "<Leader>cpd", ":CopilotChatDocs<CR>",          desc = "Docs" },
