@@ -92,9 +92,9 @@ sketchybar --add item volume e \
 sketchybar --add item clock right \
            --set clock update_freq=1 icon=  script="$PLUGIN_DIR/clock.sh"
 
-sketchybar --add item pomo right \
-           --set pomo update_freq=1 icon=  script="$PLUGIN_DIR/pomodoro.py" \
-                click_script="$PLUGIN_DIR/pomodoro.py start"
+# sketchybar --add item pomo right \
+#            --set pomo update_freq=1 icon=  script="$PLUGIN_DIR/pomodoro.py" \
+#                 click_script="$PLUGIN_DIR/pomodoro.py start"
 
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update
