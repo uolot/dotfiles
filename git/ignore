@@ -15,6 +15,7 @@ Untitled.ipynb
 .envrc
 .cquery_cache
 *.twalotek
+*.twalotek.*
 .tool-versions
 tags.lock
 tags.temp
