@@ -25,7 +25,7 @@ wk.add({
     mode = 'n',
     { "<Leader>h",   group = "Git" },
     -- add
-    { "<Leader>hA",  '<Cmd>!git add %<CR>',            desc = 'Add file',           silent = true },
+    { "<Leader>hA",  "<Cmd>!git add '%'<CR>",          desc = 'Add file',           silent = true },
     -- delete
     { "<Leader>hD",  "<Cmd>!git rm -f '%'<CR>",        desc = 'Delete file',        silent = true },
     -- blame
