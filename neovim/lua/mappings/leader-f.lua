@@ -24,6 +24,7 @@ end
 
 local function find_recent_files()
     Snacks.picker.recent({
+        formatters = { file = { truncate = 100 } },
         filter = {
             paths = {
                 [Snacks.git.get_root()] = true,
@@ -99,8 +100,8 @@ wk.add({
     { "<Leader>fG", Snacks.picker.git_files, desc = "Find files in git root" },
     { "<Leader>fh", find_hidden_files,       desc = "Find hidden files" },
     { "<Leader>fi", find_all_files,          desc = "Find all files" },
-    { "<Leader>fo", find_recent_files,       desc = "Find recent files" },
     { "<Leader>fp", Snacks.picker.projects,  desc = "Find projects" },
+    { "<Leader>fr", find_recent_files,       desc = "Find recent files" },
     { "<Leader>fs", find_files_smart,        desc = "Smart open" },
     { "<Leader>fz", Snacks.picker.zoxide,    desc = 'Zoxide' },
     -- Mini files
