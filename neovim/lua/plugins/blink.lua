@@ -3,7 +3,14 @@
 -- sources
 
 local dependencies = {
-    'rafamadriz/friendly-snippets',
+    "rafamadriz/friendly-snippets",
+    { "L3MON4D3/LuaSnip", version = "v2.*" },
+    {
+        "stevearc/vim-vscode-snippets",
+        config = function()
+            require("luasnip.loaders.from_vscode").lazy_load()
+        end,
+    },
     'disrupted/blink-cmp-conventional-commits',
     {
         "fang2hou/blink-copilot",
@@ -79,6 +86,8 @@ local opts = {
     signature = {
         enabled = true,
     },
+
+    snippets = { preset = "luasnip" },
 
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
