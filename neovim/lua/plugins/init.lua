@@ -702,6 +702,41 @@ require("lazy").setup({
         lazy = false,
     },
 
+    {
+        "nvim-neotest/neotest",
+        dependencies = {
+            "nvim-neotest/nvim-nio",
+            "nvim-lua/plenary.nvim",
+            "antoinemadec/FixCursorHold.nvim",
+            "nvim-treesitter/nvim-treesitter",
+            "marilari88/neotest-vitest",
+        },
+        config = function()
+            ---@diagnostic disable-next-line: missing-fields
+            require("neotest").setup({
+                adapters = {
+                    require("neotest-vitest") {
+                        vitestCommand = 'env DB_LOGS=0 LOG_STYLE=off npx vitest  --coverage.enabled --coverage.reporter lcov --coverage.thresholds.0',
+                        -- Filter directories when searching for test files. Useful in large projects (see Filter directories notes).
+                        filter_dir = function(name, rel_path, root)
+                            return name ~= "node_modules"
+                        end,
+                    },
+                }
+            })
+        end,
+    },
+
+    {
+        "andythigpen/nvim-coverage",
+        version = "*",
+        config = function()
+            require("coverage").setup({
+                auto_reload = true,
+            })
+        end,
+    },
+
     -- 99_end
 }, {
     ui = {
