@@ -4,6 +4,12 @@ local function buffers()
     Snacks.picker.buffers({ formatters = { file = { truncate = 100 } } })
 end
 
+local function grep()
+    Snacks.picker.grep({
+        formatters = { file = { truncate = 100 }, },
+    })
+end
+
 local function grep_word()
     Snacks.picker.grep_word({
         args = { "-w" },
@@ -37,7 +43,7 @@ wk.add({
     { "<Leader>td", Snacks.picker.todo_comments,   desc = 'Todos' },
     { "<Leader>tg", grep_word,                     desc = 'Grep word under cursor' },
     { "<Leader>tG", grep_word_everywhere,          desc = 'Grep word under cursor' },
-    { "<Leader>tl", Snacks.picker.grep,            desc = 'Live grep' },
+    { "<Leader>tl", grep,                          desc = 'Live grep' },
     { "<Leader>tp", Snacks.picker.pickers,         desc = 'All pickers' },
     { "<Leader>tr", Snacks.picker.resume,          desc = 'Resume' },
     { "<Leader>ts", Snacks.picker.search_history,  desc = 'Search history' },
