@@ -3,6 +3,7 @@ local opts = {
         lsp_format = "fallback",
     },
     formatters_by_ft = {
+        html = { "prettierd", "prettier" },
         json = { "prettierd", "prettier" },
         jsonc = { "prettierd", "prettier" },
         markdown = { "prettierd", "prettier" },
