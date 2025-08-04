@@ -99,7 +99,6 @@ local opts = {
             'path',
             'snippets',
             'copilot',
-            'lazydev',
             -- 'omni',
         },
         providers = {
