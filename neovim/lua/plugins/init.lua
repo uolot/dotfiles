@@ -163,7 +163,9 @@ require("lazy").setup({
     {
         "smjonas/inc-rename.nvim",
         event = "VeryLazy",
-        config = true,
+        opts = {
+            input_buffer_type = "snacks",
+        },
     },
     {
         'arkav/lualine-lsp-progress',

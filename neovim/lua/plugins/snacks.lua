@@ -23,6 +23,12 @@ return {
                 },
             },
         },
+        input = {
+            enabled = true,
+            relative = 'cursor',
+            row = -3,
+            col = 0,
+        },
         notifier = { enabled = true },
         picker = { enabled = true },
         quickfile = { enabled = true },
