@@ -88,6 +88,8 @@ local function config()
     -- blink-cmp
     capabilities = vim.tbl_deep_extend('force', capabilities, require('blink.cmp').get_lsp_capabilities(capabilities))
 
+    -- TODO: probably not needed anymore since this commit:
+    -- https://github.com/neovim/nvim-lspconfig/commit/f5aa43e
     local svelte_capabilities = vim.tbl_deep_extend("force", {}, capabilities)
     svelte_capabilities.workspace = { didChangeWatchedFiles = false }
 

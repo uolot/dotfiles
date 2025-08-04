@@ -749,7 +749,8 @@ require("lazy").setup({
             {
                 "<leader><space>", -- try it if you didn't it is a banger keybinding for a picker
                 function()
-                    require("fff").toggle()
+                    require("fff").find_files()
+                    -- require("fff").find_in_git_root()
                 end,
                 desc = "Toggle FFF",
             },
