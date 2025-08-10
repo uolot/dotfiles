@@ -1,19 +1,21 @@
+local prettier = { "prettierd", "prettier", stop_after_first = false, timeout_ms = 5000 }
+
 local opts = {
     default_format_opts = {
         lsp_format = "fallback",
     },
     formatters_by_ft = {
-        html = { "prettierd", "prettier" },
-        json = { "prettierd", "prettier" },
-        jsonc = { "prettierd", "prettier" },
-        markdown = { "prettierd", "prettier" },
-        javascript = { "prettierd", "prettier" },
-        javascriptreact = { "prettierd", "prettier" },
+        html = prettier,
+        json = prettier,
+        jsonc = prettier,
+        markdown = prettier,
+        javascript = prettier,
+        javascriptreact = prettier,
         sql = { "sql_formatter" },
         toml = { "taplo" },
-        typescript = { "prettierd", "prettier" },
-        typescriptreact = { "prettierd", "prettier" },
-        yaml = { "prettierd", "prettier" },
+        typescript = prettier,
+        typescriptreact = prettier,
+        yaml = prettier,
     },
 }
 
