@@ -12,11 +12,6 @@ Untitled.ipynb
 
 # misc
 .cache
-.envrc
-.cquery_cache
-*.twalotek
-*.twalotek.*
-.tool-versions
 tags.lock
 tags.temp
-.typos.toml
+.tool-versions
