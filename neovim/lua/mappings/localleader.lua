@@ -34,6 +34,7 @@ wk.add({
         { "<localleader>tn", "<Cmd>tabnew<CR>",           desc = "Open new tab" },
         { "<localleader>tr", rename_current_tab,          desc = "Rename tab" },
         { "<localleader>tR", "<Cmd>LualineRenameTab<CR>", desc = "Reset tab name" },
+        { "<localleader>tx", "<Cmd>tabclose<CR>",         desc = "Close tab" },
     },
     -- buf nav
     { "<localleader>k", "<Cmd>bnext<CR>",   desc = "Next buffer" },
