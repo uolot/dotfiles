@@ -719,14 +719,50 @@ require("lazy").setup({
                 adapters = {
                     require("neotest-vitest") {
                         -- FIXME: only for content studio
-                        vitestCommand = 'env DB_LOGS=0 LOG_STYLE=off npx vitest  --coverage.enabled --coverage.clean false --coverage.reporter lcov --coverage.reportOnFailure --coverage.thresholds.0',
+                        vitestCommand = 'env NODE_ENV=test DB_LOGS=0 LOG_STYLE=off npx vitest  --coverage.enabled --coverage.clean false --coverage.reporter lcov --coverage.reportOnFailure --coverage.thresholds.0',
                         -- vitestCommand = 'env DB_LOGS=0 LOG_STYLE=off npx vitest --project=unit --coverage.enabled --coverage.reporter lcov --coverage.thresholds.0',
                         -- Filter directories when searching for test files. Useful in large projects (see Filter directories notes).
                         filter_dir = function(name, rel_path, root)
                             return name ~= "node_modules"
                         end,
                     },
-                }
+                },
+                consumers = {
+                    notify = function(client)
+                        client.listeners.run = function()
+                            vim.notify("Starting tests...", vim.log.levels.INFO, {
+                                title = "Neotest",
+                                id = "neotest-run-" .. os.time(),
+                            })
+                        end
+
+                        client.listeners.results = function(_, results, partial)
+                            if partial then return end
+
+                            local total = 0
+                            local passed = 0
+                            for _, r in pairs(results) do
+                                if r.short ~= nil then
+                                    total = total + 1
+                                    if r.status == "passed" then
+                                        passed = passed + 1
+                                    end
+                                end
+                            end
+
+                            local failed = total - passed
+                            -- local message = passed .. "/" .. total .. " tests passed."
+                            local failed_msg = failed > 0 and string.format("%d/%d failed, ", failed, total) or ""
+                            local passed_msg = string.format("%d/%d passed", passed, total)
+                            local message = string.format('Finished test run\n%s %s', failed_msg, passed_msg)
+                            local level = failed > 0 and vim.log.levels.ERROR or vim.log.levels.INFO
+                            vim.notify(message, level, {
+                                title = "Neotest",
+                                id = "neotest-results-" .. os.time(),
+                            })
+                        end
+                    end,
+                },
             })
         end,
     },

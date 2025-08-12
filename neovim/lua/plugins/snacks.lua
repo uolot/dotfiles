@@ -29,7 +29,10 @@ return {
             row = -3,
             col = 0,
         },
-        notifier = { enabled = true },
+        notifier = {
+            enabled = true,
+            timeout = 6000,
+        },
         picker = { enabled = true },
         quickfile = { enabled = true },
         statuscolumn = {
