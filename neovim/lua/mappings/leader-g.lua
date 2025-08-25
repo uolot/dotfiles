@@ -10,6 +10,10 @@ local function previous_usage()
     snacks.words.jump(-1, true)
 end
 
+local function lsp_references()
+    Snacks.picker.lsp_references({ formatters = { file = { truncate = 100 } } })
+end
+
 wk.add({
     { "<Leader>g",  group = "+lsp" },
     {
@@ -20,7 +24,7 @@ wk.add({
     { "<Leader>ge", vim.diagnostic.open_float,           desc = "Show current line diagnostics" },
     { "<Leader>gd", vim.lsp.buf.definition,              desc = "Go to definition" },
     { "<Leader>gD", vim.lsp.buf.declaration,             desc = "Go to declaration" },
-    { "<Leader>gf", Snacks.picker.lsp_references,        desc = "Find references" },
+    { "<Leader>gf", lsp_references,                      desc = "Find references" },
     { "<Leader>gh", vim.lsp.buf.hover,                   desc = "Hover" },
     { "<Leader>gi", vim.lsp.buf.incoming_calls,          desc = "Incoming calls" },
     { "<Leader>gj", next_usage,                          desc = "Next usage" },
