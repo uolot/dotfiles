@@ -22,9 +22,12 @@ wk.add({
     { "<localleader>n", "<Cmd>enew<CR>",    desc = "Open new buffer" },
     {
         { "<localleader>b",  group = "+bufs" },
-        { "<localleader>bn", "<Cmd>enew<CR>",       desc = "Open new buffer" },
-        { "<localleader>bd", delete_current_buffer, desc = "Delete current buffer" },
-        { "<localleader>bD", "<Cmd>!rm %<CR>",      desc = "Delete current file" },
+        { "<localleader>bn", "<Cmd>enew<CR>",               desc = "Open new buffer" },
+        { "<localleader>bd", delete_current_buffer,         desc = "Delete current buffer" },
+        { "<localleader>bD", "<Cmd>!rm %<CR>",              desc = "Delete current file" },
+        { "<localleader>bq", "<Cmd>bd!<CR>",                desc = "Force close buffer" },
+        { "<localleader>by", ":let @+=expand('%:~:.')<CR>", desc = "Yank relative path" },
+        { "<localleader>bY", ":let @+=expand('%:p:~')<CR>", desc = "Yank absolute path" },
     },
     -- tabs
     {
