@@ -1,6 +1,7 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
 -- TOC:
+-- 0_top_plugins
 -- 1_completion
 -- 2_lsp_and_diagnostics
 -- 3_treesitter
@@ -19,6 +20,8 @@ local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 -- 16_keybindings
 -- 17_windows
 -- 18_editing
+-- 19_presentation
+-- 20_testing
 -- 96_misc
 -- 97_to_remove
 -- 98_nursery
@@ -46,7 +49,10 @@ vim.opt.rtp:prepend(lazypath)
 local ts_ft = { "typescript", "typescriptreact", "typescript.tsx", "svelte", "astro" }
 
 require("lazy").setup({
-    -- top plugins
+    --
+    -- 0_top_plugins
+    --
+
     {
         "folke/lazydev.nvim",
         ft = "lua", -- only load on lua files
@@ -173,6 +179,29 @@ require("lazy").setup({
         dependencies = { 'nvim-lualine/lualine.nvim' },
     },
 
+    {
+        'stevearc/aerial.nvim',
+        event = "LspAttach",
+        opts = {
+            layout = {
+                max_width = 50,
+                min_width = 20,
+                placement = 'edge',
+            },
+            attach_mode = 'global',
+            -- close_automatic_events = { 'unfocus' },
+            close_on_select = true,
+            -- autojump = true,
+            highlight_on_hover = true,
+            show_guides = true,
+        },
+        -- Optional dependencies
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+            "nvim-tree/nvim-web-devicons"
+        },
+    },
+
     --
     -- 3_treesitter
     --
@@ -223,6 +252,7 @@ require("lazy").setup({
             }
         }
     },
+
     {
         'Wansmer/treesj',
         lazy = true,
@@ -234,6 +264,16 @@ require("lazy").setup({
             use_default_keymaps = false,
             max_join_length = 600,
             on_error = function() vim.lsp.buf.hover() end,
+        },
+    },
+
+    {
+        "briangwaltney/paren-hint.nvim",
+        lazy = false,
+        opts = {
+            include_paren = false,
+            anywhere_on_line = false,
+            highlight = "operator",
         },
     },
 
@@ -318,7 +358,86 @@ require("lazy").setup({
                     LspReferenceText = { bg = '#505050', fmt = 'bold' },
                 },
             }
-            require('bamboo').load()
+            -- require('bamboo').load()
+        end,
+    },
+
+    {
+        'p00f/alabaster.nvim',
+        config = function()
+            -- disable semantic highlight groups in ColorScheme autocmd
+            vim.api.nvim_create_autocmd("ColorScheme", {
+                pattern = "*",
+                callback = function()
+                    -- Only clear some LSP semantic highlights, keep the ones we want
+                    for _, group in ipairs(vim.fn.getcompletion("@lsp", "highlight")) do
+                        -- Keep specific highlights we want to preserve
+                        local keep = group:match("parameter") or
+                            group:match("variable") or
+                            group:match("property") or
+                            group == "@lsp.type.type" or
+                            group == "@lsp.type.interface" or
+                            group == "@lsp.type.typeParameter"
+
+                        if not keep then
+                            vim.api.nvim_set_hl(0, group, {})
+                        end
+                    end
+
+                    -- Set custom highlight groups using alabaster colors
+                    -- Check if we're in dark or light mode
+                    local is_dark = vim.o.background == "dark"
+                    local def_fg = is_dark and "#71ade7" or "#325cc0" -- alabaster def_fg (blue)
+                    -- local const_fg = is_dark and "#cc8bc9" or "#7a3e9d"   -- alabaster const_fg (magenta)
+                    -- local string_fg = is_dark and "#95cb82" or "#448c27"  -- alabaster string_fg (green)
+                    local fg = is_dark and "#cecece" or "#000000" -- alabaster fg (main text color)
+
+                    -- Create medium subtle colors with more saturation
+                    local subtle_param = is_dark and "#a898c8" or
+                        "#5a5a70"                                                            -- more saturated magenta tint
+                    local subtle_var = is_dark and "#a0c0a0" or
+                        "#484a48"                                                            -- slightly less saturated green tint
+                    local subtle_string = is_dark and "#a0a0a0" or
+                        "#404040"                                                            -- more noticeable difference from main text
+
+                    vim.api.nvim_set_hl(0, '@AlabasterDefinition', { fg = def_fg })          -- Class names (blue)
+                    vim.api.nvim_set_hl(0, '@AlabasterParam', { fg = subtle_param })         -- Function parameters (subtle magenta)
+                    vim.api.nvim_set_hl(0, '@AlabasterVariable', { fg = subtle_var })        -- Local variables (subtle green)
+                    vim.api.nvim_set_hl(0, '@AlabasterProperty', { fg = fg, italic = true }) -- Properties/fields (main color, italic)
+                    vim.api.nvim_set_hl(0, '@AlabasterType', { fg = fg, italic = true })     -- Types/interfaces (main color, italic)
+
+                    -- Override all possible string highlight groups with subtle color
+                    vim.api.nvim_set_hl(0, '@string', { fg = subtle_string })
+                    vim.api.nvim_set_hl(0, 'String', { fg = subtle_string })
+                    vim.api.nvim_set_hl(0, 'TSString', { fg = subtle_string })
+                    vim.api.nvim_set_hl(0, '@AlabasterString', { fg = subtle_string })
+
+                    -- Map LSP semantic tokens to our custom highlights
+                    vim.api.nvim_set_hl(0, '@lsp.type.parameter', { link = '@AlabasterParam' })
+                    vim.api.nvim_set_hl(0, '@lsp.type.variable', { link = '@AlabasterVariable' })
+                    vim.api.nvim_set_hl(0, '@lsp.type.property', { link = '@AlabasterProperty' })
+                    vim.api.nvim_set_hl(0, '@lsp.type.type', { link = '@AlabasterType' })
+                    vim.api.nvim_set_hl(0, '@lsp.type.interface', { link = '@AlabasterType' })
+                    vim.api.nvim_set_hl(0, '@lsp.type.typeParameter', { link = '@AlabasterType' })
+
+                    -- Clear constant highlighting to remove UPPERCASE_CONST highlights
+                    vim.api.nvim_set_hl(0, '@lsp.type.enumMember', {})
+                    vim.api.nvim_set_hl(0, '@constant', {})
+                    vim.api.nvim_set_hl(0, 'Constant', {})
+                    vim.api.nvim_set_hl(0, '@constant.builtin', {})
+
+                    -- Schedule another override to ensure it sticks
+                    vim.schedule(function()
+                        vim.api.nvim_set_hl(0, '@string', { fg = subtle_string })
+                        vim.api.nvim_set_hl(0, 'String', { fg = subtle_string })
+                        vim.api.nvim_set_hl(0, 'TSString', { fg = subtle_string })
+                        vim.api.nvim_set_hl(0, '@AlabasterString', { fg = subtle_string })
+                    end)
+                end
+            })
+            vim.g.alabaster_floatborder = false
+            vim.opt.termguicolors = true
+            vim.cmd.colorscheme('alabaster')
         end,
     },
 
@@ -331,7 +450,18 @@ require("lazy").setup({
     -- Highlight several words in different colors simultaneously
     {
         "inkarkat/vim-mark",
-        keys = { "<Plug>MarkSet", "<Plug>MarkToggle", "<Plug>MarkClear" },
+        keys = {
+            "<Plug>MarkAllClear",
+            "<Plug>MarkClear",
+            "<Plug>MarkPartialWord",
+            "<Plug>MarkRegex",
+            "<Plug>MarkSearchAnyNext",
+            "<Plug>MarkSearchAnyPrev",
+            "<Plug>MarkSearchCurrentNext",
+            "<Plug>MarkSearchCurrentPrev",
+            "<Plug>MarkSet",
+            "<Plug>MarkToggle",
+        },
         dependencies = { "inkarkat/vim-ingo-library" },
         init = function()
             vim.g.mw_no_mappings = 1
@@ -344,6 +474,14 @@ require("lazy").setup({
         config = true,
     },
 
+    -- Highlight, list and search todo comments in your projects
+    {
+        "folke/todo-comments.nvim",
+        lazy = false,
+        opts = require('plugins.todo-comments').opts,
+    },
+
+
     --
     -- 7_file_management
     --
@@ -353,6 +491,24 @@ require("lazy").setup({
         ---@diagnostic disable-next-line: assign-type-mismatch
         version = false,
         config = require("plugins.mini").files.config,
+    },
+
+    {
+        "dmtrKovalenko/fff.nvim",
+        build = "cargo build --release",
+        opts = {
+            -- pass here all the options
+        },
+        keys = {
+            {
+                "<leader><space>", -- try it if you didn't it is a banger keybinding for a picker
+                function()
+                    require("fff").find_files()
+                    -- require("fff").find_in_git_root()
+                end,
+                desc = "Toggle FFF",
+            },
+        },
     },
 
     --
@@ -430,29 +586,6 @@ require("lazy").setup({
     },
 
     {
-        'stevearc/aerial.nvim',
-        event = "LspAttach",
-        opts = {
-            layout = {
-                max_width = 50,
-                min_width = 20,
-                placement = 'edge',
-            },
-            attach_mode = 'global',
-            -- close_automatic_events = { 'unfocus' },
-            close_on_select = true,
-            -- autojump = true,
-            highlight_on_hover = true,
-            show_guides = true,
-        },
-        -- Optional dependencies
-        dependencies = {
-            "nvim-treesitter/nvim-treesitter",
-            "nvim-tree/nvim-web-devicons"
-        },
-    },
-
-    {
         "aznhe21/actions-preview.nvim",
         config = function()
             require('actions-preview').setup({
@@ -475,11 +608,9 @@ require("lazy").setup({
         end
     },
 
-    -- Highlight, list and search todo comments in your projects
     {
-        "folke/todo-comments.nvim",
-        lazy = false,
-        opts = require('plugins.todo-comments').opts,
+        'Chaitanyabsprip/fastaction.nvim',
+        opts = require('plugins.fastaction').opts,
     },
 
     --
@@ -491,6 +622,27 @@ require("lazy").setup({
     {
         "godlygeek/tabular",
         cmd = "Tabularize",
+    },
+
+    {
+        "johmsalas/text-case.nvim",
+        config = function()
+            require("textcase").setup({
+                prefix = "sc",
+            })
+        end,
+        keys = {
+            "sc", -- Default invocation prefix
+        },
+        cmd = {
+            -- NOTE: The Subs command name can be customized via the option "substitute_command_name"
+            "Subs",
+            "TextCaseStartReplacingCommand",
+        },
+        -- If you want to use the interactive feature of the `Subs` command right away, text-case.nvim
+        -- has to be loaded on startup. Otherwise, the interactive feature of the `Subs` will only be
+        -- available after the first executing of it or after a keymap of text-case.nvim has been used.
+        lazy = false,
     },
 
     --
@@ -506,6 +658,45 @@ require("lazy").setup({
             on_success = nil,
         },
     },
+
+    {
+        'smoka7/hop.nvim',
+        version = "*",
+        opts = {
+            keys = 'etovxqpdygfblzhckisuran'
+        },
+        config = function()
+            local hop = require('hop')
+            hop.setup({ keys = 'etovxqpdygfblzhckisuran' })
+
+            local wk = require('which-key')
+            local dir = require('hop.hint').HintDirection
+            wk.add({
+                mode = "n",
+                { "s",  group = "+hop/sandwich" },
+                { "sf", hop.hint_char1,                 desc = "Hop to char" },
+                { "sg", hop.hint_anywhere,              desc = "Hop anywhere" },
+                { "sl", hop.hint_lines_skip_whitespace, desc = "Hop to line" },
+                { "sp", hop.hint_patterns,              desc = "Hop to pattern" },
+                { "ss", hop.hint_char2,                 desc = "Hop to char pair" },
+                { "sv", hop.hint_vertical,              desc = "Hop vertical" },
+                { "sw", hop.hint_words,                 desc = "Hop word" },
+                -- f-jumps
+                {
+                    mode = 'nvo',
+                    ---@diagnostic disable-next-line: missing-fields
+                    { "f", function() hop.hint_char1({ current_line_only = true, direction = dir.AFTER_CURSOR }) end,                   remap = true },
+                    ---@diagnostic disable-next-line: missing-fields
+                    { "F", function() hop.hint_char1({ current_line_only = true, direction = dir.BEFORE_CURSOR }) end,                  remap = true },
+                    ---@diagnostic disable-next-line: missing-fields
+                    { "t", function() hop.hint_char1({ current_line_only = true, direction = dir.AFTER_CURSOR, hint_offset = -1 }) end, remap = true },
+                    ---@diagnostic disable-next-line: missing-fields
+                    { "T", function() hop.hint_char1({ current_line_only = true, direction = dir.BEFORE_CURSOR, hint_offset = 1 }) end, remap = true },
+                },
+            })
+        end,
+    },
+
 
     --
     -- 14_typescript
@@ -598,123 +789,12 @@ require("lazy").setup({
     { "wellle/targets.vim" },
 
     --
-    -- 96_misc
+    -- 19_presentation
     --
 
-    -- Readline style insertion
-    {
-        "tpope/vim-rsi",
-        keys = { ":", "/", "?" },
-    },
-
-    -- handle line and column numbers in file names, eg: file.txt:10 or file.txt:10:5
-    { "kopischke/vim-fetch" },
-
-    -- Heuristically set buffer options
-    { "tpope/vim-sleuth" },
-
-    {
-        "chrisgrieser/nvim-origami",
-        event = "VeryLazy",
-        opts = {
-            autoFold = {
-                enabled = true,
-                kinds = { "imports" }, -- FIXME: doesn't seem to work?
-            },
-        },
-        -- recommended: disable vim's auto-folding
-        init = function()
-            vim.opt.foldlevel = 99
-            vim.opt.foldlevelstart = 99
-        end,
-    },
-
-    {
-        "jaimecgomezz/here.term",
-        opts = {}
-    },
-
     --
-    -- 97_to_remove
+    -- 20_testing
     --
-
-
-    --
-    -- 98_nursery
-    --
-    {
-        'Chaitanyabsprip/fastaction.nvim',
-        opts = require('plugins.fastaction').opts,
-    },
-
-    {
-        "briangwaltney/paren-hint.nvim",
-        lazy = false,
-        opts = {
-            include_paren = false,
-            anywhere_on_line = false,
-            highlight = "operator",
-        },
-    },
-
-    {
-        'smoka7/hop.nvim',
-        version = "*",
-        opts = {
-            keys = 'etovxqpdygfblzhckisuran'
-        },
-        config = function()
-            local hop = require('hop')
-            hop.setup({ keys = 'etovxqpdygfblzhckisuran' })
-
-            local wk = require('which-key')
-            local dir = require('hop.hint').HintDirection
-            wk.add({
-                mode = "n",
-                { "s",  group = "+hop/sandwich" },
-                { "sf", hop.hint_char1,                 desc = "Hop to char" },
-                { "sg", hop.hint_anywhere,              desc = "Hop anywhere" },
-                { "sl", hop.hint_lines_skip_whitespace, desc = "Hop to line" },
-                { "sp", hop.hint_patterns,              desc = "Hop to pattern" },
-                { "ss", hop.hint_char2,                 desc = "Hop to char pair" },
-                { "sv", hop.hint_vertical,              desc = "Hop vertical" },
-                { "sw", hop.hint_words,                 desc = "Hop word" },
-                -- f-jumps
-                {
-                    mode = 'nvo',
-                    ---@diagnostic disable-next-line: missing-fields
-                    { "f", function() hop.hint_char1({ current_line_only = true, direction = dir.AFTER_CURSOR }) end,                   remap = true },
-                    ---@diagnostic disable-next-line: missing-fields
-                    { "F", function() hop.hint_char1({ current_line_only = true, direction = dir.BEFORE_CURSOR }) end,                  remap = true },
-                    ---@diagnostic disable-next-line: missing-fields
-                    { "t", function() hop.hint_char1({ current_line_only = true, direction = dir.AFTER_CURSOR, hint_offset = -1 }) end, remap = true },
-                    ---@diagnostic disable-next-line: missing-fields
-                    { "T", function() hop.hint_char1({ current_line_only = true, direction = dir.BEFORE_CURSOR, hint_offset = 1 }) end, remap = true },
-                },
-            })
-        end,
-    },
-
-    {
-        "johmsalas/text-case.nvim",
-        config = function()
-            require("textcase").setup({
-                prefix = "sc",
-            })
-        end,
-        keys = {
-            "sc", -- Default invocation prefix
-        },
-        cmd = {
-            -- NOTE: The Subs command name can be customized via the option "substitude_command_name"
-            "Subs",
-            "TextCaseStartReplacingCommand",
-        },
-        -- If you want to use the interactive feature of the `Subs` command right away, text-case.nvim
-        -- has to be loaded on startup. Otherwise, the interactive feature of the `Subs` will only be
-        -- available after the first executing of it or after a keymap of text-case.nvim has been used.
-        lazy = false,
-    },
 
     {
         "nvim-neotest/neotest",
@@ -734,7 +814,7 @@ require("lazy").setup({
                         vitestCommand = 'env NODE_ENV=test DB_LOGS=0 LOG_STYLE=off npx vitest  --coverage.enabled --coverage.clean false --coverage.reporter lcov --coverage.reportOnFailure --coverage.thresholds.0',
                         -- vitestCommand = 'env DB_LOGS=0 LOG_STYLE=off npx vitest --project=unit --coverage.enabled --coverage.reporter lcov --coverage.thresholds.0',
                         -- Filter directories when searching for test files. Useful in large projects (see Filter directories notes).
-                        filter_dir = function(name, rel_path, root)
+                        filter_dir = function(name, _rel_path, _root)
                             return name ~= "node_modules"
                         end,
                     },
@@ -789,23 +869,51 @@ require("lazy").setup({
         end,
     },
 
+    --
+    -- 96_misc
+    --
+
+    -- Readline style insertion
     {
-        "dmtrKovalenko/fff.nvim",
-        build = "cargo build --release",
+        "tpope/vim-rsi",
+        keys = { ":", "/", "?" },
+    },
+
+    -- handle line and column numbers in file names, eg: file.txt:10 or file.txt:10:5
+    { "kopischke/vim-fetch" },
+
+    -- Heuristically set buffer options
+    { "tpope/vim-sleuth" },
+
+    {
+        "chrisgrieser/nvim-origami",
+        event = "VeryLazy",
         opts = {
-            -- pass here all the options
-        },
-        keys = {
-            {
-                "<leader><space>", -- try it if you didn't it is a banger keybinding for a picker
-                function()
-                    require("fff").find_files()
-                    -- require("fff").find_in_git_root()
-                end,
-                desc = "Toggle FFF",
+            autoFold = {
+                enabled = true,
+                kinds = { "imports" }, -- FIXME: doesn't seem to work?
             },
         },
+        -- recommended: disable vim's auto-folding
+        init = function()
+            vim.opt.foldlevel = 99
+            vim.opt.foldlevelstart = 99
+        end,
     },
+
+    {
+        "jaimecgomezz/here.term",
+        opts = {}
+    },
+
+    --
+    -- 97_to_remove
+    --
+
+
+    --
+    -- 98_nursery
+    --
 
     {
         "mistweaverco/kulala.nvim",
