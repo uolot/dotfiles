@@ -404,6 +404,7 @@ require("lazy").setup({
                     vim.api.nvim_set_hl(0, '@AlabasterParam', { fg = subtle_param })         -- Function parameters (subtle magenta)
                     vim.api.nvim_set_hl(0, '@AlabasterVariable', { fg = subtle_var })        -- Local variables (subtle green)
                     vim.api.nvim_set_hl(0, '@AlabasterProperty', { fg = fg, italic = true }) -- Properties/fields (main color, italic)
+                    vim.api.nvim_set_hl(0, '@AlabasterMethod', { fg = def_fg, italic = true }) -- Method definitions (blue, italic)
                     vim.api.nvim_set_hl(0, '@AlabasterType', { fg = fg, italic = true })     -- Types/interfaces (main color, italic)
 
                     -- Override all possible string highlight groups with subtle color

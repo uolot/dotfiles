@@ -177,6 +177,7 @@
     name: (identifier) @AlabasterVariable
     !value))
 
+<<<<<<< HEAD
 ; highlight class fields and object properties as @AlabasterProperty
 (class_body
   (public_field_definition
@@ -185,6 +186,18 @@
 (class_body
   (method_definition
     name: (property_identifier) @AlabasterProperty))
+||||||| parent of b67cff2 (neovim: Add alabaster.nvim and cleanup plugins/init.lua)
+=======
+; highlight class fields as @AlabasterProperty
+(class_body
+  (public_field_definition
+    name: (property_identifier) @AlabasterProperty))
+
+; highlight method definitions as @AlabasterMethod (function-like but italic)
+(class_body
+  (method_definition
+    name: (property_identifier) @AlabasterMethod))
+>>>>>>> b67cff2 (neovim: Add alabaster.nvim and cleanup plugins/init.lua)
 
 ; highlight method calls and property access
 (member_expression
