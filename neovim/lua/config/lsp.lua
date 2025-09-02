@@ -76,15 +76,6 @@ local function config()
     })
 
     local capabilities = vim.lsp.protocol.make_client_capabilities()
-    -- ufo
-    capabilities = vim.tbl_deep_extend('force', capabilities, {
-        textDocument = {
-            foldingRange = {
-                dynamicRegistration = false,
-                lineFoldingOnly = true,
-            },
-        }
-    })
     -- blink-cmp
     capabilities = vim.tbl_deep_extend('force', capabilities, require('blink.cmp').get_lsp_capabilities(capabilities))
 

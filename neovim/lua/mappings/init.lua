@@ -87,7 +87,6 @@ wk.add({
 })
 
 require("mappings.g")
-require("mappings.z")
 require("mappings.c-w")
 require('mappings.leader-a')
 require('mappings.leader-c')

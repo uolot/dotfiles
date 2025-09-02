@@ -613,12 +613,20 @@ require("lazy").setup({
     -- Heuristically set buffer options
     { "tpope/vim-sleuth" },
 
-    -- ultra fold
     {
-        "kevinhwang91/nvim-ufo",
-        event = { "BufReadPre", "BufNewFile" },
-        dependencies = { "kevinhwang91/promise-async" },
-        opts = {}
+        "chrisgrieser/nvim-origami",
+        event = "VeryLazy",
+        opts = {
+            autoFold = {
+                enabled = true,
+                kinds = { "imports" }, -- FIXME: doesn't seem to work?
+            },
+        },
+        -- recommended: disable vim's auto-folding
+        init = function()
+            vim.opt.foldlevel = 99
+            vim.opt.foldlevelstart = 99
+        end,
     },
 
     {
