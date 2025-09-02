@@ -650,7 +650,11 @@ require("lazy").setup({
     {
         "briangwaltney/paren-hint.nvim",
         lazy = false,
-        config = true,
+        opts = {
+            include_paren = false,
+            anywhere_on_line = false,
+            highlight = "operator",
+        },
     },
 
     {
