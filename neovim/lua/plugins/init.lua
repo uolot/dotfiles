@@ -677,6 +677,7 @@ require("lazy").setup({
                 { "sf", hop.hint_char1,                 desc = "Hop to char" },
                 { "sg", hop.hint_anywhere,              desc = "Hop anywhere" },
                 { "sl", hop.hint_lines_skip_whitespace, desc = "Hop to line" },
+                { "sn", "<Cmd>HopNodes<CR>",            desc = "Hop to TS node" },
                 { "sp", hop.hint_patterns,              desc = "Hop to pattern" },
                 { "ss", hop.hint_char2,                 desc = "Hop to char pair" },
                 { "sv", hop.hint_vertical,              desc = "Hop vertical" },
