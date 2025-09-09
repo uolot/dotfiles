@@ -16,6 +16,38 @@ local function rename_current_tab()
     )
 end
 
+local function rename_current_buffer_file()
+    local current_file = vim.api.nvim_buf_get_name(0)
+    if current_file == "" or vim.bo.buftype ~= "" then
+        vim.notify("No file to rename", vim.log.levels.WARN)
+        return
+    end
+    local dir = vim.fn.fnamemodify(current_file, ":h")
+    local current_name = vim.fn.fnamemodify(current_file, ":t")
+    vim.ui.input(
+        {
+            prompt = "New filename: ",
+            default = current_name
+        },
+        function(new_name)
+            if not new_name or new_name == "" or new_name == current_name then
+                return
+            end
+            local new_file = dir .. "/" .. new_name
+            if vim.fn.filereadable(new_file) == 1 then
+                vim.notify("File already exists: " .. new_file, vim.log.levels.ERROR)
+                return
+            end
+            vim.cmd("saveas " .. vim.fn.fnameescape(new_file))
+            if vim.fn.delete(current_file) == 0 then
+                vim.notify("Renamed: " .. current_name .. " → " .. new_name, vim.log.levels.INFO)
+            else
+                vim.notify("Failed to delete old file: " .. current_file, vim.log.levels.WARN)
+            end
+        end
+    )
+end
+
 wk.add({
     mode = "n",
     -- buffers
@@ -26,6 +58,7 @@ wk.add({
         { "<localleader>bd", delete_current_buffer,         desc = "Delete current buffer" },
         { "<localleader>bD", "<Cmd>!rm %<CR>",              desc = "Delete current file" },
         { "<localleader>bq", "<Cmd>bd!<CR>",                desc = "Force close buffer" },
+        { "<localleader>br", rename_current_buffer_file,    desc = "Rename current buffer file" },
         { "<localleader>by", ":let @+=expand('%:~:.')<CR>", desc = "Yank relative path" },
         { "<localleader>bY", ":let @+=expand('%:p:~')<CR>", desc = "Yank absolute path" },
     },
