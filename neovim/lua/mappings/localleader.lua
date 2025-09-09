@@ -40,6 +40,7 @@ local function rename_current_buffer_file()
             end
             vim.cmd("saveas " .. vim.fn.fnameescape(new_file))
             if vim.fn.delete(current_file) == 0 then
+                Snacks.rename.on_rename_file(current_file, new_file)
                 vim.notify("Renamed: " .. current_name .. " → " .. new_name, vim.log.levels.INFO)
             else
                 vim.notify("Failed to delete old file: " .. current_file, vim.log.levels.WARN)
