@@ -442,16 +442,16 @@ end
 
 config.hyperlink_rules = wez.default_hyperlink_rules()
 
--- Jira CD/CDA
+-- Jira DACMCCO
 table.insert(config.hyperlink_rules, {
-  regex = [[\b(CDA?-\d+)\b]],
+  regex = [[\b(DACMCCO-\d+)\b]],
   format = 'https://legogroup.atlassian.net/browse/$1',
 })
 
--- cd-monorepo Github PR
+-- content-studio Github PR
 table.insert(config.hyperlink_rules, {
   regex = [[#(\d+)]],
-  format = 'https://github.com/LEGO/cd-monorepo/pull/$1',
+  format = 'https://github.com/LEGO/content-studio/pull/$1',
 })
 
 -- cd-monorepo commit
