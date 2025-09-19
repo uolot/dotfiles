@@ -147,6 +147,7 @@ local config = {
     -- split = '#ffa500', -- orange from janky borders
     split = '#C07100',
   },
+  underline_thickness = '4px',
 
   -- 40_keys
 
