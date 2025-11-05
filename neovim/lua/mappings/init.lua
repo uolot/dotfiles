@@ -23,6 +23,7 @@ wk.add({
   { "<Esc>",       close_floating, desc = "Close all floating windows" },
   { "<Backspace>", "<C-^>",        desc = "Quick buffer switch" },
   { "<Tab>",       "<C-w>w",       desc = "Next window" },
+  { "<S-Tab>",     "<C-w>W",       desc = "Previous window" },
   -- Unmap 's' and 'S' in normal mode
   {
     noremap = true,
