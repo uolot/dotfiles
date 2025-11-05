@@ -19,6 +19,7 @@ LINKS = {
     "ipython/ipython_config.py": ".ipython/profile_default/ipython_config.py",
     "ipython/startup/vim.py": ".ipython/profile_default/startup/vim.py",
     "neovim": ".config/nvim",
+    "rift/config.toml": ".config/rift/config.toml",
     "sketchybar": ".config/sketchybar",
     "starship/starship.toml": ".config/starship.toml",
     "TabNine.toml": ".config/TabNine/TabNine.yml",
