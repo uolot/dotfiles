@@ -28,12 +28,12 @@ local init = function()
                 return
             end
 
-            local filetype = vim.bo[args.buf].filetype
-            if vim.tbl_contains({ "typescript", "typescriptreact" }, filetype) then
-                -- vim.cmd("VtsExec organize_imports")
-            end
-
-            require("conform").format({ bufnr = args.buf, async = false })
+            require("conform").format({
+                bufnr = args.buf,
+                async = false,
+                lsp_format = "fallback",
+                timeout_ms = 5000,
+            })
         end,
     })
 
