@@ -34,7 +34,7 @@ animation_easing = "ease_in_out"
 # - mouse_hides_on_focus: hide the mouse cursor after focusing a window
 focus_follows_mouse = false
 mouse_follows_focus = true
-mouse_hides_on_focus = true
+mouse_hides_on_focus = false
 # focus_follows_mouse_disable_hotkey temporarily suspends focus-follows-mouse while held
 # e.g. "Fn"; omit or set to null to keep focus-follows-mouse always active
 #focus_follows_mouse_disable_hotkey = "Fn"
@@ -181,7 +181,7 @@ workspace_auto_back_and_forth = false
 # Workspace names (indexed order). If fewer than default_workspace_count are provided,
 # remaining workspaces are named "Workspace X".
 # Do not provide more names than default_workspace_count.
-workspace_names = ["first", "second"]
+workspace_names = ["first", "second", "third", "fourth", "fifth"]
 
 # App rules (automatic assignment)
 # Define rules that match new windows and set properties (workspace, floating, etc).
@@ -297,12 +297,22 @@ comb2 = "Alt + Ctrl + Shift"
 "comb1 + E" = { switch_to_workspace = 2 }
 "comb1 + R" = { switch_to_workspace = 3 }
 "comb1 + T" = { switch_to_workspace = 4 }
+"comb1 + 1" = { switch_to_workspace = 0 }
+"comb1 + 2" = { switch_to_workspace = 1 }
+"comb1 + 3" = { switch_to_workspace = 2 }
+"comb1 + 4" = { switch_to_workspace = 3 }
+"comb1 + 5" = { switch_to_workspace = 4 }
 
 "comb2 + Q" = { move_window_to_workspace = 0 }
 "comb2 + W" = { move_window_to_workspace = 1 }
 "comb2 + E" = { move_window_to_workspace = 2 }
 "comb2 + R" = { move_window_to_workspace = 3 }
 "comb2 + T" = { move_window_to_workspace = 4 }
+"comb2 + 1" = { move_window_to_workspace = 0 }
+"comb2 + 2" = { move_window_to_workspace = 1 }
+"comb2 + 3" = { move_window_to_workspace = 2 }
+"comb2 + 4" = { move_window_to_workspace = 3 }
+"comb2 + 5" = { move_window_to_workspace = 4 }
 
 "comb1 + Tab" = "switch_to_last_workspace"
 "comb2 + Tab" = "switch_to_last_workspace"
