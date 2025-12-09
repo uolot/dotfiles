@@ -80,14 +80,14 @@ mode = "traditional"
 # How much of each stacked window sticks out (in pixels)
 # Set to 0.0 to have them directly on top of each other.
 # Recommended: 30-50 for clear edges while keeping focus visible.
-stack_offset = 60.0
+stack_offset = 50.0
 
 # Default stacking orientation when creating a new stack.
 # Options:
 # - "perpendicular" (default): choose the perpendicular orientation to the parent layout
 # - "same": use the same orientation as the parent layout
 # - "horizontal"/"vertical": force a specific orientation
-default_orientation = "perpendicular"
+default_orientation = "horizontal"
 
 [settings.layout.gaps]
 # Gap configuration
@@ -95,14 +95,14 @@ default_orientation = "perpendicular"
 # - inner: space between tiled windows
 
 [settings.layout.gaps.outer]
-top = 10    # CHANGED
-left = 10   # CHANGED
-bottom = 10 # CHANGED
-right = 10  # CHANGED
+top = 5
+left = 5
+bottom = 5
+right = 5
 
 [settings.layout.gaps.inner]
-horizontal = 10 # CHANGED
-vertical = 10   # CHANGED
+horizontal = 10
+vertical = 10
 
 [settings.ui.menu_bar]
 # enable menu bar workspace indicators
@@ -113,7 +113,7 @@ show_empty = true
 
 [settings.ui.stack_line]
 # experimental stack line indicator (defaults to off)
-enabled = true
+enabled = false
 # in a horizontal stack where the line will be (top/bottom)
 horiz_placement = "top"
 # in a vertical stack where the line will be (left/right)
@@ -125,7 +125,7 @@ spacing = 0.0
 
 # experimental mission control
 [settings.ui.mission_control]
-enabled = false
+enabled = true
 # enable fade animation when entering/exiting mission control
 fade_enabled = false
 # native macos mission control fade is about 180ms
@@ -323,23 +323,30 @@ comb2 = "Alt + Ctrl + Shift"
 "comb2 + Down" = { join_window = "down" }
 "comb2 + P" = "unjoin_windows"
 
+"comb1 + Comma" = "toggle_stack"
+"comb1 + Slash" = "toggle_orientation"
 "comb2 + Comma" = "toggle_stack"
 "comb2 + Slash" = "toggle_orientation"
 
 "comb1 + F" = "toggle_window_floating"
-"comb2 + F" = "toggle_focus_floating"             # briefly bring focus to floating window
+"comb2 + F" = "toggle_focus_floating"  # briefly bring focus to floating window
+
 "comb1 + Enter" = "toggle_fullscreen"
 "comb2 + Enter" = "toggle_fullscreen_within_gaps"
 
 # smartly resize windows
 "comb1 + U" = "resize_window_grow"
 "comb1 + I" = "resize_window_shrink"
+"comb2 + U" = "resize_window_grow"
+"comb2 + I" = "resize_window_shrink"
 
 # if mission control is enabled
 # this will show an exploded view of the windows in the active workspace
 # "Alt + Ctrl + Shift + M" = "show_mission_control_current"
+"comb1 + M" = "show_mission_control_current"
 # this will show the mission control view shown in the readme
 # "Alt + Ctrl + M" = "show_mission_control_all"
+"comb2 + M" = "show_mission_control_all"
 
 "comb2 + D" = "debug"     # prints layout tree
 "comb2 + S" = "serialize"
