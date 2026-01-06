@@ -116,6 +116,7 @@ local function config()
         },
         eslint = {},
         gh_actions_ls = {
+            enabled = false,
             init_options = { sessionToken = 'foo' },
         },
         gopls = {},
@@ -138,7 +139,9 @@ local function config()
             },
         },
         vimls = {},
+        --[[
         vtsls = {
+            enabled = false,
             on_attach = function(client, bufnr)
                 require("twoslash-queries").attach(client, bufnr)
                 client.server_capabilities.documentFormattingProvider = false
@@ -161,6 +164,30 @@ local function config()
                 },
             }
         },
+        ]]
+        tsgo = {
+            on_attach = function(client, bufnr)
+                require("twoslash-queries").attach(client, bufnr)
+                client.server_capabilities.documentFormattingProvider = false
+                client.server_capabilities.documentRangeFormattingProvider = false
+            end,
+            settings = {
+                -- schema: https://github.com/yioneko/vtsls/blob/main/packages/service/configuration.schema.json
+                typescript = {
+                    preferences = {
+                        importModuleSpecifierPreference = "non-relative",
+                    },
+                    inlayHints = {
+                        parameterNames = { enabled = "all" },
+                        parameterTypes = { enabled = true },
+                        variableTypes = { enabled = true },
+                        propertyDeclarationTypes = { enabled = true },
+                        functionLikeReturnTypes = { enabled = true },
+                        enumMemberValues = { enabled = true },
+                    },
+                },
+            }
+        },
         yamlls = {},
     }
 
@@ -169,7 +196,7 @@ local function config()
 
     -- remove 'gh_actions-language-server' from ensure_installed - not supported by mason-lspconfig
     ensure_installed = vim.tbl_filter(function(server)
-        return server ~= "gh_actions_ls"
+        return servers[server].enabled ~= false
     end, ensure_installed)
 
     -- TODO: disabled for now

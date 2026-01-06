@@ -722,6 +722,7 @@ require("lazy").setup({
 
     {
         'yioneko/nvim-vtsls',
+        enabled = false,
         ft = ts_ft,
     },
 
