@@ -40,6 +40,7 @@ source "$CONFIG/search"
 source "$CONFIG/shell"
 source "$CONFIG/completion"
 source "$CONFIG/misc"
+source "$CONFIG/secrets"
 
 # programs
 source "$CONFIG/fzf"
