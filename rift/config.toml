@@ -280,6 +280,7 @@ comb2 = "Alt + Ctrl + Shift"
 # - show_timing
 
 "comb1 + Z" = "toggle_space_activated"
+"comb2 + Z" = "toggle_space_activated"
 "comb2 + X" = "save_and_exit"
 
 "comb1 + H" = { move_focus = "left" }
