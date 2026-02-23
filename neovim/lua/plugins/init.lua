@@ -437,24 +437,6 @@ require("lazy").setup({
 		config = require("plugins.mini").files.config,
 	},
 
-	{
-		"dmtrKovalenko/fff.nvim",
-		build = "cargo build --release",
-		opts = {
-			-- pass here all the options
-		},
-		keys = {
-			{
-				"<leader><space>", -- try it if you didn't it is a banger keybinding for a picker
-				function()
-					require("fff").find_files()
-					-- require("fff").find_in_git_root()
-				end,
-				desc = "Toggle FFF",
-			},
-		},
-	},
-
 	--
 	-- 8_git
 	--
