@@ -35,14 +35,14 @@ local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 vim.loader.enable()
 
 if not vim.loop.fs_stat(lazypath) then
-    vim.fn.system({
-        "git",
-        "clone",
-        "--filter=blob:none",
-        "https://github.com/folke/lazy.nvim.git",
-        "--branch=stable", -- latest stable release
-        lazypath,
-    })
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
+	})
 end
 ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
@@ -50,997 +50,1025 @@ vim.opt.rtp:prepend(lazypath)
 local ts_ft = { "typescript", "typescriptreact", "typescript.tsx", "svelte", "astro" }
 
 require("lazy").setup({
-    --
-    -- 0_top_plugins
-    --
-
-    {
-        "folke/lazydev.nvim",
-        ft = "lua", -- only load on lua files
-        opts = {
-            library = {
-                -- See the configuration section for more details
-                -- Load luvit types when the `vim.uv` word is found
-                { path = "luvit-meta/library", words = { "vim%.uv" } },
-                { path = "snacks.nvim",        words = { "Snacks" } },
-                { path = "lazy.nvim",          words = { "LazyVim" } },
-            },
-        },
-    },
-    { -- optional `vim.uv` typings
-        "Bilal2453/luvit-meta",
-        lazy = true,
-    },
-    {
-        -- TODO: setup debug: https://github.com/folke/snacks.nvim/blob/main/docs/debug.md
-        "folke/snacks.nvim",
-        priority = 1000,
-        lazy = false,
-        opts = require("plugins.snacks").opts,
-    },
-
-    --
-    -- 1_completion
-    --
-
-    {
-        'saghen/blink.cmp',
-        event = "InsertEnter",
-        version = '1.*',
-        dependencies = require('plugins.blink').dependencies,
-        opts = require('plugins.blink').opts,
-        opts_extend = { "sources.default" }
-    },
-
-    {
-        "zbirenbaum/copilot.lua",
-        lazy = true,
-        cmd = "Copilot",
-        event = "InsertEnter",
-        opts = {
-            -- suggestion = { enabled = false },
-            suggestion = {
-                auto_trigger = true,
-                enabled = true,
-                -- hide_during_completion = false,
-                -- debounce = 75,
-                trigger_on_accept = true,
-                keymap = {
-                    accept = "<M-l>",
-                    accept_word = "<M-Space>",
-                    accept_line = "<M-m>",
-                    next = "<M-j>",
-                    prev = "<M-k>",
-                    dismiss = "<C-]>",
-                },
-            },
-            filetypes = {
-                yaml = true,
-                markdown = true,
-                help = false,
-                gitcommit = true,
-                gitrebase = false,
-                hgcommit = false,
-                svn = false,
-                cvs = false,
-                ["."] = false,
-            },
-            panel = { enabled = false },
-            copilot_model = "gemini-2.5-pro",
-        },
-    },
-
-    {
-        "CopilotC-Nvim/CopilotChat.nvim",
-        event = "VeryLazy",
-        branch = "main",
-        dependencies = {
-            { "zbirenbaum/copilot.lua" },
-            { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
-        },
-        build = "make tiktoken",
-        opts = {
-            debug = true, -- Enable debugging
-            -- See Configuration section for rest
-            model = 'claude-sonnet-4',
-            auto_insert_mode = true,
-            window = {
-                layout = 'float',
-                relative = 'cursor',
-                width = 0.6,
-                height = 0.4,
-                row = 1
-            }
-        },
-        -- See Commands section for default commands if you want to lazy load on them
-    },
-
-    --
-    -- 2_lsp_and_diagnostics
-    --
-    {
-        "neovim/nvim-lspconfig",
-        event = "FileType",
-        cmd = { "LspInfo", "LspInstall", "LspUninstall" },
-        dependencies = require("config.lsp").dependencies,
-        config = require("config.lsp").config,
-    },
-
-    -- Incremental LSP rename command based on Neovim's command-preview feature
-    {
-        "smjonas/inc-rename.nvim",
-        event = "VeryLazy",
-        opts = {
-            input_buffer_type = "snacks",
-        },
-    },
-    {
-        'arkav/lualine-lsp-progress',
-        lazy = true,
-        dependencies = { 'nvim-lualine/lualine.nvim' },
-    },
-
-    {
-        'stevearc/aerial.nvim',
-        event = "LspAttach",
-        opts = {
-            layout = {
-                max_width = 50,
-                min_width = 20,
-                placement = 'edge',
-            },
-            attach_mode = 'global',
-            -- close_automatic_events = { 'unfocus' },
-            close_on_select = true,
-            -- autojump = true,
-            highlight_on_hover = true,
-            show_guides = true,
-        },
-        -- Optional dependencies
-        dependencies = {
-            "nvim-treesitter/nvim-treesitter",
-            "nvim-tree/nvim-web-devicons"
-        },
-    },
-
-    --
-    -- 3_treesitter
-    --
-
-    {
-        "nvim-treesitter/nvim-treesitter",
-        branch = "master", -- TODO: change to "main"
-        lazy = false,
-        build = ":TSUpdate",
-        priority = 900,
-        config = require("plugins.treesitter").config,
-    },
-
-    {
-        "nvim-treesitter/nvim-treesitter-textobjects",
-        event = 'VeryLazy',
-        dependencies = { "nvim-treesitter/nvim-treesitter" },
-    },
-
-    {
-        "nvim-treesitter/nvim-treesitter-context",
-        event = 'VeryLazy',
-        dependencies = { "nvim-treesitter/nvim-treesitter" },
-        opts = {
-            separator = '─',
-            -- mode = 'topline',
-            trim_scope = 'inner',
-            mode = 'cursor',
-            max_lines = 5,
-            multiline_threshold = 5,
-            min_window_height = 10,
-        },
-    },
-    {
-        "JoosepAlviste/nvim-ts-context-commentstring",
-        event = "VeryLazy",
-        config = true,
-    },
-    -- Use treesitter to auto close and auto rename html tags
-    {
-        "windwp/nvim-ts-autotag",
-        event = 'VeryLazy',
-        opts = {
-            opts = {
-                enable_close = false,
-                enable_rename = true,
-                enable_close_on_slash = true,
-            }
-        }
-    },
-
-    {
-        'Wansmer/treesj',
-        lazy = true,
-        keys = {
-            { "K", function() require('treesj').toggle() end, mode = { "n", "x" }, desc = "Split/join" },
-        },
-        dependencies = { 'nvim-treesitter/nvim-treesitter' }, -- if you install parsers with `nvim-treesitter`
-        opts = {
-            use_default_keymaps = false,
-            max_join_length = 600,
-            on_error = function() vim.lsp.buf.hover() end,
-        },
-    },
-
-    {
-        "briangwaltney/paren-hint.nvim",
-        lazy = false,
-        opts = {
-            include_paren = false,
-            anywhere_on_line = false,
-            highlight = "operator",
-        },
-    },
-
-    --
-    -- 4_telescope
-    --
-
-    {
-        "nvim-telescope/telescope.nvim",
-        event = 'VeryLazy',
-        enabled = false,
-        branch = "0.1.x",
-        lazy = true,
-        dependencies = require("plugins.telescope").dependencies,
-        config = require("plugins.telescope").config,
-    },
-
-    --
-    -- 5_ui
-    --
-    {
-        "nvim-lualine/lualine.nvim",
-        event = "VeryLazy",
-        opts = require("plugins.lualine").opts,
-    },
-    {
-        "sphamba/smear-cursor.nvim",
-        opts = {
-            stiffness = 0.5,
-            trailing_stiffness = 0.49,
-            never_draw_over_target = false,
-        },
-    },
-    {
-        'stevearc/quicker.nvim',
-        event = "FileType qf",
-        ---@module "quicker"
-        ---@type quicker.SetupOptions
-        opts = {
-            keys = {
-                {
-                    ">",
-                    function()
-                        require("quicker").expand({ before = 2, after = 2, add_to_existing = true })
-                    end,
-                    desc = "Expand quickfix context",
-                },
-                {
-                    "<",
-                    function()
-                        require("quicker").collapse()
-                    end,
-                    desc = "Collapse quickfix context",
-                },
-            },
-        },
-    },
-
-    --
-    -- 6_colors_and_highlighting
-    --
-
-    {
-        'ribru17/bamboo.nvim',
-        lazy = false,
-        priority = 1000,
-        config = function()
-            require('bamboo').setup {
-                style = "multiplex",
-                toggle_style_list = { "multiplex", "light" },
-                -- toggle_style_key = "<Leader>xb", -- defined in lua/mapping/toggles.lua
-                dim_inactive = true,
-                diagnostics = {
-                    darker = false,
-                    undercurl = true,
-                    background = true,
-                },
-                highlights = {
-                    SnacksIndentScope = { fg = '#909090', fmt = 'nocombine' },
-                    SnacksIndentChunk = { fg = '#909090', fmt = 'nocombine' },
-                    ['@comment'] = { fg = '$grey' },
-                    LspReferenceText = { bg = '#505050', fmt = 'bold' },
-                },
-            }
-            -- require('bamboo').load()
-        end,
-    },
-
-    {
-        'p00f/alabaster.nvim',
-        config = function()
-            -- disable semantic highlight groups in ColorScheme autocmd
-            vim.api.nvim_create_autocmd("ColorScheme", {
-                pattern = "*",
-                callback = function()
-                    -- Only clear some LSP semantic highlights, keep the ones we want
-                    for _, group in ipairs(vim.fn.getcompletion("@lsp", "highlight")) do
-                        -- Keep specific highlights we want to preserve
-                        local keep = group:match("parameter") or
-                            group:match("variable") or
-                            group:match("property") or
-                            group == "@lsp.type.type" or
-                            group == "@lsp.type.interface" or
-                            group == "@lsp.type.typeParameter"
-
-                        if not keep then
-                            vim.api.nvim_set_hl(0, group, {})
-                        end
-                    end
-
-                    -- Set custom highlight groups using alabaster colors
-                    -- Check if we're in dark or light mode
-                    local is_dark = vim.o.background == "dark"
-                    local def_fg = is_dark and "#71ade7" or "#325cc0" -- alabaster def_fg (blue)
-                    -- local const_fg = is_dark and "#cc8bc9" or "#7a3e9d"   -- alabaster const_fg (magenta)
-                    -- local string_fg = is_dark and "#95cb82" or "#448c27"  -- alabaster string_fg (green)
-                    local fg = is_dark and "#cecece" or "#000000" -- alabaster fg (main text color)
-
-                    -- Create medium subtle colors with more saturation
-                    local subtle_param = is_dark and "#a898c8" or
-                        "#5a5a70"                                                            -- more saturated magenta tint
-                    local subtle_var = is_dark and "#a0c0a0" or
-                        "#484a48"                                                            -- slightly less saturated green tint
-                    local subtle_string = is_dark and "#a0a0a0" or
-                        "#404040"                                                            -- more noticeable difference from main text
-
-                    vim.api.nvim_set_hl(0, '@AlabasterDefinition', { fg = def_fg })          -- Class names (blue)
-                    vim.api.nvim_set_hl(0, '@AlabasterParam', { fg = subtle_param })         -- Function parameters (subtle magenta)
-                    vim.api.nvim_set_hl(0, '@AlabasterVariable', { fg = subtle_var })        -- Local variables (subtle green)
-                    vim.api.nvim_set_hl(0, '@AlabasterProperty', { fg = fg, italic = true }) -- Properties/fields (main color, italic)
-                    vim.api.nvim_set_hl(0, '@AlabasterMethod', { fg = def_fg, italic = true }) -- Method definitions (blue, italic)
-                    vim.api.nvim_set_hl(0, '@AlabasterType', { fg = fg, italic = true })     -- Types/interfaces (main color, italic)
-
-                    -- Override all possible string highlight groups with subtle color
-                    vim.api.nvim_set_hl(0, '@string', { fg = subtle_string })
-                    vim.api.nvim_set_hl(0, 'String', { fg = subtle_string })
-                    vim.api.nvim_set_hl(0, 'TSString', { fg = subtle_string })
-                    vim.api.nvim_set_hl(0, '@AlabasterString', { fg = subtle_string })
-
-                    -- Map LSP semantic tokens to our custom highlights
-                    vim.api.nvim_set_hl(0, '@lsp.type.parameter', { link = '@AlabasterParam' })
-                    vim.api.nvim_set_hl(0, '@lsp.type.variable', { link = '@AlabasterVariable' })
-                    vim.api.nvim_set_hl(0, '@lsp.type.property', { link = '@AlabasterProperty' })
-                    vim.api.nvim_set_hl(0, '@lsp.type.type', { link = '@AlabasterType' })
-                    vim.api.nvim_set_hl(0, '@lsp.type.interface', { link = '@AlabasterType' })
-                    vim.api.nvim_set_hl(0, '@lsp.type.typeParameter', { link = '@AlabasterType' })
-
-                    -- Clear constant highlighting to remove UPPERCASE_CONST highlights
-                    vim.api.nvim_set_hl(0, '@lsp.type.enumMember', {})
-                    vim.api.nvim_set_hl(0, '@constant', {})
-                    vim.api.nvim_set_hl(0, 'Constant', {})
-                    vim.api.nvim_set_hl(0, '@constant.builtin', {})
-
-                    -- Schedule another override to ensure it sticks
-                    vim.schedule(function()
-                        vim.api.nvim_set_hl(0, '@string', { fg = subtle_string })
-                        vim.api.nvim_set_hl(0, 'String', { fg = subtle_string })
-                        vim.api.nvim_set_hl(0, 'TSString', { fg = subtle_string })
-                        vim.api.nvim_set_hl(0, '@AlabasterString', { fg = subtle_string })
-                    end)
-                end
-            })
-            vim.g.alabaster_floatborder = false
-            vim.opt.termguicolors = true
-            vim.cmd.colorscheme('alabaster')
-        end,
-    },
-
-    -- disables search highlighting when you are done searching and re-enables it when you search again
-    { "romainl/vim-cool" },
-
-    -- highlighting visual selections
-    { "Pocco81/HighStr.nvim" },
-
-    -- Highlight several words in different colors simultaneously
-    {
-        "inkarkat/vim-mark",
-        keys = {
-            "<Plug>MarkAllClear",
-            "<Plug>MarkClear",
-            "<Plug>MarkPartialWord",
-            "<Plug>MarkRegex",
-            "<Plug>MarkSearchAnyNext",
-            "<Plug>MarkSearchAnyPrev",
-            "<Plug>MarkSearchCurrentNext",
-            "<Plug>MarkSearchCurrentPrev",
-            "<Plug>MarkSet",
-            "<Plug>MarkToggle",
-        },
-        dependencies = { "inkarkat/vim-ingo-library" },
-        init = function()
-            vim.g.mw_no_mappings = 1
-            vim.g.mwDefaultHighlightingPalette = "extended"
-        end,
-    },
-
-    {
-        "tzachar/highlight-undo.nvim",
-        config = true,
-    },
-
-    -- Highlight, list and search todo comments in your projects
-    {
-        "folke/todo-comments.nvim",
-        lazy = false,
-        opts = require('plugins.todo-comments').opts,
-    },
-
-
-    --
-    -- 7_file_management
-    --
-
-    {
-        'echasnovski/mini.files',
-        ---@diagnostic disable-next-line: assign-type-mismatch
-        version = false,
-        config = require("plugins.mini").files.config,
-    },
-
-    {
-        "dmtrKovalenko/fff.nvim",
-        build = "cargo build --release",
-        opts = {
-            -- pass here all the options
-        },
-        keys = {
-            {
-                "<leader><space>", -- try it if you didn't it is a banger keybinding for a picker
-                function()
-                    require("fff").find_files()
-                    -- require("fff").find_in_git_root()
-                end,
-                desc = "Toggle FFF",
-            },
-        },
-    },
-
-    --
-    -- 8_git
-    --
-
-    {
-        "lewis6991/gitsigns.nvim",
-        opts = require("plugins.gitsigns").opts,
-    },
-
-    -- Single tabpage interface for easily cycling through diffs for all modified files for any git rev
-    {
-        "sindrets/diffview.nvim",
-        cmd = { "DiffviewFileHistory", "DiffviewClose", "DiffviewOpen" },
-    },
-
-    -- more pleasant editing on commit messages
-    { "rhysd/committia.vim" },
-
-    {
-        'FabijanZulj/blame.nvim',
-        cmd = 'ToggleBlame',
-        opts = {
-            virtual_style = 'right_alight',
-            -- virtual_style = 'float',
-            merge_consecutive = false,
-        }
-    },
-
-    {
-        'akinsho/git-conflict.nvim',
-        -- lazy = true,
-        -- cmd = {
-        --     'GitConflictNextConflict',
-        --     'GitConflictPrevConflict',
-        --     'GitConflictListQf',
-        -- },
-        opts = {
-            default_mappings = true,    -- disable buffer local mapping created by this plugin
-            default_commands = true,    -- disable commands created by this plugin
-            disable_diagnostics = true, -- This will disable the diagnostics in a buffer whilst it is conflicted
-            list_opener = 'copen',      -- command or function to open the conflicts list
-            highlights = {              -- They must have background color, otherwise the default color will be used
-                incoming = 'DiffAdd',
-                current = 'DiffText',
-            }
-        },
-    },
-
-    --
-    -- 9_markdown
-    --
-
-    --
-    -- 10_databases
-    --
-
-    --
-    -- 11_programming_misc
-    --
-    {
-        "numToStr/Comment.nvim",
-        lazy = false,
-        opts = {
-            toggler = {
-                line = "gcc",
-                block = "gCC",
-            },
-            opleader = {
-                line = "gc",
-                block = "gC",
-            },
-        },
-    },
-
-    {
-        "aznhe21/actions-preview.nvim",
-        config = function()
-            require('actions-preview').setup({
-                backend = { "snacks" },
-                highlight_command = {
-                    require("actions-preview.highlight").delta()
-                },
-                snacks = {
-                    -- layout = { preset = "default" },
-                    -- layout = { preset = "vscode" },
-                    -- layout = { preset = "vertical" },
-                    -- layout = { preset = "ivy", layout = { position = "top" } },
-                    -- layout = { preset = "ivy", layout = { position = "bottom" } },
-                    layout = { preset = "dropdown" },
-                    -- layout = { preset = "select" },
-                    -- layout = { preset = "sidebar", layout = { position = "right" } },
-                    -- layout = { preset = "sidebar", layout = { position = "left" } },
-                },
-            })
-        end
-    },
-
-    {
-        'Chaitanyabsprip/fastaction.nvim',
-        opts = require('plugins.fastaction').opts,
-    },
-
-    --
-    -- 12_text_manipulation
-    --
-
-    -- Set of operators and textobjects to search/select/edit sandwiched texts
-    { "machakann/vim-sandwich" },
-    {
-        "godlygeek/tabular",
-        cmd = "Tabularize",
-    },
-
-    {
-        "johmsalas/text-case.nvim",
-        config = function()
-            require("textcase").setup({
-                prefix = "sc",
-            })
-        end,
-        keys = {
-            "sc", -- Default invocation prefix
-        },
-        cmd = {
-            -- NOTE: The Subs command name can be customized via the option "substitute_command_name"
-            "Subs",
-            "TextCaseStartReplacingCommand",
-        },
-        -- If you want to use the interactive feature of the `Subs` command right away, text-case.nvim
-        -- has to be loaded on startup. Otherwise, the interactive feature of the `Subs` will only be
-        -- available after the first executing of it or after a keymap of text-case.nvim has been used.
-        lazy = false,
-    },
-
-    --
-    -- 13_navigation
-    --
-
-    {
-        "kwkarlwang/bufjump.nvim",
-        keys = { "<C-n>", "<C-p>" },
-        opts = {
-            forward_key = "<C-n>",
-            backward_key = "<C-p>",
-            on_success = nil,
-        },
-    },
-
-    {
-        'smoka7/hop.nvim',
-        version = "*",
-        opts = {
-            keys = 'etovxqpdygfblzhckisuran'
-        },
-        config = function()
-            local hop = require('hop')
-            hop.setup({ keys = 'etovxqpdygfblzhckisuran' })
-
-            local wk = require('which-key')
-            local dir = require('hop.hint').HintDirection
-            wk.add({
-                mode = "n",
-                { "s",  group = "+hop/sandwich" },
-                { "sf", hop.hint_char1,                 desc = "Hop to char" },
-                { "sg", hop.hint_anywhere,              desc = "Hop anywhere" },
-                { "sl", hop.hint_lines_skip_whitespace, desc = "Hop to line" },
-                { "sn", "<Cmd>HopNodes<CR>",            desc = "Hop to TS node" },
-                { "sp", hop.hint_patterns,              desc = "Hop to pattern" },
-                { "ss", hop.hint_char2,                 desc = "Hop to char pair" },
-                { "sv", hop.hint_vertical,              desc = "Hop vertical" },
-                { "sw", hop.hint_words,                 desc = "Hop word" },
-                -- f-jumps
-                {
-                    mode = 'nvo',
-                    ---@diagnostic disable-next-line: missing-fields
-                    { "f", function() hop.hint_char1({ current_line_only = true, direction = dir.AFTER_CURSOR }) end,                   remap = true },
-                    ---@diagnostic disable-next-line: missing-fields
-                    { "F", function() hop.hint_char1({ current_line_only = true, direction = dir.BEFORE_CURSOR }) end,                  remap = true },
-                    ---@diagnostic disable-next-line: missing-fields
-                    { "t", function() hop.hint_char1({ current_line_only = true, direction = dir.AFTER_CURSOR, hint_offset = -1 }) end, remap = true },
-                    ---@diagnostic disable-next-line: missing-fields
-                    { "T", function() hop.hint_char1({ current_line_only = true, direction = dir.BEFORE_CURSOR, hint_offset = 1 }) end, remap = true },
-                },
-            })
-        end,
-    },
-
-
-    --
-    -- 14_typescript
-    --
-    {
-        "pmizio/typescript-tools.nvim",
-        enabled = false,
-        ft = ts_ft,
-        dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-        -- configured in config/lsp.lua
-    },
-    -- Nvim lua plugin which adds support for twoslash queries into typescript projects
-    {
-        "marilari88/twoslash-queries.nvim",
-        ft = ts_ft,
-        opts = {
-            multi_line = false, -- to print types in multi line mode
-            is_enabled = true,  -- to keep disabled at startup and enable it on request with the EnableTwoslashQueries
-        },
-    },
-
-    {
-        'yioneko/nvim-vtsls',
-        enabled = false,
-        ft = ts_ft,
-    },
-
-    {
-        "youyoumu/pretty-ts-errors.nvim",
-        build = 'npm install -g pretty-ts-errors-markdown; asdf reshim',
-        opts = {
-            auto_open = false,
-        },
-        init = function()
-            vim.keymap.set(
-                'n',
-                '<leader>Te',
-                function() require('pretty-ts-errors').show_formatted_error() end,
-                { desc = "Show TS error" }
-            )
-        end,
-    },
-
-    --
-    -- 15_formatting
-    --
-    {
-        'stevearc/conform.nvim',
-        opts = require('plugins.conform').opts,
-        init = require('plugins.conform').init,
-    },
-
-    --
-    -- 16_keybindings
-    --
-    {
-        "folke/which-key.nvim",
-        opts = require("plugins.which-key").opts,
-    },
-
-    --
-    -- 17_windows
-    --
-    {
-        "sindrets/winshift.nvim",
-        lazy = true,
-        cmd = "WinShift",
-        opts = {
-            highlight_moving_win = true,
-            window_picker = function() return require('winpick').select() end,
-        },
-    },
-    {
-        "gbrlsnchs/winpick.nvim",
-        lazy = true,
-        opts = { border = "rounded" },
-    },
-
-    --
-    -- 18_editing
-    --
-
-    { "michaeljsmith/vim-indent-object" },
-
-    -- Additional text objects
-    -- Provides:
-    -- iX aX IX AX where X = () [] {} <> t ' " ` , . ; : + - = ~ _ * # / | \ & $
-    -- inX anX AnX InX for next object
-    -- ilX alX AlX IlX for previous (last) object
-    -- ia aa Ia Aa for arguments; works with nX/lX as well
-    { "wellle/targets.vim" },
-
-    --
-    -- 19_presentation
-    --
-
-    --
-    -- 20_testing
-    --
-
-    {
-        "nvim-neotest/neotest",
-        dependencies = {
-            "nvim-neotest/nvim-nio",
-            "nvim-lua/plenary.nvim",
-            "antoinemadec/FixCursorHold.nvim",
-            "nvim-treesitter/nvim-treesitter",
-            "marilari88/neotest-vitest",
-        },
-        config = function()
-            ---@diagnostic disable-next-line: missing-fields
-            require("neotest").setup({
-                adapters = {
-                    require("neotest-vitest") {
-                        -- FIXME: only for content studio
-                        vitestCommand = 'env NODE_ENV=test DB_LOGS=0 LOG_STYLE=off npx vitest  --coverage.enabled --coverage.clean false --coverage.reporter lcov --coverage.reportOnFailure --coverage.thresholds.0',
-                        -- vitestCommand = 'env DB_LOGS=0 LOG_STYLE=off npx vitest --project=unit --coverage.enabled --coverage.reporter lcov --coverage.thresholds.0',
-                        -- Filter directories when searching for test files. Useful in large projects (see Filter directories notes).
-                        filter_dir = function(name, _rel_path, _root)
-                            return name ~= "node_modules"
-                        end,
-                    },
-                },
-                consumers = {
-                    notify = function(client)
-                        client.listeners.run = function()
-                            vim.notify("Starting tests...", vim.log.levels.INFO, {
-                                title = "Neotest",
-                                id = "neotest-run-" .. os.time(),
-                            })
-                        end
-
-                        client.listeners.results = function(_, results, partial)
-                            if partial then return end
-
-                            local total = 0
-                            local passed = 0
-                            for _, r in pairs(results) do
-                                if r.short ~= nil then
-                                    total = total + 1
-                                    if r.status == "passed" then
-                                        passed = passed + 1
-                                    end
-                                end
-                            end
-
-                            local failed = total - passed
-                            -- local message = passed .. "/" .. total .. " tests passed."
-                            local failed_msg = failed > 0 and string.format("%d/%d failed, ", failed, total) or ""
-                            local passed_msg = string.format("%d/%d passed", passed, total)
-                            local message = string.format('Finished test run\n%s %s', failed_msg, passed_msg)
-                            local level = failed > 0 and vim.log.levels.ERROR or vim.log.levels.INFO
-                            vim.notify(message, level, {
-                                title = "Neotest",
-                                id = "neotest-results-" .. os.time(),
-                            })
-                        end
-                    end,
-                },
-            })
-        end,
-    },
-
-    {
-        "andythigpen/nvim-coverage",
-        version = "*",
-        config = function()
-            require("coverage").setup({
-                auto_reload = true,
-            })
-        end,
-    },
-
-    --
-    -- 21_ai
-    --
-
-    {
-        "nickjvandyke/opencode.nvim",
-        version = "*", -- Latest stable release
-        dependencies = {
-            {
-                ---@module "snacks" <- Loads `snacks.nvim` types for configuration intellisense
-                "folke/snacks.nvim",
-                optional = true,
-                opts = {
-                    input = {}, -- Enhances `ask()`
-                    picker = { -- Enhances `select()`
-                        actions = {
-                            opencode_send = function(...)
-                                return require("opencode").snacks_picker_send(...)
-                            end,
-                        },
-                        win = {
-                            input = {
-                                keys = {
-                                    ["<a-a>"] = { "opencode_send", mode = { "n", "i" } },
-                                },
-                            },
-                        },
-                    },
-                    terminal = {}, -- Enables the `snacks` provider
-                },
-            },
-        },
-        config = function()
-            ---@type opencode.Opts
-            vim.g.opencode_opts = {
-                -- Your configuration, if any; goto definition on the type or field for details
-            }
-
-            vim.o.autoread = true -- Required for `opts.events.reload`
-
-            -- Recommended/example keymaps
-            vim.keymap.set({ "n", "x" }, "<C-a>", function()
-                require("opencode").ask("@this: ", { submit = true })
-            end, { desc = "Ask opencode…" })
-            vim.keymap.set({ "n", "x" }, "<C-x>", function()
-                require("opencode").select()
-            end, { desc = "Execute opencode action…" })
-            vim.keymap.set({ "n", "t" }, "<C-.>", function()
-                require("opencode").toggle()
-            end, { desc = "Toggle opencode" })
-
-            vim.keymap.set({ "n", "x" }, "go", function()
-                return require("opencode").operator("@this ")
-            end, { desc = "Add range to opencode", expr = true })
-            vim.keymap.set("n", "goo", function()
-                return require("opencode").operator("@this ") .. "_"
-            end, { desc = "Add line to opencode", expr = true })
-
-            vim.keymap.set("n", "<S-C-u>", function()
-                require("opencode").command("session.half.page.up")
-            end, { desc = "Scroll opencode up" })
-            vim.keymap.set("n", "<S-C-d>", function()
-                require("opencode").command("session.half.page.down")
-            end, { desc = "Scroll opencode down" })
-
-            -- You may want these if you use the opinionated `<C-a>` and `<C-x>` keymaps above — otherwise consider `<leader>o…` (and remove terminal mode from the `toggle` keymap)
-            vim.keymap.set("n", "+", "<C-a>", { desc = "Increment under cursor", noremap = true })
-            vim.keymap.set("n", "-", "<C-x>", { desc = "Decrement under cursor", noremap = true })
-        end,
-    },
-
-    --
-    -- 96_misc
-    --
-
-    -- Readline style insertion
-    {
-        "tpope/vim-rsi",
-        keys = { ":", "/", "?" },
-    },
-
-    -- handle line and column numbers in file names, eg: file.txt:10 or file.txt:10:5
-    { "kopischke/vim-fetch" },
-
-    -- Heuristically set buffer options
-    { "tpope/vim-sleuth" },
-
-    {
-        "chrisgrieser/nvim-origami",
-        event = "VeryLazy",
-        opts = {
-            autoFold = {
-                enabled = true,
-                kinds = { "imports" }, -- FIXME: doesn't seem to work?
-            },
-        },
-        -- recommended: disable vim's auto-folding
-        init = function()
-            vim.opt.foldlevel = 99
-            vim.opt.foldlevelstart = 99
-        end,
-    },
-
-    {
-        "jaimecgomezz/here.term",
-        opts = {}
-    },
-
-    --
-    -- 97_to_remove
-    --
-
-
-    --
-    -- 98_nursery
-    --
-
-    {
-        "mistweaverco/kulala.nvim",
-        keys = {
-            { "<leader>Rs", desc = "Send request" },
-            { "<leader>Ra", desc = "Send all requests" },
-            { "<leader>Rb", desc = "Open scratchpad" },
-        },
-        ft = { "http", "rest" },
-        opts = {
-            global_keymaps = true,
-            global_keymaps_prefix = "<leader>R",
-            kulala_keymaps_prefix = "",
-            ui = {
-                formatter = true,
-            },
-            lsp = {
-                enable = true,
-                formatter = true,
-            },
-        },
-    },
-    -- 99_end
+	--
+	-- 0_top_plugins
+	--
+
+	{
+		"folke/lazydev.nvim",
+		ft = "lua", -- only load on lua files
+		opts = {
+			library = {
+				-- See the configuration section for more details
+				-- Load luvit types when the `vim.uv` word is found
+				{ path = "luvit-meta/library", words = { "vim%.uv" } },
+				{ path = "snacks.nvim", words = { "Snacks" } },
+				{ path = "lazy.nvim", words = { "LazyVim" } },
+			},
+		},
+	},
+	{ -- optional `vim.uv` typings
+		"Bilal2453/luvit-meta",
+		lazy = true,
+	},
+	{
+		-- TODO: setup debug: https://github.com/folke/snacks.nvim/blob/main/docs/debug.md
+		"folke/snacks.nvim",
+		priority = 1000,
+		lazy = false,
+		opts = require("plugins.snacks").opts,
+	},
+
+	--
+	-- 1_completion
+	--
+
+	{
+		"saghen/blink.cmp",
+		event = "InsertEnter",
+		version = "1.*",
+		dependencies = require("plugins.blink").dependencies,
+		opts = require("plugins.blink").opts,
+		opts_extend = { "sources.default" },
+	},
+
+	--
+	-- 2_lsp_and_diagnostics
+	--
+	{
+		"neovim/nvim-lspconfig",
+		event = "FileType",
+		cmd = { "LspInfo", "LspInstall", "LspUninstall" },
+		dependencies = require("config.lsp").dependencies,
+		config = require("config.lsp").config,
+	},
+
+	-- Incremental LSP rename command based on Neovim's command-preview feature
+	{
+		"smjonas/inc-rename.nvim",
+		event = "VeryLazy",
+		opts = {
+			input_buffer_type = "snacks",
+		},
+	},
+	{
+		"arkav/lualine-lsp-progress",
+		lazy = true,
+		dependencies = { "nvim-lualine/lualine.nvim" },
+	},
+
+	{
+		"stevearc/aerial.nvim",
+		event = "LspAttach",
+		opts = {
+			layout = {
+				max_width = 50,
+				min_width = 20,
+				placement = "edge",
+			},
+			attach_mode = "global",
+			-- close_automatic_events = { 'unfocus' },
+			close_on_select = true,
+			-- autojump = true,
+			highlight_on_hover = true,
+			show_guides = true,
+		},
+		-- Optional dependencies
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+			"nvim-tree/nvim-web-devicons",
+		},
+	},
+
+	--
+	-- 3_treesitter
+	--
+
+	{
+		"nvim-treesitter/nvim-treesitter",
+		branch = "master", -- TODO: change to "main"
+		lazy = false,
+		build = ":TSUpdate",
+		priority = 900,
+		config = require("plugins.treesitter").config,
+	},
+
+	{
+		"nvim-treesitter/nvim-treesitter-textobjects",
+		event = "VeryLazy",
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+	},
+
+	{
+		"nvim-treesitter/nvim-treesitter-context",
+		event = "VeryLazy",
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		opts = {
+			separator = "─",
+			-- mode = 'topline',
+			trim_scope = "inner",
+			mode = "cursor",
+			max_lines = 5,
+			multiline_threshold = 5,
+			min_window_height = 10,
+		},
+	},
+	{
+		"JoosepAlviste/nvim-ts-context-commentstring",
+		event = "VeryLazy",
+		config = true,
+	},
+	-- Use treesitter to auto close and auto rename html tags
+	{
+		"windwp/nvim-ts-autotag",
+		event = "VeryLazy",
+		opts = {
+			opts = {
+				enable_close = false,
+				enable_rename = true,
+				enable_close_on_slash = true,
+			},
+		},
+	},
+
+	{
+		"Wansmer/treesj",
+		lazy = true,
+		keys = {
+			{
+				"K",
+				function()
+					require("treesj").toggle()
+				end,
+				mode = { "n", "x" },
+				desc = "Split/join",
+			},
+		},
+		dependencies = { "nvim-treesitter/nvim-treesitter" }, -- if you install parsers with `nvim-treesitter`
+		opts = {
+			use_default_keymaps = false,
+			max_join_length = 600,
+			on_error = function()
+				vim.lsp.buf.hover()
+			end,
+		},
+	},
+
+	{
+		"briangwaltney/paren-hint.nvim",
+		lazy = false,
+		opts = {
+			include_paren = false,
+			anywhere_on_line = false,
+			highlight = "operator",
+		},
+	},
+
+	--
+	-- 4_telescope
+	--
+
+	{
+		"nvim-telescope/telescope.nvim",
+		event = "VeryLazy",
+		enabled = false,
+		branch = "0.1.x",
+		lazy = true,
+		dependencies = require("plugins.telescope").dependencies,
+		config = require("plugins.telescope").config,
+	},
+
+	--
+	-- 5_ui
+	--
+	{
+		"nvim-lualine/lualine.nvim",
+		event = "VeryLazy",
+		opts = require("plugins.lualine").opts,
+	},
+	{
+		"sphamba/smear-cursor.nvim",
+		opts = {
+			stiffness = 0.5,
+			trailing_stiffness = 0.49,
+			never_draw_over_target = false,
+		},
+	},
+	{
+		"stevearc/quicker.nvim",
+		event = "FileType qf",
+		---@module "quicker"
+		---@type quicker.SetupOptions
+		opts = {
+			keys = {
+				{
+					">",
+					function()
+						require("quicker").expand({ before = 2, after = 2, add_to_existing = true })
+					end,
+					desc = "Expand quickfix context",
+				},
+				{
+					"<",
+					function()
+						require("quicker").collapse()
+					end,
+					desc = "Collapse quickfix context",
+				},
+			},
+		},
+	},
+
+	--
+	-- 6_colors_and_highlighting
+	--
+
+	{
+		"ribru17/bamboo.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			require("bamboo").setup({
+				style = "multiplex",
+				toggle_style_list = { "multiplex", "light" },
+				-- toggle_style_key = "<Leader>xb", -- defined in lua/mapping/toggles.lua
+				dim_inactive = true,
+				diagnostics = {
+					darker = false,
+					undercurl = true,
+					background = true,
+				},
+				highlights = {
+					SnacksIndentScope = { fg = "#909090", fmt = "nocombine" },
+					SnacksIndentChunk = { fg = "#909090", fmt = "nocombine" },
+					["@comment"] = { fg = "$grey" },
+					LspReferenceText = { bg = "#505050", fmt = "bold" },
+				},
+			})
+			-- require('bamboo').load()
+		end,
+	},
+
+	{
+		"p00f/alabaster.nvim",
+		config = function()
+			-- disable semantic highlight groups in ColorScheme autocmd
+			vim.api.nvim_create_autocmd("ColorScheme", {
+				pattern = "*",
+				callback = function()
+					-- Only clear some LSP semantic highlights, keep the ones we want
+					for _, group in ipairs(vim.fn.getcompletion("@lsp", "highlight")) do
+						-- Keep specific highlights we want to preserve
+						local keep = group:match("parameter")
+							or group:match("variable")
+							or group:match("property")
+							or group == "@lsp.type.type"
+							or group == "@lsp.type.interface"
+							or group == "@lsp.type.typeParameter"
+
+						if not keep then
+							vim.api.nvim_set_hl(0, group, {})
+						end
+					end
+
+					-- Set custom highlight groups using alabaster colors
+					-- Check if we're in dark or light mode
+					local is_dark = vim.o.background == "dark"
+					local def_fg = is_dark and "#71ade7" or "#325cc0" -- alabaster def_fg (blue)
+					-- local const_fg = is_dark and "#cc8bc9" or "#7a3e9d"   -- alabaster const_fg (magenta)
+					-- local string_fg = is_dark and "#95cb82" or "#448c27"  -- alabaster string_fg (green)
+					local fg = is_dark and "#cecece" or "#000000" -- alabaster fg (main text color)
+
+					-- Create medium subtle colors with more saturation
+					local subtle_param = is_dark and "#a898c8" or "#5a5a70" -- more saturated magenta tint
+					local subtle_var = is_dark and "#a0c0a0" or "#484a48" -- slightly less saturated green tint
+					local subtle_string = is_dark and "#a0a0a0" or "#404040" -- more noticeable difference from main text
+
+					vim.api.nvim_set_hl(0, "@AlabasterDefinition", { fg = def_fg }) -- Class names (blue)
+					vim.api.nvim_set_hl(0, "@AlabasterParam", { fg = subtle_param }) -- Function parameters (subtle magenta)
+					vim.api.nvim_set_hl(0, "@AlabasterVariable", { fg = subtle_var }) -- Local variables (subtle green)
+					vim.api.nvim_set_hl(0, "@AlabasterProperty", { fg = fg, italic = true }) -- Properties/fields (main color, italic)
+					vim.api.nvim_set_hl(0, "@AlabasterMethod", { fg = def_fg, italic = true }) -- Method definitions (blue, italic)
+					vim.api.nvim_set_hl(0, "@AlabasterType", { fg = fg, italic = true }) -- Types/interfaces (main color, italic)
+
+					-- Override all possible string highlight groups with subtle color
+					vim.api.nvim_set_hl(0, "@string", { fg = subtle_string })
+					vim.api.nvim_set_hl(0, "String", { fg = subtle_string })
+					vim.api.nvim_set_hl(0, "TSString", { fg = subtle_string })
+					vim.api.nvim_set_hl(0, "@AlabasterString", { fg = subtle_string })
+
+					-- Map LSP semantic tokens to our custom highlights
+					vim.api.nvim_set_hl(0, "@lsp.type.parameter", { link = "@AlabasterParam" })
+					vim.api.nvim_set_hl(0, "@lsp.type.variable", { link = "@AlabasterVariable" })
+					vim.api.nvim_set_hl(0, "@lsp.type.property", { link = "@AlabasterProperty" })
+					vim.api.nvim_set_hl(0, "@lsp.type.type", { link = "@AlabasterType" })
+					vim.api.nvim_set_hl(0, "@lsp.type.interface", { link = "@AlabasterType" })
+					vim.api.nvim_set_hl(0, "@lsp.type.typeParameter", { link = "@AlabasterType" })
+
+					-- Clear constant highlighting to remove UPPERCASE_CONST highlights
+					vim.api.nvim_set_hl(0, "@lsp.type.enumMember", {})
+					vim.api.nvim_set_hl(0, "@constant", {})
+					vim.api.nvim_set_hl(0, "Constant", {})
+					vim.api.nvim_set_hl(0, "@constant.builtin", {})
+
+					-- Schedule another override to ensure it sticks
+					vim.schedule(function()
+						vim.api.nvim_set_hl(0, "@string", { fg = subtle_string })
+						vim.api.nvim_set_hl(0, "String", { fg = subtle_string })
+						vim.api.nvim_set_hl(0, "TSString", { fg = subtle_string })
+						vim.api.nvim_set_hl(0, "@AlabasterString", { fg = subtle_string })
+					end)
+				end,
+			})
+			vim.g.alabaster_floatborder = false
+			vim.opt.termguicolors = true
+			vim.cmd.colorscheme("alabaster")
+		end,
+	},
+
+	-- disables search highlighting when you are done searching and re-enables it when you search again
+	{ "romainl/vim-cool" },
+
+	-- highlighting visual selections
+	{ "Pocco81/HighStr.nvim" },
+
+	-- Highlight several words in different colors simultaneously
+	{
+		"inkarkat/vim-mark",
+		keys = {
+			"<Plug>MarkAllClear",
+			"<Plug>MarkClear",
+			"<Plug>MarkPartialWord",
+			"<Plug>MarkRegex",
+			"<Plug>MarkSearchAnyNext",
+			"<Plug>MarkSearchAnyPrev",
+			"<Plug>MarkSearchCurrentNext",
+			"<Plug>MarkSearchCurrentPrev",
+			"<Plug>MarkSet",
+			"<Plug>MarkToggle",
+		},
+		dependencies = { "inkarkat/vim-ingo-library" },
+		init = function()
+			vim.g.mw_no_mappings = 1
+			vim.g.mwDefaultHighlightingPalette = "extended"
+		end,
+	},
+
+	{
+		"tzachar/highlight-undo.nvim",
+		config = true,
+	},
+
+	-- Highlight, list and search todo comments in your projects
+	{
+		"folke/todo-comments.nvim",
+		lazy = false,
+		opts = require("plugins.todo-comments").opts,
+	},
+
+	--
+	-- 7_file_management
+	--
+
+	{
+		"echasnovski/mini.files",
+		---@diagnostic disable-next-line: assign-type-mismatch
+		version = false,
+		config = require("plugins.mini").files.config,
+	},
+
+	{
+		"dmtrKovalenko/fff.nvim",
+		build = "cargo build --release",
+		opts = {
+			-- pass here all the options
+		},
+		keys = {
+			{
+				"<leader><space>", -- try it if you didn't it is a banger keybinding for a picker
+				function()
+					require("fff").find_files()
+					-- require("fff").find_in_git_root()
+				end,
+				desc = "Toggle FFF",
+			},
+		},
+	},
+
+	--
+	-- 8_git
+	--
+
+	{
+		"lewis6991/gitsigns.nvim",
+		opts = require("plugins.gitsigns").opts,
+	},
+
+	-- Single tabpage interface for easily cycling through diffs for all modified files for any git rev
+	{
+		"sindrets/diffview.nvim",
+		cmd = { "DiffviewFileHistory", "DiffviewClose", "DiffviewOpen" },
+	},
+
+	-- more pleasant editing on commit messages
+	{ "rhysd/committia.vim" },
+
+	{
+		"FabijanZulj/blame.nvim",
+		cmd = "ToggleBlame",
+		opts = {
+			virtual_style = "right_alight",
+			-- virtual_style = 'float',
+			merge_consecutive = false,
+		},
+	},
+
+	{
+		"akinsho/git-conflict.nvim",
+		-- lazy = true,
+		-- cmd = {
+		--     'GitConflictNextConflict',
+		--     'GitConflictPrevConflict',
+		--     'GitConflictListQf',
+		-- },
+		opts = {
+			default_mappings = true, -- disable buffer local mapping created by this plugin
+			default_commands = true, -- disable commands created by this plugin
+			disable_diagnostics = true, -- This will disable the diagnostics in a buffer whilst it is conflicted
+			list_opener = "copen", -- command or function to open the conflicts list
+			highlights = { -- They must have background color, otherwise the default color will be used
+				incoming = "DiffAdd",
+				current = "DiffText",
+			},
+		},
+	},
+
+	--
+	-- 9_markdown
+	--
+
+	--
+	-- 10_databases
+	--
+
+	--
+	-- 11_programming_misc
+	--
+	{
+		"numToStr/Comment.nvim",
+		lazy = false,
+		opts = {
+			toggler = {
+				line = "gcc",
+				block = "gCC",
+			},
+			opleader = {
+				line = "gc",
+				block = "gC",
+			},
+		},
+	},
+
+	{
+		"aznhe21/actions-preview.nvim",
+		config = function()
+			require("actions-preview").setup({
+				backend = { "snacks" },
+				highlight_command = {
+					require("actions-preview.highlight").delta(),
+				},
+				snacks = {
+					-- layout = { preset = "default" },
+					-- layout = { preset = "vscode" },
+					-- layout = { preset = "vertical" },
+					-- layout = { preset = "ivy", layout = { position = "top" } },
+					-- layout = { preset = "ivy", layout = { position = "bottom" } },
+					layout = { preset = "dropdown" },
+					-- layout = { preset = "select" },
+					-- layout = { preset = "sidebar", layout = { position = "right" } },
+					-- layout = { preset = "sidebar", layout = { position = "left" } },
+				},
+			})
+		end,
+	},
+
+	{
+		"Chaitanyabsprip/fastaction.nvim",
+		opts = require("plugins.fastaction").opts,
+	},
+
+	--
+	-- 12_text_manipulation
+	--
+
+	-- Set of operators and textobjects to search/select/edit sandwiched texts
+	{ "machakann/vim-sandwich" },
+	{
+		"godlygeek/tabular",
+		cmd = "Tabularize",
+	},
+
+	{
+		"johmsalas/text-case.nvim",
+		config = function()
+			require("textcase").setup({
+				prefix = "sc",
+			})
+		end,
+		keys = {
+			"sc", -- Default invocation prefix
+		},
+		cmd = {
+			-- NOTE: The Subs command name can be customized via the option "substitute_command_name"
+			"Subs",
+			"TextCaseStartReplacingCommand",
+		},
+		-- If you want to use the interactive feature of the `Subs` command right away, text-case.nvim
+		-- has to be loaded on startup. Otherwise, the interactive feature of the `Subs` will only be
+		-- available after the first executing of it or after a keymap of text-case.nvim has been used.
+		lazy = false,
+	},
+
+	--
+	-- 13_navigation
+	--
+
+	{
+		"kwkarlwang/bufjump.nvim",
+		keys = { "<C-n>", "<C-p>" },
+		opts = {
+			forward_key = "<C-n>",
+			backward_key = "<C-p>",
+			on_success = nil,
+		},
+	},
+
+	{
+		"smoka7/hop.nvim",
+		version = "*",
+		opts = {
+			keys = "etovxqpdygfblzhckisuran",
+		},
+		config = function()
+			local hop = require("hop")
+			hop.setup({ keys = "etovxqpdygfblzhckisuran" })
+
+			local wk = require("which-key")
+			local dir = require("hop.hint").HintDirection
+			wk.add({
+				mode = "n",
+				{ "s", group = "+hop/sandwich" },
+				{ "sf", hop.hint_char1, desc = "Hop to char" },
+				{ "sg", hop.hint_anywhere, desc = "Hop anywhere" },
+				{ "sl", hop.hint_lines_skip_whitespace, desc = "Hop to line" },
+				{ "sn", "<Cmd>HopNodes<CR>", desc = "Hop to TS node" },
+				{ "sp", hop.hint_patterns, desc = "Hop to pattern" },
+				{ "ss", hop.hint_char2, desc = "Hop to char pair" },
+				{ "sv", hop.hint_vertical, desc = "Hop vertical" },
+				{ "sw", hop.hint_words, desc = "Hop word" },
+				-- f-jumps
+				{
+					mode = "nvo",
+					---@diagnostic disable-next-line: missing-fields
+					{
+						"f",
+						function()
+							hop.hint_char1({ current_line_only = true, direction = dir.AFTER_CURSOR })
+						end,
+						remap = true,
+					},
+					---@diagnostic disable-next-line: missing-fields
+					{
+						"F",
+						function()
+							hop.hint_char1({ current_line_only = true, direction = dir.BEFORE_CURSOR })
+						end,
+						remap = true,
+					},
+					---@diagnostic disable-next-line: missing-fields
+					{
+						"t",
+						function()
+							hop.hint_char1({ current_line_only = true, direction = dir.AFTER_CURSOR, hint_offset = -1 })
+						end,
+						remap = true,
+					},
+					---@diagnostic disable-next-line: missing-fields
+					{
+						"T",
+						function()
+							hop.hint_char1({ current_line_only = true, direction = dir.BEFORE_CURSOR, hint_offset = 1 })
+						end,
+						remap = true,
+					},
+				},
+			})
+		end,
+	},
+
+	--
+	-- 14_typescript
+	--
+	{
+		"pmizio/typescript-tools.nvim",
+		enabled = false,
+		ft = ts_ft,
+		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+		-- configured in config/lsp.lua
+	},
+	-- Nvim lua plugin which adds support for twoslash queries into typescript projects
+	{
+		"marilari88/twoslash-queries.nvim",
+		ft = ts_ft,
+		opts = {
+			multi_line = false, -- to print types in multi line mode
+			is_enabled = true, -- to keep disabled at startup and enable it on request with the EnableTwoslashQueries
+		},
+	},
+
+	{
+		"yioneko/nvim-vtsls",
+		enabled = false,
+		ft = ts_ft,
+	},
+
+	{
+		"youyoumu/pretty-ts-errors.nvim",
+		build = "npm install -g pretty-ts-errors-markdown; asdf reshim",
+		opts = {
+			auto_open = false,
+		},
+		init = function()
+			vim.keymap.set("n", "<leader>Te", function()
+				require("pretty-ts-errors").show_formatted_error()
+			end, { desc = "Show TS error" })
+		end,
+	},
+
+	--
+	-- 15_formatting
+	--
+	{
+		"stevearc/conform.nvim",
+		opts = require("plugins.conform").opts,
+		init = require("plugins.conform").init,
+	},
+
+	--
+	-- 16_keybindings
+	--
+	{
+		"folke/which-key.nvim",
+		opts = require("plugins.which-key").opts,
+	},
+
+	--
+	-- 17_windows
+	--
+	{
+		"sindrets/winshift.nvim",
+		lazy = true,
+		cmd = "WinShift",
+		opts = {
+			highlight_moving_win = true,
+			window_picker = function()
+				return require("winpick").select()
+			end,
+		},
+	},
+	{
+		"gbrlsnchs/winpick.nvim",
+		lazy = true,
+		opts = { border = "rounded" },
+	},
+
+	--
+	-- 18_editing
+	--
+
+	{ "michaeljsmith/vim-indent-object" },
+
+	-- Additional text objects
+	-- Provides:
+	-- iX aX IX AX where X = () [] {} <> t ' " ` , . ; : + - = ~ _ * # / | \ & $
+	-- inX anX AnX InX for next object
+	-- ilX alX AlX IlX for previous (last) object
+	-- ia aa Ia Aa for arguments; works with nX/lX as well
+	{ "wellle/targets.vim" },
+
+	--
+	-- 19_presentation
+	--
+
+	--
+	-- 20_testing
+	--
+
+	{
+		"nvim-neotest/neotest",
+		dependencies = {
+			"nvim-neotest/nvim-nio",
+			"nvim-lua/plenary.nvim",
+			"antoinemadec/FixCursorHold.nvim",
+			"nvim-treesitter/nvim-treesitter",
+			"marilari88/neotest-vitest",
+		},
+		config = function()
+			---@diagnostic disable-next-line: missing-fields
+			require("neotest").setup({
+				adapters = {
+					require("neotest-vitest")({
+						-- FIXME: only for content studio
+						vitestCommand = "env NODE_ENV=test DB_LOGS=0 LOG_STYLE=off npx vitest  --coverage.enabled --coverage.clean false --coverage.reporter lcov --coverage.reportOnFailure --coverage.thresholds.0",
+						-- vitestCommand = 'env DB_LOGS=0 LOG_STYLE=off npx vitest --project=unit --coverage.enabled --coverage.reporter lcov --coverage.thresholds.0',
+						-- Filter directories when searching for test files. Useful in large projects (see Filter directories notes).
+						filter_dir = function(name, _rel_path, _root)
+							return name ~= "node_modules"
+						end,
+					}),
+				},
+				consumers = {
+					notify = function(client)
+						client.listeners.run = function()
+							vim.notify("Starting tests...", vim.log.levels.INFO, {
+								title = "Neotest",
+								id = "neotest-run-" .. os.time(),
+							})
+						end
+
+						client.listeners.results = function(_, results, partial)
+							if partial then
+								return
+							end
+
+							local total = 0
+							local passed = 0
+							for _, r in pairs(results) do
+								if r.short ~= nil then
+									total = total + 1
+									if r.status == "passed" then
+										passed = passed + 1
+									end
+								end
+							end
+
+							local failed = total - passed
+							-- local message = passed .. "/" .. total .. " tests passed."
+							local failed_msg = failed > 0 and string.format("%d/%d failed, ", failed, total) or ""
+							local passed_msg = string.format("%d/%d passed", passed, total)
+							local message = string.format("Finished test run\n%s %s", failed_msg, passed_msg)
+							local level = failed > 0 and vim.log.levels.ERROR or vim.log.levels.INFO
+							vim.notify(message, level, {
+								title = "Neotest",
+								id = "neotest-results-" .. os.time(),
+							})
+						end
+					end,
+				},
+			})
+		end,
+	},
+
+	{
+		"andythigpen/nvim-coverage",
+		version = "*",
+		config = function()
+			require("coverage").setup({
+				auto_reload = true,
+			})
+		end,
+	},
+
+	--
+	-- 21_ai
+	--
+
+	{
+		"zbirenbaum/copilot.lua",
+		lazy = true,
+		cmd = "Copilot",
+		event = "InsertEnter",
+		opts = {
+			-- suggestion = { enabled = false },
+			suggestion = {
+				auto_trigger = true,
+				enabled = true,
+				-- hide_during_completion = false,
+				-- debounce = 75,
+				trigger_on_accept = true,
+				keymap = {
+					accept = "<M-l>",
+					accept_word = "<M-Space>",
+					accept_line = "<M-m>",
+					next = "<M-j>",
+					prev = "<M-k>",
+					dismiss = "<C-]>",
+				},
+			},
+			filetypes = {
+				yaml = true,
+				markdown = true,
+				help = false,
+				gitcommit = true,
+				gitrebase = false,
+				hgcommit = false,
+				svn = false,
+				cvs = false,
+				["."] = false,
+			},
+			panel = { enabled = false },
+			copilot_model = "gemini-2.5-pro",
+		},
+	},
+
+	{
+		"CopilotC-Nvim/CopilotChat.nvim",
+		event = "VeryLazy",
+		branch = "main",
+		dependencies = {
+			{ "zbirenbaum/copilot.lua" },
+			{ "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
+		},
+		build = "make tiktoken",
+		opts = {
+			debug = true, -- Enable debugging
+			-- See Configuration section for rest
+			model = "claude-sonnet-4",
+			auto_insert_mode = true,
+			window = {
+				layout = "float",
+				relative = "cursor",
+				width = 0.6,
+				height = 0.4,
+				row = 1,
+			},
+		},
+		-- See Commands section for default commands if you want to lazy load on them
+	},
+
+	{
+		"nickjvandyke/opencode.nvim",
+		version = "*", -- Latest stable release
+		dependencies = {
+			{
+				---@module "snacks" <- Loads `snacks.nvim` types for configuration intellisense
+				"folke/snacks.nvim",
+				optional = true,
+				opts = {
+					input = {}, -- Enhances `ask()`
+					picker = { -- Enhances `select()`
+						actions = {
+							opencode_send = function(...)
+								return require("opencode").snacks_picker_send(...)
+							end,
+						},
+						win = {
+							input = {
+								keys = {
+									["<a-a>"] = { "opencode_send", mode = { "n", "i" } },
+								},
+							},
+						},
+					},
+					terminal = {}, -- Enables the `snacks` provider
+				},
+			},
+		},
+		config = function()
+			---@type opencode.Opts
+			vim.g.opencode_opts = {
+				-- Your configuration, if any; goto definition on the type or field for details
+			}
+
+			vim.o.autoread = true -- Required for `opts.events.reload`
+
+			-- Recommended/example keymaps
+			vim.keymap.set({ "n", "x" }, "<C-a>", function()
+				require("opencode").ask("@this: ", { submit = true })
+			end, { desc = "Ask opencode…" })
+			vim.keymap.set({ "n", "x" }, "<C-x>", function()
+				require("opencode").select()
+			end, { desc = "Execute opencode action…" })
+			vim.keymap.set({ "n", "t" }, "<C-.>", function()
+				require("opencode").toggle()
+			end, { desc = "Toggle opencode" })
+
+			vim.keymap.set({ "n", "x" }, "go", function()
+				return require("opencode").operator("@this ")
+			end, { desc = "Add range to opencode", expr = true })
+			vim.keymap.set("n", "goo", function()
+				return require("opencode").operator("@this ") .. "_"
+			end, { desc = "Add line to opencode", expr = true })
+
+			vim.keymap.set("n", "<S-C-u>", function()
+				require("opencode").command("session.half.page.up")
+			end, { desc = "Scroll opencode up" })
+			vim.keymap.set("n", "<S-C-d>", function()
+				require("opencode").command("session.half.page.down")
+			end, { desc = "Scroll opencode down" })
+
+			-- You may want these if you use the opinionated `<C-a>` and `<C-x>` keymaps above — otherwise consider `<leader>o…` (and remove terminal mode from the `toggle` keymap)
+			vim.keymap.set("n", "+", "<C-a>", { desc = "Increment under cursor", noremap = true })
+			vim.keymap.set("n", "-", "<C-x>", { desc = "Decrement under cursor", noremap = true })
+		end,
+	},
+
+	--
+	-- 96_misc
+	--
+
+	-- Readline style insertion
+	{
+		"tpope/vim-rsi",
+		keys = { ":", "/", "?" },
+	},
+
+	-- handle line and column numbers in file names, eg: file.txt:10 or file.txt:10:5
+	{ "kopischke/vim-fetch" },
+
+	-- Heuristically set buffer options
+	{ "tpope/vim-sleuth" },
+
+	{
+		"chrisgrieser/nvim-origami",
+		event = "VeryLazy",
+		opts = {
+			autoFold = {
+				enabled = true,
+				kinds = { "imports" }, -- FIXME: doesn't seem to work?
+			},
+		},
+		-- recommended: disable vim's auto-folding
+		init = function()
+			vim.opt.foldlevel = 99
+			vim.opt.foldlevelstart = 99
+		end,
+	},
+
+	{
+		"jaimecgomezz/here.term",
+		opts = {},
+	},
+
+	--
+	-- 97_to_remove
+	--
+
+	--
+	-- 98_nursery
+	--
+
+	{
+		"mistweaverco/kulala.nvim",
+		keys = {
+			{ "<leader>Rs", desc = "Send request" },
+			{ "<leader>Ra", desc = "Send all requests" },
+			{ "<leader>Rb", desc = "Open scratchpad" },
+		},
+		ft = { "http", "rest" },
+		opts = {
+			global_keymaps = true,
+			global_keymaps_prefix = "<leader>R",
+			kulala_keymaps_prefix = "",
+			ui = {
+				formatter = true,
+			},
+			lsp = {
+				enable = true,
+				formatter = true,
+			},
+		},
+	},
+	-- 99_end
 }, {
-    ui = {
-        border = "rounded",
-    },
-    -- diff = 'browser',
-    -- diff = 'git',
-    -- diff = 'terminal_git',
-    -- diff = 'diffview.nvim',
-    checker = {
-        enabled = false,
-        frequency = 3600 * 48, -- every two days
-    },
-    change_detection = {
-        -- automatically check for config file changes and reload the ui
-        enabled = true,
-        notify = true, -- get a notification when changes are found
-    },
-    performance = {
-        rtp = {
-            disabled_plugins = {
-                'gzip',
-                'matchit',
-                'matchparen',
-                'netrwPlugin',
-                'tarPlugin',
-                'tohtml',
-                'tutor',
-                'zipPlugin',
-            },
-        },
-    }
+	ui = {
+		border = "rounded",
+	},
+	-- diff = 'browser',
+	-- diff = 'git',
+	-- diff = 'terminal_git',
+	-- diff = 'diffview.nvim',
+	checker = {
+		enabled = false,
+		frequency = 3600 * 48, -- every two days
+	},
+	change_detection = {
+		-- automatically check for config file changes and reload the ui
+		enabled = true,
+		notify = true, -- get a notification when changes are found
+	},
+	performance = {
+		rtp = {
+			disabled_plugins = {
+				"gzip",
+				"matchit",
+				"matchparen",
+				"netrwPlugin",
+				"tarPlugin",
+				"tohtml",
+				"tutor",
+				"zipPlugin",
+			},
+		},
+	},
 })
