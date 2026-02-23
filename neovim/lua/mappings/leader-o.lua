@@ -1,6 +1,73 @@
 local wk = require("which-key")
 local opencode = require("opencode")
 
+local function ask(context)
+	if not context then
+		context = "@this"
+	end
+	context = context .. ": "
+	return function()
+		return opencode.ask(context, { submit = true })
+	end
+end
+
+local function ask_selection()
+	local options = {
+		"@this",
+		"@buffer",
+		"@buffers",
+		"@visible",
+		"@diagnostics",
+		"@quickfix",
+		"@diff",
+		"@marks",
+	}
+	vim.ui.select(options, { prompt = "Select opencode context:" }, function(choice)
+		if choice then
+			ask(choice)()
+		end
+	end)
+end
+
+local function operator()
+	return opencode.operator("@this ")
+end
+
+local function line()
+	return opencode.operator("@this ") .. "_"
+end
+
+local function prompt()
+	local options = {
+		"diagnostics",
+		"diff",
+		"document",
+		"explain",
+		"fix",
+		"implement",
+		"optimize",
+		"review",
+		"test",
+	}
+	vim.ui.select(options, { prompt = "Select opencode prompt:" }, function(choice)
+		if choice then
+			opencode.prompt(choice, { submit = true })
+		end
+	end)
+end
+
+wk.add({
+	mode = { "n", "x" },
+	{ "<Leader>oa", ask("@this"), desc = "Ask opencode" },
+	{ "<Leader>oA", ask_selection, desc = "Ask opencode" },
+	{ "<Leader>os", opencode.select, desc = "Execute opencode action" },
+	{ "<Leader>ot", opencode.toggle, desc = "Toggle opencode" },
+	{ "<Leader>oo", operator, desc = "Add range to opencode", expr = true },
+	{ "<Leader>ol", line, desc = "Add line to opencode", expr = true },
+	{ "<Leader>op", prompt, desc = "opencode prompt" },
+	{ "<Leader>oc", opencode.command, desc = "opencode command" },
+})
+
 --[[
 
 ### Contexts
@@ -37,25 +104,3 @@ Select or reference prompts to review, explain, and improve your code:
 
 	]]
 --
-local function ask()
-	return opencode.ask("@this: ", { submit = true })
-end
-
-local function operator()
-	return opencode.operator("@this ")
-end
-
-local function line()
-	return opencode.operator("@this ") .. "_"
-end
-
-wk.add({
-	mode = { "n", "x" },
-	{ "<Leader>oa", ask, desc = "Ask opencode" },
-	{ "<Leader>os", opencode.select, desc = "Execute opencode action" },
-	{ "<Leader>ot", opencode.toggle, desc = "Toggle opencode" },
-	{ "<Leader>oo", operator, desc = "Add range to opencode", expr = true },
-	{ "<Leader>ol", operator, desc = "Add line to opencode", expr = true },
-	{ "<Leader>op", opencode.prompt, desc = "opencode prompt" },
-	{ "<Leader>oc", opencode.command, desc = "opencode command" },
-})
