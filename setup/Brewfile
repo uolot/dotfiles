@@ -191,10 +191,6 @@ brew "tursodatabase/tap/turso"
 cask "1password"
 # Command-line interface for 1Password
 cask "1password-cli"
-# Enable Windows-like alt-tab
-cask "alt-tab"
-# Open source IDE for exploring and testing APIs
-cask "bruno"
 # Terminal-based AI coding assistant
 cask "claude-code"
 # App to build and share containerised applications and microservices
@@ -213,20 +209,12 @@ cask "font-zed-mono-nerd-font"
 cask "hammerspoon"
 # Keyboard customiser
 cask "karabiner-elements"
-# Blocks all Keyboard and TouchBar input
-cask "keyboardcleantool"
-# Online collaborative whiteboard platform
-cask "miro"
 # Tool to control external monitor brightness & volume
 cask "monitorcontrol"
-# Mouse control with the keyboard
-cask "mouseless"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
 # Cloud storage client
 cask "onedrive"
-# Collaboration platform for API development
-cask "postman"
 # Command-line shell and scripting language
 cask "powershell"
 # Control your tools with a few keystrokes
@@ -235,8 +223,6 @@ cask "raycast"
 cask "scoot"
 # Plugin for AWS CLI to start and end sessions that connect to managed instances
 cask "session-manager-plugin"
-# App that enables mouse-free UI interaction
-cask "shortcat"
 # Music streaming service
 cask "spotify"
 # Tool to invert scroll direction for physical scroll wheels
