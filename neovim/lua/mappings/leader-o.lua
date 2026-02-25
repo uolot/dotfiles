@@ -1,28 +1,42 @@
 local wk = require("which-key")
 local opencode = require("opencode")
 
+local context_options = {
+	"@this",
+	"@buffer",
+	"@buffers",
+	"@visible",
+	"@diagnostics",
+	"@quickfix",
+	"@diff",
+	"@marks",
+}
+
+local prompt_options = {
+	"diagnostics",
+	"diff",
+	"document",
+	"explain",
+	"fix",
+	"implement",
+	"optimize",
+	"review",
+	"test",
+}
+
 local function ask(context)
 	if not context then
-		context = "@this"
+		context = ""
+	else
+		context = context .. ": "
 	end
-	context = context .. ": "
 	return function()
 		return opencode.ask(context, { submit = true })
 	end
 end
 
 local function ask_selection()
-	local options = {
-		"@this",
-		"@buffer",
-		"@buffers",
-		"@visible",
-		"@diagnostics",
-		"@quickfix",
-		"@diff",
-		"@marks",
-	}
-	vim.ui.select(options, { prompt = "Select opencode context:" }, function(choice)
+	vim.ui.select(context_options, { prompt = "Select opencode context:" }, function(choice)
 		if choice then
 			ask(choice)()
 		end
@@ -38,34 +52,42 @@ local function line()
 end
 
 local function prompt()
-	local options = {
-		"diagnostics",
-		"diff",
-		"document",
-		"explain",
-		"fix",
-		"implement",
-		"optimize",
-		"review",
-		"test",
-	}
-	vim.ui.select(options, { prompt = "Select opencode prompt:" }, function(choice)
+	vim.ui.select(prompt_options, { prompt = "Select opencode prompt:" }, function(choice)
 		if choice then
 			opencode.prompt(choice, { submit = true })
 		end
 	end)
 end
 
+local function prompt_selection()
+	vim.ui.select(context_options, { prompt = "Select opencode context:" }, function(context_choice)
+		if context_choice then
+			vim.ui.select(prompt_options, { prompt = "Select opencode prompt:" }, function(prompt_choice)
+				if prompt_choice then
+					opencode.prompt(prompt_choice, { context = context_choice, submit = true })
+				end
+			end)
+		end
+	end)
+end
+
 wk.add({
 	mode = { "n", "x" },
-	{ "<Leader>oa", ask("@this"), desc = "Ask opencode" },
-	{ "<Leader>oA", ask_selection, desc = "Ask opencode" },
-	{ "<Leader>os", opencode.select, desc = "Execute opencode action" },
-	{ "<Leader>ot", opencode.toggle, desc = "Toggle opencode" },
-	{ "<Leader>oo", operator, desc = "Add range to opencode", expr = true },
+	-- ask
+	{ "<Leader>oa", ask(), desc = "Ask opencode" },
+	{ "<Leader>oA", ask_selection, desc = "Ask opencode with context selection" },
+	{ "<Leader>ot", ask("@this"), desc = "Ask opencode with @this context" },
+	{ "<Leader>ob", ask("@buffer"), desc = "Ask opencode with @buffer context" },
+	{ "<Leader>od", ask("@diagnostics"), desc = "Ask opencode with @diagnostics context" },
+	-- prompt
+	{ "<Leader>op", prompt, desc = "Select and execute opencode prompt" },
+	{ "<Leader>oP", prompt_selection, desc = "Select opencode context and prompt" },
+	-- misc
+	{ "<Leader>oc", opencode.command, desc = "Execute opencode command" },
+	{ "<Leader>os", opencode.select, desc = "Select and execute opencode action" },
 	{ "<Leader>ol", line, desc = "Add line to opencode", expr = true },
-	{ "<Leader>op", prompt, desc = "opencode prompt" },
-	{ "<Leader>oc", opencode.command, desc = "opencode command" },
+	{ "<Leader>oo", operator, desc = "Add range to opencode", expr = true },
+	{ "<Leader>ox", opencode.toggle, desc = "Toggle opencode" },
 })
 
 --[[
