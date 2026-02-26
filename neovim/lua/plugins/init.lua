@@ -929,6 +929,7 @@ require("lazy").setup({
 						percent = 40,
 					},
 				},
+				lsp = { enabled = true },
 			}
 
 			vim.o.autoread = true -- Required for `opts.events.reload`
