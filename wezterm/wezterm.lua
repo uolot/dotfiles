@@ -105,6 +105,7 @@ local balance = require("balance")
 local color_scheme = "Bamboo Multiplex"
 
 -- Show which key table is active in the status area
+---@diagnostic disable-next-line: unused-local
 wez.on("update-right-status", function(window, pane)
 	local name = window:active_key_table()
 	if name then
@@ -149,6 +150,8 @@ local config = {
 	underline_thickness = "4px",
 
 	-- 40_keys
+
+	enable_kitty_keyboard = true,
 
 	-- 41_available_keys
 
@@ -261,6 +264,7 @@ local config = {
 		{
 			key = "t",
 			mods = "LEADER | SHIFT",
+			---@diagnostic disable-next-line: unused-local
 			action = wez.action_callback(function(win, pane)
 				pane:move_to_new_tab()
 			end),
@@ -269,6 +273,7 @@ local config = {
 		{
 			key = "w",
 			mods = "LEADER | SHIFT",
+			---@diagnostic disable-next-line: unused-local
 			action = wez.action_callback(function(win, pane)
 				pane:move_to_new_window()
 			end),
