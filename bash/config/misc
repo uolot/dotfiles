@@ -19,3 +19,6 @@ alias killeslint="ps aux | grep eslint | grep -v grep | awk '{print $2}' | xargs
 vimviki2markdown() {
   pandoc -f vimwiki "$1" -t gfm --wrap=none | pbcopy
 }
+
+# always run opencode with --port flag
+alias opencode="opencode --port"
