@@ -90,6 +90,12 @@ when = "env | grep SAML2AWS_PROFILE"
 symbol = " "
 style = "bold 208"
 
+[custom.github_pr]
+command = "bkt --ttl=10m --scope=\"$(git rev-parse --show-toplevel):$(git branch --show-current)\" -- gh pr view --json number --jq '\"PR #\" + (.number | tostring)' 2>/dev/null"
+when = "git rev-parse --is-inside-work-tree 2>/dev/null"
+format = "[$output](magenta) "
+ignore_timeout = true
+
 # Nerd Font Symbols Preset
 # https://starship.rs/presets/nerd-font.html#nerd-font-symbols-preset
 
