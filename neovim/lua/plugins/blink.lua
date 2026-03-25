@@ -140,7 +140,7 @@ local opts = {
     -- See the fuzzy documentation for more information
     fuzzy = {
         implementation = "prefer_rust_with_warning",
-        use_frecency = true,
+        frecency = { enabled = true },
         use_proximity = true,
         sorts = {
             function(a, b)
