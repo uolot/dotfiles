@@ -117,7 +117,7 @@ brew "libpq", link: true
 # Parsing Expression Grammars For Lua
 brew "lpeg"
 # Powerful, lightweight programming language (v5.1.5)
-brew "lua@5.1"
+brew "lua@5.4"
 # Package manager for the Lua programming language
 brew "luarocks"
 # Collection of tools that nobody wrote when UNIX was young
