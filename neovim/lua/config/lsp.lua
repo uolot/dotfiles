@@ -119,7 +119,7 @@ local function config()
             enabled = false,
             init_options = { sessionToken = 'foo' },
         },
-        gopls = {},
+        -- gopls = {},
         jedi_language_server = {},
         jsonls = {},
         lemminx = {},
