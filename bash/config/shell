@@ -15,8 +15,15 @@ complete -d cd
 export BROWSER=google-chrome-stable
 # export EDITOR="nvim -u NONE"
 export EDITOR="nvim"
-# export TERM=xterm-256color
-export TERM=wezterm
+
+# If we're inside WezTerm, set TERM to wezterm if terminfo is available
+if [[ "$WEZTERM_PANE" ]]; then
+  if infocmp wezterm >/dev/null 2>&1; then
+    export TERM=wezterm
+  else
+    export TERM=xterm-256color
+  fi
+fi
 
 # history
 export HISTCONTROL=ignoredups:erasedups
