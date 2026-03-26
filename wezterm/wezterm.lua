@@ -126,6 +126,8 @@ local config = {
 	},
 	max_fps = 120,
 
+	default_prog = { "/opt/homebrew/bin/bash", "--login" },
+
 	-- 20_font
 	font = wez.font({
 		family = "BlexMono Nerd Font Mono",
