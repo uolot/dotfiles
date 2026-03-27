@@ -21,6 +21,7 @@ LINKS = {
     "neovim": ".config/nvim",
     "rift/config.toml": ".config/rift/config.toml",
     "sketchybar": ".config/sketchybar",
+    "skills": ".claude/skills",
     "starship/starship.toml": ".config/starship.toml",
     "TabNine.toml": ".config/TabNine/TabNine.yml",
     "tmux/tmux.conf": ".tmux.conf",
