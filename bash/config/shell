@@ -51,6 +51,14 @@ alias ,,='cd ..'
 
 alias x="exit"
 
+# Set wezterm tab title to current directory name
+__set_tab_title() {
+  local dir="${PWD##*/}"
+  [[ "$PWD" == "$HOME" ]] && dir='$HOME'
+  printf "\033]1;%s\007" "$dir"
+}
+PROMPT_COMMAND="__set_tab_title${PROMPT_COMMAND:+;$PROMPT_COMMAND}"
+
 alias g="fg"
 
 # make a new dir and cd to it
