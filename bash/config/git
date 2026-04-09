@@ -4,16 +4,53 @@ alias gti="git"
 alias gi="git"
 alias lg="lazygit"
 
-# change to git root dir
+# change to git root dir (worktree-aware)
+# - in repo root: do nothing
+# - in repo subfolder: cd to repo root
+# - in worktree subfolder: cd to worktree root
+# - in worktree root: cd to main repo root
 cdup() {
-  cd $(git rev-parse --show-toplevel)
+  local toplevel gitdir curdir main_root
+
+  toplevel="$(git rev-parse --show-toplevel 2>/dev/null)" || return
+  # --absolute-git-dir gives the absolute .git dir (resolves worktree paths too)
+  gitdir="$(git rev-parse --absolute-git-dir 2>/dev/null)" || return
+  curdir="$(builtin cd -P . >/dev/null && pwd -P)"
+
+  # for worktrees gitdir is /repo/.git/worktrees/<name>, commondir is /repo/.git
+  # for main repo gitdir is /repo/.git
+  local commondir
+  commondir="$(builtin cd -P "$gitdir" >/dev/null && builtin cd "$(git rev-parse --git-common-dir)" >/dev/null && pwd -P)" || return
+  main_root="${commondir%/.git}"
+
+  # resolve toplevel to physical path for comparison
+  toplevel="$(builtin cd -P "$toplevel" >/dev/null && pwd -P)"
+
+  local repo_name="${main_root##*/}"
+
+  if [[ "$curdir" == "$toplevel" ]]; then
+    # at worktree or repo root — jump to main repo root
+    if [[ "$curdir" != "$main_root" ]]; then
+      builtin cd "$main_root" || return
+      echo "changed to repo root: $repo_name"
+    fi
+  else
+    # in a subfolder — cd to nearest root (worktree or repo)
+    builtin cd "$toplevel" || return
+    if [[ "$toplevel" == "$main_root" ]]; then
+      echo "changed to repo root: $repo_name"
+    else
+      local wt_name="${toplevel##*/}"
+      echo "changed to worktree root: $repo_name: $wt_name"
+    fi
+  fi
 }
 
 # watch -- watch the current actions
 gh-watch() {
   gh run list \
-    --branch $(git rev-parse --abbrev-ref HEAD) \
-    --json status,name,databaseId \
-    | jq -r '.[] | select(.status != "completed") | (.databaseId | tostring) + "\t" + (.name)' \
-    | fzf -1 -0 | awk '{print $1}' | xargs gh run watch
+    --branch "$(git rev-parse --abbrev-ref HEAD)" \
+    --json status,name,databaseId |
+    jq -r '.[] | select(.status != "completed") | (.databaseId | tostring) + "\t" + (.name)' |
+    fzf -1 -0 | awk '{print $1}' | xargs gh run watch
 }
