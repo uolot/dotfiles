@@ -62,7 +62,9 @@ Always check the actual `user.login` / `author.login` from the response to confi
       }
     }' -f owner='{owner}' -f repo='{repo}' -F number={number}
   ```
-  Drop any thread where `isResolved: true` or `isOutdated: true`. Only triage threads that are both **active** and **current**.
+  Drop any thread where `isResolved: true` or `isOutdated: true`. Only triage threads that are both **active** and **current**. Cross-reference by matching `databaseId` from GraphQL to `id` from the REST results — exclude any REST comment whose thread is resolved or outdated.
+
+**You MUST run the GraphQL query before proceeding to triage.** The `/pulls/{number}/comments` REST response does not include review-thread resolution state, so skipping this step will cause you to re-triage comments the author has already resolved.
 
 If _all_ Copilot comments are outdated or resolved, report that to the user and stop — there's nothing to triage.
 
