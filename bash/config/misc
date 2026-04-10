@@ -22,3 +22,8 @@ vimviki2markdown() {
 
 # always run opencode with --port flag
 alias opencode="opencode --port"
+
+# neovim 0.12
+alias nvim-0.12="NVIM_APPNAME=nvim-0.12 bob run v0.12.1"
+# neovim nightly
+alias nvim-nightly="NVIM_APPNAME=nvim-nightly bob run nightly"
