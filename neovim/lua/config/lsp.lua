@@ -114,7 +114,13 @@ local function config()
                 "vue",
             },
         },
-        eslint = {},
+        eslint = {
+            settings = {
+                -- Use file location as working directory so ESLint resolves
+                -- local plugins correctly in git worktrees and monorepos.
+                workingDirectory = { mode = 'location' },
+            },
+        },
         gh_actions_ls = {
             enabled = false,
             init_options = { sessionToken = 'foo' },
