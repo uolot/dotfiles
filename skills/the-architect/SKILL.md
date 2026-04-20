@@ -97,13 +97,14 @@ Update the outline file in place. Change the status to "Draft".
    - Which existing patterns to follow and where to find them in the codebase
    - Any new files or components to create
 4. **Assess test coverage.** For each implementation step, check whether the code being changed already has tests. If it doesn't, propose adding tests to the user. Be specific about:
-   - What type of tests (unit, integration, etc.)
-   - What behaviors and edge cases they should cover
-   - Where the test file should live (following project conventions)
-   - Do NOT include test implementation details yet — just the scope and intent
-5. Resolve the Open Questions from Stage 2 (using the user's comments) and remove answered ones. Add any new questions that surfaced during expansion.
-6. Call out **risks** or areas where the plan may need adjustment during implementation.
-7. Present the expanded plan to the user. Iterate until they're satisfied. Expect 1-3 revision rounds.
+    - What type of tests (unit, integration, etc.)
+    - What behaviors and edge cases they should cover
+    - Where the test file should live (following project conventions)
+    - Do NOT include test implementation details yet — just the scope and intent
+5. **Identify project quality gates.** Determine which validation commands are standard for this repo (tests, linters, formatters, type checks, build/check commands). Record the exact commands in the plan so implementation can run them before every commit.
+6. Resolve the Open Questions from Stage 2 (using the user's comments) and remove answered ones. Add any new questions that surfaced during expansion.
+7. Call out **risks** or areas where the plan may need adjustment during implementation.
+8. Present the expanded plan to the user. Iterate until they're satisfied. Expect 1-3 revision rounds.
 
 ### Plan document format (Stage 3)
 
@@ -190,16 +191,18 @@ Update the plan file in place. Change the status to "Ready" once approved.
 1. Break each implementation step from Stage 3 into one or more **atomic commits** — each one leaves the app in a fully working state (checks pass, tests pass, no broken UI).
 2. Order commits to minimize risk: mechanical renames and type changes first, then logic changes, then UI, then cleanup.
 3. **Tests go with the code they cover, not at the end.** When a commit introduces new logic or changes behavior, include the corresponding tests in that same commit. A commit that adds `isStarred()` should also add the unit tests for `isStarred()`. Only split tests into a separate commit when adding coverage for pre-existing untested code.
-4. For each commit, specify:
-   - **Commit message** (conventional commits format)
-   - **Implementation guidance** — a brief description followed by three bullet points:
-     - **Why**: The purpose of this commit — what problem it solves or what it enables for subsequent commits
-     - **What**: The observable change — what's different after this commit (new type, renamed function, new component, etc.)
-     - **How**: The approach — which pattern to follow, which existing code to reference, key decisions the implementer should know
-   - **Files changed** with exact paths
-   - **What changes** in each file — reference specific line numbers, function names, type names, and variable names. Include before/after code snippets for non-trivial changes.
-5. Present the breakdown to the user. Iterate until they're satisfied.
-6. **Stop and wait for explicit user approval.** Do NOT proceed to Stage 5 until the user explicitly confirms the commit breakdown is approved. Setting status to "Ready" means the plan is ready for the user to review — it is not permission to implement.
+4. **Run quality gates before every commit.** Do not commit until repo-appropriate checks succeed for that step (at minimum relevant tests + lint/format/type/build checks used by this project). If a check fails, fix the issue before committing.
+5. For each commit, specify:
+    - **Commit message** (conventional commits format)
+    - **Implementation guidance** — a brief description followed by three bullet points:
+      - **Why**: The purpose of this commit — what problem it solves or what it enables for subsequent commits
+      - **What**: The observable change — what's different after this commit (new type, renamed function, new component, etc.)
+      - **How**: The approach — which pattern to follow, which existing code to reference, key decisions the implementer should know
+    - **Validation commands** to run before committing (exact commands for tests/checks/linters/formatters relevant to that commit)
+    - **Files changed** with exact paths
+    - **What changes** in each file — reference specific line numbers, function names, type names, and variable names. Include before/after code snippets for non-trivial changes.
+6. Present the breakdown to the user. Iterate until they're satisfied.
+7. **Stop and wait for explicit user approval.** Do NOT proceed to Stage 5 until the user explicitly confirms the commit breakdown is approved. Setting status to "Ready" means the plan is ready for the user to review — it is not permission to implement.
 
 ## Stage 5: Handoff
 
@@ -232,5 +235,6 @@ When a conversation resumes and prior context indicates this skill is in progres
 - **Read-only until Stage 4.** No code changes during discovery, outlining, or plan expansion. The temptation to "just fix this while I'm here" leads to tangled commits and lost focus.
 - **Exact over vague.** "Update the filter function" is useless. "In `src/data/filters.ts:42`, rename `getFilterForPage` to `getAreaFilter` and change the return type from `Filter` to `AreaFilter`" is actionable.
 - **Patterns over invention.** The codebase already has conventions. Find them and follow them. The plan should feel like it was written by someone who's worked on this project for months.
+- **Never commit red or dirty quality checks.** Before each commit, run the step's required validation commands (tests/checks/linters/formatters) and fix failures first.
 - **The plan is the artifact.** The plan file in `docs/plans/` is the deliverable of this skill — not the code. Code comes later, guided by the plan.
 - **Explicit permission over assumed intent.** Every stage transition requires explicit user approval. When in doubt, ask.
