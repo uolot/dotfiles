@@ -862,32 +862,6 @@ require("lazy").setup({
 			copilot_model = "gemini-2.5-pro",
 		},
 	},
-
-	{
-		"CopilotC-Nvim/CopilotChat.nvim",
-		event = "VeryLazy",
-		branch = "main",
-		dependencies = {
-			{ "zbirenbaum/copilot.lua" },
-			{ "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
-		},
-		build = "make tiktoken",
-		opts = {
-			debug = true, -- Enable debugging
-			-- See Configuration section for rest
-			model = "claude-sonnet-4",
-			auto_insert_mode = true,
-			window = {
-				layout = "float",
-				relative = "cursor",
-				width = 0.6,
-				height = 0.4,
-				row = 1,
-			},
-		},
-		-- See Commands section for default commands if you want to lazy load on them
-	},
-
 	{
 		"nickjvandyke/opencode.nvim",
 		version = "*", -- Latest stable release
