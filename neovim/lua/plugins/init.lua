@@ -155,6 +155,7 @@ require("lazy").setup({
 
 	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
+		branch = "main",
 		event = "VeryLazy",
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
 	},
