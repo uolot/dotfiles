@@ -11,7 +11,6 @@ local dependencies = {
 			require("luasnip.loaders.from_vscode").lazy_load()
 		end,
 	},
-	"disrupted/blink-cmp-conventional-commits",
 	{
 		"fang2hou/blink-copilot",
 		dependencies = { "zbirenbaum/copilot.lua" },
@@ -92,7 +91,6 @@ local opts = {
 	-- elsewhere in your config, without redefining it, due to `opts_extend`
 	sources = {
 		default = {
-			"conventional_commits",
 			"lsp",
 			"buffer",
 			"path",
@@ -111,16 +109,6 @@ local opts = {
 						return vim.fn.getcwd()
 					end,
 				},
-			},
-			conventional_commits = {
-				name = "Conventional Commits",
-				module = "blink-cmp-conventional-commits",
-				enabled = function()
-					return vim.bo.filetype == "gitcommit"
-				end,
-				---@module 'blink-cmp-conventional-commits'
-				---@type blink-cmp-conventional-commits.Options
-				opts = {}, -- none so far
 			},
 			copilot = {
 				name = "Copilot",
