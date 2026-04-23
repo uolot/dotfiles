@@ -974,10 +974,10 @@ require("lazy").setup({
 	ui = {
 		border = "rounded",
 	},
-	-- diff = 'browser',
-	-- diff = 'git',
-	-- diff = 'terminal_git',
-	-- diff = 'diffview.nvim',
+	diff = {
+		-- browser | git | terminal_git | diffview.nvim
+		cmd = "terminal_git",
+	},
 	checker = {
 		enabled = false,
 		frequency = 3600 * 48, -- every two days
