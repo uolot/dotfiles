@@ -1,13 +1,6 @@
 return {
 	opts = {
 		bigfile = { enabled = true },
-		dashboard = {
-			enabled = false,
-			sections = {
-				{ section = "header" },
-				{ section = "startup", padding = 1 },
-			},
-		},
 		indent = {
 			enabled = true,
 			animate = { enabled = false },

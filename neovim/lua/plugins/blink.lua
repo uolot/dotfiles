@@ -23,8 +23,6 @@ local dependencies = {
 ---@module 'blink.cmp'
 ---@type blink.cmp.Config
 local opts = {
-	-- enabled = function() return not vim.tbl_contains({ "lua", "markdown" }, vim.bo.filetype) end,
-
 	-- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
 	-- 'super-tab' for mappings similar to vscode (tab to accept)
 	-- 'enter' for enter to accept
@@ -120,40 +118,42 @@ local opts = {
 				score_offset = -3,
 			},
 		},
-	},
 
-	-- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
-	-- You may use a lua implementation instead by using `implementation = "lua"` or fallback to the lua implementation,
-	-- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`
-	--
-	-- See the fuzzy documentation for more information
-	fuzzy = {
-		implementation = "prefer_rust_with_warning",
-		frecency = { enabled = true },
-		use_proximity = true,
-		sorts = {
-			function(a, b)
-				if (a.client_name == nil or b.client_name == nil) or (a.client_name == b.client_name) then
-					return
-				end
-				return b.client_name == "emmet_ls" or b.client_name == "copilot"
-			end,
-			-- default sorts
-			"exact",
-			"score",
-			"sort_text",
+		-- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
+		-- You may use a lua implementation instead by using `implementation = "lua"` or fallback to the lua implementation,
+		-- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`
+		--
+		-- See the fuzzy documentation for more information
+		fuzzy = {
+			implementation = "prefer_rust_with_warning",
+			frecency = { enabled = true },
+			use_proximity = true,
+			sorts = {
+				function(a, b)
+					if (a.client_name == nil or b.client_name == nil) or (a.client_name == b.client_name) then
+						return
+					end
+					return b.client_name == "emmet_ls" or b.client_name == "copilot"
+				end,
+				-- default sorts
+				"exact",
+				"score",
+				"sort_text",
+			},
 		},
 	},
-
 	cmdline = {
-		keymap = {
-			["<Tab>"] = { "show", "accept" },
-			-- ['<Up>'] = { 'select_prev', 'fallback' },
-			-- ['<Down>'] = { 'select_next', 'fallback' },
-			["<Right>"] = { "select_and_accept" },
-		},
-		completion = {
-			menu = { auto_show = true },
+		sources = {
+
+			keymap = {
+				["<Tab>"] = { "show", "accept" },
+				-- ['<Up>'] = { 'select_prev', 'fallback' },
+				-- ['<Down>'] = { 'select_next', 'fallback' },
+				["<Right>"] = { "select_and_accept" },
+			},
+			completion = {
+				menu = { auto_show = true },
+			},
 		},
 	},
 }
