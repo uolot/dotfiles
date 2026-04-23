@@ -828,6 +828,9 @@ require("lazy").setup({
 	{
 		"zbirenbaum/copilot.lua",
 		lazy = true,
+		dependencies = {
+			-- "copilotlsp-nvim/copilot-lsp", -- optional for NES
+		},
 		cmd = "Copilot",
 		event = "InsertEnter",
 		opts = {
@@ -859,9 +862,19 @@ require("lazy").setup({
 				["."] = false,
 			},
 			panel = { enabled = false },
-			copilot_model = "gemini-2.5-pro",
+			nes = {
+				enabled = false, -- TODO: try `true`
+				auto_trigger = false,
+				keymap = {
+					accept_and_goto = false,
+					accept = false,
+					dismiss = false,
+				},
+			},
+			-- copilot_model = "gpt-41-copilot",
 		},
 	},
+
 	{
 		"nickjvandyke/opencode.nvim",
 		version = "*", -- Latest stable release
@@ -870,30 +883,20 @@ require("lazy").setup({
 				---@module "snacks" <- Loads `snacks.nvim` types for configuration intellisense
 				"folke/snacks.nvim",
 				optional = true,
-				opts = {
-					input = {}, -- Enhances `ask()`
-					picker = { -- Enhances `select()`
-						actions = {
-							opencode_send = function(...)
-								return require("opencode").snacks_picker_send(...)
-							end,
-						},
-						win = {
-							input = {
-								keys = {
-									["<a-a>"] = { "opencode_send", mode = { "n", "i" } },
-								},
-							},
-						},
-					},
-					terminal = {}, -- Enables the `snacks` provider
-				},
 			},
 		},
 		config = function()
 			---@type opencode.Opts
 			vim.g.opencode_opts = {
 				lsp = { enabled = true },
+				events = {
+					enabled = true,
+					reload = true, -- Automatically reload the file after an edit
+					permissions = {
+						enabled = true,
+						edits = { enabled = true }, -- TODO: check `false`
+					},
+				},
 			}
 
 			vim.o.autoread = true -- Required for `opts.events.reload`

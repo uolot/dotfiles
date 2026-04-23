@@ -33,7 +33,20 @@ return {
 			enabled = true,
 			timeout = 6000,
 		},
-		picker = { enabled = true },
+		picker = { -- Enhances `select()`
+			actions = {
+				opencode_send = function(...)
+					return require("opencode").snacks_picker_send(...)
+				end,
+			},
+			win = {
+				input = {
+					keys = {
+						["<a-a>"] = { "opencode_send", mode = { "n", "i" } },
+					},
+				},
+			},
+		},
 		quickfile = { enabled = true },
 		statuscolumn = {
 			enabled = true,
@@ -49,6 +62,7 @@ return {
 			},
 			refresh = 50, -- refresh at most every 50ms
 		},
+		terminal = {}, -- Enables the `snacks` provider
 		words = {
 			enabled = true,
 			debounce = 200,
