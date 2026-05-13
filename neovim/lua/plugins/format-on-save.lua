@@ -90,6 +90,10 @@ local config = function()
 				-- formatters.lsp,
 				formatters.prettierd,
 			},
+			json5 = {
+				-- formatters.lsp,
+				formatters.prettierd,
+			},
 			lua = formatters.lsp,
 			markdown = formatters.prettierd,
 			python = {
