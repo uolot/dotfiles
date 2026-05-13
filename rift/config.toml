@@ -98,7 +98,7 @@ drag_swap_fraction = 0.3
 # Virtual workspaces
 [virtual_workspaces]
 enabled = true
-default_workspace_count = 5
+default_workspace_count = 6
 auto_assign_windows = true
 preserve_focus_per_workspace = true
 workspace_auto_back_and_forth = false
@@ -108,7 +108,7 @@ reapply_app_rules_on_title_change = false
 workspace_rules = []
 
 # default_workspace = 0
-workspace_names = ["first", "second", "third", "fourth", "fifth"]
+workspace_names = ["first", "second", "third", "fourth", "fifth", "sixth"]
 
 # App rules (automatic assignment)
 # Rule options:
@@ -232,11 +232,13 @@ comb2 = "Alt + Ctrl + Shift"
 "comb1 + E" = { switch_to_workspace = 2 }
 "comb1 + R" = { switch_to_workspace = 3 }
 "comb1 + T" = { switch_to_workspace = 4 }
+"comb1 + Y" = { switch_to_workspace = 5 }
 "comb1 + 1" = { switch_to_workspace = 0 }
 "comb1 + 2" = { switch_to_workspace = 1 }
 "comb1 + 3" = { switch_to_workspace = 2 }
 "comb1 + 4" = { switch_to_workspace = 3 }
 "comb1 + 5" = { switch_to_workspace = 4 }
+"comb1 + 6" = { switch_to_workspace = 5 }
 
 # Move focused window to workspace
 "comb2 + Q" = { move_window_to_workspace = 0 }
@@ -244,11 +246,13 @@ comb2 = "Alt + Ctrl + Shift"
 "comb2 + E" = { move_window_to_workspace = 2 }
 "comb2 + R" = { move_window_to_workspace = 3 }
 "comb2 + T" = { move_window_to_workspace = 4 }
+"comb2 + Y" = { move_window_to_workspace = 5 }
 "comb2 + 1" = { move_window_to_workspace = 0 }
 "comb2 + 2" = { move_window_to_workspace = 1 }
 "comb2 + 3" = { move_window_to_workspace = 2 }
 "comb2 + 4" = { move_window_to_workspace = 3 }
 "comb2 + 5" = { move_window_to_workspace = 4 }
+"comb2 + 6" = { move_window_to_workspace = 5 }
 
 # Switch to last workspace
 "comb1 + Tab" = "switch_to_last_workspace"
