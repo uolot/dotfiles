@@ -143,17 +143,23 @@ local opts = {
 		},
 	},
 	cmdline = {
-		sources = {
-
-			keymap = {
-				["<Tab>"] = { "show", "accept" },
-				-- ['<Up>'] = { 'select_prev', 'fallback' },
-				-- ['<Down>'] = { 'select_next', 'fallback' },
-				["<Right>"] = { "select_and_accept" },
-			},
-			completion = {
-				menu = { auto_show = true },
-			},
+		keymap = {
+			["<CR>"] = { "accept_and_enter", "fallback" },
+			["<Tab>"] = { "show", "accept", "fallback" },
+			["<C-Space>"] = { "show", "fallback" },
+			["<C-n>"] = { "show", "select_next" },
+			["<C-p>"] = { "show", "select_prev" },
+		},
+		-- keymap = {
+		-- 	["<Tab>"] = { "show", "accept" },
+		-- 	["<S-Tab>"] = { "show_and_insert" },
+		-- 	["<C-Space>"] = { "show", "fallback" },
+		-- 	-- ['<Up>'] = { 'select_prev', 'fallback' },
+		-- 	-- ['<Down>'] = { 'select_next', 'fallback' },
+		-- 	["<Right>"] = { "select_and_accept" },
+		-- },
+		completion = {
+			menu = { auto_show = true },
 		},
 	},
 }
