@@ -195,9 +195,12 @@ comb2 = "Alt + Ctrl + Shift"
 # - focus_window = { window_id = 123, window_server_id = 456 }
 # - dismiss_mission_control
 
-# NOTE: New, re-evaluate
-"comb1 + N" = "next_window"
-"comb1 + P" = "prev_window"
+# TODO: keys to free-up:
+# comb1 + O (toggle_orientation)
+# comb2 + O (set traditional layout)
+# comb1 + U / comb2 + U (resize_window_grow)
+# comb1 + I / comb2 + I (resize_window_shrink)
+# comb2 + P (promote_to_master)
 
 # NOTE: New, re-evaluate
 "comb2 + O" = { set_workspace_layout = { mode = "traditional" } }
@@ -207,6 +210,10 @@ comb2 = "Alt + Ctrl + Shift"
 # "comb2 + C" = { set_workspace_layout = { mode = "scrolling" } }
 "comb2 + P" = "promote_to_master"
 "comb2 + S" = "swap_master_stack"
+
+# Stack / orientation
+"comb1 + S" = "toggle_stack"
+"comb1 + O" = "toggle_orientation"
 
 # Enable / disable rift
 "comb1 + Z" = "toggle_space_activated"
@@ -227,6 +234,8 @@ comb2 = "Alt + Ctrl + Shift"
 "comb2 + L" = { move_node = "right" }
 
 # Switch to workspace
+"comb1 + N" = "next_workspace"
+
 "comb1 + Q" = { switch_to_workspace = 0 }
 "comb1 + W" = { switch_to_workspace = 1 }
 "comb1 + E" = { switch_to_workspace = 2 }
@@ -276,10 +285,6 @@ comb2 = "Alt + Ctrl + Shift"
 "comb2 + Right" = { move_window_to_display = { selector = "right" } }
 "comb2 + Up" = { move_window_to_display = { selector = "up" } }
 "comb2 + Down" = { move_window_to_display = { selector = "down" } }
-
-# Stack / orientation
-"comb1 + S" = "toggle_stack"
-"comb1 + O" = "toggle_orientation"
 
 # Floating
 # TODO: review these
