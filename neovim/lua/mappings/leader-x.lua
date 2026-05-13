@@ -57,4 +57,5 @@ wk.add({
 		end,
 		desc = "Line wrap",
 	},
+	{ "<Leader>xz", Snacks.zen.zen, desc = "Zen mode" },
 })

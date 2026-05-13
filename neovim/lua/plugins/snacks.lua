@@ -62,5 +62,6 @@ return {
 			notify_jump = false,
 			notify_end = true,
 		},
+		zen = {},
 	},
 }
