@@ -1,5 +1,6 @@
 local wk = require("which-key")
 local snacks = require("snacks")
+local severity = vim.diagnostic.severity
 
 local function close_floating()
 	for _, win in ipairs(vim.api.nvim_list_wins()) do
@@ -16,6 +17,15 @@ end
 
 local function previous_usage()
 	snacks.words.jump(-1, true)
+end
+
+-- @param sev vim.diagnostic.SeverityFilter or list of severities to jump to
+local function next_diagnostic(sev)
+	vim.diagnostic.jump({ count = 1, severity = sev, float = true })
+end
+-- @param sev vim.diagnostic.SeverityFilter or list of severities to jump to
+local function prev_diagnostic(sev)
+	vim.diagnostic.jump({ count = -1, severity = sev, float = true })
 end
 
 wk.add({
@@ -86,6 +96,51 @@ wk.add({
 			{ "[s", "<Cmd>AerialPrev<CR>", desc = "Previous symbol" },
 			{ "]s", "<Cmd>AerialNext<CR>", desc = "Next symbol" },
 		},
+		{ -- diagnostics
+			{
+				"[e",
+				function()
+					prev_diagnostic(severity.ERROR)
+				end,
+				desc = "Previous error",
+			},
+			{
+				"]e",
+				function()
+					next_diagnostic(severity.ERROR)
+				end,
+				desc = "Next error",
+			},
+			{
+				"[w",
+				function()
+					prev_diagnostic(severity.WARN)
+				end,
+				desc = "Previous warning",
+			},
+			{
+				"]w",
+				function()
+					next_diagnostic(severity.WARN)
+				end,
+				desc = "Next warning",
+			},
+			{
+				"[i",
+				function()
+					prev_diagnostic({ severity.INFO, severity.HINT })
+				end,
+				desc = "Previous info or hint",
+			},
+			{
+				"]i",
+				function()
+					next_diagnostic({ severity.INFO, severity.HINT })
+				end,
+				desc = "Next info or hing",
+			},
+		},
+
 		{ -- treesitter scope from snacks
 			{ "[%", Snacks.scope.jump, desc = "Scope top" },
 			{
