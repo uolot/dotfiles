@@ -118,11 +118,11 @@ local config = {
 	-- 10_appearance
 	use_fancy_tab_bar = true,
 	enable_scroll_bar = false,
-	window_padding = { left = 0, right = 0, top = 0, bottom = 0 },
+	window_padding = { left = 16, right = 16, top = 0, bottom = 0 },
 	window_decorations = "TITLE | RESIZE",
 	inactive_pane_hsb = {
-		saturation = 0.9,
-		brightness = 0.6,
+		saturation = 0.4,
+		brightness = 0.65,
 	},
 	max_fps = 120,
 
