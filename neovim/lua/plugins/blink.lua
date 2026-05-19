@@ -118,33 +118,10 @@ local opts = {
 				score_offset = -3,
 			},
 		},
-
-		-- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
-		-- You may use a lua implementation instead by using `implementation = "lua"` or fallback to the lua implementation,
-		-- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`
-		--
-		-- See the fuzzy documentation for more information
-		fuzzy = {
-			implementation = "prefer_rust_with_warning",
-			frecency = { enabled = true },
-			use_proximity = true,
-			sorts = {
-				function(a, b)
-					if (a.client_name == nil or b.client_name == nil) or (a.client_name == b.client_name) then
-						return
-					end
-					return b.client_name == "emmet_ls" or b.client_name == "copilot"
-				end,
-				-- default sorts
-				"exact",
-				"score",
-				"sort_text",
-			},
-		},
 	},
+
 	cmdline = {
 		keymap = {
-			["<CR>"] = { "accept_and_enter", "fallback" },
 			["<Tab>"] = { "show", "accept", "fallback" },
 			["<C-Space>"] = { "show", "fallback" },
 			["<C-n>"] = { "show", "select_next" },
@@ -160,6 +137,33 @@ local opts = {
 		-- },
 		completion = {
 			menu = { auto_show = true },
+		},
+	},
+
+	-- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
+	-- You may use a lua implementation instead by using `implementation = "lua"` or fallback to the lua implementation,
+	-- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`
+	--
+	-- See the fuzzy documentation for more information
+	fuzzy = {
+		implementation = "prefer_rust_with_warning",
+		frecency = {
+			enabled = true,
+			-- 	path = vim.fn.stdpath("state") .. "/blink/cmp/frecency.dat",
+		},
+		prebuilt_binaries = { download = true },
+		use_proximity = true,
+		sorts = {
+			function(a, b)
+				if (a.client_name == nil or b.client_name == nil) or (a.client_name == b.client_name) then
+					return
+				end
+				return b.client_name == "emmet_ls" or b.client_name == "copilot"
+			end,
+			-- default sorts
+			"exact",
+			"score",
+			"sort_text",
 		},
 	},
 }
