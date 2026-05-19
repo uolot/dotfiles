@@ -28,6 +28,7 @@
 --     440_balance_panes
 --     441_toggle_bottom_pane
 --     442_toggle_right_pane
+--     450_toggle_colorscheme
 -- 50_key_tables
 -- 51_activate_pane
 -- 52_resize_pane
@@ -101,8 +102,8 @@
 local wez = require("wezterm")
 local balance = require("balance")
 
--- local color_scheme = 'GitHub Dark'
 local color_scheme = "Bamboo Multiplex"
+-- local color_scheme = "Bamboo Light"
 
 -- Show which key table is active in the status area
 ---@diagnostic disable-next-line: unused-local
@@ -112,6 +113,19 @@ wez.on("update-right-status", function(window, pane)
 		name = "TABLE: " .. name
 	end
 	window:set_right_status(name or "")
+end)
+
+-- Toggle between two color schemes
+---@diagnostic disable-next-line: unused-local pane
+wez.on("toggle-colorscheme", function(window, pane)
+	local overrides = window:get_config_overrides() or {}
+	if not overrides.color_scheme then
+		overrides.color_scheme = "Bamboo Light"
+	else
+		overrides.color_scheme = nil
+		-- overrides.color_scheme = "Bamboo Multiplex"
+	end
+	window:set_config_overrides(overrides)
 end)
 
 local config = {
@@ -387,6 +401,13 @@ local config = {
 					panes[2].pane:activate()
 				end
 			end),
+		},
+
+		-- 450_toggle_colorscheme
+		{
+			key = "e",
+			mods = "LEADER",
+			action = wez.action.EmitEvent("toggle-colorscheme"),
 		},
 	},
 
