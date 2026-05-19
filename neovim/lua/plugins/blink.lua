@@ -149,7 +149,6 @@ local opts = {
 		implementation = "prefer_rust_with_warning",
 		frecency = {
 			enabled = true,
-			-- 	path = vim.fn.stdpath("state") .. "/blink/cmp/frecency.dat",
 		},
 		prebuilt_binaries = { download = true },
 		use_proximity = true,
