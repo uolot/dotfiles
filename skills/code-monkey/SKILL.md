@@ -50,6 +50,8 @@ Present the commit to the user with:
 - **File change summary** — list each changed file with a brief description of what changed. If the same change applies to a batch of files (e.g., mechanical renames across 20 pages), group them into a single line instead of listing each file individually.
 - **Wait for confirmation before committing.**
 - Commit only the files specified in the plan. If other files need changes, ask first.
+- **After the user confirms, create the commit immediately** before doing anything else. Do not defer commits or batch them.
+- Never include plan files from `docs/plans/` in a commit.
 
 ### 5. Move to the next commit
 
@@ -94,7 +96,8 @@ When a conversation resumes and prior context indicates this skill is in progres
 
 - **Faithful over creative.** The plan is your spec. Follow it. Creativity belongs in the architect session, not here.
 - **The plan is immutable.** Never modify the plan file during execution. If the plan is wrong, note the issue and keep going. Fixes happen at the end, with user approval.
-- **Atomic over fast.** Each commit is a safe checkpoint. If something goes wrong, you can stop after any commit and the app still works.
+- **Atomic over fast.** Each commit is a safe checkpoint. If something goes wrong, you can stop after any commit and the app still works. **Commit each step immediately after user approval** — never accumulate multiple steps and commit them in a batch at the end. The whole point of atomic commits is that each one is self-contained and lands independently.
 - **Collect, don't interrupt.** When you spot plan issues, add them to your issues list and move on. Don't stop execution to debate each problem — batch them for the end. The user reviews everything at once with full context.
 - **Tests travel with code.** When a commit introduces logic, the tests for that logic belong in the same commit. Don't batch tests at the end.
 - **Explicit permission over assumed intent.** Wait for user confirmation before every commit. Never interpret "continue" as "commit everything remaining without review."
+- **Never commit plan files.** Files in `docs/plans/` are working artifacts. They must never be included in implementation commits. The plan file is only touched during "Clean up" in the Finishing Up phase, and only if the user explicitly asks to commit or delete it.

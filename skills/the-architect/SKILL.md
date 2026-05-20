@@ -287,7 +287,7 @@ Once the plan is finalized (user explicitly confirms transition to Stage 5, stat
 3. Run a final **Plan Integrity Check** before sending the summary.
 4. This summary is for pasting into a fresh implementation session. It must be **self-contained**: summary + plan file should be enough to execute without re-exploration.
 
-**The architect's job ends here.** Implementation is handled in a separate execution session.
+**The architect's job ends here.** Implementation is handled by the `code-monkey` skill in a separate session. **Do NOT load the code-monkey skill yourself or begin implementing.** Tell the user the plan is ready and that they can invoke code-monkey to execute it.
 
 ---
 
@@ -310,5 +310,5 @@ When a conversation resumes and prior context indicates this skill is in progres
 - **Consistency beats cleverness.** Resolve conflicting terms, constants, and contracts immediately. A plan with mixed signals is a broken plan.
 - **Cross-cutting concerns are first-class.** Every feature plan must explicitly evaluate performance impact, DRY opportunities (avoid duplicated logic/structures), and security implications (auth, data handling, input validation, secrets exposure).
 - **Never commit red or dirty quality checks.** Before each commit, run the step's required validation commands (tests/checks/linters/formatters) and fix failures first.
-- **The plan is the artifact.** The plan file in `docs/plans/` is the deliverable of this skill — not the code. Code comes later, guided by the plan.
+- **The plan is the artifact.** The plan file in `docs/plans/` is the deliverable of this skill — not the code. Code comes later, guided by the plan. However, the plan file itself is a working document and should **not** be committed to the repository.
 - **Explicit permission over assumed intent.** Every stage transition requires explicit user approval tied to the specific next stage. When in doubt, ask.
