@@ -50,13 +50,12 @@ local function shrink()
     window:setSize(w, h)
 end
 
--- local hyper = { "cmd", "alt", "ctrl", "shift" }
+local hyper = { "cmd", "alt", "ctrl", "shift" }
 local meh = { "alt", "ctrl", "shift" }
 
 
 -- MEH
 
--- hs.hotkey.bind(meh, "m", mouseHighlight)
 -- hs.hotkey.bind(meh, "c", function() hs.window.focusedWindow():centerOnScreen() end)
 -- hs.hotkey.bind(meh, "s", function() reasonableSize() end)
 -- hs.hotkey.bind(meh, "u", function() grow() end)
@@ -90,7 +89,7 @@ hs.hotkey.bind(
 
 -- DANISH --
 
-local danish = hs.hotkey.modal.new(meh, "d")
+local danish = hs.hotkey.modal.new(hyper, "d")
 local timer = nil
 
 local function exit()
