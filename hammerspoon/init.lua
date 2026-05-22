@@ -1,13 +1,5 @@
 -- http://www.hammerspoon.org/docs/
 
-local mouseCircleConfig = {
-    radius = 40,
-    color = { red = 1, blue = 0, green = 0, alpha = 0.4 },
-    fill = true,
-    strokeWidth = 5,
-    duration = 0.4,
-}
-
 hs.window.animationDuration = 0
 
 -- debug print:
@@ -25,36 +17,6 @@ local function dump(o)
     else
         return tostring(o)
     end
-end
-
-local mouseCircle = nil
-local mouseCircleTimer = nil
-
-local function mouseHighlight()
-    -- Delete an existing highlight if it exists
-    if mouseCircle then
-        mouseCircle:delete()
-        mouseCircle = nil
-        if mouseCircleTimer then
-            mouseCircleTimer:stop()
-        end
-    end
-    -- Get the current co-ordinates of the mouse pointer
-    local mousepoint = hs.mouse.getAbsolutePosition()
-    -- Prepare a big red circle around the mouse pointer
-    local r = mouseCircleConfig.radius
-    mouseCircle = hs.drawing.circle(hs.geometry.rect(mousepoint.x - r, mousepoint.y - r, 2 * r, 2 * r))
-    mouseCircle:setStrokeColor(mouseCircleConfig.color)
-    mouseCircle:setFillColor(mouseCircleConfig.color)
-    mouseCircle:setFill(mouseCircleConfig.fill)
-    mouseCircle:setStrokeWidth(mouseCircleConfig.strokeWidth)
-    mouseCircle:show()
-
-    -- Set a timer to delete the circle after 0.4 second
-    mouseCircleTimer = hs.timer.doAfter(mouseCircleConfig.duration,
-        function()
-            mouseCircle:delete(); mouseCircle = nil
-        end)
 end
 
 -- resize window to reasonable size - 60%, max 1025x900px
@@ -95,7 +57,84 @@ local meh = { "alt", "ctrl", "shift" }
 -- MEH
 
 -- hs.hotkey.bind(meh, "m", mouseHighlight)
-hs.hotkey.bind(meh, "c", function() hs.window.focusedWindow():centerOnScreen() end)
-hs.hotkey.bind(meh, "s", function() reasonableSize() end)
-hs.hotkey.bind(meh, "u", function() grow() end)
-hs.hotkey.bind(meh, "i", function() shrink() end)
+-- hs.hotkey.bind(meh, "c", function() hs.window.focusedWindow():centerOnScreen() end)
+-- hs.hotkey.bind(meh, "s", function() reasonableSize() end)
+-- hs.hotkey.bind(meh, "u", function() grow() end)
+-- hs.hotkey.bind(meh, "i", function() shrink() end)
+
+local function indexOf(array, value)
+    for i, v in ipairs(array) do
+        if v == value then
+            return i
+        end
+    end
+    return nil
+end
+
+hs.hotkey.bind(
+    meh,
+    "Space",
+    -- pressedfn
+    function()
+        local layouts = hs.keycodes.layouts()
+        local currentLayoutIndex = indexOf(layouts, hs.keycodes.currentLayout())
+        local nextIndex = currentLayoutIndex + 1
+        if nextIndex > #layouts then
+            nextIndex = 1
+        end
+        local nextLayout = layouts[nextIndex]
+        hs.keycodes.setLayout(nextLayout)
+        hs.alert.showWithImage(nextLayout, hs.keycodes.currentLayoutIcon())
+    end
+)
+
+-- DANISH --
+
+local danish = hs.hotkey.modal.new(meh, "d")
+local timer = nil
+
+local function exit()
+    if timer ~= nil then
+        timer:stop()
+        print("timer stopped")
+    else
+        print("no timer")
+    end
+    danish:exit()
+    print("danish exited")
+end
+
+-- timeout
+function danish:entered()
+    timer = hs.timer.doAfter(1, function()
+        danish:exit()
+    end)
+end
+
+-- lowercase
+danish:bind('', 'a', function()
+    exit()
+    hs.eventtap.keyStrokes("å")
+end)
+danish:bind('', 'e', function()
+    exit()
+    hs.eventtap.keyStrokes("æ")
+end)
+danish:bind('', 'o', function()
+    exit()
+    hs.eventtap.keyStrokes("ø")
+end)
+
+-- uppercase
+danish:bind('shift', 'a', function()
+    exit()
+    hs.eventtap.keyStrokes("Å")
+end)
+danish:bind('shift', 'e', function()
+    exit()
+    hs.eventtap.keyStrokes("Æ")
+end)
+danish:bind('shift', 'o', function()
+    exit()
+    hs.eventtap.keyStrokes("Ø")
+end)
