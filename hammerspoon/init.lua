@@ -88,7 +88,6 @@ hs.hotkey.bind(
 )
 
 -- DANISH --
-
 local danish = hs.hotkey.modal.new(hyper, "d")
 local timer = nil
 
@@ -137,3 +136,89 @@ danish:bind('shift', 'o', function()
     exit()
     hs.eventtap.keyStrokes("Ø")
 end)
+
+-- MOVE WINDOWS BETWEEN SPACES --
+local function moveWindowToSpace(spaceNumber)
+    local win = hs.window.focusedWindow()
+    if not win then
+        hs.alert.show("No focused window")
+        return
+    end
+
+    local windowSpaces = hs.spaces.windowSpaces(win)
+    local originalSpace = windowSpaces and windowSpaces[1] or nil
+
+    local labels = {"q", "w", "e", "r", "t", "y", "u", "i", "o", "p"}
+    local spaceKey = labels[spaceNumber]
+
+    local frame = win:frame()
+    local titleBarPoint = {
+        x = frame.x + frame.w / 2,
+        y = frame.y + 3
+    }
+    local originalPos = hs.mouse.absolutePosition()
+
+    hs.mouse.absolutePosition(titleBarPoint)
+
+    local steps = {
+        {
+            delay = 0.05,
+            label = "Click title bar",
+            fn = function()
+                hs.eventtap.event.newMouseEvent(hs.eventtap.event.types.leftMouseDown, titleBarPoint):post()
+            end,
+        },
+        {
+            delay = 0.15,
+            label = "Navigate to new space",
+            fn = function()
+                hs.eventtap.event.newKeyEvent(hyper, spaceKey, true):post()
+                hs.eventtap.event.newKeyEvent(hyper, spaceKey, false):post()
+            end,
+        },
+        {
+            delay = 0.4,
+            label = "Release mouse",
+            fn = function()
+                hs.eventtap.event.newMouseEvent(
+                    hs.eventtap.event.types.leftMouseUp,
+                    hs.mouse.absolutePosition()
+                ):post()
+            end,
+        },
+        {
+            delay = 0.01,
+            label = "Move mouse back",
+            fn = function()
+                hs.mouse.absolutePosition(originalPos)
+            end,
+        },
+        {
+            delay = 0.01,
+            label = "Return to original space",
+            fn = function()
+                if originalSpace then
+                    hs.spaces.gotoSpace(originalSpace)
+                end
+            end,
+        }
+    }
+
+    local function runStep(i)
+        if i > #steps then return end
+        hs.timer.doAfter(steps[i].delay, function()
+            print("Running step " .. i .. ": " .. steps[i].label)
+            steps[i].fn()
+            runStep(i + 1)
+        end)
+    end
+    runStep(1)
+end
+
+hs.hotkey.bind(meh, "q", function() moveWindowToSpace(1) end)
+hs.hotkey.bind(meh, "w", function() moveWindowToSpace(2) end)
+hs.hotkey.bind(meh, "e", function() moveWindowToSpace(3) end)
+hs.hotkey.bind(meh, "r", function() moveWindowToSpace(4) end)
+hs.hotkey.bind(meh, "t", function() moveWindowToSpace(5) end)
+hs.hotkey.bind(meh, "y", function() moveWindowToSpace(6) end)
+hs.hotkey.bind(meh, "u", function() moveWindowToSpace(7) end)
