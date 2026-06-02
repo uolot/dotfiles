@@ -23,8 +23,9 @@ if command -v direnv >/dev/null 2>&1; then
   eval "$(direnv hook bash)"
 fi
 
-if command -v brew >/dev/null 2>&1; then
-  source "$(brew --prefix asdf)/libexec/asdf.sh"
+if command -v asdf >/dev/null 2>&1; then
+  export ASDF_DATA_DIR="${ASDF_DATA_DIR:-$HOME/.asdf}"
+  export PATH="${ASDF_DATA_DIR}/shims:$PATH"
 fi
 
 if [[ -f $HOME/.local/bin/mise ]]; then
