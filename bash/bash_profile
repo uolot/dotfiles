@@ -5,3 +5,4 @@
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
+[[ -f "/Users/tomek/.local/share/bob/env/env.sh" ]] && . "/Users/tomek/.local/share/bob/env/env.sh"
