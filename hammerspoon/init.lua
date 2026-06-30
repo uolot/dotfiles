@@ -55,6 +55,8 @@ end
 local hyper = { "cmd", "alt", "ctrl", "shift" }
 local meh = { "alt", "ctrl", "shift" }
 
+local ctrl = { "ctrl" }
+
 -- MEH
 
 -- hs.hotkey.bind(meh, "c", function() hs.window.focusedWindow():centerOnScreen() end)
@@ -276,23 +278,58 @@ hs.hotkey.bind(hyper, "tab", function()
 end)
 
 hs.hotkey.bind(hyper, "1", function()
-	hs.eventtap.keyStroke(hyper, "q")
+	hs.eventtap.keyStroke(ctrl, "1")
 end)
+hs.hotkey.bind(hyper, "q", function()
+	hs.eventtap.keyStroke(ctrl, "1")
+end)
+
 hs.hotkey.bind(hyper, "2", function()
-	hs.eventtap.keyStroke(hyper, "w")
+	hs.eventtap.keyStroke(ctrl, "2")
 end)
+hs.hotkey.bind(hyper, "w", function()
+	hs.eventtap.keyStroke(ctrl, "2")
+end)
+
 hs.hotkey.bind(hyper, "3", function()
-	hs.eventtap.keyStroke(hyper, "e")
+	hs.eventtap.keyStroke(ctrl, "3")
 end)
+hs.hotkey.bind(hyper, "e", function()
+	hs.eventtap.keyStroke(ctrl, "3")
+end)
+
 hs.hotkey.bind(hyper, "4", function()
-	hs.eventtap.keyStroke(hyper, "r")
+	hs.eventtap.keyStroke(ctrl, "4")
 end)
+hs.hotkey.bind(hyper, "r", function()
+	hs.eventtap.keyStroke(ctrl, "4")
+end)
+
 hs.hotkey.bind(hyper, "5", function()
-	hs.eventtap.keyStroke(hyper, "t")
+	hs.eventtap.keyStroke(ctrl, "5")
 end)
+hs.hotkey.bind(hyper, "t", function()
+	hs.eventtap.keyStroke(ctrl, "5")
+end)
+
 hs.hotkey.bind(hyper, "6", function()
-	hs.eventtap.keyStroke(hyper, "y")
+	hs.eventtap.keyStroke(ctrl, "6")
 end)
+hs.hotkey.bind(hyper, "y", function()
+	hs.eventtap.keyStroke(ctrl, "6")
+end)
+
 hs.hotkey.bind(hyper, "7", function()
-	hs.eventtap.keyStroke(hyper, "u")
+	hs.eventtap.keyStroke(ctrl, "7")
+end)
+hs.hotkey.bind(hyper, "u", function()
+	hs.eventtap.keyStroke(ctrl, "7")
+end)
+
+-- Left/Right navigation between spaces
+hs.hotkey.bind(hyper, "h", nil, function()
+	hs.eventtap.keyStroke({ "fn", "ctrl" }, "left")
+end)
+hs.hotkey.bind(hyper, "l", function()
+	hs.eventtap.keyStroke({ "fn", "ctrl" }, "right")
 end)
