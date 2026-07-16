@@ -193,6 +193,7 @@ local function moveWindowToSpace(spaceNumber)
 				hs.mouse.absolutePosition(originalPos)
 			end,
 		},
+		--[[
 		{
 			delay = 0.01,
 			label = "Return to original space",
@@ -202,6 +203,7 @@ local function moveWindowToSpace(spaceNumber)
 				end
 			end,
 		},
+		]]
 	}
 
 	local function runStep(i)
@@ -327,9 +329,107 @@ hs.hotkey.bind(hyper, "u", function()
 end)
 
 -- Left/Right navigation between spaces
-hs.hotkey.bind(hyper, "h", nil, function()
+hs.hotkey.bind(hyper, "o", function()
 	hs.eventtap.keyStroke({ "fn", "ctrl" }, "left")
 end)
-hs.hotkey.bind(hyper, "l", function()
+hs.hotkey.bind(hyper, "p", function()
 	hs.eventtap.keyStroke({ "fn", "ctrl" }, "right")
+end)
+-- -- Mission control
+-- hs.hotkey.bind(hyper, "j", function()
+-- 	hs.eventtap.keyStroke({ "fn", "ctrl" }, "down")
+-- end)
+-- hs.hotkey.bind(hyper, "k", function()
+-- 	hs.eventtap.keyStroke({ "fn", "ctrl" }, "up")
+-- end)
+
+-- Move windows
+
+local function getStep()
+	local screen = hs.screen.mainScreen()
+	local f = screen:fullFrame()
+	return {
+		w = f.w / 20,
+		h = f.h / 20,
+	}
+end
+
+hs.hotkey.bind(hyper, "l", function()
+	local win = hs.window.focusedWindow()
+	local f = win:frame()
+	f.x = f.x + getStep().w
+	win:setFrame(f)
+end)
+
+hs.hotkey.bind(hyper, "h", function()
+	local win = hs.window.focusedWindow()
+	local f = win:frame()
+	f.x = f.x - getStep().w
+	win:setFrame(f)
+end)
+
+hs.hotkey.bind(hyper, "k", function()
+	local win = hs.window.focusedWindow()
+	local f = win:frame()
+	f.y = f.y - getStep().h
+	win:setFrame(f)
+end)
+
+hs.hotkey.bind(hyper, "j", function()
+	local win = hs.window.focusedWindow()
+	local f = win:frame()
+	f.y = f.y + getStep().h
+	win:setFrame(f)
+end)
+
+-- Resize windows
+
+hs.hotkey.bind(meh, "l", function()
+	local win = hs.window.focusedWindow()
+	local f = win:frame()
+	f.w = f.w + getStep().w
+	win:setFrame(f)
+end)
+
+hs.hotkey.bind(meh, "h", function()
+	local win = hs.window.focusedWindow()
+	local f = win:frame()
+	f.w = f.w - getStep().w
+	win:setFrame(f)
+end)
+
+hs.hotkey.bind(meh, "k", function()
+	local win = hs.window.focusedWindow()
+	local f = win:frame()
+	f.h = f.h - getStep().h
+	win:setFrame(f)
+end)
+
+hs.hotkey.bind(meh, "j", function()
+	local win = hs.window.focusedWindow()
+	local f = win:frame()
+	f.h = f.h + getStep().h
+	win:setFrame(f)
+end)
+
+-- Focus windows
+
+hs.hotkey.bind(hyper, "left", function()
+	local win = hs.window.focusedWindow()
+	win:focusWindowWest()
+end)
+
+hs.hotkey.bind(hyper, "right", function()
+	local win = hs.window.focusedWindow()
+	win:focusWindowEast()
+end)
+
+hs.hotkey.bind(hyper, "up", function()
+	local win = hs.window.focusedWindow()
+	win:focusWindowNorth()
+end)
+
+hs.hotkey.bind(hyper, "down", function()
+	local win = hs.window.focusedWindow()
+	win:focusWindowSouth()
 end)
