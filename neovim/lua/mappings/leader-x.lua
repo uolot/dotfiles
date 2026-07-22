@@ -43,6 +43,7 @@ wk.add({
 	},
 	{ "<Leader>xd", toggle_diagnostic, desc = "Diagnostics" },
 	{ "<Leader>xf", toggle_formatting, desc = "Formatting" },
+	{ "<Leader>xm", "<Cmd>RenderMarkdown buf_toggle<CR>", desc = "Formatting", silent = true },
 	{
 		"<Leader>xr",
 		function()
