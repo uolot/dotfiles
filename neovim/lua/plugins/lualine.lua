@@ -32,9 +32,9 @@ local opts = {
         },
         -- right
         lualine_x = {
+            'progress',
         },
         lualine_y = {
-            -- 'progress',
             { 'location', padding = { left = 0, right = 1 } },
         },
         lualine_z = {
