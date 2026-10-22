@@ -1,9 +1,7 @@
 # vim: ft=bash
 
 if [[ -f "$HOME/.secrets/LEGO_GH_TOKEN" ]]; then
-  export NPM_TOKEN="$(cat "$HOME/.secrets/LEGO_GH_TOKEN")"
-  export NODE_AUTH_TOKEN="$(cat "$HOME/.secrets/LEGO_GH_TOKEN")"
-  export LEGO_NPM_AUTH_TOKEN="$(cat "$HOME/.secrets/LEGO_GH_TOKEN")"
+  export LEGO_NPM_AUTH_TOKEN="$(gh auth token 2>/dev/null)"
 fi
 
 # pnpm
