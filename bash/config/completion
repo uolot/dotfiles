@@ -19,16 +19,3 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
     fi
   fi
 fi
-
-# If github cli is installed
-if command -v gh >/dev/null 2>&1; then
-  eval "$(gh completion -s bash)"
-fi
-
-# If wezterm is installed
-if command -v wezterm >/dev/null 2>&1; then
-  eval "$(wezterm shell-completion --shell bash)"
-fi
-
-# If saml2aws is installed
-command -v saml2aws >/dev/null 2>&1 && eval "$(saml2aws --completion-script-bash)"

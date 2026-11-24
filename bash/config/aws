@@ -1,7 +1,5 @@
 # vim: ft=bash
 
-command -v saml2aws >/dev/null 2>&1 && eval "$(saml2aws --completion-script-bash)"
-
 __pick-aws-account() {
     local query=""
     if [ $# -gt 0 ]; then
