@@ -20,11 +20,6 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
   fi
 fi
 
-# If 1password is installed
-if command -v op >/dev/null 2>&1; then
-  source <(op completion bash)
-fi
-
 # If github cli is installed
 if command -v gh >/dev/null 2>&1; then
   eval "$(gh completion -s bash)"
