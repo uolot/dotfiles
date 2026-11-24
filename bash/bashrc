@@ -7,21 +7,26 @@
 
 export PATH="$HOME/.dotfiles/bin:$HOME/.local/bin:/opt/homebrew/bin:$HOME/.turso:$PATH"
 
+# Source a tool's generated init script from cache instead of running the tool in every shell.
+# The cache gets the binary's mtime; an upgraded binary has a different mtime and triggers regeneration.
+_cached_init() {
+  local bin
+  bin=$(type -P "$1") || return
+  local cache="${XDG_CACHE_HOME:-$HOME/.cache}/bash-init/$1.bash"
+  if [[ ! -s $cache || $bin -nt $cache || $bin -ot $cache ]]; then
+    mkdir -p "${cache%/*}"
+    "$bin" "${@:2}" >"$cache" 2>/dev/null && touch -r "$bin" "$cache" || { rm -f "$cache"; return 1; }
+  fi
+  source "$cache"
+}
+
 if [[ -f $HOME/.local/share/bob ]]; then
   alias nvim=$HOME/.local/share/bob/nvim-bin/nvim
 fi
 
-if command -v starship >/dev/null 2>&1; then
-  eval "$(starship init bash)"
-fi
-
-if command -v zoxide >/dev/null 2>&1; then
-  eval "$(zoxide init bash)"
-fi
-
-if command -v direnv >/dev/null 2>&1; then
-  eval "$(direnv hook bash)"
-fi
+_cached_init starship init bash --print-full-init
+_cached_init zoxide init bash
+_cached_init direnv hook bash
 
 if command -v asdf >/dev/null 2>&1; then
   export ASDF_DATA_DIR="${ASDF_DATA_DIR:-$HOME/.asdf}"
@@ -50,3 +55,5 @@ source "$CONFIG/python"
 source "$CONFIG/node"
 source "$CONFIG/aws"
 source "$CONFIG/docker"
+
+unset -f _cached_init
