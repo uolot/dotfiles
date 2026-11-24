@@ -1,21 +1,21 @@
 # vim: ft=bash
 
-NOCOLOR="$(tput sgr0)"
+NOCOLOR=$'\e[0m'
 # Dark
-BLACK="$(tput setaf 0)"
-RED="$(tput setaf 1)"
-GREEN="$(tput setaf 2)"
-YELLOW="$(tput setaf 3)"
-BLUE="$(tput setaf 4)"
-MAGENTA="$(tput setaf 5)"
-CYAN="$(tput setaf 6)"
-WHITE="$(tput setaf 7)"
-DGRAY="$(tput setaf 8)"
+BLACK=$'\e[30m'
+RED=$'\e[31m'
+GREEN=$'\e[32m'
+YELLOW=$'\e[33m'
+BLUE=$'\e[34m'
+MAGENTA=$'\e[35m'
+CYAN=$'\e[36m'
+WHITE=$'\e[37m'
+DGRAY=$'\e[90m'
 # Light
-LRED="$(tput setaf 9)"
-LGREEN="$(tput setaf 10)"
-LYELLOW="$(tput setaf 11)"
-LBLUE="$(tput setaf 12)"
-LMAGENTA="$(tput setaf 13)"
-LCYAN="$(tput setaf 14)"
-LWHITE="$(tput setaf 15)"
+LRED=$'\e[91m'
+LGREEN=$'\e[92m'
+LYELLOW=$'\e[93m'
+LBLUE=$'\e[94m'
+LMAGENTA=$'\e[95m'
+LCYAN=$'\e[96m'
+LWHITE=$'\e[97m'
