@@ -86,7 +86,7 @@ disabled = true
 [custom.aws_exp]
 command = "node $HOME/.dotfiles/starship/aws_exp.js"
 # when = "env | grep AWS_CREDENTIAL_EXPIRATION"
-when = "env | grep SAML2AWS_PROFILE"
+when = '[ -n "$SAML2AWS_PROFILE" ]'
 symbol = " "
 style = "bold 208"
 
