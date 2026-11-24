@@ -2,13 +2,66 @@
 
 # Fix after broken homebrew update: https://github.com/asdf-vm/asdf/issues/1103#issuecomment-986798629
 
+# Homebrew links most formula completions into the legacy etc/bash_completion.d, which
+# bash-completion sources in full at startup (~65ms for ~50 scripts). Instead, write a stub per
+# command each script registers into a lazy-load dir, so the script is sourced on the first <Tab>
+# for that command. A script stays eager (sourced at startup via a stub in the compat dir) if it
+# registers nothing (helpers like git-prompt.sh, bash-completion's compat API), registers a
+# default/path spec, or overrides a spec that bash-completion itself sets at startup.
+# The stubs are rebuilt whenever brew (un)links anything in bash_completion.d.
+_lazy_compat_completions() {
+  local compat=$1 main=$2 cache="${XDG_CACHE_HOME:-$HOME/.cache}/bash-completion"
+  if [[ ! -e $cache/stamp || $compat -nt $cache/stamp || $compat -ot $cache/stamp ]]; then
+    local tmp=$cache.tmp.$$ file cmd
+    mkdir -p "$tmp/lazy/completions" "$tmp/eager"
+    # scan prints "<script>\t<command>" per lazy registration, "<script>" alone for eager scripts
+    while IFS=$'\t' read -r file cmd; do
+      if [[ $cmd ]]; then
+        printf 'source %q "$@"\n' "$compat/$file" >"$tmp/lazy/completions/$cmd"
+      else
+        printf 'source %q\n' "$compat/$file" >"$tmp/eager/$file"
+      fi
+    done < <(
+      complete -r
+      BASH_COMPLETION_COMPAT_DIR=/var/empty
+      source "$main"
+      declare -A startup=()
+      while read -r spec; do startup[${spec##* }]=1; done < <(complete -p)
+      for f in "$compat"/*; do
+        [[ -f $f && -r $f ]] || continue
+        # nested subshell: each script sees only bash-completion, and can't clobber this loop
+        mapfile -t specs < <(complete -r; source "$f" </dev/null >/dev/null 2>&1; complete -p)
+        eager=$((${#specs[@]} == 0))
+        cmds=()
+        for spec in "${specs[@]}"; do
+          c=${spec##* }
+          [[ ${startup[$c]-} || $c == -* || $c == *[/\'\"]* ]] && eager=1
+          cmds+=("$c")
+        done
+        if ((eager)); then
+          printf '%s\n' "${f##*/}"
+        else
+          for c in "${cmds[@]}"; do printf '%s\t%s\n' "${f##*/}" "$c"; done
+        fi
+      done
+    )
+    touch -r "$compat" "$tmp/stamp"
+    rm -rf "$cache" && mv "$tmp" "$cache"
+  fi
+  BASH_COMPLETION_COMPAT_DIR=$cache/eager
+  BASH_COMPLETION_USER_DIR="$cache/lazy:${XDG_DATA_HOME:-$HOME/.local/share}/bash-completion"
+}
+
 # If MacOS and homebrew is installed
 if [[ "$OSTYPE" == "darwin"* && $(command -v brew) ]]; then
-  if [[ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]]; then
-    source "$(brew --prefix)/etc/profile.d/bash_completion.sh"
-  elif [ -f "$(brew --prefix)/etc/bash_completion" ]; then
-    . "$(brew --prefix)/etc/bash_completion"
+  brew_prefix=$(brew --prefix)
+  if [[ -r "$brew_prefix/etc/profile.d/bash_completion.sh" ]]; then
+    _lazy_compat_completions "$brew_prefix/etc/bash_completion.d" "$brew_prefix/share/bash-completion/bash_completion"
+    source "$brew_prefix/etc/profile.d/bash_completion.sh"
+  elif [ -f "$brew_prefix/etc/bash_completion" ]; then
+    . "$brew_prefix/etc/bash_completion"
   fi
+  unset brew_prefix
 # If Linux
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
   if ! shopt -oq posix; then
@@ -19,3 +72,5 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
     fi
   fi
 fi
+
+unset -f _lazy_compat_completions
